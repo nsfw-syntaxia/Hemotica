@@ -35,7 +35,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MistyRose;
-            ClientSize = new Size(514, 558);
+            ClientSize = new Size(488, 558);
             Name = "Login";
             ShowIcon = false;
             ResumeLayout(false);
