@@ -1,4 +1,6 @@
 using System;
+using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -29,6 +31,14 @@ namespace Hemotica
                     control.MouseDown += new MouseEventHandler(Home_MouseDown);
                 }
             }
+
+            this.DoubleBuffered = true;
+
+            btnEffects(btnClose, Color.Red);
+            btnEffects(btnMaximize, Color.Lime);
+            btnEffects(btnMinimize, Color.Yellow);
+
+            centerResize();
         }
 
         private void Home_MouseDown(object sender, MouseEventArgs e)
@@ -38,6 +48,51 @@ namespace Hemotica
                 ReleaseCapture();
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, (IntPtr)HTCAPTION, IntPtr.Zero);
             }
+        }
+
+        private void btnEffects(Button button, Color highlightColor)
+        {
+            button.FlatAppearance.BorderSize = 0;
+
+            button.MouseEnter += (s, e) => button.BackColor = Color.FromArgb(50, highlightColor);
+            button.MouseLeave += (s, e) => button.BackColor = Color.Transparent;
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void centerResize()
+        {
+            if (pbxHeart != null)
+            {
+                pbxHeart.Width = (int)(this.ClientSize.Width * 0.5);
+                pbxHeart.Height = (int)(this.ClientSize.Height * 0.5);
+
+                pbxHeart.Left = (this.ClientSize.Width - pbxHeart.Width) / 2;
+                pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
+
+                pbxHeart.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
+
+        private void Home_Resize(object sender, EventArgs e)
+        {
+            centerResize();
         }
     }
 }

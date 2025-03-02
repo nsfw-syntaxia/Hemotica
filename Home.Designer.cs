@@ -29,54 +29,85 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            btnClose = new Button();
+            btnMaximize = new Button();
+            btnMinimize = new Button();
+            pbxHeart = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pbxHeart).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // btnClose
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(385, 240);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(495, 325);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.FlatStyle = FlatStyle.Flat;
+            btnClose.Image = (Image)resources.GetObject("btnClose.Image");
+            btnClose.Location = new Point(1226, 12);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(25, 25);
+            btnClose.TabIndex = 2;
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
-            // pictureBox2
+            // btnMaximize
             // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(405, 570);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(460, 115);
-            pictureBox2.TabIndex = 1;
-            pictureBox2.TabStop = false;
+            btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMaximize.FlatStyle = FlatStyle.Flat;
+            btnMaximize.Image = (Image)resources.GetObject("btnMaximize.Image");
+            btnMaximize.Location = new Point(1195, 12);
+            btnMaximize.Name = "btnMaximize";
+            btnMaximize.Size = new Size(25, 25);
+            btnMaximize.TabIndex = 3;
+            btnMaximize.UseVisualStyleBackColor = true;
+            btnMaximize.Click += btnMaximize_Click;
+            // 
+            // btnMinimize
+            // 
+            btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.FlatStyle = FlatStyle.Flat;
+            btnMinimize.Image = (Image)resources.GetObject("btnMinimize.Image");
+            btnMinimize.ImageAlign = ContentAlignment.TopCenter;
+            btnMinimize.Location = new Point(1164, 12);
+            btnMinimize.Name = "btnMinimize";
+            btnMinimize.Size = new Size(25, 25);
+            btnMinimize.TabIndex = 4;
+            btnMinimize.UseVisualStyleBackColor = true;
+            btnMinimize.Click += btnMinimize_Click;
+            // 
+            // pbxHeart
+            // 
+            pbxHeart.BackColor = Color.Transparent;
+            pbxHeart.Image = (Image)resources.GetObject("pbxHeart.Image");
+            pbxHeart.Location = new Point(361, 162);
+            pbxHeart.Name = "pbxHeart";
+            pbxHeart.Size = new Size(505, 335);
+            pbxHeart.TabIndex = 5;
+            pbxHeart.TabStop = false;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(48, 83, 114);
+            BackColor = Color.FromArgb(253, 211, 211);
             ClientSize = new Size(1263, 803);
             ControlBox = false;
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox1);
+            Controls.Add(pbxHeart);
+            Controls.Add(btnMinimize);
+            Controls.Add(btnMaximize);
+            Controls.Add(btnClose);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Home";
             Load += Home_Load;
             MouseDown += Home_MouseDown;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            Resize += Home_Resize;
+            ((System.ComponentModel.ISupportInitialize)pbxHeart).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
+        private Button btnClose;
+        private Button btnMaximize;
+        private Button btnMinimize;
+        private PictureBox pbxHeart;
     }
 }
