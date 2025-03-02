@@ -77,7 +77,7 @@
             // 
             pbxHeart.BackColor = Color.Transparent;
             pbxHeart.Image = (Image)resources.GetObject("pbxHeart.Image");
-            pbxHeart.Location = new Point(361, 162);
+            pbxHeart.Location = new Point(379, 248);
             pbxHeart.Name = "pbxHeart";
             pbxHeart.Size = new Size(505, 335);
             pbxHeart.TabIndex = 5;
