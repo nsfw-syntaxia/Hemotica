@@ -8,6 +8,9 @@ namespace Hemotica
 {
     public partial class Home : Form
     {
+        private int normalWidth;
+        private int normalHeight;
+
         public Home()
         {
             InitializeComponent();
@@ -80,8 +83,19 @@ namespace Hemotica
         {
             if (pbxHeart != null)
             {
-                pbxHeart.Width = (int)(this.ClientSize.Width * 0.5);
-                pbxHeart.Height = (int)(this.ClientSize.Height * 0.5);
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    pbxHeart.Width = normalWidth;
+                    pbxHeart.Height = normalHeight;
+                }
+                else
+                {
+                    pbxHeart.Width = (int)(this.ClientSize.Width * 0.5);
+                    pbxHeart.Height = (int)(this.ClientSize.Height * 0.5);
+
+                    normalWidth = pbxHeart.Width;
+                    normalHeight = pbxHeart.Height;
+                }
 
                 pbxHeart.Left = (this.ClientSize.Width - pbxHeart.Width) / 2;
                 pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
