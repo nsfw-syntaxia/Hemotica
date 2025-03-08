@@ -45,6 +45,7 @@
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(25, 25);
             btnClose.TabIndex = 2;
+            btnClose.TabStop = false;
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
@@ -57,6 +58,7 @@
             btnMaximize.Name = "btnMaximize";
             btnMaximize.Size = new Size(25, 25);
             btnMaximize.TabIndex = 3;
+            btnMaximize.TabStop = false;
             btnMaximize.UseVisualStyleBackColor = true;
             btnMaximize.Click += btnMaximize_Click;
             // 
@@ -70,6 +72,7 @@
             btnMinimize.Name = "btnMinimize";
             btnMinimize.Size = new Size(25, 25);
             btnMinimize.TabIndex = 4;
+            btnMinimize.TabStop = false;
             btnMinimize.UseVisualStyleBackColor = true;
             btnMinimize.Click += btnMinimize_Click;
             // 
@@ -82,6 +85,7 @@
             pbxHeart.Size = new Size(505, 335);
             pbxHeart.TabIndex = 5;
             pbxHeart.TabStop = false;
+            pbxHeart.Click += pbxHeart_Click;
             // 
             // Home
             // 
@@ -94,9 +98,11 @@
             Controls.Add(btnMinimize);
             Controls.Add(btnMaximize);
             Controls.Add(btnClose);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Home";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += Home_Load;
             MouseDown += Home_MouseDown;
             Resize += Home_Resize;

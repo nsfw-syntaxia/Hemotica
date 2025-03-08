@@ -1,6 +1,4 @@
 using System;
-using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -8,8 +6,9 @@ namespace Hemotica
 {
     public partial class Home : Form
     {
-        private int normalWidth;
-        private int normalHeight;
+        private int normalWidth, normalHeight;
+        public static int parentX, parentY;
+        private Form overlay;
 
         public Home()
         {
@@ -27,25 +26,14 @@ namespace Hemotica
 
         private void Home_Load(object sender, EventArgs e)
         {
-            foreach (Control control in this.Controls)
-            {
-                if (control is PictureBox)
-                {
-                    control.MouseDown += new MouseEventHandler(Home_MouseDown);
-                }
-            }
-
-            this.DoubleBuffered = true;
-
-            btnEffects(btnClose, Color.Red);
-            btnEffects(btnMaximize, Color.Lime);
-            btnEffects(btnMinimize, Color.Yellow);
-
+            btnSettings();
             centerResize();
         }
 
         private void Home_MouseDown(object sender, MouseEventArgs e)
         {
+            if (sender == pbxHeart) return;
+
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
@@ -59,6 +47,13 @@ namespace Hemotica
 
             button.MouseEnter += (s, e) => button.BackColor = Color.FromArgb(50, highlightColor);
             button.MouseLeave += (s, e) => button.BackColor = Color.Transparent;
+        }
+
+        private void btnSettings()
+        {
+            btnEffects(btnClose, Color.Red);
+            btnEffects(btnMaximize, Color.Lime);
+            btnEffects(btnMinimize, Color.Yellow);
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -107,6 +102,41 @@ namespace Hemotica
         private void Home_Resize(object sender, EventArgs e)
         {
             centerResize();
+        }
+
+        private void pbxHeart_Click(object sender, EventArgs e)
+        {
+            Form overlay = new Form
+            {
+                StartPosition = FormStartPosition.Manual,
+                FormBorderStyle = FormBorderStyle.None,
+                Opacity = 0.5d,
+                BackColor = Color.Black,
+                Size = this.Size,
+                Location = this.Location,
+                ShowInTaskbar = false
+            };
+
+            overlay.Show();
+            btnSettings();
+
+            UserLog userLog = new UserLog
+            {
+                Owner = this,
+                StartPosition = FormStartPosition.CenterParent,
+                ShowInTaskbar = false
+            };
+
+            parentX = this.Location.X;
+            parentY = this.Location.Y;
+
+            userLog.FormClosed += (s, args) =>
+            {
+                overlay.Dispose();
+                btnSettings();
+            };
+
+            userLog.ShowDialog();
         }
     }
 }
