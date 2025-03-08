@@ -14,10 +14,6 @@ namespace Hemotica
 
         private void UserLog_Load(object sender, EventArgs e)
         {
-            pbxLogo.BackColor = Color.Transparent;
-
-            this.Controls.SetChildIndex(pbxLogo, 0);
-
             tEffect.Start();
         }
 
