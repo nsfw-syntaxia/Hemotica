@@ -123,7 +123,6 @@ namespace Hemotica
             UserLog userLog = new UserLog
             {
                 Owner = this,
-                StartPosition = FormStartPosition.CenterParent,
                 ShowInTaskbar = false
             };
 

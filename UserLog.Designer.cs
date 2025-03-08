@@ -35,13 +35,14 @@
             // 
             // tEffect
             // 
+            tEffect.Enabled = true;
             tEffect.Interval = 1;
             tEffect.Tick += tEffect_Tick;
             // 
             // flpLogin
             // 
             flpLogin.BackColor = Color.FromArgb(244, 180, 180);
-            flpLogin.Location = new Point(25, 97);
+            flpLogin.Location = new Point(128, 79);
             flpLogin.Name = "flpLogin";
             flpLogin.Size = new Size(400, 440);
             flpLogin.TabIndex = 1;
@@ -51,7 +52,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(253, 211, 211);
-            ClientSize = new Size(810, 555);
+            ClientSize = new Size(655, 555);
             ControlBox = false;
             Controls.Add(flpLogin);
             DoubleBuffered = true;

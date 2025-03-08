@@ -14,6 +14,9 @@ namespace Hemotica
 
         private void UserLog_Load(object sender, EventArgs e)
         {
+            i = Home.parentY + 125;
+            this.Location = new Point(Home.parentX + 305, Home.parentY + 125);
+
             tEffect.Start();
         }
 
@@ -26,6 +29,14 @@ namespace Hemotica
             else
             {
                 Opacity += 0.03;
+            }
+
+            int y = Home.parentY += 3;
+            this.Location = new Point(Home.parentX + 305, y);
+
+            if (y >= i)
+            {
+                tEffect.Stop();
             }
         }
     }
