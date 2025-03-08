@@ -8,7 +8,6 @@ namespace Hemotica
     {
         private int normalWidth, normalHeight;
         public static int parentX, parentY;
-        private Form overlay;
 
         public Home()
         {
