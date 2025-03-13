@@ -75,6 +75,7 @@ namespace Hemotica
 
         private void centerResize()
         {
+            /*
             if (pbxHeart != null)
             {
                 if (this.WindowState == FormWindowState.Maximized)
@@ -94,7 +95,71 @@ namespace Hemotica
                 pbxHeart.Left = (this.ClientSize.Width - pbxHeart.Width) / 2;
                 pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
 
-                pbxHeart.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbxTitle.Width = 505;
+                pbxTitle.Height = 60;
+
+                pbxTitle.Left = (this.ClientSize.Width - pbxTitle.Width) / 2;
+                pbxTitle.Top = pbxHeart.Top - pbxTitle.Height - (int)(this.ClientSize.Height * 0.015);
+            }
+
+            if (pbxHeart != null)
+            {
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    pbxHeart.Width = normalWidth;
+                    pbxHeart.Height = normalHeight;
+                }
+                else
+                {
+                    pbxHeart.Width = (int)(this.ClientSize.Width * 0.5);
+                    pbxHeart.Height = (int)(this.ClientSize.Height * 0.5);
+
+                    normalWidth = pbxHeart.Width;
+                    normalHeight = pbxHeart.Height;
+                }
+
+                int centerX = (this.ClientSize.Width - pbxHeart.Width) / 2;
+
+                pbxHeart.Left = centerX;
+                pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
+
+                int spacing = (int)(this.ClientSize.Height * 0.015);
+
+                pbxTitle.Width = 505;
+                pbxTitle.Height = 60;
+                pbxTitle.Left = (this.ClientSize.Width - pbxTitle.Width) / 2;
+                pbxTitle.Top = pbxHeart.Top - pbxTitle.Height - spacing;
+
+            }*/
+
+            if (pbxHeart != null)
+            {
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    pbxHeart.Width = normalWidth;
+                    pbxHeart.Height = normalHeight;
+                }
+                else
+                {
+                    pbxHeart.Width = (int)(this.ClientSize.Width * 0.5);
+                    pbxHeart.Height = (int)(this.ClientSize.Height * 0.5);
+
+                    normalWidth = pbxHeart.Width;
+                    normalHeight = pbxHeart.Height;
+                }
+
+                int centerX = (this.ClientSize.Width - pbxHeart.Width) / 2;
+
+                pbxHeart.Left = centerX;
+                pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
+
+                int spacing = (int)(this.ClientSize.Height * 0.03);
+
+                pbxTitle.Left = (this.ClientSize.Width - pbxTitle.Width) / 2;
+                pbxTitle.Top = pbxHeart.Top - pbxTitle.Height - spacing;
+
+                pbxCaption.Left = (this.ClientSize.Width - pbxCaption.Width) / 2;
+                pbxCaption.Top = pbxHeart.Top + pbxHeart.Height + spacing;
             }
         }
 

@@ -33,7 +33,11 @@
             btnMaximize = new Button();
             btnMinimize = new Button();
             pbxHeart = new PictureBox();
+            pbxTitle = new PictureBox();
+            pbxCaption = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbxHeart).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxTitle).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxCaption).BeginInit();
             SuspendLayout();
             // 
             // btnClose
@@ -83,9 +87,30 @@
             pbxHeart.Location = new Point(379, 248);
             pbxHeart.Name = "pbxHeart";
             pbxHeart.Size = new Size(505, 335);
+            pbxHeart.SizeMode = PictureBoxSizeMode.StretchImage;
             pbxHeart.TabIndex = 5;
             pbxHeart.TabStop = false;
             pbxHeart.Click += pbxHeart_Click;
+            // 
+            // pbxTitle
+            // 
+            pbxTitle.Image = (Image)resources.GetObject("pbxTitle.Image");
+            pbxTitle.Location = new Point(379, 182);
+            pbxTitle.Name = "pbxTitle";
+            pbxTitle.Size = new Size(505, 60);
+            pbxTitle.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbxTitle.TabIndex = 6;
+            pbxTitle.TabStop = false;
+            // 
+            // pbxCaption
+            // 
+            pbxCaption.Image = (Image)resources.GetObject("pbxCaption.Image");
+            pbxCaption.Location = new Point(379, 589);
+            pbxCaption.Name = "pbxCaption";
+            pbxCaption.Size = new Size(505, 60);
+            pbxCaption.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbxCaption.TabIndex = 8;
+            pbxCaption.TabStop = false;
             // 
             // Home
             // 
@@ -94,6 +119,8 @@
             BackColor = Color.FromArgb(253, 211, 211);
             ClientSize = new Size(1263, 803);
             ControlBox = false;
+            Controls.Add(pbxCaption);
+            Controls.Add(pbxTitle);
             Controls.Add(pbxHeart);
             Controls.Add(btnMinimize);
             Controls.Add(btnMaximize);
@@ -107,6 +134,8 @@
             MouseDown += Home_MouseDown;
             Resize += Home_Resize;
             ((System.ComponentModel.ISupportInitialize)pbxHeart).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxTitle).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxCaption).EndInit();
             ResumeLayout(false);
         }
 
@@ -115,5 +144,7 @@
         private Button btnMaximize;
         private Button btnMinimize;
         private PictureBox pbxHeart;
+        private PictureBox pbxTitle;
+        private PictureBox pbxCaption;
     }
 }
