@@ -133,7 +133,7 @@ namespace Hemotica
             overlay.Show();
             btnSettings();
 
-            UserLog userLog = new UserLog
+            Register register = new Register
             {
                 Owner = this,
                 ShowInTaskbar = false
@@ -142,13 +142,15 @@ namespace Hemotica
             parentX = this.Location.X;
             parentY = this.Location.Y;
 
-            userLog.FormClosed += (s, args) =>
+            register.FormClosed += (s, args) =>
             {
                 overlay.Dispose();
                 btnSettings();
+                this.Activate();
+                tToggle.Start();
             };
 
-            userLog.ShowDialog();
+            register.ShowDialog();
         }
 
         private void tToggle_Tick(object sender, EventArgs e)
