@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             btnClose = new Button();
             btnMaximize = new Button();
@@ -35,9 +36,12 @@
             pbxHeart = new PictureBox();
             pbxTitle = new PictureBox();
             pbxCaption = new PictureBox();
+            pbxFade = new PictureBox();
+            tToggle = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pbxHeart).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxTitle).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxCaption).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxFade).BeginInit();
             SuspendLayout();
             // 
             // btnClose
@@ -112,6 +116,21 @@
             pbxCaption.TabIndex = 8;
             pbxCaption.TabStop = false;
             // 
+            // pbxFade
+            // 
+            pbxFade.Image = (Image)resources.GetObject("pbxFade.Image");
+            pbxFade.Location = new Point(379, 589);
+            pbxFade.Name = "pbxFade";
+            pbxFade.Size = new Size(505, 60);
+            pbxFade.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbxFade.TabIndex = 9;
+            pbxFade.TabStop = false;
+            // 
+            // tToggle
+            // 
+            tToggle.Interval = 300;
+            tToggle.Tick += tToggle_Tick;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -125,6 +144,7 @@
             Controls.Add(btnMinimize);
             Controls.Add(btnMaximize);
             Controls.Add(btnClose);
+            Controls.Add(pbxFade);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -136,6 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)pbxHeart).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxTitle).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxCaption).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxFade).EndInit();
             ResumeLayout(false);
         }
 
@@ -146,5 +167,7 @@
         private PictureBox pbxHeart;
         private PictureBox pbxTitle;
         private PictureBox pbxCaption;
+        private PictureBox pbxFade;
+        private System.Windows.Forms.Timer tToggle;
     }
 }

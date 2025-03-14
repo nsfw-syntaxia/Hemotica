@@ -8,6 +8,7 @@ namespace Hemotica
     {
         private int normalWidth, normalHeight;
         public static int parentX, parentY;
+        private bool popup = true;
 
         public Home()
         {
@@ -27,6 +28,7 @@ namespace Hemotica
         {
             btnSettings();
             centerResize();
+            tToggle.Start();
         }
 
         private void Home_MouseDown(object sender, MouseEventArgs e)
@@ -75,33 +77,6 @@ namespace Hemotica
 
         private void centerResize()
         {
-            /*
-            if (pbxHeart != null)
-            {
-                if (this.WindowState == FormWindowState.Maximized)
-                {
-                    pbxHeart.Width = normalWidth;
-                    pbxHeart.Height = normalHeight;
-                }
-                else
-                {
-                    pbxHeart.Width = (int)(this.ClientSize.Width * 0.5);
-                    pbxHeart.Height = (int)(this.ClientSize.Height * 0.5);
-
-                    normalWidth = pbxHeart.Width;
-                    normalHeight = pbxHeart.Height;
-                }
-
-                pbxHeart.Left = (this.ClientSize.Width - pbxHeart.Width) / 2;
-                pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
-
-                pbxTitle.Width = 505;
-                pbxTitle.Height = 60;
-
-                pbxTitle.Left = (this.ClientSize.Width - pbxTitle.Width) / 2;
-                pbxTitle.Top = pbxHeart.Top - pbxTitle.Height - (int)(this.ClientSize.Height * 0.015);
-            }
-
             if (pbxHeart != null)
             {
                 if (this.WindowState == FormWindowState.Maximized)
@@ -119,47 +94,19 @@ namespace Hemotica
                 }
 
                 int centerX = (this.ClientSize.Width - pbxHeart.Width) / 2;
-
-                pbxHeart.Left = centerX;
-                pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
-
-                int spacing = (int)(this.ClientSize.Height * 0.015);
-
-                pbxTitle.Width = 505;
-                pbxTitle.Height = 60;
-                pbxTitle.Left = (this.ClientSize.Width - pbxTitle.Width) / 2;
-                pbxTitle.Top = pbxHeart.Top - pbxTitle.Height - spacing;
-
-            }*/
-
-            if (pbxHeart != null)
-            {
-                if (this.WindowState == FormWindowState.Maximized)
-                {
-                    pbxHeart.Width = normalWidth;
-                    pbxHeart.Height = normalHeight;
-                }
-                else
-                {
-                    pbxHeart.Width = (int)(this.ClientSize.Width * 0.5);
-                    pbxHeart.Height = (int)(this.ClientSize.Height * 0.5);
-
-                    normalWidth = pbxHeart.Width;
-                    normalHeight = pbxHeart.Height;
-                }
-
-                int centerX = (this.ClientSize.Width - pbxHeart.Width) / 2;
-
-                pbxHeart.Left = centerX;
-                pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
-
                 int spacing = (int)(this.ClientSize.Height * 0.03);
+
+                pbxHeart.Left = centerX;
+                pbxHeart.Top = (this.ClientSize.Height - pbxHeart.Height) / 2;
 
                 pbxTitle.Left = (this.ClientSize.Width - pbxTitle.Width) / 2;
                 pbxTitle.Top = pbxHeart.Top - pbxTitle.Height - spacing;
 
                 pbxCaption.Left = (this.ClientSize.Width - pbxCaption.Width) / 2;
                 pbxCaption.Top = pbxHeart.Top + pbxHeart.Height + spacing;
+
+                pbxFade.Left = pbxCaption.Left;
+                pbxFade.Top = pbxCaption.Top;
             }
         }
 
@@ -170,6 +117,8 @@ namespace Hemotica
 
         private void pbxHeart_Click(object sender, EventArgs e)
         {
+            tToggle.Stop();
+
             Form overlay = new Form
             {
                 StartPosition = FormStartPosition.Manual,
@@ -200,6 +149,13 @@ namespace Hemotica
             };
 
             userLog.ShowDialog();
+        }
+
+        private void tToggle_Tick(object sender, EventArgs e)
+        {
+            pbxCaption.Visible = popup;
+            pbxFade.Visible = !popup;
+            popup = !popup;
         }
     }
 }
