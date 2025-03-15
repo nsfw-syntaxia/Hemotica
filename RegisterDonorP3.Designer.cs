@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             lblPage = new Label();
-            btnNext = new ReaLTaiizor.Controls.FoxButton();
+            btnRegister = new ReaLTaiizor.Controls.FoxButton();
             lblBType = new Label();
             cmbxBType = new ReaLTaiizor.Controls.DungeonComboBox();
             tbxHAddress = new TextBox();
@@ -52,24 +52,24 @@
             lblPage.TabIndex = 32;
             lblPage.Text = "3 / 3";
             // 
-            // btnNext
+            // btnRegister
             // 
-            btnNext.BackColor = Color.Transparent;
-            btnNext.BaseColor = Color.FromArgb(216, 85, 101);
-            btnNext.BorderColor = Color.FromArgb(216, 85, 101);
-            btnNext.DisabledBaseColor = Color.FromArgb(244, 148, 156);
-            btnNext.DisabledBorderColor = Color.FromArgb(244, 148, 156);
-            btnNext.DisabledTextColor = Color.FromArgb(244, 148, 156);
-            btnNext.DownColor = Color.FromArgb(236, 124, 132);
-            btnNext.EnabledCalc = true;
-            btnNext.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-            btnNext.ForeColor = Color.FromArgb(241, 241, 241);
-            btnNext.Location = new Point(203, 334);
-            btnNext.Name = "btnNext";
-            btnNext.OverColor = Color.FromArgb(216, 85, 101);
-            btnNext.Size = new Size(120, 40);
-            btnNext.TabIndex = 49;
-            btnNext.Text = "REGISTER";
+            btnRegister.BackColor = Color.Transparent;
+            btnRegister.BaseColor = Color.FromArgb(216, 85, 101);
+            btnRegister.BorderColor = Color.FromArgb(216, 85, 101);
+            btnRegister.DisabledBaseColor = Color.FromArgb(244, 148, 156);
+            btnRegister.DisabledBorderColor = Color.FromArgb(244, 148, 156);
+            btnRegister.DisabledTextColor = Color.FromArgb(244, 148, 156);
+            btnRegister.DownColor = Color.FromArgb(236, 124, 132);
+            btnRegister.EnabledCalc = true;
+            btnRegister.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+            btnRegister.ForeColor = Color.FromArgb(241, 241, 241);
+            btnRegister.Location = new Point(203, 334);
+            btnRegister.Name = "btnRegister";
+            btnRegister.OverColor = Color.FromArgb(216, 85, 101);
+            btnRegister.Size = new Size(120, 40);
+            btnRegister.TabIndex = 49;
+            btnRegister.Text = "REGISTER";
             // 
             // lblBType
             // 
@@ -213,7 +213,7 @@
             Controls.Add(lblBMI);
             Controls.Add(lblBType);
             Controls.Add(lblPage);
-            Controls.Add(btnNext);
+            Controls.Add(btnRegister);
             Controls.Add(cmbxBType);
             Name = "RegisterDonorP3";
             Size = new Size(396, 382);
@@ -223,7 +223,6 @@
 
         #endregion
         private Label lblPage;
-        private ReaLTaiizor.Controls.FoxButton btnNext;
         private Label lblBType;
         private ReaLTaiizor.Controls.DungeonComboBox cmbxBType;
         private TextBox tbxHAddress;
@@ -232,6 +231,7 @@
         private Label lblBMI;
         private TextBox tbxCNumber;
         private Label lblCNumber;
+        private ReaLTaiizor.Controls.FoxButton btnRegister;
         private ReaLTaiizor.Controls.FoxButton btnBack;
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tbxUsername = new TextBox();
-            lblUsername = new Label();
             tbxEmail = new TextBox();
+            lblUsername = new Label();
+            tbxUsername = new TextBox();
             lblEmail = new Label();
             tbxPassword = new TextBox();
             lblPassword = new Label();
@@ -41,17 +41,17 @@
             btnNext = new ReaLTaiizor.Controls.FoxButton();
             SuspendLayout();
             // 
-            // tbxUsername
+            // tbxEmail
             // 
-            tbxUsername.BackColor = Color.FromArgb(241, 241, 241);
-            tbxUsername.BorderStyle = BorderStyle.None;
-            tbxUsername.Font = new Font("Arial Narrow", 13F);
-            tbxUsername.ForeColor = Color.FromArgb(216, 85, 101);
-            tbxUsername.Location = new Point(3, 92);
-            tbxUsername.Multiline = true;
-            tbxUsername.Name = "tbxUsername";
-            tbxUsername.Size = new Size(389, 30);
-            tbxUsername.TabIndex = 19;
+            tbxEmail.BackColor = Color.FromArgb(241, 241, 241);
+            tbxEmail.BorderStyle = BorderStyle.None;
+            tbxEmail.Font = new Font("Arial Narrow", 13F);
+            tbxEmail.ForeColor = Color.FromArgb(216, 85, 101);
+            tbxEmail.Location = new Point(3, 29);
+            tbxEmail.Multiline = true;
+            tbxEmail.Name = "tbxEmail";
+            tbxEmail.Size = new Size(389, 30);
+            tbxEmail.TabIndex = 19;
             // 
             // lblUsername
             // 
@@ -64,17 +64,17 @@
             lblUsername.TabIndex = 18;
             lblUsername.Text = "Username";
             // 
-            // tbxEmail
+            // tbxUsername
             // 
-            tbxEmail.BackColor = Color.FromArgb(241, 241, 241);
-            tbxEmail.BorderStyle = BorderStyle.None;
-            tbxEmail.Font = new Font("Arial Narrow", 13F);
-            tbxEmail.ForeColor = Color.FromArgb(216, 85, 101);
-            tbxEmail.Location = new Point(3, 29);
-            tbxEmail.Multiline = true;
-            tbxEmail.Name = "tbxEmail";
-            tbxEmail.Size = new Size(389, 30);
-            tbxEmail.TabIndex = 21;
+            tbxUsername.BackColor = Color.FromArgb(241, 241, 241);
+            tbxUsername.BorderStyle = BorderStyle.None;
+            tbxUsername.Font = new Font("Arial Narrow", 13F);
+            tbxUsername.ForeColor = Color.FromArgb(216, 85, 101);
+            tbxUsername.Location = new Point(3, 92);
+            tbxUsername.Multiline = true;
+            tbxUsername.Name = "tbxUsername";
+            tbxUsername.Size = new Size(389, 30);
+            tbxUsername.TabIndex = 21;
             // 
             // lblEmail
             // 
@@ -194,11 +194,11 @@
             Controls.Add(lblCPassword);
             Controls.Add(tbxPassword);
             Controls.Add(lblPassword);
-            Controls.Add(tbxEmail);
             Controls.Add(lblEmail);
-            Controls.Add(tbxUsername);
+            Controls.Add(tbxEmail);
             Controls.Add(lblUsername);
             Controls.Add(btnNext);
+            Controls.Add(tbxUsername);
             Name = "RegisterDonorP1";
             Size = new Size(396, 382);
             ResumeLayout(false);
@@ -206,9 +206,9 @@
         }
 
         #endregion
-        private TextBox tbxUsername;
-        private Label lblUsername;
         private TextBox tbxEmail;
+        private Label lblUsername;
+        private TextBox tbxUsername;
         private Label lblEmail;
         private TextBox tbxPassword;
         private Label lblPassword;

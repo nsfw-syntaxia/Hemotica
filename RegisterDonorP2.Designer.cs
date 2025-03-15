@@ -32,15 +32,15 @@
             lblFName = new Label();
             tbxMName = new TextBox();
             lblMName = new Label();
-            lblPage = new Label();
-            btnNext = new ReaLTaiizor.Controls.FoxButton();
             tbxLName = new TextBox();
             lblLName = new Label();
+            lblPage = new Label();
             lblGender = new Label();
             rbtnMale = new ReaLTaiizor.Controls.HopeRadioButton();
             rbtnFemale = new ReaLTaiizor.Controls.HopeRadioButton();
             rbtnOther = new ReaLTaiizor.Controls.HopeRadioButton();
             rbtnPNTS = new ReaLTaiizor.Controls.HopeRadioButton();
+            btnNext = new ReaLTaiizor.Controls.FoxButton();
             btnBack = new ReaLTaiizor.Controls.FoxButton();
             SuspendLayout();
             // 
@@ -90,37 +90,6 @@
             lblMName.TabIndex = 26;
             lblMName.Text = "Middle Name";
             // 
-            // lblPage
-            // 
-            lblPage.AutoSize = true;
-            lblPage.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-            lblPage.ForeColor = Color.FromArgb(236, 124, 132);
-            lblPage.Location = new Point(178, 297);
-            lblPage.Name = "lblPage";
-            lblPage.Size = new Size(38, 22);
-            lblPage.TabIndex = 32;
-            lblPage.Text = "2 / 3";
-            // 
-            // btnNext
-            // 
-            btnNext.BackColor = Color.Transparent;
-            btnNext.BaseColor = Color.FromArgb(216, 85, 101);
-            btnNext.BorderColor = Color.FromArgb(216, 85, 101);
-            btnNext.DisabledBaseColor = Color.FromArgb(244, 148, 156);
-            btnNext.DisabledBorderColor = Color.FromArgb(244, 148, 156);
-            btnNext.DisabledTextColor = Color.FromArgb(244, 148, 156);
-            btnNext.DownColor = Color.FromArgb(236, 124, 132);
-            btnNext.EnabledCalc = true;
-            btnNext.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-            btnNext.ForeColor = Color.FromArgb(241, 241, 241);
-            btnNext.Location = new Point(203, 334);
-            btnNext.Name = "btnNext";
-            btnNext.OverColor = Color.FromArgb(216, 85, 101);
-            btnNext.Size = new Size(120, 40);
-            btnNext.TabIndex = 49;
-            btnNext.Text = "NEXT";
-            btnNext.Click += btnNext_Click;
-            // 
             // tbxLName
             // 
             tbxLName.BackColor = Color.FromArgb(241, 241, 241);
@@ -143,6 +112,17 @@
             lblLName.Size = new Size(83, 22);
             lblLName.TabIndex = 50;
             lblLName.Text = "Last Name";
+            // 
+            // lblPage
+            // 
+            lblPage.AutoSize = true;
+            lblPage.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+            lblPage.ForeColor = Color.FromArgb(236, 124, 132);
+            lblPage.Location = new Point(178, 297);
+            lblPage.Name = "lblPage";
+            lblPage.Size = new Size(38, 22);
+            lblPage.TabIndex = 32;
+            lblPage.Text = "2 / 3";
             // 
             // lblGender
             // 
@@ -235,6 +215,26 @@
             rbtnPNTS.Text = "Prefer not to say";
             rbtnPNTS.UseVisualStyleBackColor = true;
             // 
+            // btnNext
+            // 
+            btnNext.BackColor = Color.Transparent;
+            btnNext.BaseColor = Color.FromArgb(216, 85, 101);
+            btnNext.BorderColor = Color.FromArgb(216, 85, 101);
+            btnNext.DisabledBaseColor = Color.FromArgb(244, 148, 156);
+            btnNext.DisabledBorderColor = Color.FromArgb(244, 148, 156);
+            btnNext.DisabledTextColor = Color.FromArgb(244, 148, 156);
+            btnNext.DownColor = Color.FromArgb(236, 124, 132);
+            btnNext.EnabledCalc = true;
+            btnNext.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+            btnNext.ForeColor = Color.FromArgb(241, 241, 241);
+            btnNext.Location = new Point(203, 334);
+            btnNext.Name = "btnNext";
+            btnNext.OverColor = Color.FromArgb(216, 85, 101);
+            btnNext.Size = new Size(120, 40);
+            btnNext.TabIndex = 49;
+            btnNext.Text = "NEXT";
+            btnNext.Click += btnNext_Click;
+            // 
             // btnBack
             // 
             btnBack.BackColor = Color.Transparent;
@@ -285,15 +285,15 @@
         private Label lblFName;
         private TextBox tbxMName;
         private Label lblMName;
-        private Label lblPage;
-        private ReaLTaiizor.Controls.FoxButton btnNext;
         private TextBox tbxLName;
         private Label lblLName;
+        private Label lblPage;
         private Label lblGender;
         private ReaLTaiizor.Controls.HopeRadioButton rbtnMale;
         private ReaLTaiizor.Controls.HopeRadioButton rbtnFemale;
         private ReaLTaiizor.Controls.HopeRadioButton rbtnOther;
         private ReaLTaiizor.Controls.HopeRadioButton rbtnPNTS;
+        private ReaLTaiizor.Controls.FoxButton btnNext;
         private ReaLTaiizor.Controls.FoxButton btnBack;
     }
 }
