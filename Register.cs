@@ -41,7 +41,7 @@ namespace Hemotica
 
         private void tEffect_Tick(object sender, EventArgs e)
         {
-            if(Opacity < 1)
+            if (Opacity < 1)
             {
                 Opacity += 0.3;
             }
@@ -60,6 +60,37 @@ namespace Hemotica
         {
             this.Close();
             this.Owner.Activate();
+        }
+
+        public void showP1()
+        {
+            flpUserRegister.Controls.Clear();
+            RegisterDonorP1 donorP1 = new RegisterDonorP1(this);
+            flpUserRegister.Controls.Add(donorP1);
+        }
+
+        public void showP2()
+        {
+            flpUserRegister.Controls.Clear();
+            RegisterDonorP2 donorP2 = new RegisterDonorP2(this);
+            flpUserRegister.Controls.Add(donorP2);
+        }
+
+        public void showP3()
+        {
+            flpUserRegister.Controls.Clear();
+            RegisterDonorP3 donorP3 = new RegisterDonorP3(this);
+            flpUserRegister.Controls.Add(donorP3);
+        }
+
+        private void cmbxRUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            flpUserRegister.Controls.Clear();
+
+            if (cmbxRUser.SelectedItem.ToString() == "Donor")
+            {
+                showP1();
+            }
         }
     }
 }

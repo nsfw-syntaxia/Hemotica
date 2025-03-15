@@ -18,6 +18,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="RegisterDonorP3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="RegisterDonorP2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
