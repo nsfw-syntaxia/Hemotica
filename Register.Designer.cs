@@ -130,9 +130,9 @@
             cmbxRUser.IntegralHeight = false;
             cmbxRUser.ItemHeight = 25;
             cmbxRUser.Items.AddRange(new object[] { "Select user type", "Donor", "Hospital" });
-            cmbxRUser.Location = new Point(20, 212);
+            cmbxRUser.Location = new Point(18, 212);
             cmbxRUser.Name = "cmbxRUser";
-            cmbxRUser.Size = new Size(380, 31);
+            cmbxRUser.Size = new Size(389, 31);
             cmbxRUser.StartIndex = 0;
             cmbxRUser.TabIndex = 54;
             cmbxRUser.SelectedIndexChanged += cmbxRUser_SelectedIndexChanged;

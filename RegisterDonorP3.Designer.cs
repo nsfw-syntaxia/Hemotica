@@ -36,9 +36,9 @@
             lblBMI = new Label();
             lblCNumber = new Label();
             btnBack = new ReaLTaiizor.Controls.FoxButton();
-            tbxBMI = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             tbxHomeAddress = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             tbxContactNumber = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+            tbxBMI = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             SuspendLayout();
             // 
             // lblPage
@@ -76,7 +76,7 @@
             lblBType.AutoSize = true;
             lblBType.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             lblBType.ForeColor = Color.FromArgb(216, 85, 101);
-            lblBType.Location = new Point(3, 4);
+            lblBType.Location = new Point(3, 202);
             lblBType.Name = "lblBType";
             lblBType.Size = new Size(90, 22);
             lblBType.TabIndex = 70;
@@ -104,7 +104,7 @@
             cmbxBType.IntegralHeight = false;
             cmbxBType.ItemHeight = 25;
             cmbxBType.Items.AddRange(new object[] { "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-" });
-            cmbxBType.Location = new Point(3, 29);
+            cmbxBType.Location = new Point(3, 227);
             cmbxBType.Name = "cmbxBType";
             cmbxBType.Size = new Size(389, 31);
             cmbxBType.StartIndex = 0;
@@ -115,7 +115,7 @@
             lblHAddress.AutoSize = true;
             lblHAddress.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             lblHAddress.ForeColor = Color.FromArgb(216, 85, 101);
-            lblHAddress.Location = new Point(3, 134);
+            lblHAddress.Location = new Point(3, 4);
             lblHAddress.Name = "lblHAddress";
             lblHAddress.Size = new Size(113, 22);
             lblHAddress.TabIndex = 75;
@@ -126,7 +126,7 @@
             lblBMI.AutoSize = true;
             lblBMI.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             lblBMI.ForeColor = Color.FromArgb(216, 85, 101);
-            lblBMI.Location = new Point(3, 68);
+            lblBMI.Location = new Point(3, 136);
             lblBMI.Name = "lblBMI";
             lblBMI.Size = new Size(129, 22);
             lblBMI.TabIndex = 73;
@@ -137,7 +137,7 @@
             lblCNumber.AutoSize = true;
             lblCNumber.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             lblCNumber.ForeColor = Color.FromArgb(216, 85, 101);
-            lblCNumber.Location = new Point(3, 200);
+            lblCNumber.Location = new Point(3, 70);
             lblCNumber.Name = "lblCNumber";
             lblCNumber.Size = new Size(124, 22);
             lblCNumber.TabIndex = 77;
@@ -163,48 +163,6 @@
             btnBack.Text = "BACK";
             btnBack.Click += btnBack_Click;
             // 
-            // tbxBMI
-            // 
-            tbxBMI.AllowPromptAsInput = true;
-            tbxBMI.AnimateReadOnly = false;
-            tbxBMI.AsciiOnly = false;
-            tbxBMI.BackgroundImageLayout = ImageLayout.None;
-            tbxBMI.BeepOnError = false;
-            tbxBMI.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            tbxBMI.Depth = 0;
-            tbxBMI.Font = new Font("Arial Narrow", 13F);
-            tbxBMI.HidePromptOnLeave = false;
-            tbxBMI.HideSelection = true;
-            tbxBMI.InsertKeyMode = InsertKeyMode.Default;
-            tbxBMI.LeadingIcon = null;
-            tbxBMI.Location = new Point(3, 93);
-            tbxBMI.Mask = "";
-            tbxBMI.MaxLength = 32767;
-            tbxBMI.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            tbxBMI.Name = "tbxBMI";
-            tbxBMI.PasswordChar = '\0';
-            tbxBMI.PrefixSuffixText = null;
-            tbxBMI.PromptChar = '_';
-            tbxBMI.ReadOnly = false;
-            tbxBMI.RejectInputOnFirstFailure = false;
-            tbxBMI.ResetOnPrompt = true;
-            tbxBMI.ResetOnSpace = true;
-            tbxBMI.RightToLeft = RightToLeft.No;
-            tbxBMI.SelectedText = "";
-            tbxBMI.SelectionLength = 0;
-            tbxBMI.SelectionStart = 0;
-            tbxBMI.ShortcutsEnabled = true;
-            tbxBMI.Size = new Size(389, 36);
-            tbxBMI.SkipLiterals = true;
-            tbxBMI.TabIndex = 80;
-            tbxBMI.TabStop = false;
-            tbxBMI.TextAlign = HorizontalAlignment.Left;
-            tbxBMI.TextMaskFormat = MaskFormat.IncludeLiterals;
-            tbxBMI.TrailingIcon = null;
-            tbxBMI.UseSystemPasswordChar = false;
-            tbxBMI.UseTallSize = false;
-            tbxBMI.ValidatingType = null;
-            // 
             // tbxHomeAddress
             // 
             tbxHomeAddress.AllowPromptAsInput = true;
@@ -219,7 +177,7 @@
             tbxHomeAddress.HideSelection = true;
             tbxHomeAddress.InsertKeyMode = InsertKeyMode.Default;
             tbxHomeAddress.LeadingIcon = null;
-            tbxHomeAddress.Location = new Point(3, 159);
+            tbxHomeAddress.Location = new Point(3, 29);
             tbxHomeAddress.Mask = "";
             tbxHomeAddress.MaxLength = 32767;
             tbxHomeAddress.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
@@ -238,7 +196,7 @@
             tbxHomeAddress.ShortcutsEnabled = true;
             tbxHomeAddress.Size = new Size(389, 36);
             tbxHomeAddress.SkipLiterals = true;
-            tbxHomeAddress.TabIndex = 81;
+            tbxHomeAddress.TabIndex = 83;
             tbxHomeAddress.TabStop = false;
             tbxHomeAddress.TextAlign = HorizontalAlignment.Left;
             tbxHomeAddress.TextMaskFormat = MaskFormat.IncludeLiterals;
@@ -261,7 +219,7 @@
             tbxContactNumber.HideSelection = true;
             tbxContactNumber.InsertKeyMode = InsertKeyMode.Default;
             tbxContactNumber.LeadingIcon = null;
-            tbxContactNumber.Location = new Point(3, 225);
+            tbxContactNumber.Location = new Point(3, 95);
             tbxContactNumber.Mask = "";
             tbxContactNumber.MaxLength = 32767;
             tbxContactNumber.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
@@ -280,7 +238,7 @@
             tbxContactNumber.ShortcutsEnabled = true;
             tbxContactNumber.Size = new Size(389, 36);
             tbxContactNumber.SkipLiterals = true;
-            tbxContactNumber.TabIndex = 82;
+            tbxContactNumber.TabIndex = 84;
             tbxContactNumber.TabStop = false;
             tbxContactNumber.TextAlign = HorizontalAlignment.Left;
             tbxContactNumber.TextMaskFormat = MaskFormat.IncludeLiterals;
@@ -289,22 +247,64 @@
             tbxContactNumber.UseTallSize = false;
             tbxContactNumber.ValidatingType = null;
             // 
+            // tbxBMI
+            // 
+            tbxBMI.AllowPromptAsInput = true;
+            tbxBMI.AnimateReadOnly = false;
+            tbxBMI.AsciiOnly = false;
+            tbxBMI.BackgroundImageLayout = ImageLayout.None;
+            tbxBMI.BeepOnError = false;
+            tbxBMI.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            tbxBMI.Depth = 0;
+            tbxBMI.Font = new Font("Arial Narrow", 13F);
+            tbxBMI.HidePromptOnLeave = false;
+            tbxBMI.HideSelection = true;
+            tbxBMI.InsertKeyMode = InsertKeyMode.Default;
+            tbxBMI.LeadingIcon = null;
+            tbxBMI.Location = new Point(3, 161);
+            tbxBMI.Mask = "";
+            tbxBMI.MaxLength = 32767;
+            tbxBMI.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            tbxBMI.Name = "tbxBMI";
+            tbxBMI.PasswordChar = '\0';
+            tbxBMI.PrefixSuffixText = null;
+            tbxBMI.PromptChar = '_';
+            tbxBMI.ReadOnly = false;
+            tbxBMI.RejectInputOnFirstFailure = false;
+            tbxBMI.ResetOnPrompt = true;
+            tbxBMI.ResetOnSpace = true;
+            tbxBMI.RightToLeft = RightToLeft.No;
+            tbxBMI.SelectedText = "";
+            tbxBMI.SelectionLength = 0;
+            tbxBMI.SelectionStart = 0;
+            tbxBMI.ShortcutsEnabled = true;
+            tbxBMI.Size = new Size(389, 36);
+            tbxBMI.SkipLiterals = true;
+            tbxBMI.TabIndex = 85;
+            tbxBMI.TabStop = false;
+            tbxBMI.TextAlign = HorizontalAlignment.Left;
+            tbxBMI.TextMaskFormat = MaskFormat.IncludeLiterals;
+            tbxBMI.TrailingIcon = null;
+            tbxBMI.UseSystemPasswordChar = false;
+            tbxBMI.UseTallSize = false;
+            tbxBMI.ValidatingType = null;
+            // 
             // RegisterDonorP3
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(253, 211, 211);
+            Controls.Add(tbxBMI);
+            Controls.Add(tbxContactNumber);
+            Controls.Add(tbxHomeAddress);
             Controls.Add(btnBack);
-            Controls.Add(lblCNumber);
             Controls.Add(lblHAddress);
             Controls.Add(lblBMI);
             Controls.Add(lblBType);
             Controls.Add(lblPage);
             Controls.Add(btnRegister);
             Controls.Add(cmbxBType);
-            Controls.Add(tbxBMI);
-            Controls.Add(tbxHomeAddress);
-            Controls.Add(tbxContactNumber);
+            Controls.Add(lblCNumber);
             Name = "RegisterDonorP3";
             Size = new Size(396, 382);
             ResumeLayout(false);
@@ -320,8 +320,8 @@
         private Label lblCNumber;
         private ReaLTaiizor.Controls.FoxButton btnRegister;
         private ReaLTaiizor.Controls.FoxButton btnBack;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxBMI;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxHomeAddress;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxContactNumber;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxBMI;
     }
 }
