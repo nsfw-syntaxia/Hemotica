@@ -85,8 +85,6 @@ namespace Hemotica
 
         private void cmbxRUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            flpUserRegister.Controls.Clear();
-
             if (cmbxRUser.SelectedItem.ToString() == "Donor")
             {
                 showP1();

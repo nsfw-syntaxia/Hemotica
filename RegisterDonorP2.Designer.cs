@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tbxFName = new TextBox();
             lblFName = new Label();
-            tbxMName = new TextBox();
             lblMName = new Label();
-            tbxLName = new TextBox();
             lblLName = new Label();
             lblPage = new Label();
             lblGender = new Label();
@@ -42,19 +39,10 @@
             rbtnPNTS = new ReaLTaiizor.Controls.HopeRadioButton();
             btnNext = new ReaLTaiizor.Controls.FoxButton();
             btnBack = new ReaLTaiizor.Controls.FoxButton();
+            tbxFirstName = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+            tbxMiddleName = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+            tbxLastName = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             SuspendLayout();
-            // 
-            // tbxFName
-            // 
-            tbxFName.BackColor = Color.FromArgb(241, 241, 241);
-            tbxFName.BorderStyle = BorderStyle.None;
-            tbxFName.Font = new Font("Arial Narrow", 13F);
-            tbxFName.ForeColor = Color.FromArgb(216, 85, 101);
-            tbxFName.Location = new Point(3, 29);
-            tbxFName.Multiline = true;
-            tbxFName.Name = "tbxFName";
-            tbxFName.Size = new Size(389, 30);
-            tbxFName.TabIndex = 23;
             // 
             // lblFName
             // 
@@ -67,47 +55,23 @@
             lblFName.TabIndex = 22;
             lblFName.Text = "First Name";
             // 
-            // tbxMName
-            // 
-            tbxMName.BackColor = Color.FromArgb(241, 241, 241);
-            tbxMName.BorderStyle = BorderStyle.None;
-            tbxMName.Font = new Font("Arial Narrow", 13F);
-            tbxMName.ForeColor = Color.FromArgb(216, 85, 101);
-            tbxMName.Location = new Point(3, 92);
-            tbxMName.Multiline = true;
-            tbxMName.Name = "tbxMName";
-            tbxMName.Size = new Size(389, 30);
-            tbxMName.TabIndex = 27;
-            // 
             // lblMName
             // 
             lblMName.AutoSize = true;
             lblMName.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             lblMName.ForeColor = Color.FromArgb(216, 85, 101);
-            lblMName.Location = new Point(3, 67);
+            lblMName.Location = new Point(3, 70);
             lblMName.Name = "lblMName";
             lblMName.Size = new Size(100, 22);
             lblMName.TabIndex = 26;
             lblMName.Text = "Middle Name";
-            // 
-            // tbxLName
-            // 
-            tbxLName.BackColor = Color.FromArgb(241, 241, 241);
-            tbxLName.BorderStyle = BorderStyle.None;
-            tbxLName.Font = new Font("Arial Narrow", 13F);
-            tbxLName.ForeColor = Color.FromArgb(216, 85, 101);
-            tbxLName.Location = new Point(3, 155);
-            tbxLName.Multiline = true;
-            tbxLName.Name = "tbxLName";
-            tbxLName.Size = new Size(389, 30);
-            tbxLName.TabIndex = 51;
             // 
             // lblLName
             // 
             lblLName.AutoSize = true;
             lblLName.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             lblLName.ForeColor = Color.FromArgb(216, 85, 101);
-            lblLName.Location = new Point(3, 130);
+            lblLName.Location = new Point(3, 136);
             lblLName.Name = "lblLName";
             lblLName.Size = new Size(83, 22);
             lblLName.TabIndex = 50;
@@ -129,7 +93,7 @@
             lblGender.AutoSize = true;
             lblGender.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             lblGender.ForeColor = Color.FromArgb(216, 85, 101);
-            lblGender.Location = new Point(3, 193);
+            lblGender.Location = new Point(3, 202);
             lblGender.Name = "lblGender";
             lblGender.Size = new Size(61, 22);
             lblGender.TabIndex = 52;
@@ -147,7 +111,7 @@
             rbtnMale.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
             rbtnMale.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             rbtnMale.ForeColor = Color.FromArgb(236, 124, 132);
-            rbtnMale.Location = new Point(57, 223);
+            rbtnMale.Location = new Point(57, 228);
             rbtnMale.Name = "rbtnMale";
             rbtnMale.Size = new Size(68, 20);
             rbtnMale.TabIndex = 67;
@@ -167,7 +131,7 @@
             rbtnFemale.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
             rbtnFemale.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             rbtnFemale.ForeColor = Color.FromArgb(236, 124, 132);
-            rbtnFemale.Location = new Point(57, 249);
+            rbtnFemale.Location = new Point(57, 254);
             rbtnFemale.Name = "rbtnFemale";
             rbtnFemale.Size = new Size(84, 20);
             rbtnFemale.TabIndex = 68;
@@ -187,7 +151,7 @@
             rbtnOther.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
             rbtnOther.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             rbtnOther.ForeColor = Color.FromArgb(236, 124, 132);
-            rbtnOther.Location = new Point(196, 223);
+            rbtnOther.Location = new Point(196, 228);
             rbtnOther.Name = "rbtnOther";
             rbtnOther.Size = new Size(75, 20);
             rbtnOther.TabIndex = 69;
@@ -207,7 +171,7 @@
             rbtnPNTS.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
             rbtnPNTS.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             rbtnPNTS.ForeColor = Color.FromArgb(236, 124, 132);
-            rbtnPNTS.Location = new Point(196, 249);
+            rbtnPNTS.Location = new Point(196, 254);
             rbtnPNTS.Name = "rbtnPNTS";
             rbtnPNTS.Size = new Size(152, 20);
             rbtnPNTS.TabIndex = 70;
@@ -255,6 +219,132 @@
             btnBack.Text = "BACK";
             btnBack.Click += btnBack_Click;
             // 
+            // tbxFirstName
+            // 
+            tbxFirstName.AllowPromptAsInput = true;
+            tbxFirstName.AnimateReadOnly = false;
+            tbxFirstName.AsciiOnly = false;
+            tbxFirstName.BackgroundImageLayout = ImageLayout.None;
+            tbxFirstName.BeepOnError = false;
+            tbxFirstName.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            tbxFirstName.Depth = 0;
+            tbxFirstName.Font = new Font("Arial Narrow", 13F);
+            tbxFirstName.HidePromptOnLeave = false;
+            tbxFirstName.HideSelection = true;
+            tbxFirstName.InsertKeyMode = InsertKeyMode.Default;
+            tbxFirstName.LeadingIcon = null;
+            tbxFirstName.Location = new Point(3, 29);
+            tbxFirstName.Mask = "";
+            tbxFirstName.MaxLength = 32767;
+            tbxFirstName.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            tbxFirstName.Name = "tbxFirstName";
+            tbxFirstName.PasswordChar = '\0';
+            tbxFirstName.PrefixSuffixText = null;
+            tbxFirstName.PromptChar = '_';
+            tbxFirstName.ReadOnly = false;
+            tbxFirstName.RejectInputOnFirstFailure = false;
+            tbxFirstName.ResetOnPrompt = true;
+            tbxFirstName.ResetOnSpace = true;
+            tbxFirstName.RightToLeft = RightToLeft.No;
+            tbxFirstName.SelectedText = "";
+            tbxFirstName.SelectionLength = 0;
+            tbxFirstName.SelectionStart = 0;
+            tbxFirstName.ShortcutsEnabled = true;
+            tbxFirstName.Size = new Size(389, 36);
+            tbxFirstName.SkipLiterals = true;
+            tbxFirstName.TabIndex = 72;
+            tbxFirstName.TabStop = false;
+            tbxFirstName.TextAlign = HorizontalAlignment.Left;
+            tbxFirstName.TextMaskFormat = MaskFormat.IncludeLiterals;
+            tbxFirstName.TrailingIcon = null;
+            tbxFirstName.UseSystemPasswordChar = false;
+            tbxFirstName.UseTallSize = false;
+            tbxFirstName.ValidatingType = null;
+            // 
+            // tbxMiddleName
+            // 
+            tbxMiddleName.AllowPromptAsInput = true;
+            tbxMiddleName.AnimateReadOnly = false;
+            tbxMiddleName.AsciiOnly = false;
+            tbxMiddleName.BackgroundImageLayout = ImageLayout.None;
+            tbxMiddleName.BeepOnError = false;
+            tbxMiddleName.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            tbxMiddleName.Depth = 0;
+            tbxMiddleName.Font = new Font("Arial Narrow", 13F);
+            tbxMiddleName.HidePromptOnLeave = false;
+            tbxMiddleName.HideSelection = true;
+            tbxMiddleName.InsertKeyMode = InsertKeyMode.Default;
+            tbxMiddleName.LeadingIcon = null;
+            tbxMiddleName.Location = new Point(3, 95);
+            tbxMiddleName.Mask = "";
+            tbxMiddleName.MaxLength = 32767;
+            tbxMiddleName.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            tbxMiddleName.Name = "tbxMiddleName";
+            tbxMiddleName.PasswordChar = '\0';
+            tbxMiddleName.PrefixSuffixText = null;
+            tbxMiddleName.PromptChar = '_';
+            tbxMiddleName.ReadOnly = false;
+            tbxMiddleName.RejectInputOnFirstFailure = false;
+            tbxMiddleName.ResetOnPrompt = true;
+            tbxMiddleName.ResetOnSpace = true;
+            tbxMiddleName.RightToLeft = RightToLeft.No;
+            tbxMiddleName.SelectedText = "";
+            tbxMiddleName.SelectionLength = 0;
+            tbxMiddleName.SelectionStart = 0;
+            tbxMiddleName.ShortcutsEnabled = true;
+            tbxMiddleName.Size = new Size(389, 36);
+            tbxMiddleName.SkipLiterals = true;
+            tbxMiddleName.TabIndex = 73;
+            tbxMiddleName.TabStop = false;
+            tbxMiddleName.TextAlign = HorizontalAlignment.Left;
+            tbxMiddleName.TextMaskFormat = MaskFormat.IncludeLiterals;
+            tbxMiddleName.TrailingIcon = null;
+            tbxMiddleName.UseSystemPasswordChar = false;
+            tbxMiddleName.UseTallSize = false;
+            tbxMiddleName.ValidatingType = null;
+            // 
+            // tbxLastName
+            // 
+            tbxLastName.AllowPromptAsInput = true;
+            tbxLastName.AnimateReadOnly = false;
+            tbxLastName.AsciiOnly = false;
+            tbxLastName.BackgroundImageLayout = ImageLayout.None;
+            tbxLastName.BeepOnError = false;
+            tbxLastName.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            tbxLastName.Depth = 0;
+            tbxLastName.Font = new Font("Arial Narrow", 13F);
+            tbxLastName.HidePromptOnLeave = false;
+            tbxLastName.HideSelection = true;
+            tbxLastName.InsertKeyMode = InsertKeyMode.Default;
+            tbxLastName.LeadingIcon = null;
+            tbxLastName.Location = new Point(3, 161);
+            tbxLastName.Mask = "";
+            tbxLastName.MaxLength = 32767;
+            tbxLastName.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            tbxLastName.Name = "tbxLastName";
+            tbxLastName.PasswordChar = '\0';
+            tbxLastName.PrefixSuffixText = null;
+            tbxLastName.PromptChar = '_';
+            tbxLastName.ReadOnly = false;
+            tbxLastName.RejectInputOnFirstFailure = false;
+            tbxLastName.ResetOnPrompt = true;
+            tbxLastName.ResetOnSpace = true;
+            tbxLastName.RightToLeft = RightToLeft.No;
+            tbxLastName.SelectedText = "";
+            tbxLastName.SelectionLength = 0;
+            tbxLastName.SelectionStart = 0;
+            tbxLastName.ShortcutsEnabled = true;
+            tbxLastName.Size = new Size(389, 36);
+            tbxLastName.SkipLiterals = true;
+            tbxLastName.TabIndex = 74;
+            tbxLastName.TabStop = false;
+            tbxLastName.TextAlign = HorizontalAlignment.Left;
+            tbxLastName.TextMaskFormat = MaskFormat.IncludeLiterals;
+            tbxLastName.TrailingIcon = null;
+            tbxLastName.UseSystemPasswordChar = false;
+            tbxLastName.UseTallSize = false;
+            tbxLastName.ValidatingType = null;
+            // 
             // RegisterDonorP2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -266,14 +356,14 @@
             Controls.Add(rbtnFemale);
             Controls.Add(rbtnMale);
             Controls.Add(lblGender);
-            Controls.Add(tbxLName);
             Controls.Add(lblLName);
             Controls.Add(lblPage);
-            Controls.Add(tbxMName);
             Controls.Add(lblMName);
-            Controls.Add(tbxFName);
             Controls.Add(lblFName);
             Controls.Add(btnNext);
+            Controls.Add(tbxFirstName);
+            Controls.Add(tbxMiddleName);
+            Controls.Add(tbxLastName);
             Name = "RegisterDonorP2";
             Size = new Size(396, 382);
             ResumeLayout(false);
@@ -281,11 +371,8 @@
         }
 
         #endregion
-        private TextBox tbxFName;
         private Label lblFName;
-        private TextBox tbxMName;
         private Label lblMName;
-        private TextBox tbxLName;
         private Label lblLName;
         private Label lblPage;
         private Label lblGender;
@@ -295,5 +382,8 @@
         private ReaLTaiizor.Controls.HopeRadioButton rbtnPNTS;
         private ReaLTaiizor.Controls.FoxButton btnNext;
         private ReaLTaiizor.Controls.FoxButton btnBack;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxFirstName;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxMiddleName;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxLastName;
     }
 }
