@@ -103,11 +103,14 @@ namespace Hemotica
 
         private void lblLOGIN_Click(object sender, EventArgs e)
         {
+            this.Opacity = 0;
+
             if (this.Owner is Home home)
             {
                 home.showLogin();
-                this.Close();
             }
+
+            this.Close();
         }
     }
 }

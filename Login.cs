@@ -64,11 +64,14 @@ namespace Hemotica
 
         private void lblSIGNUP_Click(object sender, EventArgs e)
         {
+            this.Opacity = 0;
+
             if (this.Owner is Home home)
             {
                 home.showRegister();
-                this.Close();
             }
+
+            this.Close();
         }
     }
 }
