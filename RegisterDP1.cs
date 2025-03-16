@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Hemotica
 {
-    public partial class RegisterDonorP1 : UserControl
+    public partial class RegisterDP1 : UserControl
     {
         private Register register;
 
-        public RegisterDonorP1(Register parent)
+        public RegisterDP1(Register parent)
         {
             InitializeComponent();
             this.register = parent;
@@ -23,7 +23,7 @@ namespace Hemotica
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            register.showP2();
+            register.showDP2();
         }
     }
 }

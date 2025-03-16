@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-    partial class RegisterDonorP1
+    partial class RegisterDP1
     {
         /// <summary> 
         /// Required designer variable.
@@ -303,7 +303,7 @@
             tbxConfirmPassword.UseTallSize = false;
             tbxConfirmPassword.ValidatingType = null;
             // 
-            // RegisterDonorP1
+            // RegisterDP1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -319,7 +319,7 @@
             Controls.Add(tbxUsername);
             Controls.Add(tbxPassword);
             Controls.Add(tbxConfirmPassword);
-            Name = "RegisterDonorP1";
+            Name = "RegisterDP1";
             Size = new Size(396, 382);
             ResumeLayout(false);
             PerformLayout();

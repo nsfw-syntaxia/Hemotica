@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-    partial class RegisterDonorP3
+    partial class RegisterDP3
     {
         /// <summary> 
         /// Required designer variable.
@@ -32,13 +32,13 @@
             btnRegister = new ReaLTaiizor.Controls.FoxButton();
             lblBType = new Label();
             cmbxBType = new ReaLTaiizor.Controls.DungeonComboBox();
-            lblHAddress = new Label();
-            lblBMI = new Label();
+            lblAge = new Label();
             lblCNumber = new Label();
+            lblHAddress = new Label();
             btnBack = new ReaLTaiizor.Controls.FoxButton();
+            tbxAge = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             tbxHomeAddress = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             tbxContactNumber = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
-            tbxBMI = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             SuspendLayout();
             // 
             // lblPage
@@ -70,6 +70,7 @@
             btnRegister.Size = new Size(120, 40);
             btnRegister.TabIndex = 49;
             btnRegister.Text = "REGISTER";
+            btnRegister.Click += this.btnRegister_Click;
             // 
             // lblBType
             // 
@@ -110,38 +111,38 @@
             cmbxBType.StartIndex = 0;
             cmbxBType.TabIndex = 72;
             // 
-            // lblHAddress
+            // lblAge
             // 
-            lblHAddress.AutoSize = true;
-            lblHAddress.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-            lblHAddress.ForeColor = Color.FromArgb(216, 85, 101);
-            lblHAddress.Location = new Point(3, 4);
-            lblHAddress.Name = "lblHAddress";
-            lblHAddress.Size = new Size(113, 22);
-            lblHAddress.TabIndex = 75;
-            lblHAddress.Text = "Home Address";
-            // 
-            // lblBMI
-            // 
-            lblBMI.AutoSize = true;
-            lblBMI.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-            lblBMI.ForeColor = Color.FromArgb(216, 85, 101);
-            lblBMI.Location = new Point(3, 136);
-            lblBMI.Name = "lblBMI";
-            lblBMI.Size = new Size(129, 22);
-            lblBMI.TabIndex = 73;
-            lblBMI.Text = "Body Mass Index";
+            lblAge.AutoSize = true;
+            lblAge.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+            lblAge.ForeColor = Color.FromArgb(216, 85, 101);
+            lblAge.Location = new Point(3, 4);
+            lblAge.Name = "lblAge";
+            lblAge.Size = new Size(38, 22);
+            lblAge.TabIndex = 75;
+            lblAge.Text = "Age";
             // 
             // lblCNumber
             // 
             lblCNumber.AutoSize = true;
             lblCNumber.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             lblCNumber.ForeColor = Color.FromArgb(216, 85, 101);
-            lblCNumber.Location = new Point(3, 70);
+            lblCNumber.Location = new Point(3, 136);
             lblCNumber.Name = "lblCNumber";
             lblCNumber.Size = new Size(124, 22);
-            lblCNumber.TabIndex = 77;
+            lblCNumber.TabIndex = 73;
             lblCNumber.Text = "Contact Number";
+            // 
+            // lblHAddress
+            // 
+            lblHAddress.AutoSize = true;
+            lblHAddress.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+            lblHAddress.ForeColor = Color.FromArgb(216, 85, 101);
+            lblHAddress.Location = new Point(3, 70);
+            lblHAddress.Name = "lblHAddress";
+            lblHAddress.Size = new Size(113, 22);
+            lblHAddress.TabIndex = 77;
+            lblHAddress.Text = "Home Address";
             // 
             // btnBack
             // 
@@ -163,6 +164,48 @@
             btnBack.Text = "BACK";
             btnBack.Click += btnBack_Click;
             // 
+            // tbxAge
+            // 
+            tbxAge.AllowPromptAsInput = true;
+            tbxAge.AnimateReadOnly = false;
+            tbxAge.AsciiOnly = false;
+            tbxAge.BackgroundImageLayout = ImageLayout.None;
+            tbxAge.BeepOnError = false;
+            tbxAge.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            tbxAge.Depth = 0;
+            tbxAge.Font = new Font("Arial Narrow", 13F);
+            tbxAge.HidePromptOnLeave = false;
+            tbxAge.HideSelection = true;
+            tbxAge.InsertKeyMode = InsertKeyMode.Default;
+            tbxAge.LeadingIcon = null;
+            tbxAge.Location = new Point(3, 29);
+            tbxAge.Mask = "";
+            tbxAge.MaxLength = 32767;
+            tbxAge.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            tbxAge.Name = "tbxAge";
+            tbxAge.PasswordChar = '\0';
+            tbxAge.PrefixSuffixText = null;
+            tbxAge.PromptChar = '_';
+            tbxAge.ReadOnly = false;
+            tbxAge.RejectInputOnFirstFailure = false;
+            tbxAge.ResetOnPrompt = true;
+            tbxAge.ResetOnSpace = true;
+            tbxAge.RightToLeft = RightToLeft.No;
+            tbxAge.SelectedText = "";
+            tbxAge.SelectionLength = 0;
+            tbxAge.SelectionStart = 0;
+            tbxAge.ShortcutsEnabled = true;
+            tbxAge.Size = new Size(389, 36);
+            tbxAge.SkipLiterals = true;
+            tbxAge.TabIndex = 83;
+            tbxAge.TabStop = false;
+            tbxAge.TextAlign = HorizontalAlignment.Left;
+            tbxAge.TextMaskFormat = MaskFormat.IncludeLiterals;
+            tbxAge.TrailingIcon = null;
+            tbxAge.UseSystemPasswordChar = false;
+            tbxAge.UseTallSize = false;
+            tbxAge.ValidatingType = null;
+            // 
             // tbxHomeAddress
             // 
             tbxHomeAddress.AllowPromptAsInput = true;
@@ -177,7 +220,7 @@
             tbxHomeAddress.HideSelection = true;
             tbxHomeAddress.InsertKeyMode = InsertKeyMode.Default;
             tbxHomeAddress.LeadingIcon = null;
-            tbxHomeAddress.Location = new Point(3, 29);
+            tbxHomeAddress.Location = new Point(3, 95);
             tbxHomeAddress.Mask = "";
             tbxHomeAddress.MaxLength = 32767;
             tbxHomeAddress.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
@@ -196,7 +239,7 @@
             tbxHomeAddress.ShortcutsEnabled = true;
             tbxHomeAddress.Size = new Size(389, 36);
             tbxHomeAddress.SkipLiterals = true;
-            tbxHomeAddress.TabIndex = 83;
+            tbxHomeAddress.TabIndex = 84;
             tbxHomeAddress.TabStop = false;
             tbxHomeAddress.TextAlign = HorizontalAlignment.Left;
             tbxHomeAddress.TextMaskFormat = MaskFormat.IncludeLiterals;
@@ -219,7 +262,7 @@
             tbxContactNumber.HideSelection = true;
             tbxContactNumber.InsertKeyMode = InsertKeyMode.Default;
             tbxContactNumber.LeadingIcon = null;
-            tbxContactNumber.Location = new Point(3, 95);
+            tbxContactNumber.Location = new Point(3, 161);
             tbxContactNumber.Mask = "";
             tbxContactNumber.MaxLength = 32767;
             tbxContactNumber.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
@@ -238,7 +281,7 @@
             tbxContactNumber.ShortcutsEnabled = true;
             tbxContactNumber.Size = new Size(389, 36);
             tbxContactNumber.SkipLiterals = true;
-            tbxContactNumber.TabIndex = 84;
+            tbxContactNumber.TabIndex = 85;
             tbxContactNumber.TabStop = false;
             tbxContactNumber.TextAlign = HorizontalAlignment.Left;
             tbxContactNumber.TextMaskFormat = MaskFormat.IncludeLiterals;
@@ -247,65 +290,23 @@
             tbxContactNumber.UseTallSize = false;
             tbxContactNumber.ValidatingType = null;
             // 
-            // tbxBMI
-            // 
-            tbxBMI.AllowPromptAsInput = true;
-            tbxBMI.AnimateReadOnly = false;
-            tbxBMI.AsciiOnly = false;
-            tbxBMI.BackgroundImageLayout = ImageLayout.None;
-            tbxBMI.BeepOnError = false;
-            tbxBMI.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            tbxBMI.Depth = 0;
-            tbxBMI.Font = new Font("Arial Narrow", 13F);
-            tbxBMI.HidePromptOnLeave = false;
-            tbxBMI.HideSelection = true;
-            tbxBMI.InsertKeyMode = InsertKeyMode.Default;
-            tbxBMI.LeadingIcon = null;
-            tbxBMI.Location = new Point(3, 161);
-            tbxBMI.Mask = "";
-            tbxBMI.MaxLength = 32767;
-            tbxBMI.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            tbxBMI.Name = "tbxBMI";
-            tbxBMI.PasswordChar = '\0';
-            tbxBMI.PrefixSuffixText = null;
-            tbxBMI.PromptChar = '_';
-            tbxBMI.ReadOnly = false;
-            tbxBMI.RejectInputOnFirstFailure = false;
-            tbxBMI.ResetOnPrompt = true;
-            tbxBMI.ResetOnSpace = true;
-            tbxBMI.RightToLeft = RightToLeft.No;
-            tbxBMI.SelectedText = "";
-            tbxBMI.SelectionLength = 0;
-            tbxBMI.SelectionStart = 0;
-            tbxBMI.ShortcutsEnabled = true;
-            tbxBMI.Size = new Size(389, 36);
-            tbxBMI.SkipLiterals = true;
-            tbxBMI.TabIndex = 85;
-            tbxBMI.TabStop = false;
-            tbxBMI.TextAlign = HorizontalAlignment.Left;
-            tbxBMI.TextMaskFormat = MaskFormat.IncludeLiterals;
-            tbxBMI.TrailingIcon = null;
-            tbxBMI.UseSystemPasswordChar = false;
-            tbxBMI.UseTallSize = false;
-            tbxBMI.ValidatingType = null;
-            // 
-            // RegisterDonorP3
+            // RegisterDP3
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(253, 211, 211);
-            Controls.Add(tbxBMI);
             Controls.Add(tbxContactNumber);
             Controls.Add(tbxHomeAddress);
+            Controls.Add(tbxAge);
             Controls.Add(btnBack);
-            Controls.Add(lblHAddress);
-            Controls.Add(lblBMI);
+            Controls.Add(lblAge);
+            Controls.Add(lblCNumber);
             Controls.Add(lblBType);
             Controls.Add(lblPage);
             Controls.Add(btnRegister);
             Controls.Add(cmbxBType);
-            Controls.Add(lblCNumber);
-            Name = "RegisterDonorP3";
+            Controls.Add(lblHAddress);
+            Name = "RegisterDP3";
             Size = new Size(396, 382);
             ResumeLayout(false);
             PerformLayout();
@@ -315,13 +316,13 @@
         private Label lblPage;
         private Label lblBType;
         private ReaLTaiizor.Controls.DungeonComboBox cmbxBType;
-        private Label lblHAddress;
-        private Label lblBMI;
+        private Label lblAge;
         private Label lblCNumber;
+        private Label lblHAddress;
         private ReaLTaiizor.Controls.FoxButton btnRegister;
         private ReaLTaiizor.Controls.FoxButton btnBack;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxAge;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxHomeAddress;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxContactNumber;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxBMI;
     }
 }

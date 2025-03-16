@@ -62,32 +62,52 @@ namespace Hemotica
             this.Owner.Activate();
         }
 
-        public void showP1()
+        public void showDP1()
         {
             flpUserRegister.Controls.Clear();
-            RegisterDonorP1 donorP1 = new RegisterDonorP1(this);
+            RegisterDP1 donorP1 = new RegisterDP1(this);
             flpUserRegister.Controls.Add(donorP1);
         }
 
-        public void showP2()
+        public void showDP2()
         {
             flpUserRegister.Controls.Clear();
-            RegisterDonorP2 donorP2 = new RegisterDonorP2(this);
+            RegisterDP2 donorP2 = new RegisterDP2(this);
             flpUserRegister.Controls.Add(donorP2);
         }
 
-        public void showP3()
+        public void showDP3()
         {
             flpUserRegister.Controls.Clear();
-            RegisterDonorP3 donorP3 = new RegisterDonorP3(this);
+            RegisterDP3 donorP3 = new RegisterDP3(this);
             flpUserRegister.Controls.Add(donorP3);
+        }
+
+        public void showHP1()
+        {
+            flpUserRegister.Controls.Clear();
+            RegisterHP1 hospitalP1 = new RegisterHP1(this);
+            flpUserRegister.Controls.Add(hospitalP1);
+        }
+
+        public void showHP2()
+        {
+            flpUserRegister.Controls.Clear();
+            RegisterHP2 hospitalP2 = new RegisterHP2(this);
+            flpUserRegister.Controls.Add(hospitalP2);
         }
 
         private void cmbxRUser_SelectedIndexChanged(object sender, EventArgs e)
         {
+            flpUserRegister.Controls.Clear();
+
             if (cmbxRUser.SelectedItem.ToString() == "Donor")
             {
-                showP1();
+                showDP1();
+            }
+            else if (cmbxRUser.SelectedItem.ToString() == "Hospital")
+            {
+                showHP1();
             }
         }
     }
