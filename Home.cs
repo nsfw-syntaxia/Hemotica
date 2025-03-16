@@ -9,6 +9,7 @@ namespace Hemotica
         private int normalWidth, normalHeight;
         public static int parentX, parentY;
         private bool popup = true;
+        private Form overlay;
 
         public Home()
         {
@@ -119,7 +120,7 @@ namespace Hemotica
         {
             tToggle.Stop();
 
-            Form overlay = new Form
+            overlay = new Form
             {
                 StartPosition = FormStartPosition.Manual,
                 FormBorderStyle = FormBorderStyle.None,
@@ -133,7 +134,19 @@ namespace Hemotica
             overlay.Show();
             btnSettings();
 
-            Register register = new Register
+            showLogin();
+        }
+
+        private void tToggle_Tick(object sender, EventArgs e)
+        {
+            pbxCaption.Visible = popup;
+            pbxFade.Visible = !popup;
+            popup = !popup;
+        }
+
+        public void showLogin()
+        {
+            Login login = new Login
             {
                 Owner = this,
                 ShowInTaskbar = false
@@ -141,6 +154,25 @@ namespace Hemotica
 
             parentX = this.Location.X;
             parentY = this.Location.Y;
+
+            login.FormClosed += (s, args) =>
+            {
+                overlay.Dispose();
+                btnSettings();
+                this.Activate();
+                tToggle.Start();
+            };
+
+            login.ShowDialog();
+        }
+
+        public void showRegister()
+        {
+            Register register = new Register
+            {
+                Owner = this,
+                ShowInTaskbar = false
+            };
 
             register.FormClosed += (s, args) =>
             {
@@ -151,13 +183,6 @@ namespace Hemotica
             };
 
             register.ShowDialog();
-        }
-
-        private void tToggle_Tick(object sender, EventArgs e)
-        {
-            pbxCaption.Visible = popup;
-            pbxFade.Visible = !popup;
-            popup = !popup;
         }
     }
 }

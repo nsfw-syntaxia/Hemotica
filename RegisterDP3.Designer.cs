@@ -69,8 +69,8 @@
             btnRegister.OverColor = Color.FromArgb(216, 85, 101);
             btnRegister.Size = new Size(120, 40);
             btnRegister.TabIndex = 49;
-            btnRegister.Text = "REGISTER";
-            btnRegister.Click += this.btnRegister_Click;
+            btnRegister.Text = "SIGN UP";
+            btnRegister.Click += btnRegister_Click;
             // 
             // lblBType
             // 

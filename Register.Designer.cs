@@ -35,8 +35,8 @@
             pbxRegister = new PictureBox();
             btnClose = new Button();
             flpUserRegister = new FlowLayoutPanel();
-            label2 = new Label();
-            label1 = new Label();
+            lblLOGIN = new Label();
+            lblAHAA = new Label();
             cmbxRUser = new ReaLTaiizor.Controls.DungeonComboBox();
             ((System.ComponentModel.ISupportInitialize)pbxLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxRegister).BeginInit();
@@ -86,27 +86,29 @@
             flpUserRegister.Size = new Size(396, 382);
             flpUserRegister.TabIndex = 13;
             // 
-            // label2
+            // lblLOGIN
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-            label2.ForeColor = Color.FromArgb(216, 85, 101);
-            label2.Location = new Point(181, 675);
-            label2.Name = "label2";
-            label2.Size = new Size(57, 22);
-            label2.TabIndex = 53;
-            label2.Text = "LOGIN";
+            lblLOGIN.AutoSize = true;
+            lblLOGIN.Cursor = Cursors.Hand;
+            lblLOGIN.Font = new Font("Arial Narrow", 13F, FontStyle.Bold | FontStyle.Underline);
+            lblLOGIN.ForeColor = Color.FromArgb(216, 85, 101);
+            lblLOGIN.Location = new Point(182, 675);
+            lblLOGIN.Name = "lblLOGIN";
+            lblLOGIN.Size = new Size(57, 22);
+            lblLOGIN.TabIndex = 53;
+            lblLOGIN.Text = "LOGIN";
+            lblLOGIN.Click += lblLOGIN_Click;
             // 
-            // label1
+            // lblAHAA
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-            label1.ForeColor = Color.FromArgb(236, 124, 132);
-            label1.Location = new Point(112, 648);
-            label1.Name = "label1";
-            label1.Size = new Size(195, 22);
-            label1.TabIndex = 52;
-            label1.Text = "Already Have an Account?";
+            lblAHAA.AutoSize = true;
+            lblAHAA.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+            lblAHAA.ForeColor = Color.FromArgb(236, 124, 132);
+            lblAHAA.Location = new Point(115, 648);
+            lblAHAA.Name = "lblAHAA";
+            lblAHAA.Size = new Size(190, 22);
+            lblAHAA.TabIndex = 52;
+            lblAHAA.Text = "Already have an account?";
             // 
             // cmbxRUser
             // 
@@ -144,8 +146,8 @@
             BackColor = Color.FromArgb(253, 211, 211);
             ClientSize = new Size(420, 720);
             ControlBox = false;
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(lblLOGIN);
+            Controls.Add(lblAHAA);
             Controls.Add(flpUserRegister);
             Controls.Add(btnClose);
             Controls.Add(pbxRegister);
@@ -171,8 +173,8 @@
         private PictureBox pbxRegister;
         private Button btnClose;
         private FlowLayoutPanel flpUserRegister;
-        private Label label2;
-        private Label label1;
+        private Label lblLOGIN;
+        private Label lblAHAA;
         private ReaLTaiizor.Controls.DungeonComboBox cmbxRUser;
     }
 }
