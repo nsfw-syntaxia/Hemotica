@@ -85,5 +85,71 @@ namespace Hemotica
 
             this.Close();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = tbxUnEA.Text;
+            string password = tbxPassword.Text;
+
+            if (username == "donor" && password == "donor123")
+            {
+                DashboardD dashboardD = new DashboardD();
+                dashboardD.Show();
+
+                this.Opacity = 0;
+
+                if (this.Owner is Home home)
+                {
+                    home.Hide();
+                }
+
+                this.Close();
+            }
+            else if (username == "hospital" && password == "hospital123")
+            {
+                DashboardH dashboardH = new DashboardH();
+                dashboardH.Show();
+
+                this.Opacity = 0;
+
+                if (this.Owner is Home home)
+                {
+                    home.Hide();
+                }
+
+                this.Close();
+            }
+            else if (username == "admin" && password == "admin123")
+            {
+                DashboardA dashboardA = new DashboardA();
+                dashboardA.Show();
+
+                this.Opacity = 0;
+
+                if (this.Owner is Home home)
+                {
+                    home.Hide();
+                }
+
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbxSPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxSPassword.Checked)
+            {
+                tbxPassword.UseSystemPasswordChar = false;
+                tbxPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                tbxPassword.UseSystemPasswordChar = true;
+            }
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Hemotica
             InitializeComponent();
         }
 
-        private void Register_Load(object sender, EventArgs e)
+        private void ForgetPassword_Load(object sender, EventArgs e)
         {
             btnSettings();
 

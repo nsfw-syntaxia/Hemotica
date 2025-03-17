@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-    partial class Dashboard
+    partial class DashboardA
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardA));
             btnClose = new Button();
             btnMaximize = new Button();
             btnMinimize = new Button();
+            flpSideBar = new FlowLayoutPanel();
+            flpDashboard = new FlowLayoutPanel();
+            lblWelcome = new Label();
             SuspendLayout();
             // 
             // btnClose
@@ -74,29 +77,63 @@
             btnMinimize.UseVisualStyleBackColor = true;
             btnMinimize.Click += btnMinimize_Click;
             // 
-            // Dashboard
+            // flpSideBar
+            // 
+            flpSideBar.BackColor = Color.FromArgb(64, 165, 220);
+            flpSideBar.Dock = DockStyle.Left;
+            flpSideBar.Location = new Point(0, 0);
+            flpSideBar.Name = "flpSideBar";
+            flpSideBar.Size = new Size(225, 803);
+            flpSideBar.TabIndex = 5;
+            // 
+            // flpDashboard
+            // 
+            flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flpDashboard.Location = new Point(231, 91);
+            flpDashboard.Name = "flpDashboard";
+            flpDashboard.Size = new Size(1020, 700);
+            flpDashboard.TabIndex = 6;
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Font = new Font("Bahnschrift", 30F, FontStyle.Bold);
+            lblWelcome.ForeColor = Color.FromArgb(95, 179, 224);
+            lblWelcome.Location = new Point(231, 40);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(366, 48);
+            lblWelcome.TabIndex = 7;
+            lblWelcome.Text = "Welcome, <admin> !";
+            // 
+            // DashboardA
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(253, 211, 211);
+            BackColor = Color.FromArgb(170, 225, 255);
             ClientSize = new Size(1263, 803);
             ControlBox = false;
+            Controls.Add(lblWelcome);
+            Controls.Add(flpDashboard);
+            Controls.Add(flpSideBar);
             Controls.Add(btnMinimize);
             Controls.Add(btnMaximize);
             Controls.Add(btnClose);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Dashboard";
+            Name = "DashboardA";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += Home_Load;
-            MouseDown += Home_MouseDown;
+            Load += DashboardA_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Button btnClose;
         private Button btnMaximize;
         private Button btnMinimize;
+        private FlowLayoutPanel flpSideBar;
+        private FlowLayoutPanel flpDashboard;
+        private Label lblWelcome;
     }
 }

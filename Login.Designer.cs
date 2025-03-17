@@ -137,6 +137,7 @@
             cbxSPassword.TabIndex = 57;
             cbxSPassword.Text = "Show Password";
             cbxSPassword.UseVisualStyleBackColor = true;
+            cbxSPassword.CheckedChanged += cbxSPassword_CheckedChanged;
             // 
             // lblPassword
             // 
@@ -180,6 +181,7 @@
             btnLogin.Size = new Size(120, 40);
             btnLogin.TabIndex = 60;
             btnLogin.Text = "LOGIN";
+            btnLogin.Click += btnLogin_Click;
             // 
             // tbxUnEA
             // 
@@ -242,7 +244,7 @@
             tbxPassword.MaxLength = 32767;
             tbxPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             tbxPassword.Name = "tbxPassword";
-            tbxPassword.PasswordChar = '\0';
+            tbxPassword.PasswordChar = '●';
             tbxPassword.PrefixSuffixText = null;
             tbxPassword.PromptChar = '_';
             tbxPassword.ReadOnly = false;

@@ -294,7 +294,7 @@
             ShowIcon = false;
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
-            Load += Register_Load;
+            Load += ForgetPassword_Load;
             ((System.ComponentModel.ISupportInitialize)pbxLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
