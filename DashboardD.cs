@@ -52,16 +52,19 @@ namespace Hemotica
 
         private void tSidebar_Tick(object sender, EventArgs e)
         {
-            flpSideBar.Width -= 10;
-            if (flpSideBar.Width == flpSideBar.MinimumSize.Width)
+            if (sidebarExpand)
             {
-                sidebarExpand = false;
-                tSidebar.Stop();
+                flpSideBar.Width -= 10;
+                if (flpSideBar.Width <= flpSideBar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    tSidebar.Stop();
+                }
             }
             else
             {
                 flpSideBar.Width += 10;
-                if (flpSideBar.Width == flpSideBar.MaximumSize.Width)
+                if (flpSideBar.Width >= flpSideBar.MaximumSize.Width)
                 {
                     sidebarExpand = true;
                     tSidebar.Stop();
@@ -71,7 +74,7 @@ namespace Hemotica
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            tSidebar.Stop();
+            tSidebar.Start();
         }
     }
 }

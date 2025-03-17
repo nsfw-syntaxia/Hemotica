@@ -142,7 +142,7 @@
             btnMenu.Text = "            MENU";
             btnMenu.TextAlign = ContentAlignment.MiddleLeft;
             btnMenu.UseVisualStyleBackColor = true;
-            btnMenu.Click += this.btnMenu_Click;
+            btnMenu.Click += btnMenu_Click;
             // 
             // pHome
             // 
@@ -310,6 +310,7 @@
             // 
             // tSidebar
             // 
+            tSidebar.Interval = 1;
             tSidebar.Tick += tSidebar_Tick;
             // 
             // DashboardD
