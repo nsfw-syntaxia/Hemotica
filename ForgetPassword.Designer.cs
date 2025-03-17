@@ -34,13 +34,13 @@
             pbxLogo = new PictureBox();
             btnClose = new Button();
             lblEmail = new Label();
-            tbxEmailAddress = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             lblPassword = new Label();
-            tbxPassword = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             lblNewPassword = new Label();
-            tbxNewPassword = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             cbxSPassword = new ReaLTaiizor.Controls.HopeCheckBox();
             btnResetPassword = new ReaLTaiizor.Controls.FoxButton();
+            tbxEmailAddress = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+            tbxPassword = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+            tbxNewPassword = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)pbxLogo).BeginInit();
             SuspendLayout();
             // 
@@ -83,48 +83,6 @@
             lblEmail.TabIndex = 51;
             lblEmail.Text = "Email Address";
             // 
-            // tbxEmailAddress
-            // 
-            tbxEmailAddress.AllowPromptAsInput = true;
-            tbxEmailAddress.AnimateReadOnly = false;
-            tbxEmailAddress.AsciiOnly = false;
-            tbxEmailAddress.BackgroundImageLayout = ImageLayout.None;
-            tbxEmailAddress.BeepOnError = false;
-            tbxEmailAddress.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            tbxEmailAddress.Depth = 0;
-            tbxEmailAddress.Font = new Font("Arial Narrow", 13F);
-            tbxEmailAddress.HidePromptOnLeave = false;
-            tbxEmailAddress.HideSelection = true;
-            tbxEmailAddress.InsertKeyMode = InsertKeyMode.Default;
-            tbxEmailAddress.LeadingIcon = null;
-            tbxEmailAddress.Location = new Point(16, 183);
-            tbxEmailAddress.Mask = "";
-            tbxEmailAddress.MaxLength = 32767;
-            tbxEmailAddress.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            tbxEmailAddress.Name = "tbxEmailAddress";
-            tbxEmailAddress.PasswordChar = '\0';
-            tbxEmailAddress.PrefixSuffixText = null;
-            tbxEmailAddress.PromptChar = '_';
-            tbxEmailAddress.ReadOnly = false;
-            tbxEmailAddress.RejectInputOnFirstFailure = false;
-            tbxEmailAddress.ResetOnPrompt = true;
-            tbxEmailAddress.ResetOnSpace = true;
-            tbxEmailAddress.RightToLeft = RightToLeft.No;
-            tbxEmailAddress.SelectedText = "";
-            tbxEmailAddress.SelectionLength = 0;
-            tbxEmailAddress.SelectionStart = 0;
-            tbxEmailAddress.ShortcutsEnabled = true;
-            tbxEmailAddress.Size = new Size(389, 36);
-            tbxEmailAddress.SkipLiterals = true;
-            tbxEmailAddress.TabIndex = 52;
-            tbxEmailAddress.TabStop = false;
-            tbxEmailAddress.TextAlign = HorizontalAlignment.Left;
-            tbxEmailAddress.TextMaskFormat = MaskFormat.IncludeLiterals;
-            tbxEmailAddress.TrailingIcon = null;
-            tbxEmailAddress.UseSystemPasswordChar = false;
-            tbxEmailAddress.UseTallSize = false;
-            tbxEmailAddress.ValidatingType = null;
-            // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
@@ -136,48 +94,6 @@
             lblPassword.TabIndex = 63;
             lblPassword.Text = "New Password";
             // 
-            // tbxPassword
-            // 
-            tbxPassword.AllowPromptAsInput = true;
-            tbxPassword.AnimateReadOnly = false;
-            tbxPassword.AsciiOnly = false;
-            tbxPassword.BackgroundImageLayout = ImageLayout.None;
-            tbxPassword.BeepOnError = false;
-            tbxPassword.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            tbxPassword.Depth = 0;
-            tbxPassword.Font = new Font("Arial Narrow", 13F);
-            tbxPassword.HidePromptOnLeave = false;
-            tbxPassword.HideSelection = true;
-            tbxPassword.InsertKeyMode = InsertKeyMode.Default;
-            tbxPassword.LeadingIcon = null;
-            tbxPassword.Location = new Point(16, 248);
-            tbxPassword.Mask = "";
-            tbxPassword.MaxLength = 32767;
-            tbxPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            tbxPassword.Name = "tbxPassword";
-            tbxPassword.PasswordChar = '\0';
-            tbxPassword.PrefixSuffixText = null;
-            tbxPassword.PromptChar = '_';
-            tbxPassword.ReadOnly = false;
-            tbxPassword.RejectInputOnFirstFailure = false;
-            tbxPassword.ResetOnPrompt = true;
-            tbxPassword.ResetOnSpace = true;
-            tbxPassword.RightToLeft = RightToLeft.No;
-            tbxPassword.SelectedText = "";
-            tbxPassword.SelectionLength = 0;
-            tbxPassword.SelectionStart = 0;
-            tbxPassword.ShortcutsEnabled = true;
-            tbxPassword.Size = new Size(389, 36);
-            tbxPassword.SkipLiterals = true;
-            tbxPassword.TabIndex = 64;
-            tbxPassword.TabStop = false;
-            tbxPassword.TextAlign = HorizontalAlignment.Left;
-            tbxPassword.TextMaskFormat = MaskFormat.IncludeLiterals;
-            tbxPassword.TrailingIcon = null;
-            tbxPassword.UseSystemPasswordChar = false;
-            tbxPassword.UseTallSize = false;
-            tbxPassword.ValidatingType = null;
-            // 
             // lblNewPassword
             // 
             lblNewPassword.AutoSize = true;
@@ -188,48 +104,6 @@
             lblNewPassword.Size = new Size(174, 22);
             lblNewPassword.TabIndex = 65;
             lblNewPassword.Text = "Confirm New Password";
-            // 
-            // tbxNewPassword
-            // 
-            tbxNewPassword.AllowPromptAsInput = true;
-            tbxNewPassword.AnimateReadOnly = false;
-            tbxNewPassword.AsciiOnly = false;
-            tbxNewPassword.BackgroundImageLayout = ImageLayout.None;
-            tbxNewPassword.BeepOnError = false;
-            tbxNewPassword.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-            tbxNewPassword.Depth = 0;
-            tbxNewPassword.Font = new Font("Arial Narrow", 13F);
-            tbxNewPassword.HidePromptOnLeave = false;
-            tbxNewPassword.HideSelection = true;
-            tbxNewPassword.InsertKeyMode = InsertKeyMode.Default;
-            tbxNewPassword.LeadingIcon = null;
-            tbxNewPassword.Location = new Point(16, 313);
-            tbxNewPassword.Mask = "";
-            tbxNewPassword.MaxLength = 32767;
-            tbxNewPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            tbxNewPassword.Name = "tbxNewPassword";
-            tbxNewPassword.PasswordChar = '\0';
-            tbxNewPassword.PrefixSuffixText = null;
-            tbxNewPassword.PromptChar = '_';
-            tbxNewPassword.ReadOnly = false;
-            tbxNewPassword.RejectInputOnFirstFailure = false;
-            tbxNewPassword.ResetOnPrompt = true;
-            tbxNewPassword.ResetOnSpace = true;
-            tbxNewPassword.RightToLeft = RightToLeft.No;
-            tbxNewPassword.SelectedText = "";
-            tbxNewPassword.SelectionLength = 0;
-            tbxNewPassword.SelectionStart = 0;
-            tbxNewPassword.ShortcutsEnabled = true;
-            tbxNewPassword.Size = new Size(389, 36);
-            tbxNewPassword.SkipLiterals = true;
-            tbxNewPassword.TabIndex = 66;
-            tbxNewPassword.TabStop = false;
-            tbxNewPassword.TextAlign = HorizontalAlignment.Left;
-            tbxNewPassword.TextMaskFormat = MaskFormat.IncludeLiterals;
-            tbxNewPassword.TrailingIcon = null;
-            tbxNewPassword.UseSystemPasswordChar = false;
-            tbxNewPassword.UseTallSize = false;
-            tbxNewPassword.ValidatingType = null;
             // 
             // cbxSPassword
             // 
@@ -270,6 +144,132 @@
             btnResetPassword.Text = "RESET PASSWORD";
             btnResetPassword.Click += btnResetPassword_Click;
             // 
+            // tbxEmailAddress
+            // 
+            tbxEmailAddress.AllowPromptAsInput = true;
+            tbxEmailAddress.AnimateReadOnly = false;
+            tbxEmailAddress.AsciiOnly = false;
+            tbxEmailAddress.BackgroundImageLayout = ImageLayout.None;
+            tbxEmailAddress.BeepOnError = false;
+            tbxEmailAddress.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            tbxEmailAddress.Depth = 0;
+            tbxEmailAddress.Font = new Font("Arial Narrow", 13F);
+            tbxEmailAddress.HidePromptOnLeave = false;
+            tbxEmailAddress.HideSelection = true;
+            tbxEmailAddress.InsertKeyMode = InsertKeyMode.Default;
+            tbxEmailAddress.LeadingIcon = null;
+            tbxEmailAddress.Location = new Point(16, 183);
+            tbxEmailAddress.Mask = "";
+            tbxEmailAddress.MaxLength = 32767;
+            tbxEmailAddress.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            tbxEmailAddress.Name = "tbxEmailAddress";
+            tbxEmailAddress.PasswordChar = '\0';
+            tbxEmailAddress.PrefixSuffixText = null;
+            tbxEmailAddress.PromptChar = '_';
+            tbxEmailAddress.ReadOnly = false;
+            tbxEmailAddress.RejectInputOnFirstFailure = false;
+            tbxEmailAddress.ResetOnPrompt = true;
+            tbxEmailAddress.ResetOnSpace = true;
+            tbxEmailAddress.RightToLeft = RightToLeft.No;
+            tbxEmailAddress.SelectedText = "";
+            tbxEmailAddress.SelectionLength = 0;
+            tbxEmailAddress.SelectionStart = 0;
+            tbxEmailAddress.ShortcutsEnabled = true;
+            tbxEmailAddress.Size = new Size(389, 36);
+            tbxEmailAddress.SkipLiterals = true;
+            tbxEmailAddress.TabIndex = 69;
+            tbxEmailAddress.TabStop = false;
+            tbxEmailAddress.TextAlign = HorizontalAlignment.Left;
+            tbxEmailAddress.TextMaskFormat = MaskFormat.IncludeLiterals;
+            tbxEmailAddress.TrailingIcon = null;
+            tbxEmailAddress.UseSystemPasswordChar = false;
+            tbxEmailAddress.UseTallSize = false;
+            tbxEmailAddress.ValidatingType = null;
+            // 
+            // tbxPassword
+            // 
+            tbxPassword.AllowPromptAsInput = true;
+            tbxPassword.AnimateReadOnly = false;
+            tbxPassword.AsciiOnly = false;
+            tbxPassword.BackgroundImageLayout = ImageLayout.None;
+            tbxPassword.BeepOnError = false;
+            tbxPassword.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            tbxPassword.Depth = 0;
+            tbxPassword.Font = new Font("Arial Narrow", 13F);
+            tbxPassword.HidePromptOnLeave = false;
+            tbxPassword.HideSelection = true;
+            tbxPassword.InsertKeyMode = InsertKeyMode.Default;
+            tbxPassword.LeadingIcon = null;
+            tbxPassword.Location = new Point(16, 248);
+            tbxPassword.Mask = "";
+            tbxPassword.MaxLength = 32767;
+            tbxPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            tbxPassword.Name = "tbxPassword";
+            tbxPassword.PasswordChar = '\0';
+            tbxPassword.PrefixSuffixText = null;
+            tbxPassword.PromptChar = '_';
+            tbxPassword.ReadOnly = false;
+            tbxPassword.RejectInputOnFirstFailure = false;
+            tbxPassword.ResetOnPrompt = true;
+            tbxPassword.ResetOnSpace = true;
+            tbxPassword.RightToLeft = RightToLeft.No;
+            tbxPassword.SelectedText = "";
+            tbxPassword.SelectionLength = 0;
+            tbxPassword.SelectionStart = 0;
+            tbxPassword.ShortcutsEnabled = true;
+            tbxPassword.Size = new Size(389, 36);
+            tbxPassword.SkipLiterals = true;
+            tbxPassword.TabIndex = 70;
+            tbxPassword.TabStop = false;
+            tbxPassword.TextAlign = HorizontalAlignment.Left;
+            tbxPassword.TextMaskFormat = MaskFormat.IncludeLiterals;
+            tbxPassword.TrailingIcon = null;
+            tbxPassword.UseSystemPasswordChar = false;
+            tbxPassword.UseTallSize = false;
+            tbxPassword.ValidatingType = null;
+            // 
+            // tbxNewPassword
+            // 
+            tbxNewPassword.AllowPromptAsInput = true;
+            tbxNewPassword.AnimateReadOnly = false;
+            tbxNewPassword.AsciiOnly = false;
+            tbxNewPassword.BackgroundImageLayout = ImageLayout.None;
+            tbxNewPassword.BeepOnError = false;
+            tbxNewPassword.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+            tbxNewPassword.Depth = 0;
+            tbxNewPassword.Font = new Font("Arial Narrow", 13F);
+            tbxNewPassword.HidePromptOnLeave = false;
+            tbxNewPassword.HideSelection = true;
+            tbxNewPassword.InsertKeyMode = InsertKeyMode.Default;
+            tbxNewPassword.LeadingIcon = null;
+            tbxNewPassword.Location = new Point(16, 313);
+            tbxNewPassword.Mask = "";
+            tbxNewPassword.MaxLength = 32767;
+            tbxNewPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            tbxNewPassword.Name = "tbxNewPassword";
+            tbxNewPassword.PasswordChar = '\0';
+            tbxNewPassword.PrefixSuffixText = null;
+            tbxNewPassword.PromptChar = '_';
+            tbxNewPassword.ReadOnly = false;
+            tbxNewPassword.RejectInputOnFirstFailure = false;
+            tbxNewPassword.ResetOnPrompt = true;
+            tbxNewPassword.ResetOnSpace = true;
+            tbxNewPassword.RightToLeft = RightToLeft.No;
+            tbxNewPassword.SelectedText = "";
+            tbxNewPassword.SelectionLength = 0;
+            tbxNewPassword.SelectionStart = 0;
+            tbxNewPassword.ShortcutsEnabled = true;
+            tbxNewPassword.Size = new Size(389, 36);
+            tbxNewPassword.SkipLiterals = true;
+            tbxNewPassword.TabIndex = 71;
+            tbxNewPassword.TabStop = false;
+            tbxNewPassword.TextAlign = HorizontalAlignment.Left;
+            tbxNewPassword.TextMaskFormat = MaskFormat.IncludeLiterals;
+            tbxNewPassword.TrailingIcon = null;
+            tbxNewPassword.UseSystemPasswordChar = false;
+            tbxNewPassword.UseTallSize = false;
+            tbxNewPassword.ValidatingType = null;
+            // 
             // ForgetPassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -280,13 +280,13 @@
             Controls.Add(btnResetPassword);
             Controls.Add(cbxSPassword);
             Controls.Add(lblNewPassword);
-            Controls.Add(tbxNewPassword);
             Controls.Add(lblPassword);
-            Controls.Add(tbxPassword);
             Controls.Add(lblEmail);
-            Controls.Add(tbxEmailAddress);
             Controls.Add(btnClose);
             Controls.Add(pbxLogo);
+            Controls.Add(tbxEmailAddress);
+            Controls.Add(tbxPassword);
+            Controls.Add(tbxNewPassword);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "ForgetPassword";
@@ -305,12 +305,12 @@
         private PictureBox pbxLogo;
         private Button btnClose;
         private Label lblEmail;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxEmailAddress;
         private Label lblPassword;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxPassword;
         private Label lblNewPassword;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxNewPassword;
         private ReaLTaiizor.Controls.HopeCheckBox cbxSPassword;
         private ReaLTaiizor.Controls.FoxButton btnResetPassword;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxEmailAddress;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxPassword;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxNewPassword;
     }
 }
