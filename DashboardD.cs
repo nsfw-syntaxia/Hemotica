@@ -5,6 +5,8 @@ namespace Hemotica
 {
     public partial class DashboardD : Form
     {
+        bool sidebarExpand;
+
         public DashboardD()
         {
             InitializeComponent();
@@ -46,6 +48,30 @@ namespace Hemotica
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tSidebar_Tick(object sender, EventArgs e)
+        {
+            flpSideBar.Width -= 10;
+            if (flpSideBar.Width == flpSideBar.MinimumSize.Width)
+            {
+                sidebarExpand = false;
+                tSidebar.Stop();
+            }
+            else
+            {
+                flpSideBar.Width += 10;
+                if (flpSideBar.Width == flpSideBar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    tSidebar.Stop();
+                }
+            }
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            tSidebar.Stop();
         }
     }
 }

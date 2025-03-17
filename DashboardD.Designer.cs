@@ -28,13 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardD));
             btnClose = new Button();
             btnMaximize = new Button();
             btnMinimize = new Button();
             flpSideBar = new FlowLayoutPanel();
+            pMenu = new Panel();
+            btnMenu = new Button();
+            pHome = new Panel();
+            btnHome = new Button();
+            pAppointment = new Panel();
+            btnAppointment = new Button();
+            pNotification = new Panel();
+            btnNotification = new Button();
+            pHistory = new Panel();
+            btnHistory = new Button();
+            pProfile = new Panel();
+            btnProfile = new Button();
+            pLogout = new Panel();
+            btnLogout = new Button();
             flpDashboard = new FlowLayoutPanel();
             lblWelcome = new Label();
+            tSidebar = new System.Windows.Forms.Timer(components);
+            flpSideBar.SuspendLayout();
+            pMenu.SuspendLayout();
+            pHome.SuspendLayout();
+            pAppointment.SuspendLayout();
+            pNotification.SuspendLayout();
+            pHistory.SuspendLayout();
+            pProfile.SuspendLayout();
+            pLogout.SuspendLayout();
             SuspendLayout();
             // 
             // btnClose
@@ -80,15 +104,194 @@
             // flpSideBar
             // 
             flpSideBar.BackColor = Color.FromArgb(236, 124, 132);
+            flpSideBar.Controls.Add(pMenu);
+            flpSideBar.Controls.Add(pHome);
+            flpSideBar.Controls.Add(pAppointment);
+            flpSideBar.Controls.Add(pNotification);
+            flpSideBar.Controls.Add(pHistory);
+            flpSideBar.Controls.Add(pProfile);
+            flpSideBar.Controls.Add(pLogout);
             flpSideBar.Dock = DockStyle.Left;
             flpSideBar.Location = new Point(0, 0);
+            flpSideBar.MaximumSize = new Size(225, 803);
+            flpSideBar.MinimumSize = new Size(75, 803);
             flpSideBar.Name = "flpSideBar";
             flpSideBar.Size = new Size(225, 803);
             flpSideBar.TabIndex = 5;
             // 
+            // pMenu
+            // 
+            pMenu.Controls.Add(btnMenu);
+            pMenu.Location = new Point(3, 3);
+            pMenu.Name = "pMenu";
+            pMenu.Size = new Size(222, 50);
+            pMenu.TabIndex = 0;
+            // 
+            // btnMenu
+            // 
+            btnMenu.FlatStyle = FlatStyle.Flat;
+            btnMenu.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnMenu.ForeColor = Color.FromArgb(253, 211, 211);
+            btnMenu.Image = (Image)resources.GetObject("btnMenu.Image");
+            btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMenu.Location = new Point(-16, -18);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Padding = new Padding(20, 5, 5, 5);
+            btnMenu.Size = new Size(248, 86);
+            btnMenu.TabIndex = 14;
+            btnMenu.Text = "            MENU";
+            btnMenu.TextAlign = ContentAlignment.MiddleLeft;
+            btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.Click += this.btnMenu_Click;
+            // 
+            // pHome
+            // 
+            pHome.Controls.Add(btnHome);
+            pHome.Location = new Point(3, 59);
+            pHome.Name = "pHome";
+            pHome.Size = new Size(222, 50);
+            pHome.TabIndex = 1;
+            // 
+            // btnHome
+            // 
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnHome.ForeColor = Color.FromArgb(253, 211, 211);
+            btnHome.Image = (Image)resources.GetObject("btnHome.Image");
+            btnHome.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHome.Location = new Point(-16, -18);
+            btnHome.Name = "btnHome";
+            btnHome.Padding = new Padding(20, 5, 5, 5);
+            btnHome.Size = new Size(248, 86);
+            btnHome.TabIndex = 8;
+            btnHome.Text = "            HOME";
+            btnHome.TextAlign = ContentAlignment.MiddleLeft;
+            btnHome.UseVisualStyleBackColor = true;
+            // 
+            // pAppointment
+            // 
+            pAppointment.Controls.Add(btnAppointment);
+            pAppointment.Location = new Point(3, 115);
+            pAppointment.Name = "pAppointment";
+            pAppointment.Size = new Size(222, 50);
+            pAppointment.TabIndex = 2;
+            // 
+            // btnAppointment
+            // 
+            btnAppointment.FlatStyle = FlatStyle.Flat;
+            btnAppointment.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnAppointment.ForeColor = Color.FromArgb(253, 211, 211);
+            btnAppointment.Image = (Image)resources.GetObject("btnAppointment.Image");
+            btnAppointment.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAppointment.Location = new Point(-16, -18);
+            btnAppointment.Name = "btnAppointment";
+            btnAppointment.Padding = new Padding(20, 5, 5, 5);
+            btnAppointment.Size = new Size(248, 86);
+            btnAppointment.TabIndex = 9;
+            btnAppointment.Text = "            APPOINTMENT";
+            btnAppointment.TextAlign = ContentAlignment.MiddleLeft;
+            btnAppointment.UseVisualStyleBackColor = true;
+            // 
+            // pNotification
+            // 
+            pNotification.Controls.Add(btnNotification);
+            pNotification.Location = new Point(3, 171);
+            pNotification.Name = "pNotification";
+            pNotification.Size = new Size(222, 50);
+            pNotification.TabIndex = 3;
+            // 
+            // btnNotification
+            // 
+            btnNotification.FlatStyle = FlatStyle.Flat;
+            btnNotification.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnNotification.ForeColor = Color.FromArgb(253, 211, 211);
+            btnNotification.Image = (Image)resources.GetObject("btnNotification.Image");
+            btnNotification.ImageAlign = ContentAlignment.MiddleLeft;
+            btnNotification.Location = new Point(-16, -18);
+            btnNotification.Name = "btnNotification";
+            btnNotification.Padding = new Padding(20, 5, 5, 5);
+            btnNotification.Size = new Size(248, 86);
+            btnNotification.TabIndex = 10;
+            btnNotification.Text = "            NOTIFICATION";
+            btnNotification.TextAlign = ContentAlignment.MiddleLeft;
+            btnNotification.UseVisualStyleBackColor = true;
+            // 
+            // pHistory
+            // 
+            pHistory.Controls.Add(btnHistory);
+            pHistory.Location = new Point(3, 227);
+            pHistory.Name = "pHistory";
+            pHistory.Size = new Size(222, 50);
+            pHistory.TabIndex = 4;
+            // 
+            // btnHistory
+            // 
+            btnHistory.FlatStyle = FlatStyle.Flat;
+            btnHistory.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnHistory.ForeColor = Color.FromArgb(253, 211, 211);
+            btnHistory.Image = (Image)resources.GetObject("btnHistory.Image");
+            btnHistory.ImageAlign = ContentAlignment.MiddleLeft;
+            btnHistory.Location = new Point(-16, -18);
+            btnHistory.Name = "btnHistory";
+            btnHistory.Padding = new Padding(20, 5, 5, 5);
+            btnHistory.Size = new Size(248, 86);
+            btnHistory.TabIndex = 11;
+            btnHistory.Text = "            RECORDS";
+            btnHistory.TextAlign = ContentAlignment.MiddleLeft;
+            btnHistory.UseVisualStyleBackColor = true;
+            // 
+            // pProfile
+            // 
+            pProfile.Controls.Add(btnProfile);
+            pProfile.Location = new Point(3, 283);
+            pProfile.Name = "pProfile";
+            pProfile.Size = new Size(222, 50);
+            pProfile.TabIndex = 5;
+            // 
+            // btnProfile
+            // 
+            btnProfile.FlatStyle = FlatStyle.Flat;
+            btnProfile.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnProfile.ForeColor = Color.FromArgb(253, 211, 211);
+            btnProfile.Image = (Image)resources.GetObject("btnProfile.Image");
+            btnProfile.ImageAlign = ContentAlignment.MiddleLeft;
+            btnProfile.Location = new Point(-16, -18);
+            btnProfile.Name = "btnProfile";
+            btnProfile.Padding = new Padding(20, 5, 5, 5);
+            btnProfile.Size = new Size(248, 86);
+            btnProfile.TabIndex = 12;
+            btnProfile.Text = "            PROFILE";
+            btnProfile.TextAlign = ContentAlignment.MiddleLeft;
+            btnProfile.UseVisualStyleBackColor = true;
+            // 
+            // pLogout
+            // 
+            pLogout.Controls.Add(btnLogout);
+            pLogout.Location = new Point(3, 339);
+            pLogout.Name = "pLogout";
+            pLogout.Size = new Size(222, 50);
+            pLogout.TabIndex = 6;
+            // 
+            // btnLogout
+            // 
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnLogout.ForeColor = Color.FromArgb(253, 211, 211);
+            btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(-16, -18);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Padding = new Padding(20, 5, 5, 5);
+            btnLogout.Size = new Size(248, 86);
+            btnLogout.TabIndex = 13;
+            btnLogout.Text = "            LOGOUT";
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.UseVisualStyleBackColor = true;
+            // 
             // flpDashboard
             // 
             flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flpDashboard.BackColor = Color.FromArgb(253, 211, 211);
             flpDashboard.Location = new Point(231, 91);
             flpDashboard.Name = "flpDashboard";
             flpDashboard.Size = new Size(1020, 700);
@@ -105,6 +308,10 @@
             lblWelcome.TabIndex = 7;
             lblWelcome.Text = "Welcome, <donor> !";
             // 
+            // tSidebar
+            // 
+            tSidebar.Tick += tSidebar_Tick;
+            // 
             // DashboardD
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -119,11 +326,20 @@
             Controls.Add(btnMaximize);
             Controls.Add(btnClose);
             DoubleBuffered = true;
+            ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "DashboardD";
             StartPosition = FormStartPosition.CenterScreen;
             Load += DashboardD_Load;
+            flpSideBar.ResumeLayout(false);
+            pMenu.ResumeLayout(false);
+            pHome.ResumeLayout(false);
+            pAppointment.ResumeLayout(false);
+            pNotification.ResumeLayout(false);
+            pHistory.ResumeLayout(false);
+            pProfile.ResumeLayout(false);
+            pLogout.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,5 +351,20 @@
         private FlowLayoutPanel flpSideBar;
         private FlowLayoutPanel flpDashboard;
         private Label lblWelcome;
+        private Panel pMenu;
+        private Panel pHome;
+        private Panel pAppointment;
+        private Panel pNotification;
+        private Panel pHistory;
+        private Panel pProfile;
+        private Button btnHome;
+        private Button btnAppointment;
+        private Button btnNotification;
+        private Button btnHistory;
+        private Button btnProfile;
+        private Panel pLogout;
+        private Button btnLogout;
+        private Button btnMenu;
+        private System.Windows.Forms.Timer tSidebar;
     }
 }
