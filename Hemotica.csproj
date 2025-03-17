@@ -21,6 +21,7 @@
     <Compile Update="Login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ForgetPassword.cs" />
     <Compile Update="RegisterHP1.cs">
       <SubType>UserControl</SubType>
     </Compile>

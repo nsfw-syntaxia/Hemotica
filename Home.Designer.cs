@@ -86,6 +86,7 @@
             // 
             // pbxHeart
             // 
+            pbxHeart.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pbxHeart.BackColor = Color.Transparent;
             pbxHeart.Cursor = Cursors.Hand;
             pbxHeart.Image = (Image)resources.GetObject("pbxHeart.Image");

@@ -160,6 +160,7 @@
             lblForgetPassword.Size = new Size(139, 22);
             lblForgetPassword.TabIndex = 59;
             lblForgetPassword.Text = "Forgot Password?";
+            lblForgetPassword.Click += lblForgetPassword_Click;
             // 
             // btnLogin
             // 

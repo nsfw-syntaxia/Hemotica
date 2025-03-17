@@ -27,7 +27,14 @@ namespace Hemotica
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            //
+            register.Opacity = 0;
+
+            if (register.Owner is Home home)
+            {
+                home.showLogin();
+            }
+
+            register.Close();
         }
     }
 }

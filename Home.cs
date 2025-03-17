@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
 
 namespace Hemotica
 {
@@ -183,6 +184,25 @@ namespace Hemotica
             };
 
             register.ShowDialog();
+        }
+
+        public void showForgetPassword()
+        {
+            ForgetPassword forgetPassword = new ForgetPassword
+            {
+                Owner = this,
+                ShowInTaskbar = false
+            };
+
+            forgetPassword.FormClosed += (s, args) =>
+            {
+                overlay.Dispose();
+                btnSettings();
+                this.Activate();
+                tToggle.Start();
+            };
+
+            forgetPassword.ShowDialog();
         }
     }
 }
