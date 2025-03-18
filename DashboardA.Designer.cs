@@ -51,7 +51,7 @@
             flpDashboard = new FlowLayoutPanel();
             lblWelcome = new Label();
             pSettings = new Panel();
-            btnSettings = new Button();
+            btnSettingsA = new Button();
             flpSideBar.SuspendLayout();
             pMenu.SuspendLayout();
             pDashboard.SuspendLayout();
@@ -341,30 +341,30 @@
             // 
             // pSettings
             // 
-            pSettings.Controls.Add(btnSettings);
+            pSettings.Controls.Add(btnSettingsA);
             pSettings.Location = new Point(3, 493);
             pSettings.Name = "pSettings";
             pSettings.Size = new Size(219, 60);
             pSettings.TabIndex = 25;
             // 
-            // btnSettings
+            // btnSettingsA
             // 
-            btnSettings.FlatAppearance.BorderSize = 0;
-            btnSettings.FlatAppearance.MouseDownBackColor = Color.FromArgb(14, 73, 104);
-            btnSettings.FlatAppearance.MouseOverBackColor = Color.FromArgb(21, 94, 133);
-            btnSettings.FlatStyle = FlatStyle.Flat;
-            btnSettings.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            btnSettings.ForeColor = Color.FromArgb(170, 225, 255);
-            btnSettings.Image = (Image)resources.GetObject("btnSettings.Image");
-            btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(-16, -13);
-            btnSettings.Name = "btnSettings";
-            btnSettings.Padding = new Padding(20, 5, 5, 5);
-            btnSettings.Size = new Size(248, 86);
-            btnSettings.TabIndex = 17;
-            btnSettings.Text = "            SETTINGS";
-            btnSettings.TextAlign = ContentAlignment.MiddleLeft;
-            btnSettings.UseVisualStyleBackColor = true;
+            btnSettingsA.FlatAppearance.BorderSize = 0;
+            btnSettingsA.FlatAppearance.MouseDownBackColor = Color.FromArgb(14, 73, 104);
+            btnSettingsA.FlatAppearance.MouseOverBackColor = Color.FromArgb(21, 94, 133);
+            btnSettingsA.FlatStyle = FlatStyle.Flat;
+            btnSettingsA.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnSettingsA.ForeColor = Color.FromArgb(170, 225, 255);
+            btnSettingsA.Image = (Image)resources.GetObject("btnSettingsA.Image");
+            btnSettingsA.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSettingsA.Location = new Point(-16, -13);
+            btnSettingsA.Name = "btnSettingsA";
+            btnSettingsA.Padding = new Padding(20, 5, 5, 5);
+            btnSettingsA.Size = new Size(248, 86);
+            btnSettingsA.TabIndex = 17;
+            btnSettingsA.Text = "            SETTINGS";
+            btnSettingsA.TextAlign = ContentAlignment.MiddleLeft;
+            btnSettingsA.UseVisualStyleBackColor = true;
             // 
             // DashboardA
             // 
@@ -421,6 +421,6 @@
         private Panel pLogout;
         private Button btnLogout;
         private Panel pSettings;
-        private Button btnSettings;
+        private Button btnSettingsA;
     }
 }
