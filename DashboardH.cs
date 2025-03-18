@@ -5,6 +5,8 @@ namespace Hemotica
 {
     public partial class DashboardH : Form
     {
+        bool sidebarExpand;
+
         public DashboardH()
         {
             InitializeComponent();
@@ -13,6 +15,7 @@ namespace Hemotica
         private void DashboardD_Load(object sender, EventArgs e)
         {
             btnSettings();
+            tSidebar.Start();
         }
 
         private void btnEffects(Button button, Color highlightColor)
@@ -48,9 +51,53 @@ namespace Hemotica
             Application.Exit();
         }
 
+        private void tSidebar_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                flpSideBar.Width -= 10;
+                if (flpSideBar.Width <= flpSideBar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    tSidebar.Stop();
+                }
+            }
+            else
+            {
+                flpSideBar.Width += 10;
+                if (flpSideBar.Width >= flpSideBar.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    tSidebar.Stop();
+                }
+            }
+
+            adjustLayout();
+        }
+
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            tSidebar.Start();
+            adjustLayout();
+        }
 
+        private void DashboardH_Resize(object sender, EventArgs e)
+        {
+            flpSideBar.Height = this.ClientSize.Height;
+            flpSideBar.MaximumSize = new Size(flpSideBar.MaximumSize.Width, this.ClientSize.Height);
+
+            adjustLayout();
+        }
+
+        private void adjustLayout()
+        {
+            int sidebarWidth = flpSideBar.Width;
+
+            lblWelcome.Left = sidebarWidth + 10;
+            lblWelcome.Width = this.ClientSize.Width - sidebarWidth - 20;
+
+            flpDashboard.Left = sidebarWidth;
+            flpDashboard.Width = this.ClientSize.Width - sidebarWidth;
         }
     }
 }

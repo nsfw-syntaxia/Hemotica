@@ -36,10 +36,11 @@
             flpSideBar = new FlowLayoutPanel();
             pMenu = new Panel();
             btnMenu = new Button();
-            pHome = new Panel();
-            btnHome = new Button();
-            pAppointment = new Panel();
-            btnAppointment = new Button();
+            pBlank = new Panel();
+            pDashboard = new Panel();
+            btnDashboard = new Button();
+            pDonate = new Panel();
+            btnDonate = new Button();
             pNotification = new Panel();
             btnNotification = new Button();
             pProfile = new Panel();
@@ -51,8 +52,8 @@
             tSidebar = new System.Windows.Forms.Timer(components);
             flpSideBar.SuspendLayout();
             pMenu.SuspendLayout();
-            pHome.SuspendLayout();
-            pAppointment.SuspendLayout();
+            pDashboard.SuspendLayout();
+            pDonate.SuspendLayout();
             pNotification.SuspendLayout();
             pProfile.SuspendLayout();
             pLogout.SuspendLayout();
@@ -105,15 +106,16 @@
             // 
             flpSideBar.BackColor = Color.FromArgb(236, 124, 132);
             flpSideBar.Controls.Add(pMenu);
-            flpSideBar.Controls.Add(pHome);
-            flpSideBar.Controls.Add(pAppointment);
+            flpSideBar.Controls.Add(pBlank);
+            flpSideBar.Controls.Add(pDashboard);
+            flpSideBar.Controls.Add(pDonate);
             flpSideBar.Controls.Add(pNotification);
             flpSideBar.Controls.Add(pProfile);
             flpSideBar.Controls.Add(pLogout);
             flpSideBar.Dock = DockStyle.Left;
             flpSideBar.Location = new Point(0, 0);
             flpSideBar.MaximumSize = new Size(225, 803);
-            flpSideBar.MinimumSize = new Size(75, 803);
+            flpSideBar.MinimumSize = new Size(70, 803);
             flpSideBar.Name = "flpSideBar";
             flpSideBar.Size = new Size(225, 803);
             flpSideBar.TabIndex = 5;
@@ -123,17 +125,20 @@
             pMenu.Controls.Add(btnMenu);
             pMenu.Location = new Point(3, 3);
             pMenu.Name = "pMenu";
-            pMenu.Size = new Size(219, 50);
+            pMenu.Size = new Size(219, 60);
             pMenu.TabIndex = 0;
             // 
             // btnMenu
             // 
+            btnMenu.FlatAppearance.BorderSize = 0;
+            btnMenu.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
+            btnMenu.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
             btnMenu.FlatStyle = FlatStyle.Flat;
             btnMenu.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
             btnMenu.ForeColor = Color.FromArgb(253, 211, 211);
             btnMenu.Image = (Image)resources.GetObject("btnMenu.Image");
             btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMenu.Location = new Point(-16, -18);
+            btnMenu.Location = new Point(-16, -13);
             btnMenu.Name = "btnMenu";
             btnMenu.Padding = new Padding(20, 5, 5, 5);
             btnMenu.Size = new Size(248, 86);
@@ -143,70 +148,86 @@
             btnMenu.UseVisualStyleBackColor = true;
             btnMenu.Click += btnMenu_Click;
             // 
-            // pHome
+            // pBlank
             // 
-            pHome.Controls.Add(btnHome);
-            pHome.Location = new Point(3, 59);
-            pHome.Name = "pHome";
-            pHome.Size = new Size(219, 50);
-            pHome.TabIndex = 1;
+            pBlank.Location = new Point(3, 69);
+            pBlank.Name = "pBlank";
+            pBlank.Size = new Size(219, 88);
+            pBlank.TabIndex = 2;
             // 
-            // btnHome
+            // pDashboard
             // 
-            btnHome.FlatStyle = FlatStyle.Flat;
-            btnHome.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            btnHome.ForeColor = Color.FromArgb(253, 211, 211);
-            btnHome.Image = (Image)resources.GetObject("btnHome.Image");
-            btnHome.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHome.Location = new Point(-16, -18);
-            btnHome.Name = "btnHome";
-            btnHome.Padding = new Padding(20, 5, 5, 5);
-            btnHome.Size = new Size(248, 86);
-            btnHome.TabIndex = 8;
-            btnHome.Text = "            HOME";
-            btnHome.TextAlign = ContentAlignment.MiddleLeft;
-            btnHome.UseVisualStyleBackColor = true;
+            pDashboard.Controls.Add(btnDashboard);
+            pDashboard.Location = new Point(3, 163);
+            pDashboard.Name = "pDashboard";
+            pDashboard.Size = new Size(219, 60);
+            pDashboard.TabIndex = 1;
             // 
-            // pAppointment
+            // btnDashboard
             // 
-            pAppointment.Controls.Add(btnAppointment);
-            pAppointment.Location = new Point(3, 115);
-            pAppointment.Name = "pAppointment";
-            pAppointment.Size = new Size(219, 50);
-            pAppointment.TabIndex = 2;
+            btnDashboard.FlatAppearance.BorderSize = 0;
+            btnDashboard.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
+            btnDashboard.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
+            btnDashboard.FlatStyle = FlatStyle.Flat;
+            btnDashboard.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnDashboard.ForeColor = Color.FromArgb(253, 211, 211);
+            btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
+            btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDashboard.Location = new Point(-16, -13);
+            btnDashboard.Name = "btnDashboard";
+            btnDashboard.Padding = new Padding(20, 5, 5, 5);
+            btnDashboard.Size = new Size(248, 86);
+            btnDashboard.TabIndex = 8;
+            btnDashboard.Text = "            DASHBOARD";
+            btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
+            btnDashboard.UseVisualStyleBackColor = true;
             // 
-            // btnAppointment
+            // pDonate
             // 
-            btnAppointment.FlatStyle = FlatStyle.Flat;
-            btnAppointment.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            btnAppointment.ForeColor = Color.FromArgb(253, 211, 211);
-            btnAppointment.Image = (Image)resources.GetObject("btnAppointment.Image");
-            btnAppointment.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAppointment.Location = new Point(-16, -18);
-            btnAppointment.Name = "btnAppointment";
-            btnAppointment.Padding = new Padding(20, 5, 5, 5);
-            btnAppointment.Size = new Size(248, 86);
-            btnAppointment.TabIndex = 9;
-            btnAppointment.Text = "            APPOINTMENT";
-            btnAppointment.TextAlign = ContentAlignment.MiddleLeft;
-            btnAppointment.UseVisualStyleBackColor = true;
+            pDonate.Controls.Add(btnDonate);
+            pDonate.Location = new Point(3, 229);
+            pDonate.Name = "pDonate";
+            pDonate.Size = new Size(219, 60);
+            pDonate.TabIndex = 2;
+            // 
+            // btnDonate
+            // 
+            btnDonate.FlatAppearance.BorderSize = 0;
+            btnDonate.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
+            btnDonate.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
+            btnDonate.FlatStyle = FlatStyle.Flat;
+            btnDonate.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnDonate.ForeColor = Color.FromArgb(253, 211, 211);
+            btnDonate.Image = (Image)resources.GetObject("btnDonate.Image");
+            btnDonate.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDonate.Location = new Point(-16, -13);
+            btnDonate.Name = "btnDonate";
+            btnDonate.Padding = new Padding(20, 5, 5, 5);
+            btnDonate.Size = new Size(248, 86);
+            btnDonate.TabIndex = 9;
+            btnDonate.Text = "            DONATE";
+            btnDonate.TextAlign = ContentAlignment.MiddleLeft;
+            btnDonate.UseVisualStyleBackColor = true;
             // 
             // pNotification
             // 
             pNotification.Controls.Add(btnNotification);
-            pNotification.Location = new Point(3, 171);
+            pNotification.Location = new Point(3, 295);
             pNotification.Name = "pNotification";
-            pNotification.Size = new Size(219, 50);
+            pNotification.Size = new Size(219, 60);
             pNotification.TabIndex = 3;
             // 
             // btnNotification
             // 
+            btnNotification.FlatAppearance.BorderSize = 0;
+            btnNotification.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
+            btnNotification.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
             btnNotification.FlatStyle = FlatStyle.Flat;
             btnNotification.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
             btnNotification.ForeColor = Color.FromArgb(253, 211, 211);
             btnNotification.Image = (Image)resources.GetObject("btnNotification.Image");
             btnNotification.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNotification.Location = new Point(-16, -18);
+            btnNotification.Location = new Point(-16, -13);
             btnNotification.Name = "btnNotification";
             btnNotification.Padding = new Padding(20, 5, 5, 5);
             btnNotification.Size = new Size(248, 86);
@@ -218,19 +239,22 @@
             // pProfile
             // 
             pProfile.Controls.Add(btnProfile);
-            pProfile.Location = new Point(3, 227);
+            pProfile.Location = new Point(3, 361);
             pProfile.Name = "pProfile";
-            pProfile.Size = new Size(219, 50);
+            pProfile.Size = new Size(219, 60);
             pProfile.TabIndex = 5;
             // 
             // btnProfile
             // 
+            btnProfile.FlatAppearance.BorderSize = 0;
+            btnProfile.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
+            btnProfile.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
             btnProfile.FlatStyle = FlatStyle.Flat;
             btnProfile.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
             btnProfile.ForeColor = Color.FromArgb(253, 211, 211);
             btnProfile.Image = (Image)resources.GetObject("btnProfile.Image");
             btnProfile.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProfile.Location = new Point(-16, -18);
+            btnProfile.Location = new Point(-16, -13);
             btnProfile.Name = "btnProfile";
             btnProfile.Padding = new Padding(20, 5, 5, 5);
             btnProfile.Size = new Size(248, 86);
@@ -242,19 +266,22 @@
             // pLogout
             // 
             pLogout.Controls.Add(btnLogout);
-            pLogout.Location = new Point(3, 283);
+            pLogout.Location = new Point(3, 427);
             pLogout.Name = "pLogout";
-            pLogout.Size = new Size(219, 50);
+            pLogout.Size = new Size(219, 60);
             pLogout.TabIndex = 6;
             // 
             // btnLogout
             // 
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
+            btnLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
             btnLogout.ForeColor = Color.FromArgb(253, 211, 211);
             btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(-16, -18);
+            btnLogout.Location = new Point(-16, -13);
             btnLogout.Name = "btnLogout";
             btnLogout.Padding = new Padding(20, 5, 5, 5);
             btnLogout.Size = new Size(248, 86);
@@ -274,6 +301,7 @@
             // 
             // lblWelcome
             // 
+            lblWelcome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lblWelcome.AutoSize = true;
             lblWelcome.Font = new Font("Bahnschrift", 30F, FontStyle.Bold);
             lblWelcome.ForeColor = Color.FromArgb(244, 148, 156);
@@ -308,10 +336,11 @@
             Name = "DashboardD";
             StartPosition = FormStartPosition.CenterScreen;
             Load += DashboardD_Load;
+            Resize += DashboardD_Resize;
             flpSideBar.ResumeLayout(false);
             pMenu.ResumeLayout(false);
-            pHome.ResumeLayout(false);
-            pAppointment.ResumeLayout(false);
+            pDashboard.ResumeLayout(false);
+            pDonate.ResumeLayout(false);
             pNotification.ResumeLayout(false);
             pProfile.ResumeLayout(false);
             pLogout.ResumeLayout(false);
@@ -327,17 +356,18 @@
         private FlowLayoutPanel flpDashboard;
         private Label lblWelcome;
         private Panel pMenu;
-        private Panel pHome;
-        private Panel pAppointment;
+        private Panel pDashboard;
+        private Panel pDonate;
         private Panel pNotification;
         private Panel pProfile;
-        private Button btnHome;
-        private Button btnAppointment;
+        private Button btnDashboard;
+        private Button btnDonate;
         private Button btnNotification;
         private Button btnProfile;
         private Panel pLogout;
         private Button btnLogout;
         private Button btnMenu;
         private System.Windows.Forms.Timer tSidebar;
+        private Panel pBlank;
     }
 }

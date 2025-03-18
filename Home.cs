@@ -85,10 +85,10 @@ namespace Hemotica
                     pbxHeart.Width = normalWidth;
                     pbxHeart.Height = normalHeight;
                 }
-                else
+                else if (this.WindowState == FormWindowState.Normal)
                 {
-                    pbxHeart.Width = (int)(this.ClientSize.Width * 0.5);
-                    pbxHeart.Height = (int)(this.ClientSize.Height * 0.5);
+                    pbxHeart.Width = (int)(this.ClientSize.Width * 0.6);
+                    pbxHeart.Height = (int)(this.ClientSize.Height * 0.6);
 
                     normalWidth = pbxHeart.Width;
                     normalHeight = pbxHeart.Height;
@@ -113,7 +113,12 @@ namespace Hemotica
 
         private void Home_Resize(object sender, EventArgs e)
         {
-            centerResize();
+            if (this.WindowState != FormWindowState.Minimized)
+            {
+                pbxHeart.Visible = false;
+                centerResize();
+                pbxHeart.Visible = true;
+            }
         }
 
         private void pbxHeart_Click(object sender, EventArgs e)

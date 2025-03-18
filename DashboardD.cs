@@ -44,6 +44,7 @@ namespace Hemotica
                 this.WindowState = FormWindowState.Normal;
             else
                 this.WindowState = FormWindowState.Maximized;
+            flpSideBar.Height = this.ClientSize.Height;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -71,11 +72,33 @@ namespace Hemotica
                     tSidebar.Stop();
                 }
             }
+
+            adjustLayout();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
             tSidebar.Start();
+            adjustLayout();
+        }
+
+        private void DashboardD_Resize(object sender, EventArgs e)
+        {
+            flpSideBar.Height = this.ClientSize.Height;
+            flpSideBar.MaximumSize = new Size(flpSideBar.MaximumSize.Width, this.ClientSize.Height);
+
+            adjustLayout();
+        }
+
+        private void adjustLayout()
+        {
+            int sidebarWidth = flpSideBar.Width;
+
+            lblWelcome.Left = sidebarWidth + 10;
+            lblWelcome.Width = this.ClientSize.Width - sidebarWidth - 20;
+
+            flpDashboard.Left = sidebarWidth;
+            flpDashboard.Width = this.ClientSize.Width - sidebarWidth;
         }
     }
 }
