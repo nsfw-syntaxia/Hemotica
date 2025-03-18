@@ -47,6 +47,7 @@
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
             btnClose.Location = new Point(1226, 12);
@@ -60,6 +61,7 @@
             // btnMaximize
             // 
             btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMaximize.FlatAppearance.BorderSize = 0;
             btnMaximize.FlatStyle = FlatStyle.Flat;
             btnMaximize.Image = (Image)resources.GetObject("btnMaximize.Image");
             btnMaximize.Location = new Point(1195, 12);
@@ -73,6 +75,7 @@
             // btnMinimize
             // 
             btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.FlatAppearance.BorderSize = 0;
             btnMinimize.FlatStyle = FlatStyle.Flat;
             btnMinimize.Image = (Image)resources.GetObject("btnMinimize.Image");
             btnMinimize.ImageAlign = ContentAlignment.TopCenter;

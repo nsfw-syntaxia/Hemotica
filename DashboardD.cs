@@ -15,6 +15,7 @@ namespace Hemotica
         private void DashboardD_Load(object sender, EventArgs e)
         {
             btnSettings();
+            tSidebar.Start();
         }
 
         private void btnEffects(Button button, Color highlightColor)

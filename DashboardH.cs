@@ -47,5 +47,10 @@ namespace Hemotica
         {
             Application.Exit();
         }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

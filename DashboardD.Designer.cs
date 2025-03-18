@@ -42,8 +42,6 @@
             btnAppointment = new Button();
             pNotification = new Panel();
             btnNotification = new Button();
-            pHistory = new Panel();
-            btnHistory = new Button();
             pProfile = new Panel();
             btnProfile = new Button();
             pLogout = new Panel();
@@ -56,7 +54,6 @@
             pHome.SuspendLayout();
             pAppointment.SuspendLayout();
             pNotification.SuspendLayout();
-            pHistory.SuspendLayout();
             pProfile.SuspendLayout();
             pLogout.SuspendLayout();
             SuspendLayout();
@@ -64,6 +61,7 @@
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
             btnClose.Location = new Point(1226, 12);
@@ -77,6 +75,7 @@
             // btnMaximize
             // 
             btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMaximize.FlatAppearance.BorderSize = 0;
             btnMaximize.FlatStyle = FlatStyle.Flat;
             btnMaximize.Image = (Image)resources.GetObject("btnMaximize.Image");
             btnMaximize.Location = new Point(1195, 12);
@@ -90,6 +89,7 @@
             // btnMinimize
             // 
             btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.FlatAppearance.BorderSize = 0;
             btnMinimize.FlatStyle = FlatStyle.Flat;
             btnMinimize.Image = (Image)resources.GetObject("btnMinimize.Image");
             btnMinimize.ImageAlign = ContentAlignment.TopCenter;
@@ -108,7 +108,6 @@
             flpSideBar.Controls.Add(pHome);
             flpSideBar.Controls.Add(pAppointment);
             flpSideBar.Controls.Add(pNotification);
-            flpSideBar.Controls.Add(pHistory);
             flpSideBar.Controls.Add(pProfile);
             flpSideBar.Controls.Add(pLogout);
             flpSideBar.Dock = DockStyle.Left;
@@ -124,7 +123,7 @@
             pMenu.Controls.Add(btnMenu);
             pMenu.Location = new Point(3, 3);
             pMenu.Name = "pMenu";
-            pMenu.Size = new Size(222, 50);
+            pMenu.Size = new Size(219, 50);
             pMenu.TabIndex = 0;
             // 
             // btnMenu
@@ -149,7 +148,7 @@
             pHome.Controls.Add(btnHome);
             pHome.Location = new Point(3, 59);
             pHome.Name = "pHome";
-            pHome.Size = new Size(222, 50);
+            pHome.Size = new Size(219, 50);
             pHome.TabIndex = 1;
             // 
             // btnHome
@@ -173,7 +172,7 @@
             pAppointment.Controls.Add(btnAppointment);
             pAppointment.Location = new Point(3, 115);
             pAppointment.Name = "pAppointment";
-            pAppointment.Size = new Size(222, 50);
+            pAppointment.Size = new Size(219, 50);
             pAppointment.TabIndex = 2;
             // 
             // btnAppointment
@@ -197,7 +196,7 @@
             pNotification.Controls.Add(btnNotification);
             pNotification.Location = new Point(3, 171);
             pNotification.Name = "pNotification";
-            pNotification.Size = new Size(222, 50);
+            pNotification.Size = new Size(219, 50);
             pNotification.TabIndex = 3;
             // 
             // btnNotification
@@ -216,36 +215,12 @@
             btnNotification.TextAlign = ContentAlignment.MiddleLeft;
             btnNotification.UseVisualStyleBackColor = true;
             // 
-            // pHistory
-            // 
-            pHistory.Controls.Add(btnHistory);
-            pHistory.Location = new Point(3, 227);
-            pHistory.Name = "pHistory";
-            pHistory.Size = new Size(222, 50);
-            pHistory.TabIndex = 4;
-            // 
-            // btnHistory
-            // 
-            btnHistory.FlatStyle = FlatStyle.Flat;
-            btnHistory.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            btnHistory.ForeColor = Color.FromArgb(253, 211, 211);
-            btnHistory.Image = (Image)resources.GetObject("btnHistory.Image");
-            btnHistory.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHistory.Location = new Point(-16, -18);
-            btnHistory.Name = "btnHistory";
-            btnHistory.Padding = new Padding(20, 5, 5, 5);
-            btnHistory.Size = new Size(248, 86);
-            btnHistory.TabIndex = 11;
-            btnHistory.Text = "            RECORDS";
-            btnHistory.TextAlign = ContentAlignment.MiddleLeft;
-            btnHistory.UseVisualStyleBackColor = true;
-            // 
             // pProfile
             // 
             pProfile.Controls.Add(btnProfile);
-            pProfile.Location = new Point(3, 283);
+            pProfile.Location = new Point(3, 227);
             pProfile.Name = "pProfile";
-            pProfile.Size = new Size(222, 50);
+            pProfile.Size = new Size(219, 50);
             pProfile.TabIndex = 5;
             // 
             // btnProfile
@@ -267,9 +242,9 @@
             // pLogout
             // 
             pLogout.Controls.Add(btnLogout);
-            pLogout.Location = new Point(3, 339);
+            pLogout.Location = new Point(3, 283);
             pLogout.Name = "pLogout";
-            pLogout.Size = new Size(222, 50);
+            pLogout.Size = new Size(219, 50);
             pLogout.TabIndex = 6;
             // 
             // btnLogout
@@ -338,7 +313,6 @@
             pHome.ResumeLayout(false);
             pAppointment.ResumeLayout(false);
             pNotification.ResumeLayout(false);
-            pHistory.ResumeLayout(false);
             pProfile.ResumeLayout(false);
             pLogout.ResumeLayout(false);
             ResumeLayout(false);
@@ -356,12 +330,10 @@
         private Panel pHome;
         private Panel pAppointment;
         private Panel pNotification;
-        private Panel pHistory;
         private Panel pProfile;
         private Button btnHome;
         private Button btnAppointment;
         private Button btnNotification;
-        private Button btnHistory;
         private Button btnProfile;
         private Panel pLogout;
         private Button btnLogout;

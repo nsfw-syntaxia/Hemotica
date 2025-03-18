@@ -141,6 +141,15 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EQAACxEBf2RfkQAAAJRJREFUaEPt1kEKg0AMhWFXXr16FOc8HmAGtD3GE6VkkW5mZWL5P3g7B56OgQwD
+        AAD/oqwal6Z5aXqXJqVK1V6aprOj722uB/zBfJl8b5Pyy//m43ub7zX5A7lStfne5hG/UNXL9zbngFwv
+        kfEmeoYYAGKxC90TdqHYsAtFpWeIASAWu9A9YReKDbtQVHqGGACApzkAMmVXOb4RqKwAAAAASUVORK5C
+        YII=
+</value>
+  </data>
   <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

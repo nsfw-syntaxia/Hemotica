@@ -33,13 +33,19 @@
             btnMaximize = new Button();
             btnMinimize = new Button();
             flpSideBar = new FlowLayoutPanel();
+            pMenu = new Panel();
+            btnMenu = new Button();
+            panel1 = new Panel();
             flpDashboard = new FlowLayoutPanel();
             lblWelcome = new Label();
+            flpSideBar.SuspendLayout();
+            pMenu.SuspendLayout();
             SuspendLayout();
             // 
             // btnClose
             // 
             btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = FlatStyle.Flat;
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
             btnClose.Location = new Point(1226, 12);
@@ -53,6 +59,7 @@
             // btnMaximize
             // 
             btnMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMaximize.FlatAppearance.BorderSize = 0;
             btnMaximize.FlatStyle = FlatStyle.Flat;
             btnMaximize.Image = (Image)resources.GetObject("btnMaximize.Image");
             btnMaximize.Location = new Point(1195, 12);
@@ -66,6 +73,7 @@
             // btnMinimize
             // 
             btnMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMinimize.FlatAppearance.BorderSize = 0;
             btnMinimize.FlatStyle = FlatStyle.Flat;
             btnMinimize.Image = (Image)resources.GetObject("btnMinimize.Image");
             btnMinimize.ImageAlign = ContentAlignment.TopCenter;
@@ -79,12 +87,45 @@
             // 
             // flpSideBar
             // 
+            flpSideBar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             flpSideBar.BackColor = Color.FromArgb(64, 165, 220);
-            flpSideBar.Dock = DockStyle.Left;
+            flpSideBar.Controls.Add(pMenu);
+            flpSideBar.Controls.Add(panel1);
             flpSideBar.Location = new Point(0, 0);
             flpSideBar.Name = "flpSideBar";
             flpSideBar.Size = new Size(225, 803);
             flpSideBar.TabIndex = 5;
+            // 
+            // pMenu
+            // 
+            pMenu.Controls.Add(btnMenu);
+            pMenu.Location = new Point(3, 3);
+            pMenu.Name = "pMenu";
+            pMenu.Size = new Size(219, 50);
+            pMenu.TabIndex = 8;
+            // 
+            // btnMenu
+            // 
+            btnMenu.FlatStyle = FlatStyle.Flat;
+            btnMenu.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnMenu.ForeColor = Color.FromArgb(170, 225, 255);
+            btnMenu.Image = (Image)resources.GetObject("btnMenu.Image");
+            btnMenu.ImageAlign = ContentAlignment.MiddleLeft;
+            btnMenu.Location = new Point(-16, -18);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Padding = new Padding(20, 5, 5, 5);
+            btnMenu.Size = new Size(248, 86);
+            btnMenu.TabIndex = 16;
+            btnMenu.Text = "            MENU";
+            btnMenu.TextAlign = ContentAlignment.MiddleLeft;
+            btnMenu.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(3, 59);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(219, 50);
+            panel1.TabIndex = 9;
             // 
             // flpDashboard
             // 
@@ -124,6 +165,8 @@
             Name = "DashboardA";
             StartPosition = FormStartPosition.CenterScreen;
             Load += DashboardA_Load;
+            flpSideBar.ResumeLayout(false);
+            pMenu.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,5 +178,8 @@
         private FlowLayoutPanel flpSideBar;
         private FlowLayoutPanel flpDashboard;
         private Label lblWelcome;
+        private Panel pMenu;
+        private Panel panel1;
+        private Button btnMenu;
     }
 }
