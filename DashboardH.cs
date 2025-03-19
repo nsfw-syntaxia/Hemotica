@@ -104,16 +104,17 @@ namespace Hemotica
             flpDashboard.Width = this.ClientSize.Width - sidebarWidth - 20;
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private async void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Close();
-
             if (Application.OpenForms["Home"] is Home home)
             {
+                home.WindowState = FormWindowState.Normal;
                 home.Show();
                 home.Activate();
-                home.pbxHeart_Click(null, null);
+                await Task.Delay(1);
             }
+
+            this.Hide();
         }
     }
 }

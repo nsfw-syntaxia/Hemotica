@@ -90,55 +90,37 @@ namespace Hemotica
         {
             string username = tbxUnEA.Text;
             string password = tbxPassword.Text;
+            Form dashboard = null;
 
             if (username == "donor" && password == "donor123")
             {
-                DashboardD dashboardD = new DashboardD();
-                dashboardD.Show();
-
-                this.Opacity = 0;
-
-                if (this.Owner is Home home)
-                {
-                    home.Hide();
-                }
-
-                this.Close();
+                dashboard = new DashboardD();
             }
             else if (username == "hospital" && password == "hospital123")
             {
-                DashboardH dashboardH = new DashboardH();
-                dashboardH.Show();
-
-                this.Opacity = 0;
-
-                if (this.Owner is Home home)
-                {
-                    home.Hide();
-                }
-
-                this.Close();
+                dashboard = new DashboardH();
             }
-            /*
-            else if (username == "admin" && password == "admin123")
-            {
-                DashboardA dashboardA = new DashboardA();
-                dashboardA.Show();
-
-                this.Opacity = 0;
-
-                if (this.Owner is Home home)
-                {
-                    home.Hide();
-                }
-
-                this.Close();
-            }
-            */
             else
             {
                 MessageBox.Show("Invalid username or password.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            if (this.Owner is Home home && home.WindowState == FormWindowState.Maximized)
+            {
+                dashboard.WindowState = FormWindowState.Maximized;
+            }
+
+            dashboard.Show();
+
+            this.Opacity = 0;
+
+            if (this.Owner is Home homeInstance)
+            {
+                homeInstance.Hide();
+            }
+
+            this.Close();
         }
 
         private void cbxSPassword_CheckedChanged(object sender, EventArgs e)

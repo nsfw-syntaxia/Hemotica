@@ -167,7 +167,7 @@ namespace Hemotica
                 this.Activate();
                 tToggle.Start();
             };
-
+            
             login.ShowDialog();
         }
 

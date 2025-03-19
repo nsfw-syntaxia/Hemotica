@@ -55,18 +55,18 @@
             // btnRegister
             // 
             btnRegister.BackColor = Color.Transparent;
-            btnRegister.BaseColor = Color.FromArgb(28, 123, 174);
-            btnRegister.BorderColor = Color.FromArgb(28, 123, 174);
-            btnRegister.DisabledBaseColor = Color.FromArgb(106, 202, 255);
-            btnRegister.DisabledBorderColor = Color.FromArgb(106, 202, 255);
-            btnRegister.DisabledTextColor = Color.FromArgb(106, 202, 255);
-            btnRegister.DownColor = Color.FromArgb(64, 165, 220);
+            btnRegister.BaseColor = Color.FromArgb(216, 85, 101);
+            btnRegister.BorderColor = Color.FromArgb(216, 85, 101);
+            btnRegister.DisabledBaseColor = Color.FromArgb(244, 148, 156);
+            btnRegister.DisabledBorderColor = Color.FromArgb(244, 148, 156);
+            btnRegister.DisabledTextColor = Color.FromArgb(244, 148, 156);
+            btnRegister.DownColor = Color.FromArgb(236, 124, 132);
             btnRegister.EnabledCalc = true;
             btnRegister.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
             btnRegister.ForeColor = Color.FromArgb(241, 241, 241);
             btnRegister.Location = new Point(203, 334);
             btnRegister.Name = "btnRegister";
-            btnRegister.OverColor = Color.FromArgb(28, 123, 174);
+            btnRegister.OverColor = Color.FromArgb(216, 85, 101);
             btnRegister.Size = new Size(120, 40);
             btnRegister.TabIndex = 49;
             btnRegister.Text = "SIGN UP";
