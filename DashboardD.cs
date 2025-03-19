@@ -5,7 +5,7 @@ namespace Hemotica
 {
     public partial class DashboardD : Form
     {
-        bool sidebarExpand;
+        bool sidebarExpand = false;
 
         public DashboardD()
         {
@@ -15,7 +15,11 @@ namespace Hemotica
         private void DashboardD_Load(object sender, EventArgs e)
         {
             btnSettings();
-            tSidebar.Start();
+
+            flpSideBar.Width = flpSideBar.MinimumSize.Width;
+            sidebarExpand = false;
+
+            adjustLayout();
         }
 
         private void btnEffects(Button button, Color highlightColor)
@@ -97,8 +101,8 @@ namespace Hemotica
             lblWelcome.Left = sidebarWidth + 10;
             lblWelcome.Width = this.ClientSize.Width - sidebarWidth - 20;
 
-            flpDashboard.Left = sidebarWidth;
-            flpDashboard.Width = this.ClientSize.Width - sidebarWidth;
+            flpDashboard.Left = sidebarWidth + 10;
+            flpDashboard.Width = this.ClientSize.Width - sidebarWidth - 20;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

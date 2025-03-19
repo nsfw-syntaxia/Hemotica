@@ -153,7 +153,7 @@
   <data name="btnDashboard.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAeBJREFUaEPtl81KxDAURmdcjiCKb+BTuVfUvT6LgujedxDc6UIKldzLLAbElbjw
+        DAAACwwBP0AiyAAAAeBJREFUaEPtl81KxDAURmdcjiCKb+BTuVfUvT6LgujedxDc6UIKldzLLAbElbjw
         ERKIJDZl+k3T5mcoiDnwbdqbw71NjZ3ZrFAoFAp/GV1VCy3EUVSqaoGeydGr1Z5kfpDMUjHrmEhmZdYa
         B3onQxLdYmOxMQ70ToYk+saGYmMc6J0MSfSBDaUEvZOhiK6wmZSgNxj99rabcxporedKiAvF/CyZ3zsh
         +sJGfUHvKLqu95vTw5wEv6dBXe9jXSpaiAPFXGGjvuD6QUyjivkVJYqo1svlIdbH4vUPBB1eRuWZQ4z6
@@ -181,7 +181,7 @@
         +hMm/M/8BHO9nyIw9dJYAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnDonation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnExtraction.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAAAyhJREFUaEPtmMlrFEEYxV3wpHcRRFHjAh5cUFQURFzADUUPggiC/4R4EDdMBL14

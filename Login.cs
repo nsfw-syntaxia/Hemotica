@@ -119,6 +119,7 @@ namespace Hemotica
 
                 this.Close();
             }
+            /*
             else if (username == "admin" && password == "admin123")
             {
                 DashboardA dashboardA = new DashboardA();
@@ -133,6 +134,7 @@ namespace Hemotica
 
                 this.Close();
             }
+            */
             else
             {
                 MessageBox.Show("Invalid username or password.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);

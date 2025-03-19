@@ -41,8 +41,8 @@
             btnDashboard = new Button();
             pRecords = new Panel();
             btnRecords = new Button();
-            pDonation = new Panel();
-            btnDonation = new Button();
+            pExtraction = new Panel();
+            btnExtraction = new Button();
             pStock = new Panel();
             btnStock = new Button();
             pTransfer = new Panel();
@@ -60,7 +60,7 @@
             pMenu.SuspendLayout();
             pDashboard.SuspendLayout();
             pRecords.SuspendLayout();
-            pDonation.SuspendLayout();
+            pExtraction.SuspendLayout();
             pStock.SuspendLayout();
             pTransfer.SuspendLayout();
             pNotification.SuspendLayout();
@@ -118,7 +118,7 @@
             flpSideBar.Controls.Add(pBlank);
             flpSideBar.Controls.Add(pDashboard);
             flpSideBar.Controls.Add(pRecords);
-            flpSideBar.Controls.Add(pDonation);
+            flpSideBar.Controls.Add(pExtraction);
             flpSideBar.Controls.Add(pStock);
             flpSideBar.Controls.Add(pTransfer);
             flpSideBar.Controls.Add(pNotification);
@@ -221,32 +221,32 @@
             btnRecords.TextAlign = ContentAlignment.MiddleLeft;
             btnRecords.UseVisualStyleBackColor = true;
             // 
-            // pDonation
+            // pExtraction
             // 
-            pDonation.Controls.Add(btnDonation);
-            pDonation.Location = new Point(3, 295);
-            pDonation.Name = "pDonation";
-            pDonation.Size = new Size(219, 60);
-            pDonation.TabIndex = 11;
+            pExtraction.Controls.Add(btnExtraction);
+            pExtraction.Location = new Point(3, 295);
+            pExtraction.Name = "pExtraction";
+            pExtraction.Size = new Size(219, 60);
+            pExtraction.TabIndex = 11;
             // 
-            // btnDonation
+            // btnExtraction
             // 
-            btnDonation.FlatAppearance.BorderSize = 0;
-            btnDonation.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
-            btnDonation.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
-            btnDonation.FlatStyle = FlatStyle.Flat;
-            btnDonation.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            btnDonation.ForeColor = Color.FromArgb(253, 211, 211);
-            btnDonation.Image = (Image)resources.GetObject("btnDonation.Image");
-            btnDonation.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDonation.Location = new Point(-16, -13);
-            btnDonation.Name = "btnDonation";
-            btnDonation.Padding = new Padding(20, 5, 5, 5);
-            btnDonation.Size = new Size(248, 86);
-            btnDonation.TabIndex = 10;
-            btnDonation.Text = "            DONATION";
-            btnDonation.TextAlign = ContentAlignment.MiddleLeft;
-            btnDonation.UseVisualStyleBackColor = true;
+            btnExtraction.FlatAppearance.BorderSize = 0;
+            btnExtraction.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
+            btnExtraction.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
+            btnExtraction.FlatStyle = FlatStyle.Flat;
+            btnExtraction.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnExtraction.ForeColor = Color.FromArgb(253, 211, 211);
+            btnExtraction.Image = (Image)resources.GetObject("btnExtraction.Image");
+            btnExtraction.ImageAlign = ContentAlignment.MiddleLeft;
+            btnExtraction.Location = new Point(-16, -13);
+            btnExtraction.Name = "btnExtraction";
+            btnExtraction.Padding = new Padding(20, 5, 5, 5);
+            btnExtraction.Size = new Size(248, 86);
+            btnExtraction.TabIndex = 10;
+            btnExtraction.Text = "            EXTRACTION";
+            btnExtraction.TextAlign = ContentAlignment.MiddleLeft;
+            btnExtraction.UseVisualStyleBackColor = true;
             // 
             // pStock
             // 
@@ -387,6 +387,7 @@
             // flpDashboard
             // 
             flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flpDashboard.BackColor = Color.FromArgb(253, 211, 211);
             flpDashboard.Location = new Point(231, 91);
             flpDashboard.Name = "flpDashboard";
             flpDashboard.Size = new Size(1020, 700);
@@ -432,7 +433,7 @@
             pMenu.ResumeLayout(false);
             pDashboard.ResumeLayout(false);
             pRecords.ResumeLayout(false);
-            pDonation.ResumeLayout(false);
+            pExtraction.ResumeLayout(false);
             pStock.ResumeLayout(false);
             pTransfer.ResumeLayout(false);
             pNotification.ResumeLayout(false);
@@ -456,8 +457,8 @@
         private Button btnDashboard;
         private Panel pRecords;
         private Button btnRecords;
-        private Panel pDonation;
-        private Button btnDonation;
+        private Panel pExtraction;
+        private Button btnExtraction;
         private Panel pStock;
         private Button btnStock;
         private Panel pTransfer;
