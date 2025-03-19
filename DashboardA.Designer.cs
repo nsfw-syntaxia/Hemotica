@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardA));
             btnClose = new Button();
             btnMaximize = new Button();
@@ -46,12 +47,13 @@
             btnStock = new Button();
             pNotification = new Panel();
             btnNotification = new Button();
+            pSettings = new Panel();
+            btnSettingsA = new Button();
             pLogout = new Panel();
             btnLogout = new Button();
             flpDashboard = new FlowLayoutPanel();
             lblWelcome = new Label();
-            pSettings = new Panel();
-            btnSettingsA = new Button();
+            tSidebar = new System.Windows.Forms.Timer(components);
             flpSideBar.SuspendLayout();
             pMenu.SuspendLayout();
             pDashboard.SuspendLayout();
@@ -59,8 +61,8 @@
             pRequests.SuspendLayout();
             pStock.SuspendLayout();
             pNotification.SuspendLayout();
-            pLogout.SuspendLayout();
             pSettings.SuspendLayout();
+            pLogout.SuspendLayout();
             SuspendLayout();
             // 
             // btnClose
@@ -108,7 +110,6 @@
             // 
             // flpSideBar
             // 
-            flpSideBar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             flpSideBar.BackColor = Color.FromArgb(64, 165, 220);
             flpSideBar.Controls.Add(pMenu);
             flpSideBar.Controls.Add(pBlank);
@@ -119,7 +120,10 @@
             flpSideBar.Controls.Add(pNotification);
             flpSideBar.Controls.Add(pSettings);
             flpSideBar.Controls.Add(pLogout);
+            flpSideBar.Dock = DockStyle.Left;
             flpSideBar.Location = new Point(0, 0);
+            flpSideBar.MaximumSize = new Size(225, 803);
+            flpSideBar.MinimumSize = new Size(70, 803);
             flpSideBar.Name = "flpSideBar";
             flpSideBar.Size = new Size(225, 803);
             flpSideBar.TabIndex = 5;
@@ -150,6 +154,7 @@
             btnMenu.Text = "            MENU";
             btnMenu.TextAlign = ContentAlignment.MiddleLeft;
             btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.Click += btnMenu_Click;
             // 
             // pBlank
             // 
@@ -293,52 +298,6 @@
             btnNotification.TextAlign = ContentAlignment.MiddleLeft;
             btnNotification.UseVisualStyleBackColor = true;
             // 
-            // pLogout
-            // 
-            pLogout.Controls.Add(btnLogout);
-            pLogout.Location = new Point(3, 559);
-            pLogout.Name = "pLogout";
-            pLogout.Size = new Size(219, 60);
-            pLogout.TabIndex = 26;
-            // 
-            // btnLogout
-            // 
-            btnLogout.FlatAppearance.BorderSize = 0;
-            btnLogout.FlatAppearance.MouseDownBackColor = Color.FromArgb(14, 73, 104);
-            btnLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(21, 94, 133);
-            btnLogout.FlatStyle = FlatStyle.Flat;
-            btnLogout.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            btnLogout.ForeColor = Color.FromArgb(170, 225, 255);
-            btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
-            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(-16, -13);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Padding = new Padding(20, 5, 5, 5);
-            btnLogout.Size = new Size(248, 86);
-            btnLogout.TabIndex = 14;
-            btnLogout.Text = "            LOGOUT";
-            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
-            btnLogout.UseVisualStyleBackColor = true;
-            // 
-            // flpDashboard
-            // 
-            flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            flpDashboard.Location = new Point(231, 91);
-            flpDashboard.Name = "flpDashboard";
-            flpDashboard.Size = new Size(1020, 700);
-            flpDashboard.TabIndex = 6;
-            // 
-            // lblWelcome
-            // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.Font = new Font("Bahnschrift", 30F, FontStyle.Bold);
-            lblWelcome.ForeColor = Color.FromArgb(95, 179, 224);
-            lblWelcome.Location = new Point(231, 40);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(366, 48);
-            lblWelcome.TabIndex = 7;
-            lblWelcome.Text = "Welcome, <admin> !";
-            // 
             // pSettings
             // 
             pSettings.Controls.Add(btnSettingsA);
@@ -366,6 +325,58 @@
             btnSettingsA.TextAlign = ContentAlignment.MiddleLeft;
             btnSettingsA.UseVisualStyleBackColor = true;
             // 
+            // pLogout
+            // 
+            pLogout.Controls.Add(btnLogout);
+            pLogout.Location = new Point(3, 559);
+            pLogout.Name = "pLogout";
+            pLogout.Size = new Size(219, 60);
+            pLogout.TabIndex = 26;
+            // 
+            // btnLogout
+            // 
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatAppearance.MouseDownBackColor = Color.FromArgb(14, 73, 104);
+            btnLogout.FlatAppearance.MouseOverBackColor = Color.FromArgb(21, 94, 133);
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+            btnLogout.ForeColor = Color.FromArgb(170, 225, 255);
+            btnLogout.Image = (Image)resources.GetObject("btnLogout.Image");
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(-16, -13);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Padding = new Padding(20, 5, 5, 5);
+            btnLogout.Size = new Size(248, 86);
+            btnLogout.TabIndex = 14;
+            btnLogout.Text = "            LOGOUT";
+            btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
+            // flpDashboard
+            // 
+            flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flpDashboard.Location = new Point(231, 91);
+            flpDashboard.Name = "flpDashboard";
+            flpDashboard.Size = new Size(1020, 700);
+            flpDashboard.TabIndex = 6;
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Font = new Font("Bahnschrift", 30F, FontStyle.Bold);
+            lblWelcome.ForeColor = Color.FromArgb(95, 179, 224);
+            lblWelcome.Location = new Point(231, 40);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(366, 48);
+            lblWelcome.TabIndex = 7;
+            lblWelcome.Text = "Welcome, <admin> !";
+            // 
+            // tSidebar
+            // 
+            tSidebar.Interval = 1;
+            tSidebar.Tick += tSidebar_Tick;
+            // 
             // DashboardA
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -385,6 +396,7 @@
             Name = "DashboardA";
             StartPosition = FormStartPosition.CenterScreen;
             Load += DashboardA_Load;
+            Resize += DashboardA_Resize;
             flpSideBar.ResumeLayout(false);
             pMenu.ResumeLayout(false);
             pDashboard.ResumeLayout(false);
@@ -392,8 +404,8 @@
             pRequests.ResumeLayout(false);
             pStock.ResumeLayout(false);
             pNotification.ResumeLayout(false);
-            pLogout.ResumeLayout(false);
             pSettings.ResumeLayout(false);
+            pLogout.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -422,5 +434,6 @@
         private Button btnLogout;
         private Panel pSettings;
         private Button btnSettingsA;
+        private System.Windows.Forms.Timer tSidebar;
     }
 }

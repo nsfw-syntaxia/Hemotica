@@ -99,5 +99,17 @@ namespace Hemotica
             flpDashboard.Left = sidebarWidth;
             flpDashboard.Width = this.ClientSize.Width - sidebarWidth;
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            if (Application.OpenForms["Home"] is Home home)
+            {
+                home.Show();
+                home.Activate();
+                home.pbxHeart_Click(null, null);
+            }
+        }
     }
 }

@@ -289,6 +289,7 @@
             btnLogout.Text = "            LOGOUT";
             btnLogout.TextAlign = ContentAlignment.MiddleLeft;
             btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // flpDashboard
             // 

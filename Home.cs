@@ -121,7 +121,7 @@ namespace Hemotica
             }
         }
 
-        private void pbxHeart_Click(object sender, EventArgs e)
+        internal void pbxHeart_Click(object sender, EventArgs e)
         {
             tToggle.Stop();
 
