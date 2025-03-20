@@ -377,7 +377,7 @@
 			btnCalendar.Name = "btnCalendar";
 			btnCalendar.Size = new Size(128, 52);
 			btnCalendar.TabIndex = 2;
-			btnCalendar.Text = "CALENDAR";
+			btnCalendar.Text = "Calendar";
 			btnCalendar.Click += btnCalendar_Click;
 			// 
 			// btnList
@@ -391,7 +391,7 @@
 			btnList.Name = "btnList";
 			btnList.Size = new Size(128, 52);
 			btnList.TabIndex = 3;
-			btnList.Text = "LIST";
+			btnList.Text = "List";
 			btnList.Click += btnList_Click;
 			// 
 			// DonorD

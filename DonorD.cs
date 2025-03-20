@@ -28,7 +28,7 @@ namespace Hemotica
 
 			if (dashboard != null)
 			{
-				dashboard.showList();
+				dashboard.showAppointments();
 			}
 		}
 

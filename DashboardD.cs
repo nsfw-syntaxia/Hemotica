@@ -4,67 +4,67 @@ using System.Runtime.InteropServices;
 
 namespace Hemotica
 {
-    public partial class DashboardD : Form
-    {
-        bool sidebarExpand = false;
+	public partial class DashboardD : Form
+	{
+		bool sidebarExpand = false;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-        
-        private static extern IntPtr CreateRoundRectRgn(
-            int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
-            int nWidthEllipse, int nHeightEllipse);
+
+		private static extern IntPtr CreateRoundRectRgn(
+			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
+			int nWidthEllipse, int nHeightEllipse);
 
 		public DashboardD()
-        {
-            InitializeComponent();
-        }
+		{
+			InitializeComponent();
+		}
 
-        private void DashboardD_Load(object sender, EventArgs e)
-        {
-            btnSettings();
-            flpSideBar.Width = flpSideBar.MinimumSize.Width;
-            sidebarExpand = false;
+		private void DashboardD_Load(object sender, EventArgs e)
+		{
+			btnSettings();
+			flpSideBar.Width = flpSideBar.MinimumSize.Width;
+			sidebarExpand = false;
 
-			pWelcome.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pWelcome.Width, pWelcome.Height, 20, 20));
+			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
 			showDonorDB();
 		}
 
-        private void btnEffects(Button button, Color highlightColor)
-        {
-            button.FlatAppearance.BorderSize = 0;
+		private void btnEffects(Button button, Color highlightColor)
+		{
+			button.FlatAppearance.BorderSize = 0;
 
-            button.MouseEnter += (s, e) => button.BackColor = Color.FromArgb(50, highlightColor);
-            button.MouseLeave += (s, e) => button.BackColor = Color.Transparent;
-        }
+			button.MouseEnter += (s, e) => button.BackColor = Color.FromArgb(50, highlightColor);
+			button.MouseLeave += (s, e) => button.BackColor = Color.Transparent;
+		}
 
-        private void btnSettings()
-        {
-            btnEffects(btnClose, Color.Red);
-            btnEffects(btnMaximize, Color.Lime);
-            btnEffects(btnMinimize, Color.Yellow);
-        }
+		private void btnSettings()
+		{
+			btnEffects(btnClose, Color.Red);
+			btnEffects(btnMaximize, Color.Lime);
+			btnEffects(btnMinimize, Color.Yellow);
+		}
 
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+		private void btnMinimize_Click(object sender, EventArgs e)
+		{
+			this.WindowState = FormWindowState.Minimized;
+		}
 
-        private void btnMaximize_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-                this.WindowState = FormWindowState.Normal;
-            else
-                this.WindowState = FormWindowState.Maximized;
-            flpSideBar.Height = this.ClientSize.Height;
-        }
+		private void btnMaximize_Click(object sender, EventArgs e)
+		{
+			if (this.WindowState == FormWindowState.Maximized)
+				this.WindowState = FormWindowState.Normal;
+			else
+				this.WindowState = FormWindowState.Maximized;
+			flpSideBar.Height = this.ClientSize.Height;
+		}
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			Application.Exit();
+		}
 
-        private void tSidebar_Tick(object sender, EventArgs e)
-        {
+		private void tSidebar_Tick(object sender, EventArgs e)
+		{
 			int targetWidth = sidebarExpand ? flpSideBar.MinimumSize.Width : flpSideBar.MaximumSize.Width;
 			int step = Math.Max(10, Math.Abs(flpSideBar.Width - targetWidth) / 3);
 
@@ -83,29 +83,29 @@ namespace Hemotica
 			adjustLayout();
 		}
 
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            tSidebar.Start();
+		private void btnMenu_Click(object sender, EventArgs e)
+		{
+			tSidebar.Start();
 		}
 
-        private void DashboardD_Resize(object sender, EventArgs e)
-        {
+		private void DashboardD_Resize(object sender, EventArgs e)
+		{
 			flpSideBar.Height = this.ClientSize.Height;
 			flpSideBar.MaximumSize = new Size(flpSideBar.MaximumSize.Width, this.ClientSize.Height);
 			adjustLayout();
-        }
+		}
 
-        private void adjustLayout()
-        {
-            int sidebarWidth = flpSideBar.Width;
+		private void adjustLayout()
+		{
+			int sidebarWidth = flpSideBar.Width;
 
-            pWelcome.Left = sidebarWidth + 10;
-            pWelcome.Width = this.ClientSize.Width - sidebarWidth - 20;
+			pHeader.Left = sidebarWidth + 10;
+			pHeader.Width = this.ClientSize.Width - sidebarWidth - 20;
 
-			pWelcome.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pWelcome.Width, pWelcome.Height, 20, 20));
+			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
 
 			flpDashboard.Left = sidebarWidth + 10;
-            flpDashboard.Width = this.ClientSize.Width - sidebarWidth - 20;
+			flpDashboard.Width = this.ClientSize.Width - sidebarWidth - 20;
 
 			foreach (Control ctrl in flpDashboard.Controls)
 			{
@@ -113,55 +113,72 @@ namespace Hemotica
 			}
 		}
 
-        private async void btnLogout_Click(object sender, EventArgs e)
-        {
-            if (Application.OpenForms["Home"] is Home home)
-            {
-                home.WindowState = FormWindowState.Normal;
-                home.Show();
-                home.Activate();
-                await Task.Delay(1);
-            }
+		private async void btnLogout_Click(object sender, EventArgs e)
+		{
+			if (Application.OpenForms["Home"] is Home home)
+			{
+				home.WindowState = FormWindowState.Normal;
+				home.Show();
+				home.Activate();
+				await Task.Delay(1);
+			}
 
-            this.Hide();
-        }
+			this.Hide();
+		}
 
-        private void btnDashboard_Click(object sender, EventArgs e)
-        {
-            showDonorDB();
-        }
+		private void btnDashboard_Click(object sender, EventArgs e)
+		{
+			showDonorDB();
+		}
 
-        internal void showDonorDB()
-        {
-            flpDashboard.Controls.Clear();
-            DonorDB donorDB = new DonorDB();
+		internal void showDonorDB()
+		{
+			lblHeader.Text = "Dashboard";
+			flpDashboard.Controls.Clear();
+			DonorDB donorDB = new DonorDB();
 			flpDashboard.Controls.Add(donorDB);
-            adjustLayout();
-        }
+			adjustLayout();
+		}
 
-        private void btnDonate_Click(object sender, EventArgs e)
-        {
-            showDonorD();
-        }
+		private void btnDonate_Click(object sender, EventArgs e)
+		{
+			showDonorD();
+		}
 
-        internal void showDonorD()
-        {
-            flpDashboard.Controls.Clear();
-            DonorD donorD = new DonorD();
-            flpDashboard.Controls.Add(donorD);
-            adjustLayout();
-        }
+		internal void showDonorD()
+		{
+			lblHeader.Text = "Donate";
+			flpDashboard.Controls.Clear();
+			DonorD donorD = new DonorD();
+			flpDashboard.Controls.Add(donorD);
+			adjustLayout();
+		}
 
 		private void btnList_Click(object sender, EventArgs e)
 		{
-			showList();
+			showAppointments();
 		}
 
-		internal void showList()
+		internal void showAppointments()
 		{
+			lblHeader.Text = "Donate";
 			flpDashboard.Controls.Clear();
-			List list = new List();
-			flpDashboard.Controls.Add(list);
+			Appointments appointmentsList = new Appointments();
+			flpDashboard.Controls.Add(appointmentsList);
+			adjustLayout();
+		}
+
+		private void btnNotification_Click(object sender, EventArgs e)
+		{
+			showDonorN();
+		}
+
+		internal void showDonorN()
+		{
+			lblHeader.Text = "Notifications";
+			flpDashboard.Controls.Clear();
+			DonorN donorN = new DonorN();
+			flpDashboard.Controls.Add(donorN);
 			adjustLayout();
 		}
 	}

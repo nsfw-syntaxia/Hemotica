@@ -48,9 +48,9 @@
 			pLogout = new Panel();
 			btnLogout = new Button();
 			tSidebar = new System.Windows.Forms.Timer(components);
-			pWelcome = new Panel();
+			pHeader = new Panel();
 			btnQR = new Button();
-			lblWelcome = new Label();
+			lblHeader = new Label();
 			lblUserID = new Label();
 			flpDashboard = new FlowLayoutPanel();
 			flpSideBar.SuspendLayout();
@@ -60,7 +60,7 @@
 			pNotification.SuspendLayout();
 			pProfile.SuspendLayout();
 			pLogout.SuspendLayout();
-			pWelcome.SuspendLayout();
+			pHeader.SuspendLayout();
 			SuspendLayout();
 			// 
 			// btnClose
@@ -241,9 +241,10 @@
 			btnNotification.Padding = new Padding(20, 5, 5, 5);
 			btnNotification.Size = new Size(248, 86);
 			btnNotification.TabIndex = 10;
-			btnNotification.Text = "            NOTIFICATION";
+			btnNotification.Text = "            NOTIFICATIONS";
 			btnNotification.TextAlign = ContentAlignment.MiddleLeft;
 			btnNotification.UseVisualStyleBackColor = true;
+			btnNotification.Click += btnNotification_Click;
 			// 
 			// pProfile
 			// 
@@ -305,16 +306,16 @@
 			tSidebar.Interval = 1;
 			tSidebar.Tick += tSidebar_Tick;
 			// 
-			// pWelcome
+			// pHeader
 			// 
-			pWelcome.BackColor = Color.FromArgb(216, 85, 101);
-			pWelcome.Controls.Add(btnQR);
-			pWelcome.Controls.Add(lblWelcome);
-			pWelcome.Controls.Add(lblUserID);
-			pWelcome.Location = new Point(231, 43);
-			pWelcome.Name = "pWelcome";
-			pWelcome.Size = new Size(1020, 101);
-			pWelcome.TabIndex = 11;
+			pHeader.BackColor = Color.FromArgb(216, 85, 101);
+			pHeader.Controls.Add(btnQR);
+			pHeader.Controls.Add(lblHeader);
+			pHeader.Controls.Add(lblUserID);
+			pHeader.Location = new Point(231, 43);
+			pHeader.Name = "pHeader";
+			pHeader.Size = new Size(1020, 101);
+			pHeader.TabIndex = 11;
 			// 
 			// btnQR
 			// 
@@ -331,17 +332,17 @@
 			btnQR.TabIndex = 9;
 			btnQR.UseVisualStyleBackColor = true;
 			// 
-			// lblWelcome
+			// lblHeader
 			// 
-			lblWelcome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-			lblWelcome.AutoSize = true;
-			lblWelcome.Font = new Font("Bahnschrift", 40F, FontStyle.Bold);
-			lblWelcome.ForeColor = Color.FromArgb(252, 196, 196);
-			lblWelcome.Location = new Point(3, 0);
-			lblWelcome.Name = "lblWelcome";
-			lblWelcome.Size = new Size(288, 65);
-			lblWelcome.TabIndex = 7;
-			lblWelcome.Text = "Dashboard";
+			lblHeader.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblHeader.AutoSize = true;
+			lblHeader.Font = new Font("Bahnschrift", 40F, FontStyle.Bold);
+			lblHeader.ForeColor = Color.FromArgb(252, 196, 196);
+			lblHeader.Location = new Point(3, 0);
+			lblHeader.Name = "lblHeader";
+			lblHeader.Size = new Size(288, 65);
+			lblHeader.TabIndex = 7;
+			lblHeader.Text = "Dashboard";
 			// 
 			// lblUserID
 			// 
@@ -372,7 +373,7 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			ClientSize = new Size(1263, 803);
 			ControlBox = false;
-			Controls.Add(pWelcome);
+			Controls.Add(pHeader);
 			Controls.Add(flpDashboard);
 			Controls.Add(flpSideBar);
 			Controls.Add(btnMinimize);
@@ -393,8 +394,8 @@
 			pNotification.ResumeLayout(false);
 			pProfile.ResumeLayout(false);
 			pLogout.ResumeLayout(false);
-			pWelcome.ResumeLayout(false);
-			pWelcome.PerformLayout();
+			pHeader.ResumeLayout(false);
+			pHeader.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -417,8 +418,8 @@
         private Button btnMenu;
         private System.Windows.Forms.Timer tSidebar;
         private Panel pBlank;
-        private Panel pWelcome;
-        private Label lblWelcome;
+        private Panel pHeader;
+        private Label lblHeader;
         private FlowLayoutPanel flpDashboard;
         private Label lblUserID;
         private Button btnQR;
