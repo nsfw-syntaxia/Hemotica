@@ -55,8 +55,10 @@
 			btnLogout = new Button();
 			flpDashboard = new FlowLayoutPanel();
 			tSidebar = new System.Windows.Forms.Timer(components);
-			pWelcome = new Panel();
-			lblWelcome = new Label();
+			pHeader = new Panel();
+			btnQR = new Button();
+			lblHeader = new Label();
+			lblUserID = new Label();
 			flpSideBar.SuspendLayout();
 			pMenu.SuspendLayout();
 			pDashboard.SuspendLayout();
@@ -67,7 +69,7 @@
 			pNotification.SuspendLayout();
 			pHospital.SuspendLayout();
 			pLogout.SuspendLayout();
-			pWelcome.SuspendLayout();
+			pHeader.SuspendLayout();
 			SuspendLayout();
 			// 
 			// btnClose
@@ -198,6 +200,7 @@
 			btnDashboard.Text = "            DASHBOARD";
 			btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
 			btnDashboard.UseVisualStyleBackColor = true;
+			btnDashboard.Click += btnDashboard_Click;
 			// 
 			// pRecords
 			// 
@@ -225,6 +228,7 @@
 			btnRecords.Text = "            RECORDS";
 			btnRecords.TextAlign = ContentAlignment.MiddleLeft;
 			btnRecords.UseVisualStyleBackColor = true;
+			btnRecords.Click += btnRecords_Click;
 			// 
 			// pExtraction
 			// 
@@ -333,6 +337,7 @@
 			btnNotification.Text = "            NOTIFICATIONS";
 			btnNotification.TextAlign = ContentAlignment.MiddleLeft;
 			btnNotification.UseVisualStyleBackColor = true;
+			btnNotification.Click += btnNotification_Click;
 			// 
 			// pHospital
 			// 
@@ -393,9 +398,9 @@
 			// 
 			flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			flpDashboard.BackColor = Color.FromArgb(253, 211, 211);
-			flpDashboard.Location = new Point(231, 135);
+			flpDashboard.Location = new Point(231, 150);
 			flpDashboard.Name = "flpDashboard";
-			flpDashboard.Size = new Size(1020, 656);
+			flpDashboard.Size = new Size(1020, 641);
 			flpDashboard.TabIndex = 6;
 			// 
 			// tSidebar
@@ -403,25 +408,56 @@
 			tSidebar.Interval = 1;
 			tSidebar.Tick += tSidebar_Tick;
 			// 
-			// pWelcome
+			// pHeader
 			// 
-			pWelcome.Controls.Add(lblWelcome);
-			pWelcome.Location = new Point(231, 43);
-			pWelcome.Name = "pWelcome";
-			pWelcome.Size = new Size(1020, 86);
-			pWelcome.TabIndex = 9;
+			pHeader.BackColor = Color.FromArgb(216, 85, 101);
+			pHeader.Controls.Add(btnQR);
+			pHeader.Controls.Add(lblHeader);
+			pHeader.Controls.Add(lblUserID);
+			pHeader.Location = new Point(231, 43);
+			pHeader.Name = "pHeader";
+			pHeader.Size = new Size(1020, 101);
+			pHeader.TabIndex = 12;
 			// 
-			// lblWelcome
+			// btnQR
 			// 
-			lblWelcome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-			lblWelcome.AutoSize = true;
-			lblWelcome.Font = new Font("Bahnschrift", 35F, FontStyle.Bold);
-			lblWelcome.ForeColor = Color.FromArgb(244, 148, 156);
-			lblWelcome.Location = new Point(3, 0);
-			lblWelcome.Name = "lblWelcome";
-			lblWelcome.Size = new Size(473, 57);
-			lblWelcome.TabIndex = 7;
-			lblWelcome.Text = "Welcome, <hospital> !";
+			btnQR.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			btnQR.Cursor = Cursors.Hand;
+			btnQR.FlatAppearance.BorderSize = 0;
+			btnQR.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnQR.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
+			btnQR.FlatStyle = FlatStyle.Flat;
+			btnQR.Image = (Image)resources.GetObject("btnQR.Image");
+			btnQR.Location = new Point(1784, 46);
+			btnQR.Name = "btnQR";
+			btnQR.Size = new Size(50, 50);
+			btnQR.TabIndex = 9;
+			btnQR.UseVisualStyleBackColor = true;
+			// 
+			// lblHeader
+			// 
+			lblHeader.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblHeader.AutoSize = true;
+			lblHeader.Font = new Font("Bahnschrift", 40F, FontStyle.Bold);
+			lblHeader.ForeColor = Color.FromArgb(252, 196, 196);
+			lblHeader.Location = new Point(3, 0);
+			lblHeader.Name = "lblHeader";
+			lblHeader.Size = new Size(288, 65);
+			lblHeader.TabIndex = 7;
+			lblHeader.Text = "Dashboard";
+			// 
+			// lblUserID
+			// 
+			lblUserID.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblUserID.AutoSize = true;
+			lblUserID.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblUserID.ForeColor = Color.FromArgb(244, 180, 180);
+			lblUserID.Location = new Point(6, 62);
+			lblUserID.Name = "lblUserID";
+			lblUserID.Padding = new Padding(5, 0, 0, 0);
+			lblUserID.Size = new Size(266, 33);
+			lblUserID.TabIndex = 8;
+			lblUserID.Text = "User ID: <username>";
 			// 
 			// DashboardH
 			// 
@@ -430,7 +466,7 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			ClientSize = new Size(1263, 803);
 			ControlBox = false;
-			Controls.Add(pWelcome);
+			Controls.Add(pHeader);
 			Controls.Add(flpDashboard);
 			Controls.Add(flpSideBar);
 			Controls.Add(btnMinimize);
@@ -453,8 +489,8 @@
 			pNotification.ResumeLayout(false);
 			pHospital.ResumeLayout(false);
 			pLogout.ResumeLayout(false);
-			pWelcome.ResumeLayout(false);
-			pWelcome.PerformLayout();
+			pHeader.ResumeLayout(false);
+			pHeader.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -464,7 +500,6 @@
         private Button btnMinimize;
         private FlowLayoutPanel flpSideBar;
         private FlowLayoutPanel flpDashboard;
-        private Label lblWelcome;
         private Panel pMenu;
         private Button btnMenu;
         private Panel pBlank;
@@ -485,6 +520,9 @@
         private Button btnProfile;
         private Button btnLogout;
         private System.Windows.Forms.Timer tSidebar;
-        private Panel pWelcome;
-    }
+		private Panel pHeader;
+		private Button btnQR;
+		private Label lblHeader;
+		private Label lblUserID;
+	}
 }

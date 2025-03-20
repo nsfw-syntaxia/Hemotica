@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-	partial class DonorN
+	partial class HospitalN
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -28,9 +28,21 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			tblpList = new TableLayoutPanel();
 			btnRead = new AntdUI.Button();
+			tblpList = new TableLayoutPanel();
 			SuspendLayout();
+			// 
+			// btnRead
+			// 
+			btnRead.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+			btnRead.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnRead.Font = new Font("Bahnschrift", 14F);
+			btnRead.ForeColor = Color.FromArgb(252, 228, 228);
+			btnRead.Location = new Point(818, 4);
+			btnRead.Name = "btnRead";
+			btnRead.Size = new Size(196, 52);
+			btnRead.TabIndex = 18;
+			btnRead.Text = "Mark All as Read";
 			// 
 			// tblpList
 			// 
@@ -55,34 +67,23 @@
 			tblpList.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
 			tblpList.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
 			tblpList.Size = new Size(1014, 577);
-			tblpList.TabIndex = 14;
+			tblpList.TabIndex = 17;
 			// 
-			// btnRead
-			// 
-			btnRead.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-			btnRead.DefaultBack = Color.FromArgb(236, 124, 132);
-			btnRead.Font = new Font("Bahnschrift", 14F);
-			btnRead.ForeColor = Color.FromArgb(252, 228, 228);
-			btnRead.Location = new Point(818, 4);
-			btnRead.Name = "btnRead";
-			btnRead.Size = new Size(196, 52);
-			btnRead.TabIndex = 16;
-			btnRead.Text = "Mark All as Read";
-			// 
-			// DonorN
+			// HospitalN
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
 			Controls.Add(btnRead);
 			Controls.Add(tblpList);
-			Name = "DonorN";
+			Name = "HospitalN";
 			Size = new Size(1020, 641);
 			ResumeLayout(false);
 		}
 
 		#endregion
-		private TableLayoutPanel tblpList;
+
 		private AntdUI.Button btnRead;
+		private TableLayoutPanel tblpList;
 	}
 }

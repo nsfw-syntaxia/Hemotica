@@ -154,11 +154,6 @@ namespace Hemotica
 			adjustLayout();
 		}
 
-		private void btnList_Click(object sender, EventArgs e)
-		{
-			showAppointments();
-		}
-
 		internal void showAppointments()
 		{
 			lblHeader.Text = "Donate";
