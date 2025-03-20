@@ -256,6 +256,7 @@
 			btnExtraction.Text = "            EXTRACTION";
 			btnExtraction.TextAlign = ContentAlignment.MiddleLeft;
 			btnExtraction.UseVisualStyleBackColor = true;
+			btnExtraction.Click += btnExtraction_Click;
 			// 
 			// pStock
 			// 
@@ -283,6 +284,7 @@
 			btnStock.Text = "            BLOOD STOCK";
 			btnStock.TextAlign = ContentAlignment.MiddleLeft;
 			btnStock.UseVisualStyleBackColor = true;
+			btnStock.Click += btnStock_Click;
 			// 
 			// pTransfer
 			// 
