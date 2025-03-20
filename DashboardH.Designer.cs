@@ -54,8 +54,9 @@
             pLogout = new Panel();
             btnLogout = new Button();
             flpDashboard = new FlowLayoutPanel();
-            lblWelcome = new Label();
             tSidebar = new System.Windows.Forms.Timer(components);
+            pWelcome = new Panel();
+            lblWelcome = new Label();
             flpSideBar.SuspendLayout();
             pMenu.SuspendLayout();
             pDashboard.SuspendLayout();
@@ -66,6 +67,7 @@
             pNotification.SuspendLayout();
             pHospital.SuspendLayout();
             pLogout.SuspendLayout();
+            pWelcome.SuspendLayout();
             SuspendLayout();
             // 
             // btnClose
@@ -391,26 +393,35 @@
             // 
             flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flpDashboard.BackColor = Color.FromArgb(253, 211, 211);
-            flpDashboard.Location = new Point(231, 91);
+            flpDashboard.Location = new Point(231, 135);
             flpDashboard.Name = "flpDashboard";
-            flpDashboard.Size = new Size(1020, 700);
+            flpDashboard.Size = new Size(1020, 656);
             flpDashboard.TabIndex = 6;
-            // 
-            // lblWelcome
-            // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.Font = new Font("Bahnschrift", 30F, FontStyle.Bold);
-            lblWelcome.ForeColor = Color.FromArgb(244, 148, 156);
-            lblWelcome.Location = new Point(231, 40);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(400, 48);
-            lblWelcome.TabIndex = 7;
-            lblWelcome.Text = "Welcome, <hospital> !";
             // 
             // tSidebar
             // 
             tSidebar.Interval = 1;
             tSidebar.Tick += tSidebar_Tick;
+            // 
+            // pWelcome
+            // 
+            pWelcome.Controls.Add(lblWelcome);
+            pWelcome.Location = new Point(231, 43);
+            pWelcome.Name = "pWelcome";
+            pWelcome.Size = new Size(1020, 86);
+            pWelcome.TabIndex = 9;
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblWelcome.AutoSize = true;
+            lblWelcome.Font = new Font("Bahnschrift", 35F, FontStyle.Bold);
+            lblWelcome.ForeColor = Color.FromArgb(244, 148, 156);
+            lblWelcome.Location = new Point(3, 0);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(473, 57);
+            lblWelcome.TabIndex = 7;
+            lblWelcome.Text = "Welcome, <hospital> !";
             // 
             // DashboardH
             // 
@@ -419,7 +430,7 @@
             BackColor = Color.FromArgb(253, 211, 211);
             ClientSize = new Size(1263, 803);
             ControlBox = false;
-            Controls.Add(lblWelcome);
+            Controls.Add(pWelcome);
             Controls.Add(flpDashboard);
             Controls.Add(flpSideBar);
             Controls.Add(btnMinimize);
@@ -442,8 +453,9 @@
             pNotification.ResumeLayout(false);
             pHospital.ResumeLayout(false);
             pLogout.ResumeLayout(false);
+            pWelcome.ResumeLayout(false);
+            pWelcome.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -473,5 +485,6 @@
         private Button btnProfile;
         private Button btnLogout;
         private System.Windows.Forms.Timer tSidebar;
+        private Panel pWelcome;
     }
 }

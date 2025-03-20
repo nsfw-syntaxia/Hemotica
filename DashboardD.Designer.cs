@@ -47,9 +47,12 @@
             btnProfile = new Button();
             pLogout = new Panel();
             btnLogout = new Button();
-            flpDashboard = new FlowLayoutPanel();
-            lblWelcome = new Label();
             tSidebar = new System.Windows.Forms.Timer(components);
+            pWelcome = new Panel();
+            btnQR = new Button();
+            lblWelcome = new Label();
+            lblID = new Label();
+            flpDashboard = new FlowLayoutPanel();
             flpSideBar.SuspendLayout();
             pMenu.SuspendLayout();
             pDashboard.SuspendLayout();
@@ -57,6 +60,7 @@
             pNotification.SuspendLayout();
             pProfile.SuspendLayout();
             pLogout.SuspendLayout();
+            pWelcome.SuspendLayout();
             SuspendLayout();
             // 
             // btnClose
@@ -184,6 +188,7 @@
             btnDashboard.Text = "            DASHBOARD";
             btnDashboard.TextAlign = ContentAlignment.MiddleLeft;
             btnDashboard.UseVisualStyleBackColor = true;
+            btnDashboard.Click += btnDashboard_Click;
             // 
             // pDonate
             // 
@@ -211,6 +216,7 @@
             btnDonate.Text = "            DONATE";
             btnDonate.TextAlign = ContentAlignment.MiddleLeft;
             btnDonate.UseVisualStyleBackColor = true;
+            btnDonate.Click += btnDonate_Click;
             // 
             // pNotification
             // 
@@ -294,31 +300,66 @@
             btnLogout.UseVisualStyleBackColor = true;
             btnLogout.Click += btnLogout_Click;
             // 
-            // flpDashboard
-            // 
-            flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            flpDashboard.BackColor = Color.FromArgb(253, 211, 211);
-            flpDashboard.Location = new Point(231, 91);
-            flpDashboard.Name = "flpDashboard";
-            flpDashboard.Size = new Size(1020, 700);
-            flpDashboard.TabIndex = 6;
-            // 
-            // lblWelcome
-            // 
-            lblWelcome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            lblWelcome.AutoSize = true;
-            lblWelcome.Font = new Font("Bahnschrift", 30F, FontStyle.Bold);
-            lblWelcome.ForeColor = Color.FromArgb(244, 148, 156);
-            lblWelcome.Location = new Point(231, 40);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(362, 48);
-            lblWelcome.TabIndex = 7;
-            lblWelcome.Text = "Welcome, <donor> !";
-            // 
             // tSidebar
             // 
             tSidebar.Interval = 1;
             tSidebar.Tick += tSidebar_Tick;
+            // 
+            // pWelcome
+            // 
+            pWelcome.Controls.Add(btnQR);
+            pWelcome.Controls.Add(lblWelcome);
+            pWelcome.Controls.Add(lblID);
+            pWelcome.Location = new Point(231, 43);
+            pWelcome.Name = "pWelcome";
+            pWelcome.Size = new Size(1020, 101);
+            pWelcome.TabIndex = 11;
+            // 
+            // btnQR
+            // 
+            btnQR.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnQR.FlatAppearance.BorderSize = 0;
+            btnQR.FlatStyle = FlatStyle.Flat;
+            btnQR.Image = (Image)resources.GetObject("btnQR.Image");
+            btnQR.Location = new Point(952, 33);
+            btnQR.Name = "btnQR";
+            btnQR.Size = new Size(65, 65);
+            btnQR.TabIndex = 9;
+            btnQR.UseVisualStyleBackColor = true;
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblWelcome.AutoSize = true;
+            lblWelcome.Font = new Font("Bahnschrift", 40F, FontStyle.Bold);
+            lblWelcome.ForeColor = Color.FromArgb(244, 148, 156);
+            lblWelcome.Location = new Point(3, 0);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(489, 65);
+            lblWelcome.TabIndex = 7;
+            lblWelcome.Text = "Welcome, <donor> !";
+            // 
+            // lblID
+            // 
+            lblID.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblID.AutoSize = true;
+            lblID.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+            lblID.ForeColor = Color.FromArgb(244, 148, 156);
+            lblID.Location = new Point(3, 65);
+            lblID.Name = "lblID";
+            lblID.Padding = new Padding(5, 0, 0, 0);
+            lblID.Size = new Size(266, 33);
+            lblID.TabIndex = 8;
+            lblID.Text = "User ID: <username>";
+            // 
+            // flpDashboard
+            // 
+            flpDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flpDashboard.BackColor = Color.FromArgb(253, 211, 211);
+            flpDashboard.Location = new Point(231, 150);
+            flpDashboard.Name = "flpDashboard";
+            flpDashboard.Size = new Size(1020, 641);
+            flpDashboard.TabIndex = 10;
             // 
             // DashboardD
             // 
@@ -327,7 +368,7 @@
             BackColor = Color.FromArgb(253, 211, 211);
             ClientSize = new Size(1263, 803);
             ControlBox = false;
-            Controls.Add(lblWelcome);
+            Controls.Add(pWelcome);
             Controls.Add(flpDashboard);
             Controls.Add(flpSideBar);
             Controls.Add(btnMinimize);
@@ -348,8 +389,9 @@
             pNotification.ResumeLayout(false);
             pProfile.ResumeLayout(false);
             pLogout.ResumeLayout(false);
+            pWelcome.ResumeLayout(false);
+            pWelcome.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -357,8 +399,6 @@
         private Button btnMaximize;
         private Button btnMinimize;
         private FlowLayoutPanel flpSideBar;
-        private FlowLayoutPanel flpDashboard;
-        private Label lblWelcome;
         private Panel pMenu;
         private Panel pDashboard;
         private Panel pDonate;
@@ -373,5 +413,10 @@
         private Button btnMenu;
         private System.Windows.Forms.Timer tSidebar;
         private Panel pBlank;
+        private Panel pWelcome;
+        private Label lblWelcome;
+        private FlowLayoutPanel flpDashboard;
+        private Label lblID;
+        private Button btnQR;
     }
 }

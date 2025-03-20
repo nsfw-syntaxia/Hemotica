@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AntdUI" Version="1.9.5" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.1" />
   </ItemGroup>
 

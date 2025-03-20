@@ -97,8 +97,8 @@ namespace Hemotica
         {
             int sidebarWidth = flpSideBar.Width;
 
-            lblWelcome.Left = sidebarWidth + 10;
-            lblWelcome.Width = this.ClientSize.Width - sidebarWidth - 20;
+            pWelcome.Left = sidebarWidth + 10;
+            pWelcome.Width = this.ClientSize.Width - sidebarWidth - 20;
 
             flpDashboard.Left = sidebarWidth + 10;
             flpDashboard.Width = this.ClientSize.Width - sidebarWidth - 20;
