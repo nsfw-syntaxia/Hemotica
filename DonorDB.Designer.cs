@@ -20,391 +20,423 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+		#region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonorDB));
-            tblpDashboard = new TableLayoutPanel();
-            pDonation = new Panel();
-            pHospital = new Panel();
-            tblpHospitals = new TableLayoutPanel();
-            pHospital1 = new Panel();
-            btnView1 = new AntdUI.Button();
-            pbxHospital1 = new PictureBox();
-            lblHospital1 = new Label();
-            pHospital2 = new Panel();
-            lblHospitals = new Label();
-            pHistory = new Panel();
-            pbxChart = new PictureBox();
-            tblpHistory = new TableLayoutPanel();
-            pDH3 = new Panel();
-            lblH3 = new Label();
-            btnDH3 = new AntdUI.Button();
-            pDH1 = new Panel();
-            lblH1 = new Label();
-            btnDH1 = new AntdUI.Button();
-            pDH2 = new Panel();
-            lblH2 = new Label();
-            btnDH2 = new AntdUI.Button();
-            lblHistory = new Label();
-            tblpDashboard.SuspendLayout();
-            pHospital.SuspendLayout();
-            tblpHospitals.SuspendLayout();
-            pHospital1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxHospital1).BeginInit();
-            pHistory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxChart).BeginInit();
-            tblpHistory.SuspendLayout();
-            pDH3.SuspendLayout();
-            pDH1.SuspendLayout();
-            pDH2.SuspendLayout();
-            SuspendLayout();
-            // 
-            // tblpDashboard
-            // 
-            tblpDashboard.ColumnCount = 3;
-            tblpDashboard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tblpDashboard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tblpDashboard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tblpDashboard.Controls.Add(pDonation, 0, 0);
-            tblpDashboard.Controls.Add(pHospital, 2, 0);
-            tblpDashboard.Controls.Add(pHistory, 2, 0);
-            tblpDashboard.Dock = DockStyle.Fill;
-            tblpDashboard.Location = new Point(0, 0);
-            tblpDashboard.Name = "tblpDashboard";
-            tblpDashboard.Padding = new Padding(1);
-            tblpDashboard.RowCount = 3;
-            tblpDashboard.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tblpDashboard.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tblpDashboard.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tblpDashboard.Size = new Size(1020, 641);
-            tblpDashboard.TabIndex = 0;
-            // 
-            // pDonation
-            // 
-            pDonation.BackColor = Color.FromArgb(252, 228, 228);
-            tblpDashboard.SetColumnSpan(pDonation, 2);
-            pDonation.Dock = DockStyle.Fill;
-            pDonation.Location = new Point(4, 4);
-            pDonation.Name = "pDonation";
-            tblpDashboard.SetRowSpan(pDonation, 2);
-            pDonation.Size = new Size(672, 420);
-            pDonation.TabIndex = 0;
-            // 
-            // pHospital
-            // 
-            pHospital.BackColor = Color.FromArgb(252, 228, 228);
-            tblpDashboard.SetColumnSpan(pHospital, 2);
-            pHospital.Controls.Add(tblpHospitals);
-            pHospital.Controls.Add(lblHospitals);
-            pHospital.Dock = DockStyle.Fill;
-            pHospital.Location = new Point(4, 430);
-            pHospital.Name = "pHospital";
-            pHospital.Size = new Size(672, 207);
-            pHospital.TabIndex = 1;
-            // 
-            // tblpHospitals
-            // 
-            tblpHospitals.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tblpHospitals.ColumnCount = 2;
-            tblpHospitals.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblpHospitals.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblpHospitals.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblpHospitals.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblpHospitals.Controls.Add(pHospital1, 0, 0);
-            tblpHospitals.Controls.Add(pHospital2, 1, 0);
-            tblpHospitals.Location = new Point(3, 46);
-            tblpHospitals.Name = "tblpHospitals";
-            tblpHospitals.RowCount = 1;
-            tblpHospitals.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblpHospitals.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tblpHospitals.Size = new Size(666, 158);
-            tblpHospitals.TabIndex = 10;
-            // 
-            // pHospital1
-            // 
-            pHospital1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            pHospital1.Controls.Add(btnView1);
-            pHospital1.Controls.Add(pbxHospital1);
-            pHospital1.Controls.Add(lblHospital1);
-            pHospital1.Location = new Point(3, 3);
-            pHospital1.Name = "pHospital1";
-            pHospital1.Size = new Size(327, 152);
-            pHospital1.TabIndex = 0;
-            // 
-            // btnView1
-            // 
-            btnView1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnView1.DefaultBack = Color.FromArgb(244, 148, 156);
-            btnView1.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
-            btnView1.ForeColor = Color.FromArgb(252, 228, 228);
-            btnView1.Location = new Point(32, 75);
-            btnView1.Name = "btnView1";
-            btnView1.Size = new Size(114, 45);
-            btnView1.TabIndex = 13;
-            btnView1.Text = "View Details";
-            // 
-            // pbxHospital1
-            // 
-            pbxHospital1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            pbxHospital1.BackColor = Color.FromArgb(244, 148, 156);
-            pbxHospital1.Image = (Image)resources.GetObject("pbxHospital1.Image");
-            pbxHospital1.Location = new Point(181, 0);
-            pbxHospital1.Name = "pbxHospital1";
-            pbxHospital1.Size = new Size(146, 152);
-            pbxHospital1.TabIndex = 1;
-            pbxHospital1.TabStop = false;
-            // 
-            // lblHospital1
-            // 
-            lblHospital1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblHospital1.AutoSize = true;
-            lblHospital1.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            lblHospital1.ForeColor = Color.FromArgb(244, 148, 156);
-            lblHospital1.Location = new Point(32, 38);
-            lblHospital1.Name = "lblHospital1";
-            lblHospital1.Padding = new Padding(5, 5, 0, 5);
-            lblHospital1.Size = new Size(114, 34);
-            lblHospital1.TabIndex = 11;
-            lblHospital1.Text = "Hospital #1";
-            // 
-            // pHospital2
-            // 
-            pHospital2.Dock = DockStyle.Fill;
-            pHospital2.Location = new Point(336, 3);
-            pHospital2.Name = "pHospital2";
-            pHospital2.Size = new Size(327, 152);
-            pHospital2.TabIndex = 1;
-            // 
-            // lblHospitals
-            // 
-            lblHospitals.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            lblHospitals.AutoSize = true;
-            lblHospitals.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-            lblHospitals.ForeColor = Color.FromArgb(244, 148, 156);
-            lblHospitals.Location = new Point(3, 0);
-            lblHospitals.Name = "lblHospitals";
-            lblHospitals.Padding = new Padding(5, 5, 0, 5);
-            lblHospitals.Size = new Size(319, 43);
-            lblHospitals.TabIndex = 9;
-            lblHospitals.Text = "Recommended Hospitals";
-            // 
-            // pHistory
-            // 
-            pHistory.BackColor = Color.FromArgb(252, 228, 228);
-            pHistory.Controls.Add(pbxChart);
-            pHistory.Controls.Add(tblpHistory);
-            pHistory.Controls.Add(lblHistory);
-            pHistory.Dock = DockStyle.Fill;
-            pHistory.Location = new Point(682, 4);
-            pHistory.Name = "pHistory";
-            tblpDashboard.SetRowSpan(pHistory, 3);
-            pHistory.Size = new Size(334, 633);
-            pHistory.TabIndex = 2;
-            // 
-            // pbxChart
-            // 
-            pbxChart.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            pbxChart.Image = (Image)resources.GetObject("pbxChart.Image");
-            pbxChart.Location = new Point(3, 426);
-            pbxChart.Name = "pbxChart";
-            pbxChart.Size = new Size(328, 204);
-            pbxChart.TabIndex = 12;
-            pbxChart.TabStop = false;
-            // 
-            // tblpHistory
-            // 
-            tblpHistory.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tblpHistory.ColumnCount = 1;
-            tblpHistory.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tblpHistory.Controls.Add(pDH3, 0, 2);
-            tblpHistory.Controls.Add(pDH1, 0, 0);
-            tblpHistory.Controls.Add(pDH2, 0, 1);
-            tblpHistory.Location = new Point(3, 46);
-            tblpHistory.Name = "tblpHistory";
-            tblpHistory.RowCount = 4;
-            tblpHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblpHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblpHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblpHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tblpHistory.Size = new Size(328, 374);
-            tblpHistory.TabIndex = 11;
-            // 
-            // pDH3
-            // 
-            pDH3.Controls.Add(lblH3);
-            pDH3.Controls.Add(btnDH3);
-            pDH3.Dock = DockStyle.Fill;
-            pDH3.Location = new Point(3, 189);
-            pDH3.Name = "pDH3";
-            pDH3.Size = new Size(322, 87);
-            pDH3.TabIndex = 1;
-            // 
-            // lblH3
-            // 
-            lblH3.Anchor = AnchorStyles.Right;
-            lblH3.AutoSize = true;
-            lblH3.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            lblH3.ForeColor = Color.FromArgb(244, 148, 156);
-            lblH3.Location = new Point(157, 28);
-            lblH3.Name = "lblH3";
-            lblH3.Padding = new Padding(5, 5, 0, 5);
-            lblH3.Size = new Size(141, 34);
-            lblH3.TabIndex = 19;
-            lblH3.Text = "@ Hospital #3";
-            // 
-            // btnDH3
-            // 
-            btnDH3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnDH3.DefaultBack = Color.FromArgb(244, 148, 156);
-            btnDH3.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
-            btnDH3.ForeColor = Color.FromArgb(252, 228, 228);
-            btnDH3.Location = new Point(0, 0);
-            btnDH3.Name = "btnDH3";
-            btnDH3.Size = new Size(136, 87);
-            btnDH3.TabIndex = 19;
-            btnDH3.Text = "14 AUG 2024";
-            // 
-            // pDH1
-            // 
-            pDH1.Controls.Add(lblH1);
-            pDH1.Controls.Add(btnDH1);
-            pDH1.Dock = DockStyle.Fill;
-            pDH1.Location = new Point(3, 3);
-            pDH1.Name = "pDH1";
-            pDH1.Size = new Size(322, 87);
-            pDH1.TabIndex = 0;
-            // 
-            // lblH1
-            // 
-            lblH1.Anchor = AnchorStyles.Right;
-            lblH1.AutoSize = true;
-            lblH1.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            lblH1.ForeColor = Color.FromArgb(244, 148, 156);
-            lblH1.Location = new Point(157, 25);
-            lblH1.Name = "lblH1";
-            lblH1.Padding = new Padding(5, 5, 0, 5);
-            lblH1.Size = new Size(137, 34);
-            lblH1.TabIndex = 19;
-            lblH1.Text = "@ Hospital #1";
-            // 
-            // btnDH1
-            // 
-            btnDH1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnDH1.DefaultBack = Color.FromArgb(244, 148, 156);
-            btnDH1.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
-            btnDH1.ForeColor = Color.FromArgb(252, 228, 228);
-            btnDH1.Location = new Point(0, 0);
-            btnDH1.Name = "btnDH1";
-            btnDH1.Size = new Size(136, 87);
-            btnDH1.TabIndex = 17;
-            btnDH1.Text = "28 FEB 2025";
-            // 
-            // pDH2
-            // 
-            pDH2.Controls.Add(lblH2);
-            pDH2.Controls.Add(btnDH2);
-            pDH2.Dock = DockStyle.Fill;
-            pDH2.Location = new Point(3, 96);
-            pDH2.Name = "pDH2";
-            pDH2.Size = new Size(322, 87);
-            pDH2.TabIndex = 1;
-            // 
-            // lblH2
-            // 
-            lblH2.Anchor = AnchorStyles.Right;
-            lblH2.AutoSize = true;
-            lblH2.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-            lblH2.ForeColor = Color.FromArgb(244, 148, 156);
-            lblH2.Location = new Point(157, 26);
-            lblH2.Name = "lblH2";
-            lblH2.Padding = new Padding(5, 5, 0, 5);
-            lblH2.Size = new Size(140, 34);
-            lblH2.TabIndex = 17;
-            lblH2.Text = "@ Hospital #2";
-            // 
-            // btnDH2
-            // 
-            btnDH2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnDH2.DefaultBack = Color.FromArgb(244, 148, 156);
-            btnDH2.Font = new Font("Bahnschrift", 12F, FontStyle.Bold);
-            btnDH2.ForeColor = Color.FromArgb(252, 228, 228);
-            btnDH2.Location = new Point(0, 0);
-            btnDH2.Name = "btnDH2";
-            btnDH2.Size = new Size(136, 87);
-            btnDH2.TabIndex = 18;
-            btnDH2.Text = "3 NOV 2024";
-            // 
-            // lblHistory
-            // 
-            lblHistory.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            lblHistory.AutoSize = true;
-            lblHistory.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-            lblHistory.ForeColor = Color.FromArgb(244, 148, 156);
-            lblHistory.Location = new Point(3, 0);
-            lblHistory.Name = "lblHistory";
-            lblHistory.Padding = new Padding(5, 5, 0, 5);
-            lblHistory.Size = new Size(223, 43);
-            lblHistory.TabIndex = 10;
-            lblHistory.Text = "Donation History";
-            // 
-            // DonorDB
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(253, 211, 211);
-            Controls.Add(tblpDashboard);
-            Name = "DonorDB";
-            Size = new Size(1020, 641);
-            tblpDashboard.ResumeLayout(false);
-            pHospital.ResumeLayout(false);
-            pHospital.PerformLayout();
-            tblpHospitals.ResumeLayout(false);
-            pHospital1.ResumeLayout(false);
-            pHospital1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxHospital1).EndInit();
-            pHistory.ResumeLayout(false);
-            pHistory.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbxChart).EndInit();
-            tblpHistory.ResumeLayout(false);
-            pDH3.ResumeLayout(false);
-            pDH3.PerformLayout();
-            pDH1.ResumeLayout(false);
-            pDH1.PerformLayout();
-            pDH2.ResumeLayout(false);
-            pDH2.PerformLayout();
-            ResumeLayout(false);
-        }
+		/// <summary> 
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonorDB));
+			tblpDashboard = new TableLayoutPanel();
+			pDonation = new Panel();
+			pbxDonation = new PictureBox();
+			pCharts = new Panel();
+			pbxCharts = new PictureBox();
+			pHistory = new Panel();
+			tblpDonationHistory = new TableLayoutPanel();
+			btnYear1 = new AntdUI.Button();
+			btnDH1 = new AntdUI.Button();
+			btnYear2 = new AntdUI.Button();
+			btnDH2 = new AntdUI.Button();
+			lblDH1 = new Label();
+			lblDH2 = new Label();
+			lblDonationHistory = new Label();
+			pHospitals = new Panel();
+			tblpHospitals = new TableLayoutPanel();
+			pH1 = new Panel();
+			btnDonate = new AntdUI.Button();
+			lblH1 = new Label();
+			pbxH1 = new PictureBox();
+			pNext = new Panel();
+			btnSeeMore = new AntdUI.Button();
+			lblHospitals = new Label();
+			tblpDashboard.SuspendLayout();
+			pDonation.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxDonation).BeginInit();
+			pCharts.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxCharts).BeginInit();
+			pHistory.SuspendLayout();
+			tblpDonationHistory.SuspendLayout();
+			pHospitals.SuspendLayout();
+			tblpHospitals.SuspendLayout();
+			pH1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxH1).BeginInit();
+			pNext.SuspendLayout();
+			SuspendLayout();
+			// 
+			// tblpDashboard
+			// 
+			tblpDashboard.ColumnCount = 5;
+			tblpDashboard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+			tblpDashboard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+			tblpDashboard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+			tblpDashboard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+			tblpDashboard.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+			tblpDashboard.Controls.Add(pDonation, 0, 0);
+			tblpDashboard.Controls.Add(pCharts, 3, 0);
+			tblpDashboard.Controls.Add(pHistory, 3, 2);
+			tblpDashboard.Controls.Add(pHospitals, 0, 3);
+			tblpDashboard.Dock = DockStyle.Fill;
+			tblpDashboard.Location = new Point(0, 0);
+			tblpDashboard.Name = "tblpDashboard";
+			tblpDashboard.Padding = new Padding(5);
+			tblpDashboard.RowCount = 5;
+			tblpDashboard.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tblpDashboard.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tblpDashboard.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tblpDashboard.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tblpDashboard.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tblpDashboard.Size = new Size(1020, 641);
+			tblpDashboard.TabIndex = 0;
+			// 
+			// pDonation
+			// 
+			pDonation.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pDonation.BackColor = Color.FromArgb(216, 85, 101);
+			tblpDashboard.SetColumnSpan(pDonation, 3);
+			pDonation.Controls.Add(pbxDonation);
+			pDonation.Location = new Point(8, 8);
+			pDonation.Name = "pDonation";
+			pDonation.Padding = new Padding(7);
+			tblpDashboard.SetRowSpan(pDonation, 3);
+			pDonation.Size = new Size(600, 372);
+			pDonation.TabIndex = 0;
+			// 
+			// pbxDonation
+			// 
+			pbxDonation.Dock = DockStyle.Fill;
+			pbxDonation.Image = (Image)resources.GetObject("pbxDonation.Image");
+			pbxDonation.Location = new Point(7, 7);
+			pbxDonation.Name = "pbxDonation";
+			pbxDonation.Size = new Size(586, 358);
+			pbxDonation.TabIndex = 0;
+			pbxDonation.TabStop = false;
+			// 
+			// pCharts
+			// 
+			pCharts.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pCharts.BackColor = Color.FromArgb(216, 85, 101);
+			tblpDashboard.SetColumnSpan(pCharts, 2);
+			pCharts.Controls.Add(pbxCharts);
+			pCharts.Location = new Point(614, 8);
+			pCharts.Name = "pCharts";
+			pCharts.Padding = new Padding(7);
+			tblpDashboard.SetRowSpan(pCharts, 2);
+			pCharts.Size = new Size(398, 246);
+			pCharts.TabIndex = 1;
+			// 
+			// pbxCharts
+			// 
+			pbxCharts.Dock = DockStyle.Fill;
+			pbxCharts.Image = (Image)resources.GetObject("pbxCharts.Image");
+			pbxCharts.Location = new Point(7, 7);
+			pbxCharts.Name = "pbxCharts";
+			pbxCharts.Size = new Size(384, 232);
+			pbxCharts.TabIndex = 0;
+			pbxCharts.TabStop = false;
+			// 
+			// pHistory
+			// 
+			pHistory.BackColor = Color.FromArgb(216, 85, 101);
+			tblpDashboard.SetColumnSpan(pHistory, 2);
+			pHistory.Controls.Add(tblpDonationHistory);
+			pHistory.Controls.Add(lblDonationHistory);
+			pHistory.Dock = DockStyle.Fill;
+			pHistory.Location = new Point(614, 260);
+			pHistory.Name = "pHistory";
+			pHistory.Padding = new Padding(7);
+			tblpDashboard.SetRowSpan(pHistory, 3);
+			pHistory.Size = new Size(398, 373);
+			pHistory.TabIndex = 2;
+			// 
+			// tblpDonationHistory
+			// 
+			tblpDonationHistory.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			tblpDonationHistory.ColumnCount = 2;
+			tblpDonationHistory.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+			tblpDonationHistory.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+			tblpDonationHistory.Controls.Add(btnYear1, 0, 0);
+			tblpDonationHistory.Controls.Add(btnDH1, 0, 1);
+			tblpDonationHistory.Controls.Add(btnYear2, 0, 3);
+			tblpDonationHistory.Controls.Add(btnDH2, 0, 4);
+			tblpDonationHistory.Controls.Add(lblDH1, 1, 1);
+			tblpDonationHistory.Controls.Add(lblDH2, 1, 4);
+			tblpDonationHistory.Location = new Point(7, 43);
+			tblpDonationHistory.Name = "tblpDonationHistory";
+			tblpDonationHistory.RowCount = 7;
+			tblpDonationHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+			tblpDonationHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+			tblpDonationHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+			tblpDonationHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+			tblpDonationHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+			tblpDonationHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+			tblpDonationHistory.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
+			tblpDonationHistory.Size = new Size(384, 320);
+			tblpDonationHistory.TabIndex = 10;
+			// 
+			// btnYear1
+			// 
+			btnYear1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			tblpDonationHistory.SetColumnSpan(btnYear1, 2);
+			btnYear1.DefaultBack = Color.FromArgb(253, 211, 211);
+			btnYear1.Font = new Font("Bahnschrift", 14F);
+			btnYear1.Location = new Point(3, 3);
+			btnYear1.Name = "btnYear1";
+			btnYear1.Size = new Size(378, 39);
+			btnYear1.TabIndex = 0;
+			btnYear1.Text = "2025";
+			// 
+			// btnDH1
+			// 
+			btnDH1.DefaultBack = Color.FromArgb(244, 180, 180);
+			btnDH1.Dock = DockStyle.Fill;
+			btnDH1.Font = new Font("Bahnschrift", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			btnDH1.Location = new Point(3, 48);
+			btnDH1.Name = "btnDH1";
+			tblpDonationHistory.SetRowSpan(btnDH1, 2);
+			btnDH1.Size = new Size(147, 84);
+			btnDH1.TabIndex = 1;
+			btnDH1.Text = "MARCH 19";
+			// 
+			// btnYear2
+			// 
+			tblpDonationHistory.SetColumnSpan(btnYear2, 2);
+			btnYear2.DefaultBack = Color.FromArgb(253, 211, 211);
+			btnYear2.Dock = DockStyle.Fill;
+			btnYear2.Font = new Font("Bahnschrift", 14F);
+			btnYear2.Location = new Point(3, 138);
+			btnYear2.Name = "btnYear2";
+			btnYear2.Size = new Size(378, 39);
+			btnYear2.TabIndex = 2;
+			btnYear2.Text = "2024";
+			// 
+			// btnDH2
+			// 
+			btnDH2.DefaultBack = Color.FromArgb(244, 180, 180);
+			btnDH2.Dock = DockStyle.Fill;
+			btnDH2.Font = new Font("Bahnschrift", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			btnDH2.Location = new Point(3, 183);
+			btnDH2.Name = "btnDH2";
+			tblpDonationHistory.SetRowSpan(btnDH2, 2);
+			btnDH2.Size = new Size(147, 84);
+			btnDH2.TabIndex = 3;
+			btnDH2.Text = "NOVEMBER 3";
+			// 
+			// lblDH1
+			// 
+			lblDH1.AutoSize = true;
+			lblDH1.BackColor = Color.FromArgb(244, 180, 180);
+			lblDH1.Dock = DockStyle.Fill;
+			lblDH1.Font = new Font("Bahnschrift", 14F);
+			lblDH1.ForeColor = Color.FromArgb(54, 40, 40);
+			lblDH1.Location = new Point(156, 45);
+			lblDH1.Name = "lblDH1";
+			lblDH1.Padding = new Padding(5, 0, 0, 0);
+			tblpDonationHistory.SetRowSpan(lblDH1, 2);
+			lblDH1.Size = new Size(225, 90);
+			lblDH1.TabIndex = 11;
+			lblDH1.Text = "@ Hospital 1, HH:MM";
+			lblDH1.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// lblDH2
+			// 
+			lblDH2.AutoSize = true;
+			lblDH2.BackColor = Color.FromArgb(244, 180, 180);
+			lblDH2.Dock = DockStyle.Fill;
+			lblDH2.Font = new Font("Bahnschrift", 14F);
+			lblDH2.ForeColor = Color.FromArgb(54, 40, 40);
+			lblDH2.Location = new Point(156, 180);
+			lblDH2.Name = "lblDH2";
+			lblDH2.Padding = new Padding(5, 0, 0, 0);
+			tblpDonationHistory.SetRowSpan(lblDH2, 2);
+			lblDH2.Size = new Size(225, 90);
+			lblDH2.TabIndex = 12;
+			lblDH2.Text = "@ Hospital 2, HH:MM";
+			lblDH2.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// lblDonationHistory
+			// 
+			lblDonationHistory.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblDonationHistory.AutoSize = true;
+			lblDonationHistory.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblDonationHistory.ForeColor = Color.FromArgb(253, 211, 211);
+			lblDonationHistory.Location = new Point(7, 7);
+			lblDonationHistory.Name = "lblDonationHistory";
+			lblDonationHistory.Padding = new Padding(5, 0, 0, 0);
+			lblDonationHistory.Size = new Size(223, 33);
+			lblDonationHistory.TabIndex = 9;
+			lblDonationHistory.Text = "Donation History";
+			// 
+			// pHospitals
+			// 
+			pHospitals.BackColor = Color.FromArgb(216, 85, 101);
+			tblpDashboard.SetColumnSpan(pHospitals, 3);
+			pHospitals.Controls.Add(tblpHospitals);
+			pHospitals.Controls.Add(lblHospitals);
+			pHospitals.Dock = DockStyle.Fill;
+			pHospitals.Location = new Point(8, 386);
+			pHospitals.Name = "pHospitals";
+			pHospitals.Padding = new Padding(7);
+			tblpDashboard.SetRowSpan(pHospitals, 2);
+			pHospitals.Size = new Size(600, 247);
+			pHospitals.TabIndex = 3;
+			// 
+			// tblpHospitals
+			// 
+			tblpHospitals.Anchor = AnchorStyles.Left;
+			tblpHospitals.ColumnCount = 4;
+			tblpHospitals.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			tblpHospitals.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			tblpHospitals.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			tblpHospitals.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			tblpHospitals.Controls.Add(pH1, 0, 0);
+			tblpHospitals.Controls.Add(pNext, 3, 0);
+			tblpHospitals.Location = new Point(10, 43);
+			tblpHospitals.Name = "tblpHospitals";
+			tblpHospitals.RowCount = 1;
+			tblpHospitals.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+			tblpHospitals.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+			tblpHospitals.Size = new Size(583, 194);
+			tblpHospitals.TabIndex = 12;
+			// 
+			// pH1
+			// 
+			pH1.BackColor = Color.FromArgb(253, 211, 211);
+			tblpHospitals.SetColumnSpan(pH1, 3);
+			pH1.Controls.Add(btnDonate);
+			pH1.Controls.Add(lblH1);
+			pH1.Controls.Add(pbxH1);
+			pH1.Dock = DockStyle.Fill;
+			pH1.Location = new Point(3, 3);
+			pH1.Name = "pH1";
+			pH1.Padding = new Padding(7);
+			pH1.Size = new Size(429, 188);
+			pH1.TabIndex = 0;
+			// 
+			// btnDonate
+			// 
+			btnDonate.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+			btnDonate.DefaultBack = Color.FromArgb(244, 180, 180);
+			btnDonate.Font = new Font("Bahnschrift", 14F);
+			btnDonate.ForeColor = Color.FromArgb(54, 40, 40);
+			btnDonate.Location = new Point(34, 94);
+			btnDonate.Name = "btnDonate";
+			btnDonate.Size = new Size(108, 44);
+			btnDonate.TabIndex = 2;
+			btnDonate.Text = "Donate";
+			btnDonate.Click += btnDonate_Click;
+			// 
+			// lblH1
+			// 
+			lblH1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblH1.AutoSize = true;
+			lblH1.Font = new Font("Bahnschrift", 14F);
+			lblH1.ForeColor = Color.FromArgb(54, 40, 40);
+			lblH1.Location = new Point(34, 68);
+			lblH1.Name = "lblH1";
+			lblH1.Size = new Size(108, 23);
+			lblH1.TabIndex = 1;
+			lblH1.Text = "HOSPITAL 1";
+			// 
+			// pbxH1
+			// 
+			pbxH1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			pbxH1.Image = (Image)resources.GetObject("pbxH1.Image");
+			pbxH1.Location = new Point(179, 10);
+			pbxH1.Name = "pbxH1";
+			pbxH1.Size = new Size(240, 168);
+			pbxH1.TabIndex = 0;
+			pbxH1.TabStop = false;
+			// 
+			// pNext
+			// 
+			pNext.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pNext.BackColor = Color.FromArgb(253, 211, 211);
+			pNext.Controls.Add(btnSeeMore);
+			pNext.Location = new Point(438, 3);
+			pNext.Name = "pNext";
+			pNext.Size = new Size(142, 188);
+			pNext.TabIndex = 1;
+			// 
+			// btnSeeMore
+			// 
+			btnSeeMore.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			btnSeeMore.DefaultBack = Color.FromArgb(244, 180, 180);
+			btnSeeMore.Font = new Font("Bahnschrift", 14F);
+			btnSeeMore.ForeColor = Color.FromArgb(54, 40, 40);
+			btnSeeMore.Location = new Point(17, 68);
+			btnSeeMore.Name = "btnSeeMore";
+			btnSeeMore.Size = new Size(108, 44);
+			btnSeeMore.TabIndex = 3;
+			btnSeeMore.Text = "See More";
+			// 
+			// lblHospitals
+			// 
+			lblHospitals.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblHospitals.AutoSize = true;
+			lblHospitals.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblHospitals.ForeColor = Color.FromArgb(253, 211, 211);
+			lblHospitals.Location = new Point(7, 7);
+			lblHospitals.Name = "lblHospitals";
+			lblHospitals.Padding = new Padding(5, 0, 0, 0);
+			lblHospitals.Size = new Size(134, 33);
+			lblHospitals.TabIndex = 11;
+			lblHospitals.Text = "Hospitals";
+			// 
+			// DonorDB
+			// 
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(tblpDashboard);
+			Name = "DonorDB";
+			Size = new Size(1020, 641);
+			Load += DonorDB_Load;
+			tblpDashboard.ResumeLayout(false);
+			pDonation.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pbxDonation).EndInit();
+			pCharts.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pbxCharts).EndInit();
+			pHistory.ResumeLayout(false);
+			pHistory.PerformLayout();
+			tblpDonationHistory.ResumeLayout(false);
+			tblpDonationHistory.PerformLayout();
+			pHospitals.ResumeLayout(false);
+			pHospitals.PerformLayout();
+			tblpHospitals.ResumeLayout(false);
+			pH1.ResumeLayout(false);
+			pH1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pbxH1).EndInit();
+			pNext.ResumeLayout(false);
+			ResumeLayout(false);
+		}
 
-        #endregion
+		#endregion
 
-        private TableLayoutPanel tblpDashboard;
-        private Panel pDonation;
-        private Panel pHospital;
-        private Panel pHistory;
-        private Label lblHospitals;
-        private Label lblHistory;
-        private TableLayoutPanel tblpHistory;
-        private TableLayoutPanel tblpHospitals;
-        private Panel pHospital1;
-        private Label lblHospital1;
-        private AntdUI.Button btnView1;
-        private PictureBox pbxHospital1;
-        private Panel pHospital2;
-        private AntdUI.Button btnDH1;
-        private AntdUI.Button btnDH3;
-        private AntdUI.Button btnDH2;
-        private Panel pDH3;
-        private Panel pDH1;
-        private Panel pDH2;
-        private Label lblH1;
-        private Label lblH2;
-        private Label lblH3;
-        private PictureBox pbxChart;
-    }
+		private TableLayoutPanel tblpDashboard;
+		private Panel pDonation;
+		private PictureBox pbxDonation;
+		private Panel pCharts;
+		private PictureBox pbxCharts;
+		private Panel pHistory;
+		private Label lblDonationHistory;
+		private TableLayoutPanel tblpDonationHistory;
+		private AntdUI.Button btnYear1;
+		private AntdUI.Button btnDH1;
+		private AntdUI.Button btnYear2;
+		private AntdUI.Button btnDH2;
+		private Label lblDH1;
+		private Label lblDH2;
+		private Panel pHospitals;
+		private Label lblHospitals;
+		private TableLayoutPanel tblpHospitals;
+		private Panel pH1;
+		private PictureBox pbxH1;
+		private Label lblH1;
+		private AntdUI.Button btnDonate;
+		private Panel pNext;
+		private AntdUI.Button btnSeeMore;
+	}
 }

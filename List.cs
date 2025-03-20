@@ -10,26 +10,16 @@ using System.Windows.Forms;
 
 namespace Hemotica
 {
-	public partial class DonorD : UserControl
+	public partial class List : UserControl
 	{
-		public DonorD()
+		public List()
 		{
 			InitializeComponent();
 		}
 
-		private void DonorD_Load(object sender, EventArgs e)
+		private void List_Load(object sender, EventArgs e)
 		{
 
-		}
-
-		private void btnList_Click(object sender, EventArgs e)
-		{
-			DashboardD dashboard = Application.OpenForms["DashboardD"] as DashboardD;
-
-			if (dashboard != null)
-			{
-				dashboard.showList();
-			}
 		}
 
 		private void btnCalendar_Click(object sender, EventArgs e)

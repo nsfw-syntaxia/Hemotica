@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Hemotica
 {
@@ -7,7 +8,13 @@ namespace Hemotica
     {
         bool sidebarExpand = false;
 
-        public DashboardD()
+		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        
+        private static extern IntPtr CreateRoundRectRgn(
+            int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
+            int nWidthEllipse, int nHeightEllipse);
+
+		public DashboardD()
         {
             InitializeComponent();
         }
@@ -15,13 +22,12 @@ namespace Hemotica
         private void DashboardD_Load(object sender, EventArgs e)
         {
             btnSettings();
-
             flpSideBar.Width = flpSideBar.MinimumSize.Width;
             sidebarExpand = false;
 
-            showDonorDB();
-            adjustLayout();
-        }
+			pWelcome.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pWelcome.Width, pWelcome.Height, 20, 20));
+			showDonorDB();
+		}
 
         private void btnEffects(Button button, Color highlightColor)
         {
@@ -59,40 +65,34 @@ namespace Hemotica
 
         private void tSidebar_Tick(object sender, EventArgs e)
         {
-            if (sidebarExpand)
-            {
-                flpSideBar.Width -= 10;
-                if (flpSideBar.Width <= flpSideBar.MinimumSize.Width)
-                {
-                    sidebarExpand = false;
-                    tSidebar.Stop();
-                }
-            }
-            else
-            {
-                flpSideBar.Width += 10;
-                if (flpSideBar.Width >= flpSideBar.MaximumSize.Width)
-                {
-                    sidebarExpand = true;
-                    tSidebar.Stop();
-                }
-            }
+			int targetWidth = sidebarExpand ? flpSideBar.MinimumSize.Width : flpSideBar.MaximumSize.Width;
+			int step = Math.Max(10, Math.Abs(flpSideBar.Width - targetWidth) / 3);
 
-            adjustLayout();
-        }
+			if (flpSideBar.Width != targetWidth)
+			{
+				flpSideBar.Width += sidebarExpand ? -step : step;
+			}
+
+			if (Math.Abs(flpSideBar.Width - targetWidth) <= step)
+			{
+				flpSideBar.Width = targetWidth;
+				sidebarExpand = !sidebarExpand;
+				tSidebar.Stop();
+			}
+
+			adjustLayout();
+		}
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
             tSidebar.Start();
-            adjustLayout();
-        }
+		}
 
         private void DashboardD_Resize(object sender, EventArgs e)
         {
-            flpSideBar.Height = this.ClientSize.Height;
-            flpSideBar.MaximumSize = new Size(flpSideBar.MaximumSize.Width, this.ClientSize.Height);
-
-            adjustLayout();
+			flpSideBar.Height = this.ClientSize.Height;
+			flpSideBar.MaximumSize = new Size(flpSideBar.MaximumSize.Width, this.ClientSize.Height);
+			adjustLayout();
         }
 
         private void adjustLayout()
@@ -102,15 +102,16 @@ namespace Hemotica
             pWelcome.Left = sidebarWidth + 10;
             pWelcome.Width = this.ClientSize.Width - sidebarWidth - 20;
 
-            flpDashboard.Left = sidebarWidth + 10;
+			pWelcome.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pWelcome.Width, pWelcome.Height, 20, 20));
+
+			flpDashboard.Left = sidebarWidth + 10;
             flpDashboard.Width = this.ClientSize.Width - sidebarWidth - 20;
 
-            foreach (Control ctrl in flpDashboard.Controls)
-            {
-                ctrl.Width = flpDashboard.Width;
-                ctrl.Height = flpDashboard.Height;
-            }
-        }
+			foreach (Control ctrl in flpDashboard.Controls)
+			{
+				ctrl.Width = flpDashboard.Width;
+			}
+		}
 
         private async void btnLogout_Click(object sender, EventArgs e)
         {
@@ -130,13 +131,11 @@ namespace Hemotica
             showDonorDB();
         }
 
-        private void showDonorDB()
+        internal void showDonorDB()
         {
             flpDashboard.Controls.Clear();
-
-            DonorDB donorDB = new DonorDB { };
-
-            flpDashboard.Controls.Add(donorDB);
+            DonorDB donorDB = new DonorDB();
+			flpDashboard.Controls.Add(donorDB);
             adjustLayout();
         }
 
@@ -145,18 +144,25 @@ namespace Hemotica
             showDonorD();
         }
 
-        private void showDonorD()
+        internal void showDonorD()
         {
             flpDashboard.Controls.Clear();
-
-            DonorD donorD = new DonorD
-            {
-                Width = flpDashboard.Width,
-                Height = flpDashboard.Height
-            };
-
+            DonorD donorD = new DonorD();
             flpDashboard.Controls.Add(donorD);
             adjustLayout();
         }
-    }
+
+		private void btnList_Click(object sender, EventArgs e)
+		{
+			showList();
+		}
+
+		internal void showList()
+		{
+			flpDashboard.Controls.Clear();
+			List list = new List();
+			flpDashboard.Controls.Add(list);
+			adjustLayout();
+		}
+	}
 }
