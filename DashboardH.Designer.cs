@@ -312,6 +312,7 @@
 			btnTransfer.Text = "            TRANSFUSION";
 			btnTransfer.TextAlign = ContentAlignment.MiddleLeft;
 			btnTransfer.UseVisualStyleBackColor = true;
+			btnTransfer.Click += btnTransfer_Click;
 			// 
 			// pNotification
 			// 

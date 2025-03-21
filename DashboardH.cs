@@ -195,5 +195,14 @@ namespace Hemotica
 			flpDashboard.Controls.Add(hospitalBS);
 			adjustLayout();
 		}
+
+		private void btnTransfer_Click(object sender, EventArgs e)
+		{
+			lblHeader.Text = "Blood Transfusion";
+			flpDashboard.Controls.Clear();
+			HospitalT hospitalT = new HospitalT();
+			flpDashboard.Controls.Add(hospitalT);
+			adjustLayout();
+		}
 	}
 }
