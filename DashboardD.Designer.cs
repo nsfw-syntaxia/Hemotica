@@ -49,10 +49,10 @@
 			btnLogout = new Button();
 			tSidebar = new System.Windows.Forms.Timer(components);
 			pHeader = new Panel();
+			btnQR = new Button();
 			lblHeader = new Label();
 			lblUserID = new Label();
 			flpDashboard = new FlowLayoutPanel();
-			btnQR = new Button();
 			flpSideBar.SuspendLayout();
 			pMenu.SuspendLayout();
 			pDashboard.SuspendLayout();
@@ -272,6 +272,7 @@
 			btnProfile.Text = "            PROFILE";
 			btnProfile.TextAlign = ContentAlignment.MiddleLeft;
 			btnProfile.UseVisualStyleBackColor = true;
+			btnProfile.Click += btnProfile_Click;
 			// 
 			// pLogout
 			// 
@@ -317,6 +318,21 @@
 			pHeader.Size = new Size(1020, 101);
 			pHeader.TabIndex = 11;
 			// 
+			// btnQR
+			// 
+			btnQR.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			btnQR.Cursor = Cursors.Hand;
+			btnQR.FlatAppearance.BorderSize = 0;
+			btnQR.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnQR.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
+			btnQR.FlatStyle = FlatStyle.Flat;
+			btnQR.Image = (Image)resources.GetObject("btnQR.Image");
+			btnQR.Location = new Point(964, 45);
+			btnQR.Name = "btnQR";
+			btnQR.Size = new Size(50, 50);
+			btnQR.TabIndex = 9;
+			btnQR.UseVisualStyleBackColor = true;
+			// 
 			// lblHeader
 			// 
 			lblHeader.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
@@ -350,21 +366,6 @@
 			flpDashboard.Name = "flpDashboard";
 			flpDashboard.Size = new Size(1020, 641);
 			flpDashboard.TabIndex = 10;
-			// 
-			// btnQR
-			// 
-			btnQR.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-			btnQR.Cursor = Cursors.Hand;
-			btnQR.FlatAppearance.BorderSize = 0;
-			btnQR.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
-			btnQR.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
-			btnQR.FlatStyle = FlatStyle.Flat;
-			btnQR.Image = (Image)resources.GetObject("btnQR.Image");
-			btnQR.Location = new Point(964, 45);
-			btnQR.Name = "btnQR";
-			btnQR.Size = new Size(50, 50);
-			btnQR.TabIndex = 9;
-			btnQR.UseVisualStyleBackColor = true;
 			// 
 			// DashboardD
 			// 

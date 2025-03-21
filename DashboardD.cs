@@ -176,5 +176,19 @@ namespace Hemotica
 			flpDashboard.Controls.Add(donorN);
 			adjustLayout();
 		}
+
+		private void btnProfile_Click(object sender, EventArgs e)
+		{
+			showDonorP();
+		}
+
+		internal void showDonorP()
+		{
+			lblHeader.Text = "Profile";
+			flpDashboard.Controls.Clear();
+			DonorP donorP = new DonorP();
+			flpDashboard.Controls.Add(donorP);
+			adjustLayout();
+		}
 	}
 }

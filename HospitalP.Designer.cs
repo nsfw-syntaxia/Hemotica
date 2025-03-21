@@ -28,8 +28,16 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			components = new System.ComponentModel.Container();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			SuspendLayout();
+			// 
+			// HospitalP
+			// 
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			BackColor = Color.FromArgb(253, 211, 211);
+			Name = "HospitalP";
+			Size = new Size(1020, 641);
+			ResumeLayout(false);
 		}
 
 		#endregion
