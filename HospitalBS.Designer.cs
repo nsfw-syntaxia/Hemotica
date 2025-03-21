@@ -42,6 +42,7 @@
 			flpStock = new AntdUI.In.FlowLayoutPanel();
 			dgvStock = new DataGridView();
 			pbxAP = new PictureBox();
+			btnPost = new AntdUI.Button();
 			tblpBS.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxTotal).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pbxABN).BeginInit();
@@ -177,6 +178,7 @@
 			// 
 			tblpBS.SetColumnSpan(flpStock, 4);
 			flpStock.Controls.Add(dgvStock);
+			flpStock.Controls.Add(btnPost);
 			flpStock.Dock = DockStyle.Fill;
 			flpStock.Location = new Point(3, 131);
 			flpStock.Name = "flpStock";
@@ -192,7 +194,7 @@
 			dgvStock.GridColor = Color.FromArgb(244, 180, 180);
 			dgvStock.Location = new Point(3, 3);
 			dgvStock.Name = "dgvStock";
-			dgvStock.Size = new Size(803, 501);
+			dgvStock.Size = new Size(803, 440);
 			dgvStock.TabIndex = 0;
 			// 
 			// pbxAP
@@ -204,6 +206,17 @@
 			pbxAP.Size = new Size(198, 122);
 			pbxAP.TabIndex = 1;
 			pbxAP.TabStop = false;
+			// 
+			// btnPost
+			// 
+			btnPost.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnPost.Font = new Font("Bahnschrift", 14F);
+			btnPost.ForeColor = Color.FromArgb(252, 228, 228);
+			btnPost.Location = new Point(3, 449);
+			btnPost.Name = "btnPost";
+			btnPost.Size = new Size(290, 52);
+			btnPost.TabIndex = 15;
+			btnPost.Text = "Post a Blood Donation Drive";
 			// 
 			// HospitalBS
 			// 
@@ -245,5 +258,6 @@
 		private PictureBox pbxAN;
 		private AntdUI.In.FlowLayoutPanel flpStock;
 		private DataGridView dgvStock;
+		private AntdUI.Button btnPost;
 	}
 }

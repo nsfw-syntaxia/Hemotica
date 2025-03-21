@@ -38,6 +38,7 @@
 			pbxCaption = new PictureBox();
 			pbxFade = new PictureBox();
 			tToggle = new System.Windows.Forms.Timer(components);
+			ttGuide = new AntdUI.Tooltip();
 			((System.ComponentModel.ISupportInitialize)pbxHeart).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pbxTitle).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pbxCaption).BeginInit();
@@ -139,6 +140,19 @@
 			tToggle.Interval = 300;
 			tToggle.Tick += tToggle_Tick;
 			// 
+			// ttGuide
+			// 
+			ttGuide.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			ttGuide.ArrowAlign = AntdUI.TAlign.None;
+			ttGuide.Font = new Font("Bahnschrift Light", 11F);
+			ttGuide.Location = new Point(12, 754);
+			ttGuide.MaximumSize = new Size(295, 37);
+			ttGuide.MinimumSize = new Size(295, 37);
+			ttGuide.Name = "ttGuide";
+			ttGuide.Size = new Size(295, 37);
+			ttGuide.TabIndex = 10;
+			ttGuide.Text = "note: please click the heart to continue !";
+			// 
 			// Home
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -146,6 +160,7 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			ClientSize = new Size(1263, 803);
 			ControlBox = false;
+			Controls.Add(ttGuide);
 			Controls.Add(pbxCaption);
 			Controls.Add(pbxTitle);
 			Controls.Add(pbxHeart);
@@ -177,5 +192,6 @@
         private PictureBox pbxCaption;
         private PictureBox pbxFade;
         private System.Windows.Forms.Timer tToggle;
-    }
+		private AntdUI.Tooltip ttGuide;
+	}
 }

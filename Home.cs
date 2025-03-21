@@ -108,7 +108,7 @@ namespace Hemotica
 
                 pbxFade.Left = pbxCaption.Left;
                 pbxFade.Top = pbxCaption.Top;
-            }
+			}
         }
 
         private void Home_Resize(object sender, EventArgs e)
