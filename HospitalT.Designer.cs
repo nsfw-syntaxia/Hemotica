@@ -177,9 +177,9 @@
 			lblResult.Location = new Point(358, 402);
 			lblResult.Name = "lblResult";
 			lblResult.Padding = new Padding(5, 0, 0, 5);
-			lblResult.Size = new Size(134, 38);
+			lblResult.Size = new Size(129, 38);
 			lblResult.TabIndex = 24;
-			lblResult.Text = "<Results>";
+			lblResult.Text = "<results>";
 			// 
 			// btnTransfer
 			// 

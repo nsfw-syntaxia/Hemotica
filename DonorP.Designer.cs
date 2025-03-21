@@ -30,6 +30,7 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonorP));
 			pProfile = new Panel();
+			pbxPhoto = new PictureBox();
 			dName = new Label();
 			tbxPatientID = new ReaLTaiizor.Controls.BigTextBox();
 			tbxEmail = new ReaLTaiizor.Controls.BigTextBox();
@@ -44,12 +45,11 @@
 			lblBType = new Label();
 			tbxNumber = new ReaLTaiizor.Controls.BigTextBox();
 			lblNumber = new Label();
-			bigTextBox1 = new ReaLTaiizor.Controls.BigTextBox();
+			tbxPassword = new ReaLTaiizor.Controls.BigTextBox();
 			lblPassword = new Label();
 			btnSave = new AntdUI.Button();
 			btnPhoto = new AntdUI.Button();
 			btnEdit = new AntdUI.Button();
-			pbxPhoto = new PictureBox();
 			pProfile.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxPhoto).BeginInit();
 			SuspendLayout();
@@ -64,6 +64,15 @@
 			pProfile.Padding = new Padding(5);
 			pProfile.Size = new Size(325, 325);
 			pProfile.TabIndex = 0;
+			// 
+			// pbxPhoto
+			// 
+			pbxPhoto.Image = (Image)resources.GetObject("pbxPhoto.Image");
+			pbxPhoto.Location = new Point(8, 8);
+			pbxPhoto.Name = "pbxPhoto";
+			pbxPhoto.Size = new Size(309, 309);
+			pbxPhoto.TabIndex = 0;
+			pbxPhoto.TabStop = false;
 			// 
 			// dName
 			// 
@@ -261,21 +270,21 @@
 			lblNumber.TabIndex = 22;
 			lblNumber.Text = "Contact Number";
 			// 
-			// bigTextBox1
+			// tbxPassword
 			// 
-			bigTextBox1.BackColor = Color.Transparent;
-			bigTextBox1.Font = new Font("Tahoma", 11F);
-			bigTextBox1.ForeColor = Color.DimGray;
-			bigTextBox1.Image = null;
-			bigTextBox1.Location = new Point(246, 102);
-			bigTextBox1.MaxLength = 32767;
-			bigTextBox1.Multiline = false;
-			bigTextBox1.Name = "bigTextBox1";
-			bigTextBox1.ReadOnly = false;
-			bigTextBox1.Size = new Size(349, 41);
-			bigTextBox1.TabIndex = 27;
-			bigTextBox1.TextAlignment = HorizontalAlignment.Left;
-			bigTextBox1.UseSystemPasswordChar = false;
+			tbxPassword.BackColor = Color.Transparent;
+			tbxPassword.Font = new Font("Tahoma", 11F);
+			tbxPassword.ForeColor = Color.DimGray;
+			tbxPassword.Image = null;
+			tbxPassword.Location = new Point(246, 102);
+			tbxPassword.MaxLength = 32767;
+			tbxPassword.Multiline = false;
+			tbxPassword.Name = "tbxPassword";
+			tbxPassword.ReadOnly = false;
+			tbxPassword.Size = new Size(349, 41);
+			tbxPassword.TabIndex = 27;
+			tbxPassword.TextAlignment = HorizontalAlignment.Left;
+			tbxPassword.UseSystemPasswordChar = false;
 			// 
 			// lblPassword
 			// 
@@ -322,15 +331,6 @@
 			btnEdit.TabIndex = 30;
 			btnEdit.Text = "Edit Details";
 			// 
-			// pbxPhoto
-			// 
-			pbxPhoto.Image = (Image)resources.GetObject("pbxPhoto.Image");
-			pbxPhoto.Location = new Point(8, 8);
-			pbxPhoto.Name = "pbxPhoto";
-			pbxPhoto.Size = new Size(309, 309);
-			pbxPhoto.TabIndex = 0;
-			pbxPhoto.TabStop = false;
-			// 
 			// DonorP
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -339,7 +339,7 @@
 			Controls.Add(btnEdit);
 			Controls.Add(btnPhoto);
 			Controls.Add(btnSave);
-			Controls.Add(bigTextBox1);
+			Controls.Add(tbxPassword);
 			Controls.Add(lblPassword);
 			Controls.Add(tbxBType);
 			Controls.Add(lblBType);
@@ -382,7 +382,7 @@
 		private Label lblBType;
 		private ReaLTaiizor.Controls.BigTextBox tbxNumber;
 		private Label lblNumber;
-		private ReaLTaiizor.Controls.BigTextBox bigTextBox1;
+		private ReaLTaiizor.Controls.BigTextBox tbxPassword;
 		private Label lblPassword;
 		private AntdUI.Button btnSave;
 		private AntdUI.Button btnPhoto;

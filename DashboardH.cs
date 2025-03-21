@@ -204,5 +204,19 @@ namespace Hemotica
 			flpDashboard.Controls.Add(hospitalT);
 			adjustLayout();
 		}
+
+		private void btnProfile_Click(object sender, EventArgs e)
+		{
+			showProfile();
+		}
+
+		internal void showProfile()
+		{
+			lblHeader.Text = "Profile";
+			flpDashboard.Controls.Clear();
+			HospitalP hospitalP = new HospitalP();
+			flpDashboard.Controls.Add(hospitalP);
+			adjustLayout();
+		}
 	}
 }

@@ -368,6 +368,7 @@
 			btnProfile.Text = "            PROFILE";
 			btnProfile.TextAlign = ContentAlignment.MiddleLeft;
 			btnProfile.UseVisualStyleBackColor = true;
+			btnProfile.Click += btnProfile_Click;
 			// 
 			// pLogout
 			// 
