@@ -142,14 +142,14 @@
 			// 
 			// ttGuide
 			// 
-			ttGuide.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			ttGuide.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			ttGuide.ArrowAlign = AntdUI.TAlign.None;
-			ttGuide.Font = new Font("Bahnschrift Light", 11F);
-			ttGuide.Location = new Point(12, 754);
-			ttGuide.MaximumSize = new Size(295, 37);
-			ttGuide.MinimumSize = new Size(295, 37);
+			ttGuide.Font = new Font("Bahnschrift Light", 12F);
+			ttGuide.Location = new Point(473, 674);
+			ttGuide.MaximumSize = new Size(320, 38);
+			ttGuide.MinimumSize = new Size(320, 38);
 			ttGuide.Name = "ttGuide";
-			ttGuide.Size = new Size(295, 37);
+			ttGuide.Size = new Size(320, 38);
 			ttGuide.TabIndex = 10;
 			ttGuide.Text = "note: please click the heart to continue !";
 			// 
