@@ -127,6 +127,7 @@
 			// 
 			lblHospitals.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblHospitals.AutoSize = true;
+			lblHospitals.Cursor = Cursors.Hand;
 			lblHospitals.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblHospitals.ForeColor = Color.FromArgb(253, 211, 211);
 			lblHospitals.Location = new Point(0, 7);
@@ -165,6 +166,7 @@
 			// 
 			lblLogs.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblLogs.AutoSize = true;
+			lblLogs.Cursor = Cursors.Hand;
 			lblLogs.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblLogs.ForeColor = Color.FromArgb(253, 211, 211);
 			lblLogs.Location = new Point(0, 7);

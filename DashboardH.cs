@@ -183,22 +183,22 @@ namespace Hemotica
 		{
 			lblHeader.Text = "Blood Extraction";
 			flpDashboard.Controls.Clear();
-			HospitalE hospitalE = new HospitalE();
-			flpDashboard.Controls.Add(hospitalE);
+			HospitalExtraction hospitalExtraction = new HospitalExtraction();
+			flpDashboard.Controls.Add(hospitalExtraction);
 			adjustLayout();
 		}
 
 		private void btnStock_Click(object sender, EventArgs e)
 		{
-			showStock();
+			showBloodStock();
 		}
 
-		internal void showStock()
+		internal void showBloodStock()
 		{
 			lblHeader.Text = "Blood Stock";
 			flpDashboard.Controls.Clear();
-			HospitalBS hospitalBS = new HospitalBS();
-			flpDashboard.Controls.Add(hospitalBS);
+			HospitalStock hospitalStock = new HospitalStock();
+			flpDashboard.Controls.Add(hospitalStock);
 			adjustLayout();
 		}
 

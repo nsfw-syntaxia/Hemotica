@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 
 namespace Hemotica
 {
-	public partial class HospitalBloodExtraction : UserControl
+	public partial class HospitalExtraction : UserControl
 	{
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -19,17 +19,12 @@ namespace Hemotica
 			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
 			int nWidthEllipse, int nHeightEllipse);
 
-		public HospitalBloodExtraction()
+		public HospitalExtraction()
 		{
 			InitializeComponent();
 		}
 
-		private void HospitalBloodExtraction_Load(object sender, EventArgs e)
-		{
-			roundControls();
-		}
-
-		private void HospitalBloodExtraction_Resize(object sender, EventArgs e)
+		private void HospitalExtraction_Load(object sender, EventArgs e)
 		{
 			roundControls();
 		}
@@ -37,17 +32,22 @@ namespace Hemotica
 		public void roundControls()
 		{
 			pQRCode.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pQRCode.Width, pQRCode.Height, 20, 20));
-			pBarcode.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pBarcode.Width, pBarcode.Height, 20, 20));
+			pBarCode.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pBarCode.Width, pBarCode.Height, 20, 20));
 
 			if (pbxQRCode.Width > 0 && pbxQRCode.Height > 0)
 			{
 				pbxQRCode.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxQRCode.Width, pbxQRCode.Height, 20, 20));
 			}
 
-			if (pbxBarcode.Width > 0 && pbxBarcode.Height > 0)
+			if (pbxBarCode.Width > 0 && pbxBarCode.Height > 0)
 			{
-				pbxBarcode.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxBarcode.Width, pbxBarcode.Height, 20, 20));
+				pbxBarCode.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxBarCode.Width, pbxBarCode.Height, 20, 20));
 			}
+		}
+
+		private void HospitalExtraction_Resize(object sender, EventArgs e)
+		{
+			roundControls();
 		}
 	}
 }

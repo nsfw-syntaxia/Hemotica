@@ -92,6 +92,7 @@
 			// 
 			lblUrgent.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblUrgent.AutoSize = true;
+			lblUrgent.Cursor = Cursors.Hand;
 			lblUrgent.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblUrgent.ForeColor = Color.FromArgb(253, 211, 211);
 			lblUrgent.Location = new Point(0, 7);
@@ -130,6 +131,7 @@
 			// 
 			lblAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblAppointments.AutoSize = true;
+			lblAppointments.Cursor = Cursors.Hand;
 			lblAppointments.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblAppointments.ForeColor = Color.FromArgb(253, 211, 211);
 			lblAppointments.Location = new Point(0, 7);
