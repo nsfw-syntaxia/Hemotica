@@ -206,8 +206,8 @@ namespace Hemotica
 		{
 			lblHeader.Text = "Blood Transfusion";
 			flpDashboard.Controls.Clear();
-			HospitalT hospitalT = new HospitalT();
-			flpDashboard.Controls.Add(hospitalT);
+			HospitalTransfusion hospitalTransfusion = new HospitalTransfusion();
+			flpDashboard.Controls.Add(hospitalTransfusion);
 			adjustLayout();
 		}
 
@@ -220,8 +220,8 @@ namespace Hemotica
 		{
 			lblHeader.Text = "Profile";
 			flpDashboard.Controls.Clear();
-			HospitalP hospitalP = new HospitalP();
-			flpDashboard.Controls.Add(hospitalP);
+			HospitalProfile hospitalProfile = new HospitalProfile();
+			flpDashboard.Controls.Add(hospitalProfile);
 			adjustLayout();
 		}
 	}

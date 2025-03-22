@@ -35,6 +35,7 @@
 			lTable = new ToolStripMenuItem();
 			lDonors = new ToolStripMenuItem();
 			lPatients = new ToolStripMenuItem();
+			lPhysicians = new ToolStripMenuItem();
 			lAppointments = new ToolStripMenuItem();
 			lQuery = new ToolStripMenuItem();
 			lExtraction = new ToolStripMenuItem();
@@ -52,7 +53,6 @@
 			btnInsert = new AntdUI.Button();
 			btnUpdate = new AntdUI.Button();
 			btnDelete = new AntdUI.Button();
-			lDoctors = new ToolStripMenuItem();
 			mstrpRecords.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
 			SuspendLayout();
@@ -92,7 +92,7 @@
 			// 
 			// lTable
 			// 
-			lTable.DropDownItems.AddRange(new ToolStripItem[] { lDonors, lPatients, lDoctors, lAppointments });
+			lTable.DropDownItems.AddRange(new ToolStripItem[] { lDonors, lPatients, lPhysicians, lAppointments });
 			lTable.Font = new Font("Bahnschrift", 12F);
 			lTable.ForeColor = Color.FromArgb(54, 40, 40);
 			lTable.Name = "lTable";
@@ -114,6 +114,12 @@
 			lPatients.Size = new Size(194, 24);
 			lPatients.Text = "PATIENTS";
 			lPatients.Click += lPatients_Click;
+			// 
+			// lPhysicians
+			// 
+			lPhysicians.Name = "lPhysicians";
+			lPhysicians.Size = new Size(194, 24);
+			lPhysicians.Text = "PHYSICIANS";
 			// 
 			// lAppointments
 			// 
@@ -265,12 +271,6 @@
 			btnDelete.TabIndex = 16;
 			btnDelete.Text = "Delete";
 			// 
-			// lDoctors
-			// 
-			lDoctors.Name = "lDoctors";
-			lDoctors.Size = new Size(194, 24);
-			lDoctors.Text = "DOCTORS";
-			// 
 			// HospitalRecords
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -317,6 +317,6 @@
 		private AntdUI.Button btnUpdate;
 		private AntdUI.Button btnDelete;
 		private ToolStripMenuItem lAppointments;
-		private ToolStripMenuItem lDoctors;
+		private ToolStripMenuItem lPhysicians;
 	}
 }

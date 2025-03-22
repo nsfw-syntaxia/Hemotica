@@ -53,15 +53,17 @@
 			btnReadAll.TabIndex = 18;
 			btnReadAll.Text = "Mark All as Read";
 			// 
-			// HospitalN
+			// HospitalNotification
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
 			Controls.Add(flpNotifications);
 			Controls.Add(btnReadAll);
-			Name = "HospitalN";
+			Name = "HospitalNotification";
 			Size = new Size(1020, 641);
+			Load += HospitalNotification_Load;
+			Resize += HospitalNotification_Resize;
 			ResumeLayout(false);
 		}
 

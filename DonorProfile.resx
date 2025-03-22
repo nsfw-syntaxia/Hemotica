@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pbxPhoto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="pbxProfile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAATUAAAE1CAYAAACGH3cEAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAA/7JJREFUeF6MveV3XHfWNZgvMx1LRZeLUSwZwh1OOukOo2MGyRYzM9gyx8yOmZnt
+        vwAADr8BOAVTJAAA/7JJREFUeF6MveV3XHfWNZgvMx1LRZeLUSwZwh1OOukOo2MGyRYzM9gyx8yOmZnt
         mCGmGJJ0B4xBJ93PO/Nn7Fn7VF21nl7PvDMffuveKlWVyu72zj7n7L3PIx9oXoyLZ+FFrw99jXU48fkx
         HDtxHKdPHcGn1RV41/Tj3Zx8LF84DwcP7sWhQwdwcP8B7N+9E3UffIAJgRhKQnGUReOoiGegMp6JykQG
         ymNxlMcSqM7MRl1OHsoTmSgMRVAciqIqkY2KSAammAFMNnwoi8RRl5GD5pwCtBeMQH1GDpqy8tCaOxQN

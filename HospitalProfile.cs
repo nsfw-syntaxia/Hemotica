@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 
 namespace Hemotica
 {
-	public partial class HospitalP : UserControl
+	public partial class HospitalProfile : UserControl
 	{
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -19,15 +19,25 @@ namespace Hemotica
 			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
 			int nWidthEllipse, int nHeightEllipse);
 
-		public HospitalP()
+		public HospitalProfile()
 		{
 			InitializeComponent();
 		}
 
-		private void HospitalP_Load(object sender, EventArgs e)
+		public void roundControls()
 		{
 			pProfile.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pProfile.Width, pProfile.Height, 20, 20));
-			pbxPhoto.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxPhoto.Width, pbxPhoto.Height, 20, 20));
+			pbxProfile.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxProfile.Width, pbxProfile.Height, 20, 20));
+		}
+
+		private void HospitalProfile_Load(object sender, EventArgs e)
+		{
+			roundControls();
+		}
+
+		private void HospitalProfile_Resize(object sender, EventArgs e)
+		{
+			roundControls();
 		}
 	}
 }

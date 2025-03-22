@@ -26,8 +26,18 @@ namespace Hemotica
 
 		private void DonorP_Load(object sender, EventArgs e)
 		{
+			roundControls();
+		}
+
+		private void DonorProfile_Resize(object sender, EventArgs e)
+		{
+			roundControls();
+		}
+
+		public void roundControls()
+		{
 			pProfile.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pProfile.Width, pProfile.Height, 20, 20));
-			pbxPhoto.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxPhoto.Width, pbxPhoto.Height, 20, 20));
+			pbxProfile.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxProfile.Width, pbxProfile.Height, 20, 20));
 		}
 	}
 }
