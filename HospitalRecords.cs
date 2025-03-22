@@ -29,6 +29,12 @@ namespace Hemotica
 			flpInputs.Controls.Add(new RecordsPatient());
 		}
 
+		private void lPhysicians_Click(object sender, EventArgs e)
+		{
+			flpInputs.Controls.Clear();
+			flpInputs.Controls.Add(new RecordsPhysician());
+		}
+
 		private void lAppointments_Click(object sender, EventArgs e)
 		{
 			flpInputs.Controls.Clear();

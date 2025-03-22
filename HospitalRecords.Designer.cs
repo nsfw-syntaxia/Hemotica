@@ -120,6 +120,7 @@
 			lPhysicians.Name = "lPhysicians";
 			lPhysicians.Size = new Size(194, 24);
 			lPhysicians.Text = "PHYSICIANS";
+			lPhysicians.Click += lPhysicians_Click;
 			// 
 			// lAppointments
 			// 
