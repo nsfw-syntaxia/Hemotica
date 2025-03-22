@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Hemotica
 {
-	public partial class HospitalR : UserControl
+	public partial class HospitalRecords : UserControl
 	{
-		public HospitalR()
+		public HospitalRecords()
 		{
 			InitializeComponent();
 		}
@@ -20,13 +20,18 @@ namespace Hemotica
 		private void lDonors_Click(object sender, EventArgs e)
 		{
 			flpInputs.Controls.Clear();
-			flpInputs.Controls.Add(new Donors());
+			flpInputs.Controls.Add(new RecordsDonor());
 		}
 
 		private void lPatients_Click(object sender, EventArgs e)
 		{
 			flpInputs.Controls.Clear();
-			flpInputs.Controls.Add(new Patients());
+			flpInputs.Controls.Add(new RecordsPatient());
+		}
+
+		private void lAppointments_Click(object sender, EventArgs e)
+		{
+			flpInputs.Controls.Clear();
 		}
 	}
 }

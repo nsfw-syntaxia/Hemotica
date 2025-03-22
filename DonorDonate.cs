@@ -1,0 +1,106 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
+namespace Hemotica
+{
+	public partial class DonorDonate : UserControl
+	{
+		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+
+		private static extern IntPtr CreateRoundRectRgn(
+			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
+			int nWidthEllipse, int nHeightEllipse);
+
+		private DateTime currentDate = DateTime.Now;
+
+		public DonorDonate()
+		{
+			InitializeComponent();
+		}
+
+		private void DonorDonate_Load(object sender, EventArgs e)
+		{
+			calendar();
+		}
+
+		private void btnCalendar_Click(object sender, EventArgs e)
+		{
+			DashboardD donateCalendar = Application.OpenForms["DashboardD"] as DashboardD;
+
+			if (donateCalendar != null)
+			{
+				donateCalendar.showCalendar();
+			}
+		}
+
+		private void btnList_Click(object sender, EventArgs e)
+		{
+			DashboardD donateCalendar = Application.OpenForms["DashboardD"] as DashboardD;
+
+			if (donateCalendar != null)
+			{
+				donateCalendar.showAppointments();
+			}
+		}
+
+		private void btnBack_Click(object sender, EventArgs e)
+		{
+			currentDate = currentDate.AddMonths(-1);
+			calendar();
+		}
+
+		private void btnToday_Click(object sender, EventArgs e)
+		{
+			currentDate = DateTime.Now;
+			calendar();
+		}
+
+		private void btnNext_Click(object sender, EventArgs e)
+		{
+			currentDate = currentDate.AddMonths(1);
+			calendar();
+		}
+
+		private void calendar()
+		{
+			flpCalendar.Controls.Clear();
+
+			DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+			int daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
+			int startDay = (int)firstDayOfMonth.DayOfWeek;
+			startDay = (startDay == 0) ? 6 : startDay - 1;
+			DateTime firstVisibleDay = firstDayOfMonth.AddDays(-startDay);
+
+			int dayWidth = (flpCalendar.Width - 50) / 7;
+			int dayHeight = (flpCalendar.Height - 40) / 6;
+
+			for (int i = 0; i < 42; i++)
+			{
+				DateTime dayDate = firstVisibleDay.AddDays(i);
+
+				Calendar calendar = new Calendar();
+				calendar.days(dayDate, currentDate);
+
+				calendar.Width = dayWidth;
+				calendar.Height = dayHeight;
+
+				flpCalendar.Controls.Add(calendar);
+			}
+
+			lblDate.Text = currentDate.ToString("MMMM yyyy");
+		}
+
+		private void DonorDonate_Resize(object sender, EventArgs e)
+		{
+			calendar();
+		}
+	}
+}

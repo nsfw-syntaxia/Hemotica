@@ -286,8 +286,8 @@
 			Controls.Add(btnClose);
 			Controls.Add(pbxRegister);
 			Controls.Add(pbxLogo);
-			Controls.Add(tbxUnEA);
 			Controls.Add(tbxPassword);
+			Controls.Add(tbxUnEA);
 			DoubleBuffered = true;
 			FormBorderStyle = FormBorderStyle.None;
 			Name = "Login";
@@ -310,7 +310,6 @@
         private Label lblSIGNUP;
         private Label lblAHAA;
         private Label lblEU;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxEU;
         private ReaLTaiizor.Controls.HopeCheckBox cbxSPassword;
         private Label lblPassword;
         private Label lblForgetPassword;

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Hemotica
 {
-	public partial class HospitalN : UserControl
+	public partial class HospitalNotification : UserControl
 	{
-		public HospitalN()
+		public HospitalNotification()
 		{
 			InitializeComponent();
 		}

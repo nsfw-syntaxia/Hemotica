@@ -26,7 +26,7 @@ namespace Hemotica
 			sidebarExpand = false;
 
 			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
-			showHospitalDB();
+			showHospitalDashboard();
 		}
 
 		private void btnEffects(Button button, Color highlightColor)
@@ -65,7 +65,7 @@ namespace Hemotica
 		private void tSidebar_Tick(object sender, EventArgs e)
 		{
 			int targetWidth = sidebarExpand ? flpSideBar.MinimumSize.Width : flpSideBar.MaximumSize.Width;
-			int step = Math.Max(10, Math.Abs(flpSideBar.Width - targetWidth) / 3);
+			int step = 30;
 
 			if (flpSideBar.Width != targetWidth)
 			{
@@ -109,6 +109,12 @@ namespace Hemotica
 			foreach (Control ctrl in flpDashboard.Controls)
 			{
 				ctrl.Width = flpDashboard.Width;
+				ctrl.Height = flpDashboard.Height;
+
+				if (ctrl is HospitalDashboard hospitalDashboard)
+				{
+					hospitalDashboard.roundControls();
+				}
 			}
 		}
 
@@ -127,53 +133,53 @@ namespace Hemotica
 
 		private void btnDashboard_Click(object sender, EventArgs e)
 		{
-			showHospitalDB();
+			showHospitalDashboard();
 		}
 
-		internal void showHospitalDB()
+		internal void showHospitalDashboard()
 		{
 			lblHeader.Text = "Dashboard";
 			flpDashboard.Controls.Clear();
-			HospitalDB hospitalDB = new HospitalDB();
-			flpDashboard.Controls.Add(hospitalDB);
+			HospitalDashboard hospitalDashboard = new HospitalDashboard();
+			flpDashboard.Controls.Add(hospitalDashboard);
 			adjustLayout();
 		}
 
 		private void btnRecords_Click(object sender, EventArgs e)
 		{
-			showHospitalDR();
+			showHospitalRecords();
 
 		}
 
-		internal void showHospitalDR()
+		internal void showHospitalRecords()
 		{
 			lblHeader.Text = "Records";
 			flpDashboard.Controls.Clear();
-			HospitalR hospitalR = new HospitalR();
-			flpDashboard.Controls.Add(hospitalR);
+			HospitalRecords hospitalRecords = new HospitalRecords();
+			flpDashboard.Controls.Add(hospitalRecords);
 			adjustLayout();
 		}
 
 		private void btnNotification_Click(object sender, EventArgs e)
 		{
-			showHospitalN();
+			showHospitalNotification();
 		}
 
-		internal void showHospitalN()
+		internal void showHospitalNotification()
 		{
 			lblHeader.Text = "Notifications";
 			flpDashboard.Controls.Clear();
-			HospitalN hospitalN = new HospitalN();
-			flpDashboard.Controls.Add(hospitalN);
+			HospitalNotification hospitalNotification = new HospitalNotification();
+			flpDashboard.Controls.Add(hospitalNotification);
 			adjustLayout();
 		}
 
 		private void btnExtraction_Click(object sender, EventArgs e)
 		{
-			showExtraction();
+			showBloodExtraction();
 		}
 
-		internal void showExtraction()
+		internal void showBloodExtraction()
 		{
 			lblHeader.Text = "Blood Extraction";
 			flpDashboard.Controls.Clear();

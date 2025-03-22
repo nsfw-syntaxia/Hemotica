@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-	partial class DonorP
+	partial class DonorProfile
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonorP));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonorProfile));
 			pProfile = new Panel();
 			pbxPhoto = new PictureBox();
 			dName = new Label();

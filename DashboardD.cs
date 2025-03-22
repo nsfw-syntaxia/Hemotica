@@ -26,7 +26,7 @@ namespace Hemotica
 			sidebarExpand = false;
 
 			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
-			showDonorDB();
+			showDonorDashboard();
 		}
 
 		private void btnEffects(Button button, Color highlightColor)
@@ -62,11 +62,11 @@ namespace Hemotica
 		{
 			Application.Exit();
 		}
-
+		
 		private void tSidebar_Tick(object sender, EventArgs e)
 		{
 			int targetWidth = sidebarExpand ? flpSideBar.MinimumSize.Width : flpSideBar.MaximumSize.Width;
-			int step = Math.Max(10, Math.Abs(flpSideBar.Width - targetWidth) / 3);
+			int step = 30;
 
 			if (flpSideBar.Width != targetWidth)
 			{
@@ -94,7 +94,7 @@ namespace Hemotica
 			flpSideBar.MaximumSize = new Size(flpSideBar.MaximumSize.Width, this.ClientSize.Height);
 			adjustLayout();
 		}
-
+		
 		private void adjustLayout()
 		{
 			int sidebarWidth = flpSideBar.Width;
@@ -110,6 +110,12 @@ namespace Hemotica
 			foreach (Control ctrl in flpDashboard.Controls)
 			{
 				ctrl.Width = flpDashboard.Width;
+				ctrl.Height = flpDashboard.Height;
+
+				if (ctrl is DonorDashboard donorDashboard)
+				{
+					donorDashboard.roundControls();
+				}
 			}
 		}
 
@@ -128,29 +134,29 @@ namespace Hemotica
 
 		private void btnDashboard_Click(object sender, EventArgs e)
 		{
-			showDonorDB();
+			showDonorDashboard();
 		}
 
-		internal void showDonorDB()
+		internal void showDonorDashboard()
 		{
 			lblHeader.Text = "Dashboard";
 			flpDashboard.Controls.Clear();
-			DonorDB donorDB = new DonorDB();
-			flpDashboard.Controls.Add(donorDB);
+			DonorDashboard donorDashboard = new DonorDashboard();
+			flpDashboard.Controls.Add(donorDashboard);
 			adjustLayout();
 		}
 
 		private void btnDonate_Click(object sender, EventArgs e)
 		{
-			showDonorD();
+			showCalendar();
 		}
 
-		internal void showDonorD()
+		internal void showCalendar()
 		{
 			lblHeader.Text = "Donate";
 			flpDashboard.Controls.Clear();
-			DonorD donorD = new DonorD();
-			flpDashboard.Controls.Add(donorD);
+			DonorDonate donorCalendar = new DonorDonate();
+			flpDashboard.Controls.Add(donorCalendar);
 			adjustLayout();
 		}
 
@@ -158,35 +164,35 @@ namespace Hemotica
 		{
 			lblHeader.Text = "Donate";
 			flpDashboard.Controls.Clear();
-			Appointments appointmentsList = new Appointments();
-			flpDashboard.Controls.Add(appointmentsList);
+			DonorAppointments donorAppointments = new DonorAppointments();
+			flpDashboard.Controls.Add(donorAppointments);
 			adjustLayout();
 		}
 
 		private void btnNotification_Click(object sender, EventArgs e)
 		{
-			showDonorN();
+			showDonorNotification();
 		}
 
-		internal void showDonorN()
+		internal void showDonorNotification()
 		{
 			lblHeader.Text = "Notifications";
 			flpDashboard.Controls.Clear();
-			DonorN donorN = new DonorN();
-			flpDashboard.Controls.Add(donorN);
+			DonorNotification donorNotification = new DonorNotification();
+			flpDashboard.Controls.Add(donorNotification);
 			adjustLayout();
 		}
 
 		private void btnProfile_Click(object sender, EventArgs e)
 		{
-			showDonorP();
+			showDonorProfile();
 		}
 
-		internal void showDonorP()
+		internal void showDonorProfile()
 		{
 			lblHeader.Text = "Profile";
 			flpDashboard.Controls.Clear();
-			DonorP donorP = new DonorP();
+			DonorProfile donorP = new DonorProfile();
 			flpDashboard.Controls.Add(donorP);
 			adjustLayout();
 		}

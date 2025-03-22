@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-	partial class Patients
+	partial class RecordsDonor
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -36,21 +36,21 @@
 			lblDonor.AutoSize = true;
 			lblDonor.Font = new Font("Bahnschrift", 25F, FontStyle.Bold);
 			lblDonor.ForeColor = Color.FromArgb(216, 85, 101);
-			lblDonor.Location = new Point(3, 0);
+			lblDonor.Location = new Point(0, 0);
 			lblDonor.Name = "lblDonor";
 			lblDonor.Padding = new Padding(5, 0, 0, 5);
-			lblDonor.Size = new Size(129, 46);
-			lblDonor.TabIndex = 12;
-			lblDonor.Text = "Patient";
+			lblDonor.Size = new Size(117, 46);
+			lblDonor.TabIndex = 11;
+			lblDonor.Text = "Donor";
 			// 
-			// Patients
+			// RecordsDonor
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
 			Controls.Add(lblDonor);
-			Name = "Patients";
-			Size = new Size(447, 538);
+			Name = "RecordsDonor";
+			Size = new Size(447, 545);
 			ResumeLayout(false);
 			PerformLayout();
 		}

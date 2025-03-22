@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-	partial class HospitalR
+	partial class HospitalRecords
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -28,13 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalR));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalRecords));
 			mstrpRecords = new ReaLTaiizor.Controls.ParrotToolStrip();
 			tstrpFile = new ToolStripDropDownButton();
 			load = new ToolStripMenuItem();
 			lTable = new ToolStripMenuItem();
 			lDonors = new ToolStripMenuItem();
 			lPatients = new ToolStripMenuItem();
+			lAppointments = new ToolStripMenuItem();
 			lQuery = new ToolStripMenuItem();
 			lExtraction = new ToolStripMenuItem();
 			lTransfusion = new ToolStripMenuItem();
@@ -51,7 +52,6 @@
 			btnInsert = new AntdUI.Button();
 			btnUpdate = new AntdUI.Button();
 			btnDelete = new AntdUI.Button();
-			lAppointments = new ToolStripMenuItem();
 			mstrpRecords.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dgvData).BeginInit();
 			SuspendLayout();
@@ -91,7 +91,7 @@
 			// 
 			// lTable
 			// 
-			lTable.DropDownItems.AddRange(new ToolStripItem[] { lDonors, lPatients });
+			lTable.DropDownItems.AddRange(new ToolStripItem[] { lDonors, lPatients, lAppointments });
 			lTable.Font = new Font("Bahnschrift", 12F);
 			lTable.ForeColor = Color.FromArgb(54, 40, 40);
 			lTable.Name = "lTable";
@@ -102,7 +102,7 @@
 			// 
 			lDonors.ForeColor = Color.FromArgb(54, 40, 40);
 			lDonors.Name = "lDonors";
-			lDonors.Size = new Size(149, 24);
+			lDonors.Size = new Size(194, 24);
 			lDonors.Text = "DONORS";
 			lDonors.Click += lDonors_Click;
 			// 
@@ -110,13 +110,20 @@
 			// 
 			lPatients.ForeColor = Color.FromArgb(54, 40, 40);
 			lPatients.Name = "lPatients";
-			lPatients.Size = new Size(149, 24);
+			lPatients.Size = new Size(194, 24);
 			lPatients.Text = "PATIENTS";
 			lPatients.Click += lPatients_Click;
 			// 
+			// lAppointments
+			// 
+			lAppointments.Name = "lAppointments";
+			lAppointments.Size = new Size(194, 24);
+			lAppointments.Text = "APPOINTMENTS";
+			lAppointments.Click += lAppointments_Click;
+			// 
 			// lQuery
 			// 
-			lQuery.DropDownItems.AddRange(new ToolStripItem[] { lAppointments, lExtraction, lTransfusion });
+			lQuery.DropDownItems.AddRange(new ToolStripItem[] { lExtraction, lTransfusion });
 			lQuery.ForeColor = Color.FromArgb(54, 40, 40);
 			lQuery.Name = "lQuery";
 			lQuery.Size = new Size(180, 24);
@@ -150,21 +157,21 @@
 			pTable.DropDownItems.AddRange(new ToolStripItem[] { pDonors, pPatients });
 			pTable.ForeColor = Color.FromArgb(54, 40, 40);
 			pTable.Name = "pTable";
-			pTable.Size = new Size(180, 24);
+			pTable.Size = new Size(127, 24);
 			pTable.Text = "TABLE";
 			// 
 			// pDonors
 			// 
 			pDonors.ForeColor = Color.FromArgb(54, 40, 40);
 			pDonors.Name = "pDonors";
-			pDonors.Size = new Size(180, 24);
+			pDonors.Size = new Size(149, 24);
 			pDonors.Text = "DONORS";
 			// 
 			// pPatients
 			// 
 			pPatients.ForeColor = Color.FromArgb(54, 40, 40);
 			pPatients.Name = "pPatients";
-			pPatients.Size = new Size(180, 24);
+			pPatients.Size = new Size(149, 24);
 			pPatients.Text = "PATIENTS";
 			// 
 			// pQuery
@@ -172,7 +179,7 @@
 			pQuery.DropDownItems.AddRange(new ToolStripItem[] { pExtraction, pTransfusion });
 			pQuery.ForeColor = Color.FromArgb(54, 40, 40);
 			pQuery.Name = "pQuery";
-			pQuery.Size = new Size(180, 24);
+			pQuery.Size = new Size(127, 24);
 			pQuery.Text = "QUERY";
 			// 
 			// pExtraction
@@ -198,18 +205,18 @@
 			dgvData.Location = new Point(456, 42);
 			dgvData.Name = "dgvData";
 			dgvData.ReadOnly = true;
-			dgvData.Size = new Size(561, 538);
+			dgvData.Size = new Size(561, 545);
 			dgvData.TabIndex = 2;
 			// 
 			// btnConnection
 			// 
-			btnConnection.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			btnConnection.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			btnConnection.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnConnection.Font = new Font("Bahnschrift", 14F);
 			btnConnection.ForeColor = Color.FromArgb(252, 228, 228);
-			btnConnection.Location = new Point(456, 586);
+			btnConnection.Location = new Point(456, 593);
 			btnConnection.Name = "btnConnection";
-			btnConnection.Size = new Size(561, 52);
+			btnConnection.Size = new Size(561, 45);
 			btnConnection.TabIndex = 12;
 			btnConnection.Text = "Connection Test";
 			// 
@@ -218,49 +225,46 @@
 			flpInputs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
 			flpInputs.Location = new Point(3, 42);
 			flpInputs.Name = "flpInputs";
-			flpInputs.Size = new Size(447, 538);
+			flpInputs.Size = new Size(447, 545);
 			flpInputs.TabIndex = 13;
 			// 
 			// btnInsert
 			// 
+			btnInsert.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			btnInsert.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnInsert.Font = new Font("Bahnschrift", 14F);
 			btnInsert.ForeColor = Color.FromArgb(252, 228, 228);
-			btnInsert.Location = new Point(3, 586);
+			btnInsert.Location = new Point(3, 593);
 			btnInsert.Name = "btnInsert";
-			btnInsert.Size = new Size(145, 52);
+			btnInsert.Size = new Size(145, 45);
 			btnInsert.TabIndex = 14;
 			btnInsert.Text = "Insert";
 			// 
 			// btnUpdate
 			// 
+			btnUpdate.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			btnUpdate.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnUpdate.Font = new Font("Bahnschrift", 14F);
 			btnUpdate.ForeColor = Color.FromArgb(252, 228, 228);
-			btnUpdate.Location = new Point(154, 586);
+			btnUpdate.Location = new Point(154, 593);
 			btnUpdate.Name = "btnUpdate";
-			btnUpdate.Size = new Size(145, 52);
+			btnUpdate.Size = new Size(145, 45);
 			btnUpdate.TabIndex = 15;
 			btnUpdate.Text = "Update";
 			// 
 			// btnDelete
 			// 
+			btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
 			btnDelete.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnDelete.Font = new Font("Bahnschrift", 14F);
 			btnDelete.ForeColor = Color.FromArgb(252, 228, 228);
-			btnDelete.Location = new Point(305, 586);
+			btnDelete.Location = new Point(305, 593);
 			btnDelete.Name = "btnDelete";
-			btnDelete.Size = new Size(145, 52);
+			btnDelete.Size = new Size(145, 45);
 			btnDelete.TabIndex = 16;
 			btnDelete.Text = "Delete";
 			// 
-			// lAppointments
-			// 
-			lAppointments.Name = "lAppointments";
-			lAppointments.Size = new Size(235, 24);
-			lAppointments.Text = "APPOINTMENTS";
-			// 
-			// HospitalR
+			// HospitalRecords
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -272,7 +276,7 @@
 			Controls.Add(btnConnection);
 			Controls.Add(dgvData);
 			Controls.Add(mstrpRecords);
-			Name = "HospitalR";
+			Name = "HospitalRecords";
 			Size = new Size(1020, 641);
 			mstrpRecords.ResumeLayout(false);
 			mstrpRecords.PerformLayout();

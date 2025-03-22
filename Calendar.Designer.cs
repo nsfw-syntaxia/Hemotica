@@ -28,47 +28,48 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			tblpCalendar = new TableLayoutPanel();
+			pDays = new Panel();
+			lblDays = new Label();
+			pDays.SuspendLayout();
 			SuspendLayout();
 			// 
-			// tblpCalendar
+			// pDays
 			// 
-			tblpCalendar.BackColor = Color.FromArgb(253, 211, 211);
-			tblpCalendar.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-			tblpCalendar.ColumnCount = 7;
-			tblpCalendar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
-			tblpCalendar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
-			tblpCalendar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
-			tblpCalendar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
-			tblpCalendar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
-			tblpCalendar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
-			tblpCalendar.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
-			tblpCalendar.Dock = DockStyle.Fill;
-			tblpCalendar.Location = new Point(0, 0);
-			tblpCalendar.Name = "tblpCalendar";
-			tblpCalendar.RowCount = 6;
-			tblpCalendar.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-			tblpCalendar.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-			tblpCalendar.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-			tblpCalendar.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-			tblpCalendar.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-			tblpCalendar.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-			tblpCalendar.Size = new Size(1014, 507);
-			tblpCalendar.TabIndex = 0;
+			pDays.Controls.Add(lblDays);
+			pDays.Dock = DockStyle.Fill;
+			pDays.Location = new Point(0, 0);
+			pDays.Name = "pDays";
+			pDays.Padding = new Padding(3);
+			pDays.Size = new Size(137, 74);
+			pDays.TabIndex = 0;
+			// 
+			// lblDays
+			// 
+			lblDays.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			lblDays.AutoSize = true;
+			lblDays.Font = new Font("Bahnschrift", 15F);
+			lblDays.Location = new Point(101, 3);
+			lblDays.Name = "lblDays";
+			lblDays.Size = new Size(32, 24);
+			lblDays.TabIndex = 0;
+			lblDays.Text = "00";
+			lblDays.TextAlign = ContentAlignment.MiddleRight;
 			// 
 			// Calendar
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
-			Controls.Add(tblpCalendar);
+			Controls.Add(pDays);
 			Name = "Calendar";
-			Size = new Size(1014, 507);
-			Load += Calendar_Load;
+			Size = new Size(137, 74);
+			pDays.ResumeLayout(false);
+			pDays.PerformLayout();
 			ResumeLayout(false);
 		}
 
 		#endregion
 
-		private TableLayoutPanel tblpCalendar;
+		private Panel pDays;
+		private Label lblDays;
 	}
 }

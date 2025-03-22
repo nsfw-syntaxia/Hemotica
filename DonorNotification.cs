@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 
 namespace Hemotica
 {
-	public partial class DonorP : UserControl
+	public partial class DonorNotification : UserControl
 	{
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -19,15 +19,24 @@ namespace Hemotica
 			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
 			int nWidthEllipse, int nHeightEllipse);
 
-		public DonorP()
+		public DonorNotification()
 		{
 			InitializeComponent();
 		}
 
-		private void DonorP_Load(object sender, EventArgs e)
+		private void DonorN_Load(object sender, EventArgs e)
 		{
-			pProfile.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pProfile.Width, pProfile.Height, 20, 20));
-			pbxPhoto.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxPhoto.Width, pbxPhoto.Height, 20, 20));
+			roundControls();
+		}
+
+		public void roundControls()
+		{
+			flpNotifications.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpNotifications.Width, flpNotifications.Height, 20, 20));
+		}
+
+		private void DonorN_Resize(object sender, EventArgs e)
+		{
+			roundControls();
 		}
 	}
 }

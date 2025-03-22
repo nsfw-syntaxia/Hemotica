@@ -29,7 +29,6 @@ namespace Hemotica
         {
             btnSettings();
             centerResize();
-            ttGuide.Visible = true;
             tToggle.Start();
         }
 
@@ -110,8 +109,8 @@ namespace Hemotica
                 pbxFade.Left = pbxCaption.Left;
                 pbxFade.Top = pbxCaption.Top;
 
-				ttGuide.Left = (this.ClientSize.Width - ttGuide.Width) / 2;
-				ttGuide.Top = pbxFade.Top + pbxFade.Height;
+				lblGuide.Left = (this.ClientSize.Width - lblGuide.Width) / 2;
+				lblGuide.Top = pbxFade.Top + pbxFade.Height;
 			}
         }
 
@@ -127,7 +126,6 @@ namespace Hemotica
 
         internal void pbxHeart_Click(object sender, EventArgs e)
         {
-            ttGuide.Visible = false;
             tToggle.Stop();
 
             overlay = new Form

@@ -38,7 +38,7 @@
 			pbxCaption = new PictureBox();
 			pbxFade = new PictureBox();
 			tToggle = new System.Windows.Forms.Timer(components);
-			ttGuide = new AntdUI.Tooltip();
+			lblGuide = new Label();
 			((System.ComponentModel.ISupportInitialize)pbxHeart).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pbxTitle).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pbxCaption).BeginInit();
@@ -140,18 +140,16 @@
 			tToggle.Interval = 300;
 			tToggle.Tick += tToggle_Tick;
 			// 
-			// ttGuide
+			// lblGuide
 			// 
-			ttGuide.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			ttGuide.ArrowAlign = AntdUI.TAlign.None;
-			ttGuide.Font = new Font("Bahnschrift Light", 12F);
-			ttGuide.Location = new Point(473, 674);
-			ttGuide.MaximumSize = new Size(320, 38);
-			ttGuide.MinimumSize = new Size(320, 38);
-			ttGuide.Name = "ttGuide";
-			ttGuide.Size = new Size(320, 38);
-			ttGuide.TabIndex = 10;
-			ttGuide.Text = "note: please click the heart to continue !";
+			lblGuide.AutoSize = true;
+			lblGuide.Font = new Font("Bahnschrift SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			lblGuide.ForeColor = Color.FromArgb(236, 124, 132);
+			lblGuide.Location = new Point(531, 674);
+			lblGuide.Name = "lblGuide";
+			lblGuide.Size = new Size(204, 19);
+			lblGuide.TabIndex = 11;
+			lblGuide.Text = "click the heart to continue !";
 			// 
 			// Home
 			// 
@@ -160,7 +158,7 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			ClientSize = new Size(1263, 803);
 			ControlBox = false;
-			Controls.Add(ttGuide);
+			Controls.Add(lblGuide);
 			Controls.Add(pbxCaption);
 			Controls.Add(pbxTitle);
 			Controls.Add(pbxHeart);
@@ -181,6 +179,7 @@
 			((System.ComponentModel.ISupportInitialize)pbxCaption).EndInit();
 			((System.ComponentModel.ISupportInitialize)pbxFade).EndInit();
 			ResumeLayout(false);
+			PerformLayout();
 		}
 
 		#endregion
@@ -192,6 +191,6 @@
         private PictureBox pbxCaption;
         private PictureBox pbxFade;
         private System.Windows.Forms.Timer tToggle;
-		private AntdUI.Tooltip ttGuide;
+		private Label lblGuide;
 	}
 }
