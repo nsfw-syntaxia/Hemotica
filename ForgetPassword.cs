@@ -19,7 +19,8 @@ namespace Hemotica
             this.Location = new Point(centerX, centerY);
 
             tEffect.Start();
-        }
+            showFP1();
+		}
 
         private void btnEffects(System.Windows.Forms.Button button, Color highlightColor)
         {
@@ -52,16 +53,25 @@ namespace Hemotica
             this.Owner.Activate();
         }
 
-        private void btnResetPassword_Click(object sender, EventArgs e)
-        {
-            this.Opacity = 0;
+		public void showFP1()
+		{
+			flpForgetPassword.Controls.Clear();
+            ConfirmationEmail confirmEmail = new ConfirmationEmail(this);
+            flpForgetPassword.Controls.Add(confirmEmail);
+		}
 
-            if (this.Owner is Home home)
-            {
-                home.showLogin();
-            }
+		public void showFP2()
+		{
+			flpForgetPassword.Controls.Clear();
+			ConfirmationCode confirmCode = new ConfirmationCode(this);
+			flpForgetPassword.Controls.Add(confirmCode);
+		}
 
-            this.Close();
-        }
-    }
+		public void showFP3()
+		{
+			flpForgetPassword.Controls.Clear();
+			ChangePassword changePassword = new ChangePassword(this);
+			flpForgetPassword.Controls.Add(changePassword);
+		}
+	}
 }
