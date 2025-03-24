@@ -22,10 +22,12 @@ namespace Hemotica
 		private void DashboardD_Load(object sender, EventArgs e)
 		{
 			btnSettings();
+			pQR.Visible = false;
 			flpSideBar.Width = flpSideBar.MinimumSize.Width;
 			sidebarExpand = false;
 
 			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
+			pQR.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pQR.Width, pQR.Height, 20, 20));
 			showDonorDashboard();
 		}
 
@@ -62,7 +64,7 @@ namespace Hemotica
 		{
 			Application.Exit();
 		}
-		
+
 		private void tSidebar_Tick(object sender, EventArgs e)
 		{
 			int targetWidth = sidebarExpand ? flpSideBar.MinimumSize.Width : flpSideBar.MaximumSize.Width;
@@ -94,7 +96,7 @@ namespace Hemotica
 			flpSideBar.MaximumSize = new Size(flpSideBar.MaximumSize.Width, this.ClientSize.Height);
 			adjustLayout();
 		}
-		
+
 		private void adjustLayout()
 		{
 			int sidebarWidth = flpSideBar.Width;
@@ -195,6 +197,25 @@ namespace Hemotica
 			DonorProfile donorP = new DonorProfile();
 			flpDashboard.Controls.Add(donorP);
 			adjustLayout();
+		}
+
+		private void btnQR_Click(object sender, EventArgs e)
+		{
+			if (pQR.Visible)
+			{
+				pQR.Visible = false;
+			}
+			else
+			{
+				showQR();
+			}
+		}
+
+		internal void showQR()
+		{
+			pQR.Visible = true;
+			DonorQR donorQR = new DonorQR();
+			pQR.Controls.Add(donorQR);
 		}
 	}
 }

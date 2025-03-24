@@ -306,6 +306,7 @@
 			pbxProfile.Location = new Point(8, 8);
 			pbxProfile.Name = "pbxProfile";
 			pbxProfile.Size = new Size(309, 309);
+			pbxProfile.SizeMode = PictureBoxSizeMode.StretchImage;
 			pbxProfile.TabIndex = 0;
 			pbxProfile.TabStop = false;
 			// 

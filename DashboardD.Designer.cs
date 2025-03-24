@@ -49,10 +49,12 @@
 			btnLogout = new Button();
 			tSidebar = new System.Windows.Forms.Timer(components);
 			pHeader = new Panel();
+			lblUsername = new Label();
 			btnQR = new Button();
 			lblHeader = new Label();
 			lblUserID = new Label();
 			flpDashboard = new FlowLayoutPanel();
+			pQR = new Panel();
 			flpSideBar.SuspendLayout();
 			pMenu.SuspendLayout();
 			pDashboard.SuspendLayout();
@@ -310,6 +312,7 @@
 			// pHeader
 			// 
 			pHeader.BackColor = Color.FromArgb(216, 85, 101);
+			pHeader.Controls.Add(lblUsername);
 			pHeader.Controls.Add(btnQR);
 			pHeader.Controls.Add(lblHeader);
 			pHeader.Controls.Add(lblUserID);
@@ -317,6 +320,19 @@
 			pHeader.Name = "pHeader";
 			pHeader.Size = new Size(1020, 101);
 			pHeader.TabIndex = 11;
+			// 
+			// lblUsername
+			// 
+			lblUsername.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblUsername.AutoSize = true;
+			lblUsername.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblUsername.ForeColor = Color.FromArgb(244, 180, 180);
+			lblUsername.Location = new Point(119, 62);
+			lblUsername.Name = "lblUsername";
+			lblUsername.Padding = new Padding(5, 0, 0, 0);
+			lblUsername.Size = new Size(164, 33);
+			lblUsername.TabIndex = 10;
+			lblUsername.Text = "<username>";
 			// 
 			// btnQR
 			// 
@@ -331,7 +347,9 @@
 			btnQR.Name = "btnQR";
 			btnQR.Size = new Size(50, 50);
 			btnQR.TabIndex = 9;
+			btnQR.TabStop = false;
 			btnQR.UseVisualStyleBackColor = true;
+			btnQR.Click += btnQR_Click;
 			// 
 			// lblHeader
 			// 
@@ -354,9 +372,9 @@
 			lblUserID.Location = new Point(6, 62);
 			lblUserID.Name = "lblUserID";
 			lblUserID.Padding = new Padding(5, 0, 0, 0);
-			lblUserID.Size = new Size(266, 33);
+			lblUserID.Size = new Size(115, 33);
 			lblUserID.TabIndex = 8;
-			lblUserID.Text = "User ID: <username>";
+			lblUserID.Text = "User ID:";
 			// 
 			// flpDashboard
 			// 
@@ -367,6 +385,15 @@
 			flpDashboard.Size = new Size(1020, 641);
 			flpDashboard.TabIndex = 10;
 			// 
+			// pQR
+			// 
+			pQR.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			pQR.BackColor = Color.FromArgb(244, 180, 180);
+			pQR.Location = new Point(831, 150);
+			pQR.Name = "pQR";
+			pQR.Size = new Size(420, 420);
+			pQR.TabIndex = 0;
+			// 
 			// DashboardD
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -374,6 +401,7 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			ClientSize = new Size(1263, 803);
 			ControlBox = false;
+			Controls.Add(pQR);
 			Controls.Add(pHeader);
 			Controls.Add(flpDashboard);
 			Controls.Add(flpSideBar);
@@ -424,5 +452,7 @@
         private FlowLayoutPanel flpDashboard;
         private Label lblUserID;
 		private Button btnQR;
+		private Label lblUsername;
+		private Panel pQR;
 	}
 }

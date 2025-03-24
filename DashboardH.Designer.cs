@@ -59,6 +59,7 @@
 			btnQR = new Button();
 			lblHeader = new Label();
 			lblUserID = new Label();
+			lblUsername = new Label();
 			flpSideBar.SuspendLayout();
 			pMenu.SuspendLayout();
 			pDashboard.SuspendLayout();
@@ -415,6 +416,7 @@
 			// pHeader
 			// 
 			pHeader.BackColor = Color.FromArgb(216, 85, 101);
+			pHeader.Controls.Add(lblUsername);
 			pHeader.Controls.Add(btnQR);
 			pHeader.Controls.Add(lblHeader);
 			pHeader.Controls.Add(lblUserID);
@@ -459,9 +461,22 @@
 			lblUserID.Location = new Point(6, 62);
 			lblUserID.Name = "lblUserID";
 			lblUserID.Padding = new Padding(5, 0, 0, 0);
-			lblUserID.Size = new Size(266, 33);
+			lblUserID.Size = new Size(115, 33);
 			lblUserID.TabIndex = 8;
-			lblUserID.Text = "User ID: <username>";
+			lblUserID.Text = "User ID:";
+			// 
+			// lblUsername
+			// 
+			lblUsername.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblUsername.AutoSize = true;
+			lblUsername.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblUsername.ForeColor = Color.FromArgb(244, 180, 180);
+			lblUsername.Location = new Point(119, 62);
+			lblUsername.Name = "lblUsername";
+			lblUsername.Padding = new Padding(5, 0, 0, 0);
+			lblUsername.Size = new Size(164, 33);
+			lblUsername.TabIndex = 11;
+			lblUsername.Text = "<username>";
 			// 
 			// DashboardH
 			// 
@@ -528,5 +543,6 @@
 		private Button btnQR;
 		private Label lblHeader;
 		private Label lblUserID;
+		private Label lblUsername;
 	}
 }
