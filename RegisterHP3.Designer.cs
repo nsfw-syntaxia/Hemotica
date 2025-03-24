@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-    partial class RegisterHP2
+    partial class RegisterHP3
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,19 +30,15 @@
 		{
 			lblName = new Label();
 			lblID = new Label();
-			lblClassification = new Label();
+			lblHAddress = new Label();
 			lblPage = new Label();
-			lblOHours = new Label();
+			lblCNumber = new Label();
 			btnRegister = new ReaLTaiizor.Controls.FoxButton();
 			btnBack = new ReaLTaiizor.Controls.FoxButton();
 			tbxHospitalName = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
 			tbxID = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
-			rbtnPrivate = new ReaLTaiizor.Controls.HopeRadioButton();
-			rbtnPublic = new ReaLTaiizor.Controls.HopeRadioButton();
-			cmbxStart = new ReaLTaiizor.Controls.DungeonComboBox();
-			cmbxEnd = new ReaLTaiizor.Controls.DungeonComboBox();
-			lblStart = new Label();
-			lblEnd = new Label();
+			tbxHospitalAddress = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+			tbxContactNumber = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
 			SuspendLayout();
 			// 
 			// lblName
@@ -67,16 +63,16 @@
 			lblID.TabIndex = 26;
 			lblID.Text = "License Number / Registration ID";
 			// 
-			// lblClassification
+			// lblHAddress
 			// 
-			lblClassification.AutoSize = true;
-			lblClassification.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			lblClassification.ForeColor = Color.FromArgb(216, 85, 101);
-			lblClassification.Location = new Point(3, 136);
-			lblClassification.Name = "lblClassification";
-			lblClassification.Size = new Size(106, 22);
-			lblClassification.TabIndex = 50;
-			lblClassification.Text = "Classification";
+			lblHAddress.AutoSize = true;
+			lblHAddress.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+			lblHAddress.ForeColor = Color.FromArgb(216, 85, 101);
+			lblHAddress.Location = new Point(3, 136);
+			lblHAddress.Name = "lblHAddress";
+			lblHAddress.Size = new Size(69, 22);
+			lblHAddress.TabIndex = 50;
+			lblHAddress.Text = "Address";
 			// 
 			// lblPage
 			// 
@@ -87,18 +83,18 @@
 			lblPage.Name = "lblPage";
 			lblPage.Size = new Size(38, 22);
 			lblPage.TabIndex = 32;
-			lblPage.Text = "2 / 3";
+			lblPage.Text = "3 / 3";
 			// 
-			// lblOHours
+			// lblCNumber
 			// 
-			lblOHours.AutoSize = true;
-			lblOHours.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			lblOHours.ForeColor = Color.FromArgb(216, 85, 101);
-			lblOHours.Location = new Point(3, 190);
-			lblOHours.Name = "lblOHours";
-			lblOHours.Size = new Size(127, 22);
-			lblOHours.TabIndex = 52;
-			lblOHours.Text = "Operating Hours";
+			lblCNumber.AutoSize = true;
+			lblCNumber.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+			lblCNumber.ForeColor = Color.FromArgb(216, 85, 101);
+			lblCNumber.Location = new Point(3, 202);
+			lblCNumber.Name = "lblCNumber";
+			lblCNumber.Size = new Size(124, 22);
+			lblCNumber.TabIndex = 52;
+			lblCNumber.Text = "Contact Number";
 			// 
 			// btnRegister
 			// 
@@ -224,145 +220,107 @@
 			tbxID.UseTallSize = false;
 			tbxID.ValidatingType = null;
 			// 
-			// rbtnPrivate
+			// tbxHospitalAddress
 			// 
-			rbtnPrivate.AutoSize = true;
-			rbtnPrivate.CheckedColor = Color.FromArgb(236, 124, 132);
-			rbtnPrivate.DisabledColor = Color.FromArgb(216, 85, 101);
-			rbtnPrivate.DisabledStringColor = Color.FromArgb(216, 85, 101);
-			rbtnPrivate.Enable = true;
-			rbtnPrivate.EnabledCheckedColor = Color.FromArgb(216, 85, 101);
-			rbtnPrivate.EnabledStringColor = Color.FromArgb(216, 85, 101);
-			rbtnPrivate.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
-			rbtnPrivate.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			rbtnPrivate.ForeColor = Color.FromArgb(236, 124, 132);
-			rbtnPrivate.Location = new Point(230, 162);
-			rbtnPrivate.Name = "rbtnPrivate";
-			rbtnPrivate.Size = new Size(83, 20);
-			rbtnPrivate.TabIndex = 77;
-			rbtnPrivate.TabStop = true;
-			rbtnPrivate.Text = "Private";
-			rbtnPrivate.UseVisualStyleBackColor = true;
+			tbxHospitalAddress.AllowPromptAsInput = true;
+			tbxHospitalAddress.AnimateReadOnly = false;
+			tbxHospitalAddress.AsciiOnly = false;
+			tbxHospitalAddress.BackgroundImageLayout = ImageLayout.None;
+			tbxHospitalAddress.BeepOnError = false;
+			tbxHospitalAddress.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+			tbxHospitalAddress.Depth = 0;
+			tbxHospitalAddress.Font = new Font("Arial Narrow", 13F);
+			tbxHospitalAddress.HidePromptOnLeave = false;
+			tbxHospitalAddress.HideSelection = true;
+			tbxHospitalAddress.InsertKeyMode = InsertKeyMode.Default;
+			tbxHospitalAddress.LeadingIcon = null;
+			tbxHospitalAddress.Location = new Point(3, 161);
+			tbxHospitalAddress.Mask = "";
+			tbxHospitalAddress.MaxLength = 32767;
+			tbxHospitalAddress.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+			tbxHospitalAddress.Name = "tbxHospitalAddress";
+			tbxHospitalAddress.PasswordChar = '\0';
+			tbxHospitalAddress.PrefixSuffixText = null;
+			tbxHospitalAddress.PromptChar = '_';
+			tbxHospitalAddress.ReadOnly = false;
+			tbxHospitalAddress.RejectInputOnFirstFailure = false;
+			tbxHospitalAddress.ResetOnPrompt = true;
+			tbxHospitalAddress.ResetOnSpace = true;
+			tbxHospitalAddress.RightToLeft = RightToLeft.No;
+			tbxHospitalAddress.SelectedText = "";
+			tbxHospitalAddress.SelectionLength = 0;
+			tbxHospitalAddress.SelectionStart = 0;
+			tbxHospitalAddress.ShortcutsEnabled = true;
+			tbxHospitalAddress.Size = new Size(389, 36);
+			tbxHospitalAddress.SkipLiterals = true;
+			tbxHospitalAddress.TabIndex = 74;
+			tbxHospitalAddress.TabStop = false;
+			tbxHospitalAddress.TextAlign = HorizontalAlignment.Left;
+			tbxHospitalAddress.TextMaskFormat = MaskFormat.IncludeLiterals;
+			tbxHospitalAddress.TrailingIcon = null;
+			tbxHospitalAddress.UseSystemPasswordChar = false;
+			tbxHospitalAddress.UseTallSize = false;
+			tbxHospitalAddress.ValidatingType = null;
 			// 
-			// rbtnPublic
+			// tbxContactNumber
 			// 
-			rbtnPublic.AutoSize = true;
-			rbtnPublic.CheckedColor = Color.FromArgb(236, 124, 132);
-			rbtnPublic.DisabledColor = Color.FromArgb(216, 85, 101);
-			rbtnPublic.DisabledStringColor = Color.FromArgb(216, 85, 101);
-			rbtnPublic.Enable = true;
-			rbtnPublic.EnabledCheckedColor = Color.FromArgb(216, 85, 101);
-			rbtnPublic.EnabledStringColor = Color.FromArgb(216, 85, 101);
-			rbtnPublic.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
-			rbtnPublic.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			rbtnPublic.ForeColor = Color.FromArgb(236, 124, 132);
-			rbtnPublic.Location = new Point(91, 162);
-			rbtnPublic.Name = "rbtnPublic";
-			rbtnPublic.Size = new Size(79, 20);
-			rbtnPublic.TabIndex = 76;
-			rbtnPublic.TabStop = true;
-			rbtnPublic.Text = "Public";
-			rbtnPublic.UseVisualStyleBackColor = true;
+			tbxContactNumber.AllowPromptAsInput = true;
+			tbxContactNumber.AnimateReadOnly = false;
+			tbxContactNumber.AsciiOnly = false;
+			tbxContactNumber.BackgroundImageLayout = ImageLayout.None;
+			tbxContactNumber.BeepOnError = false;
+			tbxContactNumber.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+			tbxContactNumber.Depth = 0;
+			tbxContactNumber.Font = new Font("Arial Narrow", 13F);
+			tbxContactNumber.HidePromptOnLeave = false;
+			tbxContactNumber.HideSelection = true;
+			tbxContactNumber.InsertKeyMode = InsertKeyMode.Default;
+			tbxContactNumber.LeadingIcon = null;
+			tbxContactNumber.Location = new Point(3, 227);
+			tbxContactNumber.Mask = "";
+			tbxContactNumber.MaxLength = 32767;
+			tbxContactNumber.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+			tbxContactNumber.Name = "tbxContactNumber";
+			tbxContactNumber.PasswordChar = '\0';
+			tbxContactNumber.PrefixSuffixText = null;
+			tbxContactNumber.PromptChar = '_';
+			tbxContactNumber.ReadOnly = false;
+			tbxContactNumber.RejectInputOnFirstFailure = false;
+			tbxContactNumber.ResetOnPrompt = true;
+			tbxContactNumber.ResetOnSpace = true;
+			tbxContactNumber.RightToLeft = RightToLeft.No;
+			tbxContactNumber.SelectedText = "";
+			tbxContactNumber.SelectionLength = 0;
+			tbxContactNumber.SelectionStart = 0;
+			tbxContactNumber.ShortcutsEnabled = true;
+			tbxContactNumber.Size = new Size(389, 36);
+			tbxContactNumber.SkipLiterals = true;
+			tbxContactNumber.TabIndex = 75;
+			tbxContactNumber.TabStop = false;
+			tbxContactNumber.TextAlign = HorizontalAlignment.Left;
+			tbxContactNumber.TextMaskFormat = MaskFormat.IncludeLiterals;
+			tbxContactNumber.TrailingIcon = null;
+			tbxContactNumber.UseSystemPasswordChar = false;
+			tbxContactNumber.UseTallSize = false;
+			tbxContactNumber.ValidatingType = null;
 			// 
-			// cmbxStart
-			// 
-			cmbxStart.BackColor = Color.FromArgb(241, 241, 241);
-			cmbxStart.ColorA = Color.FromArgb(236, 124, 132);
-			cmbxStart.ColorB = Color.FromArgb(236, 124, 132);
-			cmbxStart.ColorC = Color.FromArgb(242, 241, 240);
-			cmbxStart.ColorD = Color.FromArgb(253, 252, 252);
-			cmbxStart.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxStart.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxStart.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxStart.ColorH = Color.FromArgb(224, 222, 220);
-			cmbxStart.ColorI = Color.FromArgb(250, 249, 249);
-			cmbxStart.DrawMode = DrawMode.OwnerDrawFixed;
-			cmbxStart.DropDownHeight = 100;
-			cmbxStart.DropDownStyle = ComboBoxStyle.DropDownList;
-			cmbxStart.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			cmbxStart.ForeColor = Color.FromArgb(216, 85, 101);
-			cmbxStart.FormattingEnabled = true;
-			cmbxStart.HoverSelectionColor = Color.Empty;
-			cmbxStart.IntegralHeight = false;
-			cmbxStart.ItemHeight = 25;
-			cmbxStart.Items.AddRange(new object[] { "00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30" });
-			cmbxStart.Location = new Point(65, 215);
-			cmbxStart.Name = "cmbxStart";
-			cmbxStart.Size = new Size(327, 31);
-			cmbxStart.StartIndex = 0;
-			cmbxStart.TabIndex = 78;
-			// 
-			// cmbxEnd
-			// 
-			cmbxEnd.BackColor = Color.FromArgb(241, 241, 241);
-			cmbxEnd.ColorA = Color.FromArgb(236, 124, 132);
-			cmbxEnd.ColorB = Color.FromArgb(236, 124, 132);
-			cmbxEnd.ColorC = Color.FromArgb(242, 241, 240);
-			cmbxEnd.ColorD = Color.FromArgb(253, 252, 252);
-			cmbxEnd.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxEnd.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxEnd.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxEnd.ColorH = Color.FromArgb(224, 222, 220);
-			cmbxEnd.ColorI = Color.FromArgb(250, 249, 249);
-			cmbxEnd.DrawMode = DrawMode.OwnerDrawFixed;
-			cmbxEnd.DropDownHeight = 100;
-			cmbxEnd.DropDownStyle = ComboBoxStyle.DropDownList;
-			cmbxEnd.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			cmbxEnd.ForeColor = Color.FromArgb(216, 85, 101);
-			cmbxEnd.FormattingEnabled = true;
-			cmbxEnd.HoverSelectionColor = Color.Empty;
-			cmbxEnd.IntegralHeight = false;
-			cmbxEnd.ItemHeight = 25;
-			cmbxEnd.Items.AddRange(new object[] { "00:00", "00:30", "01:00", "01:30", "02:00", "02:30", "03:00", "03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30", "23:00", "23:30" });
-			cmbxEnd.Location = new Point(65, 252);
-			cmbxEnd.Name = "cmbxEnd";
-			cmbxEnd.Size = new Size(327, 31);
-			cmbxEnd.StartIndex = 0;
-			cmbxEnd.TabIndex = 79;
-			// 
-			// lblStart
-			// 
-			lblStart.AutoSize = true;
-			lblStart.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			lblStart.ForeColor = Color.FromArgb(216, 85, 101);
-			lblStart.Location = new Point(15, 218);
-			lblStart.Name = "lblStart";
-			lblStart.Size = new Size(44, 22);
-			lblStart.TabIndex = 80;
-			lblStart.Text = "Start";
-			// 
-			// lblEnd
-			// 
-			lblEnd.AutoSize = true;
-			lblEnd.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			lblEnd.ForeColor = Color.FromArgb(216, 85, 101);
-			lblEnd.Location = new Point(15, 255);
-			lblEnd.Name = "lblEnd";
-			lblEnd.Size = new Size(38, 22);
-			lblEnd.TabIndex = 81;
-			lblEnd.Text = "End";
-			// 
-			// RegisterHP2
+			// RegisterHP3
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
-			Controls.Add(lblEnd);
-			Controls.Add(lblStart);
-			Controls.Add(cmbxEnd);
-			Controls.Add(cmbxStart);
-			Controls.Add(rbtnPrivate);
-			Controls.Add(rbtnPublic);
+			Controls.Add(tbxContactNumber);
 			Controls.Add(btnBack);
-			Controls.Add(lblOHours);
-			Controls.Add(lblClassification);
+			Controls.Add(lblCNumber);
+			Controls.Add(lblHAddress);
 			Controls.Add(lblPage);
 			Controls.Add(lblID);
 			Controls.Add(lblName);
 			Controls.Add(btnRegister);
 			Controls.Add(tbxHospitalName);
 			Controls.Add(tbxID);
-			Name = "RegisterHP2";
+			Controls.Add(tbxHospitalAddress);
+			Name = "RegisterHP3";
 			Size = new Size(396, 382);
 			ResumeLayout(false);
 			PerformLayout();
@@ -371,18 +329,14 @@
 		#endregion
 		private Label lblName;
         private Label lblID;
-        private Label lblClassification;
+        private Label lblHAddress;
         private Label lblPage;
-        private Label lblOHours;
+        private Label lblCNumber;
         private ReaLTaiizor.Controls.FoxButton btnRegister;
         private ReaLTaiizor.Controls.FoxButton btnBack;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxHospitalName;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxID;
-		private ReaLTaiizor.Controls.HopeRadioButton rbtnPrivate;
-		private ReaLTaiizor.Controls.HopeRadioButton rbtnPublic;
-		private ReaLTaiizor.Controls.DungeonComboBox cmbxStart;
-		private ReaLTaiizor.Controls.DungeonComboBox cmbxEnd;
-		private Label lblStart;
-		private Label lblEnd;
-	}
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxHospitalAddress;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxContactNumber;
+    }
 }

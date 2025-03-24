@@ -94,7 +94,7 @@
 			lblPage.Name = "lblPage";
 			lblPage.Size = new Size(38, 22);
 			lblPage.TabIndex = 32;
-			lblPage.Text = "1 / 2";
+			lblPage.Text = "1 / 3";
 			// 
 			// cbxSPassword
 			// 

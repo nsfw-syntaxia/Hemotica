@@ -30,6 +30,9 @@
     <Compile Update="RegisterHP1.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="RegisterHP3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="RegisterHP2.cs">
       <SubType>UserControl</SubType>
     </Compile>
