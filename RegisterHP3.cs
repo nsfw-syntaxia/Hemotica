@@ -22,7 +22,7 @@ namespace Hemotica
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            register.showHP1();
+            register.showHP2();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

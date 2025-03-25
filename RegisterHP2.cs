@@ -10,31 +10,24 @@ using System.Windows.Forms;
 
 namespace Hemotica
 {
-    public partial class RegisterHP2 : UserControl
-    {
-        private Register register;
+	public partial class RegisterHP2 : UserControl
+	{
+		private Register register;
 
-        public RegisterHP2(Register parent)
-        {
-            InitializeComponent();
-            this.register = parent;
-        }
+		public RegisterHP2(Register parent)
+		{
+			InitializeComponent();
+			this.register = parent;
+		}
 
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            register.showHP1();
-        }
+		private void btnBack_Click(object sender, EventArgs e)
+		{
+			register.showHP1();
+		}
 
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            register.Opacity = 0;
-
-            if (register.Owner is Home home)
-            {
-                home.showLogin();
-            }
-
-            register.Close();
-        }
-    }
+		private void btnNext_Click(object sender, EventArgs e)
+		{
+			register.showHP3();
+		}
+	}
 }

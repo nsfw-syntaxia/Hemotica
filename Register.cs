@@ -87,7 +87,14 @@ namespace Hemotica
             flpUserRegister.Controls.Add(hospitalP2);
         }
 
-        private void cmbxRUser_SelectedIndexChanged(object sender, EventArgs e)
+		public void showHP3()
+		{
+			flpUserRegister.Controls.Clear();
+			RegisterHP3 hospitalP3 = new RegisterHP3(this);
+			flpUserRegister.Controls.Add(hospitalP3);
+		}
+
+		private void cmbxRUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             flpUserRegister.Controls.Clear();
 

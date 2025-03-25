@@ -33,7 +33,7 @@
 			lblClassification = new Label();
 			lblPage = new Label();
 			lblOHours = new Label();
-			btnRegister = new ReaLTaiizor.Controls.FoxButton();
+			btnNext = new ReaLTaiizor.Controls.FoxButton();
 			btnBack = new ReaLTaiizor.Controls.FoxButton();
 			tbxHospitalName = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
 			tbxID = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
@@ -96,29 +96,29 @@
 			lblOHours.ForeColor = Color.FromArgb(216, 85, 101);
 			lblOHours.Location = new Point(3, 190);
 			lblOHours.Name = "lblOHours";
-			lblOHours.Size = new Size(127, 22);
+			lblOHours.Size = new Size(246, 22);
 			lblOHours.TabIndex = 52;
-			lblOHours.Text = "Operating Hours";
+			lblOHours.Text = "Operating Hours (Monday-Friday)";
 			// 
-			// btnRegister
+			// btnNext
 			// 
-			btnRegister.BackColor = Color.Transparent;
-			btnRegister.BaseColor = Color.FromArgb(216, 85, 101);
-			btnRegister.BorderColor = Color.FromArgb(216, 85, 101);
-			btnRegister.DisabledBaseColor = Color.FromArgb(244, 148, 156);
-			btnRegister.DisabledBorderColor = Color.FromArgb(244, 148, 156);
-			btnRegister.DisabledTextColor = Color.FromArgb(244, 148, 156);
-			btnRegister.DownColor = Color.FromArgb(236, 124, 132);
-			btnRegister.EnabledCalc = true;
-			btnRegister.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			btnRegister.ForeColor = Color.FromArgb(241, 241, 241);
-			btnRegister.Location = new Point(203, 334);
-			btnRegister.Name = "btnRegister";
-			btnRegister.OverColor = Color.FromArgb(216, 85, 101);
-			btnRegister.Size = new Size(120, 40);
-			btnRegister.TabIndex = 49;
-			btnRegister.Text = "SIGN UP";
-			btnRegister.Click += btnRegister_Click;
+			btnNext.BackColor = Color.Transparent;
+			btnNext.BaseColor = Color.FromArgb(216, 85, 101);
+			btnNext.BorderColor = Color.FromArgb(216, 85, 101);
+			btnNext.DisabledBaseColor = Color.FromArgb(244, 148, 156);
+			btnNext.DisabledBorderColor = Color.FromArgb(244, 148, 156);
+			btnNext.DisabledTextColor = Color.FromArgb(244, 148, 156);
+			btnNext.DownColor = Color.FromArgb(236, 124, 132);
+			btnNext.EnabledCalc = true;
+			btnNext.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+			btnNext.ForeColor = Color.FromArgb(241, 241, 241);
+			btnNext.Location = new Point(203, 334);
+			btnNext.Name = "btnNext";
+			btnNext.OverColor = Color.FromArgb(216, 85, 101);
+			btnNext.Size = new Size(120, 40);
+			btnNext.TabIndex = 49;
+			btnNext.Text = "NEXT";
+			btnNext.Click += btnNext_Click;
 			// 
 			// btnBack
 			// 
@@ -359,7 +359,7 @@
 			Controls.Add(lblPage);
 			Controls.Add(lblID);
 			Controls.Add(lblName);
-			Controls.Add(btnRegister);
+			Controls.Add(btnNext);
 			Controls.Add(tbxHospitalName);
 			Controls.Add(tbxID);
 			Name = "RegisterHP2";
@@ -374,7 +374,7 @@
         private Label lblClassification;
         private Label lblPage;
         private Label lblOHours;
-        private ReaLTaiizor.Controls.FoxButton btnRegister;
+        private ReaLTaiizor.Controls.FoxButton btnNext;
         private ReaLTaiizor.Controls.FoxButton btnBack;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxHospitalName;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxID;
