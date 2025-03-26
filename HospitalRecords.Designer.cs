@@ -87,7 +87,7 @@
 			load.Font = new Font("Bahnschrift", 12F);
 			load.ForeColor = Color.FromArgb(54, 40, 40);
 			load.Name = "load";
-			load.Size = new Size(180, 24);
+			load.Size = new Size(123, 24);
 			load.Text = "LOAD";
 			// 
 			// lTable
@@ -96,7 +96,7 @@
 			lTable.Font = new Font("Bahnschrift", 12F);
 			lTable.ForeColor = Color.FromArgb(54, 40, 40);
 			lTable.Name = "lTable";
-			lTable.Size = new Size(180, 24);
+			lTable.Size = new Size(127, 24);
 			lTable.Text = "TABLE";
 			// 
 			// lDonors
@@ -134,7 +134,7 @@
 			lQuery.DropDownItems.AddRange(new ToolStripItem[] { lExtraction, lTransfusion });
 			lQuery.ForeColor = Color.FromArgb(54, 40, 40);
 			lQuery.Name = "lQuery";
-			lQuery.Size = new Size(180, 24);
+			lQuery.Size = new Size(127, 24);
 			lQuery.Text = "QUERY";
 			// 
 			// lExtraction
@@ -157,7 +157,7 @@
 			print.Font = new Font("Bahnschrift", 12F);
 			print.ForeColor = Color.FromArgb(54, 40, 40);
 			print.Name = "print";
-			print.Size = new Size(180, 24);
+			print.Size = new Size(123, 24);
 			print.Text = "PRINT";
 			// 
 			// pTable
@@ -210,10 +210,10 @@
 			dgvData.BackgroundColor = Color.FromArgb(244, 180, 180);
 			dgvData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			dgvData.GridColor = Color.FromArgb(244, 180, 180);
-			dgvData.Location = new Point(456, 42);
+			dgvData.Location = new Point(507, 42);
 			dgvData.Name = "dgvData";
 			dgvData.ReadOnly = true;
-			dgvData.Size = new Size(561, 545);
+			dgvData.Size = new Size(510, 545);
 			dgvData.TabIndex = 2;
 			// 
 			// btnConnection
@@ -222,9 +222,9 @@
 			btnConnection.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnConnection.Font = new Font("Bahnschrift", 14F);
 			btnConnection.ForeColor = Color.FromArgb(252, 228, 228);
-			btnConnection.Location = new Point(456, 593);
+			btnConnection.Location = new Point(507, 593);
 			btnConnection.Name = "btnConnection";
-			btnConnection.Size = new Size(561, 45);
+			btnConnection.Size = new Size(510, 45);
 			btnConnection.TabIndex = 12;
 			btnConnection.Text = "Connection Test";
 			// 
@@ -233,7 +233,7 @@
 			flpInputs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
 			flpInputs.Location = new Point(3, 42);
 			flpInputs.Name = "flpInputs";
-			flpInputs.Size = new Size(447, 545);
+			flpInputs.Size = new Size(498, 545);
 			flpInputs.TabIndex = 13;
 			// 
 			// btnInsert

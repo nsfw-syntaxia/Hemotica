@@ -27,6 +27,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ForgetPassword.cs" />
+    <Compile Update="RegisterDP4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="RegisterHP1.cs">
       <SubType>UserControl</SubType>
     </Compile>

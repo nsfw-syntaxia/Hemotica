@@ -86,7 +86,7 @@
 			lblPage.Name = "lblPage";
 			lblPage.Size = new Size(38, 22);
 			lblPage.TabIndex = 32;
-			lblPage.Text = "2 / 3";
+			lblPage.Text = "2 / 4";
 			// 
 			// lblGender
 			// 
