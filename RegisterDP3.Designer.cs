@@ -148,6 +148,7 @@
 			tbxAge.Size = new Size(389, 36);
 			tbxAge.SkipLiterals = true;
 			tbxAge.TabIndex = 83;
+			tbxAge.TabStop = false;
 			tbxAge.TextAlign = HorizontalAlignment.Left;
 			tbxAge.TextMaskFormat = MaskFormat.IncludeLiterals;
 			tbxAge.TrailingIcon = null;
@@ -230,11 +231,13 @@
 			cmbxCity.HoverSelectionColor = Color.Empty;
 			cmbxCity.IntegralHeight = false;
 			cmbxCity.ItemHeight = 25;
+			cmbxCity.Items.AddRange(new object[] { "Alcantara", "Alcoy", "Alegria", "Aloguinsan", "Argao", "Asturias", "Badian", "Balamban", "Bantayan", "Barili", "City of Bogo", "Boljoon", "Borbon", "City of Carcar", "Carmen", "Catmon", "Cebu City", "Compostela", "Consolacion", "Cordova", "Daanbantayan", "Dalaguete", "Danao City", "Dumanjug", "Ginatilan", "Lapu-Lapu City", "Liloan", "Madridejos", "Malabuyoc", "Mandaue City", "Medellin", "Minglanilla", "Moalboal", "City of Naga", "Oslob", "Pilar", "Pinamungahan", "Poro", "Ronda", "Samboan", "San Fernando", "San Francisco", "San Remigio", "Santa Fe", "Santander", "Sibonga", "Sogod", "Tabogon", "Tabuelan", "City of Talisay", "Toledo City", "Tuburan", "Tudela" });
 			cmbxCity.Location = new Point(3, 161);
 			cmbxCity.Name = "cmbxCity";
 			cmbxCity.Size = new Size(389, 31);
 			cmbxCity.StartIndex = 0;
 			cmbxCity.TabIndex = 87;
+			cmbxCity.SelectedIndexChanged += cmbxCity_SelectedIndexChanged;
 			// 
 			// lblBarangay
 			// 
