@@ -73,7 +73,14 @@ namespace Hemotica
             flpUserRegister.Controls.Add(donorP3);
         }
 
-        public void showHP1()
+		public void showDP4()
+		{
+			flpUserRegister.Controls.Clear();
+			RegisterDP4 donorP4 = new RegisterDP4(this);
+			flpUserRegister.Controls.Add(donorP4);
+		}
+
+		public void showHP1()
         {
             flpUserRegister.Controls.Clear();
             RegisterHP1 hospitalP1 = new RegisterHP1(this);

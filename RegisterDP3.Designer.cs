@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			lblPage = new Label();
-			btnRegister = new ReaLTaiizor.Controls.FoxButton();
+			btnNext = new ReaLTaiizor.Controls.FoxButton();
 			lblProvince = new Label();
 			lblAge = new Label();
 			btnBack = new ReaLTaiizor.Controls.FoxButton();
@@ -52,25 +52,25 @@
 			lblPage.TabIndex = 32;
 			lblPage.Text = "3 / 4";
 			// 
-			// btnRegister
+			// btnNext
 			// 
-			btnRegister.BackColor = Color.Transparent;
-			btnRegister.BaseColor = Color.FromArgb(216, 85, 101);
-			btnRegister.BorderColor = Color.FromArgb(216, 85, 101);
-			btnRegister.DisabledBaseColor = Color.FromArgb(244, 148, 156);
-			btnRegister.DisabledBorderColor = Color.FromArgb(244, 148, 156);
-			btnRegister.DisabledTextColor = Color.FromArgb(244, 148, 156);
-			btnRegister.DownColor = Color.FromArgb(236, 124, 132);
-			btnRegister.EnabledCalc = true;
-			btnRegister.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			btnRegister.ForeColor = Color.FromArgb(241, 241, 241);
-			btnRegister.Location = new Point(203, 334);
-			btnRegister.Name = "btnRegister";
-			btnRegister.OverColor = Color.FromArgb(216, 85, 101);
-			btnRegister.Size = new Size(120, 40);
-			btnRegister.TabIndex = 49;
-			btnRegister.Text = "SIGN UP";
-			btnRegister.Click += btnRegister_Click;
+			btnNext.BackColor = Color.Transparent;
+			btnNext.BaseColor = Color.FromArgb(216, 85, 101);
+			btnNext.BorderColor = Color.FromArgb(216, 85, 101);
+			btnNext.DisabledBaseColor = Color.FromArgb(244, 148, 156);
+			btnNext.DisabledBorderColor = Color.FromArgb(244, 148, 156);
+			btnNext.DisabledTextColor = Color.FromArgb(244, 148, 156);
+			btnNext.DownColor = Color.FromArgb(236, 124, 132);
+			btnNext.EnabledCalc = true;
+			btnNext.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+			btnNext.ForeColor = Color.FromArgb(241, 241, 241);
+			btnNext.Location = new Point(203, 334);
+			btnNext.Name = "btnNext";
+			btnNext.OverColor = Color.FromArgb(216, 85, 101);
+			btnNext.Size = new Size(120, 40);
+			btnNext.TabIndex = 49;
+			btnNext.Text = "NEXT";
+			btnNext.Click += btnNext_Click;
 			// 
 			// lblProvince
 			// 
@@ -148,7 +148,6 @@
 			tbxAge.Size = new Size(389, 36);
 			tbxAge.SkipLiterals = true;
 			tbxAge.TabIndex = 83;
-			tbxAge.TabStop = false;
 			tbxAge.TextAlign = HorizontalAlignment.Left;
 			tbxAge.TextMaskFormat = MaskFormat.IncludeLiterals;
 			tbxAge.TrailingIcon = null;
@@ -286,7 +285,7 @@
 			Controls.Add(lblAge);
 			Controls.Add(lblCity);
 			Controls.Add(lblPage);
-			Controls.Add(btnRegister);
+			Controls.Add(btnNext);
 			Controls.Add(lblBarangay);
 			Controls.Add(lblProvince);
 			Controls.Add(tbxProvince);
@@ -301,7 +300,7 @@
 		private Label lblPage;
         private Label lblProvince;
         private Label lblAge;
-        private ReaLTaiizor.Controls.FoxButton btnRegister;
+        private ReaLTaiizor.Controls.FoxButton btnNext;
         private ReaLTaiizor.Controls.FoxButton btnBack;
         private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxAge;
 		private Label lblCity;
