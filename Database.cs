@@ -71,9 +71,9 @@ namespace Hemotica
 			}
 		}
 
-		public bool search(string columnName, string value, string tableName)
+		public bool userExists(string columnName, string value)
 		{
-			string query = $"SELECT COUNT(*) FROM [{tableName}] WHERE [{columnName}] = @Value";
+			string query = $"SELECT COUNT(*) FROM Users WHERE [{columnName}] = @Value";
 			using (OleDbConnection conn = getConnection())
 			using (OleDbCommand cmd = new OleDbCommand(query, conn))
 			{
@@ -88,10 +88,6 @@ namespace Hemotica
 				{
 					MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
-				}
-				finally
-				{
-					conn.Close();
 				}
 			}
 		}

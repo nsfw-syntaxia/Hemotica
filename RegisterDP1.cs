@@ -21,15 +21,15 @@ namespace Hemotica
 			string password = tbxPassword.Text;
 			string confirmPassword = tbxConfirmPassword.Text;
 
-			if (db.search("[Email Address]", email, "Donors"))
+			if (db.userExists("EmailAddress", email))
 			{
-				MessageBox.Show("Email address already exists. Please try again.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Email address already exists. Please try again.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-			
-			if (db.search("[Username]", username, "Donors"))
+
+			if (db.userExists("Username", username))
 			{
-				MessageBox.Show("Username already exists. Please try again.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Username already taken. Please try again.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
