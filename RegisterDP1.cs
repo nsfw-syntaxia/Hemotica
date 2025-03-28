@@ -22,27 +22,29 @@ namespace Hemotica
 			string password = tbxPassword.Text;
 			string confirmPassword = tbxConfirmPassword.Text;
 
+			List<string> errors = new List<string>();
+
+			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
+			{
+				MessageBox.Show("Please fill the required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
 			if (!validEmail(email))
-			{
-				MessageBox.Show("Invalid email address.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
+				errors.Add("Invalid email address.");
 
-			if (db.userExists("EmailAddress", email))
-			{
-				MessageBox.Show("Email address already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
+			if (!string.IsNullOrWhiteSpace(email) && db.userExists("EmailAddress", email))
+				errors.Add("Email address already exists.");
 
-			if (db.userExists("Username", username))
-			{
-				MessageBox.Show("Username already taken.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
+			if (!string.IsNullOrWhiteSpace(username) && db.userExists("Username", username))
+				errors.Add("Username already taken.");
 
-			if (password != confirmPassword)
+			if (!string.IsNullOrEmpty(password) && password != confirmPassword)
+				errors.Add("Passwords do not match.");
+
+			if (errors.Count > 0)
 			{
-				MessageBox.Show("Passwords do not match.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(string.Join("\n", errors), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
