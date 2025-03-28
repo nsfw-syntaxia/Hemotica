@@ -13,7 +13,9 @@ namespace Hemotica
 
 		private OleDbConnection getConnection()
 		{
-			return new OleDbConnection(connection);
+			OleDbConnection conn = new OleDbConnection(connection);
+			conn.Close();
+			return conn;
 		}
 
 		public string hashPassword(string password)
@@ -71,7 +73,7 @@ namespace Hemotica
 
 		public bool search(string columnName, string value, string tableName)
 		{
-			string query = $"SELECT COUNT(*) FROM {tableName} WHERE {columnName} = @Value";
+			string query = $"SELECT COUNT(*) FROM [{tableName}] WHERE [{columnName}] = @Value";
 			using (OleDbConnection conn = getConnection())
 			using (OleDbCommand cmd = new OleDbCommand(query, conn))
 			{
@@ -86,6 +88,10 @@ namespace Hemotica
 				{
 					MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
+				}
+				finally
+				{
+					conn.Close();
 				}
 			}
 		}
