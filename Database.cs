@@ -13,9 +13,7 @@ namespace Hemotica
 
 		private OleDbConnection getConnection()
 		{
-			OleDbConnection conn = new OleDbConnection(connection);
-			conn.Close();
-			return conn;
+			return new OleDbConnection(connection);
 		}
 
 		public string hashPassword(string password)
@@ -36,7 +34,9 @@ namespace Hemotica
 				try
 				{
 					conn.Open();
-					cmd.Parameters.AddRange(parameters);
+					if (parameters != null)
+						cmd.Parameters.AddRange(parameters);
+
 					return cmd.ExecuteNonQuery() > 0;
 				}
 				catch (Exception ex)
@@ -73,7 +73,8 @@ namespace Hemotica
 
 		public bool userExists(string columnName, string value)
 		{
-			string query = $"SELECT COUNT(*) FROM Users WHERE [{columnName}] = @Value";
+			string query = $@"SELECT COUNT(*) FROM (SELECT [Email Address] AS EmailAddress, [Username] FROM Donors UNION SELECT [Email Address] AS EmailAddress, [Username] FROM Hospitals) WHERE [{columnName}] = @Value";
+
 			using (OleDbConnection conn = getConnection())
 			using (OleDbCommand cmd = new OleDbCommand(query, conn))
 			{

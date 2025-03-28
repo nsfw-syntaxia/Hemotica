@@ -5,7 +5,15 @@ namespace Hemotica
 {
     public partial class Register : Form
     {
-        public Register()
+		protected internal string EmailAddress { get; set; }
+		protected internal string Username { get; set; }
+		protected internal string Password { get; set; }
+		protected internal string FirstName { get; set; }
+		protected internal string MiddleName { get; set; }
+		protected internal string LastName { get; set; }
+		protected internal string Gender { get; set; }
+
+		public Register()
         {
             InitializeComponent();
         }
