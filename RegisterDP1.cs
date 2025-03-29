@@ -13,6 +13,16 @@ namespace Hemotica
 		{
 			InitializeComponent();
 			this.register = parent;
+
+			loadData();
+		}
+
+		public void loadData()
+		{
+			tbxEmailAddress.Text = register.EmailAddress ?? "";
+			tbxUsername.Text = register.Username ?? "";
+			tbxPassword.Text = register.Password ?? "";
+			tbxConfirmPassword.Text = register.Password ?? "";
 		}
 
 		private void btnNext_Click(object sender, EventArgs e)
@@ -50,7 +60,7 @@ namespace Hemotica
 
 			register.EmailAddress = email;
 			register.Username = username;
-			register.Password = db.hashPassword(password);
+			register.Password = password;
 
 			register.showDP2();
 		}

@@ -62,9 +62,9 @@
 			lblMName.ForeColor = Color.FromArgb(216, 85, 101);
 			lblMName.Location = new Point(3, 70);
 			lblMName.Name = "lblMName";
-			lblMName.Size = new Size(100, 22);
+			lblMName.Size = new Size(174, 22);
 			lblMName.TabIndex = 26;
-			lblMName.Text = "Middle Name";
+			lblMName.Text = "Middle Name (Optional)";
 			// 
 			// lblLName
 			// 

@@ -12,11 +12,17 @@ namespace Hemotica
 		protected internal string MiddleName { get; set; }
 		protected internal string LastName { get; set; }
 		protected internal string Gender { get; set; }
+		protected internal string Province { get; set; } = "Cebu";
+		protected internal string City { get; set; }
+		protected internal string Barangay { get; set; }
+		protected internal string Age { get; set; }
+		protected internal string ContactNumber { get; set; }
+		protected internal string BloodType { get; set; }
 
 		public Register()
         {
             InitializeComponent();
-        }
+		}
 
         private void Register_Load(object sender, EventArgs e)
         {

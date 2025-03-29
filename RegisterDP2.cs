@@ -11,7 +11,16 @@ namespace Hemotica
         {
             InitializeComponent();
             this.register = parent;
-        }
+
+			tbxFirstName.Text = register.FirstName;
+			tbxMiddleName.Text = register.MiddleName;
+			tbxLastName.Text = register.LastName;
+
+			if (register.Gender == rbtnMale.Text) rbtnMale.Checked = true;
+			else if (register.Gender == rbtnFemale.Text) rbtnFemale.Checked = true;
+			else if (register.Gender == rbtnOther.Text) rbtnOther.Checked = true;
+			else if (register.Gender == rbtnPNTS.Text) rbtnPNTS.Checked = true;
+		}
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -20,39 +29,20 @@ namespace Hemotica
 			string lastName = tbxLastName.Text.Trim();
 			string gender = "";
 
-			if (string.IsNullOrWhiteSpace(firstName))
+			if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || (!rbtnMale.Checked && !rbtnFemale.Checked && !rbtnOther.Checked && !rbtnPNTS.Checked))
 			{
-				MessageBox.Show("First name is required.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
-
-			if (string.IsNullOrWhiteSpace(lastName))
-			{
-				MessageBox.Show("Last name is required.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Please fill the required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
 			if (rbtnMale.Checked)
-			{
 				gender = rbtnMale.Text;
-			}
 			else if (rbtnFemale.Checked)
-			{
 				gender = rbtnFemale.Text;
-			}
 			else if (rbtnOther.Checked)
-			{
 				gender = rbtnOther.Text;
-			}
 			else if (rbtnPNTS.Checked)
-			{
 				gender = rbtnPNTS.Text;
-			}
-			else
-			{
-				MessageBox.Show("Please select a gender.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
 
 			register.FirstName = firstName;
 			register.MiddleName = middleName;
