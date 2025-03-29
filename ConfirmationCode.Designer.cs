@@ -34,7 +34,7 @@
 			tbxCode = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
 			btnBack = new ReaLTaiizor.Controls.FoxButton();
 			btnSubmit = new ReaLTaiizor.Controls.FoxButton();
-			label1 = new Label();
+			lblL2Instruction = new Label();
 			SuspendLayout();
 			// 
 			// lblHeader
@@ -152,23 +152,23 @@
 			btnSubmit.Text = "SUBMIT";
 			btnSubmit.Click += btnSubmit_Click;
 			// 
-			// label1
+			// lblL2Instruction
 			// 
-			label1.AutoSize = true;
-			label1.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			label1.ForeColor = Color.FromArgb(236, 124, 132);
-			label1.Location = new Point(30, 80);
-			label1.Name = "label1";
-			label1.Size = new Size(336, 22);
-			label1.TabIndex = 81;
-			label1.Text = "need a new one, go back and request a resend.";
+			lblL2Instruction.AutoSize = true;
+			lblL2Instruction.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+			lblL2Instruction.ForeColor = Color.FromArgb(236, 124, 132);
+			lblL2Instruction.Location = new Point(30, 80);
+			lblL2Instruction.Name = "lblL2Instruction";
+			lblL2Instruction.Size = new Size(336, 22);
+			lblL2Instruction.TabIndex = 81;
+			lblL2Instruction.Text = "need a new one, go back and request a resend.";
 			// 
 			// ConfirmationCode
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
-			Controls.Add(label1);
+			Controls.Add(lblL2Instruction);
 			Controls.Add(btnBack);
 			Controls.Add(btnSubmit);
 			Controls.Add(lblCode);
@@ -189,6 +189,6 @@
 		private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxCode;
 		private ReaLTaiizor.Controls.FoxButton btnBack;
 		private ReaLTaiizor.Controls.FoxButton btnSubmit;
-		private Label label1;
+		private Label lblL2Instruction;
 	}
 }

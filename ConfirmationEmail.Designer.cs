@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			label1 = new Label();
+			lblL2Instruction = new Label();
 			lblEmail = new Label();
 			lblL1Instruction = new Label();
 			lblHeader = new Label();
@@ -36,16 +36,16 @@
 			tbxEmail = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
 			SuspendLayout();
 			// 
-			// label1
+			// lblL2Instruction
 			// 
-			label1.AutoSize = true;
-			label1.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			label1.ForeColor = Color.FromArgb(236, 124, 132);
-			label1.Location = new Point(50, 80);
-			label1.Name = "label1";
-			label1.Size = new Size(296, 22);
-			label1.TabIndex = 86;
-			label1.Text = "please enter your email address to verify.\r\n";
+			lblL2Instruction.AutoSize = true;
+			lblL2Instruction.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+			lblL2Instruction.ForeColor = Color.FromArgb(236, 124, 132);
+			lblL2Instruction.Location = new Point(50, 80);
+			lblL2Instruction.Name = "lblL2Instruction";
+			lblL2Instruction.Size = new Size(296, 22);
+			lblL2Instruction.TabIndex = 86;
+			lblL2Instruction.Text = "please enter your email address to verify.\r\n";
 			// 
 			// lblEmail
 			// 
@@ -148,7 +148,7 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
 			Controls.Add(btnSendCode);
-			Controls.Add(label1);
+			Controls.Add(lblL2Instruction);
 			Controls.Add(lblEmail);
 			Controls.Add(lblL1Instruction);
 			Controls.Add(lblHeader);
@@ -161,7 +161,7 @@
 
 		#endregion
 
-		private Label label1;
+		private Label lblL2Instruction;
 		private Label lblEmail;
 		private Label lblL1Instruction;
 		private Label lblHeader;
