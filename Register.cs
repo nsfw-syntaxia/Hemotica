@@ -19,6 +19,15 @@ namespace Hemotica
 		protected internal string ContactNumber { get; set; }
 		protected internal string BloodType { get; set; }
 
+		protected internal string HospitalName { get; set; }
+		protected internal string LicenseID { get; set; }
+		protected internal string Classification { get; set; }
+		protected internal string WeekdaysStart { get; set; }
+		protected internal string WeekdaysEnd { get; set; }
+		protected internal string WeekendStart { get; set; }
+		protected internal string WeekendEnd { get; set; }
+		protected internal string HospitalAddress { get; set; }
+
 		public Register()
         {
             InitializeComponent();

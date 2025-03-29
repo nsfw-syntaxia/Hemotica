@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Hemotica
@@ -9,11 +10,14 @@ namespace Hemotica
     public partial class RegisterDP4 : UserControl
     {
         private Register register;
+		private Database db = new Database();
 
-        public RegisterDP4(Register parent)
+		public RegisterDP4(Register parent)
         {
             InitializeComponent();
             this.register = parent;
+
+			cmbxBType.SelectedIndex = -1;
 		}
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -28,14 +32,19 @@ namespace Hemotica
 
 			if (string.IsNullOrWhiteSpace(contactNumber) || string.IsNullOrWhiteSpace(bloodType))
 			{
-				MessageBox.Show("Please fill the required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			if (!validPhoneNumber(contactNumber))
+			{
+				MessageBox.Show("Invalid contact number.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
 			register.ContactNumber = contactNumber;
 			register.BloodType = bloodType;
 
-			Database db = new Database();
 			string hashedPassword = db.hashPassword(register.Password);
 
 			string query = @"INSERT INTO Donors ([Email Address], [Username], [Password], [First Name], [Middle Name], [Last Name], 
@@ -76,5 +85,10 @@ namespace Hemotica
 				MessageBox.Show("Registration failed!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
         }
-    }
+
+		private bool validPhoneNumber(string number)
+		{
+			return Regex.IsMatch(number, @"^(\(\d{3}\) \d{3}-\d{4}|\d{10,15})$");
+		}
+	}
 }

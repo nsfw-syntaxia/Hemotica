@@ -8,6 +8,7 @@ namespace Hemotica
 	public partial class RegisterDP3 : UserControl
 	{
 		private Register register;
+		private Database db = new Database();
 
 		public RegisterDP3(Register parent)
 		{
@@ -35,13 +36,13 @@ namespace Hemotica
 
 			if (string.IsNullOrWhiteSpace(city) || string.IsNullOrWhiteSpace(barangay) || string.IsNullOrWhiteSpace(ageDonor))
 			{
-				MessageBox.Show("Please fill the required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
 			if (!int.TryParse(ageDonor, out int age) || age < 1 || age > 120)
 			{
-				MessageBox.Show("Invalid age input.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Invalid age.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
@@ -67,7 +68,6 @@ namespace Hemotica
 		{
 			if (string.IsNullOrWhiteSpace(city)) return;
 
-			Database db = new Database();
 			string query = "SELECT Barangay FROM Address WHERE City = @City ORDER BY Barangay ASC";
 
 			OleDbParameter[] parameters = { new OleDbParameter("@City", city) };

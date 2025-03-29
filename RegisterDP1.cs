@@ -14,15 +14,10 @@ namespace Hemotica
 			InitializeComponent();
 			this.register = parent;
 
-			loadData();
-		}
-
-		public void loadData()
-		{
-			tbxEmailAddress.Text = register.EmailAddress ?? "";
-			tbxUsername.Text = register.Username ?? "";
-			tbxPassword.Text = register.Password ?? "";
-			tbxConfirmPassword.Text = register.Password ?? "";
+			tbxEmailAddress.Text = register.EmailAddress;
+			tbxUsername.Text = register.Username;
+			tbxPassword.Text = register.Password;
+			tbxConfirmPassword.Text = register.Password;
 		}
 
 		private void btnNext_Click(object sender, EventArgs e)
@@ -36,7 +31,7 @@ namespace Hemotica
 
 			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
 			{
-				MessageBox.Show("Please fill the required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 

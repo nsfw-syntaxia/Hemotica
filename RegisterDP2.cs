@@ -31,7 +31,7 @@ namespace Hemotica
 
 			if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || (!rbtnMale.Checked && !rbtnFemale.Checked && !rbtnOther.Checked && !rbtnPNTS.Checked))
 			{
-				MessageBox.Show("Please fill the required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 

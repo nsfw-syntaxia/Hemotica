@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hemotica
@@ -18,6 +11,15 @@ namespace Hemotica
 		{
 			InitializeComponent();
 			this.register = parent;
+
+			tbxHospitalName.Text = register.HospitalName;
+			tbxID.Text = register.LicenseID;
+
+			if (register.Classification == rbtnPublic.Text) rbtnPublic.Checked = true;
+			else if (register.Classification == rbtnPrivate.Text) rbtnPrivate.Checked = true;
+
+			cmbxStart.SelectedItem = register.WeekdaysStart;
+			cmbxEnd.SelectedItem = register.WeekdaysEnd;
 		}
 
 		private void btnBack_Click(object sender, EventArgs e)
@@ -27,6 +29,29 @@ namespace Hemotica
 
 		private void btnNext_Click(object sender, EventArgs e)
 		{
+			string hospitalName = tbxHospitalName.Text.Trim();
+			string licenseID = tbxID.Text.Trim();
+			string classification = "";
+			string weekdaysStart = cmbxStart.SelectedItem?.ToString();
+			string weekdaysEnd = cmbxEnd.SelectedItem?.ToString();
+
+			if (string.IsNullOrWhiteSpace(hospitalName) || string.IsNullOrWhiteSpace(licenseID) || (!rbtnPublic.Checked && !rbtnPrivate.Checked) || string.IsNullOrWhiteSpace(weekdaysStart) || string.IsNullOrWhiteSpace(weekdaysEnd))
+			{
+				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			if (rbtnPublic.Checked)
+				classification = rbtnPublic.Text;
+			else if (rbtnPrivate.Checked)
+				classification = rbtnPrivate.Text;
+
+			register.HospitalName = hospitalName;
+			register.LicenseID = licenseID;
+			register.Classification = classification;
+			register.WeekdaysStart = weekdaysStart;
+			register.WeekdaysEnd = weekdaysEnd;
+
 			register.showHP3();
 		}
 	}
