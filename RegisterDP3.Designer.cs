@@ -176,6 +176,7 @@
 			tbxProvince.BeepOnError = false;
 			tbxProvince.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
 			tbxProvince.Depth = 0;
+			tbxProvince.Enabled = false;
 			tbxProvince.Font = new Font("Arial Narrow", 13F);
 			tbxProvince.HidePromptOnLeave = false;
 			tbxProvince.HideSelection = true;
