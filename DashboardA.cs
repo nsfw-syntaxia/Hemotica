@@ -1,11 +1,14 @@
 using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Data.OleDb;
 
 namespace Hemotica
 {
 	public partial class DashboardA : Form
 	{
+		private Database db = new Database();
+
 		bool sidebarExpand = false;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -122,6 +125,17 @@ namespace Hemotica
 
 		private async void btnLogout_Click(object sender, EventArgs e)
 		{
+			if (!string.IsNullOrEmpty(Accounts.Username))
+			{
+				string logoutSession = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+				string logoutQuery = @"UPDATE UserLogs SET [Logout Session] = ? WHERE [Username] = ? AND [User Type] = ? AND [Logout Session] IS NULL";
+				OleDbParameter[] logoutParameters = { new OleDbParameter("?", logoutSession), new OleDbParameter("?", Accounts.Username), new OleDbParameter("?", Accounts.UserType) };
+
+				db.executeNonQuery(logoutQuery, logoutParameters);
+				Accounts.clearSession();
+			}
+
 			if (Application.OpenForms["Home"] is Home home)
 			{
 				home.WindowState = FormWindowState.Normal;

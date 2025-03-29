@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Hemotica
 {
-    public partial class Login : Form
+	public partial class Login : Form
     {
 		private Database db = new Database();
 
@@ -89,9 +89,9 @@ namespace Hemotica
 
             this.Close();
         }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
+		
+		private void btnLogin_Click(object sender, EventArgs e)
+		{
 			string usernameEmail = tbxUnEA.Text.Trim();
 			string password = tbxPassword.Text.Trim();
 
@@ -101,25 +101,27 @@ namespace Hemotica
 				return;
 			}
 
-			string userQuery = @"SELECT [Email Address] AS EmailAddress, [Username], [Password], 'Donor' AS UserType FROM Donors UNION 
-                                 SELECT [Email Address] AS EmailAddress, [Username], [Password], 'Hospital' AS UserType FROM Hospitals";
+			string userQuery = @"SELECT Username, Password, 'Donor' AS UserType FROM Donors UNION 
+								 SELECT Username, Password, 'Hospital' AS UserType FROM Hospitals";
 			DataTable userResult = db.executeQuery(userQuery);
 
-			string adminQuery = "SELECT Username, Password FROM Admin WHERE Username = @username";
+			string adminQuery = "SELECT Username, Password, 'Admin' AS UserType FROM Admin WHERE Username = @username";
 			OleDbParameter[] parameters = { new OleDbParameter("@username", usernameEmail) };
 			DataTable adminResult = db.executeQuery(adminQuery, parameters);
 
 			Form dashboard = null;
+			string username = null;
+			string userType = null;
 
 			foreach (DataRow row in userResult.Rows)
 			{
-				string email = row["EmailAddress"].ToString();
-				string username = row["Username"].ToString();
-				string hashedPassword = row["Password"].ToString();
-				string userType = row["UserType"].ToString();
+				string userUsername = row["Username"].ToString();
+				string userPassword = row["Password"].ToString();
 
-				if ((usernameEmail == email || usernameEmail == username) && db.verifyPassword(password, hashedPassword))
+				if ((usernameEmail == userUsername) && db.verifyPassword(password, userPassword))
 				{
+					username = userUsername;
+					userType = row["UserType"].ToString();
 					dashboard = userType == "Donor" ? (Form)new DashboardD() : new DashboardH();
 					break;
 				}
@@ -132,12 +134,24 @@ namespace Hemotica
 
 				if (db.verifyPassword(password, adminPassword))
 				{
+					username = adminUsername;
+					userType = "Admin";
 					dashboard = new DashboardA();
 				}
 			}
 
 			if (dashboard != null)
 			{
+				Accounts.Username = username;
+				Accounts.UserType = userType;
+
+				string loginSession = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+				string loginQuery = "INSERT INTO UserLogs ([Username], [User Type], [Login Session]) VALUES (?, ?, ?)";
+				OleDbParameter[] loginParameters = { new OleDbParameter("?", username), new OleDbParameter("?", userType), new OleDbParameter("?", loginSession) };
+
+				db.executeNonQuery(loginQuery, loginParameters);
+
 				if (this.Owner is Home home && home.WindowState == FormWindowState.Maximized)
 				{
 					dashboard.WindowState = FormWindowState.Maximized;
@@ -159,7 +173,7 @@ namespace Hemotica
 			}
 		}
 
-        private void cbxSPassword_CheckedChanged(object sender, EventArgs e)
+		private void cbxSPassword_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxSPassword.Checked)
             {

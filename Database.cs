@@ -7,6 +7,18 @@ using System.Windows.Forms;
 
 namespace Hemotica
 {
+	public static class Accounts
+	{
+		public static string Username { get; set; } = null;
+		public static string UserType { get; set; } = null;
+
+		public static void clearSession()
+		{
+			Username = null;
+			UserType = null;
+		}
+	}
+
 	internal class Database
 	{
 		private readonly string connection = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\Hemotica\\Hemotica_Database.accdb;";
