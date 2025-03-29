@@ -1,7 +1,6 @@
 using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Data;
 using System.Data.OleDb;
 
 namespace Hemotica
@@ -18,9 +17,11 @@ namespace Hemotica
 			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
 			int nWidthEllipse, int nHeightEllipse);
 
-		public DashboardD()
+		public DashboardD(string username)
 		{
 			InitializeComponent();
+
+			lblUsername.Text = username;
 		}
 
 		private void DashboardD_Load(object sender, EventArgs e)

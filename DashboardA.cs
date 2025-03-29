@@ -17,9 +17,11 @@ namespace Hemotica
 			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
 			int nWidthEllipse, int nHeightEllipse);
 
-		public DashboardA()
+		public DashboardA(string username)
 		{
 			InitializeComponent();
+
+			lblUsername.Text = username;
 		}
 
 		private void DashboardD_Load(object sender, EventArgs e)

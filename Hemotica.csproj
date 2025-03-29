@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
-    <PackageReference Include="AntdUI" Version="1.9.5" />
+    <PackageReference Include="AntdUI" Version="1.9.8" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.1" />
     <PackageReference Include="System.Data.OleDb" Version="9.0.3" />
     <PackageReference Include="ZXing.Net" Version="0.16.10" />

@@ -101,13 +101,14 @@ namespace Hemotica
 				return;
 			}
 
-			string userQuery = @"SELECT Username, Password, 'Donor' AS UserType FROM Donors UNION 
-								 SELECT Username, Password, 'Hospital' AS UserType FROM Hospitals";
-			DataTable userResult = db.executeQuery(userQuery);
+			string userQuery = @"SELECT Username, [Email Address], Password, 'Donor' AS UserType FROM Donors WHERE Username = @usernameEmail OR [Email Address] = @usernameEmail
+                                 UNION SELECT Username, [Email Address], Password, 'Hospital' AS UserType FROM Hospitals WHERE Username = @usernameEmail OR [Email Address] = @usernameEmail";
+			OleDbParameter[] userParamaters = { new OleDbParameter("@usernameEmail", usernameEmail) };
+			DataTable userResult = db.executeQuery(userQuery, userParamaters);
 
 			string adminQuery = "SELECT Username, Password, 'Admin' AS UserType FROM Admin WHERE Username = @username";
-			OleDbParameter[] parameters = { new OleDbParameter("@username", usernameEmail) };
-			DataTable adminResult = db.executeQuery(adminQuery, parameters);
+			OleDbParameter[] adminParameters = { new OleDbParameter("@username", usernameEmail) };
+			DataTable adminResult = db.executeQuery(adminQuery, adminParameters);
 
 			Form dashboard = null;
 			string username = null;
@@ -116,13 +117,14 @@ namespace Hemotica
 			foreach (DataRow row in userResult.Rows)
 			{
 				string userUsername = row["Username"].ToString();
+				string userEmail = row["Email Address"].ToString();
 				string userPassword = row["Password"].ToString();
 
-				if ((usernameEmail == userUsername) && db.verifyPassword(password, userPassword))
+				if ((usernameEmail == userUsername || usernameEmail == userEmail) && db.verifyPassword(password, userPassword))
 				{
 					username = userUsername;
 					userType = row["UserType"].ToString();
-					dashboard = userType == "Donor" ? (Form)new DashboardD() : new DashboardH();
+					dashboard = userType == "Donor" ? (Form)new DashboardD(username) : new DashboardH(username);
 					break;
 				}
 			}
@@ -136,7 +138,7 @@ namespace Hemotica
 				{
 					username = adminUsername;
 					userType = "Admin";
-					dashboard = new DashboardA();
+					dashboard = new DashboardA(username);
 				}
 			}
 
