@@ -26,6 +26,11 @@ namespace Hemotica
 			}
 		}
 
+		public bool verifyPassword(string inputPassword, string hashedPassword)
+		{
+			return hashPassword(inputPassword) == hashedPassword;
+		}
+
 		public bool executeNonQuery(string query, OleDbParameter[] parameters)
 		{
 			using (OleDbConnection conn = getConnection())
@@ -73,7 +78,8 @@ namespace Hemotica
 
 		public bool userExists(string columnName, string value)
 		{
-			string query = $@"SELECT COUNT(*) FROM (SELECT [Email Address] AS EmailAddress, [Username] FROM Donors UNION SELECT [Email Address] AS EmailAddress, [Username] FROM Hospitals) WHERE [{columnName}] = @Value";
+			string query = $@"SELECT COUNT(*) FROM (SELECT [Email Address] AS EmailAddress, [Username] FROM Donors UNION 
+							  SELECT [Email Address] AS EmailAddress, [Username] FROM Hospitals) WHERE [{columnName}] = @Value";
 
 			using (OleDbConnection conn = getConnection())
 			using (OleDbCommand cmd = new OleDbCommand(query, conn))

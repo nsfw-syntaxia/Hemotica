@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Data;
+using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace Hemotica
 {
     public partial class Login : Form
     {
-        int i;
+		private Database db = new Database();
+
+		int i;
 
         public Login()
         {
@@ -88,40 +92,72 @@ namespace Hemotica
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = tbxUnEA.Text;
-            string password = tbxPassword.Text;
-            Form dashboard = null;
+			string usernameEmail = tbxUnEA.Text.Trim();
+			string password = tbxPassword.Text.Trim();
 
-            if (username == "donor" && password == "donor123")
-            {
-                dashboard = new DashboardD();
-            }
-            else if (username == "hospital" && password == "hospital123")
-            {
-                dashboard = new DashboardH();
-            }
-            else
-            {
-                MessageBox.Show("Invalid username or password.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+			if (string.IsNullOrWhiteSpace(usernameEmail) || string.IsNullOrWhiteSpace(password))
+			{
+				MessageBox.Show("Please enter complete credentials.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 
-            if (this.Owner is Home home && home.WindowState == FormWindowState.Maximized)
-            {
-                dashboard.WindowState = FormWindowState.Maximized;
-            }
+			string userQuery = @"SELECT [Email Address] AS EmailAddress, [Username], [Password], 'Donor' AS UserType FROM Donors UNION 
+                                 SELECT [Email Address] AS EmailAddress, [Username], [Password], 'Hospital' AS UserType FROM Hospitals";
+			DataTable userResult = db.executeQuery(userQuery);
 
-            dashboard.Show();
+			string adminQuery = "SELECT Username, Password FROM Admin WHERE Username = @username";
+			OleDbParameter[] parameters = { new OleDbParameter("@username", usernameEmail) };
+			DataTable adminResult = db.executeQuery(adminQuery, parameters);
 
-            this.Opacity = 0;
+			Form dashboard = null;
 
-            if (this.Owner is Home homeInstance)
-            {
-                homeInstance.Hide();
-            }
+			foreach (DataRow row in userResult.Rows)
+			{
+				string email = row["EmailAddress"].ToString();
+				string username = row["Username"].ToString();
+				string hashedPassword = row["Password"].ToString();
+				string userType = row["UserType"].ToString();
 
-            this.Close();
-        }
+				if ((usernameEmail == email || usernameEmail == username) && db.verifyPassword(password, hashedPassword))
+				{
+					dashboard = userType == "Donor" ? (Form)new DashboardD() : new DashboardH();
+					break;
+				}
+			}
+
+			if (dashboard == null && adminResult.Rows.Count > 0)
+			{
+				string adminUsername = adminResult.Rows[0]["Username"].ToString();
+				string adminPassword = adminResult.Rows[0]["Password"].ToString();
+
+				if (db.verifyPassword(password, adminPassword))
+				{
+					dashboard = new DashboardA();
+				}
+			}
+
+			if (dashboard != null)
+			{
+				if (this.Owner is Home home && home.WindowState == FormWindowState.Maximized)
+				{
+					dashboard.WindowState = FormWindowState.Maximized;
+				}
+
+				dashboard.Show();
+				this.Opacity = 0;
+
+				if (this.Owner is Home homeInstance)
+				{
+					homeInstance.Hide();
+				}
+
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Invalid username or password.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
         private void cbxSPassword_CheckedChanged(object sender, EventArgs e)
         {

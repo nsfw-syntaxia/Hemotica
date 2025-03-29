@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="DashboardA.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DashboardH.cs" />
     <Compile Update="DashboardD.cs">
       <SubType>Form</SubType>
