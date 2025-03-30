@@ -54,7 +54,7 @@ namespace Hemotica
 
 			OleDbParameter[] parameters = {
 				new OleDbParameter("@username", Accounts.Username),
-				new OleDbParameter("@date", dtpAppointments.Value),
+				new OleDbParameter("@date", dtpAppointments.Value.ToString("MM/dd/yyyy")),
 				new OleDbParameter("@hospital", cmbxHospitals.SelectedValue.ToString()),
 				new OleDbParameter("@status", status)
 			};

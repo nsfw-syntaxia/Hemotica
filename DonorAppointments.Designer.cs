@@ -60,6 +60,7 @@
 			btnAdd.Name = "btnAdd";
 			btnAdd.Size = new Size(50, 45);
 			btnAdd.TabIndex = 14;
+			btnAdd.Click += btnAdd_Click;
 			// 
 			// btnCalendar
 			// 

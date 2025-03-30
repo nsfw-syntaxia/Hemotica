@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -57,6 +51,14 @@ namespace Hemotica
 		private void DonorAppointments_Resize(object sender, EventArgs e)
 		{
 			roundControls();
+		}
+
+		private void btnAdd_Click(object sender, EventArgs e)
+		{
+			DateTime dayDate = DateTime.Now;
+
+			Appointments appointments = new Appointments(dayDate);
+			appointments.ShowDialog();
 		}
 	}
 }
