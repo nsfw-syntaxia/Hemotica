@@ -43,7 +43,13 @@ namespace Hemotica
 
 		private void lDonors_Click(object sender, EventArgs e)
 		{
-			// load donors table in dgvData
+			string query = "SELECT * FROM Donors";
+			DataTable dt = db.executeQuery(query);
+
+			if (dt != null)
+			{
+				dgvDataMax.DataSource = dt;
+			}
 		}
 
 		private void lPatients_Click(object sender, EventArgs e)
