@@ -48,7 +48,7 @@ namespace Hemotica
 			flpAnalytics.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpAnalytics.Width, flpAnalytics.Height, 20, 20));
 			flpLogs.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpLogs.Width, flpLogs.Height, 20, 20));
 		}
-
+		
 		private void loadHospitals()
 		{
 			DataTable hospitals = db.executeQuery("SELECT [Hospital Name] FROM Hospitals");
@@ -112,7 +112,7 @@ namespace Hemotica
 				}
 			}
 		}
-
+		
 		private void lblLogs_Click(object sender, EventArgs e)
 		{
 			// show list of donation history

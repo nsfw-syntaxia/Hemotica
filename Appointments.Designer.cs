@@ -103,7 +103,7 @@
 			btnCancel.EnabledCalc = true;
 			btnCancel.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
 			btnCancel.ForeColor = Color.FromArgb(241, 241, 241);
-			btnCancel.Location = new Point(82, 696);
+			btnCancel.Location = new Point(81, 696);
 			btnCancel.Name = "btnCancel";
 			btnCancel.OverColor = Color.FromArgb(216, 85, 101);
 			btnCancel.Size = new Size(120, 40);
@@ -124,7 +124,7 @@
 			btnSubmit.EnabledCalc = true;
 			btnSubmit.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
 			btnSubmit.ForeColor = Color.FromArgb(241, 241, 241);
-			btnSubmit.Location = new Point(213, 696);
+			btnSubmit.Location = new Point(212, 696);
 			btnSubmit.Name = "btnSubmit";
 			btnSubmit.OverColor = Color.FromArgb(216, 85, 101);
 			btnSubmit.Size = new Size(120, 40);
@@ -566,7 +566,7 @@
 			// 
 			AutoScaleMode = AutoScaleMode.None;
 			BackColor = Color.FromArgb(253, 211, 211);
-			ClientSize = new Size(414, 749);
+			ClientSize = new Size(413, 748);
 			ControlBox = false;
 			Controls.Add(lblInformation);
 			Controls.Add(lblNote);

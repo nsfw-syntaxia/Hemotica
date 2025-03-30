@@ -91,7 +91,9 @@
 			// flpAppointments
 			// 
 			flpAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			flpAppointments.AutoScroll = true;
 			flpAppointments.BackColor = Color.FromArgb(236, 124, 132);
+			flpAppointments.FlowDirection = FlowDirection.TopDown;
 			flpAppointments.Location = new Point(3, 54);
 			flpAppointments.Name = "flpAppointments";
 			flpAppointments.Size = new Size(1014, 584);
