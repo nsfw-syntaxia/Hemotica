@@ -82,7 +82,7 @@ namespace Hemotica
 			}
 			else
 			{
-				MessageBox.Show("Registration failed!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Registration failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
         }
 

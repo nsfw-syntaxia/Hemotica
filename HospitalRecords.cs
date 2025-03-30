@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,32 +13,49 @@ namespace Hemotica
 {
 	public partial class HospitalRecords : UserControl
 	{
+		private Database db = new Database();
+
 		public HospitalRecords()
 		{
 			InitializeComponent();
 		}
 
+		private void HospitalRecords_Load(object sender, EventArgs e)
+		{
+			//
+		}
+
+		private void btnConnection_Click(object sender, EventArgs e)
+		{
+			using (OleDbConnection conn = db.getConnection())
+			{
+				try
+				{
+					conn.Open();
+					MessageBox.Show("Connection successful!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				catch (Exception)
+				{
+					MessageBox.Show("Connection failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+		}
+
 		private void lDonors_Click(object sender, EventArgs e)
 		{
-			flpInputs.Controls.Clear();
-			flpInputs.Controls.Add(new RecordsDonor());
+			// load donors table in dgvData
 		}
 
 		private void lPatients_Click(object sender, EventArgs e)
 		{
-			flpInputs.Controls.Clear();
-			flpInputs.Controls.Add(new RecordsPatient());
+			//flpInputs.Controls.Clear();
+			//flpInputs.Controls.Add(new RecordsPatient());
 		}
 
 		private void lPhysicians_Click(object sender, EventArgs e)
 		{
-			flpInputs.Controls.Clear();
-			flpInputs.Controls.Add(new RecordsPhysician());
-		}
-
-		private void lAppointments_Click(object sender, EventArgs e)
-		{
-			flpInputs.Controls.Clear();
+			//flpInputs.Controls.Clear();
+			//flpInputs.Controls.Add(new RecordsPhysician());
 		}
 	}
 }

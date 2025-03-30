@@ -23,7 +23,7 @@ namespace Hemotica
 	{
 		private readonly string connection = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\Hemotica\\Hemotica_Database.accdb;";
 
-		private OleDbConnection getConnection()
+		public OleDbConnection getConnection()
 		{
 			return new OleDbConnection(connection);
 		}
