@@ -43,8 +43,8 @@ namespace Hemotica
 
 		private void loadDonors()
 		{
-			string query = @"SELECT [Email Address], Password, [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors 
-							 WHERE [Username] = @Username";
+			string query = @"SELECT [Email Address], Password, [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type], Profile 
+							 FROM Donors WHERE [Username] = @Username";
 			OleDbParameter[] parameters = { new OleDbParameter("@Username", Accounts.Username) };
 			DataTable dt = db.executeQuery(query, parameters);
 
@@ -58,6 +58,15 @@ namespace Hemotica
 			tbxHomeAddress.Text = $"{row["Barangay"]}, {row["City"]}, {row["Province"]}";
 			tbxNumber.Text = row["Contact Number"].ToString();
 			tbxBType.Text = row["Blood Type"].ToString();
+
+			if (row.Table.Columns.Contains("Profile") && row["Profile"] != DBNull.Value)
+			{
+				byte[] imageBytes = (byte[])row["Profile"];
+				using (MemoryStream ms = new MemoryStream(imageBytes))
+				{
+					pbxProfile.Image = Image.FromStream(ms);
+				}
+			}
 		}
 
 		private void btnEdit_Click(object sender, EventArgs e)
@@ -158,7 +167,26 @@ namespace Hemotica
 				{
 					try
 					{
-						//
+						pbxProfile.Image = new Bitmap(openFileDialog.FileName);
+
+						byte[] imageBytes;
+						using (MemoryStream ms = new MemoryStream())
+						{
+							pbxProfile.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+							imageBytes = ms.ToArray();
+						}
+
+						string query = "UPDATE Donors SET Profile = ? WHERE [Username] = ?";
+						OleDbParameter[] parameters =
+						{
+							new OleDbParameter("?", OleDbType.LongVarBinary) { Value = imageBytes },
+							new OleDbParameter("?", Accounts.Username)
+						};
+
+						if (db.executeNonQuery(query, parameters))
+						{
+							MessageBox.Show("Profile photo updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						}
 					}
 					catch (Exception ex)
 					{
