@@ -47,6 +47,13 @@ namespace Hemotica
 
 		private void btnSubmit_Click(object sender, EventArgs e)
 		{
+			if (!(rbtnYes1.Checked || rbtnNo1.Checked) || !(rbtnYes2.Checked || rbtnNo2.Checked) || !(rbtnYes3.Checked || rbtnNo3.Checked) ||
+				!(rbtnYes4.Checked || rbtnNo4.Checked) || !(rbtnYes5.Checked || rbtnNo5.Checked) || !(rbtnYes6.Checked || rbtnNo6.Checked))
+			{
+				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
 			string status = (rbtnYes1.Checked && rbtnYes2.Checked && rbtnYes3.Checked &&
 							 rbtnYes4.Checked && rbtnYes5.Checked && rbtnYes6.Checked) ? "Approved" : "Denied";
 
