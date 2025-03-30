@@ -13,6 +13,8 @@ namespace Hemotica
 {
 	public partial class HospitalDashboard : UserControl
 	{
+		private Database db = new Database();
+
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
 		private static extern IntPtr CreateRoundRectRgn(
@@ -27,6 +29,7 @@ namespace Hemotica
 		private void HospitalDashboard_Load(object sender, EventArgs e)
 		{
 			roundControls();
+			loadAppointments();
 		}
 
 		public void roundControls()
@@ -46,14 +49,64 @@ namespace Hemotica
 			roundControls();
 		}
 
-		private void lblUrgent_Click(object sender, EventArgs e)
+		private void loadAppointments()
 		{
-			// show patients that needs blood transfusion (and blood is out of stock)
-		}
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{Accounts.Username}'";
+			DataTable hospitalData = db.executeQuery(queryHospital);
 
-		private void lblAppointments_Click(object sender, EventArgs e)
-		{
-			// show list of donors appointments
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string queryAppointments = $@"SELECT Appointments.[Appointment Date], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name] FROM Hospitals 
+										  INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital 
+										  WHERE Appointments.[Status] = 'Approved' AND Appointments.[Hospital] = '{hospitalName}' ORDER BY Appointments.[Appointment Date] ASC";
+
+			DataTable appointments = db.executeQuery(queryAppointments);
+
+			if (appointments != null)
+			{
+				flpAppointments.Controls.Clear();
+
+				foreach (DataRow row in appointments.Rows)
+				{
+					string appointmentDate = Convert.ToDateTime(row["Appointment Date"]).ToString("MMMM dd, yyyy");
+					string firstName = row["First Name"].ToString();
+					string middleName = row["Middle Name"].ToString();
+					string lastName = row["Last Name"].ToString();
+
+					string donorName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
+
+					Panel panel = new Panel
+					{
+						Size = new Size(280, 125),
+						BackColor = Color.FromArgb(244, 180, 180),
+						Margin = new Padding(5),
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 280, 125, 20, 20))
+					};
+
+					Label lblDate = new Label
+					{
+						Text = appointmentDate,
+						Font = new Font("Bahnschrift", 17F, FontStyle.Bold),
+						ForeColor = Color.FromArgb(216, 85, 101),
+						AutoSize = true,
+						Location = new Point(20, 30)
+					};
+
+					Label lblDonor = new Label
+					{
+						Text = donorName,
+						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
+						ForeColor = Color.FromArgb(216, 85, 101),
+						AutoSize = true,
+						Location = new Point(20, lblDate.Bottom + 15)
+					};
+
+					panel.Controls.Add(lblDate);
+					panel.Controls.Add(lblDonor);
+
+					flpAppointments.Controls.Add(panel);
+				}
+			}
 		}
 	}
 }

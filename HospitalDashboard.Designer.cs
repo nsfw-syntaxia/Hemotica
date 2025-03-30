@@ -92,7 +92,6 @@
 			// 
 			lblUrgent.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblUrgent.AutoSize = true;
-			lblUrgent.Cursor = Cursors.Hand;
 			lblUrgent.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblUrgent.ForeColor = Color.FromArgb(253, 211, 211);
 			lblUrgent.Location = new Point(0, 7);
@@ -101,7 +100,6 @@
 			lblUrgent.Size = new Size(122, 38);
 			lblUrgent.TabIndex = 13;
 			lblUrgent.Text = "Urgent >";
-			lblUrgent.Click += lblUrgent_Click;
 			// 
 			// pAppointments
 			// 
@@ -131,7 +129,6 @@
 			// 
 			lblAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblAppointments.AutoSize = true;
-			lblAppointments.Cursor = Cursors.Hand;
 			lblAppointments.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblAppointments.ForeColor = Color.FromArgb(253, 211, 211);
 			lblAppointments.Location = new Point(0, 7);
@@ -140,7 +137,6 @@
 			lblAppointments.Size = new Size(207, 38);
 			lblAppointments.TabIndex = 15;
 			lblAppointments.Text = "Appointments >";
-			lblAppointments.Click += lblAppointments_Click;
 			// 
 			// pOperations
 			// 

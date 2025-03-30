@@ -61,9 +61,9 @@ namespace Hemotica
 
 					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
 					{
-						Size = new Size(248, 183),
+						Size = new Size(250, 165),
 						BackColor = Color.FromArgb(244, 180, 180),
-						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 248, 183, 20, 20))
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 250, 165, 20, 20))
 					};
 
 					Label lblHospital = new Label

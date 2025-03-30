@@ -161,7 +161,7 @@ namespace Hemotica
 			using (OpenFileDialog openFileDialog = new OpenFileDialog())
 			{
 				openFileDialog.Filter = "Image Files | *.jpg; *.jpeg; *.png";
-				openFileDialog.Title = "Select Profile Picture";
+				openFileDialog.Title = "";
 
 				if (openFileDialog.ShowDialog() == DialogResult.OK)
 				{
