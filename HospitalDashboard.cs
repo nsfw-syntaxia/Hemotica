@@ -64,8 +64,6 @@ namespace Hemotica
 
 			if (appointments != null)
 			{
-				flpAppointments.Controls.Clear();
-
 				foreach (DataRow row in appointments.Rows)
 				{
 					string appointmentDate = Convert.ToDateTime(row["Appointment Date"]).ToString("MMMM dd, yyyy");
