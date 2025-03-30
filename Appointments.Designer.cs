@@ -60,6 +60,7 @@
 			lblInformation = new Label();
 			dtpAppointments = new DateTimePicker();
 			cmbxHospitals = new ReaLTaiizor.Controls.DungeonComboBox();
+			lblNote = new Label();
 			((System.ComponentModel.ISupportInitialize)pbxLogo).BeginInit();
 			pAge.SuspendLayout();
 			pWeight.SuspendLayout();
@@ -102,7 +103,7 @@
 			btnCancel.EnabledCalc = true;
 			btnCancel.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
 			btnCancel.ForeColor = Color.FromArgb(241, 241, 241);
-			btnCancel.Location = new Point(86, 702);
+			btnCancel.Location = new Point(82, 696);
 			btnCancel.Name = "btnCancel";
 			btnCancel.OverColor = Color.FromArgb(216, 85, 101);
 			btnCancel.Size = new Size(120, 40);
@@ -123,7 +124,7 @@
 			btnSubmit.EnabledCalc = true;
 			btnSubmit.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
 			btnSubmit.ForeColor = Color.FromArgb(241, 241, 241);
-			btnSubmit.Location = new Point(217, 702);
+			btnSubmit.Location = new Point(213, 696);
 			btnSubmit.Name = "btnSubmit";
 			btnSubmit.OverColor = Color.FromArgb(216, 85, 101);
 			btnSubmit.Size = new Size(120, 40);
@@ -501,13 +502,13 @@
 			// 
 			lblInformation.AutoSize = true;
 			lblInformation.Cursor = Cursors.Hand;
-			lblInformation.Font = new Font("Arial Narrow", 11F, FontStyle.Bold | FontStyle.Italic);
+			lblInformation.Font = new Font("Arial Narrow", 11F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
 			lblInformation.ForeColor = Color.FromArgb(236, 124, 132);
-			lblInformation.Location = new Point(7, 663);
+			lblInformation.Location = new Point(161, 659);
 			lblInformation.Name = "lblInformation";
-			lblInformation.Size = new Size(401, 20);
+			lblInformation.Size = new Size(230, 20);
 			lblInformation.TabIndex = 90;
-			lblInformation.Text = "For more details, visit Red Cross Blood Donation Eligibility Guide.";
+			lblInformation.Text = "Red Cross Blood Donation Eligibility.";
 			lblInformation.Click += lblInformation_Click;
 			// 
 			// dtpAppointments
@@ -550,16 +551,27 @@
 			cmbxHospitals.StartIndex = 0;
 			cmbxHospitals.TabIndex = 96;
 			// 
+			// lblNote
+			// 
+			lblNote.AutoSize = true;
+			lblNote.Font = new Font("Arial Narrow", 11F, FontStyle.Bold | FontStyle.Italic);
+			lblNote.ForeColor = Color.FromArgb(236, 124, 132);
+			lblNote.Location = new Point(26, 659);
+			lblNote.Name = "lblNote";
+			lblNote.Size = new Size(138, 20);
+			lblNote.TabIndex = 97;
+			lblNote.Text = "For more details, visit";
+			// 
 			// Appointments
 			// 
-			AutoScaleDimensions = new SizeF(7F, 15F);
-			AutoScaleMode = AutoScaleMode.Font;
+			AutoScaleMode = AutoScaleMode.None;
 			BackColor = Color.FromArgb(253, 211, 211);
-			ClientSize = new Size(414, 759);
+			ClientSize = new Size(414, 749);
 			ControlBox = false;
+			Controls.Add(lblInformation);
+			Controls.Add(lblNote);
 			Controls.Add(cmbxHospitals);
 			Controls.Add(dtpAppointments);
-			Controls.Add(lblInformation);
 			Controls.Add(pHistory);
 			Controls.Add(pMedication);
 			Controls.Add(pDonation);
@@ -570,10 +582,11 @@
 			Controls.Add(btnSubmit);
 			Controls.Add(pbxLogo);
 			Controls.Add(lblHeader);
-			FormBorderStyle = FormBorderStyle.FixedSingle;
+			FormBorderStyle = FormBorderStyle.FixedToolWindow;
 			Name = "Appointments";
 			ShowIcon = false;
 			ShowInTaskbar = false;
+			SizeGripStyle = SizeGripStyle.Hide;
 			StartPosition = FormStartPosition.CenterScreen;
 			Load += Appointments_Load;
 			((System.ComponentModel.ISupportInitialize)pbxLogo).EndInit();
@@ -625,5 +638,6 @@
 		private Label lblInformation;
 		private DateTimePicker dtpAppointments;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxHospitals;
+		private Label lblNote;
 	}
 }

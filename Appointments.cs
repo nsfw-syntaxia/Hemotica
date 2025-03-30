@@ -50,7 +50,7 @@ namespace Hemotica
 			string status = (rbtnYes1.Checked && rbtnYes2.Checked && rbtnYes3.Checked &&
 							 rbtnYes4.Checked && rbtnYes5.Checked && rbtnYes6.Checked) ? "Approved" : "Denied";
 
-			string query = "INSERT INTO Appointments (Username, [Appointment Date], Hospital, Status) VALUES (@username, @date, @hospital, @status)";
+			string query = "INSERT INTO Appointments ([Donor Username], [Appointment Date], Hospital, Status) VALUES (@username, @date, @hospital, @status)";
 
 			OleDbParameter[] parameters = {
 				new OleDbParameter("@username", Accounts.Username),
