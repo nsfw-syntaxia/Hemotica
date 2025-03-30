@@ -32,24 +32,24 @@
 			pProfile = new Panel();
 			pbxProfile = new PictureBox();
 			dName = new Label();
-			tbxPatientID = new ReaLTaiizor.Controls.BigTextBox();
-			tbxEmail = new ReaLTaiizor.Controls.BigTextBox();
 			lblEmail = new Label();
-			tbxGender = new ReaLTaiizor.Controls.BigTextBox();
 			lblGender = new Label();
-			tbxAge = new ReaLTaiizor.Controls.BigTextBox();
 			lblAge = new Label();
-			tbxHomeAddress = new ReaLTaiizor.Controls.BigTextBox();
 			lblHomeAddress = new Label();
-			tbxBType = new ReaLTaiizor.Controls.BigTextBox();
 			lblBType = new Label();
-			tbxNumber = new ReaLTaiizor.Controls.BigTextBox();
 			lblNumber = new Label();
-			tbxPassword = new ReaLTaiizor.Controls.BigTextBox();
 			lblPassword = new Label();
 			btnSave = new AntdUI.Button();
 			btnProfile = new AntdUI.Button();
 			btnEdit = new AntdUI.Button();
+			tbxEmail = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxPassword = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxName = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxGender = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxAge = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxHomeAddress = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxNumber = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxBType = new ReaLTaiizor.Controls.HopeTextBox();
 			pProfile.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxProfile).BeginInit();
 			SuspendLayout();
@@ -87,38 +87,6 @@
 			dName.TabIndex = 11;
 			dName.Text = "Name";
 			// 
-			// tbxPatientID
-			// 
-			tbxPatientID.BackColor = Color.Transparent;
-			tbxPatientID.Font = new Font("Tahoma", 11F);
-			tbxPatientID.ForeColor = Color.DimGray;
-			tbxPatientID.Image = null;
-			tbxPatientID.Location = new Point(260, 178);
-			tbxPatientID.MaxLength = 32767;
-			tbxPatientID.Multiline = false;
-			tbxPatientID.Name = "tbxPatientID";
-			tbxPatientID.ReadOnly = false;
-			tbxPatientID.Size = new Size(349, 41);
-			tbxPatientID.TabIndex = 13;
-			tbxPatientID.TextAlignment = HorizontalAlignment.Left;
-			tbxPatientID.UseSystemPasswordChar = false;
-			// 
-			// tbxEmail
-			// 
-			tbxEmail.BackColor = Color.Transparent;
-			tbxEmail.Font = new Font("Tahoma", 11F);
-			tbxEmail.ForeColor = Color.DimGray;
-			tbxEmail.Image = null;
-			tbxEmail.Location = new Point(260, 60);
-			tbxEmail.MaxLength = 32767;
-			tbxEmail.Multiline = false;
-			tbxEmail.Name = "tbxEmail";
-			tbxEmail.ReadOnly = false;
-			tbxEmail.Size = new Size(349, 41);
-			tbxEmail.TabIndex = 15;
-			tbxEmail.TextAlignment = HorizontalAlignment.Left;
-			tbxEmail.UseSystemPasswordChar = false;
-			// 
 			// lblEmail
 			// 
 			lblEmail.AutoSize = true;
@@ -130,22 +98,6 @@
 			lblEmail.Size = new Size(196, 38);
 			lblEmail.TabIndex = 14;
 			lblEmail.Text = "Email Address";
-			// 
-			// tbxGender
-			// 
-			tbxGender.BackColor = Color.Transparent;
-			tbxGender.Font = new Font("Tahoma", 11F);
-			tbxGender.ForeColor = Color.DimGray;
-			tbxGender.Image = null;
-			tbxGender.Location = new Point(260, 225);
-			tbxGender.MaxLength = 32767;
-			tbxGender.Multiline = false;
-			tbxGender.Name = "tbxGender";
-			tbxGender.ReadOnly = false;
-			tbxGender.Size = new Size(349, 41);
-			tbxGender.TabIndex = 17;
-			tbxGender.TextAlignment = HorizontalAlignment.Left;
-			tbxGender.UseSystemPasswordChar = false;
 			// 
 			// lblGender
 			// 
@@ -159,22 +111,6 @@
 			lblGender.TabIndex = 16;
 			lblGender.Text = "Gender";
 			// 
-			// tbxAge
-			// 
-			tbxAge.BackColor = Color.Transparent;
-			tbxAge.Font = new Font("Tahoma", 11F);
-			tbxAge.ForeColor = Color.DimGray;
-			tbxAge.Image = null;
-			tbxAge.Location = new Point(260, 272);
-			tbxAge.MaxLength = 32767;
-			tbxAge.Multiline = false;
-			tbxAge.Name = "tbxAge";
-			tbxAge.ReadOnly = false;
-			tbxAge.Size = new Size(349, 41);
-			tbxAge.TabIndex = 19;
-			tbxAge.TextAlignment = HorizontalAlignment.Left;
-			tbxAge.UseSystemPasswordChar = false;
-			// 
 			// lblAge
 			// 
 			lblAge.AutoSize = true;
@@ -186,22 +122,6 @@
 			lblAge.Size = new Size(66, 38);
 			lblAge.TabIndex = 18;
 			lblAge.Text = "Age";
-			// 
-			// tbxHomeAddress
-			// 
-			tbxHomeAddress.BackColor = Color.Transparent;
-			tbxHomeAddress.Font = new Font("Tahoma", 11F);
-			tbxHomeAddress.ForeColor = Color.DimGray;
-			tbxHomeAddress.Image = null;
-			tbxHomeAddress.Location = new Point(260, 343);
-			tbxHomeAddress.MaxLength = 32767;
-			tbxHomeAddress.Multiline = false;
-			tbxHomeAddress.Name = "tbxHomeAddress";
-			tbxHomeAddress.ReadOnly = false;
-			tbxHomeAddress.Size = new Size(349, 41);
-			tbxHomeAddress.TabIndex = 21;
-			tbxHomeAddress.TextAlignment = HorizontalAlignment.Left;
-			tbxHomeAddress.UseSystemPasswordChar = false;
 			// 
 			// lblHomeAddress
 			// 
@@ -215,22 +135,6 @@
 			lblHomeAddress.TabIndex = 20;
 			lblHomeAddress.Text = "Home Address";
 			// 
-			// tbxBType
-			// 
-			tbxBType.BackColor = Color.Transparent;
-			tbxBType.Font = new Font("Tahoma", 11F);
-			tbxBType.ForeColor = Color.DimGray;
-			tbxBType.Image = null;
-			tbxBType.Location = new Point(260, 437);
-			tbxBType.MaxLength = 32767;
-			tbxBType.Multiline = false;
-			tbxBType.Name = "tbxBType";
-			tbxBType.ReadOnly = false;
-			tbxBType.Size = new Size(349, 41);
-			tbxBType.TabIndex = 25;
-			tbxBType.TextAlignment = HorizontalAlignment.Left;
-			tbxBType.UseSystemPasswordChar = false;
-			// 
 			// lblBType
 			// 
 			lblBType.AutoSize = true;
@@ -243,22 +147,6 @@
 			lblBType.TabIndex = 24;
 			lblBType.Text = "Blood Type";
 			// 
-			// tbxNumber
-			// 
-			tbxNumber.BackColor = Color.Transparent;
-			tbxNumber.Font = new Font("Tahoma", 11F);
-			tbxNumber.ForeColor = Color.DimGray;
-			tbxNumber.Image = null;
-			tbxNumber.Location = new Point(260, 390);
-			tbxNumber.MaxLength = 32767;
-			tbxNumber.Multiline = false;
-			tbxNumber.Name = "tbxNumber";
-			tbxNumber.ReadOnly = false;
-			tbxNumber.Size = new Size(349, 41);
-			tbxNumber.TabIndex = 23;
-			tbxNumber.TextAlignment = HorizontalAlignment.Left;
-			tbxNumber.UseSystemPasswordChar = false;
-			// 
 			// lblNumber
 			// 
 			lblNumber.AutoSize = true;
@@ -270,22 +158,6 @@
 			lblNumber.Size = new Size(217, 38);
 			lblNumber.TabIndex = 22;
 			lblNumber.Text = "Contact Number";
-			// 
-			// tbxPassword
-			// 
-			tbxPassword.BackColor = Color.Transparent;
-			tbxPassword.Font = new Font("Tahoma", 11F);
-			tbxPassword.ForeColor = Color.DimGray;
-			tbxPassword.Image = null;
-			tbxPassword.Location = new Point(260, 107);
-			tbxPassword.MaxLength = 32767;
-			tbxPassword.Multiline = false;
-			tbxPassword.Name = "tbxPassword";
-			tbxPassword.ReadOnly = false;
-			tbxPassword.Size = new Size(349, 41);
-			tbxPassword.TabIndex = 27;
-			tbxPassword.TextAlignment = HorizontalAlignment.Left;
-			tbxPassword.UseSystemPasswordChar = false;
 			// 
 			// lblPassword
 			// 
@@ -309,6 +181,7 @@
 			btnSave.Size = new Size(187, 52);
 			btnSave.TabIndex = 28;
 			btnSave.Text = "Save Changes";
+			btnSave.Click += btnSave_Click;
 			// 
 			// btnProfile
 			// 
@@ -320,6 +193,7 @@
 			btnProfile.Size = new Size(187, 52);
 			btnProfile.TabIndex = 29;
 			btnProfile.Text = "Change Photo";
+			btnProfile.Click += btnProfile_Click;
 			// 
 			// btnEdit
 			// 
@@ -331,6 +205,199 @@
 			btnEdit.Size = new Size(187, 52);
 			btnEdit.TabIndex = 30;
 			btnEdit.Text = "Edit Details";
+			btnEdit.Click += btnEdit_Click;
+			// 
+			// tbxEmail
+			// 
+			tbxEmail.BackColor = Color.White;
+			tbxEmail.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxEmail.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxEmail.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxEmail.Enabled = false;
+			tbxEmail.Font = new Font("Bahnschrift", 15F);
+			tbxEmail.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxEmail.Hint = "";
+			tbxEmail.Location = new Point(260, 60);
+			tbxEmail.MaxLength = 32767;
+			tbxEmail.Multiline = false;
+			tbxEmail.Name = "tbxEmail";
+			tbxEmail.PasswordChar = '\0';
+			tbxEmail.ScrollBars = ScrollBars.None;
+			tbxEmail.SelectedText = "";
+			tbxEmail.SelectionLength = 0;
+			tbxEmail.SelectionStart = 0;
+			tbxEmail.Size = new Size(349, 41);
+			tbxEmail.TabIndex = 31;
+			tbxEmail.TabStop = false;
+			tbxEmail.UseSystemPasswordChar = false;
+			// 
+			// tbxPassword
+			// 
+			tbxPassword.BackColor = Color.White;
+			tbxPassword.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxPassword.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxPassword.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxPassword.Enabled = false;
+			tbxPassword.Font = new Font("Bahnschrift", 15F);
+			tbxPassword.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxPassword.Hint = "";
+			tbxPassword.Location = new Point(260, 107);
+			tbxPassword.MaxLength = 32767;
+			tbxPassword.Multiline = false;
+			tbxPassword.Name = "tbxPassword";
+			tbxPassword.PasswordChar = '●';
+			tbxPassword.ScrollBars = ScrollBars.None;
+			tbxPassword.SelectedText = "";
+			tbxPassword.SelectionLength = 0;
+			tbxPassword.SelectionStart = 0;
+			tbxPassword.Size = new Size(349, 41);
+			tbxPassword.TabIndex = 32;
+			tbxPassword.TabStop = false;
+			tbxPassword.UseSystemPasswordChar = false;
+			// 
+			// tbxName
+			// 
+			tbxName.BackColor = Color.White;
+			tbxName.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxName.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxName.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxName.Enabled = false;
+			tbxName.Font = new Font("Bahnschrift", 15F);
+			tbxName.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxName.Hint = "";
+			tbxName.Location = new Point(260, 178);
+			tbxName.MaxLength = 32767;
+			tbxName.Multiline = false;
+			tbxName.Name = "tbxName";
+			tbxName.PasswordChar = '\0';
+			tbxName.ScrollBars = ScrollBars.None;
+			tbxName.SelectedText = "";
+			tbxName.SelectionLength = 0;
+			tbxName.SelectionStart = 0;
+			tbxName.Size = new Size(349, 41);
+			tbxName.TabIndex = 33;
+			tbxName.TabStop = false;
+			tbxName.UseSystemPasswordChar = false;
+			// 
+			// tbxGender
+			// 
+			tbxGender.BackColor = Color.White;
+			tbxGender.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxGender.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxGender.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxGender.Enabled = false;
+			tbxGender.Font = new Font("Bahnschrift", 15F);
+			tbxGender.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxGender.Hint = "";
+			tbxGender.Location = new Point(260, 225);
+			tbxGender.MaxLength = 32767;
+			tbxGender.Multiline = false;
+			tbxGender.Name = "tbxGender";
+			tbxGender.PasswordChar = '\0';
+			tbxGender.ScrollBars = ScrollBars.None;
+			tbxGender.SelectedText = "";
+			tbxGender.SelectionLength = 0;
+			tbxGender.SelectionStart = 0;
+			tbxGender.Size = new Size(349, 41);
+			tbxGender.TabIndex = 34;
+			tbxGender.TabStop = false;
+			tbxGender.UseSystemPasswordChar = false;
+			// 
+			// tbxAge
+			// 
+			tbxAge.BackColor = Color.White;
+			tbxAge.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxAge.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxAge.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxAge.Enabled = false;
+			tbxAge.Font = new Font("Bahnschrift", 15F);
+			tbxAge.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxAge.Hint = "";
+			tbxAge.Location = new Point(260, 272);
+			tbxAge.MaxLength = 32767;
+			tbxAge.Multiline = false;
+			tbxAge.Name = "tbxAge";
+			tbxAge.PasswordChar = '\0';
+			tbxAge.ScrollBars = ScrollBars.None;
+			tbxAge.SelectedText = "";
+			tbxAge.SelectionLength = 0;
+			tbxAge.SelectionStart = 0;
+			tbxAge.Size = new Size(349, 41);
+			tbxAge.TabIndex = 35;
+			tbxAge.TabStop = false;
+			tbxAge.UseSystemPasswordChar = false;
+			// 
+			// tbxHomeAddress
+			// 
+			tbxHomeAddress.BackColor = Color.White;
+			tbxHomeAddress.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxHomeAddress.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxHomeAddress.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxHomeAddress.Enabled = false;
+			tbxHomeAddress.Font = new Font("Bahnschrift", 15F);
+			tbxHomeAddress.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxHomeAddress.Hint = "";
+			tbxHomeAddress.Location = new Point(260, 343);
+			tbxHomeAddress.MaxLength = 32767;
+			tbxHomeAddress.Multiline = false;
+			tbxHomeAddress.Name = "tbxHomeAddress";
+			tbxHomeAddress.PasswordChar = '\0';
+			tbxHomeAddress.ScrollBars = ScrollBars.None;
+			tbxHomeAddress.SelectedText = "";
+			tbxHomeAddress.SelectionLength = 0;
+			tbxHomeAddress.SelectionStart = 0;
+			tbxHomeAddress.Size = new Size(349, 41);
+			tbxHomeAddress.TabIndex = 36;
+			tbxHomeAddress.TabStop = false;
+			tbxHomeAddress.UseSystemPasswordChar = false;
+			// 
+			// tbxNumber
+			// 
+			tbxNumber.BackColor = Color.White;
+			tbxNumber.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxNumber.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxNumber.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxNumber.Enabled = false;
+			tbxNumber.Font = new Font("Bahnschrift", 15F);
+			tbxNumber.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxNumber.Hint = "";
+			tbxNumber.Location = new Point(260, 390);
+			tbxNumber.MaxLength = 32767;
+			tbxNumber.Multiline = false;
+			tbxNumber.Name = "tbxNumber";
+			tbxNumber.PasswordChar = '\0';
+			tbxNumber.ScrollBars = ScrollBars.None;
+			tbxNumber.SelectedText = "";
+			tbxNumber.SelectionLength = 0;
+			tbxNumber.SelectionStart = 0;
+			tbxNumber.Size = new Size(349, 41);
+			tbxNumber.TabIndex = 37;
+			tbxNumber.TabStop = false;
+			tbxNumber.UseSystemPasswordChar = false;
+			// 
+			// tbxBType
+			// 
+			tbxBType.BackColor = Color.White;
+			tbxBType.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxBType.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxBType.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxBType.Enabled = false;
+			tbxBType.Font = new Font("Bahnschrift", 15F);
+			tbxBType.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxBType.Hint = "";
+			tbxBType.Location = new Point(260, 437);
+			tbxBType.MaxLength = 32767;
+			tbxBType.Multiline = false;
+			tbxBType.Name = "tbxBType";
+			tbxBType.PasswordChar = '\0';
+			tbxBType.ScrollBars = ScrollBars.None;
+			tbxBType.SelectedText = "";
+			tbxBType.SelectionLength = 0;
+			tbxBType.SelectionStart = 0;
+			tbxBType.Size = new Size(349, 41);
+			tbxBType.TabIndex = 38;
+			tbxBType.TabStop = false;
+			tbxBType.UseSystemPasswordChar = false;
 			// 
 			// DonorProfile
 			// 
@@ -340,23 +407,23 @@
 			Controls.Add(btnEdit);
 			Controls.Add(btnProfile);
 			Controls.Add(btnSave);
-			Controls.Add(tbxPassword);
 			Controls.Add(lblPassword);
-			Controls.Add(tbxBType);
 			Controls.Add(lblBType);
-			Controls.Add(tbxNumber);
 			Controls.Add(lblNumber);
-			Controls.Add(tbxHomeAddress);
 			Controls.Add(lblHomeAddress);
-			Controls.Add(tbxAge);
 			Controls.Add(lblAge);
-			Controls.Add(tbxGender);
 			Controls.Add(lblGender);
-			Controls.Add(tbxEmail);
 			Controls.Add(lblEmail);
-			Controls.Add(tbxPatientID);
 			Controls.Add(dName);
 			Controls.Add(pProfile);
+			Controls.Add(tbxPassword);
+			Controls.Add(tbxEmail);
+			Controls.Add(tbxName);
+			Controls.Add(tbxGender);
+			Controls.Add(tbxAge);
+			Controls.Add(tbxHomeAddress);
+			Controls.Add(tbxNumber);
+			Controls.Add(tbxBType);
 			Name = "DonorProfile";
 			Size = new Size(1020, 641);
 			Load += DonorP_Load;
@@ -371,24 +438,24 @@
 
 		private Panel pProfile;
 		private Label dName;
-		private ReaLTaiizor.Controls.BigTextBox tbxPatientID;
-		private ReaLTaiizor.Controls.BigTextBox tbxEmail;
 		private Label lblEmail;
-		private ReaLTaiizor.Controls.BigTextBox tbxGender;
 		private Label lblGender;
-		private ReaLTaiizor.Controls.BigTextBox tbxAge;
 		private Label lblAge;
-		private ReaLTaiizor.Controls.BigTextBox tbxHomeAddress;
 		private Label lblHomeAddress;
-		private ReaLTaiizor.Controls.BigTextBox tbxBType;
 		private Label lblBType;
-		private ReaLTaiizor.Controls.BigTextBox tbxNumber;
 		private Label lblNumber;
-		private ReaLTaiizor.Controls.BigTextBox tbxPassword;
 		private Label lblPassword;
 		private AntdUI.Button btnSave;
 		private AntdUI.Button btnProfile;
 		private AntdUI.Button btnEdit;
 		private PictureBox pbxProfile;
+		private ReaLTaiizor.Controls.HopeTextBox tbxEmail;
+		private ReaLTaiizor.Controls.HopeTextBox tbxPassword;
+		private ReaLTaiizor.Controls.HopeTextBox tbxName;
+		private ReaLTaiizor.Controls.HopeTextBox tbxGender;
+		private ReaLTaiizor.Controls.HopeTextBox tbxAge;
+		private ReaLTaiizor.Controls.HopeTextBox tbxHomeAddress;
+		private ReaLTaiizor.Controls.HopeTextBox tbxNumber;
+		private ReaLTaiizor.Controls.HopeTextBox tbxBType;
 	}
 }
