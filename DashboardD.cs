@@ -27,12 +27,10 @@ namespace Hemotica
 		private void DashboardD_Load(object sender, EventArgs e)
 		{
 			btnSettings();
-			pQR.Visible = false;
 			flpSideBar.Width = flpSideBar.MinimumSize.Width;
 			sidebarExpand = false;
 
 			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
-			pQR.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pQR.Width, pQR.Height, 20, 20));
 			showDonorDashboard();
 		}
 
@@ -62,7 +60,6 @@ namespace Hemotica
 				this.WindowState = FormWindowState.Normal;
 			else
 				this.WindowState = FormWindowState.Maximized;
-			flpSideBar.Height = this.ClientSize.Height;
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -128,16 +125,7 @@ namespace Hemotica
 
 		private async void btnLogout_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(Accounts.Username))
-			{
-				string logoutSession = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
-
-				string logoutQuery = @"UPDATE UserLogs SET [Logout Session] = ? WHERE [Username] = ? AND [User Type] = ? AND [Logout Session] IS NULL";
-				OleDbParameter[] logoutParameters = { new OleDbParameter("?", logoutSession), new OleDbParameter("?", Accounts.Username), new OleDbParameter("?", Accounts.UserType) };
-
-				db.executeNonQuery(logoutQuery, logoutParameters);
-				Accounts.clearSession();
-			}
+			UserLogs.LogoutUser(db);
 
 			if (Application.OpenForms["Home"] is Home home)
 			{
@@ -213,25 +201,6 @@ namespace Hemotica
 			DonorProfile donorP = new DonorProfile();
 			flpDashboard.Controls.Add(donorP);
 			adjustLayout();
-		}
-
-		private void btnQR_Click(object sender, EventArgs e)
-		{
-			if (pQR.Visible)
-			{
-				pQR.Visible = false;
-			}
-			else
-			{
-				showQR();
-			}
-		}
-
-		internal void showQR()
-		{
-			pQR.Visible = true;
-			DonorQR donorQR = new DonorQR();
-			pQR.Controls.Add(donorQR);
 		}
 	}
 }

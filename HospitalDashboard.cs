@@ -51,7 +51,7 @@ namespace Hemotica
 
 		private void loadAppointments()
 		{
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{Accounts.Username}'";
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
 			DataTable hospitalData = db.executeQuery(queryHospital);
 
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();

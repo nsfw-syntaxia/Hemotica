@@ -8,48 +8,40 @@ namespace Hemotica
 	public partial class RegisterDP3 : UserControl
 	{
 		private Register register;
+		private Donor donor;
 		private Database db = new Database();
 
-		public RegisterDP3(Register parent)
+		public RegisterDP3(Register parent, Donor donor)
 		{
 			InitializeComponent();
 			this.register = parent;
+			this.donor = donor;
 
-			tbxProvince.Text = register.Province;
-			cmbxCity.SelectedItem = register.City;
-			loadBarangays(register.City);
-			cmbxBarangay.SelectedItem = register.Barangay;
-			tbxAge.Text = register.Age;
-		}
-
-		private void btnBack_Click(object sender, EventArgs e)
-		{
-			register.showDP2();
+			tbxAge.Text = donor.Age;
+			tbxProvince.Text = donor.Province;
+			cmbxCity.SelectedItem = donor.City;
+			loadBarangays(donor.City);
+			cmbxBarangay.SelectedItem = donor.Barangay;
 		}
 
 		private void btnNext_Click(object sender, EventArgs e)
 		{
-			string province = "Cebu";
-			string city = cmbxCity.SelectedItem?.ToString();
-			string barangay = cmbxBarangay.SelectedItem?.ToString();
-			string ageDonor = tbxAge.Text.Trim();
+			donor.Age = tbxAge.Text.Trim();
+			donor.Province = "Cebu";
+			donor.City = cmbxCity.SelectedItem?.ToString();
+			donor.Barangay = cmbxBarangay.SelectedItem?.ToString();
 
-			if (string.IsNullOrWhiteSpace(city) || string.IsNullOrWhiteSpace(barangay) || string.IsNullOrWhiteSpace(ageDonor))
+			if (string.IsNullOrWhiteSpace(donor.Age) || string.IsNullOrWhiteSpace(donor.City) || string.IsNullOrWhiteSpace(donor.Barangay))
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
-			if (!int.TryParse(ageDonor, out int age) || age < 1 || age > 120)
+			if (!ExceptionHandling.validAge(donor.Age, out int age))
 			{
 				MessageBox.Show("Invalid age.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-
-			register.Province = province;
-			register.City = city;
-			register.Barangay = barangay;
-			register.Age = ageDonor;
 
 			register.showDP4();
 		}
@@ -83,6 +75,11 @@ namespace Hemotica
 				}
 				cmbxBarangay.SelectedIndex = 0;
 			}
+		}
+
+		private void btnBack_Click(object sender, EventArgs e)
+		{
+			register.showDP2();
 		}
 	}
 }

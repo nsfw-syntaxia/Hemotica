@@ -45,7 +45,7 @@ namespace Hemotica
 		{
 			string query = @"SELECT [Email Address], Password, [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type], Profile 
 							 FROM Donors WHERE [Username] = @Username";
-			OleDbParameter[] parameters = { new OleDbParameter("@Username", Accounts.Username) };
+			OleDbParameter[] parameters = { new OleDbParameter("@Username", UserLogs.Username) };
 			DataTable dt = db.executeQuery(query, parameters);
 
 			DataRow row = dt.Rows[0];
@@ -92,12 +92,15 @@ namespace Hemotica
 				return;
 			}
 
+			int emailCount = db.countEmail(email);
+			string currentEmail = db.userEmail(UserLogs.Username);
+
 			List<string> errors = new List<string>();
 
 			if (!validEmail(email))
 				errors.Add("Invalid email address.");
 
-			if (db.userExists("EmailAddress", email))
+			if (emailCount > 1 || (emailCount == 1 && !email.Equals(currentEmail, StringComparison.OrdinalIgnoreCase)))
 				errors.Add("Email address already exists.");
 
 			if (!int.TryParse(ageDonor, out int age) || age < 1 || age > 120)
@@ -131,7 +134,7 @@ namespace Hemotica
 				new OleDbParameter("?", city),
 				new OleDbParameter("?", province),
 				new OleDbParameter("?", contactNumber),
-				new OleDbParameter("?", Accounts.Username)
+				new OleDbParameter("?", UserLogs.Username)
 			};
 
 			if (db.executeNonQuery(query, parameters))
@@ -180,7 +183,7 @@ namespace Hemotica
 						OleDbParameter[] parameters =
 						{
 							new OleDbParameter("?", OleDbType.LongVarBinary) { Value = imageBytes },
-							new OleDbParameter("?", Accounts.Username)
+							new OleDbParameter("?", UserLogs.Username)
 						};
 
 						if (db.executeNonQuery(query, parameters))

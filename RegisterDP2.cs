@@ -6,48 +6,45 @@ namespace Hemotica
     public partial class RegisterDP2 : UserControl
     {
         private Register register;
+		private Donor donor;
 
-        public RegisterDP2(Register parent)
+		public RegisterDP2(Register parent, Donor donor)
         {
             InitializeComponent();
             this.register = parent;
+			this.donor = donor;
 
-			tbxFirstName.Text = register.FirstName;
-			tbxMiddleName.Text = register.MiddleName;
-			tbxLastName.Text = register.LastName;
+			tbxFirstName.Text = donor.FirstName;
+			tbxMiddleName.Text = donor.MiddleName;
+			tbxLastName.Text = donor.LastName;
 
-			if (register.Gender == rbtnMale.Text) rbtnMale.Checked = true;
-			else if (register.Gender == rbtnFemale.Text) rbtnFemale.Checked = true;
-			else if (register.Gender == rbtnOther.Text) rbtnOther.Checked = true;
-			else if (register.Gender == rbtnPNTS.Text) rbtnPNTS.Checked = true;
+			if (donor.Gender == rbtnMale.Text) rbtnMale.Checked = true;
+			else if (donor.Gender == rbtnFemale.Text) rbtnFemale.Checked = true;
+			else if (donor.Gender == rbtnOther.Text) rbtnOther.Checked = true;
+			else if (donor.Gender == rbtnPNTS.Text) rbtnPNTS.Checked = true;
 		}
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-			string firstName = tbxFirstName.Text.Trim();
-			string middleName = tbxMiddleName.Text.Trim();
-			string lastName = tbxLastName.Text.Trim();
-			string gender = "";
+			donor.FirstName = tbxFirstName.Text.Trim();
+			donor.MiddleName = tbxMiddleName.Text.Trim();
+			donor.LastName = tbxLastName.Text.Trim();
+			donor.Gender = "";
 
-			if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || (!rbtnMale.Checked && !rbtnFemale.Checked && !rbtnOther.Checked && !rbtnPNTS.Checked))
+			if (rbtnMale.Checked)
+				donor.Gender = rbtnMale.Text;
+			else if (rbtnFemale.Checked)
+				donor.Gender = rbtnFemale.Text;
+			else if (rbtnOther.Checked)
+				donor.Gender = rbtnOther.Text;
+			else if (rbtnPNTS.Checked)
+				donor.Gender = rbtnPNTS.Text;
+
+			if (string.IsNullOrWhiteSpace(donor.FirstName) || string.IsNullOrWhiteSpace(donor.LastName) || string.IsNullOrWhiteSpace(donor.Gender))
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-
-			if (rbtnMale.Checked)
-				gender = rbtnMale.Text;
-			else if (rbtnFemale.Checked)
-				gender = rbtnFemale.Text;
-			else if (rbtnOther.Checked)
-				gender = rbtnOther.Text;
-			else if (rbtnPNTS.Checked)
-				gender = rbtnPNTS.Text;
-
-			register.FirstName = firstName;
-			register.MiddleName = middleName;
-			register.LastName = lastName;
-			register.Gender = gender;
 
 			register.showDP3();
         }

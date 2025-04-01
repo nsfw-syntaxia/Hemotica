@@ -50,11 +50,9 @@
 			tSidebar = new System.Windows.Forms.Timer(components);
 			pHeader = new Panel();
 			lblUsername = new Label();
-			btnQR = new Button();
 			lblHeader = new Label();
 			lblUserID = new Label();
 			flpDashboard = new FlowLayoutPanel();
-			pQR = new Panel();
 			flpSideBar.SuspendLayout();
 			pMenu.SuspendLayout();
 			pDashboard.SuspendLayout();
@@ -313,7 +311,6 @@
 			// 
 			pHeader.BackColor = Color.FromArgb(216, 85, 101);
 			pHeader.Controls.Add(lblUsername);
-			pHeader.Controls.Add(btnQR);
 			pHeader.Controls.Add(lblHeader);
 			pHeader.Controls.Add(lblUserID);
 			pHeader.Location = new Point(231, 43);
@@ -333,23 +330,6 @@
 			lblUsername.Size = new Size(164, 33);
 			lblUsername.TabIndex = 10;
 			lblUsername.Text = "<username>";
-			// 
-			// btnQR
-			// 
-			btnQR.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-			btnQR.Cursor = Cursors.Hand;
-			btnQR.FlatAppearance.BorderSize = 0;
-			btnQR.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
-			btnQR.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
-			btnQR.FlatStyle = FlatStyle.Flat;
-			btnQR.Image = (Image)resources.GetObject("btnQR.Image");
-			btnQR.Location = new Point(964, 45);
-			btnQR.Name = "btnQR";
-			btnQR.Size = new Size(50, 50);
-			btnQR.TabIndex = 9;
-			btnQR.TabStop = false;
-			btnQR.UseVisualStyleBackColor = true;
-			btnQR.Click += btnQR_Click;
 			// 
 			// lblHeader
 			// 
@@ -385,15 +365,6 @@
 			flpDashboard.Size = new Size(1020, 641);
 			flpDashboard.TabIndex = 10;
 			// 
-			// pQR
-			// 
-			pQR.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-			pQR.BackColor = Color.FromArgb(244, 180, 180);
-			pQR.Location = new Point(831, 150);
-			pQR.Name = "pQR";
-			pQR.Size = new Size(420, 420);
-			pQR.TabIndex = 0;
-			// 
 			// DashboardD
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -401,7 +372,6 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			ClientSize = new Size(1263, 803);
 			ControlBox = false;
-			Controls.Add(pQR);
 			Controls.Add(pHeader);
 			Controls.Add(flpDashboard);
 			Controls.Add(flpSideBar);
@@ -451,8 +421,6 @@
         private Label lblHeader;
         private FlowLayoutPanel flpDashboard;
         private Label lblUserID;
-		private Button btnQR;
 		private Label lblUsername;
-		private Panel pQR;
 	}
 }

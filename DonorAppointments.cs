@@ -60,7 +60,7 @@ namespace Hemotica
 
 		private void loadAppointments()
 		{
-			DataTable appointments = db.executeQuery($"SELECT [Appointment Date], [Hospital], [Status] FROM Appointments WHERE [Donor Username] = '{Accounts.Username}'");
+			DataTable appointments = db.executeQuery($"SELECT [Appointment Date], [Hospital], [Status] FROM Appointments WHERE [Donor Username] = '{UserLogs.Username}'");
 
 			if (appointments != null)
 			{
@@ -139,7 +139,7 @@ namespace Hemotica
 								string query = "UPDATE Appointments SET [Status] = 'Canceled' WHERE [Donor Username] = ? AND [Hospital] = ? AND [Appointment Date] = ?";
 								OleDbParameter[] parameters = 
 								{ 
-									new OleDbParameter("@donorUsername", Accounts.Username), 
+									new OleDbParameter("@donorUsername", UserLogs.Username), 
 									new OleDbParameter("@hospital", hospitalName),
 									new OleDbParameter("@appointmentDate", appointmentDate)
 								};

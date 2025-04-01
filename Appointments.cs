@@ -59,8 +59,9 @@ namespace Hemotica
 
 			string query = "INSERT INTO Appointments ([Donor Username], [Appointment Date], Hospital, Status) VALUES (@username, @date, @hospital, @status)";
 
-			OleDbParameter[] parameters = {
-				new OleDbParameter("@username", Accounts.Username),
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("@username", UserLogs.Username),
 				new OleDbParameter("@date", dtpAppointments.Value.ToString("MM/dd/yyyy")),
 				new OleDbParameter("@hospital", cmbxHospitals.SelectedValue.ToString()),
 				new OleDbParameter("@status", status)

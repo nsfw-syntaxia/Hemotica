@@ -5,28 +5,7 @@ namespace Hemotica
 {
     public partial class Register : Form
     {
-		protected internal string EmailAddress { get; set; }
-		protected internal string Username { get; set; }
-		protected internal string Password { get; set; }
-		protected internal string FirstName { get; set; }
-		protected internal string MiddleName { get; set; }
-		protected internal string LastName { get; set; }
-		protected internal string Gender { get; set; }
-		protected internal string Province { get; set; } = "Cebu";
-		protected internal string City { get; set; }
-		protected internal string Barangay { get; set; }
-		protected internal string Age { get; set; }
-		protected internal string ContactNumber { get; set; }
-		protected internal string BloodType { get; set; }
-
-		protected internal string HospitalName { get; set; }
-		protected internal string LicenseID { get; set; }
-		protected internal string Classification { get; set; }
-		protected internal string WeekdaysStart { get; set; }
-		protected internal string WeekdaysEnd { get; set; }
-		protected internal string WeekendStart { get; set; }
-		protected internal string WeekendEnd { get; set; }
-		protected internal string HospitalAddress { get; set; }
+        private User user;
 
 		public Register()
         {
@@ -78,49 +57,49 @@ namespace Hemotica
         public void showDP1()
         {
             flpUserRegister.Controls.Clear();
-            RegisterDP1 donorP1 = new RegisterDP1(this);
+            RegisterDP1 donorP1 = new RegisterDP1(this, user as Donor);
             flpUserRegister.Controls.Add(donorP1);
         }
 
         public void showDP2()
         {
             flpUserRegister.Controls.Clear();
-            RegisterDP2 donorP2 = new RegisterDP2(this);
+            RegisterDP2 donorP2 = new RegisterDP2(this, user as Donor);
             flpUserRegister.Controls.Add(donorP2);
         }
 
         public void showDP3()
         {
             flpUserRegister.Controls.Clear();
-            RegisterDP3 donorP3 = new RegisterDP3(this);
+            RegisterDP3 donorP3 = new RegisterDP3(this, user as Donor);
             flpUserRegister.Controls.Add(donorP3);
         }
 
 		public void showDP4()
 		{
 			flpUserRegister.Controls.Clear();
-			RegisterDP4 donorP4 = new RegisterDP4(this);
+			RegisterDP4 donorP4 = new RegisterDP4(this, user as Donor);
 			flpUserRegister.Controls.Add(donorP4);
 		}
 
 		public void showHP1()
         {
             flpUserRegister.Controls.Clear();
-            RegisterHP1 hospitalP1 = new RegisterHP1(this);
+            RegisterHP1 hospitalP1 = new RegisterHP1(this, user as Hospital);
             flpUserRegister.Controls.Add(hospitalP1);
         }
 
         public void showHP2()
         {
             flpUserRegister.Controls.Clear();
-            RegisterHP2 hospitalP2 = new RegisterHP2(this);
+            RegisterHP2 hospitalP2 = new RegisterHP2(this, user as Hospital);
             flpUserRegister.Controls.Add(hospitalP2);
         }
 
 		public void showHP3()
 		{
 			flpUserRegister.Controls.Clear();
-			RegisterHP3 hospitalP3 = new RegisterHP3(this);
+			RegisterHP3 hospitalP3 = new RegisterHP3(this, user as Hospital);
 			flpUserRegister.Controls.Add(hospitalP3);
 		}
 
@@ -130,10 +109,12 @@ namespace Hemotica
 
             if (cmbxRUser.SelectedItem.ToString() == "Donor")
             {
+                user = new Donor();
                 showDP1();
             }
             else if (cmbxRUser.SelectedItem.ToString() == "Hospital")
             {
+                user = new Hospital();
                 showHP1();
             }
         }

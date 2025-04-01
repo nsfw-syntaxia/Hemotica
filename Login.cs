@@ -124,7 +124,7 @@ namespace Hemotica
 				{
 					username = userUsername;
 					userType = row["UserType"].ToString();
-					dashboard = userType == "Donor" ? (Form)new DashboardD(username) : new DashboardH(username);
+					dashboard = userDashboard(userType, username);
 					break;
 				}
 			}
@@ -138,21 +138,15 @@ namespace Hemotica
 				{
 					username = adminUsername;
 					userType = "Admin";
-					dashboard = new DashboardA(username);
+					dashboard = userDashboard(userType, username);
 				}
 			}
 
 			if (dashboard != null)
 			{
-				Accounts.Username = username;
-				Accounts.UserType = userType;
-
-				string loginSession = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
-
-				string loginQuery = "INSERT INTO UserLogs ([Username], [User Type], [Login Session]) VALUES (?, ?, ?)";
-				OleDbParameter[] loginParameters = { new OleDbParameter("?", username), new OleDbParameter("?", userType), new OleDbParameter("?", loginSession) };
-
-				db.executeNonQuery(loginQuery, loginParameters);
+				UserLogs.Username = username;
+				UserLogs.UserType = userType;
+				UserLogs.LoginUser(db);
 
 				if (this.Owner is Home home && home.WindowState == FormWindowState.Maximized)
 				{
@@ -187,5 +181,20 @@ namespace Hemotica
                 tbxPassword.UseSystemPasswordChar = true;
             }
         }
-    }
+
+		private Form userDashboard(string userType, string username)
+		{
+			switch (userType)
+			{
+				case "Donor":
+					return new DashboardD(username);
+				case "Hospital":
+					return new DashboardH(username);
+				case "Admin":
+					return new DashboardA(username);
+				default:
+					return null;
+			}
+		}
+	}
 }

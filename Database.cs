@@ -7,18 +7,6 @@ using System.Windows.Forms;
 
 namespace Hemotica
 {
-	public static class Accounts
-	{
-		public static string Username { get; set; } = null;
-		public static string UserType { get; set; } = null;
-
-		public static void clearSession()
-		{
-			Username = null;
-			UserType = null;
-		}
-	}
-
 	internal class Database
 	{
 		private readonly string connection = "Provider=Microsoft.ACE.OLEDB.12.0; Data Source=C:\\Users\\Trixie\\Downloads\\CPE262\\Hemotica\\Hemotica_Database.accdb;";
@@ -109,6 +97,46 @@ namespace Hemotica
 					return false;
 				}
 			}
+		}
+
+		public int countEmail(string email)
+		{
+			string query = @"SELECT COUNT(*) FROM (SELECT [Email Address] FROM Donors WHERE [Email Address] = ? UNION ALL
+							 SELECT [Email Address] FROM Hospitals WHERE [Email Address] = ?) AS CombinedUsers";
+
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", email),
+				new OleDbParameter("?", email)
+			};
+
+			DataTable dt = executeQuery(query, parameters);
+
+			if (dt != null && dt.Rows.Count > 0)
+			{
+				return Convert.ToInt32(dt.Rows[0][0]);
+			}
+			return 0;
+		}
+
+		public string userEmail(string username)
+		{
+			string query = @"SELECT [Email Address] AS Email FROM Donors WHERE [Username] = ? UNION
+							 SELECT [Email Address] AS Email FROM Hospitals WHERE [Username] = ?";
+
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", username),
+				new OleDbParameter("?", username)
+			};
+
+			DataTable dt = executeQuery(query, parameters);
+
+			if (dt != null && dt.Rows.Count > 0 && dt.Columns.Contains("Email"))
+			{
+				return dt.Rows[0]["Email"].ToString();
+			}
+			return string.Empty;
 		}
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Hemotica
@@ -7,44 +6,46 @@ namespace Hemotica
 	public partial class RegisterDP1 : UserControl
 	{
 		private Register register;
+		private Donor donor;
 		private Database db = new Database();
 
-		public RegisterDP1(Register parent)
+		public RegisterDP1(Register parent, Donor donor)
 		{
 			InitializeComponent();
 			this.register = parent;
+			this.donor = donor;
 
-			tbxEmailAddress.Text = register.EmailAddress;
-			tbxUsername.Text = register.Username;
-			tbxPassword.Text = register.Password;
-			tbxConfirmPassword.Text = register.Password;
+			tbxEmailAddress.Text = donor.Email;
+			tbxUsername.Text = donor.Username;
+			tbxPassword.Text = donor.Password;
+			tbxConfirmPassword.Text = donor.Password;
 		}
 
 		private void btnNext_Click(object sender, EventArgs e)
 		{
-			string email = tbxEmailAddress.Text.Trim();
-			string username = tbxUsername.Text.Trim();
-			string password = tbxPassword.Text;
+			donor.Email = tbxEmailAddress.Text.Trim();
+			donor.Username = tbxUsername.Text.Trim();
+			donor.Password = tbxPassword.Text;
 			string confirmPassword = tbxConfirmPassword.Text;
 
-			List<string> errors = new List<string>();
-
-			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(confirmPassword))
+			if (string.IsNullOrWhiteSpace(donor.Email) || string.IsNullOrWhiteSpace(donor.Username) || string.IsNullOrWhiteSpace(donor.Password) || string.IsNullOrWhiteSpace(confirmPassword))
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
-			if (!validEmail(email))
+			List<string> errors = new List<string>();
+
+			if (!ExceptionHandling.validEmailAddress(donor.Email))
 				errors.Add("Invalid email address.");
 
-			if (!string.IsNullOrWhiteSpace(email) && db.userExists("EmailAddress", email))
+			if (db.userExists("EmailAddress", donor.Email))
 				errors.Add("Email address already exists.");
 
-			if (!string.IsNullOrWhiteSpace(username) && db.userExists("Username", username))
+			if (db.userExists("Username", donor.Username))
 				errors.Add("Username already taken.");
 
-			if (!string.IsNullOrEmpty(password) && password != confirmPassword)
+			if (donor.Password != confirmPassword)
 				errors.Add("Passwords do not match.");
 
 			if (errors.Count > 0)
@@ -52,10 +53,6 @@ namespace Hemotica
 				MessageBox.Show(string.Join("\n", errors), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
-
-			register.EmailAddress = email;
-			register.Username = username;
-			register.Password = password;
 
 			register.showDP2();
 		}
@@ -74,12 +71,6 @@ namespace Hemotica
 				tbxPassword.UseSystemPasswordChar = true;	
 				tbxConfirmPassword.UseSystemPasswordChar = true;
 			}
-		}
-
-		private bool validEmail(string email)
-		{
-			string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-			return Regex.IsMatch(email, pattern);
 		}
 	}
 }

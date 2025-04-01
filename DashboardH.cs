@@ -125,15 +125,21 @@ namespace Hemotica
 
 		private async void btnLogout_Click(object sender, EventArgs e)
 		{
-			if (!string.IsNullOrEmpty(Accounts.Username))
+			if (!string.IsNullOrEmpty(UserLogs.Username))
 			{
-				string logoutSession = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+				UserLogs.setLogout();
+				string logoutSession = UserLogs.Logout;
 
 				string logoutQuery = @"UPDATE UserLogs SET [Logout Session] = ? WHERE [Username] = ? AND [User Type] = ? AND [Logout Session] IS NULL";
-				OleDbParameter[] logoutParameters = { new OleDbParameter("?", logoutSession), new OleDbParameter("?", Accounts.Username), new OleDbParameter("?", Accounts.UserType) };
+				OleDbParameter[] logoutParameters =
+				{
+					new OleDbParameter("?", logoutSession),
+					new OleDbParameter("?", UserLogs.Username),
+					new OleDbParameter("?", UserLogs.UserType)
+				};
 
 				db.executeNonQuery(logoutQuery, logoutParameters);
-				Accounts.clearSession();
+				UserLogs.endSession();
 			}
 
 			if (Application.OpenForms["Home"] is Home home)
