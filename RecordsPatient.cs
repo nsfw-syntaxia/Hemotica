@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using ReaLTaiizor.Controls;
 
 namespace Hemotica
 {
@@ -44,6 +43,20 @@ namespace Hemotica
 			}
 
 			return null;
+		}
+
+		public void selectPatient(Patient patient)
+		{
+			tbxFName.Text = patient.FirstName;
+			tbxMName.Text = string.IsNullOrEmpty(patient.MiddleName) ? "" : patient.MiddleName;
+			tbxLName.Text = patient.LastName;
+			cmbxSex.SelectedItem = patient.Gender;
+			tbxAge.Text = patient.Age;
+			cmbxCity.SelectedItem = patient.City;
+			loadBarangays(patient.City);
+			cmbxBarangay.SelectedItem = patient.Barangay;
+			tbxCNumber.Text = patient.ContactNumber;
+			cmbxBType.SelectedItem = patient.BloodType;
 		}
 
 		private bool isValid()
@@ -98,25 +111,15 @@ namespace Hemotica
 				{
 					cmbxBarangay.Items.Add(row["Barangay"].ToString());
 				}
-				cmbxBarangay.SelectedIndex = 0;
-			}
-		}
 
-		private void TextBox_Leave(object sender, EventArgs e)
-		{
-			HopeTextBox tbx = sender as HopeTextBox;
-			if (tbx != null && string.IsNullOrWhiteSpace(tbx.Text))
-			{
-				if (tbx == tbxFName)
-					tbx.Text = "First Name";
-				else if (tbx == tbxMName)
-					tbx.Text = "Middle Name";
-				else if (tbx == tbxLName)
-					tbx.Text = "Last Name";
-				else if (tbx == tbxAge)
-					tbx.Text = "Age";
-				else if (tbx == tbxCNumber)
-					tbx.Text = "Contact Number";
+				if (patient.Barangay != null && cmbxBarangay.Items.Contains(patient.Barangay))
+				{
+					cmbxBarangay.SelectedItem = patient.Barangay;
+				}
+				else
+				{
+					cmbxBarangay.SelectedIndex = 0;
+				}
 			}
 		}
 

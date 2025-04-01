@@ -312,6 +312,7 @@
 			btnUpdate.TabIndex = 15;
 			btnUpdate.Text = "Update";
 			btnUpdate.Visible = false;
+			btnUpdate.Click += btnUpdate_Click;
 			// 
 			// btnDeleteMin
 			// 
@@ -364,7 +365,7 @@
 			dgvDataMin.ColumnHeadersHeight = 50;
 			dgvDataMin.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			dgvDataMin.EnableHeadersVisualStyles = false;
-			dgvDataMin.GridColor = Color.FromArgb(244, 180, 180);
+			dgvDataMin.GridColor = Color.FromArgb(253, 211, 211);
 			dgvDataMin.Location = new Point(3, 42);
 			dgvDataMin.MultiSelect = false;
 			dgvDataMin.Name = "dgvDataMin";
@@ -401,6 +402,7 @@
 			dgvDataMin.Size = new Size(1014, 272);
 			dgvDataMin.TabIndex = 18;
 			dgvDataMin.Visible = false;
+			dgvDataMin.CellClick += dgvDataMin_CellClick;
 			// 
 			// flpInputs
 			// 

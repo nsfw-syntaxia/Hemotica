@@ -8,12 +8,14 @@ namespace Hemotica
 	public partial class HospitalRecords : UserControl
 	{
 		private Hospital hospital;
+		private Patient patient;
 		private Database db = new Database();
 
 		public HospitalRecords()
 		{
 			InitializeComponent();
 			this.hospital = new Hospital();
+			this.patient = new Patient();
 		}
 
 		private void btnConnection_Click(object sender, EventArgs e)
@@ -84,7 +86,7 @@ namespace Hemotica
 
 		private void loadPatients()
 		{
-			DataTable dt = hospital.loadPatients(db);
+			DataTable dt = patient.loadPatients(db);
 
 			if (dt != null)
 			{
@@ -94,7 +96,7 @@ namespace Hemotica
 
 		private void btnInsert_Click(object sender, EventArgs e)
 		{
-			if (flpInputs.Controls.Count > 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				Patient patient = recordsPatient.inputPatient();
 
@@ -106,7 +108,7 @@ namespace Hemotica
 
 						flpInputs.Controls.Clear();
 						flpInputs.Controls.Add(new RecordsPatient(this));
-						loadPatients();
+						lPatients_Click(sender, e);
 					}
 					else
 					{
@@ -118,7 +120,7 @@ namespace Hemotica
 
 		private void btnDeleteMin_Click(object sender, EventArgs e)
 		{
-			if (flpInputs.Controls.Count > 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				if (dgvDataMin.SelectedRows.Count > 0)
 				{
@@ -127,11 +129,11 @@ namespace Hemotica
 					var confirmResult = MessageBox.Show("Are you sure you want to delete this record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 					if (confirmResult == DialogResult.Yes)
 					{
-						if (hospital.deletePatient(patientID, db))
+						if (patient.deletePatient(patientID, db))
 						{
 							MessageBox.Show("Patient record deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-							DataTable dt = hospital.loadPatients(db);
+							DataTable dt = patient.loadPatients(db);
 							dgvDataMin.DataSource = dt;
 						}
 						else
@@ -140,6 +142,57 @@ namespace Hemotica
 						}
 					}
 				}
+			}
+		}
+
+		private void btnUpdate_Click(object sender, EventArgs e)
+		{
+			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			{
+				Patient patient = recordsPatient.inputPatient();
+
+				if (patient != null)
+				{
+					if (dgvDataMin.SelectedRows.Count > 0)
+					{
+						int patientID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Patient ID"].Value);
+
+						if (patient.updatePatient(db, patientID))
+						{
+							MessageBox.Show("Patient record updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							flpInputs.Controls.Clear();
+							flpInputs.Controls.Add(new RecordsPatient(this));
+							loadPatients();
+						}
+						else
+						{
+							MessageBox.Show("Patient record update failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
+			}
+		}
+
+		private void dgvDataMin_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			{
+				DataGridViewRow row = dgvDataMin.Rows[e.RowIndex];
+
+				recordsPatient.selectPatient(new Patient
+				{
+					FirstName = row.Cells["First Name"].Value?.ToString(),
+					MiddleName = row.Cells["Middle Name"].Value?.ToString() ?? "",
+					LastName = row.Cells["Last Name"].Value?.ToString(),
+					Gender = row.Cells["Gender"].Value?.ToString(),
+					Age = row.Cells["Age"].Value?.ToString(),
+					Barangay = row.Cells["Barangay"].Value?.ToString(),
+					City = row.Cells["City"].Value?.ToString(),
+					Province = "Cebu",
+					ContactNumber = row.Cells["Contact Number"].Value?.ToString(),
+					BloodType = row.Cells["Blood Type"].Value?.ToString()
+				});
 			}
 		}
 

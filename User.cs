@@ -181,9 +181,10 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("@DonorID", donorID);
 
 					conn.Open();
-					int rowsAffected = cmd.ExecuteNonQuery();
+					cmd.ExecuteNonQuery();
+					conn.Close();
 
-					return rowsAffected > 0;
+					return true;
 				}
 			}
 			catch (Exception)
@@ -191,7 +192,15 @@ namespace Hemotica
 				return false;
 			}
 		}
+	}
 
+	public class Admin : User
+	{
+		//
+	}
+
+	public class Patient : Donor
+	{
 		internal DataTable loadPatients(Database db)
 		{
 			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
@@ -203,38 +212,6 @@ namespace Hemotica
 			return db.executeQuery(query);
 		}
 
-		internal bool deletePatient(int patientID, Database db)
-		{
-			string query = "DELETE FROM Patients WHERE [Patient ID] = @PatientID";
-
-			try
-			{
-				using (OleDbConnection conn = db.getConnection())
-				{
-					OleDbCommand cmd = new OleDbCommand(query, conn);
-					cmd.Parameters.AddWithValue("@PatientID", patientID);
-
-					conn.Open();
-					int rowsAffected = cmd.ExecuteNonQuery();
-
-					return rowsAffected > 0;
-				}
-			}
-			catch (Exception)
-			{
-				return false;
-			}
-		}
-
-	}
-
-	public class Admin : User
-	{
-		//
-	}
-
-	public class Patient : Donor
-	{
 		internal bool addPatient(Database db)
 		{
 			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
@@ -263,14 +240,76 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("@Hospital", hospitalName);
 
 					conn.Open();
-					int rowsAffected = cmd.ExecuteNonQuery();
+					cmd.ExecuteNonQuery();
+					conn.Close();
 
-					return rowsAffected > 0;
+					return true;
+				}
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+		internal bool updatePatient(Database db, int patientID)
+		{
+			string query = @"UPDATE Patients SET [First Name] = @FirstName, [Middle Name] = @MiddleName, [Last Name] = @LastName, [Gender] = @Gender, [Age] = @Age, 
+							 [Barangay] = @Barangay, [City] = @City, [Province] = @Province, [Contact Number] = @ContactNumber, [Blood Type] = @BloodType WHERE [Patient ID] = @PatientID";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					using (OleDbCommand cmd = new OleDbCommand(query, conn))
+					{
+						cmd.Parameters.AddWithValue("@FirstName", FirstName);
+						cmd.Parameters.AddWithValue("@MiddleName", MiddleName);
+						cmd.Parameters.AddWithValue("@LastName", LastName);
+						cmd.Parameters.AddWithValue("@Gender", Gender);
+						cmd.Parameters.AddWithValue("@Age", Age);
+						cmd.Parameters.AddWithValue("@Barangay", Barangay);
+						cmd.Parameters.AddWithValue("@City", City);
+						cmd.Parameters.AddWithValue("@Province", Province);
+						cmd.Parameters.AddWithValue("@ContactNumber", ContactNumber);
+						cmd.Parameters.AddWithValue("@BloodType", BloodType);
+						cmd.Parameters.AddWithValue("@PatientID", patientID);
+
+						conn.Open();
+						cmd.ExecuteNonQuery();
+						conn.Close();
+
+						return true;
+					}
 				}
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		internal bool deletePatient(int patientID, Database db)
+		{
+			string query = "DELETE FROM Patients WHERE [Patient ID] = @PatientID";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+					cmd.Parameters.AddWithValue("@PatientID", patientID);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception)
+			{
 				return false;
 			}
 		}
