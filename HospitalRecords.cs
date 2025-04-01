@@ -76,9 +76,9 @@ namespace Hemotica
 			btnInsert.Visible = true;
 			btnUpdate.Visible = true;
 			btnDeleteMin.Visible = true;
+
 			flpInputs.Controls.Clear();
 			flpInputs.Controls.Add(new RecordsPatient(this));
-
 			loadPatients();
 		}
 
@@ -103,13 +103,41 @@ namespace Hemotica
 					if (patient.addPatient(db))
 					{
 						MessageBox.Show("Patient record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-						loadPatients();
+
 						flpInputs.Controls.Clear();
 						flpInputs.Controls.Add(new RecordsPatient(this));
+						loadPatients();
 					}
 					else
 					{
 						MessageBox.Show("Patient record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+		}
+
+		private void btnDeleteMin_Click(object sender, EventArgs e)
+		{
+			if (flpInputs.Controls.Count > 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			{
+				if (dgvDataMin.SelectedRows.Count > 0)
+				{
+					int patientID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Patient ID"].Value);
+
+					var confirmResult = MessageBox.Show("Are you sure you want to delete this record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+					if (confirmResult == DialogResult.Yes)
+					{
+						if (hospital.deletePatient(patientID, db))
+						{
+							MessageBox.Show("Patient record deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							DataTable dt = hospital.loadPatients(db);
+							dgvDataMin.DataSource = dt;
+						}
+						else
+						{
+							MessageBox.Show("Patient record deletion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
 					}
 				}
 			}

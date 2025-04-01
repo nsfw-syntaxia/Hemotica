@@ -202,6 +202,30 @@ namespace Hemotica
 							  WHERE [Hospital] = '{hospitalName}'";
 			return db.executeQuery(query);
 		}
+
+		internal bool deletePatient(int patientID, Database db)
+		{
+			string query = "DELETE FROM Patients WHERE [Patient ID] = @PatientID";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+					cmd.Parameters.AddWithValue("@PatientID", patientID);
+
+					conn.Open();
+					int rowsAffected = cmd.ExecuteNonQuery();
+
+					return rowsAffected > 0;
+				}
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
 	}
 
 	public class Admin : User

@@ -325,6 +325,7 @@
 			btnDeleteMin.TabIndex = 16;
 			btnDeleteMin.Text = "Delete";
 			btnDeleteMin.Visible = false;
+			btnDeleteMin.Click += btnDeleteMin_Click;
 			// 
 			// btnDeleteMax
 			// 
