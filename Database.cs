@@ -62,7 +62,7 @@ namespace Hemotica
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
 				}
 			}
@@ -86,7 +86,7 @@ namespace Hemotica
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return null;
 				}
 			}
@@ -95,12 +95,12 @@ namespace Hemotica
 		public bool userExists(string columnName, string value)
 		{
 			string query = $@"SELECT COUNT(*) FROM (SELECT [Email Address] AS EmailAddress, [Username] FROM Donors UNION 
-							  SELECT [Email Address] AS EmailAddress, [Username] FROM Hospitals) WHERE [{columnName}] = @Value";
+							  SELECT [Email Address] AS EmailAddress, [Username] FROM Hospitals) WHERE [{columnName}] = ?";
 
 			using (OleDbConnection conn = getConnection())
 			using (OleDbCommand cmd = new OleDbCommand(query, conn))
 			{
-				cmd.Parameters.AddWithValue("@Value", value);
+				cmd.Parameters.AddWithValue("?", value);
 				try
 				{
 					conn.Open();
@@ -109,7 +109,7 @@ namespace Hemotica
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return false;
 				}
 			}

@@ -193,11 +193,65 @@ namespace Hemotica
 				return false;
 			}
 		}
+
+		internal DataTable loadPatients(Database db)
+		{
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
+			DataTable hospitalData = db.executeQuery(queryHospital);
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Patientss 
+							  WHERE [Hospital] = '{hospitalName}'";
+			return db.executeQuery(query);
+		}
 	}
 
 	public class Admin : User
 	{
 		//
+	}
+
+	public class Patient : Donor
+	{
+		internal bool addPatient(Database db)
+		{
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
+			DataTable hospitalData = db.executeQuery(queryHospital);
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string query = @"INSERT INTO Patientss ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type], [Hospital]) 
+							 VALUES (@FirstName, @MiddleName, @LastName, @Gender, @Age, @Barangay, @City, @Province, @ContactNumber, @BloodType, @Hospital)";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+
+					cmd.Parameters.AddWithValue("@FirstName", FirstName);
+					cmd.Parameters.AddWithValue("@MiddleName", MiddleName);
+					cmd.Parameters.AddWithValue("@LastName", LastName);
+					cmd.Parameters.AddWithValue("@Gender", Gender);
+					cmd.Parameters.AddWithValue("@Age", Age);
+					cmd.Parameters.AddWithValue("@Barangay", Barangay);
+					cmd.Parameters.AddWithValue("@City", City);
+					cmd.Parameters.AddWithValue("@Province", Province);
+					cmd.Parameters.AddWithValue("@ContactNumber", ContactNumber);
+					cmd.Parameters.AddWithValue("@BloodType", BloodType);
+					cmd.Parameters.AddWithValue("@Hospital", hospitalName);
+
+					conn.Open();
+					int rowsAffected = cmd.ExecuteNonQuery();
+
+					return rowsAffected > 0;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
 	}
 
 	public static class UserLogs

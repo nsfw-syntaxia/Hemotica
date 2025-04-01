@@ -298,6 +298,7 @@
 			btnInsert.TabIndex = 14;
 			btnInsert.Text = "Insert";
 			btnInsert.Visible = false;
+			btnInsert.Click += btnInsert_Click;
 			// 
 			// btnUpdate
 			// 
@@ -402,6 +403,7 @@
 			// 
 			// flpInputs
 			// 
+			flpInputs.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			flpInputs.Location = new Point(3, 320);
 			flpInputs.Name = "flpInputs";
 			flpInputs.Size = new Size(1014, 267);
@@ -420,8 +422,8 @@
 			Controls.Add(btnConnection);
 			Controls.Add(dgvDataMax);
 			Controls.Add(mstrpRecords);
-			Controls.Add(btnDeleteMax);
 			Controls.Add(btnInsert);
+			Controls.Add(btnDeleteMax);
 			Name = "HospitalRecords";
 			Size = new Size(1020, 641);
 			Load += HospitalRecords_Load;

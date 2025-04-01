@@ -10,7 +10,7 @@
   <Class Name="Hemotica.Hospital" Collapsed="true">
     <Position X="5.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAACABAAQgAQAEAAAAQIAAgECAAIAAgAAAAY=</HashCode>
+      <HashCode>AAAgBAAAAACABAAQgAQAEEAAAQIAAgECAAIAAgAAAAY=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -38,7 +38,7 @@
   <Class Name="Hemotica.Database" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAABABAAAAAARAABAAAAAAAAAAAAAAACAAAAAAg=</HashCode>
+      <HashCode>EAAAAAABABAAAAAARAABAEAAAAAAAAAAAAACAAAAAAg=</HashCode>
       <FileName>Database.cs</FileName>
     </TypeIdentifier>
   </Class>
