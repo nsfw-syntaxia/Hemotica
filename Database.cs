@@ -16,6 +16,22 @@ namespace Hemotica
 			return new OleDbConnection(connection);
 		}
 
+		public void connectDatabase()
+		{
+			using (OleDbConnection conn = getConnection())
+			{
+				try
+				{
+					conn.Open();
+					MessageBox.Show("Connection successful!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				}
+				catch (Exception)
+				{
+					MessageBox.Show("Connection failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+		}
+
 		public string hashPassword(string password)
 		{
 			using (SHA256 sha256 = SHA256.Create())

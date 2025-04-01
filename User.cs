@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.OleDb;
 using System.IO;
 
@@ -160,6 +161,37 @@ namespace Hemotica
 		{
 			get { return address; }
 			set { address = value; }
+		}
+
+		internal DataTable loadDonors(Database db)
+		{
+			//string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors";
+			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM template";
+			return db.executeQuery(query);
+		}
+
+		internal bool deleteDonor(int donorID, Database db)
+		{
+			//string query = "DELETE FROM Donors WHERE [Donor ID] = @DonorID";
+			string query = "DELETE FROM template WHERE [Donor ID] = @DonorID";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+					cmd.Parameters.AddWithValue("@DonorID", donorID);
+
+					conn.Open();
+					int rowsAffected = cmd.ExecuteNonQuery();
+
+					return rowsAffected > 0;
+				}
+			}
+			catch (Exception)
+			{
+				return false;
+			}
 		}
 	}
 

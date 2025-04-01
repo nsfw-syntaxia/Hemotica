@@ -29,6 +29,12 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalRecords));
+			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
 			mstrpRecords = new ReaLTaiizor.Controls.ParrotToolStrip();
 			tstrpFile = new ToolStripDropDownButton();
 			load = new ToolStripMenuItem();
@@ -51,9 +57,13 @@
 			btnConnection = new AntdUI.Button();
 			btnInsert = new AntdUI.Button();
 			btnUpdate = new AntdUI.Button();
-			btnDelete = new AntdUI.Button();
+			btnDeleteMin = new AntdUI.Button();
+			btnDeleteMax = new AntdUI.Button();
+			dgvDataMin = new DataGridView();
+			flpInputs = new FlowLayoutPanel();
 			mstrpRecords.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dgvDataMax).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dgvDataMin).BeginInit();
 			SuspendLayout();
 			// 
 			// mstrpRecords
@@ -204,15 +214,64 @@
 			// 
 			// dgvDataMax
 			// 
+			dgvDataMax.AllowUserToAddRows = false;
+			dgvDataMax.AllowUserToResizeColumns = false;
+			dgvDataMax.AllowUserToResizeRows = false;
 			dgvDataMax.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			dgvDataMax.BackgroundColor = Color.FromArgb(244, 180, 180);
-			dgvDataMax.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dgvDataMax.GridColor = Color.FromArgb(244, 180, 180);
+			dgvDataMax.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			dgvDataMax.BackgroundColor = Color.FromArgb(253, 211, 211);
+			dgvDataMax.BorderStyle = BorderStyle.None;
+			dgvDataMax.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+			dgvDataMax.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle1.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle1.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle1.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle1.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+			dgvDataMax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dgvDataMax.ColumnHeadersHeight = 50;
+			dgvDataMax.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			dgvDataMax.EnableHeadersVisualStyles = false;
+			dgvDataMax.GridColor = Color.FromArgb(253, 211, 211);
 			dgvDataMax.Location = new Point(3, 42);
+			dgvDataMax.MultiSelect = false;
 			dgvDataMax.Name = "dgvDataMax";
 			dgvDataMax.ReadOnly = true;
+			dgvDataMax.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle2.BackColor = SystemColors.Control;
+			dataGridViewCellStyle2.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+			dgvDataMax.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dgvDataMax.RowHeadersVisible = false;
+			dgvDataMax.RowHeadersWidth = 40;
+			dataGridViewCellStyle3.BackColor = Color.FromArgb(244, 180, 180);
+			dataGridViewCellStyle3.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle3.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle3.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle3.SelectionForeColor = Color.White;
+			dgvDataMax.RowsDefaultCellStyle = dataGridViewCellStyle3;
+			dgvDataMax.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
+			dgvDataMax.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
+			dgvDataMax.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
+			dgvDataMax.RowTemplate.DefaultCellStyle.Padding = new Padding(20, 5, 20, 5);
+			dgvDataMax.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dgvDataMax.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+			dgvDataMax.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+			dgvDataMax.RowTemplate.DividerHeight = 3;
+			dgvDataMax.RowTemplate.Height = 40;
+			dgvDataMax.RowTemplate.Resizable = DataGridViewTriState.False;
+			dgvDataMax.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 			dgvDataMax.Size = new Size(1014, 545);
 			dgvDataMax.TabIndex = 2;
+			dgvDataMax.Visible = false;
 			// 
 			// btnConnection
 			// 
@@ -253,36 +312,123 @@
 			btnUpdate.Text = "Update";
 			btnUpdate.Visible = false;
 			// 
-			// btnDelete
+			// btnDeleteMin
 			// 
-			btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-			btnDelete.DefaultBack = Color.FromArgb(236, 124, 132);
-			btnDelete.Font = new Font("Bahnschrift", 14F);
-			btnDelete.ForeColor = Color.FromArgb(252, 228, 228);
-			btnDelete.Location = new Point(305, 593);
-			btnDelete.Name = "btnDelete";
-			btnDelete.Size = new Size(145, 45);
-			btnDelete.TabIndex = 16;
-			btnDelete.Text = "Delete";
-			btnDelete.Visible = false;
+			btnDeleteMin.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnDeleteMin.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnDeleteMin.Font = new Font("Bahnschrift", 14F);
+			btnDeleteMin.ForeColor = Color.FromArgb(252, 228, 228);
+			btnDeleteMin.Location = new Point(305, 593);
+			btnDeleteMin.Name = "btnDeleteMin";
+			btnDeleteMin.Size = new Size(145, 45);
+			btnDeleteMin.TabIndex = 16;
+			btnDeleteMin.Text = "Delete";
+			btnDeleteMin.Visible = false;
+			// 
+			// btnDeleteMax
+			// 
+			btnDeleteMax.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnDeleteMax.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnDeleteMax.Font = new Font("Bahnschrift", 14F);
+			btnDeleteMax.ForeColor = Color.FromArgb(252, 228, 228);
+			btnDeleteMax.Location = new Point(3, 593);
+			btnDeleteMax.Name = "btnDeleteMax";
+			btnDeleteMax.Size = new Size(145, 45);
+			btnDeleteMax.TabIndex = 17;
+			btnDeleteMax.Text = "Delete";
+			btnDeleteMax.Visible = false;
+			btnDeleteMax.Click += btnDeleteMax_Click;
+			// 
+			// dgvDataMin
+			// 
+			dgvDataMin.AllowUserToAddRows = false;
+			dgvDataMin.AllowUserToResizeColumns = false;
+			dgvDataMin.AllowUserToResizeRows = false;
+			dgvDataMin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			dgvDataMin.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			dgvDataMin.BackgroundColor = Color.FromArgb(253, 211, 211);
+			dgvDataMin.BorderStyle = BorderStyle.None;
+			dgvDataMin.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+			dgvDataMin.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle4.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle4.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle4.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+			dgvDataMin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dgvDataMin.ColumnHeadersHeight = 50;
+			dgvDataMin.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			dgvDataMin.EnableHeadersVisualStyles = false;
+			dgvDataMin.GridColor = Color.FromArgb(244, 180, 180);
+			dgvDataMin.Location = new Point(3, 42);
+			dgvDataMin.MultiSelect = false;
+			dgvDataMin.Name = "dgvDataMin";
+			dgvDataMin.ReadOnly = true;
+			dgvDataMin.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = SystemColors.Control;
+			dataGridViewCellStyle5.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+			dgvDataMin.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dgvDataMin.RowHeadersVisible = false;
+			dgvDataMin.RowHeadersWidth = 40;
+			dataGridViewCellStyle6.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle6.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle6.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle6.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle6.SelectionForeColor = Color.White;
+			dgvDataMin.RowsDefaultCellStyle = dataGridViewCellStyle6;
+			dgvDataMin.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
+			dgvDataMin.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
+			dgvDataMin.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
+			dgvDataMin.RowTemplate.DefaultCellStyle.Padding = new Padding(20, 5, 20, 5);
+			dgvDataMin.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dgvDataMin.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+			dgvDataMin.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+			dgvDataMin.RowTemplate.DividerHeight = 3;
+			dgvDataMin.RowTemplate.Height = 40;
+			dgvDataMin.RowTemplate.Resizable = DataGridViewTriState.False;
+			dgvDataMin.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			dgvDataMin.Size = new Size(1014, 272);
+			dgvDataMin.TabIndex = 18;
+			dgvDataMin.Visible = false;
+			// 
+			// flpInputs
+			// 
+			flpInputs.Location = new Point(3, 320);
+			flpInputs.Name = "flpInputs";
+			flpInputs.Size = new Size(1014, 267);
+			flpInputs.TabIndex = 19;
+			flpInputs.Visible = false;
 			// 
 			// HospitalRecords
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
-			Controls.Add(btnDelete);
+			Controls.Add(flpInputs);
+			Controls.Add(dgvDataMin);
+			Controls.Add(btnDeleteMin);
 			Controls.Add(btnUpdate);
-			Controls.Add(btnInsert);
 			Controls.Add(btnConnection);
 			Controls.Add(dgvDataMax);
 			Controls.Add(mstrpRecords);
+			Controls.Add(btnDeleteMax);
+			Controls.Add(btnInsert);
 			Name = "HospitalRecords";
 			Size = new Size(1020, 641);
 			Load += HospitalRecords_Load;
 			mstrpRecords.ResumeLayout(false);
 			mstrpRecords.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)dgvDataMax).EndInit();
+			((System.ComponentModel.ISupportInitialize)dgvDataMin).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -309,8 +455,11 @@
 		private AntdUI.Button btnConnection;
 		private AntdUI.Button btnInsert;
 		private AntdUI.Button btnUpdate;
-		private AntdUI.Button btnDelete;
+		private AntdUI.Button btnDeleteMin;
 		private ToolStripMenuItem lPhysicians;
 		private ToolStripMenuItem lAppointments;
+		private AntdUI.Button btnDeleteMax;
+		private DataGridView dgvDataMin;
+		private FlowLayoutPanel flpInputs;
 	}
 }
