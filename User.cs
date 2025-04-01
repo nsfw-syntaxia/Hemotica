@@ -165,15 +165,13 @@ namespace Hemotica
 
 		internal DataTable loadDonors(Database db)
 		{
-			//string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors";
-			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM template";
+			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors";
 			return db.executeQuery(query);
 		}
 
 		internal bool deleteDonor(int donorID, Database db)
 		{
-			//string query = "DELETE FROM Donors WHERE [Donor ID] = @DonorID";
-			string query = "DELETE FROM template WHERE [Donor ID] = @DonorID";
+			string query = "DELETE FROM Donors WHERE [Donor ID] = @DonorID";
 
 			try
 			{
@@ -200,7 +198,7 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Patientss 
+			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Patients 
 							  WHERE [Hospital] = '{hospitalName}'";
 			return db.executeQuery(query);
 		}
@@ -219,7 +217,7 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = @"INSERT INTO Patientss ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type], [Hospital]) 
+			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type], [Hospital]) 
 							 VALUES (@FirstName, @MiddleName, @LastName, @Gender, @Age, @Barangay, @City, @Province, @ContactNumber, @BloodType, @Hospital)";
 
 			try

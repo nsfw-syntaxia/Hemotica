@@ -76,6 +76,8 @@
 			tbxFName.TabStop = false;
 			tbxFName.Text = "First Name";
 			tbxFName.UseSystemPasswordChar = false;
+			tbxFName.Enter += tbxFName_Enter;
+			tbxFName.Leave += tbxFName_Leave;
 			// 
 			// tbxMName
 			// 
@@ -100,6 +102,8 @@
 			tbxMName.TabStop = false;
 			tbxMName.Text = "Middle Name";
 			tbxMName.UseSystemPasswordChar = false;
+			tbxMName.Enter += tbxMName_Enter;
+			tbxMName.Leave += tbxMName_Leave;
 			// 
 			// tbxLName
 			// 
@@ -124,6 +128,8 @@
 			tbxLName.TabStop = false;
 			tbxLName.Text = "Last Name";
 			tbxLName.UseSystemPasswordChar = false;
+			tbxLName.Enter += tbxLName_Enter;
+			tbxLName.Leave += tbxLName_Leave;
 			// 
 			// tbxAge
 			// 
@@ -148,6 +154,8 @@
 			tbxAge.TabStop = false;
 			tbxAge.Text = "Age";
 			tbxAge.UseSystemPasswordChar = false;
+			tbxAge.Enter += tbxAge_Enter;
+			tbxAge.Leave += tbxAge_Leave;
 			// 
 			// tbxProvince
 			// 
@@ -197,6 +205,8 @@
 			tbxCNumber.TabStop = false;
 			tbxCNumber.Text = "Contact Number";
 			tbxCNumber.UseSystemPasswordChar = false;
+			tbxCNumber.Enter += tbxCNumber_Enter;
+			tbxCNumber.Leave += tbxCNumber_Leave;
 			// 
 			// cmbxSex
 			// 

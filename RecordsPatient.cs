@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using ReaLTaiizor.Controls;
 
 namespace Hemotica
 {
@@ -15,6 +16,12 @@ namespace Hemotica
 		{
 			InitializeComponent();
 			this.hospitalRecords = parent;
+
+			tbxFName.Text = "First Name";
+			tbxMName.Text = "Middle Name";
+			tbxLName.Text = "Last Name";
+			tbxAge.Text = "Age";
+			tbxCNumber.Text = "Contact Number";
 		}
 
 		public Patient inputPatient()
@@ -24,7 +31,7 @@ namespace Hemotica
 				return new Patient
 				{
 					FirstName = tbxFName.Text,
-					MiddleName = tbxMName.Text,
+					MiddleName = tbxMName.Text == "Middle Name" ? "" : tbxMName.Text,
 					LastName = tbxLName.Text,
 					Gender = cmbxSex.SelectedItem.ToString(),
 					Age = tbxAge.Text,
@@ -93,6 +100,84 @@ namespace Hemotica
 				}
 				cmbxBarangay.SelectedIndex = 0;
 			}
+		}
+
+		private void TextBox_Leave(object sender, EventArgs e)
+		{
+			HopeTextBox tbx = sender as HopeTextBox;
+			if (tbx != null && string.IsNullOrWhiteSpace(tbx.Text))
+			{
+				if (tbx == tbxFName)
+					tbx.Text = "First Name";
+				else if (tbx == tbxMName)
+					tbx.Text = "Middle Name";
+				else if (tbx == tbxLName)
+					tbx.Text = "Last Name";
+				else if (tbx == tbxAge)
+					tbx.Text = "Age";
+				else if (tbx == tbxCNumber)
+					tbx.Text = "Contact Number";
+			}
+		}
+
+		private void tbxFName_Enter(object sender, EventArgs e)
+		{
+			if (tbxFName.Text == "First Name")
+				tbxFName.Text = "";
+		}
+
+		private void tbxMName_Enter(object sender, EventArgs e)
+		{
+			if (tbxMName.Text == "Middle Name")
+				tbxMName.Text = "";
+		}
+
+		private void tbxLName_Enter(object sender, EventArgs e)
+		{
+			if (tbxLName.Text == "Last Name")
+				tbxLName.Text = "";
+		}
+
+		private void tbxAge_Enter(object sender, EventArgs e)
+		{
+			if (tbxAge.Text == "Age")
+				tbxAge.Text = "";
+		}
+
+		private void tbxCNumber_Enter(object sender, EventArgs e)
+		{
+			if (tbxCNumber.Text == "Contact Number")
+				tbxCNumber.Text = "";
+		}
+
+		private void tbxFName_Leave(object sender, EventArgs e)
+		{
+			if (string.IsNullOrWhiteSpace(tbxFName.Text))
+				tbxFName.Text = "First Name";
+		}
+
+		private void tbxMName_Leave(object sender, EventArgs e)
+		{
+			if (string.IsNullOrWhiteSpace(tbxMName.Text))
+				tbxMName.Text = "Middle Name";
+		}
+
+		private void tbxLName_Leave(object sender, EventArgs e)
+		{
+			if (string.IsNullOrWhiteSpace(tbxLName.Text))
+				tbxLName.Text = "Last Name";
+		}
+
+		private void tbxAge_Leave(object sender, EventArgs e)
+		{
+			if (string.IsNullOrWhiteSpace(tbxAge.Text))
+				tbxAge.Text = "Age";
+		}
+
+		private void tbxCNumber_Leave(object sender, EventArgs e)
+		{
+			if (string.IsNullOrWhiteSpace(tbxCNumber.Text))
+				tbxCNumber.Text = "Contact Number";
 		}
 	}
 }

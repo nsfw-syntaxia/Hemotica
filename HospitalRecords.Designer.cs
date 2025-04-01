@@ -426,7 +426,6 @@
 			Controls.Add(btnDeleteMax);
 			Name = "HospitalRecords";
 			Size = new Size(1020, 641);
-			Load += HospitalRecords_Load;
 			mstrpRecords.ResumeLayout(false);
 			mstrpRecords.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)dgvDataMax).EndInit();

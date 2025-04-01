@@ -16,11 +16,6 @@ namespace Hemotica
 			this.hospital = new Hospital();
 		}
 
-		private void HospitalRecords_Load(object sender, EventArgs e)
-		{
-			//
-		}
-
 		private void btnConnection_Click(object sender, EventArgs e)
 		{
 			db.connectDatabase();
@@ -109,6 +104,8 @@ namespace Hemotica
 					{
 						MessageBox.Show("Patient record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 						loadPatients();
+						flpInputs.Controls.Clear();
+						flpInputs.Controls.Add(new RecordsPatient(this));
 					}
 					else
 					{
