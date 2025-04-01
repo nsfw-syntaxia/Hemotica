@@ -50,7 +50,7 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			Controls.Add(lblPhysician);
 			Name = "RecordsPhysician";
-			Size = new Size(447, 545);
+			Size = new Size(1014, 267);
 			ResumeLayout(false);
 			PerformLayout();
 		}

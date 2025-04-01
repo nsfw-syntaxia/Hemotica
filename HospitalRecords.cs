@@ -108,7 +108,7 @@ namespace Hemotica
 
 						flpInputs.Controls.Clear();
 						flpInputs.Controls.Add(new RecordsPatient(this));
-						lPatients_Click(sender, e);
+						loadPatients();
 					}
 					else
 					{
@@ -198,8 +198,18 @@ namespace Hemotica
 
 		private void lPhysicians_Click(object sender, EventArgs e)
 		{
-			//flpInputs.Controls.Clear();
-			//flpInputs.Controls.Add(new RecordsPhysician());
+			btnConnection.Visible = false;
+			dgvDataMax.Visible = false;
+			btnDeleteMax.Visible = false;
+
+			dgvDataMin.Visible = true;
+			flpInputs.Visible = true;
+			btnInsert.Visible = true;
+			btnUpdate.Visible = true;
+			btnDeleteMin.Visible = true;
+
+			flpInputs.Controls.Clear();
+			flpInputs.Controls.Add(new RecordsPhysician(this));
 		}
 	}
 }
