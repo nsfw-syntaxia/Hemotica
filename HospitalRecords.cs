@@ -326,7 +326,7 @@ namespace Hemotica
 			// after transfusion functionality
 		}
 
-		public void exportPDF(DataGridView dgv)
+		public void exportPDF(DataGridView dgv, string recordType)
 		{
 			if (dgv == null || dgv.Rows.Count == 0)
 			{
@@ -356,8 +356,21 @@ namespace Hemotica
 
 				foreach (DataGridViewColumn column in dgv.Columns)
 				{
-					Column tableColumn = table.AddColumn(Unit.FromCentimeter(3));
-					tableColumn.Format.Alignment = ParagraphAlignment.Center;
+					if (recordType == "Donor")
+					{
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3));
+						tableColumn.Format.Alignment = ParagraphAlignment.Center;
+					}
+					else if (recordType == "Patient")
+					{
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(2.5));
+						tableColumn.Format.Alignment = ParagraphAlignment.Center;
+					}
+					else if (recordType == "Physician")
+					{
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.5));
+						tableColumn.Format.Alignment = ParagraphAlignment.Center;
+					}
 				}
 
 				Row headerRow = table.AddRow();
@@ -366,6 +379,7 @@ namespace Hemotica
 					headerRow.Cells[i].AddParagraph(dgv.Columns[i].HeaderText);
 					headerRow.Cells[i].Shading.Color = Colors.LightGray;
 					headerRow.Cells[i].Format.Alignment = ParagraphAlignment.Center;
+					headerRow.Cells[i].VerticalAlignment = VerticalAlignment.Center;
 				}
 
 				foreach (DataGridViewRow dgvRow in dgv.Rows)
@@ -379,6 +393,7 @@ namespace Hemotica
 
 							Paragraph paragraph = row.Cells[i].AddParagraph(cellValue);
 							row.Cells[i].Format.Alignment = ParagraphAlignment.Center;
+							row.Cells[i].VerticalAlignment = VerticalAlignment.Center;
 						}
 					}
 				}
@@ -388,13 +403,23 @@ namespace Hemotica
 				pdfRenderer.RenderDocument();
 
 				pdfRenderer.PdfDocument.Save(saveFileDialog.FileName);
-				MessageBox.Show("Records exported to PDF successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show($"{recordType} records exported to PDF successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 			}
 		}
 
 		private void pDonors_Click(object sender, EventArgs e)
 		{
-			exportPDF(dgvDataMax);
+			exportPDF(dgvDataMax, "Donor");
+		}
+
+		private void pPatients_Click(object sender, EventArgs e)
+		{
+			exportPDF(dgvDataMin, "Patient");
+		}
+
+		private void pPhysicians_Click(object sender, EventArgs e)
+		{
+			exportPDF(dgvDataMin, "Physician");
 		}
 	}
 }

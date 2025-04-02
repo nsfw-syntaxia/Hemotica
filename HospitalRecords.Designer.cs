@@ -60,6 +60,7 @@
 			btnDelete = new AntdUI.Button();
 			dgvDataMin = new DataGridView();
 			flpInputs = new FlowLayoutPanel();
+			pPhysicians = new ToolStripMenuItem();
 			mstrpRecords.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dgvDataMax).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dgvDataMin).BeginInit();
@@ -104,14 +105,14 @@
 			lTable.Font = new Font("Bahnschrift", 12F);
 			lTable.ForeColor = Color.FromArgb(54, 40, 40);
 			lTable.Name = "lTable";
-			lTable.Size = new Size(127, 24);
+			lTable.Size = new Size(180, 24);
 			lTable.Text = "TABLE";
 			// 
 			// lDonors
 			// 
 			lDonors.ForeColor = Color.FromArgb(54, 40, 40);
 			lDonors.Name = "lDonors";
-			lDonors.Size = new Size(166, 24);
+			lDonors.Size = new Size(180, 24);
 			lDonors.Text = "DONORS";
 			lDonors.Click += lDonors_Click;
 			// 
@@ -119,14 +120,14 @@
 			// 
 			lPatients.ForeColor = Color.FromArgb(54, 40, 40);
 			lPatients.Name = "lPatients";
-			lPatients.Size = new Size(166, 24);
+			lPatients.Size = new Size(180, 24);
 			lPatients.Text = "PATIENTS";
 			lPatients.Click += lPatients_Click;
 			// 
 			// lPhysicians
 			// 
 			lPhysicians.Name = "lPhysicians";
-			lPhysicians.Size = new Size(166, 24);
+			lPhysicians.Size = new Size(180, 24);
 			lPhysicians.Text = "PHYSICIANS";
 			lPhysicians.Click += lPhysicians_Click;
 			// 
@@ -135,7 +136,7 @@
 			lQuery.DropDownItems.AddRange(new ToolStripItem[] { lAppointments, lExtraction, lTransfusion });
 			lQuery.ForeColor = Color.FromArgb(54, 40, 40);
 			lQuery.Name = "lQuery";
-			lQuery.Size = new Size(127, 24);
+			lQuery.Size = new Size(180, 24);
 			lQuery.Text = "QUERY";
 			// 
 			// lAppointments
@@ -172,7 +173,7 @@
 			// 
 			// pTable
 			// 
-			pTable.DropDownItems.AddRange(new ToolStripItem[] { pDonors, pPatients });
+			pTable.DropDownItems.AddRange(new ToolStripItem[] { pDonors, pPatients, pPhysicians });
 			pTable.ForeColor = Color.FromArgb(54, 40, 40);
 			pTable.Name = "pTable";
 			pTable.Size = new Size(180, 24);
@@ -192,6 +193,7 @@
 			pPatients.Name = "pPatients";
 			pPatients.Size = new Size(180, 24);
 			pPatients.Text = "PATIENTS";
+			pPatients.Click += pPatients_Click;
 			// 
 			// pQuery
 			// 
@@ -402,6 +404,13 @@
 			flpInputs.TabIndex = 19;
 			flpInputs.Visible = false;
 			// 
+			// pPhysicians
+			// 
+			pPhysicians.Name = "pPhysicians";
+			pPhysicians.Size = new Size(180, 24);
+			pPhysicians.Text = "PHYSICIANS";
+			pPhysicians.Click += pPhysicians_Click;
+			// 
 			// HospitalRecords
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -452,5 +461,6 @@
 		private ToolStripMenuItem lAppointments;
 		private DataGridView dgvDataMin;
 		private FlowLayoutPanel flpInputs;
+		private ToolStripMenuItem pPhysicians;
 	}
 }
