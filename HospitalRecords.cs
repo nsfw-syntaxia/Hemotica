@@ -2,6 +2,11 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using PdfSharp.Pdf;
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.Rendering;
+using MigraDoc.DocumentObjectModel.Visitors;
 
 namespace Hemotica
 {
@@ -309,6 +314,87 @@ namespace Hemotica
 			{
 				dgvDataMax.DataSource = dt;
 			}
+		}
+
+		private void lExtraction_Click(object sender, EventArgs e)
+		{
+			// after extraction functionality
+		}
+
+		private void lTransfusion_Click(object sender, EventArgs e)
+		{
+			// after transfusion functionality
+		}
+
+		public void exportPDF(DataGridView dgv)
+		{
+			if (dgv == null || dgv.Rows.Count == 0)
+			{
+				MessageBox.Show("No records to export.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			var saveFileDialog = new SaveFileDialog();
+			saveFileDialog.Filter = "PDF (*.pdf) | *.pdf";
+			saveFileDialog.FilterIndex = 1;
+
+			if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				Document document = new Document();
+				Section section = document.AddSection();
+
+				section.PageSetup.PageFormat = PageFormat.Legal;
+				section.PageSetup.Orientation = MigraDoc.DocumentObjectModel.Orientation.Landscape;
+
+				section.PageSetup.LeftMargin = Unit.FromCentimeter(1);
+				section.PageSetup.RightMargin = Unit.FromCentimeter(1);
+				section.PageSetup.TopMargin = Unit.FromCentimeter(1);
+				section.PageSetup.BottomMargin = Unit.FromCentimeter(1);
+
+				Table table = section.AddTable();
+				table.Borders.Width = 0.75;
+
+				foreach (DataGridViewColumn column in dgv.Columns)
+				{
+					Column tableColumn = table.AddColumn(Unit.FromCentimeter(3));
+					tableColumn.Format.Alignment = ParagraphAlignment.Center;
+				}
+
+				Row headerRow = table.AddRow();
+				for (int i = 0; i < dgv.Columns.Count; i++)
+				{
+					headerRow.Cells[i].AddParagraph(dgv.Columns[i].HeaderText);
+					headerRow.Cells[i].Shading.Color = Colors.LightGray;
+					headerRow.Cells[i].Format.Alignment = ParagraphAlignment.Center;
+				}
+
+				foreach (DataGridViewRow dgvRow in dgv.Rows)
+				{
+					if (!dgvRow.IsNewRow)
+					{
+						Row row = table.AddRow();
+						for (int i = 0; i < dgv.Columns.Count; i++)
+						{
+							var cellValue = dgvRow.Cells[i].Value?.ToString() ?? string.Empty;
+
+							Paragraph paragraph = row.Cells[i].AddParagraph(cellValue);
+							row.Cells[i].Format.Alignment = ParagraphAlignment.Center;
+						}
+					}
+				}
+
+				PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(true);
+				pdfRenderer.Document = document;
+				pdfRenderer.RenderDocument();
+
+				pdfRenderer.PdfDocument.Save(saveFileDialog.FileName);
+				MessageBox.Show("Records exported to PDF successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+		}
+
+		private void pDonors_Click(object sender, EventArgs e)
+		{
+			exportPDF(dgvDataMax);
 		}
 	}
 }
