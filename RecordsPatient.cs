@@ -76,9 +76,17 @@ namespace Hemotica
 				return false;
 			}
 
+			List<string> errors = new List<string>();
+
 			if (!ExceptionHandling.validAge(tbxAge.Text, out int age))
+				errors.Add("Invalid age.");
+
+			if(!ExceptionHandling.validContactNumber(tbxCNumber.Text))
+				errors.Add("Invalid contact number.");
+
+			if (errors.Count > 0)
 			{
-				MessageBox.Show("Invalid age.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show(string.Join("\n", errors), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
 

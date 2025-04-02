@@ -359,6 +359,45 @@ namespace Hemotica
 			string query = "SELECT [Physician ID], [First Name], [Middle Name], [Last Name], Gender, Age, Specialization, [License Number], [Contact Number] FROM Physicians";
 			return db.executeQuery(query);
 		}
+		
+		internal bool addPhysician(Database db)
+		{
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
+			DataTable hospitalData = db.executeQuery(queryHospital);
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string query = @"INSERT INTO Physicians ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Specialization], [License Number], [Contact Number], [Hospital]) 
+							 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+
+					cmd.Parameters.AddWithValue("?", FirstName);
+					cmd.Parameters.AddWithValue("?", MiddleName);
+					cmd.Parameters.AddWithValue("?", LastName);
+					cmd.Parameters.AddWithValue("?", Gender);
+					cmd.Parameters.AddWithValue("?", Age);
+					cmd.Parameters.AddWithValue("?", Specialization);
+					cmd.Parameters.AddWithValue("?", License);
+					cmd.Parameters.AddWithValue("?", ContactNumber);
+					cmd.Parameters.AddWithValue("?", hospitalName);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
 	}
 
 	public static class UserLogs

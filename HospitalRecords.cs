@@ -231,11 +231,18 @@ namespace Hemotica
 
 				if (physician != null)
 				{
+					if (physician.addPhysician(db))
+					{
+						MessageBox.Show("Physician record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-				}
-				else
-				{
-					MessageBox.Show("Physician record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						flpInputs.Controls.Clear();
+						flpInputs.Controls.Add(new RecordsPhysician(this));
+						loadPhysicians();
+					}
+					else
+					{
+						MessageBox.Show("Physician record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
 				}
 			}
 		}
