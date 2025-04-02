@@ -35,10 +35,13 @@
 			tbxAge = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxProvince = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxCNumber = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxRequest = new ReaLTaiizor.Controls.HopeTextBox();
+			lblBloodBags = new Label();
 			cmbxSex = new ReaLTaiizor.Controls.DungeonComboBox();
 			cmbxCity = new ReaLTaiizor.Controls.DungeonComboBox();
 			cmbxBarangay = new ReaLTaiizor.Controls.DungeonComboBox();
 			cmbxBType = new ReaLTaiizor.Controls.DungeonComboBox();
+			cmbxPriority = new ReaLTaiizor.Controls.DungeonComboBox();
 			SuspendLayout();
 			// 
 			// lblDonor
@@ -208,6 +211,45 @@
 			tbxCNumber.Enter += tbxCNumber_Enter;
 			tbxCNumber.Leave += tbxCNumber_Leave;
 			// 
+			// tbxRequest
+			// 
+			tbxRequest.BackColor = Color.White;
+			tbxRequest.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxRequest.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxRequest.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxRequest.Font = new Font("Bahnschrift", 15F);
+			tbxRequest.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxRequest.Hint = "";
+			tbxRequest.Location = new Point(666, 143);
+			tbxRequest.MaxLength = 32767;
+			tbxRequest.Multiline = false;
+			tbxRequest.Name = "tbxRequest";
+			tbxRequest.PasswordChar = '\0';
+			tbxRequest.RightToLeft = RightToLeft.Yes;
+			tbxRequest.ScrollBars = ScrollBars.None;
+			tbxRequest.SelectedText = "";
+			tbxRequest.SelectionLength = 0;
+			tbxRequest.SelectionStart = 0;
+			tbxRequest.Size = new Size(197, 41);
+			tbxRequest.TabIndex = 81;
+			tbxRequest.TabStop = false;
+			tbxRequest.Text = "Request number of";
+			tbxRequest.UseSystemPasswordChar = false;
+			tbxRequest.Enter += tbxRequest_Enter;
+			tbxRequest.Leave += tbxRequest_Leave;
+			// 
+			// lblBloodBags
+			// 
+			lblBloodBags.AutoSize = true;
+			lblBloodBags.Font = new Font("Bahnschrift", 16.5F);
+			lblBloodBags.ForeColor = Color.FromArgb(216, 85, 101);
+			lblBloodBags.Location = new Point(869, 150);
+			lblBloodBags.Name = "lblBloodBags";
+			lblBloodBags.Padding = new Padding(5, 0, 0, 5);
+			lblBloodBags.Size = new Size(132, 32);
+			lblBloodBags.TabIndex = 82;
+			lblBloodBags.Text = "blood bag/s";
+			// 
 			// cmbxSex
 			// 
 			cmbxSex.BackColor = Color.White;
@@ -234,7 +276,7 @@
 			cmbxSex.Name = "cmbxSex";
 			cmbxSex.Size = new Size(335, 41);
 			cmbxSex.StartIndex = 0;
-			cmbxSex.TabIndex = 77;
+			cmbxSex.TabIndex = 83;
 			// 
 			// cmbxCity
 			// 
@@ -262,7 +304,7 @@
 			cmbxCity.Name = "cmbxCity";
 			cmbxCity.Size = new Size(306, 41);
 			cmbxCity.StartIndex = 0;
-			cmbxCity.TabIndex = 78;
+			cmbxCity.TabIndex = 84;
 			cmbxCity.SelectedIndexChanged += cmbxCity_SelectedIndexChanged;
 			// 
 			// cmbxBarangay
@@ -290,7 +332,7 @@
 			cmbxBarangay.Name = "cmbxBarangay";
 			cmbxBarangay.Size = new Size(306, 41);
 			cmbxBarangay.StartIndex = 0;
-			cmbxBarangay.TabIndex = 79;
+			cmbxBarangay.TabIndex = 85;
 			// 
 			// cmbxBType
 			// 
@@ -318,17 +360,48 @@
 			cmbxBType.Name = "cmbxBType";
 			cmbxBType.Size = new Size(335, 41);
 			cmbxBType.StartIndex = 0;
-			cmbxBType.TabIndex = 80;
+			cmbxBType.TabIndex = 86;
+			// 
+			// cmbxPriority
+			// 
+			cmbxPriority.BackColor = Color.White;
+			cmbxPriority.ColorA = Color.FromArgb(236, 124, 132);
+			cmbxPriority.ColorB = Color.FromArgb(236, 124, 132);
+			cmbxPriority.ColorC = Color.FromArgb(242, 241, 240);
+			cmbxPriority.ColorD = Color.FromArgb(253, 252, 252);
+			cmbxPriority.ColorE = Color.FromArgb(239, 237, 236);
+			cmbxPriority.ColorF = Color.FromArgb(180, 180, 180);
+			cmbxPriority.ColorG = Color.FromArgb(119, 119, 118);
+			cmbxPriority.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxPriority.ColorI = Color.FromArgb(250, 249, 249);
+			cmbxPriority.DrawMode = DrawMode.OwnerDrawFixed;
+			cmbxPriority.DropDownHeight = 100;
+			cmbxPriority.DropDownStyle = ComboBoxStyle.DropDownList;
+			cmbxPriority.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			cmbxPriority.ForeColor = Color.FromArgb(216, 85, 101);
+			cmbxPriority.FormattingEnabled = true;
+			cmbxPriority.HoverSelectionColor = Color.Empty;
+			cmbxPriority.IntegralHeight = false;
+			cmbxPriority.ItemHeight = 35;
+			cmbxPriority.Items.AddRange(new object[] { "Select priority", "Critical", "High", "Medium", "Low" });
+			cmbxPriority.Location = new Point(666, 190);
+			cmbxPriority.Name = "cmbxPriority";
+			cmbxPriority.Size = new Size(335, 41);
+			cmbxPriority.StartIndex = 0;
+			cmbxPriority.TabIndex = 87;
 			// 
 			// RecordsPatient
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(cmbxPriority);
 			Controls.Add(cmbxBType);
 			Controls.Add(cmbxBarangay);
 			Controls.Add(cmbxCity);
 			Controls.Add(cmbxSex);
+			Controls.Add(lblBloodBags);
+			Controls.Add(tbxRequest);
 			Controls.Add(tbxCNumber);
 			Controls.Add(tbxProvince);
 			Controls.Add(tbxAge);
@@ -351,9 +424,12 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxAge;
 		private ReaLTaiizor.Controls.HopeTextBox tbxProvince;
 		private ReaLTaiizor.Controls.HopeTextBox tbxCNumber;
+		private ReaLTaiizor.Controls.HopeTextBox tbxRequest;
+		private Label lblBloodBags;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxSex;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxCity;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxBarangay;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxBType;
+		private ReaLTaiizor.Controls.DungeonComboBox cmbxPriority;
 	}
 }

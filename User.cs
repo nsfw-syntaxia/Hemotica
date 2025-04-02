@@ -171,14 +171,14 @@ namespace Hemotica
 
 		internal bool deleteDonor(int donorID, Database db)
 		{
-			string query = "DELETE FROM Donors WHERE [Donor ID] = @DonorID";
+			string query = "DELETE FROM Donors WHERE [Donor ID] = ?";
 
 			try
 			{
 				using (OleDbConnection conn = db.getConnection())
 				{
 					OleDbCommand cmd = new OleDbCommand(query, conn);
-					cmd.Parameters.AddWithValue("@DonorID", donorID);
+					cmd.Parameters.AddWithValue("?", donorID);
 
 					conn.Open();
 					cmd.ExecuteNonQuery();
@@ -201,13 +201,28 @@ namespace Hemotica
 
 	public class Patient : Donor
 	{
+		private string request;
+		private string priority;
+
+		public string Request
+		{
+			get { return request; }
+			set { request = value; }
+		}
+
+		public string Priority
+		{
+			get { return priority; }
+			set { priority = value; }
+		}
+
 		internal DataTable loadPatients(Database db)
 		{
 			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
 			DataTable hospitalData = db.executeQuery(queryHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Patients 
+			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type], Request, Priority FROM Patients 
 							  WHERE [Hospital] = '{hospitalName}'";
 			return db.executeQuery(query);
 		}
@@ -218,26 +233,28 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type], [Hospital]) 
-							 VALUES (@FirstName, @MiddleName, @LastName, @Gender, @Age, @Barangay, @City, @Province, @ContactNumber, @BloodType, @Hospital)";
-
+			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type], [Hospital], [Request], 
+							 [Priority]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
 			try
 			{
 				using (OleDbConnection conn = db.getConnection())
 				{
 					OleDbCommand cmd = new OleDbCommand(query, conn);
 
-					cmd.Parameters.AddWithValue("@FirstName", FirstName);
-					cmd.Parameters.AddWithValue("@MiddleName", MiddleName);
-					cmd.Parameters.AddWithValue("@LastName", LastName);
-					cmd.Parameters.AddWithValue("@Gender", Gender);
-					cmd.Parameters.AddWithValue("@Age", Age);
-					cmd.Parameters.AddWithValue("@Barangay", Barangay);
-					cmd.Parameters.AddWithValue("@City", City);
-					cmd.Parameters.AddWithValue("@Province", Province);
-					cmd.Parameters.AddWithValue("@ContactNumber", ContactNumber);
-					cmd.Parameters.AddWithValue("@BloodType", BloodType);
-					cmd.Parameters.AddWithValue("@Hospital", hospitalName);
+					cmd.Parameters.AddWithValue("?", FirstName);
+					cmd.Parameters.AddWithValue("?", MiddleName);
+					cmd.Parameters.AddWithValue("?", LastName);
+					cmd.Parameters.AddWithValue("?", Gender);
+					cmd.Parameters.AddWithValue("?", Age);
+					cmd.Parameters.AddWithValue("?", Barangay);
+					cmd.Parameters.AddWithValue("?", City);
+					cmd.Parameters.AddWithValue("?", Province);
+					cmd.Parameters.AddWithValue("?", ContactNumber);
+					cmd.Parameters.AddWithValue("?", BloodType);
+					cmd.Parameters.AddWithValue("?", hospitalName);
+					cmd.Parameters.AddWithValue("?", Request);
+					cmd.Parameters.AddWithValue("?", Priority);
 
 					conn.Open();
 					cmd.ExecuteNonQuery();
@@ -254,8 +271,8 @@ namespace Hemotica
 
 		internal bool updatePatient(Database db, int patientID)
 		{
-			string query = @"UPDATE Patients SET [First Name] = @FirstName, [Middle Name] = @MiddleName, [Last Name] = @LastName, [Gender] = @Gender, [Age] = @Age, 
-							 [Barangay] = @Barangay, [City] = @City, [Province] = @Province, [Contact Number] = @ContactNumber, [Blood Type] = @BloodType WHERE [Patient ID] = @PatientID";
+			string query = @"UPDATE Patients SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Barangay] = ?, [City] = ?, [Province] = ?, 
+							 [Contact Number] = ?, [Blood Type] = ?, [Request] = ?, [Priority] = ? WHERE [Patient ID] = ?";
 
 			try
 			{
@@ -263,17 +280,19 @@ namespace Hemotica
 				{
 					using (OleDbCommand cmd = new OleDbCommand(query, conn))
 					{
-						cmd.Parameters.AddWithValue("@FirstName", FirstName);
-						cmd.Parameters.AddWithValue("@MiddleName", MiddleName);
-						cmd.Parameters.AddWithValue("@LastName", LastName);
-						cmd.Parameters.AddWithValue("@Gender", Gender);
-						cmd.Parameters.AddWithValue("@Age", Age);
-						cmd.Parameters.AddWithValue("@Barangay", Barangay);
-						cmd.Parameters.AddWithValue("@City", City);
-						cmd.Parameters.AddWithValue("@Province", Province);
-						cmd.Parameters.AddWithValue("@ContactNumber", ContactNumber);
-						cmd.Parameters.AddWithValue("@BloodType", BloodType);
-						cmd.Parameters.AddWithValue("@PatientID", patientID);
+						cmd.Parameters.AddWithValue("?", FirstName);
+						cmd.Parameters.AddWithValue("?", MiddleName);
+						cmd.Parameters.AddWithValue("?", LastName);
+						cmd.Parameters.AddWithValue("?", Gender);
+						cmd.Parameters.AddWithValue("?", Age);
+						cmd.Parameters.AddWithValue("?", Barangay);
+						cmd.Parameters.AddWithValue("?", City);
+						cmd.Parameters.AddWithValue("?", Province);
+						cmd.Parameters.AddWithValue("?", ContactNumber);
+						cmd.Parameters.AddWithValue("?", BloodType);
+						cmd.Parameters.AddWithValue("?", Request);
+						cmd.Parameters.AddWithValue("?", Priority);
+						cmd.Parameters.AddWithValue("?", patientID);
 
 						conn.Open();
 						cmd.ExecuteNonQuery();
@@ -292,14 +311,14 @@ namespace Hemotica
 
 		internal bool deletePatient(int patientID, Database db)
 		{
-			string query = "DELETE FROM Patients WHERE [Patient ID] = @PatientID";
+			string query = "DELETE FROM Patients WHERE [Patient ID] = ?";
 
 			try
 			{
 				using (OleDbConnection conn = db.getConnection())
 				{
 					OleDbCommand cmd = new OleDbCommand(query, conn);
-					cmd.Parameters.AddWithValue("@PatientID", patientID);
+					cmd.Parameters.AddWithValue("?", patientID);
 
 					conn.Open();
 					cmd.ExecuteNonQuery();

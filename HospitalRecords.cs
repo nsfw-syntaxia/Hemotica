@@ -191,7 +191,9 @@ namespace Hemotica
 					City = row.Cells["City"].Value?.ToString(),
 					Province = "Cebu",
 					ContactNumber = row.Cells["Contact Number"].Value?.ToString(),
-					BloodType = row.Cells["Blood Type"].Value?.ToString()
+					BloodType = row.Cells["Blood Type"].Value?.ToString(),
+					Request = row.Cells["Request"].Value?.ToString(),
+					Priority = row.Cells["Priority"].Value?.ToString()
 				});
 			}
 		}

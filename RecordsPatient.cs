@@ -21,6 +21,7 @@ namespace Hemotica
 			tbxLName.Text = "Last Name";
 			tbxAge.Text = "Age";
 			tbxCNumber.Text = "Contact Number";
+			tbxRequest.Text = "Request number of";
 		}
 
 		public Patient inputPatient()
@@ -32,13 +33,15 @@ namespace Hemotica
 					FirstName = tbxFName.Text,
 					MiddleName = tbxMName.Text == "Middle Name" ? "" : tbxMName.Text,
 					LastName = tbxLName.Text,
-					Gender = cmbxSex.SelectedItem.ToString(),
+					Gender = cmbxSex.SelectedItem?.ToString(),
 					Age = tbxAge.Text,
 					Barangay = cmbxBarangay.SelectedItem?.ToString(),
 					City = cmbxCity.SelectedItem?.ToString(),
 					Province = "Cebu",
 					ContactNumber = tbxCNumber.Text,
-					BloodType = cmbxBType.SelectedItem.ToString()
+					BloodType = cmbxBType.SelectedItem?.ToString(),
+					Request = tbxRequest.Text,
+					Priority = cmbxPriority.SelectedItem?.ToString()
 				};
 			}
 
@@ -48,7 +51,7 @@ namespace Hemotica
 		public void selectPatient(Patient patient)
 		{
 			tbxFName.Text = patient.FirstName;
-			tbxMName.Text = string.IsNullOrEmpty(patient.MiddleName) ? "" : patient.MiddleName;
+			tbxMName.Text = string.IsNullOrWhiteSpace(patient.MiddleName) ? "" : patient.MiddleName;
 			tbxLName.Text = patient.LastName;
 			cmbxSex.SelectedItem = patient.Gender;
 			tbxAge.Text = patient.Age;
@@ -57,19 +60,22 @@ namespace Hemotica
 			cmbxBarangay.SelectedItem = patient.Barangay;
 			tbxCNumber.Text = patient.ContactNumber;
 			cmbxBType.SelectedItem = patient.BloodType;
+			tbxRequest.Text = patient.Request;
+			cmbxPriority.SelectedItem = patient.Priority;
 		}
 
 		private bool isValid()
 		{
-			if (string.IsNullOrWhiteSpace(tbxFName.Text) || string.IsNullOrWhiteSpace(tbxLName.Text) || string.IsNullOrWhiteSpace(cmbxSex.SelectedItem.ToString()) ||
+			if (string.IsNullOrWhiteSpace(tbxFName.Text) || string.IsNullOrWhiteSpace(tbxLName.Text) || string.IsNullOrWhiteSpace(cmbxSex.SelectedItem?.ToString()) ||
 				string.IsNullOrWhiteSpace(tbxAge.Text) || string.IsNullOrWhiteSpace(cmbxBarangay.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(cmbxCity.SelectedItem?.ToString()) ||
-				string.IsNullOrWhiteSpace(tbxCNumber.Text) || string.IsNullOrWhiteSpace(cmbxBType.SelectedItem.ToString()))
+				string.IsNullOrWhiteSpace(tbxCNumber.Text) || string.IsNullOrWhiteSpace(cmbxBType.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(tbxRequest.Text) ||
+				string.IsNullOrWhiteSpace(cmbxPriority.SelectedItem?.ToString()))
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
 
-			if (cmbxSex.SelectedItem.ToString() == "Select gender" || cmbxCity.SelectedItem.ToString() == "Select city" || cmbxBType.SelectedItem.ToString() == "Select blood type")
+			if (cmbxSex.SelectedIndex == 0 || cmbxCity.SelectedIndex == 0 || cmbxBType.SelectedIndex == 0 || cmbxPriority.SelectedIndex == 0)
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
@@ -98,9 +104,9 @@ namespace Hemotica
 		{
 			if (string.IsNullOrWhiteSpace(city)) return;
 
-			string query = "SELECT Barangay FROM Address WHERE City = @City ORDER BY Barangay ASC";
+			string query = "SELECT Barangay FROM Address WHERE City = ? ORDER BY Barangay ASC";
 
-			OleDbParameter[] parameters = { new OleDbParameter("@City", city) };
+			OleDbParameter[] parameters = { new OleDbParameter("?", city) };
 			DataTable barangayData = db.executeQuery(query, parameters);
 
 			cmbxBarangay.Items.Clear();
@@ -153,6 +159,12 @@ namespace Hemotica
 				tbxCNumber.Text = "";
 		}
 
+		private void tbxRequest_Enter(object sender, EventArgs e)
+		{
+			if (tbxRequest.Text == "Request number of")
+				tbxRequest.Text = "";
+		}
+
 		private void tbxFName_Leave(object sender, EventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace(tbxFName.Text))
@@ -181,6 +193,12 @@ namespace Hemotica
 		{
 			if (string.IsNullOrWhiteSpace(tbxCNumber.Text))
 				tbxCNumber.Text = "Contact Number";
+		}
+
+		private void tbxRequest_Leave(object sender, EventArgs e)
+		{
+			if (string.IsNullOrWhiteSpace(tbxRequest.Text))
+				tbxRequest.Text = "Request number of";
 		}
 	}
 }
