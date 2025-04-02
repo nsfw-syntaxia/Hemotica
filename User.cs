@@ -398,6 +398,31 @@ namespace Hemotica
 				return false;
 			}
 		}
+
+		internal bool deletePhysician(int patientID, Database db)
+		{
+			string query = "DELETE FROM Physicians WHERE [Physician ID] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+					cmd.Parameters.AddWithValue("?", patientID);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
 	}
 
 	public static class UserLogs

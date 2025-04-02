@@ -96,33 +96,6 @@ namespace Hemotica
 			}
 		}
 
-		private void btnDeleteMin_Click(object sender, EventArgs e)
-		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
-			{
-				if (dgvDataMin.SelectedRows.Count > 0)
-				{
-					int patientID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Patient ID"].Value);
-
-					var confirmResult = MessageBox.Show("Are you sure you want to delete this record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-					if (confirmResult == DialogResult.Yes)
-					{
-						if (patient.deletePatient(patientID, db))
-						{
-							MessageBox.Show("Patient record deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-							DataTable dt = patient.loadPatients(db);
-							dgvDataMin.DataSource = dt;
-						}
-						else
-						{
-							MessageBox.Show("Patient record deletion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						}
-					}
-				}
-			}
-		}
-
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
@@ -172,6 +145,22 @@ namespace Hemotica
 					BloodType = row.Cells["Blood Type"].Value?.ToString(),
 					Request = row.Cells["Request"].Value?.ToString(),
 					Priority = row.Cells["Priority"].Value?.ToString()
+				});
+			}
+			else if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsPhysician recordsPhysician)
+			{
+				DataGridViewRow row = dgvDataMin.Rows[e.RowIndex];
+
+				recordsPhysician.selectPhysician(new Physician
+				{
+					FirstName = row.Cells["First Name"].Value?.ToString(),
+					MiddleName = row.Cells["Middle Name"].Value?.ToString() ?? "",
+					LastName = row.Cells["Last Name"].Value?.ToString(),
+					Gender = row.Cells["Gender"].Value?.ToString(),
+					Age = row.Cells["Age"].Value?.ToString(),
+					Specialization = row.Cells["Specialization"].Value?.ToString(),
+					License = row.Cells["License Number"].Value?.ToString(),
+					ContactNumber = row.Cells["Contact Number"].Value?.ToString()
 				});
 			}
 		}
@@ -242,6 +231,52 @@ namespace Hemotica
 					else
 					{
 						MessageBox.Show("Physician record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+		}
+
+		private void btnDeleteMin_Click(object sender, EventArgs e)
+		{
+			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			{
+				if (dgvDataMin.SelectedRows.Count > 0)
+				{
+					int patientID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Patient ID"].Value);
+
+					var confirmResult = MessageBox.Show("Are you sure you want to delete this record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+					if (confirmResult == DialogResult.Yes)
+					{
+						if (patient.deletePatient(patientID, db))
+						{
+							MessageBox.Show("Physician record deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							DataTable dt = patient.loadPatients(db);
+							dgvDataMin.DataSource = dt;
+						}
+						else
+						{
+							MessageBox.Show("Physician record deletion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
+			}
+			else if (flpInputs.Controls[0] is RecordsPhysician recordsPhysician)
+			{
+				int physicianID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Physician ID"].Value);
+				var confirmResult = MessageBox.Show("Are you sure you want to delete this record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+				if (confirmResult == DialogResult.Yes)
+				{
+					if (physician.deletePhysician(physicianID, db))
+					{
+						MessageBox.Show("Patient record deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+						DataTable dt = physician.loadPhysicians(db);
+						dgvDataMin.DataSource = dt;
+					}
+					else
+					{
+						MessageBox.Show("Patient record deletion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 				}
 			}
