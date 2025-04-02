@@ -96,35 +96,6 @@ namespace Hemotica
 			}
 		}
 
-		private void btnUpdate_Click(object sender, EventArgs e)
-		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
-			{
-				Patient patient = recordsPatient.inputPatient();
-
-				if (patient != null)
-				{
-					if (dgvDataMin.SelectedRows.Count > 0)
-					{
-						int patientID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Patient ID"].Value);
-
-						if (patient.updatePatient(db, patientID))
-						{
-							MessageBox.Show("Patient record updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-							flpInputs.Controls.Clear();
-							flpInputs.Controls.Add(new RecordsPatient(this));
-							loadPatients();
-						}
-						else
-						{
-							MessageBox.Show("Patient record update failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						}
-					}
-				}
-			}
-		}
-
 		private void dgvDataMin_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
@@ -231,6 +202,60 @@ namespace Hemotica
 					else
 					{
 						MessageBox.Show("Physician record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+		}
+
+		private void btnUpdate_Click(object sender, EventArgs e)
+		{
+			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			{
+				Patient patient = recordsPatient.inputPatient();
+
+				if (patient != null)
+				{
+					if (dgvDataMin.SelectedRows.Count > 0)
+					{
+						int patientID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Patient ID"].Value);
+
+						if (patient.updatePatient(db, patientID))
+						{
+							MessageBox.Show("Patient record updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							flpInputs.Controls.Clear();
+							flpInputs.Controls.Add(new RecordsPatient(this));
+							loadPatients();
+						}
+						else
+						{
+							MessageBox.Show("Patient record update failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
+			}
+			else if (flpInputs.Controls[0] is RecordsPhysician recordsPhysician)
+			{
+				Physician physician = recordsPhysician.inputPhysician();
+
+				if (physician != null)
+				{
+					if (dgvDataMin.SelectedRows.Count > 0)
+					{
+						int physicianID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Physician ID"].Value);
+
+						if (physician.updatePhysician(db, physicianID))
+						{
+							MessageBox.Show("Physician record updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							flpInputs.Controls.Clear();
+							flpInputs.Controls.Add(new RecordsPhysician(this));
+							loadPhysicians();
+						}
+						else
+						{
+							MessageBox.Show("Physician record update failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
 					}
 				}
 			}

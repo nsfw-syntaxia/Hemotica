@@ -356,10 +356,15 @@ namespace Hemotica
 
 		internal DataTable loadPhysicians(Database db)
 		{
-			string query = "SELECT [Physician ID], [First Name], [Middle Name], [Last Name], Gender, Age, Specialization, [License Number], [Contact Number] FROM Physicians";
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
+			DataTable hospitalData = db.executeQuery(queryHospital);
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string query = $@"SELECT [Physician ID], [First Name], [Middle Name], [Last Name], Gender, Age, Specialization, [License Number], [Contact Number] FROM Physicians 
+							  WHERE [Hospital] = '{hospitalName}'";
 			return db.executeQuery(query);
 		}
-		
+
 		internal bool addPhysician(Database db)
 		{
 			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
@@ -390,6 +395,42 @@ namespace Hemotica
 					conn.Close();
 
 					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		internal bool updatePhysician(Database db, int physicianID)
+		{
+			string query = @"UPDATE Physicians SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Specialization] = ?, [License Number] = ?, 
+							 [Contact Number] = ? WHERE [Physician ID] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					using (OleDbCommand cmd = new OleDbCommand(query, conn))
+					{
+						cmd.Parameters.AddWithValue("?", FirstName);
+						cmd.Parameters.AddWithValue("?", MiddleName);
+						cmd.Parameters.AddWithValue("?", LastName);
+						cmd.Parameters.AddWithValue("?", Gender);
+						cmd.Parameters.AddWithValue("?", Age);
+						cmd.Parameters.AddWithValue("?", Specialization);
+						cmd.Parameters.AddWithValue("?", License);
+						cmd.Parameters.AddWithValue("?", ContactNumber);
+						cmd.Parameters.AddWithValue("?", physicianID);
+
+						conn.Open();
+						cmd.ExecuteNonQuery();
+						conn.Close();
+
+						return true;
+					}
 				}
 			}
 			catch (Exception ex)
