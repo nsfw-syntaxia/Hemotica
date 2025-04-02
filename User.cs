@@ -102,6 +102,37 @@ namespace Hemotica
 			get { return bloodType; }
 			set { bloodType = value; }
 		}
+
+		internal DataTable loadDonors(Database db)
+		{
+			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors";
+			return db.executeQuery(query);
+		}
+
+		internal bool deleteDonor(int donorID, Database db)
+		{
+			string query = "DELETE FROM Donors WHERE [Donor ID] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+					cmd.Parameters.AddWithValue("?", donorID);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
 	}
 
 	public class Hospital : User
@@ -161,36 +192,6 @@ namespace Hemotica
 		{
 			get { return address; }
 			set { address = value; }
-		}
-
-		internal DataTable loadDonors(Database db)
-		{
-			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors";
-			return db.executeQuery(query);
-		}
-
-		internal bool deleteDonor(int donorID, Database db)
-		{
-			string query = "DELETE FROM Donors WHERE [Donor ID] = ?";
-
-			try
-			{
-				using (OleDbConnection conn = db.getConnection())
-				{
-					OleDbCommand cmd = new OleDbCommand(query, conn);
-					cmd.Parameters.AddWithValue("?", donorID);
-
-					conn.Open();
-					cmd.ExecuteNonQuery();
-					conn.Close();
-
-					return true;
-				}
-			}
-			catch (Exception)
-			{
-				return false;
-			}
 		}
 	}
 
@@ -263,8 +264,9 @@ namespace Hemotica
 					return true;
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
 		}
@@ -327,10 +329,35 @@ namespace Hemotica
 					return true;
 				}
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
+		}
+	}
+
+	public class Physician : Donor
+	{
+		private string specialization;
+		private string license;
+
+		public string Specialization
+		{
+			get { return specialization; }
+			set { specialization = value; }
+		}
+
+		public string License
+		{
+			get { return license; }
+			set { license = value; }
+		}
+
+		internal DataTable loadPhysicians(Database db)
+		{
+			string query = "SELECT [Physician ID], [First Name], [Middle Name], [Last Name], Gender, Age, Specialization, [License Number], [Contact Number] FROM Physicians";
+			return db.executeQuery(query);
 		}
 	}
 

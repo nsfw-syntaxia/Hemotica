@@ -40,25 +40,24 @@ namespace Hemotica
 
 			string hashedPassword = db.hashPassword(donor.Password);
 
-			string query = @"INSERT INTO Donors ([Email Address], [Username], [Password], [First Name], [Middle Name], [Last Name], 
-                            [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type]) VALUES (@Email, @Username, @Password, @FirstName, @MiddleName, @LastName, 
-                            @Gender, @Age, @Barangay, @City, @Province, @ContactNumber, @BloodType)";
+			string query = @"INSERT INTO Donors ([Email Address], [Username], [Password], [First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], 
+							 [Contact Number], [Blood Type]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			OleDbParameter[] parameters = 
 			{
-				new OleDbParameter("@Email", donor.Email),
-				new OleDbParameter("@Username", donor.Username),
-				new OleDbParameter("@Password", hashedPassword),
-				new OleDbParameter("@FirstName", donor.FirstName),
-				new OleDbParameter("@MiddleName", donor.MiddleName),
-				new OleDbParameter("@LastName", donor.LastName),
-				new OleDbParameter("@Gender", donor.Gender),
-				new OleDbParameter("@Age", donor.Age),
-				new OleDbParameter("@Barangay", donor.Barangay),
-				new OleDbParameter("@City", donor.City),
-				new OleDbParameter("@Province", donor.Province),
-				new OleDbParameter("@ContactNumber", donor.ContactNumber),
-				new OleDbParameter("@BloodType", donor.BloodType)
+				new OleDbParameter("?", donor.Email),
+				new OleDbParameter("?", donor.Username),
+				new OleDbParameter("?", hashedPassword),
+				new OleDbParameter("?", donor.FirstName),
+				new OleDbParameter("?", donor.MiddleName),
+				new OleDbParameter("?", donor.LastName),
+				new OleDbParameter("?", donor.Gender),
+				new OleDbParameter("?", donor.Age),
+				new OleDbParameter("?", donor.Barangay),
+				new OleDbParameter("?", donor.City),
+				new OleDbParameter("?", donor.Province),
+				new OleDbParameter("?", donor.ContactNumber),
+				new OleDbParameter("?", donor.BloodType)
 			};
 
 			if (db.executeNonQuery(query, parameters))

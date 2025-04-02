@@ -7,15 +7,17 @@ namespace Hemotica
 {
 	public partial class HospitalRecords : UserControl
 	{
-		private Hospital hospital;
+		private Donor donor;
 		private Patient patient;
+		private Physician physician;
 		private Database db = new Database();
 
 		public HospitalRecords()
 		{
 			InitializeComponent();
-			this.hospital = new Hospital();
+			this.donor = new Donor();
 			this.patient = new Patient();
+			this.physician = new Physician();
 		}
 
 		private void btnConnection_Click(object sender, EventArgs e)
@@ -35,7 +37,7 @@ namespace Hemotica
 			btnUpdate.Visible = false;
 			btnDeleteMin.Visible = false;
 
-			DataTable dt = hospital.loadDonors(db);
+			DataTable dt = donor.loadDonors(db);
 
 			if (dt != null)
 			{
@@ -52,11 +54,11 @@ namespace Hemotica
 				var confirmResult = MessageBox.Show("Are you sure you want to delete this record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 				if (confirmResult == DialogResult.Yes)
 				{
-					if (hospital.deleteDonor(donorID, db))
+					if (donor.deleteDonor(donorID, db))
 					{
 						MessageBox.Show("Donor record deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-						DataTable dt = hospital.loadDonors(db);
+						DataTable dt = donor.loadDonors(db);
 						dgvDataMax.DataSource = dt;
 					}
 					else
@@ -91,30 +93,6 @@ namespace Hemotica
 			if (dt != null)
 			{
 				dgvDataMin.DataSource = dt;
-			}
-		}
-
-		private void btnInsert_Click(object sender, EventArgs e)
-		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
-			{
-				Patient patient = recordsPatient.inputPatient();
-
-				if (patient != null)
-				{
-					if (patient.addPatient(db))
-					{
-						MessageBox.Show("Patient record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-						flpInputs.Controls.Clear();
-						flpInputs.Controls.Add(new RecordsPatient(this));
-						loadPatients();
-					}
-					else
-					{
-						MessageBox.Show("Patient record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-				}
 			}
 		}
 
@@ -212,6 +190,54 @@ namespace Hemotica
 
 			flpInputs.Controls.Clear();
 			flpInputs.Controls.Add(new RecordsPhysician(this));
+			loadPhysicians();
+		}
+
+		private void loadPhysicians()
+		{
+			DataTable dt = physician.loadPhysicians(db);
+
+			if (dt != null)
+			{
+				dgvDataMin.DataSource = dt;
+			}
+		}
+
+		private void btnInsert_Click(object sender, EventArgs e)
+		{
+			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			{
+				Patient patient = recordsPatient.inputPatient();
+
+				if (patient != null)
+				{
+					if (patient.addPatient(db))
+					{
+						MessageBox.Show("Patient record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+						flpInputs.Controls.Clear();
+						flpInputs.Controls.Add(new RecordsPatient(this));
+						loadPatients();
+					}
+					else
+					{
+						MessageBox.Show("Patient record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+			else if (flpInputs.Controls[0] is RecordsPhysician recordsPhysician)
+			{
+				Physician physician = recordsPhysician.inputPhysician();
+
+				if (physician != null)
+				{
+
+				}
+				else
+				{
+					MessageBox.Show("Physician record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
 		}
 	}
 }

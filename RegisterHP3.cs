@@ -46,23 +46,22 @@ namespace Hemotica
 
 			string query = @"INSERT INTO Hospitals ([Email Address], [Username], [Password], [Hospital Name], [License Number], [Classification], 
 							[Operating Hours (Weekdays) Start], [Operating Hours (Weekdays) End], [Operating Hours (Weekend) Start], [Operating Hours (Weekend) End], 
-							[Address], [Contact Number]) VALUES (@Email, @Username, @Password, @HospitalName, @LicenseNumber, @Classification, 
-                            @WeekdayStart, @WeekdayEnd, @WeekendStart, @WeekendEnd, @Address, @ContactNumber)";
+							[Address], [Contact Number]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			OleDbParameter[] parameters = 
 			{
-				new OleDbParameter("@Email", hospital.Email),
-				new OleDbParameter("@Username", hospital.Username),
-				new OleDbParameter("@Password", hashedPassword),
-				new OleDbParameter("@HospitalName", hospital.HospitalName),
-				new OleDbParameter("@LicenseNumber", hospital.LicenseNumber),
-				new OleDbParameter("@Classification", hospital.Classification),
-				new OleDbParameter("@WeekdayStart", hospital.WeekdayStart),
-				new OleDbParameter("@WeekdayEnd", hospital.WeekdayEnd),
-				new OleDbParameter("@WeekendStart", hospital.WeekendStart),
-				new OleDbParameter("@WeekendEnd", hospital.WeekendEnd),
-				new OleDbParameter("@Address", hospital.Address),
-				new OleDbParameter("@ContactNumber", hospital.ContactNumber)
+				new OleDbParameter("?", hospital.Email),
+				new OleDbParameter("?", hospital.Username),
+				new OleDbParameter("?", hashedPassword),
+				new OleDbParameter("?", hospital.HospitalName),
+				new OleDbParameter("?", hospital.LicenseNumber),
+				new OleDbParameter("?", hospital.Classification),
+				new OleDbParameter("?", hospital.WeekdayStart),
+				new OleDbParameter("?", hospital.WeekdayEnd),
+				new OleDbParameter("?", hospital.WeekendStart),
+				new OleDbParameter("?", hospital.WeekendEnd),
+				new OleDbParameter("?", hospital.Address),
+				new OleDbParameter("?", hospital.ContactNumber)
 			};
 
 			if (db.executeNonQuery(query, parameters))

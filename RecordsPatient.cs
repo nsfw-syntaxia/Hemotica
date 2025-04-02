@@ -69,13 +69,8 @@ namespace Hemotica
 			if (string.IsNullOrWhiteSpace(tbxFName.Text) || string.IsNullOrWhiteSpace(tbxLName.Text) || string.IsNullOrWhiteSpace(cmbxSex.SelectedItem?.ToString()) ||
 				string.IsNullOrWhiteSpace(tbxAge.Text) || string.IsNullOrWhiteSpace(cmbxBarangay.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(cmbxCity.SelectedItem?.ToString()) ||
 				string.IsNullOrWhiteSpace(tbxCNumber.Text) || string.IsNullOrWhiteSpace(cmbxBType.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(tbxRequest.Text) ||
-				string.IsNullOrWhiteSpace(cmbxPriority.SelectedItem?.ToString()))
-			{
-				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return false;
-			}
-
-			if (cmbxSex.SelectedIndex == 0 || cmbxCity.SelectedIndex == 0 || cmbxBType.SelectedIndex == 0 || cmbxPriority.SelectedIndex == 0)
+				string.IsNullOrWhiteSpace(cmbxPriority.SelectedItem?.ToString()) || cmbxSex.SelectedIndex == 0 || cmbxCity.SelectedIndex == 0 || cmbxBType.SelectedIndex == 0 || 
+				cmbxPriority.SelectedIndex == 0)
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
