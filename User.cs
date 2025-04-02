@@ -193,6 +193,20 @@ namespace Hemotica
 			get { return address; }
 			set { address = value; }
 		}
+
+		internal DataTable loadAppointments(Database db)
+		{
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
+			DataTable hospitalData = db.executeQuery(queryHospital);
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string query = $@"SELECT Appointments.[Appointment ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Contact Number], 
+							  Donors.[Blood Type], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
+							  INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital
+							  WHERE Appointments.Hospital = '{hospitalName}' ORDER BY Appointments.[Appointment Date] ASC";
+
+			return db.executeQuery(query);
+		}
 	}
 
 	public class Admin : User

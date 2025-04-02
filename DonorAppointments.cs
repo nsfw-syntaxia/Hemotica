@@ -109,7 +109,7 @@ namespace Hemotica
 					lblHospital.Location = new Point(20, lblDate.Bottom + 10);
 					lblStatus.Location = new Point(300, lblHospital.Top);
 
-					if (status != "Denied" && status != "Canceled")
+					if (status != "Denied" && status != "Cancelled")
 					{
 						FoxButton btnCancel = new FoxButton
 						{
@@ -136,7 +136,7 @@ namespace Hemotica
 
 							if (result == DialogResult.Yes)
 							{
-								string query = "UPDATE Appointments SET [Status] = 'Canceled' WHERE [Donor Username] = ? AND [Hospital] = ? AND [Appointment Date] = ?";
+								string query = "UPDATE Appointments SET [Status] = 'Cancelled' WHERE [Donor Username] = ? AND [Hospital] = ? AND [Appointment Date] = ?";
 								OleDbParameter[] parameters = 
 								{ 
 									new OleDbParameter("@donorUsername", UserLogs.Username), 
@@ -146,8 +146,12 @@ namespace Hemotica
 
 								if (db.executeNonQuery(query, parameters))
 								{
-									MessageBox.Show("Appointment canceled successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+									MessageBox.Show("Appointment cancelled successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 									loadAppointments();
+								}
+								else
+								{
+									MessageBox.Show("Appointment cancellation failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 								}
 							}
 						};
