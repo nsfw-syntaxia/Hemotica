@@ -56,14 +56,14 @@ namespace Hemotica
 		public void showFP1()
 		{
 			flpForgetPassword.Controls.Clear();
-            ConfirmationEmail confirmEmail = new ConfirmationEmail(this);
+            ConfirmEmail confirmEmail = new ConfirmEmail(this);
             flpForgetPassword.Controls.Add(confirmEmail);
 		}
 
 		public void showFP2()
 		{
 			flpForgetPassword.Controls.Clear();
-			ConfirmationCode confirmCode = new ConfirmationCode(this);
+			ConfirmCode confirmCode = new ConfirmCode(this);
 			flpForgetPassword.Controls.Add(confirmCode);
 		}
 

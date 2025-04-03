@@ -44,8 +44,8 @@ namespace Hemotica
 		private void loadDonors()
 		{
 			string query = @"SELECT [Email Address], Password, [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type], Profile 
-							 FROM Donors WHERE [Username] = @Username";
-			OleDbParameter[] parameters = { new OleDbParameter("@Username", UserLogs.Username) };
+							 FROM Donors WHERE [Username] = ?";
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable dt = db.executeQuery(query, parameters);
 
 			DataRow row = dt.Rows[0];
@@ -86,7 +86,8 @@ namespace Hemotica
 			string contactNumber = tbxNumber.Text.Trim();
 			string[] addressParts = tbxHomeAddress.Text.Split(',');
 
-			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ageDonor) || string.IsNullOrWhiteSpace(contactNumber) || string.IsNullOrWhiteSpace(tbxHomeAddress.Text))
+			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ageDonor) || string.IsNullOrWhiteSpace(contactNumber) || 
+				string.IsNullOrWhiteSpace(tbxHomeAddress.Text))
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
@@ -97,16 +98,16 @@ namespace Hemotica
 
 			List<string> errors = new List<string>();
 
-			if (!validEmail(email))
+			if (!ExceptionHandling.validEmailAddress(email))
 				errors.Add("Invalid email address.");
 
 			if (emailCount > 1 || (emailCount == 1 && !email.Equals(currentEmail, StringComparison.OrdinalIgnoreCase)))
 				errors.Add("Email address already exists.");
 
-			if (!int.TryParse(ageDonor, out int age) || age < 1 || age > 120)
+			if (!ExceptionHandling.validAge(ageDonor, out int age))
 				errors.Add("Invalid age.");
 
-			if (!validPhoneNumber(contactNumber))
+			if (!ExceptionHandling.validContactNumber(contactNumber))
 				errors.Add("Invalid contact number.");
 
 			if (addressParts.Length < 3)
@@ -121,14 +122,24 @@ namespace Hemotica
 			string barangay = addressParts[0].Trim();
 			string city = addressParts[1].Trim();
 			string province = addressParts[2].Trim();
-			string hashedPassword = db.hashPassword(password);
 
-			string query = @"UPDATE Donors SET [Email Address] = ?, [Password] = ?, Age = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ? WHERE [Username] = ?";
+			string hashedPassword = string.Empty;
+			if (!password.Contains("●"))
+			{
+				hashedPassword = db.hashPassword(password);
+			}
 
-			OleDbParameter[] parameters =
+			string query = @"UPDATE Donors SET [Email Address] = ?, [Age] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ?";
+
+			if (!string.IsNullOrEmpty(hashedPassword))
+			{
+				query += ", [Password] = ?";
+			}
+			query += " WHERE [Username] = ?";
+
+			List<OleDbParameter> parameters = new List<OleDbParameter>
 			{
 				new OleDbParameter("?", email),
-				new OleDbParameter("?", hashedPassword),
 				new OleDbParameter("?", age),
 				new OleDbParameter("?", barangay),
 				new OleDbParameter("?", city),
@@ -137,26 +148,21 @@ namespace Hemotica
 				new OleDbParameter("?", UserLogs.Username)
 			};
 
-			if (db.executeNonQuery(query, parameters))
+			if (!string.IsNullOrEmpty(hashedPassword))
+			{
+				parameters.Insert(1, new OleDbParameter("?", hashedPassword));
+			}
+
+			if (db.executeNonQuery(query, parameters.ToArray()))
 			{
 				MessageBox.Show("Donor information updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 				tbxEmail.Enabled = false;
 				tbxPassword.Enabled = false;
 				tbxAge.Enabled = false;
 				tbxHomeAddress.Enabled = false;
 				tbxNumber.Enabled = false;
 			}
-		}
-
-		private bool validEmail(string email)
-		{
-			string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-			return Regex.IsMatch(email, pattern);
-		}
-
-		private bool validPhoneNumber(string number)
-		{
-			return Regex.IsMatch(number, @"^(\(\d{3}\) \d{3}-\d{4}|\d{10,15})$");
 		}
 
 		private void btnProfile_Click(object sender, EventArgs e)

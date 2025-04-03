@@ -1,6 +1,6 @@
 ﻿namespace Hemotica
 {
-	partial class ConfirmationCode
+	partial class ConfirmCode
 	{
 		/// <summary> 
 		/// Required designer variable.

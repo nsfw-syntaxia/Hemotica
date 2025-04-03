@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hemotica
 {
-	public partial class ConfirmationEmail : UserControl
+	public partial class ConfirmEmail : UserControl
 	{
 		private ForgetPassword forgetPassword;
 
-		public ConfirmationEmail(ForgetPassword parent)
+		public ConfirmEmail(ForgetPassword parent)
 		{
 			InitializeComponent();
 			this.forgetPassword = parent;

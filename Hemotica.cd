@@ -10,14 +10,14 @@
   <Class Name="Hemotica.Hospital" Collapsed="true">
     <Position X="5.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgBAAAAACABAAQgAQAEEAAAQIAAgECAAIAAgAAAAY=</HashCode>
+      <HashCode>AAAABAAAAAiABAAQgAQAEAAAAQIAAgECAAIAAgAAAAY=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.Donor" Collapsed="true">
     <Position X="3.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAABAQACIQEAQyEAAEEAAAAAAAAAACgAAAAo=</HashCode>
+      <HashCode>AAAgAEAAAABAQACIQEAQ2EAAEEAAAAAAAAAACgAAAAo=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -47,6 +47,41 @@
     <TypeIdentifier>
       <HashCode>AIAAAAAAQAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ExceptionHandling.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hemotica.Appointments" Collapsed="true">
+    <Position X="11.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAZAAIBCzSDwGAABCAAEKCAIEABAEEAgQAAEAIIzA=</HashCode>
+      <FileName>Appointments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hemotica.Calendar" Collapsed="true">
+    <Position X="11.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAACAAQAAAAACAAAACAAAQAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Calendar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hemotica.ChangePassword" Collapsed="true">
+    <Position X="13" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAACAAAAAAAAKAAAACAAQAAgBAQgAAAABAAAA=</HashCode>
+      <FileName>ChangePassword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hemotica.ConfirmCode" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAACgAAQAAAACAgIACAAQAAAFAAAAAAEAAAAA=</HashCode>
+      <FileName>ConfirmCode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hemotica.ConfirmationEmail" Collapsed="true">
+    <Position X="13" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAABCgAAQAAIACAIAACAAQAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ConfirmationEmail.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

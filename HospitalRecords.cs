@@ -6,7 +6,6 @@ using PdfSharp.Pdf;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
-using MigraDoc.DocumentObjectModel.Visitors;
 
 namespace Hemotica
 {
@@ -330,7 +329,7 @@ namespace Hemotica
 		{
 			if (dgv == null || dgv.Rows.Count == 0)
 			{
-				MessageBox.Show("No records to export.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Load records to export.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 

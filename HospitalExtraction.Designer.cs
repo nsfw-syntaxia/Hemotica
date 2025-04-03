@@ -34,15 +34,13 @@
 			btnBarCode = new AntdUI.Button();
 			pbxBarCode = new PictureBox();
 			button2 = new AntdUI.Button();
-			pQRCode = new Panel();
-			btnQRCode = new AntdUI.Button();
-			pbxQRCode = new PictureBox();
+			pExtraction = new Panel();
+			flpExtraction = new FlowLayoutPanel();
 			button1 = new AntdUI.Button();
 			tlpBloodExtraction.SuspendLayout();
 			pBarCode.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxBarCode).BeginInit();
-			pQRCode.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)pbxQRCode).BeginInit();
+			pExtraction.SuspendLayout();
 			SuspendLayout();
 			// 
 			// tlpBloodExtraction
@@ -51,7 +49,7 @@
 			tlpBloodExtraction.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 			tlpBloodExtraction.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 			tlpBloodExtraction.Controls.Add(pBarCode, 1, 0);
-			tlpBloodExtraction.Controls.Add(pQRCode, 0, 0);
+			tlpBloodExtraction.Controls.Add(pExtraction, 0, 0);
 			tlpBloodExtraction.Dock = DockStyle.Fill;
 			tlpBloodExtraction.Location = new Point(10, 35);
 			tlpBloodExtraction.Name = "tlpBloodExtraction";
@@ -110,42 +108,26 @@
 			button2.TabIndex = 20;
 			button2.Text = "Scan Donor QR Code";
 			// 
-			// pQRCode
+			// pExtraction
 			// 
-			pQRCode.BackColor = Color.FromArgb(216, 85, 101);
-			pQRCode.Controls.Add(btnQRCode);
-			pQRCode.Controls.Add(pbxQRCode);
-			pQRCode.Controls.Add(button1);
-			pQRCode.Dock = DockStyle.Fill;
-			pQRCode.Location = new Point(3, 3);
-			pQRCode.Name = "pQRCode";
-			pQRCode.Padding = new Padding(10);
-			pQRCode.Size = new Size(494, 565);
-			pQRCode.TabIndex = 3;
+			pExtraction.BackColor = Color.FromArgb(216, 85, 101);
+			pExtraction.Controls.Add(flpExtraction);
+			pExtraction.Controls.Add(button1);
+			pExtraction.Dock = DockStyle.Fill;
+			pExtraction.Location = new Point(3, 3);
+			pExtraction.Name = "pExtraction";
+			pExtraction.Padding = new Padding(10);
+			pExtraction.Size = new Size(494, 565);
+			pExtraction.TabIndex = 3;
 			// 
-			// btnQRCode
+			// flpExtraction
 			// 
-			btnQRCode.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			btnQRCode.DefaultBack = Color.FromArgb(252, 228, 228);
-			btnQRCode.Font = new Font("Bahnschrift", 20F);
-			btnQRCode.ForeColor = Color.FromArgb(216, 85, 101);
-			btnQRCode.Location = new Point(13, 492);
-			btnQRCode.Name = "btnQRCode";
-			btnQRCode.Size = new Size(468, 60);
-			btnQRCode.TabIndex = 22;
-			btnQRCode.Text = "Scan Donor QR Code";
-			// 
-			// pbxQRCode
-			// 
-			pbxQRCode.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			pbxQRCode.BackColor = Color.FromArgb(252, 228, 228);
-			pbxQRCode.Image = (Image)resources.GetObject("pbxQRCode.Image");
-			pbxQRCode.Location = new Point(13, 13);
-			pbxQRCode.Name = "pbxQRCode";
-			pbxQRCode.Size = new Size(468, 468);
-			pbxQRCode.SizeMode = PictureBoxSizeMode.Zoom;
-			pbxQRCode.TabIndex = 21;
-			pbxQRCode.TabStop = false;
+			flpExtraction.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			flpExtraction.BackColor = Color.FromArgb(252, 228, 228);
+			flpExtraction.Location = new Point(13, 13);
+			flpExtraction.Name = "flpExtraction";
+			flpExtraction.Size = new Size(468, 539);
+			flpExtraction.TabIndex = 21;
 			// 
 			// button1
 			// 
@@ -173,21 +155,19 @@
 			tlpBloodExtraction.ResumeLayout(false);
 			pBarCode.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)pbxBarCode).EndInit();
-			pQRCode.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)pbxQRCode).EndInit();
+			pExtraction.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
 		#endregion
 
 		private TableLayoutPanel tlpBloodExtraction;
-		private Panel pQRCode;
+		private Panel pExtraction;
 		private AntdUI.Button button1;
 		private Panel pBarCode;
 		private AntdUI.Button button2;
-		private PictureBox pbxQRCode;
 		private PictureBox pbxBarCode;
-		private AntdUI.Button btnQRCode;
 		private AntdUI.Button btnBarCode;
+		private FlowLayoutPanel flpExtraction;
 	}
 }
