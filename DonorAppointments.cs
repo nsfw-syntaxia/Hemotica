@@ -139,9 +139,9 @@ namespace Hemotica
 								string query = "UPDATE Appointments SET [Status] = 'Cancelled' WHERE [Donor Username] = ? AND [Hospital] = ? AND [Appointment Date] = ?";
 								OleDbParameter[] parameters = 
 								{ 
-									new OleDbParameter("@donorUsername", UserLogs.Username), 
-									new OleDbParameter("@hospital", hospitalName),
-									new OleDbParameter("@appointmentDate", appointmentDate)
+									new OleDbParameter("?", UserLogs.Username), 
+									new OleDbParameter("?", hospitalName),
+									new OleDbParameter("?", appointmentDate)
 								};
 
 								if (db.executeNonQuery(query, parameters))

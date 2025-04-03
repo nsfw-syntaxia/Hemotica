@@ -154,5 +154,20 @@ namespace Hemotica
 			}
 			return string.Empty;
 		}
+
+		public string hospitalUsername(string hospitalName)
+		{
+			string query = @"SELECT [Username] FROM Hospitals WHERE [Hospital Name] = ?";
+
+			OleDbParameter[] parameters = { new OleDbParameter("?", hospitalName) };
+
+			DataTable dt = executeQuery(query, parameters);
+
+			if (dt != null && dt.Rows.Count > 0 && dt.Columns.Contains("Username"))
+			{
+				return dt.Rows[0]["Username"].ToString();
+			}
+			return string.Empty;
+		}
 	}
 }

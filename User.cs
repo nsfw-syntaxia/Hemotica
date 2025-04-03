@@ -105,7 +105,7 @@ namespace Hemotica
 
 		internal DataTable loadDonors(Database db)
 		{
-			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors";
+			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, [Contact Number], [Blood Type], Barangay, City, Province FROM Donors";
 			return db.executeQuery(query);
 		}
 
@@ -200,8 +200,8 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = $@"SELECT Appointments.[Appointment ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Contact Number], 
-							  Donors.[Blood Type], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
+			string query = $@"SELECT Appointments.[Appointment ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], 
+							  Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
 							  INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital
 							  WHERE Appointments.Hospital = '{hospitalName}' ORDER BY Appointments.[Appointment Date] ASC";
 
@@ -237,7 +237,7 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type], Request, Priority FROM Patients 
+			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, [Contact Number], [Blood Type], Request, Priority, Barangay, City, Province FROM Patients 
 							  WHERE [Hospital] = '{hospitalName}'";
 			return db.executeQuery(query);
 		}

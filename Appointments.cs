@@ -36,7 +36,7 @@ namespace Hemotica
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -57,14 +57,18 @@ namespace Hemotica
 			string status = (rbtnYes1.Checked && rbtnYes2.Checked && rbtnYes3.Checked &&
 							 rbtnYes4.Checked && rbtnYes5.Checked && rbtnYes6.Checked) ? "Approved" : "Denied";
 
-			string query = "INSERT INTO Appointments ([Donor Username], [Appointment Date], Hospital, Status) VALUES (@username, @date, @hospital, @status)";
+			string hospitalName = cmbxHospitals.SelectedValue.ToString();
+			string hospitalUsername = db.hospitalUsername(hospitalName);
 
-			OleDbParameter[] parameters = 
+			string query = "INSERT INTO Appointments ([Donor Username], [Appointment Date], [Hospital Username], Hospital, Status) VALUES (?, ?, ?, ?, ?)";
+
+			OleDbParameter[] parameters =
 			{
-				new OleDbParameter("@username", UserLogs.Username),
-				new OleDbParameter("@date", dtpAppointments.Value.ToString("MM/dd/yyyy")),
-				new OleDbParameter("@hospital", cmbxHospitals.SelectedValue.ToString()),
-				new OleDbParameter("@status", status)
+				new OleDbParameter("?", UserLogs.Username),
+				new OleDbParameter("?", dtpAppointments.Value.ToString("MM/dd/yyyy")),
+				new OleDbParameter("?", hospitalUsername),
+				new OleDbParameter("?", hospitalName),
+				new OleDbParameter("?", status)
 			};
 
 			if (db.executeNonQuery(query, parameters))
