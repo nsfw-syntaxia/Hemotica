@@ -247,9 +247,10 @@ namespace Hemotica
 			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
 			DataTable hospitalData = db.executeQuery(queryHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+			string hospitalUsername = db.hospitalUsername(hospitalName);
 
-			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type], [Hospital], [Request], 
-							 [Priority]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Contact Number], [Blood Type], [Request], [Priority], [Barangay], [City], [Province],  
+							 [Hospital Username], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			try
 			{
@@ -262,14 +263,16 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("?", LastName);
 					cmd.Parameters.AddWithValue("?", Gender);
 					cmd.Parameters.AddWithValue("?", Age);
+					cmd.Parameters.AddWithValue("?", ContactNumber);
+					cmd.Parameters.AddWithValue("?", BloodType);
+					cmd.Parameters.AddWithValue("?", Request);
+					cmd.Parameters.AddWithValue("?", Priority);
 					cmd.Parameters.AddWithValue("?", Barangay);
 					cmd.Parameters.AddWithValue("?", City);
 					cmd.Parameters.AddWithValue("?", Province);
-					cmd.Parameters.AddWithValue("?", ContactNumber);
-					cmd.Parameters.AddWithValue("?", BloodType);
+					cmd.Parameters.AddWithValue("?", hospitalUsername);
 					cmd.Parameters.AddWithValue("?", hospitalName);
-					cmd.Parameters.AddWithValue("?", Request);
-					cmd.Parameters.AddWithValue("?", Priority);
+					
 
 					conn.Open();
 					cmd.ExecuteNonQuery();
@@ -287,8 +290,8 @@ namespace Hemotica
 
 		internal bool updatePatient(Database db, int patientID)
 		{
-			string query = @"UPDATE Patients SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Barangay] = ?, [City] = ?, [Province] = ?, 
-							 [Contact Number] = ?, [Blood Type] = ?, [Request] = ?, [Priority] = ? WHERE [Patient ID] = ?";
+			string query = @"UPDATE Patients SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Contact Number] = ?, [Blood Type] = ?, [Request] = ?,
+							 [Priority] = ?, [Barangay] = ?, [City] = ?, [Province] = ? WHERE [Patient ID] = ?";
 
 			try
 			{
@@ -301,13 +304,13 @@ namespace Hemotica
 						cmd.Parameters.AddWithValue("?", LastName);
 						cmd.Parameters.AddWithValue("?", Gender);
 						cmd.Parameters.AddWithValue("?", Age);
-						cmd.Parameters.AddWithValue("?", Barangay);
-						cmd.Parameters.AddWithValue("?", City);
-						cmd.Parameters.AddWithValue("?", Province);
 						cmd.Parameters.AddWithValue("?", ContactNumber);
 						cmd.Parameters.AddWithValue("?", BloodType);
 						cmd.Parameters.AddWithValue("?", Request);
 						cmd.Parameters.AddWithValue("?", Priority);
+						cmd.Parameters.AddWithValue("?", Barangay);
+						cmd.Parameters.AddWithValue("?", City);
+						cmd.Parameters.AddWithValue("?", Province);
 						cmd.Parameters.AddWithValue("?", patientID);
 
 						conn.Open();
@@ -384,9 +387,10 @@ namespace Hemotica
 			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
 			DataTable hospitalData = db.executeQuery(queryHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+			string hospitalUsername = db.hospitalUsername(hospitalName);
 
-			string query = @"INSERT INTO Physicians ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Specialization], [License Number], [Contact Number], [Hospital]) 
-							 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			string query = @"INSERT INTO Physicians ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Specialization], [License Number], [Contact Number], [Hospital Username], [Hospital]) 
+							 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			try
 			{
@@ -402,6 +406,7 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("?", Specialization);
 					cmd.Parameters.AddWithValue("?", License);
 					cmd.Parameters.AddWithValue("?", ContactNumber);
+					cmd.Parameters.AddWithValue("?", hospitalUsername);
 					cmd.Parameters.AddWithValue("?", hospitalName);
 
 					conn.Open();
