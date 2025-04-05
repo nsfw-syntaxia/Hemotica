@@ -27,7 +27,7 @@ namespace Hemotica
         private void btnNext_Click(object sender, EventArgs e)
         {
 			donor.FirstName = tbxFirstName.Text.Trim();
-			donor.MiddleName = tbxMiddleName.Text.Trim();
+			donor.MiddleName = tbxMiddleName.Text.Trim().Equals("N/A", StringComparison.OrdinalIgnoreCase) ? "" : tbxMiddleName.Text.Trim();
 			donor.LastName = tbxLastName.Text.Trim();
 			donor.Gender = "";
 

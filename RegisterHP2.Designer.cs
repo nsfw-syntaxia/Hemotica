@@ -272,9 +272,9 @@
 			cmbxStart.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxStart.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxStart.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxStart.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxStart.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxStart.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxStart.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxStart.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxStart.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxStart.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxStart.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxStart.DropDownHeight = 100;
@@ -300,9 +300,9 @@
 			cmbxEnd.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxEnd.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxEnd.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxEnd.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxEnd.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxEnd.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxEnd.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxEnd.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxEnd.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxEnd.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxEnd.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxEnd.DropDownHeight = 100;

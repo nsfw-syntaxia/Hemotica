@@ -213,7 +213,7 @@
 			tbxEmail.BackColor = Color.White;
 			tbxEmail.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxEmail.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxEmail.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxEmail.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxEmail.Enabled = false;
 			tbxEmail.Font = new Font("Bahnschrift", 15F);
 			tbxEmail.ForeColor = Color.FromArgb(216, 85, 101);
@@ -237,7 +237,7 @@
 			tbxPassword.BackColor = Color.White;
 			tbxPassword.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxPassword.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxPassword.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxPassword.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxPassword.Enabled = false;
 			tbxPassword.Font = new Font("Bahnschrift", 15F);
 			tbxPassword.ForeColor = Color.FromArgb(216, 85, 101);
@@ -261,7 +261,7 @@
 			tbxName.BackColor = Color.White;
 			tbxName.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxName.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxName.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxName.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxName.Enabled = false;
 			tbxName.Font = new Font("Bahnschrift", 15F);
 			tbxName.ForeColor = Color.FromArgb(216, 85, 101);
@@ -285,7 +285,7 @@
 			tbxGender.BackColor = Color.White;
 			tbxGender.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxGender.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxGender.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxGender.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxGender.Enabled = false;
 			tbxGender.Font = new Font("Bahnschrift", 15F);
 			tbxGender.ForeColor = Color.FromArgb(216, 85, 101);
@@ -309,7 +309,7 @@
 			tbxAge.BackColor = Color.White;
 			tbxAge.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxAge.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxAge.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxAge.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxAge.Enabled = false;
 			tbxAge.Font = new Font("Bahnschrift", 15F);
 			tbxAge.ForeColor = Color.FromArgb(216, 85, 101);
@@ -333,7 +333,7 @@
 			tbxHomeAddress.BackColor = Color.White;
 			tbxHomeAddress.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxHomeAddress.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxHomeAddress.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxHomeAddress.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxHomeAddress.Enabled = false;
 			tbxHomeAddress.Font = new Font("Bahnschrift", 15F);
 			tbxHomeAddress.ForeColor = Color.FromArgb(216, 85, 101);
@@ -357,7 +357,7 @@
 			tbxNumber.BackColor = Color.White;
 			tbxNumber.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxNumber.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxNumber.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxNumber.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxNumber.Enabled = false;
 			tbxNumber.Font = new Font("Bahnschrift", 15F);
 			tbxNumber.ForeColor = Color.FromArgb(216, 85, 101);
@@ -381,7 +381,7 @@
 			tbxBType.BackColor = Color.White;
 			tbxBType.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxBType.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxBType.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxBType.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxBType.Enabled = false;
 			tbxBType.Font = new Font("Bahnschrift", 15F);
 			tbxBType.ForeColor = Color.FromArgb(216, 85, 101);

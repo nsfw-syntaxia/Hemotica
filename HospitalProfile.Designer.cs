@@ -343,6 +343,7 @@
 			btnDelete.Size = new Size(187, 52);
 			btnDelete.TabIndex = 51;
 			btnDelete.Text = "Delete Account";
+			btnDelete.Click += btnDelete_Click;
 			// 
 			// HospitalProfile
 			// 

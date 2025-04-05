@@ -26,7 +26,7 @@ namespace Hemotica
 		public void roundControls()
 		{
 			pExtraction.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pExtraction.Width, pExtraction.Height, 20, 20));
-			flpExtraction.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpExtraction.Width, flpExtraction.Height, 20, 20));
+			pDonate.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pDonate.Width, pDonate.Height, 20, 20));
 			pBarCode.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pBarCode.Width, pBarCode.Height, 20, 20));
 
 			if (pbxBarCode.Width > 0 && pbxBarCode.Height > 0)

@@ -219,9 +219,9 @@
 			cmbxCity.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxCity.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxCity.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxCity.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxCity.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxCity.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxCity.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxCity.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxCity.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxCity.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxCity.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxCity.DropDownHeight = 100;
@@ -259,9 +259,9 @@
 			cmbxBarangay.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxBarangay.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxBarangay.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxBarangay.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxBarangay.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxBarangay.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxBarangay.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxBarangay.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxBarangay.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxBarangay.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxBarangay.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxBarangay.DropDownHeight = 100;
