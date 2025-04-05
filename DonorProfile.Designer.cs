@@ -50,6 +50,7 @@
 			tbxHomeAddress = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxNumber = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxBType = new ReaLTaiizor.Controls.HopeTextBox();
+			btnDelete = new AntdUI.Button();
 			pProfile.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxProfile).BeginInit();
 			SuspendLayout();
@@ -399,11 +400,24 @@
 			tbxBType.TabStop = false;
 			tbxBType.UseSystemPasswordChar = false;
 			// 
+			// btnDelete
+			// 
+			btnDelete.DefaultBack = Color.FromArgb(216, 85, 101);
+			btnDelete.Font = new Font("Bahnschrift", 14F);
+			btnDelete.ForeColor = Color.FromArgb(252, 228, 228);
+			btnDelete.Location = new Point(727, 529);
+			btnDelete.Name = "btnDelete";
+			btnDelete.Size = new Size(187, 52);
+			btnDelete.TabIndex = 39;
+			btnDelete.Text = "Delete Account";
+			btnDelete.Click += btnDelete_Click;
+			// 
 			// DonorProfile
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(btnDelete);
 			Controls.Add(btnEdit);
 			Controls.Add(btnProfile);
 			Controls.Add(btnSave);
@@ -457,5 +471,6 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxHomeAddress;
 		private ReaLTaiizor.Controls.HopeTextBox tbxNumber;
 		private ReaLTaiizor.Controls.HopeTextBox tbxBType;
+		private AntdUI.Button btnDelete;
 	}
 }

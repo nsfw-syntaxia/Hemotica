@@ -86,7 +86,7 @@ namespace Hemotica
 			string contactNumber = tbxNumber.Text.Trim();
 			string[] addressParts = tbxHomeAddress.Text.Split(',');
 
-			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ageDonor) || string.IsNullOrWhiteSpace(contactNumber) || 
+			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ageDonor) || string.IsNullOrWhiteSpace(contactNumber) ||
 				string.IsNullOrWhiteSpace(tbxHomeAddress.Text))
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -203,6 +203,11 @@ namespace Hemotica
 					}
 				}
 			}
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			//
 		}
 	}
 }

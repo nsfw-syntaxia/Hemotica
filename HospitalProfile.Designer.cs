@@ -50,6 +50,7 @@
 			pbxProfile = new PictureBox();
 			lblClassification = new Label();
 			pProfile = new Panel();
+			btnDelete = new AntdUI.Button();
 			((System.ComponentModel.ISupportInitialize)pbxProfile).BeginInit();
 			pProfile.SuspendLayout();
 			SuspendLayout();
@@ -332,11 +333,23 @@
 			pProfile.Size = new Size(325, 325);
 			pProfile.TabIndex = 31;
 			// 
+			// btnDelete
+			// 
+			btnDelete.DefaultBack = Color.FromArgb(216, 85, 101);
+			btnDelete.Font = new Font("Bahnschrift", 14F);
+			btnDelete.ForeColor = Color.FromArgb(252, 228, 228);
+			btnDelete.Location = new Point(727, 529);
+			btnDelete.Name = "btnDelete";
+			btnDelete.Size = new Size(187, 52);
+			btnDelete.TabIndex = 51;
+			btnDelete.Text = "Delete Account";
+			// 
 			// HospitalProfile
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(btnDelete);
 			Controls.Add(btnEdit);
 			Controls.Add(btnProfile);
 			Controls.Add(btnSave);
@@ -390,5 +403,6 @@
 		private PictureBox pbxProfile;
 		private Label lblClassification;
 		private Panel pProfile;
+		private AntdUI.Button btnDelete;
 	}
 }
