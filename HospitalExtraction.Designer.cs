@@ -36,24 +36,28 @@
 			pExtraction = new Panel();
 			btnDonate = new AntdUI.Button();
 			pDonate = new Panel();
+			tbpDonate = new TableLayoutPanel();
+			lblBloodExtraction = new Label();
+			pDonor = new Panel();
 			tbxAddress = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxCNumber = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxBloodType = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxGender = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxAge = new ReaLTaiizor.Controls.HopeTextBox();
 			lblAddress = new Label();
 			lblCNumber = new Label();
-			tbxBloodType = new ReaLTaiizor.Controls.HopeTextBox();
 			lblBType = new Label();
-			tbxCNumber = new ReaLTaiizor.Controls.HopeTextBox();
 			lblGender = new Label();
-			tbxAge = new ReaLTaiizor.Controls.HopeTextBox();
 			lblAge = new Label();
 			lblName = new Label();
-			lblBloodExtraction = new Label();
 			cmbxDonor = new ReaLTaiizor.Controls.DungeonComboBox();
-			tbxGender = new ReaLTaiizor.Controls.HopeTextBox();
 			tlpBloodExtraction.SuspendLayout();
 			pBarCode.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxBarCode).BeginInit();
 			pExtraction.SuspendLayout();
 			pDonate.SuspendLayout();
+			tbpDonate.SuspendLayout();
+			pDonor.SuspendLayout();
 			SuspendLayout();
 			// 
 			// tlpBloodExtraction
@@ -131,29 +135,79 @@
 			btnDonate.Size = new Size(468, 60);
 			btnDonate.TabIndex = 23;
 			btnDonate.Text = "Donate";
+			btnDonate.Click += btnDonate_Click;
 			// 
 			// pDonate
 			// 
 			pDonate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			pDonate.BackColor = Color.FromArgb(252, 228, 228);
-			pDonate.Controls.Add(tbxAddress);
-			pDonate.Controls.Add(lblAddress);
-			pDonate.Controls.Add(lblCNumber);
-			pDonate.Controls.Add(tbxBloodType);
-			pDonate.Controls.Add(lblBType);
-			pDonate.Controls.Add(tbxCNumber);
-			pDonate.Controls.Add(lblGender);
-			pDonate.Controls.Add(tbxAge);
-			pDonate.Controls.Add(lblAge);
-			pDonate.Controls.Add(lblName);
-			pDonate.Controls.Add(lblBloodExtraction);
-			pDonate.Controls.Add(cmbxDonor);
-			pDonate.Controls.Add(tbxGender);
+			pDonate.Controls.Add(tbpDonate);
 			pDonate.Location = new Point(13, 13);
 			pDonate.Name = "pDonate";
-			pDonate.Padding = new Padding(10);
+			pDonate.Padding = new Padding(5);
 			pDonate.Size = new Size(468, 468);
 			pDonate.TabIndex = 0;
+			// 
+			// tbpDonate
+			// 
+			tbpDonate.ColumnCount = 2;
+			tbpDonate.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+			tbpDonate.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+			tbpDonate.Controls.Add(lblBloodExtraction, 0, 0);
+			tbpDonate.Controls.Add(pDonor, 0, 1);
+			tbpDonate.Dock = DockStyle.Fill;
+			tbpDonate.Location = new Point(5, 5);
+			tbpDonate.Name = "tbpDonate";
+			tbpDonate.RowCount = 5;
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+			tbpDonate.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+			tbpDonate.Size = new Size(458, 458);
+			tbpDonate.TabIndex = 0;
+			// 
+			// lblBloodExtraction
+			// 
+			lblBloodExtraction.AutoSize = true;
+			tbpDonate.SetColumnSpan(lblBloodExtraction, 2);
+			lblBloodExtraction.Dock = DockStyle.Fill;
+			lblBloodExtraction.Font = new Font("Bahnschrift", 25F, FontStyle.Bold);
+			lblBloodExtraction.ForeColor = Color.FromArgb(216, 85, 101);
+			lblBloodExtraction.Location = new Point(3, 0);
+			lblBloodExtraction.Name = "lblBloodExtraction";
+			lblBloodExtraction.Padding = new Padding(5, 0, 0, 5);
+			lblBloodExtraction.Size = new Size(452, 91);
+			lblBloodExtraction.TabIndex = 75;
+			lblBloodExtraction.Text = "Blood Extraction";
+			lblBloodExtraction.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// pDonor
+			// 
+			tbpDonate.SetColumnSpan(pDonor, 2);
+			pDonor.Controls.Add(tbxAddress);
+			pDonor.Controls.Add(tbxCNumber);
+			pDonor.Controls.Add(tbxBloodType);
+			pDonor.Controls.Add(tbxGender);
+			pDonor.Controls.Add(tbxAge);
+			pDonor.Controls.Add(lblAddress);
+			pDonor.Controls.Add(lblCNumber);
+			pDonor.Controls.Add(lblBType);
+			pDonor.Controls.Add(lblGender);
+			pDonor.Controls.Add(lblAge);
+			pDonor.Controls.Add(lblName);
+			pDonor.Controls.Add(cmbxDonor);
+			pDonor.Dock = DockStyle.Fill;
+			pDonor.Location = new Point(3, 94);
+			pDonor.Name = "pDonor";
+			tbpDonate.SetRowSpan(pDonor, 4);
+			pDonor.Size = new Size(452, 361);
+			pDonor.TabIndex = 76;
 			// 
 			// tbxAddress
 			// 
@@ -166,7 +220,7 @@
 			tbxAddress.Font = new Font("Bahnschrift", 15F);
 			tbxAddress.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxAddress.Hint = "";
-			tbxAddress.Location = new Point(13, 357);
+			tbxAddress.Location = new Point(5, 301);
 			tbxAddress.MaxLength = 32767;
 			tbxAddress.Multiline = false;
 			tbxAddress.Name = "tbxAddress";
@@ -176,70 +230,9 @@
 			tbxAddress.SelectionLength = 0;
 			tbxAddress.SelectionStart = 0;
 			tbxAddress.Size = new Size(442, 41);
-			tbxAddress.TabIndex = 88;
+			tbxAddress.TabIndex = 100;
 			tbxAddress.TabStop = false;
 			tbxAddress.UseSystemPasswordChar = false;
-			// 
-			// lblAddress
-			// 
-			lblAddress.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-			lblAddress.AutoSize = true;
-			lblAddress.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
-			lblAddress.ForeColor = Color.FromArgb(216, 85, 101);
-			lblAddress.Location = new Point(13, 330);
-			lblAddress.Name = "lblAddress";
-			lblAddress.Size = new Size(74, 24);
-			lblAddress.TabIndex = 87;
-			lblAddress.Text = "Address";
-			// 
-			// lblCNumber
-			// 
-			lblCNumber.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-			lblCNumber.AutoSize = true;
-			lblCNumber.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
-			lblCNumber.ForeColor = Color.FromArgb(216, 85, 101);
-			lblCNumber.Location = new Point(237, 255);
-			lblCNumber.Name = "lblCNumber";
-			lblCNumber.Size = new Size(136, 24);
-			lblCNumber.TabIndex = 86;
-			lblCNumber.Text = "Contact Number";
-			// 
-			// tbxBloodType
-			// 
-			tbxBloodType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			tbxBloodType.BackColor = Color.White;
-			tbxBloodType.BaseColor = Color.FromArgb(252, 228, 228);
-			tbxBloodType.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxBloodType.BorderColorB = Color.FromArgb(216, 85, 101);
-			tbxBloodType.Enabled = false;
-			tbxBloodType.Font = new Font("Bahnschrift", 15F);
-			tbxBloodType.ForeColor = Color.FromArgb(216, 85, 101);
-			tbxBloodType.Hint = "";
-			tbxBloodType.Location = new Point(13, 282);
-			tbxBloodType.MaxLength = 32767;
-			tbxBloodType.Multiline = false;
-			tbxBloodType.Name = "tbxBloodType";
-			tbxBloodType.PasswordChar = '\0';
-			tbxBloodType.ScrollBars = ScrollBars.None;
-			tbxBloodType.SelectedText = "";
-			tbxBloodType.SelectionLength = 0;
-			tbxBloodType.SelectionStart = 0;
-			tbxBloodType.Size = new Size(218, 41);
-			tbxBloodType.TabIndex = 84;
-			tbxBloodType.TabStop = false;
-			tbxBloodType.UseSystemPasswordChar = false;
-			// 
-			// lblBType
-			// 
-			lblBType.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-			lblBType.AutoSize = true;
-			lblBType.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
-			lblBType.ForeColor = Color.FromArgb(216, 85, 101);
-			lblBType.Location = new Point(13, 255);
-			lblBType.Name = "lblBType";
-			lblBType.Size = new Size(99, 24);
-			lblBType.TabIndex = 83;
-			lblBType.Text = "Blood Type";
 			// 
 			// tbxCNumber
 			// 
@@ -252,7 +245,7 @@
 			tbxCNumber.Font = new Font("Bahnschrift", 15F);
 			tbxCNumber.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxCNumber.Hint = "";
-			tbxCNumber.Location = new Point(237, 282);
+			tbxCNumber.Location = new Point(229, 216);
 			tbxCNumber.MaxLength = 32767;
 			tbxCNumber.Multiline = false;
 			tbxCNumber.Name = "tbxCNumber";
@@ -262,25 +255,61 @@
 			tbxCNumber.SelectionLength = 0;
 			tbxCNumber.SelectionStart = 0;
 			tbxCNumber.Size = new Size(218, 41);
-			tbxCNumber.TabIndex = 85;
+			tbxCNumber.TabIndex = 97;
 			tbxCNumber.TabStop = false;
 			tbxCNumber.UseSystemPasswordChar = false;
 			// 
-			// lblGender
+			// tbxBloodType
 			// 
-			lblGender.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-			lblGender.AutoSize = true;
-			lblGender.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
-			lblGender.ForeColor = Color.FromArgb(216, 85, 101);
-			lblGender.Location = new Point(237, 180);
-			lblGender.Name = "lblGender";
-			lblGender.Size = new Size(67, 24);
-			lblGender.TabIndex = 82;
-			lblGender.Text = "Gender";
+			tbxBloodType.BackColor = Color.White;
+			tbxBloodType.BaseColor = Color.FromArgb(252, 228, 228);
+			tbxBloodType.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxBloodType.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxBloodType.Enabled = false;
+			tbxBloodType.Font = new Font("Bahnschrift", 15F);
+			tbxBloodType.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxBloodType.Hint = "";
+			tbxBloodType.Location = new Point(5, 216);
+			tbxBloodType.MaxLength = 32767;
+			tbxBloodType.Multiline = false;
+			tbxBloodType.Name = "tbxBloodType";
+			tbxBloodType.PasswordChar = '\0';
+			tbxBloodType.ScrollBars = ScrollBars.None;
+			tbxBloodType.SelectedText = "";
+			tbxBloodType.SelectionLength = 0;
+			tbxBloodType.SelectionStart = 0;
+			tbxBloodType.Size = new Size(218, 41);
+			tbxBloodType.TabIndex = 96;
+			tbxBloodType.TabStop = false;
+			tbxBloodType.UseSystemPasswordChar = false;
+			// 
+			// tbxGender
+			// 
+			tbxGender.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			tbxGender.BackColor = Color.White;
+			tbxGender.BaseColor = Color.FromArgb(252, 228, 228);
+			tbxGender.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxGender.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxGender.Enabled = false;
+			tbxGender.Font = new Font("Bahnschrift", 15F);
+			tbxGender.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxGender.Hint = "";
+			tbxGender.Location = new Point(229, 131);
+			tbxGender.MaxLength = 32767;
+			tbxGender.Multiline = false;
+			tbxGender.Name = "tbxGender";
+			tbxGender.PasswordChar = '\0';
+			tbxGender.ScrollBars = ScrollBars.None;
+			tbxGender.SelectedText = "";
+			tbxGender.SelectionLength = 0;
+			tbxGender.SelectionStart = 0;
+			tbxGender.Size = new Size(218, 41);
+			tbxGender.TabIndex = 93;
+			tbxGender.TabStop = false;
+			tbxGender.UseSystemPasswordChar = false;
 			// 
 			// tbxAge
 			// 
-			tbxAge.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			tbxAge.BackColor = Color.White;
 			tbxAge.BaseColor = Color.FromArgb(252, 228, 228);
 			tbxAge.BorderColorA = Color.FromArgb(216, 85, 101);
@@ -289,7 +318,7 @@
 			tbxAge.Font = new Font("Bahnschrift", 15F);
 			tbxAge.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxAge.Hint = "";
-			tbxAge.Location = new Point(13, 207);
+			tbxAge.Location = new Point(5, 131);
 			tbxAge.MaxLength = 32767;
 			tbxAge.Multiline = false;
 			tbxAge.Name = "tbxAge";
@@ -299,9 +328,57 @@
 			tbxAge.SelectionLength = 0;
 			tbxAge.SelectionStart = 0;
 			tbxAge.Size = new Size(218, 41);
-			tbxAge.TabIndex = 79;
+			tbxAge.TabIndex = 92;
 			tbxAge.TabStop = false;
 			tbxAge.UseSystemPasswordChar = false;
+			// 
+			// lblAddress
+			// 
+			lblAddress.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblAddress.AutoSize = true;
+			lblAddress.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			lblAddress.ForeColor = Color.FromArgb(216, 85, 101);
+			lblAddress.Location = new Point(5, 274);
+			lblAddress.Name = "lblAddress";
+			lblAddress.Size = new Size(74, 24);
+			lblAddress.TabIndex = 99;
+			lblAddress.Text = "Address";
+			// 
+			// lblCNumber
+			// 
+			lblCNumber.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblCNumber.AutoSize = true;
+			lblCNumber.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			lblCNumber.ForeColor = Color.FromArgb(216, 85, 101);
+			lblCNumber.Location = new Point(229, 189);
+			lblCNumber.Name = "lblCNumber";
+			lblCNumber.Size = new Size(136, 24);
+			lblCNumber.TabIndex = 98;
+			lblCNumber.Text = "Contact Number";
+			// 
+			// lblBType
+			// 
+			lblBType.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblBType.AutoSize = true;
+			lblBType.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			lblBType.ForeColor = Color.FromArgb(216, 85, 101);
+			lblBType.Location = new Point(5, 189);
+			lblBType.Name = "lblBType";
+			lblBType.Size = new Size(99, 24);
+			lblBType.TabIndex = 95;
+			lblBType.Text = "Blood Type";
+			// 
+			// lblGender
+			// 
+			lblGender.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblGender.AutoSize = true;
+			lblGender.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			lblGender.ForeColor = Color.FromArgb(216, 85, 101);
+			lblGender.Location = new Point(229, 104);
+			lblGender.Name = "lblGender";
+			lblGender.Size = new Size(67, 24);
+			lblGender.TabIndex = 94;
+			lblGender.Text = "Gender";
 			// 
 			// lblAge
 			// 
@@ -309,10 +386,10 @@
 			lblAge.AutoSize = true;
 			lblAge.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
 			lblAge.ForeColor = Color.FromArgb(216, 85, 101);
-			lblAge.Location = new Point(13, 180);
+			lblAge.Location = new Point(5, 104);
 			lblAge.Name = "lblAge";
 			lblAge.Size = new Size(40, 24);
-			lblAge.TabIndex = 77;
+			lblAge.TabIndex = 91;
 			lblAge.Text = "Age";
 			// 
 			// lblName
@@ -320,24 +397,11 @@
 			lblName.AutoSize = true;
 			lblName.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
 			lblName.ForeColor = Color.FromArgb(216, 85, 101);
-			lblName.Location = new Point(13, 105);
+			lblName.Location = new Point(5, 19);
 			lblName.Name = "lblName";
 			lblName.Size = new Size(54, 24);
-			lblName.TabIndex = 76;
+			lblName.TabIndex = 90;
 			lblName.Text = "Name";
-			// 
-			// lblBloodExtraction
-			// 
-			lblBloodExtraction.AutoSize = true;
-			lblBloodExtraction.Font = new Font("Bahnschrift", 25F, FontStyle.Bold);
-			lblBloodExtraction.ForeColor = Color.FromArgb(216, 85, 101);
-			lblBloodExtraction.Location = new Point(96, 30);
-			lblBloodExtraction.Name = "lblBloodExtraction";
-			lblBloodExtraction.Padding = new Padding(5, 0, 0, 5);
-			lblBloodExtraction.Size = new Size(277, 46);
-			lblBloodExtraction.TabIndex = 74;
-			lblBloodExtraction.Text = "Blood Extraction";
-			lblBloodExtraction.TextAlign = ContentAlignment.MiddleLeft;
 			// 
 			// cmbxDonor
 			// 
@@ -362,36 +426,12 @@
 			cmbxDonor.IntegralHeight = false;
 			cmbxDonor.ItemHeight = 35;
 			cmbxDonor.Items.AddRange(new object[] { "Select donor" });
-			cmbxDonor.Location = new Point(13, 132);
+			cmbxDonor.Location = new Point(5, 46);
 			cmbxDonor.Name = "cmbxDonor";
 			cmbxDonor.Size = new Size(442, 41);
 			cmbxDonor.StartIndex = 0;
-			cmbxDonor.TabIndex = 73;
-			// 
-			// tbxGender
-			// 
-			tbxGender.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			tbxGender.BackColor = Color.White;
-			tbxGender.BaseColor = Color.FromArgb(252, 228, 228);
-			tbxGender.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxGender.BorderColorB = Color.FromArgb(216, 85, 101);
-			tbxGender.Enabled = false;
-			tbxGender.Font = new Font("Bahnschrift", 15F);
-			tbxGender.ForeColor = Color.FromArgb(216, 85, 101);
-			tbxGender.Hint = "";
-			tbxGender.Location = new Point(237, 207);
-			tbxGender.MaxLength = 32767;
-			tbxGender.Multiline = false;
-			tbxGender.Name = "tbxGender";
-			tbxGender.PasswordChar = '\0';
-			tbxGender.ScrollBars = ScrollBars.None;
-			tbxGender.SelectedText = "";
-			tbxGender.SelectionLength = 0;
-			tbxGender.SelectionStart = 0;
-			tbxGender.Size = new Size(218, 41);
-			tbxGender.TabIndex = 81;
-			tbxGender.TabStop = false;
-			tbxGender.UseSystemPasswordChar = false;
+			cmbxDonor.TabIndex = 89;
+			cmbxDonor.SelectedIndexChanged += cmbxDonor_SelectedIndexChanged;
 			// 
 			// HospitalExtraction
 			// 
@@ -409,7 +449,10 @@
 			((System.ComponentModel.ISupportInitialize)pbxBarCode).EndInit();
 			pExtraction.ResumeLayout(false);
 			pDonate.ResumeLayout(false);
-			pDonate.PerformLayout();
+			tbpDonate.ResumeLayout(false);
+			tbpDonate.PerformLayout();
+			pDonor.ResumeLayout(false);
+			pDonor.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -421,6 +464,11 @@
 		private PictureBox pbxBarCode;
 		private AntdUI.Button btnBarCode;
 		private Panel pDonate;
+		private AntdUI.Button btnDonate;
+		private TableLayoutPanel tbpDonate;
+		private Label lblBloodExtraction;
+		private Panel pDonor;
+		private ReaLTaiizor.Controls.HopeTextBox tbxAddress;
 		private Label lblAddress;
 		private Label lblCNumber;
 		private ReaLTaiizor.Controls.HopeTextBox tbxBloodType;
@@ -430,10 +478,7 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxAge;
 		private Label lblAge;
 		private Label lblName;
-		private Label lblBloodExtraction;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxDonor;
 		private ReaLTaiizor.Controls.HopeTextBox tbxGender;
-		private ReaLTaiizor.Controls.HopeTextBox tbxAddress;
-		private AntdUI.Button btnDonate;
 	}
 }

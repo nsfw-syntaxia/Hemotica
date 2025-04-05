@@ -513,11 +513,13 @@
 			// 
 			// dtpAppointments
 			// 
+			dtpAppointments.CalendarFont = new Font("Arial Narrow", 13F);
 			dtpAppointments.CalendarForeColor = Color.FromArgb(216, 85, 101);
 			dtpAppointments.CalendarMonthBackground = Color.FromArgb(241, 241, 241);
+			dtpAppointments.CalendarTitleBackColor = Color.FromArgb(236, 124, 132);
 			dtpAppointments.CalendarTitleForeColor = Color.FromArgb(216, 85, 101);
 			dtpAppointments.CalendarTrailingForeColor = Color.FromArgb(216, 85, 101);
-			dtpAppointments.Font = new Font("Arial Narrow", 13F);
+			dtpAppointments.Font = new Font("Arial Narrow", 12.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			dtpAppointments.Location = new Point(12, 202);
 			dtpAppointments.Name = "dtpAppointments";
 			dtpAppointments.Size = new Size(390, 27);
@@ -531,9 +533,9 @@
 			cmbxHospitals.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxHospitals.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxHospitals.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxHospitals.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxHospitals.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxHospitals.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxHospitals.ColorF = Color.FromArgb(141, 141, 141);
+			cmbxHospitals.ColorG = Color.FromArgb(77, 97, 133);
+			cmbxHospitals.ColorH = Color.FromArgb(194, 195, 198);
 			cmbxHospitals.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxHospitals.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxHospitals.DropDownHeight = 100;
