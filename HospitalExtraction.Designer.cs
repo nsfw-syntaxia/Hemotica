@@ -99,6 +99,7 @@
 			btnBarCode.Size = new Size(468, 60);
 			btnBarCode.TabIndex = 22;
 			btnBarCode.Text = "Blood Bag Barcodes";
+			btnBarCode.Click += btnBarCode_Click;
 			// 
 			// pbxBarCode
 			// 

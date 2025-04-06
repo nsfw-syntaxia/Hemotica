@@ -55,7 +55,7 @@ namespace Hemotica
 			}
 
 			string status = (rbtnYes1.Checked && rbtnYes2.Checked && rbtnYes3.Checked &&
-							 rbtnYes4.Checked && rbtnYes5.Checked && rbtnYes6.Checked) ? "Approved" : "Denied";
+							 rbtnYes4.Checked && rbtnYes5.Checked && rbtnYes6.Checked) ? "Scheduled" : "Denied";
 
 			string hospitalName = cmbxHospitals.SelectedValue.ToString();
 			string hospitalUsername = db.hospitalUsername(hospitalName);
@@ -79,7 +79,7 @@ namespace Hemotica
 				}
 				else
 				{
-					MessageBox.Show("Appointment saved successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Appointment scheduled successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				this.Close();
 			}

@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Data.OleDb;
 
 namespace Hemotica
 {
@@ -45,6 +46,8 @@ namespace Hemotica
 
 		private void loadAppointments()
 		{
+			updateAppointments();
+
 			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
 			DataTable hospitalData = db.executeQuery(queryHospital);
 
@@ -52,7 +55,7 @@ namespace Hemotica
 
 			string queryAppointments = $@"SELECT Appointments.[Appointment Date], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name] FROM Hospitals 
 										  INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital 
-										  WHERE Appointments.[Status] = 'Approved' AND Appointments.[Hospital] = '{hospitalName}' ORDER BY Appointments.[Appointment Date] ASC";
+										  WHERE Appointments.[Status] = 'Scheduled' AND Appointments.[Hospital] = '{hospitalName}' ORDER BY Appointments.[Appointment Date] ASC";
 
 			DataTable appointments = db.executeQuery(queryAppointments);
 
@@ -99,6 +102,14 @@ namespace Hemotica
 					flpAppointments.Controls.Add(panel);
 				}
 			}
+		}
+
+		private void updateAppointments()
+		{
+			string cancelAppointmentsQuery = @"UPDATE Appointments SET Status = 'Cancelled' WHERE [Appointment Date] < ? AND Status = 'Scheduled'";
+			string format = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+			OleDbParameter[] appointmentParameter = { new OleDbParameter("?", format) };
+			db.executeNonQuery(cancelAppointmentsQuery, appointmentParameter);
 		}
 	}
 }

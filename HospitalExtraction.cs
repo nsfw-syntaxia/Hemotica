@@ -3,6 +3,9 @@ using System.Data;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Data.OleDb;
+using ZXing;
+using ZXing.Rendering;
+using ZXing.Common;
 
 namespace Hemotica
 {
@@ -26,6 +29,7 @@ namespace Hemotica
 		{
 			roundControls();
 			loadDonorList();
+			updateExtraction();
 		}
 
 		public void roundControls()
@@ -102,6 +106,84 @@ namespace Hemotica
 		}
 
 		private void btnDonate_Click(object sender, EventArgs e)
+		{
+			if (cmbxDonor.SelectedIndex <= 0)
+			{
+				MessageBox.Show("Please select a donor.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			int dataIndex = cmbxDonor.SelectedIndex - 1;
+			string donorID = donorList.Rows[dataIndex]["Donor ID"].ToString();
+			string donorUsername = db.donorUsername(donorID);
+
+			addDonation(donorID);
+			updateAppointments(donorUsername);
+
+			MessageBox.Show("Donation recorded successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void addDonation(string donorID)
+		{
+			string donorUsername = db.donorUsername(donorID);
+			string hospitalUsername = UserLogs.Username;
+
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{hospitalUsername}'";
+			DataTable hospitalData = db.executeQuery(queryHospital);
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string bloodType = tbxBloodType.Text;
+			string extractionDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+			string expirationDate = DateTime.Now.AddDays(42).ToString("MM/dd/yyyy HH:mm:ss");
+			string status = "Available";
+
+			string barcodeValue = Guid.NewGuid().ToString().Substring(0, 10);
+
+			Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+			Image barcodeImage = barcode.Draw(barcodeValue, 200);
+
+			Bitmap barcodeBitmap = new Bitmap(barcodeImage);
+
+			byte[] barcodeBytes;
+			using (MemoryStream ms = new MemoryStream())
+			{
+				barcodeBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+				barcodeBytes = ms.ToArray();
+			}
+
+			string insertQuery = @"INSERT INTO Extraction ([Donor Username], [Hospital Username], [Hospital], [Blood Type], [Extraction Date], [Expiration Date], [Status], [Barcode]) 
+								   VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+			OleDbParameter[] insertParameters =
+			{
+				new OleDbParameter("?", donorUsername),
+				new OleDbParameter("?", hospitalUsername),
+				new OleDbParameter("?", hospitalName),
+				new OleDbParameter("?", bloodType),
+				new OleDbParameter("?", extractionDate),
+				new OleDbParameter("?", expirationDate),
+				new OleDbParameter("?", status),
+				new OleDbParameter("?", OleDbType.LongVarBinary) { Value = barcodeBytes }
+			};
+
+			db.executeNonQuery(insertQuery, insertParameters);
+		}
+
+		private void updateAppointments(string donorUsername)
+		{
+			string updateAppointment = @"UPDATE Appointments SET Status = 'Completed' WHERE [Donor Username] = ? AND Status = 'Scheduled'";
+			OleDbParameter[] updateParameters = { new OleDbParameter("?", donorUsername) };
+			db.executeNonQuery(updateAppointment, updateParameters);
+		}
+
+		public void updateExtraction()
+		{
+			string expireStocksQuery = @"UPDATE Extraction SET Status = 'Expired' WHERE [Expiration Date] < ? AND Status = 'Available'";
+			OleDbParameter[] stockParameter = { new OleDbParameter("?", DateTime.Now) };
+			db.executeNonQuery(expireStocksQuery, stockParameter);
+		}
+
+		private void btnBarCode_Click(object sender, EventArgs e)
 		{
 
 		}

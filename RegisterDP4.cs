@@ -39,9 +39,10 @@ namespace Hemotica
 			}
 
 			string hashedPassword = db.hashPassword(donor.Password);
+			string hospitalAccess = "All";
 
 			string query = @"INSERT INTO Donors ([Email Address], [Username], [Password], [First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], 
-							 [Contact Number], [Blood Type]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+							 [Contact Number], [Blood Type], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			OleDbParameter[] parameters = 
 			{
@@ -57,7 +58,8 @@ namespace Hemotica
 				new OleDbParameter("?", donor.City),
 				new OleDbParameter("?", donor.Province),
 				new OleDbParameter("?", donor.ContactNumber),
-				new OleDbParameter("?", donor.BloodType)
+				new OleDbParameter("?", donor.BloodType),
+				new OleDbParameter("?", hospitalAccess)
 			};
 
 			if (db.executeNonQuery(query, parameters))
