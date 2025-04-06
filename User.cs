@@ -199,6 +199,44 @@ namespace Hemotica
 				return false;
 			}
 		}
+
+		internal bool updateDonor(Database db, int donorID)
+		{
+			string query = @"UPDATE Patients SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Contact Number] = ?, [Blood Type] = ?, 
+							 [Barangay] = ?, [City] = ?, [Province] = ? WHERE [Donor ID] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					using (OleDbCommand cmd = new OleDbCommand(query, conn))
+					{
+						cmd.Parameters.AddWithValue("?", FirstName);
+						cmd.Parameters.AddWithValue("?", MiddleName);
+						cmd.Parameters.AddWithValue("?", LastName);
+						cmd.Parameters.AddWithValue("?", Gender);
+						cmd.Parameters.AddWithValue("?", Age);
+						cmd.Parameters.AddWithValue("?", ContactNumber);
+						cmd.Parameters.AddWithValue("?", BloodType);
+						cmd.Parameters.AddWithValue("?", Barangay);
+						cmd.Parameters.AddWithValue("?", City);
+						cmd.Parameters.AddWithValue("?", Province);
+						cmd.Parameters.AddWithValue("?", donorID);
+
+						conn.Open();
+						cmd.ExecuteNonQuery();
+						conn.Close();
+
+						return true;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
 	}
 
 	public class Hospital : User

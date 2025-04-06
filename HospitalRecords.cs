@@ -235,7 +235,28 @@ namespace Hemotica
 		{
 			if (flpInputs.Controls[0] is RecordsDonor recordsDonor)
 			{
-				//
+				Donor donor = recordsDonor.inputDonor();
+
+				if (donor != null)
+				{
+					if (dgvDataMin.SelectedRows.Count > 0)
+					{
+						int donorID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Donor ID"].Value);
+						
+						if (donor.updateDonor(db, donorID))
+						{
+							MessageBox.Show("Donor record updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							flpInputs.Controls.Clear();
+							flpInputs.Controls.Add(new RecordsDonor(this));
+							loadDonors();
+						}
+						else
+						{
+							MessageBox.Show("Donor record update failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
 			}
 			else if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{

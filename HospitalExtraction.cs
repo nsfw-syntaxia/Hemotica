@@ -69,8 +69,17 @@ namespace Hemotica
 
 		private void loadDonorList()
 		{
-			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name] FROM Donors";
-			donorList = db.executeQuery(query);
+			string hospitalAccess = "All";
+
+			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name] FROM Donors WHERE Hospital = ? OR Hospital = ?";
+
+			OleDbParameter[] parameters =
+			{
+				new OleDbParameter("?", hospitalAccess),
+				new OleDbParameter("?", UserLogs.Username)
+			};
+
+			donorList = db.executeQuery(query, parameters);
 
 			cmbxDonor.Items.Clear();
 			cmbxDonor.Items.Add("Select donor");
