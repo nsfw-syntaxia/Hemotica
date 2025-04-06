@@ -341,6 +341,22 @@ namespace Hemotica
 			return db.executeQuery(query, parametersAppointments);
 		}
 
+		internal DataTable loadExtraction(Database db)
+		{
+			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string query = $@"SELECT Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], 
+							  Extraction.[Extraction Date] FROM Donors INNER JOIN (Hospitals INNER JOIN Extraction ON Hospitals.Username = Extraction.[Hospital Username]) ON 
+							  Donors.Username = Extraction.[Donor Username] WHERE Extraction.Hospital = ? GROUP BY Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], 
+							  Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] ORDER BY Extraction.[Extraction Date] ASC";
+
+			OleDbParameter[] parametersExtraction = { new OleDbParameter("?", hospitalName) };
+			return db.executeQuery(query, parametersExtraction);
+		}
+
 		internal bool accessDeleteDonor(int donorID, Database db)
 		{
 			string query = "SELECT Hospital FROM Donors WHERE [Donor ID] = ?";
