@@ -8,7 +8,7 @@ namespace Hemotica
 	public partial class RecordsDonor : UserControl
 	{
 		HospitalRecords hospitalRecords;
-		Patient patient = new Patient();
+		Donor donor = new Donor();
 		Database db = new Database();
 
 		public RecordsDonor(HospitalRecords parent)
@@ -21,14 +21,13 @@ namespace Hemotica
 			tbxLName.Text = "Last Name";
 			tbxAge.Text = "Age";
 			tbxCNumber.Text = "Contact Number";
-			tbxRequest.Text = "Request number of";
 		}
 
-		public Patient inputPatient()
+		public Donor inputDonor()
 		{
 			if (isValid())
 			{
-				return new Patient
+				return new Donor
 				{
 					FirstName = tbxFName.Text,
 					MiddleName = tbxMName.Text == "Middle Name" ? "" : tbxMName.Text,
@@ -39,38 +38,33 @@ namespace Hemotica
 					City = cmbxCity.SelectedItem?.ToString(),
 					Province = "Cebu",
 					ContactNumber = tbxCNumber.Text,
-					BloodType = cmbxBType.SelectedItem?.ToString(),
-					Request = tbxRequest.Text,
-					Priority = cmbxPriority.SelectedItem?.ToString()
+					BloodType = cmbxBType.SelectedItem?.ToString()
 				};
 			}
 
 			return null;
 		}
 
-		public void selectPatient(Patient patient)
+		public void selectDonor(Donor donor)
 		{
-			tbxFName.Text = patient.FirstName;
-			tbxMName.Text = string.IsNullOrWhiteSpace(patient.MiddleName) ? "" : patient.MiddleName;
-			tbxLName.Text = patient.LastName;
-			cmbxSex.SelectedItem = patient.Gender;
-			tbxAge.Text = patient.Age;
-			cmbxCity.SelectedItem = patient.City;
-			loadBarangays(patient.City);
-			cmbxBarangay.SelectedItem = patient.Barangay;
-			tbxCNumber.Text = patient.ContactNumber;
-			cmbxBType.SelectedItem = patient.BloodType;
-			tbxRequest.Text = patient.Request;
-			cmbxPriority.SelectedItem = patient.Priority;
+			tbxFName.Text = donor.FirstName;
+			tbxMName.Text = string.IsNullOrWhiteSpace(donor.MiddleName) ? "" : donor.MiddleName;
+			tbxLName.Text = donor.LastName;
+			cmbxSex.SelectedItem = donor.Gender;
+			tbxAge.Text = donor.Age;
+			cmbxCity.SelectedItem = donor.City;
+			loadBarangays(donor.City);
+			cmbxBarangay.SelectedItem = donor.Barangay;
+			tbxCNumber.Text = donor.ContactNumber;
+			cmbxBType.SelectedItem = donor.BloodType;
 		}
 
 		private bool isValid()
 		{
 			if (string.IsNullOrWhiteSpace(tbxFName.Text) || string.IsNullOrWhiteSpace(tbxLName.Text) || string.IsNullOrWhiteSpace(cmbxSex.SelectedItem?.ToString()) ||
 				string.IsNullOrWhiteSpace(tbxAge.Text) || string.IsNullOrWhiteSpace(cmbxBarangay.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(cmbxCity.SelectedItem?.ToString()) ||
-				string.IsNullOrWhiteSpace(tbxCNumber.Text) || string.IsNullOrWhiteSpace(cmbxBType.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(tbxRequest.Text) ||
-				string.IsNullOrWhiteSpace(cmbxPriority.SelectedItem?.ToString()) || cmbxSex.SelectedIndex == 0 || cmbxCity.SelectedIndex == 0 || cmbxBType.SelectedIndex == 0 || 
-				cmbxPriority.SelectedIndex == 0)
+				string.IsNullOrWhiteSpace(tbxCNumber.Text) || string.IsNullOrWhiteSpace(cmbxBType.SelectedItem?.ToString()) || cmbxSex.SelectedIndex == 0 || cmbxCity.SelectedIndex == 0 || 
+				cmbxBType.SelectedIndex == 0)
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
@@ -121,9 +115,9 @@ namespace Hemotica
 					cmbxBarangay.Items.Add(row["Barangay"].ToString());
 				}
 
-				if (patient.Barangay != null && cmbxBarangay.Items.Contains(patient.Barangay))
+				if (donor.Barangay != null && cmbxBarangay.Items.Contains(donor.Barangay))
 				{
-					cmbxBarangay.SelectedItem = patient.Barangay;
+					cmbxBarangay.SelectedItem = donor.Barangay;
 				}
 				else
 				{
@@ -162,12 +156,6 @@ namespace Hemotica
 				tbxCNumber.Text = "";
 		}
 
-		private void tbxRequest_Enter(object sender, EventArgs e)
-		{
-			if (tbxRequest.Text == "Request number of")
-				tbxRequest.Text = "";
-		}
-
 		private void tbxFName_Leave(object sender, EventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace(tbxFName.Text))
@@ -196,12 +184,6 @@ namespace Hemotica
 		{
 			if (string.IsNullOrWhiteSpace(tbxCNumber.Text))
 				tbxCNumber.Text = "Contact Number";
-		}
-
-		private void tbxRequest_Leave(object sender, EventArgs e)
-		{
-			if (string.IsNullOrWhiteSpace(tbxRequest.Text))
-				tbxRequest.Text = "Request number of";
 		}
 	}
 }

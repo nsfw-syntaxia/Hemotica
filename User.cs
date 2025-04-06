@@ -105,8 +105,18 @@ namespace Hemotica
 
 		internal DataTable loadDonors(Database db)
 		{
-			string query = "SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, [Contact Number], [Blood Type], Barangay, City, Province FROM Donors";
-			return db.executeQuery(query);
+			string hospitalAccess = "All";
+
+			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, [Contact Number], [Blood Type], Barangay, City, Province FROM Donors
+							 WHERE Hospital = ? OR Hospital = ?";
+
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", hospitalAccess),
+				new OleDbParameter("?", UserLogs.Username)
+			};
+
+			return db.executeQuery(query, parameters);
 		}
 
 		internal bool deleteDonorAccount(Database db)
@@ -119,6 +129,62 @@ namespace Hemotica
 				{
 					OleDbCommand cmd = new OleDbCommand(query, conn);
 					cmd.Parameters.AddWithValue("?", UserLogs.Username);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		private string generateWalkIn(Database db)
+		{
+			string query = "SELECT MAX(Val(Mid([Username], 13))) AS MaxNumber FROM Donors WHERE Username LIKE ?";
+			OleDbParameter[] parameters = { new OleDbParameter("?", "donor_walkin%") };
+			DataTable dt = db.executeQuery(query, parameters);
+
+			int nextNumber = 1;
+			if (dt.Rows.Count > 0 && dt.Rows[0]["MaxNumber"] != DBNull.Value)
+			{
+				nextNumber = Convert.ToInt32(dt.Rows[0]["MaxNumber"]) + 1;
+			}
+
+			return $"donor_walkin{nextNumber}";
+		}
+
+		internal bool addDonor(Database db)
+		{
+			string donorUsername = generateWalkIn(db);
+			string hospitalUsername = UserLogs.Username;
+
+			string query = @"INSERT INTO Donors ([Username], [First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type], [Hospital]) 
+							 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+
+					cmd.Parameters.AddWithValue("?", donorUsername);
+					cmd.Parameters.AddWithValue("?", FirstName);
+					cmd.Parameters.AddWithValue("?", MiddleName);
+					cmd.Parameters.AddWithValue("?", LastName);
+					cmd.Parameters.AddWithValue("?", Gender);
+					cmd.Parameters.AddWithValue("?", Age);
+					cmd.Parameters.AddWithValue("?", Barangay);
+					cmd.Parameters.AddWithValue("?", City);
+					cmd.Parameters.AddWithValue("?", Province);
+					cmd.Parameters.AddWithValue("?", ContactNumber);
+					cmd.Parameters.AddWithValue("?", BloodType);
+					cmd.Parameters.AddWithValue("?", hospitalUsername);
 
 					conn.Open();
 					cmd.ExecuteNonQuery();
@@ -255,8 +321,8 @@ namespace Hemotica
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 			string hospitalUsername = UserLogs.Username;
 
-			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Contact Number], [Blood Type], [Request], [Priority], [Barangay], [City], [Province],  
-							 [Hospital Username], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			string query = @"INSERT INTO Donors ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Contact Number], [Blood Type], [Request], [Priority], [Barangay], [City], [Province],  
+							 [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			try
 			{
@@ -277,9 +343,7 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("?", City);
 					cmd.Parameters.AddWithValue("?", Province);
 					cmd.Parameters.AddWithValue("?", hospitalUsername);
-					cmd.Parameters.AddWithValue("?", hospitalName);
 					
-
 					conn.Open();
 					cmd.ExecuteNonQuery();
 					conn.Close();

@@ -171,8 +171,16 @@ namespace Hemotica
 
 		private void updateAppointments(string donorUsername)
 		{
-			string updateAppointment = @"UPDATE Appointments SET Status = 'Completed' WHERE [Donor Username] = ? AND Status = 'Scheduled'";
-			OleDbParameter[] updateParameters = { new OleDbParameter("?", donorUsername) };
+			string hospitalUsername = UserLogs.Username;
+
+			string updateAppointment = @"UPDATE Appointments SET Status = 'Completed' WHERE [Donor Username] = ? AND [Status] = 'Scheduled' AND [Hospital Username] = ?";
+
+			OleDbParameter[] updateParameters =
+			{
+				new OleDbParameter("?", donorUsername),
+				new OleDbParameter("?", hospitalUsername)
+			};
+
 			db.executeNonQuery(updateAppointment, updateParameters);
 		}
 

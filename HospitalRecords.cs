@@ -42,6 +42,8 @@ namespace Hemotica
 			btnUpdate.Visible = true;
 			btnDelete.Visible = true;
 
+			flpInputs.Controls.Clear();
+			flpInputs.Controls.Add(new RecordsDonor(this));
 			loadDonors();
 		}
 
@@ -85,7 +87,21 @@ namespace Hemotica
 		{
 			if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsDonor recordsDonor)
 			{
-
+				DataGridViewRow row = dgvDataMin.Rows[e.RowIndex];
+				
+				recordsDonor.selectDonor(new Donor
+				{
+					FirstName = row.Cells["First Name"].Value?.ToString(),
+					MiddleName = row.Cells["Middle Name"].Value?.ToString() ?? "",
+					LastName = row.Cells["Last Name"].Value?.ToString(),
+					Gender = row.Cells["Gender"].Value?.ToString(),
+					Age = row.Cells["Age"].Value?.ToString(),
+					Barangay = row.Cells["Barangay"].Value?.ToString(),
+					City = row.Cells["City"].Value?.ToString(),
+					Province = "Cebu",
+					ContactNumber = row.Cells["Contact Number"].Value?.ToString(),
+					BloodType = row.Cells["Blood Type"].Value?.ToString()
+				});
 			}
 			else if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
@@ -153,7 +169,27 @@ namespace Hemotica
 
 		private void btnInsert_Click(object sender, EventArgs e)
 		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (flpInputs.Controls[0] is RecordsDonor recordsDonor)
+			{
+				Donor donor = recordsDonor.inputDonor();
+
+				if (donor != null)
+				{
+					if (donor.addDonor(db))
+					{
+						MessageBox.Show("Donor record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						
+						flpInputs.Controls.Clear();
+						flpInputs.Controls.Add(new RecordsDonor(this));
+						loadDonors();
+					}
+					else
+					{
+						MessageBox.Show("Donor record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+			else if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				Patient patient = recordsPatient.inputPatient();
 
@@ -197,7 +233,11 @@ namespace Hemotica
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (flpInputs.Controls[0] is RecordsDonor recordsDonor)
+			{
+				//
+			}
+			else if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				Patient patient = recordsPatient.inputPatient();
 
@@ -251,7 +291,11 @@ namespace Hemotica
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (flpInputs.Controls[0] is RecordsDonor recordsDonor)
+			{
+				//
+			}
+			else if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				if (dgvDataMin.SelectedRows.Count > 0)
 				{
