@@ -202,7 +202,7 @@ namespace Hemotica
 
 		internal bool updateDonor(Database db, int donorID)
 		{
-			string query = @"UPDATE Patients SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Contact Number] = ?, [Blood Type] = ?, 
+			string query = @"UPDATE Donors SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Contact Number] = ?, [Blood Type] = ?, 
 							 [Barangay] = ?, [City] = ?, [Province] = ? WHERE [Donor ID] = ?";
 
 			try
@@ -229,6 +229,33 @@ namespace Hemotica
 
 						return true;
 					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		internal bool deleteDonor(int donorID, Database db)
+		{
+			string query = "DELETE FROM Donors WHERE [Donor ID] = ? AND Hospital = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+
+					cmd.Parameters.AddWithValue("?", donorID);
+					cmd.Parameters.AddWithValue("?", UserLogs.Username);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
 				}
 			}
 			catch (Exception ex)
@@ -313,6 +340,40 @@ namespace Hemotica
 			OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
 			return db.executeQuery(query, parametersAppointments);
 		}
+
+		internal bool accessDeleteDonor(int donorID, Database db)
+		{
+			string query = "SELECT Hospital FROM Donors WHERE [Donor ID] = ?";
+			OleDbParameter[] parameters = { new OleDbParameter("?", donorID) };
+			string donorHospital = string.Empty;
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+					cmd.Parameters.AddRange(parameters);
+
+					conn.Open();
+					donorHospital = cmd.ExecuteScalar()?.ToString();
+					conn.Close();
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			if (donorHospital == "All")
+			{
+				MessageBox.Show("You have no access to delete this record.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return false;
+			}
+
+			return true;
+		}
+
 	}
 
 	public class Admin : User

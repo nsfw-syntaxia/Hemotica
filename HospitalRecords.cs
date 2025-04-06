@@ -314,7 +314,31 @@ namespace Hemotica
 		{
 			if (flpInputs.Controls[0] is RecordsDonor recordsDonor)
 			{
-				//
+				if (dgvDataMin.SelectedRows.Count > 0)
+				{
+					int donorID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Donor ID"].Value);
+
+					if (!hospital.accessDeleteDonor(donorID, db))
+					{
+						return;
+					}
+
+					var confirmResult = MessageBox.Show("Are you sure you want to delete this record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+					if (confirmResult == DialogResult.Yes)
+					{
+						if (donor.deleteDonor(donorID, db))
+						{
+							MessageBox.Show("Donor record deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							DataTable dt = donor.loadDonors(db);
+							dgvDataMin.DataSource = dt;
+						}
+						else
+						{
+							MessageBox.Show("Donor record deletion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
 			}
 			else if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
