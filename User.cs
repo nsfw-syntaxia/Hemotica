@@ -109,16 +109,16 @@ namespace Hemotica
 			return db.executeQuery(query);
 		}
 
-		internal bool deleteDonor(int donorID, Database db)
+		internal bool deleteDonorAccount(Database db)
 		{
-			string query = "DELETE FROM Donors WHERE [Donor ID] = ?";
+			string query = "DELETE FROM Donors WHERE [Username] = ?";
 
 			try
 			{
 				using (OleDbConnection conn = db.getConnection())
 				{
 					OleDbCommand cmd = new OleDbCommand(query, conn);
-					cmd.Parameters.AddWithValue("?", donorID);
+					cmd.Parameters.AddWithValue("?", UserLogs.Username);
 
 					conn.Open();
 					cmd.ExecuteNonQuery();
@@ -196,16 +196,18 @@ namespace Hemotica
 
 		internal DataTable loadAppointments(Database db)
 		{
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
-			DataTable hospitalData = db.executeQuery(queryHospital);
+			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
 			string query = $@"SELECT Appointments.[Appointment ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], 
 							  Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
 							  INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital
-							  WHERE Appointments.Hospital = '{hospitalName}' ORDER BY Appointments.[Appointment Date] ASC";
+							  WHERE Appointments.Hospital = ? ORDER BY Appointments.[Appointment Date] ASC";
 
-			return db.executeQuery(query);
+			OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
+			return db.executeQuery(query, parametersAppointments);
 		}
 	}
 
@@ -233,21 +235,25 @@ namespace Hemotica
 
 		internal DataTable loadPatients(Database db)
 		{
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
-			DataTable hospitalData = db.executeQuery(queryHospital);
+			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
 			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, [Contact Number], [Blood Type], Request, Priority, Barangay, City, Province FROM Patients 
-							  WHERE [Hospital] = '{hospitalName}'";
-			return db.executeQuery(query);
+							  WHERE [Hospital] = ?";
+
+			OleDbParameter[] parametersPatients = { new OleDbParameter("?", hospitalName) };
+			return db.executeQuery(query, parametersPatients);
 		}
 
 		internal bool addPatient(Database db)
 		{
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
-			DataTable hospitalData = db.executeQuery(queryHospital);
+			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
-			string hospitalUsername = db.hospitalUsername(hospitalName);
+			string hospitalUsername = UserLogs.Username;
 
 			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Contact Number], [Blood Type], [Request], [Priority], [Barangay], [City], [Province],  
 							 [Hospital Username], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -373,21 +379,25 @@ namespace Hemotica
 
 		internal DataTable loadPhysicians(Database db)
 		{
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
-			DataTable hospitalData = db.executeQuery(queryHospital);
+			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
 			string query = $@"SELECT [Physician ID], [First Name], [Middle Name], [Last Name], Gender, Age, Specialization, [License Number], [Contact Number] FROM Physicians 
-							  WHERE [Hospital] = '{hospitalName}'";
-			return db.executeQuery(query);
+							  WHERE [Hospital] = ?";
+
+			OleDbParameter[] parametersPhysicians = { new OleDbParameter("?", hospitalName) };
+			return db.executeQuery(query, parametersPhysicians);
 		}
 
 		internal bool addPhysician(Database db)
 		{
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
-			DataTable hospitalData = db.executeQuery(queryHospital);
+			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
-			string hospitalUsername = db.hospitalUsername(hospitalName);
+			string hospitalUsername = UserLogs.Username;
 
 			string query = @"INSERT INTO Physicians ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Specialization], [License Number], [Contact Number], [Hospital Username], [Hospital]) 
 							 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

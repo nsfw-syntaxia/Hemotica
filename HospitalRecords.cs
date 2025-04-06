@@ -34,13 +34,13 @@ namespace Hemotica
 		private void lDonors_Click(object sender, EventArgs e)
 		{
 			btnConnection.Visible = false;
-			dgvDataMax.Visible = true;
+			dgvDataMax.Visible = false;
 
-			dgvDataMin.Visible = false;
-			flpInputs.Visible = false;
-			btnInsert.Visible = false;
-			btnUpdate.Visible = false;
-			btnDelete.Visible = false;
+			dgvDataMin.Visible = true;
+			flpInputs.Visible = true;
+			btnInsert.Visible = true;
+			btnUpdate.Visible = true;
+			btnDelete.Visible = true;
 
 			loadDonors();
 		}
@@ -51,7 +51,7 @@ namespace Hemotica
 
 			if (dt != null)
 			{
-				dgvDataMax.DataSource = dt;
+				dgvDataMin.DataSource = dt;
 			}
 		}
 
@@ -83,7 +83,11 @@ namespace Hemotica
 
 		private void dgvDataMin_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsDonor recordsDonor)
+			{
+
+			}
+			else if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				DataGridViewRow row = dgvDataMin.Rows[e.RowIndex];
 
@@ -408,7 +412,7 @@ namespace Hemotica
 
 		private void pDonors_Click(object sender, EventArgs e)
 		{
-			exportPDF(dgvDataMax, "Donor");
+			exportPDF(dgvDataMin, "Donor");
 		}
 
 		private void pPatients_Click(object sender, EventArgs e)

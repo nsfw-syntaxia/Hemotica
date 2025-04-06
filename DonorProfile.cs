@@ -12,6 +12,7 @@ namespace Hemotica
 	{
 		private Database db = new Database();
 		private string donorEmail;
+		private bool anyChanges = false;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -28,6 +29,9 @@ namespace Hemotica
 		{
 			roundControls();
 			loadDonors();
+
+			btnSave.Enabled = false;
+			pbxProfile.Focus();
 		}
 
 		private void DonorProfile_Resize(object sender, EventArgs e)
@@ -73,15 +77,20 @@ namespace Hemotica
 		{
 			tbxEmail.Enabled = true;
 			tbxPassword.Enabled = true;
+			tbxGender.Enabled = true;
 			tbxAge.Enabled = true;
 			tbxHomeAddress.Enabled = true;
 			tbxNumber.Enabled = true;
+
+			anyChanges = false;
+			btnSave.Enabled = false;
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			string email = tbxEmail.Text.Trim();
 			string password = tbxPassword.Text.Trim();
+			string gender = tbxGender.Text.Trim();
 			string ageDonor = tbxAge.Text.Trim();
 			string contactNumber = tbxNumber.Text.Trim();
 			string[] addressParts = tbxHomeAddress.Text.Split(',');
@@ -103,6 +112,9 @@ namespace Hemotica
 
 			if (emailCount > 1 || (emailCount == 1 && !email.Equals(currentEmail, StringComparison.OrdinalIgnoreCase)))
 				errors.Add("Email address already exists.");
+
+			if (gender.ToLower() != "male" && gender.ToLower() != "female")
+				errors.Add("Sex must be Male or Female.");
 
 			if (!ExceptionHandling.validAge(ageDonor, out int age))
 				errors.Add("Invalid age.");
@@ -129,7 +141,7 @@ namespace Hemotica
 				hashedPassword = db.hashPassword(password);
 			}
 
-			string query = @"UPDATE Donors SET [Email Address] = ?, [Age] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ?";
+			string query = @"UPDATE Donors SET [Email Address] = ?, [Gender] = ?, [Age] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ?";
 
 			if (!string.IsNullOrEmpty(hashedPassword))
 			{
@@ -140,6 +152,7 @@ namespace Hemotica
 			List<OleDbParameter> parameters = new List<OleDbParameter>
 			{
 				new OleDbParameter("?", email),
+				new OleDbParameter("?", gender),
 				new OleDbParameter("?", age),
 				new OleDbParameter("?", barangay),
 				new OleDbParameter("?", city),
@@ -159,9 +172,13 @@ namespace Hemotica
 
 				tbxEmail.Enabled = false;
 				tbxPassword.Enabled = false;
+				tbxGender.Enabled = false;
 				tbxAge.Enabled = false;
 				tbxHomeAddress.Enabled = false;
 				tbxNumber.Enabled = false;
+
+				btnSave.Enabled = false;
+				pbxProfile.Focus();
 			}
 		}
 
@@ -207,7 +224,75 @@ namespace Hemotica
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			//
+			Donor donor = new Donor();
+			bool deleteAccount = donor.deleteDonorAccount(db);
+
+			if (deleteAccount)
+			{
+				MessageBox.Show("Account deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				logout();
+			}
+			else
+			{
+				MessageBox.Show("Account deletion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private async void logout()
+		{
+			UserLogs.LogoutUser(db);
+
+			if (Application.OpenForms["DashboardD"] is DashboardD dashboard)
+			{
+				dashboard.Close();
+			}
+
+			if (Application.OpenForms["Home"] is Home home)
+			{
+				home.WindowState = FormWindowState.Normal;
+				home.Show();
+				home.Activate();
+				await Task.Delay(1);
+			}
+
+			this.Parent?.Controls.Remove(this);
+		}
+
+		private void tbxEmail_TextChanged(object sender, EventArgs e)
+		{
+			anyChanges = true;
+			btnSave.Enabled = true;
+		}
+
+		private void tbxPassword_TextChanged(object sender, EventArgs e)
+		{
+			anyChanges = true;
+			btnSave.Enabled = true;
+		}
+
+		private void tbxGender_TextChanged(object sender, EventArgs e)
+		{
+			anyChanges = true;
+			btnSave.Enabled = true;
+		}
+
+		private void tbxAge_TextChanged(object sender, EventArgs e)
+		{
+			anyChanges = true;
+			btnSave.Enabled = true;
+		}
+
+		private void tbxHomeAddress_TextChanged(object sender, EventArgs e)
+		{
+			anyChanges = true;
+			btnSave.Enabled = true;
+		}
+
+		private void tbxNumber_TextChanged(object sender, EventArgs e)
+		{
+			anyChanges = true;
+			btnSave.Enabled = true;
 		}
 	}
 }

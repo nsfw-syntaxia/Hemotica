@@ -37,6 +37,9 @@
     </Compile>
     <Compile Update="Login.cs" />
     <Compile Update="ForgetPassword.cs" />
+    <Compile Update="RecordsDonor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="RegisterDP4.cs">
       <SubType>UserControl</SubType>
     </Compile>

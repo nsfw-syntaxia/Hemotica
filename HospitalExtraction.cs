@@ -179,13 +179,13 @@ namespace Hemotica
 		public void updateExtraction()
 		{
 			string expireStocksQuery = @"UPDATE Extraction SET Status = 'Expired' WHERE [Expiration Date] < ? AND Status = 'Available'";
-			OleDbParameter[] stockParameter = { new OleDbParameter("?", DateTime.Now) };
+			OleDbParameter[] stockParameter = { new OleDbParameter("?", DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss")) };
 			db.executeNonQuery(expireStocksQuery, stockParameter);
 		}
 
 		private void btnBarCode_Click(object sender, EventArgs e)
 		{
-
+			// display extraction date, blood type, decoded value of the barcode, and barcode
 		}
 	}
 }

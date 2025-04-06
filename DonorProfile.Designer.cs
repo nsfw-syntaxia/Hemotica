@@ -175,6 +175,7 @@
 			// btnSave
 			// 
 			btnSave.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnSave.Enabled = false;
 			btnSave.Font = new Font("Bahnschrift", 14F);
 			btnSave.ForeColor = Color.FromArgb(252, 228, 228);
 			btnSave.Location = new Point(326, 529);
@@ -231,6 +232,7 @@
 			tbxEmail.TabIndex = 31;
 			tbxEmail.TabStop = false;
 			tbxEmail.UseSystemPasswordChar = false;
+			tbxEmail.TextChanged += tbxEmail_TextChanged;
 			// 
 			// tbxPassword
 			// 
@@ -255,6 +257,7 @@
 			tbxPassword.TabIndex = 32;
 			tbxPassword.TabStop = false;
 			tbxPassword.UseSystemPasswordChar = false;
+			tbxPassword.TextChanged += tbxPassword_TextChanged;
 			// 
 			// tbxName
 			// 
@@ -303,6 +306,7 @@
 			tbxGender.TabIndex = 34;
 			tbxGender.TabStop = false;
 			tbxGender.UseSystemPasswordChar = false;
+			tbxGender.TextChanged += tbxGender_TextChanged;
 			// 
 			// tbxAge
 			// 
@@ -327,6 +331,7 @@
 			tbxAge.TabIndex = 35;
 			tbxAge.TabStop = false;
 			tbxAge.UseSystemPasswordChar = false;
+			tbxAge.TextChanged += tbxAge_TextChanged;
 			// 
 			// tbxHomeAddress
 			// 
@@ -351,6 +356,7 @@
 			tbxHomeAddress.TabIndex = 36;
 			tbxHomeAddress.TabStop = false;
 			tbxHomeAddress.UseSystemPasswordChar = false;
+			tbxHomeAddress.TextChanged += tbxHomeAddress_TextChanged;
 			// 
 			// tbxNumber
 			// 
@@ -375,6 +381,7 @@
 			tbxNumber.TabIndex = 37;
 			tbxNumber.TabStop = false;
 			tbxNumber.UseSystemPasswordChar = false;
+			tbxNumber.TextChanged += tbxNumber_TextChanged;
 			// 
 			// tbxBType
 			// 
