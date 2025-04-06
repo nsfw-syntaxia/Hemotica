@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using ZXing;
 using ZXing.Rendering;
 using ZXing.Common;
+using Zen.Barcode;
 
 namespace Hemotica
 {
@@ -149,7 +150,7 @@ namespace Hemotica
 			string barcodeValue = Guid.NewGuid().ToString().Substring(0, 10);
 
 			Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-			Image barcodeImage = barcode.Draw(barcodeValue, 200);
+			Image barcodeImage = barcode.Draw(barcodeValue, 100);
 
 			Bitmap barcodeBitmap = new Bitmap(barcodeImage);
 
@@ -202,7 +203,12 @@ namespace Hemotica
 
 		private void btnBarCode_Click(object sender, EventArgs e)
 		{
-			// display extraction date, blood type, decoded value of the barcode, and barcode
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showBloodBagBarcodes();
+			}
 		}
 	}
 }

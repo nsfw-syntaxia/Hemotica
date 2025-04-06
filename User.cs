@@ -357,6 +357,13 @@ namespace Hemotica
 			return db.executeQuery(query, parametersExtraction);
 		}
 
+		internal DataTable loadBarcodes(Database db)
+		{
+			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction WHERE [Hospital Username] = ?";
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			return db.executeQuery(query, parameters);
+		}
+
 		internal bool accessDeleteDonor(int donorID, Database db)
 		{
 			string query = "SELECT Hospital FROM Donors WHERE [Donor ID] = ?";

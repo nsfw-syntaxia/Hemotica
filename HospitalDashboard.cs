@@ -107,7 +107,7 @@ namespace Hemotica
 		private void updateAppointments()
 		{
 			string cancelAppointmentsQuery = @"UPDATE Appointments SET Status = 'Cancelled' WHERE [Appointment Date] < ? AND Status = 'Scheduled'";
-			string format = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+			string format = DateTime.Now.Date.ToString("MM/dd/yyyy");
 			OleDbParameter[] appointmentParameter = { new OleDbParameter("?", format) };
 			db.executeNonQuery(cancelAppointmentsQuery, appointmentParameter);
 		}

@@ -210,6 +210,15 @@ namespace Hemotica
 			adjustLayout();
 		}
 
+		internal void showBloodBagBarcodes()
+		{
+			lblHeader.Text = "Blood Extraction";
+			flpDashboard.Controls.Clear();
+			BloodBagBarcodes bloodBagBarcodes = new BloodBagBarcodes();
+			flpDashboard.Controls.Add(bloodBagBarcodes);
+			adjustLayout();
+		}
+
 		private void btnStock_Click(object sender, EventArgs e)
 		{
 			showBloodStock();
