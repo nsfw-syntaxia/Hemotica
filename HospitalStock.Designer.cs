@@ -115,7 +115,7 @@
 			// 
 			flpStock.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
 			flpStock.AutoScroll = true;
-			flpStock.BackColor = Color.FromArgb(236, 124, 132);
+			flpStock.BackColor = Color.FromArgb(252, 196, 196);
 			flpStock.FlowDirection = FlowDirection.TopDown;
 			flpStock.Location = new Point(513, 18);
 			flpStock.Name = "flpStock";

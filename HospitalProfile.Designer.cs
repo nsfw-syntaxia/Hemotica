@@ -29,80 +29,31 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalProfile));
-			btnEdit = new AntdUI.Button();
-			btnProfile = new AntdUI.Button();
-			btnSave = new AntdUI.Button();
-			tbxPassword = new ReaLTaiizor.Controls.BigTextBox();
 			lblPassword = new Label();
-			tbxHours = new ReaLTaiizor.Controls.BigTextBox();
 			lblHours = new Label();
-			tbxNumber = new ReaLTaiizor.Controls.BigTextBox();
 			lblNumber = new Label();
-			tbxAddress = new ReaLTaiizor.Controls.BigTextBox();
 			lblAddress = new Label();
-			tbxClassification = new ReaLTaiizor.Controls.BigTextBox();
-			tbxLicense = new ReaLTaiizor.Controls.BigTextBox();
 			lblLicense = new Label();
-			tbxEmail = new ReaLTaiizor.Controls.BigTextBox();
 			lblEmail = new Label();
-			tbxPatientID = new ReaLTaiizor.Controls.BigTextBox();
 			dName = new Label();
 			pbxProfile = new PictureBox();
 			lblClassification = new Label();
 			pProfile = new Panel();
+			tbxEmail = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxPassword = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxName = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxLicense = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxClassification = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxAddress = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxNumber = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxOHours = new ReaLTaiizor.Controls.HopeTextBox();
+			btnEdit = new AntdUI.Button();
+			btnSave = new AntdUI.Button();
+			btnProfile = new AntdUI.Button();
 			btnDelete = new AntdUI.Button();
 			((System.ComponentModel.ISupportInitialize)pbxProfile).BeginInit();
 			pProfile.SuspendLayout();
 			SuspendLayout();
-			// 
-			// btnEdit
-			// 
-			btnEdit.DefaultBack = Color.FromArgb(236, 124, 132);
-			btnEdit.Font = new Font("Bahnschrift", 14F);
-			btnEdit.ForeColor = Color.FromArgb(252, 228, 228);
-			btnEdit.Location = new Point(133, 529);
-			btnEdit.Name = "btnEdit";
-			btnEdit.Size = new Size(187, 52);
-			btnEdit.TabIndex = 50;
-			btnEdit.Text = "Edit Details";
-			// 
-			// btnProfile
-			// 
-			btnProfile.DefaultBack = Color.FromArgb(236, 124, 132);
-			btnProfile.Font = new Font("Bahnschrift", 14F);
-			btnProfile.ForeColor = Color.FromArgb(252, 228, 228);
-			btnProfile.Location = new Point(727, 422);
-			btnProfile.Name = "btnProfile";
-			btnProfile.Size = new Size(187, 52);
-			btnProfile.TabIndex = 49;
-			btnProfile.Text = "Change Photo";
-			// 
-			// btnSave
-			// 
-			btnSave.DefaultBack = Color.FromArgb(236, 124, 132);
-			btnSave.Font = new Font("Bahnschrift", 14F);
-			btnSave.ForeColor = Color.FromArgb(252, 228, 228);
-			btnSave.Location = new Point(326, 529);
-			btnSave.Name = "btnSave";
-			btnSave.Size = new Size(187, 52);
-			btnSave.TabIndex = 48;
-			btnSave.Text = "Save Changes";
-			// 
-			// tbxPassword
-			// 
-			tbxPassword.BackColor = Color.Transparent;
-			tbxPassword.Font = new Font("Tahoma", 11F);
-			tbxPassword.ForeColor = Color.DimGray;
-			tbxPassword.Image = null;
-			tbxPassword.Location = new Point(260, 107);
-			tbxPassword.MaxLength = 32767;
-			tbxPassword.Multiline = false;
-			tbxPassword.Name = "tbxPassword";
-			tbxPassword.ReadOnly = false;
-			tbxPassword.Size = new Size(349, 41);
-			tbxPassword.TabIndex = 47;
-			tbxPassword.TextAlignment = HorizontalAlignment.Left;
-			tbxPassword.UseSystemPasswordChar = false;
 			// 
 			// lblPassword
 			// 
@@ -116,22 +67,6 @@
 			lblPassword.TabIndex = 46;
 			lblPassword.Text = "Password";
 			// 
-			// tbxHours
-			// 
-			tbxHours.BackColor = Color.Transparent;
-			tbxHours.Font = new Font("Tahoma", 11F);
-			tbxHours.ForeColor = Color.DimGray;
-			tbxHours.Image = null;
-			tbxHours.Location = new Point(260, 437);
-			tbxHours.MaxLength = 32767;
-			tbxHours.Multiline = false;
-			tbxHours.Name = "tbxHours";
-			tbxHours.ReadOnly = false;
-			tbxHours.Size = new Size(349, 41);
-			tbxHours.TabIndex = 45;
-			tbxHours.TextAlignment = HorizontalAlignment.Left;
-			tbxHours.UseSystemPasswordChar = false;
-			// 
 			// lblHours
 			// 
 			lblHours.AutoSize = true;
@@ -143,22 +78,6 @@
 			lblHours.Size = new Size(219, 38);
 			lblHours.TabIndex = 44;
 			lblHours.Text = "Operating Hours";
-			// 
-			// tbxNumber
-			// 
-			tbxNumber.BackColor = Color.Transparent;
-			tbxNumber.Font = new Font("Tahoma", 11F);
-			tbxNumber.ForeColor = Color.DimGray;
-			tbxNumber.Image = null;
-			tbxNumber.Location = new Point(260, 390);
-			tbxNumber.MaxLength = 32767;
-			tbxNumber.Multiline = false;
-			tbxNumber.Name = "tbxNumber";
-			tbxNumber.ReadOnly = false;
-			tbxNumber.Size = new Size(349, 41);
-			tbxNumber.TabIndex = 43;
-			tbxNumber.TextAlignment = HorizontalAlignment.Left;
-			tbxNumber.UseSystemPasswordChar = false;
 			// 
 			// lblNumber
 			// 
@@ -172,22 +91,6 @@
 			lblNumber.TabIndex = 42;
 			lblNumber.Text = "Contact Number";
 			// 
-			// tbxAddress
-			// 
-			tbxAddress.BackColor = Color.Transparent;
-			tbxAddress.Font = new Font("Tahoma", 11F);
-			tbxAddress.ForeColor = Color.DimGray;
-			tbxAddress.Image = null;
-			tbxAddress.Location = new Point(260, 343);
-			tbxAddress.MaxLength = 32767;
-			tbxAddress.Multiline = false;
-			tbxAddress.Name = "tbxAddress";
-			tbxAddress.ReadOnly = false;
-			tbxAddress.Size = new Size(349, 41);
-			tbxAddress.TabIndex = 41;
-			tbxAddress.TextAlignment = HorizontalAlignment.Left;
-			tbxAddress.UseSystemPasswordChar = false;
-			// 
 			// lblAddress
 			// 
 			lblAddress.AutoSize = true;
@@ -199,38 +102,6 @@
 			lblAddress.Size = new Size(121, 38);
 			lblAddress.TabIndex = 40;
 			lblAddress.Text = "Address";
-			// 
-			// tbxClassification
-			// 
-			tbxClassification.BackColor = Color.Transparent;
-			tbxClassification.Font = new Font("Tahoma", 11F);
-			tbxClassification.ForeColor = Color.DimGray;
-			tbxClassification.Image = null;
-			tbxClassification.Location = new Point(260, 272);
-			tbxClassification.MaxLength = 32767;
-			tbxClassification.Multiline = false;
-			tbxClassification.Name = "tbxClassification";
-			tbxClassification.ReadOnly = false;
-			tbxClassification.Size = new Size(349, 41);
-			tbxClassification.TabIndex = 39;
-			tbxClassification.TextAlignment = HorizontalAlignment.Left;
-			tbxClassification.UseSystemPasswordChar = false;
-			// 
-			// tbxLicense
-			// 
-			tbxLicense.BackColor = Color.Transparent;
-			tbxLicense.Font = new Font("Tahoma", 11F);
-			tbxLicense.ForeColor = Color.DimGray;
-			tbxLicense.Image = null;
-			tbxLicense.Location = new Point(260, 225);
-			tbxLicense.MaxLength = 32767;
-			tbxLicense.Multiline = false;
-			tbxLicense.Name = "tbxLicense";
-			tbxLicense.ReadOnly = false;
-			tbxLicense.Size = new Size(349, 41);
-			tbxLicense.TabIndex = 37;
-			tbxLicense.TextAlignment = HorizontalAlignment.Left;
-			tbxLicense.UseSystemPasswordChar = false;
 			// 
 			// lblLicense
 			// 
@@ -244,22 +115,6 @@
 			lblLicense.TabIndex = 36;
 			lblLicense.Text = "License ID";
 			// 
-			// tbxEmail
-			// 
-			tbxEmail.BackColor = Color.Transparent;
-			tbxEmail.Font = new Font("Tahoma", 11F);
-			tbxEmail.ForeColor = Color.DimGray;
-			tbxEmail.Image = null;
-			tbxEmail.Location = new Point(260, 60);
-			tbxEmail.MaxLength = 32767;
-			tbxEmail.Multiline = false;
-			tbxEmail.Name = "tbxEmail";
-			tbxEmail.ReadOnly = false;
-			tbxEmail.Size = new Size(349, 41);
-			tbxEmail.TabIndex = 35;
-			tbxEmail.TextAlignment = HorizontalAlignment.Left;
-			tbxEmail.UseSystemPasswordChar = false;
-			// 
 			// lblEmail
 			// 
 			lblEmail.AutoSize = true;
@@ -271,22 +126,6 @@
 			lblEmail.Size = new Size(196, 38);
 			lblEmail.TabIndex = 34;
 			lblEmail.Text = "Email Address";
-			// 
-			// tbxPatientID
-			// 
-			tbxPatientID.BackColor = Color.Transparent;
-			tbxPatientID.Font = new Font("Tahoma", 11F);
-			tbxPatientID.ForeColor = Color.DimGray;
-			tbxPatientID.Image = null;
-			tbxPatientID.Location = new Point(260, 178);
-			tbxPatientID.MaxLength = 32767;
-			tbxPatientID.Multiline = false;
-			tbxPatientID.Name = "tbxPatientID";
-			tbxPatientID.ReadOnly = false;
-			tbxPatientID.Size = new Size(349, 41);
-			tbxPatientID.TabIndex = 33;
-			tbxPatientID.TextAlignment = HorizontalAlignment.Left;
-			tbxPatientID.UseSystemPasswordChar = false;
 			// 
 			// dName
 			// 
@@ -333,6 +172,232 @@
 			pProfile.Size = new Size(325, 325);
 			pProfile.TabIndex = 31;
 			// 
+			// tbxEmail
+			// 
+			tbxEmail.BackColor = Color.White;
+			tbxEmail.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxEmail.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxEmail.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxEmail.Enabled = false;
+			tbxEmail.Font = new Font("Bahnschrift", 15F);
+			tbxEmail.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxEmail.Hint = "";
+			tbxEmail.Location = new Point(260, 60);
+			tbxEmail.MaxLength = 32767;
+			tbxEmail.Multiline = false;
+			tbxEmail.Name = "tbxEmail";
+			tbxEmail.PasswordChar = '\0';
+			tbxEmail.ScrollBars = ScrollBars.None;
+			tbxEmail.SelectedText = "";
+			tbxEmail.SelectionLength = 0;
+			tbxEmail.SelectionStart = 0;
+			tbxEmail.Size = new Size(349, 41);
+			tbxEmail.TabIndex = 52;
+			tbxEmail.TabStop = false;
+			tbxEmail.UseSystemPasswordChar = false;
+			// 
+			// tbxPassword
+			// 
+			tbxPassword.BackColor = Color.White;
+			tbxPassword.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxPassword.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxPassword.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxPassword.Enabled = false;
+			tbxPassword.Font = new Font("Bahnschrift", 15F);
+			tbxPassword.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxPassword.Hint = "";
+			tbxPassword.Location = new Point(260, 107);
+			tbxPassword.MaxLength = 32767;
+			tbxPassword.Multiline = false;
+			tbxPassword.Name = "tbxPassword";
+			tbxPassword.PasswordChar = '●';
+			tbxPassword.ScrollBars = ScrollBars.None;
+			tbxPassword.SelectedText = "";
+			tbxPassword.SelectionLength = 0;
+			tbxPassword.SelectionStart = 0;
+			tbxPassword.Size = new Size(349, 41);
+			tbxPassword.TabIndex = 53;
+			tbxPassword.TabStop = false;
+			tbxPassword.UseSystemPasswordChar = false;
+			// 
+			// tbxName
+			// 
+			tbxName.BackColor = Color.White;
+			tbxName.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxName.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxName.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxName.Enabled = false;
+			tbxName.Font = new Font("Bahnschrift", 15F);
+			tbxName.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxName.Hint = "";
+			tbxName.Location = new Point(260, 178);
+			tbxName.MaxLength = 32767;
+			tbxName.Multiline = false;
+			tbxName.Name = "tbxName";
+			tbxName.PasswordChar = '\0';
+			tbxName.ScrollBars = ScrollBars.None;
+			tbxName.SelectedText = "";
+			tbxName.SelectionLength = 0;
+			tbxName.SelectionStart = 0;
+			tbxName.Size = new Size(349, 41);
+			tbxName.TabIndex = 54;
+			tbxName.TabStop = false;
+			tbxName.UseSystemPasswordChar = false;
+			// 
+			// tbxLicense
+			// 
+			tbxLicense.BackColor = Color.White;
+			tbxLicense.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxLicense.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxLicense.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxLicense.Enabled = false;
+			tbxLicense.Font = new Font("Bahnschrift", 15F);
+			tbxLicense.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxLicense.Hint = "";
+			tbxLicense.Location = new Point(260, 225);
+			tbxLicense.MaxLength = 32767;
+			tbxLicense.Multiline = false;
+			tbxLicense.Name = "tbxLicense";
+			tbxLicense.PasswordChar = '\0';
+			tbxLicense.ScrollBars = ScrollBars.None;
+			tbxLicense.SelectedText = "";
+			tbxLicense.SelectionLength = 0;
+			tbxLicense.SelectionStart = 0;
+			tbxLicense.Size = new Size(349, 41);
+			tbxLicense.TabIndex = 55;
+			tbxLicense.TabStop = false;
+			tbxLicense.UseSystemPasswordChar = false;
+			// 
+			// tbxClassification
+			// 
+			tbxClassification.BackColor = Color.White;
+			tbxClassification.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxClassification.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxClassification.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxClassification.Enabled = false;
+			tbxClassification.Font = new Font("Bahnschrift", 15F);
+			tbxClassification.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxClassification.Hint = "";
+			tbxClassification.Location = new Point(260, 272);
+			tbxClassification.MaxLength = 32767;
+			tbxClassification.Multiline = false;
+			tbxClassification.Name = "tbxClassification";
+			tbxClassification.PasswordChar = '\0';
+			tbxClassification.ScrollBars = ScrollBars.None;
+			tbxClassification.SelectedText = "";
+			tbxClassification.SelectionLength = 0;
+			tbxClassification.SelectionStart = 0;
+			tbxClassification.Size = new Size(349, 41);
+			tbxClassification.TabIndex = 56;
+			tbxClassification.TabStop = false;
+			tbxClassification.UseSystemPasswordChar = false;
+			// 
+			// tbxAddress
+			// 
+			tbxAddress.BackColor = Color.White;
+			tbxAddress.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxAddress.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxAddress.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxAddress.Enabled = false;
+			tbxAddress.Font = new Font("Bahnschrift", 15F);
+			tbxAddress.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxAddress.Hint = "";
+			tbxAddress.Location = new Point(260, 343);
+			tbxAddress.MaxLength = 32767;
+			tbxAddress.Multiline = false;
+			tbxAddress.Name = "tbxAddress";
+			tbxAddress.PasswordChar = '\0';
+			tbxAddress.ScrollBars = ScrollBars.None;
+			tbxAddress.SelectedText = "";
+			tbxAddress.SelectionLength = 0;
+			tbxAddress.SelectionStart = 0;
+			tbxAddress.Size = new Size(349, 41);
+			tbxAddress.TabIndex = 57;
+			tbxAddress.TabStop = false;
+			tbxAddress.UseSystemPasswordChar = false;
+			// 
+			// tbxNumber
+			// 
+			tbxNumber.BackColor = Color.White;
+			tbxNumber.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxNumber.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxNumber.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxNumber.Enabled = false;
+			tbxNumber.Font = new Font("Bahnschrift", 15F);
+			tbxNumber.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxNumber.Hint = "";
+			tbxNumber.Location = new Point(260, 390);
+			tbxNumber.MaxLength = 32767;
+			tbxNumber.Multiline = false;
+			tbxNumber.Name = "tbxNumber";
+			tbxNumber.PasswordChar = '\0';
+			tbxNumber.ScrollBars = ScrollBars.None;
+			tbxNumber.SelectedText = "";
+			tbxNumber.SelectionLength = 0;
+			tbxNumber.SelectionStart = 0;
+			tbxNumber.Size = new Size(349, 41);
+			tbxNumber.TabIndex = 58;
+			tbxNumber.TabStop = false;
+			tbxNumber.UseSystemPasswordChar = false;
+			// 
+			// tbxOHours
+			// 
+			tbxOHours.BackColor = Color.White;
+			tbxOHours.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxOHours.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxOHours.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxOHours.Enabled = false;
+			tbxOHours.Font = new Font("Bahnschrift", 15F);
+			tbxOHours.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxOHours.Hint = "";
+			tbxOHours.Location = new Point(260, 437);
+			tbxOHours.MaxLength = 32767;
+			tbxOHours.Multiline = false;
+			tbxOHours.Name = "tbxOHours";
+			tbxOHours.PasswordChar = '\0';
+			tbxOHours.ScrollBars = ScrollBars.None;
+			tbxOHours.SelectedText = "";
+			tbxOHours.SelectionLength = 0;
+			tbxOHours.SelectionStart = 0;
+			tbxOHours.Size = new Size(349, 41);
+			tbxOHours.TabIndex = 59;
+			tbxOHours.TabStop = false;
+			tbxOHours.UseSystemPasswordChar = false;
+			// 
+			// btnEdit
+			// 
+			btnEdit.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnEdit.Font = new Font("Bahnschrift", 14F);
+			btnEdit.ForeColor = Color.FromArgb(252, 228, 228);
+			btnEdit.Location = new Point(133, 529);
+			btnEdit.Name = "btnEdit";
+			btnEdit.Size = new Size(187, 52);
+			btnEdit.TabIndex = 60;
+			btnEdit.Text = "Edit Details";
+			// 
+			// btnSave
+			// 
+			btnSave.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnSave.Enabled = false;
+			btnSave.Font = new Font("Bahnschrift", 14F);
+			btnSave.ForeColor = Color.FromArgb(252, 228, 228);
+			btnSave.Location = new Point(326, 529);
+			btnSave.Name = "btnSave";
+			btnSave.Size = new Size(187, 52);
+			btnSave.TabIndex = 61;
+			btnSave.Text = "Save Changes";
+			// 
+			// btnProfile
+			// 
+			btnProfile.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnProfile.Font = new Font("Bahnschrift", 14F);
+			btnProfile.ForeColor = Color.FromArgb(252, 228, 228);
+			btnProfile.Location = new Point(727, 422);
+			btnProfile.Name = "btnProfile";
+			btnProfile.Size = new Size(187, 52);
+			btnProfile.TabIndex = 62;
+			btnProfile.Text = "Change Photo";
+			// 
 			// btnDelete
 			// 
 			btnDelete.DefaultBack = Color.FromArgb(216, 85, 101);
@@ -341,36 +406,35 @@
 			btnDelete.Location = new Point(727, 529);
 			btnDelete.Name = "btnDelete";
 			btnDelete.Size = new Size(187, 52);
-			btnDelete.TabIndex = 51;
+			btnDelete.TabIndex = 63;
 			btnDelete.Text = "Delete Account";
-			btnDelete.Click += btnDelete_Click;
 			// 
 			// HospitalProfile
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
-			Controls.Add(btnDelete);
-			Controls.Add(btnEdit);
-			Controls.Add(btnProfile);
-			Controls.Add(btnSave);
-			Controls.Add(tbxPassword);
-			Controls.Add(lblPassword);
-			Controls.Add(tbxHours);
-			Controls.Add(lblHours);
+			Controls.Add(tbxOHours);
 			Controls.Add(tbxNumber);
-			Controls.Add(lblNumber);
 			Controls.Add(tbxAddress);
-			Controls.Add(lblAddress);
 			Controls.Add(tbxClassification);
 			Controls.Add(tbxLicense);
-			Controls.Add(lblLicense);
+			Controls.Add(tbxName);
+			Controls.Add(tbxPassword);
 			Controls.Add(tbxEmail);
+			Controls.Add(lblPassword);
+			Controls.Add(lblHours);
+			Controls.Add(lblNumber);
+			Controls.Add(lblAddress);
+			Controls.Add(lblLicense);
 			Controls.Add(lblEmail);
-			Controls.Add(tbxPatientID);
 			Controls.Add(dName);
 			Controls.Add(lblClassification);
 			Controls.Add(pProfile);
+			Controls.Add(btnEdit);
+			Controls.Add(btnSave);
+			Controls.Add(btnProfile);
+			Controls.Add(btnDelete);
 			Name = "HospitalProfile";
 			Size = new Size(1020, 641);
 			Load += HospitalProfile_Load;
@@ -382,28 +446,27 @@
 		}
 
 		#endregion
-
-		private AntdUI.Button btnEdit;
-		private AntdUI.Button btnProfile;
-		private AntdUI.Button btnSave;
-		private ReaLTaiizor.Controls.BigTextBox tbxPassword;
 		private Label lblPassword;
-		private ReaLTaiizor.Controls.BigTextBox tbxHours;
 		private Label lblHours;
-		private ReaLTaiizor.Controls.BigTextBox tbxNumber;
 		private Label lblNumber;
-		private ReaLTaiizor.Controls.BigTextBox tbxAddress;
 		private Label lblAddress;
-		private ReaLTaiizor.Controls.BigTextBox tbxClassification;
-		private ReaLTaiizor.Controls.BigTextBox tbxLicense;
 		private Label lblLicense;
-		private ReaLTaiizor.Controls.BigTextBox tbxEmail;
 		private Label lblEmail;
-		private ReaLTaiizor.Controls.BigTextBox tbxPatientID;
 		private Label dName;
 		private PictureBox pbxProfile;
 		private Label lblClassification;
 		private Panel pProfile;
+		private ReaLTaiizor.Controls.HopeTextBox tbxEmail;
+		private ReaLTaiizor.Controls.HopeTextBox tbxPassword;
+		private ReaLTaiizor.Controls.HopeTextBox tbxName;
+		private ReaLTaiizor.Controls.HopeTextBox tbxLicense;
+		private ReaLTaiizor.Controls.HopeTextBox tbxClassification;
+		private ReaLTaiizor.Controls.HopeTextBox tbxAddress;
+		private ReaLTaiizor.Controls.HopeTextBox tbxNumber;
+		private ReaLTaiizor.Controls.HopeTextBox tbxOHours;
+		private AntdUI.Button btnEdit;
+		private AntdUI.Button btnSave;
+		private AntdUI.Button btnProfile;
 		private AntdUI.Button btnDelete;
 	}
 }

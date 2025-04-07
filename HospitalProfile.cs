@@ -24,6 +24,11 @@ namespace Hemotica
 			pbxProfile.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxProfile.Width, pbxProfile.Height, 20, 20));
 		}
 
+		private void loadHospitals()
+		{
+
+		}
+
 		private void HospitalProfile_Load(object sender, EventArgs e)
 		{
 			roundControls();
