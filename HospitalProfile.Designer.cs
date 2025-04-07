@@ -195,6 +195,7 @@
 			tbxEmail.TabIndex = 52;
 			tbxEmail.TabStop = false;
 			tbxEmail.UseSystemPasswordChar = false;
+			tbxEmail.TextChanged += tbxEmail_TextChanged;
 			// 
 			// tbxPassword
 			// 
@@ -219,6 +220,7 @@
 			tbxPassword.TabIndex = 53;
 			tbxPassword.TabStop = false;
 			tbxPassword.UseSystemPasswordChar = false;
+			tbxPassword.TextChanged += tbxPassword_TextChanged;
 			// 
 			// tbxName
 			// 
@@ -315,6 +317,7 @@
 			tbxAddress.TabIndex = 57;
 			tbxAddress.TabStop = false;
 			tbxAddress.UseSystemPasswordChar = false;
+			tbxAddress.TextChanged += tbxAddress_TextChanged;
 			// 
 			// tbxNumber
 			// 
@@ -339,6 +342,7 @@
 			tbxNumber.TabIndex = 58;
 			tbxNumber.TabStop = false;
 			tbxNumber.UseSystemPasswordChar = false;
+			tbxNumber.TextChanged += tbxNumber_TextChanged;
 			// 
 			// tbxOHours
 			// 
@@ -363,6 +367,7 @@
 			tbxOHours.TabIndex = 59;
 			tbxOHours.TabStop = false;
 			tbxOHours.UseSystemPasswordChar = false;
+			tbxOHours.TextChanged += tbxOHours_TextChanged;
 			// 
 			// btnEdit
 			// 

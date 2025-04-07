@@ -184,6 +184,10 @@ namespace Hemotica
 				btnSave.Enabled = false;
 				pbxProfile.Focus();
 			}
+			else
+			{
+				MessageBox.Show("Donor information update failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 
 		private void btnProfile_Click(object sender, EventArgs e)
