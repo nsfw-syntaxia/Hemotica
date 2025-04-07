@@ -325,6 +325,31 @@ namespace Hemotica
 			set { address = value; }
 		}
 
+		internal bool deleteHospitalAccount(Database db)
+		{
+			string query = "DELETE FROM Hospitals WHERE [Username] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+					cmd.Parameters.AddWithValue("?", UserLogs.Username);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
 		internal DataTable loadAppointments(Database db)
 		{
 			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
@@ -360,6 +385,15 @@ namespace Hemotica
 		internal DataTable loadBarcodes(Database db)
 		{
 			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction WHERE [Hospital Username] = ?";
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			return db.executeQuery(query, parameters);
+		}
+
+		internal DataTable loadStock(Database db)
+		{
+			string query = @"SELECT [Blood Type], COUNT(*) AS Unit FROM Extraction WHERE [Hospital Username] = ? AND Status = 'Available' AND [Expiration Date] >= Date()
+							 GROUP BY [Blood Type]";
+
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			return db.executeQuery(query, parameters);
 		}

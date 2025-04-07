@@ -48,8 +48,9 @@ namespace Hemotica
 		{
 			updateAppointments();
 
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{UserLogs.Username}'";
-			DataTable hospitalData = db.executeQuery(queryHospital);
+			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable hospitalData = db.executeQuery(queryHospital, parameters);
 
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 

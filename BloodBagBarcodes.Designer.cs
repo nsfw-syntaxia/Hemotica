@@ -40,6 +40,7 @@
 			// dgvBarcodes
 			// 
 			dgvBarcodes.AllowUserToAddRows = false;
+			dgvBarcodes.AllowUserToDeleteRows = false;
 			dgvBarcodes.AllowUserToResizeColumns = false;
 			dgvBarcodes.AllowUserToResizeRows = false;
 			dgvBarcodes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
