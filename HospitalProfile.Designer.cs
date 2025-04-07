@@ -352,7 +352,7 @@
 			tbxOHours.Hint = "";
 			tbxOHours.Location = new Point(260, 437);
 			tbxOHours.MaxLength = 32767;
-			tbxOHours.Multiline = false;
+			tbxOHours.Multiline = true;
 			tbxOHours.Name = "tbxOHours";
 			tbxOHours.PasswordChar = '\0';
 			tbxOHours.ScrollBars = ScrollBars.None;
