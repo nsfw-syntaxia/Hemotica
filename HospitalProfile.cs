@@ -132,7 +132,7 @@ namespace Hemotica
 
 			string weekdayStart, weekdayEnd, weekendStart, weekendEnd;
 			if (!validateOperatingHours(operatingHours, out weekdayStart, out weekdayEnd, out weekendStart, out weekendEnd))
-				return;
+				errors.Add("Invalid operating hours.");
 
 			if (errors.Count > 0)
 			{
