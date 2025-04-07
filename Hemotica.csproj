@@ -9,12 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
-    <PackageReference Include="AntdUI" Version="1.9.8" />
+    <PackageReference Include="AntdUI" Version="1.9.9" />
+    <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
     <PackageReference Include="PDFsharp" Version="6.1.1" />
     <PackageReference Include="PDFsharp-MigraDoc-GDI" Version="6.1.1" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.2" />
     <PackageReference Include="System.Data.OleDb" Version="9.0.3" />
+    <PackageReference Include="Zen.Barcode.Rendering.Framework" Version="3.1.10729.1" />
     <PackageReference Include="ZXing.Net" Version="0.16.10" />
   </ItemGroup>
 
@@ -26,6 +27,12 @@
     <Compile Update="DashboardD.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="BloodBagBarcodes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="HospitalExtraction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -33,6 +40,9 @@
     </Compile>
     <Compile Update="Login.cs" />
     <Compile Update="ForgetPassword.cs" />
+    <Compile Update="RecordsDonor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="RegisterDP4.cs">
       <SubType>UserControl</SubType>
     </Compile>

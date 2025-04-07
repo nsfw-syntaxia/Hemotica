@@ -50,6 +50,7 @@
 			tbxHomeAddress = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxNumber = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxBType = new ReaLTaiizor.Controls.HopeTextBox();
+			btnDelete = new AntdUI.Button();
 			pProfile.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxProfile).BeginInit();
 			SuspendLayout();
@@ -174,6 +175,7 @@
 			// btnSave
 			// 
 			btnSave.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnSave.Enabled = false;
 			btnSave.Font = new Font("Bahnschrift", 14F);
 			btnSave.ForeColor = Color.FromArgb(252, 228, 228);
 			btnSave.Location = new Point(326, 529);
@@ -212,7 +214,7 @@
 			tbxEmail.BackColor = Color.White;
 			tbxEmail.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxEmail.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxEmail.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxEmail.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxEmail.Enabled = false;
 			tbxEmail.Font = new Font("Bahnschrift", 15F);
 			tbxEmail.ForeColor = Color.FromArgb(216, 85, 101);
@@ -230,13 +232,14 @@
 			tbxEmail.TabIndex = 31;
 			tbxEmail.TabStop = false;
 			tbxEmail.UseSystemPasswordChar = false;
+			tbxEmail.TextChanged += tbxEmail_TextChanged;
 			// 
 			// tbxPassword
 			// 
 			tbxPassword.BackColor = Color.White;
 			tbxPassword.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxPassword.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxPassword.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxPassword.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxPassword.Enabled = false;
 			tbxPassword.Font = new Font("Bahnschrift", 15F);
 			tbxPassword.ForeColor = Color.FromArgb(216, 85, 101);
@@ -254,13 +257,14 @@
 			tbxPassword.TabIndex = 32;
 			tbxPassword.TabStop = false;
 			tbxPassword.UseSystemPasswordChar = false;
+			tbxPassword.TextChanged += tbxPassword_TextChanged;
 			// 
 			// tbxName
 			// 
 			tbxName.BackColor = Color.White;
 			tbxName.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxName.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxName.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxName.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxName.Enabled = false;
 			tbxName.Font = new Font("Bahnschrift", 15F);
 			tbxName.ForeColor = Color.FromArgb(216, 85, 101);
@@ -284,7 +288,7 @@
 			tbxGender.BackColor = Color.White;
 			tbxGender.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxGender.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxGender.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxGender.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxGender.Enabled = false;
 			tbxGender.Font = new Font("Bahnschrift", 15F);
 			tbxGender.ForeColor = Color.FromArgb(216, 85, 101);
@@ -302,13 +306,14 @@
 			tbxGender.TabIndex = 34;
 			tbxGender.TabStop = false;
 			tbxGender.UseSystemPasswordChar = false;
+			tbxGender.TextChanged += tbxGender_TextChanged;
 			// 
 			// tbxAge
 			// 
 			tbxAge.BackColor = Color.White;
 			tbxAge.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxAge.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxAge.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxAge.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxAge.Enabled = false;
 			tbxAge.Font = new Font("Bahnschrift", 15F);
 			tbxAge.ForeColor = Color.FromArgb(216, 85, 101);
@@ -326,13 +331,14 @@
 			tbxAge.TabIndex = 35;
 			tbxAge.TabStop = false;
 			tbxAge.UseSystemPasswordChar = false;
+			tbxAge.TextChanged += tbxAge_TextChanged;
 			// 
 			// tbxHomeAddress
 			// 
 			tbxHomeAddress.BackColor = Color.White;
 			tbxHomeAddress.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxHomeAddress.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxHomeAddress.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxHomeAddress.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxHomeAddress.Enabled = false;
 			tbxHomeAddress.Font = new Font("Bahnschrift", 15F);
 			tbxHomeAddress.ForeColor = Color.FromArgb(216, 85, 101);
@@ -350,13 +356,14 @@
 			tbxHomeAddress.TabIndex = 36;
 			tbxHomeAddress.TabStop = false;
 			tbxHomeAddress.UseSystemPasswordChar = false;
+			tbxHomeAddress.TextChanged += tbxHomeAddress_TextChanged;
 			// 
 			// tbxNumber
 			// 
 			tbxNumber.BackColor = Color.White;
 			tbxNumber.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxNumber.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxNumber.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxNumber.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxNumber.Enabled = false;
 			tbxNumber.Font = new Font("Bahnschrift", 15F);
 			tbxNumber.ForeColor = Color.FromArgb(216, 85, 101);
@@ -374,13 +381,14 @@
 			tbxNumber.TabIndex = 37;
 			tbxNumber.TabStop = false;
 			tbxNumber.UseSystemPasswordChar = false;
+			tbxNumber.TextChanged += tbxNumber_TextChanged;
 			// 
 			// tbxBType
 			// 
 			tbxBType.BackColor = Color.White;
 			tbxBType.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxBType.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxBType.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxBType.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxBType.Enabled = false;
 			tbxBType.Font = new Font("Bahnschrift", 15F);
 			tbxBType.ForeColor = Color.FromArgb(216, 85, 101);
@@ -399,11 +407,24 @@
 			tbxBType.TabStop = false;
 			tbxBType.UseSystemPasswordChar = false;
 			// 
+			// btnDelete
+			// 
+			btnDelete.DefaultBack = Color.FromArgb(216, 85, 101);
+			btnDelete.Font = new Font("Bahnschrift", 14F);
+			btnDelete.ForeColor = Color.FromArgb(252, 228, 228);
+			btnDelete.Location = new Point(727, 529);
+			btnDelete.Name = "btnDelete";
+			btnDelete.Size = new Size(187, 52);
+			btnDelete.TabIndex = 39;
+			btnDelete.Text = "Delete Account";
+			btnDelete.Click += btnDelete_Click;
+			// 
 			// DonorProfile
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(btnDelete);
 			Controls.Add(btnEdit);
 			Controls.Add(btnProfile);
 			Controls.Add(btnSave);
@@ -457,5 +478,6 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxHomeAddress;
 		private ReaLTaiizor.Controls.HopeTextBox tbxNumber;
 		private ReaLTaiizor.Controls.HopeTextBox tbxBType;
+		private AntdUI.Button btnDelete;
 	}
 }

@@ -95,11 +95,27 @@ namespace Hemotica
 			string usernameEmail = tbxUnEA.Text.Trim();
 			string password = tbxPassword.Text.Trim();
 
-			if (string.IsNullOrWhiteSpace(usernameEmail) || string.IsNullOrWhiteSpace(password))
+			tbxUnEA.SetErrorState(false);
+			tbxPassword.SetErrorState(false);
+
+			bool error = false;
+
+			if (string.IsNullOrWhiteSpace(usernameEmail))
 			{
-				MessageBox.Show("Please enter complete credentials.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
+				tbxUnEA.ErrorMessage = "Username or email address is required.";
+				tbxUnEA.SetErrorState(true);
+				error = true;
 			}
+
+			if (string.IsNullOrWhiteSpace(password))
+			{
+				tbxPassword.ErrorMessage = "Password is required.";
+				tbxPassword.SetErrorState(true);
+				error = true;
+			}
+
+			if (error)
+				return;
 
 			string userQuery = @"SELECT Username, [Email Address], Password, 'Donor' AS UserType FROM Donors WHERE Username = @usernameEmail OR [Email Address] = @usernameEmail
                                  UNION SELECT Username, [Email Address], Password, 'Hospital' AS UserType FROM Hospitals WHERE Username = @usernameEmail OR [Email Address] = @usernameEmail";
@@ -114,31 +130,46 @@ namespace Hemotica
 			string username = null;
 			string userType = null;
 
+			bool validUsername = false;
+			bool validPassword = false;
+
 			foreach (DataRow row in userResult.Rows)
 			{
 				string userUsername = row["Username"].ToString();
 				string userEmail = row["Email Address"].ToString();
 				string userPassword = row["Password"].ToString();
 
-				if ((usernameEmail == userUsername || usernameEmail == userEmail) && db.verifyPassword(password, userPassword))
+				if (usernameEmail == userUsername || usernameEmail == userEmail)
 				{
-					username = userUsername;
-					userType = row["UserType"].ToString();
-					dashboard = userDashboard(userType, username);
+					validUsername = true;
+
+					if (db.verifyPassword(password, userPassword))
+					{
+						validPassword = true;
+						username = userUsername;
+						userType = row["UserType"].ToString();
+						dashboard = userDashboard(userType, username);
+					}
 					break;
 				}
 			}
 
-			if (dashboard == null && adminResult.Rows.Count > 0)
+			if (!validUsername && adminResult.Rows.Count > 0)
 			{
 				string adminUsername = adminResult.Rows[0]["Username"].ToString();
 				string adminPassword = adminResult.Rows[0]["Password"].ToString();
 
-				if (db.verifyPassword(password, adminPassword))
+				if (usernameEmail == adminUsername)
 				{
-					username = adminUsername;
-					userType = "Admin";
-					dashboard = userDashboard(userType, username);
+					validUsername = true;
+
+					if (db.verifyPassword(password, adminPassword))
+					{
+						validPassword = true;
+						username = adminUsername;
+						userType = "Admin";
+						dashboard = userDashboard(userType, username);
+					}
 				}
 			}
 
@@ -165,7 +196,18 @@ namespace Hemotica
 			}
 			else
 			{
-				MessageBox.Show("Invalid username or password.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				if (!validUsername)
+				{
+					tbxUnEA.ErrorMessage = "Username or email address does not exist.";
+					tbxUnEA.SetErrorState(true);
+					tbxPassword.ErrorMessage = "Incorrect password.";
+					tbxPassword.SetErrorState(true);
+				}
+				else if (!validPassword)
+				{
+					tbxPassword.ErrorMessage = "Incorrect password.";
+					tbxPassword.SetErrorState(true);
+				}
 			}
 		}
 

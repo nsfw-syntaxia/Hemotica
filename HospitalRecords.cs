@@ -34,14 +34,16 @@ namespace Hemotica
 		private void lDonors_Click(object sender, EventArgs e)
 		{
 			btnConnection.Visible = false;
-			dgvDataMax.Visible = true;
+			dgvDataMax.Visible = false;
 
-			dgvDataMin.Visible = false;
-			flpInputs.Visible = false;
-			btnInsert.Visible = false;
-			btnUpdate.Visible = false;
-			btnDelete.Visible = false;
+			dgvDataMin.Visible = true;
+			flpInputs.Visible = true;
+			btnInsert.Visible = true;
+			btnUpdate.Visible = true;
+			btnDelete.Visible = true;
 
+			flpInputs.Controls.Clear();
+			flpInputs.Controls.Add(new RecordsDonor(this));
 			loadDonors();
 		}
 
@@ -51,7 +53,7 @@ namespace Hemotica
 
 			if (dt != null)
 			{
-				dgvDataMax.DataSource = dt;
+				dgvDataMin.DataSource = dt;
 			}
 		}
 
@@ -83,7 +85,25 @@ namespace Hemotica
 
 		private void dgvDataMin_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
-			if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsDonor recordsDonor)
+			{
+				DataGridViewRow row = dgvDataMin.Rows[e.RowIndex];
+
+				recordsDonor.selectDonor(new Donor
+				{
+					FirstName = row.Cells["First Name"].Value?.ToString(),
+					MiddleName = row.Cells["Middle Name"].Value?.ToString() ?? "",
+					LastName = row.Cells["Last Name"].Value?.ToString(),
+					Gender = row.Cells["Gender"].Value?.ToString(),
+					Age = row.Cells["Age"].Value?.ToString(),
+					Barangay = row.Cells["Barangay"].Value?.ToString(),
+					City = row.Cells["City"].Value?.ToString(),
+					Province = "Cebu",
+					ContactNumber = row.Cells["Contact Number"].Value?.ToString(),
+					BloodType = row.Cells["Blood Type"].Value?.ToString()
+				});
+			}
+			else if (e.RowIndex >= 0 && flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				DataGridViewRow row = dgvDataMin.Rows[e.RowIndex];
 
@@ -149,7 +169,27 @@ namespace Hemotica
 
 		private void btnInsert_Click(object sender, EventArgs e)
 		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (flpInputs.Controls[0] is RecordsDonor recordsDonor)
+			{
+				Donor donor = recordsDonor.inputDonor();
+
+				if (donor != null)
+				{
+					if (donor.addDonor(db))
+					{
+						MessageBox.Show("Donor record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+						flpInputs.Controls.Clear();
+						flpInputs.Controls.Add(new RecordsDonor(this));
+						loadDonors();
+					}
+					else
+					{
+						MessageBox.Show("Donor record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+			else if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				Patient patient = recordsPatient.inputPatient();
 
@@ -193,7 +233,32 @@ namespace Hemotica
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (flpInputs.Controls[0] is RecordsDonor recordsDonor)
+			{
+				Donor donor = recordsDonor.inputDonor();
+
+				if (donor != null)
+				{
+					if (dgvDataMin.SelectedRows.Count > 0)
+					{
+						int donorID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Donor ID"].Value);
+
+						if (donor.updateDonor(db, donorID))
+						{
+							MessageBox.Show("Donor record updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							flpInputs.Controls.Clear();
+							flpInputs.Controls.Add(new RecordsDonor(this));
+							loadDonors();
+						}
+						else
+						{
+							MessageBox.Show("Donor record update failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
+			}
+			else if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				Patient patient = recordsPatient.inputPatient();
 
@@ -247,7 +312,35 @@ namespace Hemotica
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
+			if (flpInputs.Controls[0] is RecordsDonor recordsDonor)
+			{
+				if (dgvDataMin.SelectedRows.Count > 0)
+				{
+					int donorID = Convert.ToInt32(dgvDataMin.SelectedRows[0].Cells["Donor ID"].Value);
+
+					if (!hospital.accessDeleteDonor(donorID, db))
+					{
+						return;
+					}
+
+					var confirmResult = MessageBox.Show("Are you sure you want to delete this record?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+					if (confirmResult == DialogResult.Yes)
+					{
+						if (donor.deleteDonor(donorID, db))
+						{
+							MessageBox.Show("Donor record deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							DataTable dt = donor.loadDonors(db);
+							dgvDataMin.DataSource = dt;
+						}
+						else
+						{
+							MessageBox.Show("Donor record deletion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
+			}
+			else if (flpInputs.Controls[0] is RecordsPatient recordsPatient)
 			{
 				if (dgvDataMin.SelectedRows.Count > 0)
 				{
@@ -317,7 +410,26 @@ namespace Hemotica
 
 		private void lExtraction_Click(object sender, EventArgs e)
 		{
-			// after extraction functionality
+			btnConnection.Visible = false;
+			dgvDataMax.Visible = true;
+
+			dgvDataMin.Visible = false;
+			flpInputs.Visible = false;
+			btnInsert.Visible = false;
+			btnUpdate.Visible = false;
+			btnDelete.Visible = false;
+
+			loadExtraction();
+		}
+
+		private void loadExtraction()
+		{
+			DataTable dt = hospital.loadExtraction(db);
+
+			if (dt != null)
+			{
+				dgvDataMax.DataSource = dt;
+			}
 		}
 
 		private void lTransfusion_Click(object sender, EventArgs e)
@@ -370,6 +482,16 @@ namespace Hemotica
 						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.5));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
+					else if (recordType == "Appointment")
+					{
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3));
+						tableColumn.Format.Alignment = ParagraphAlignment.Center;
+					}
+					else if (recordType == "Extraction")
+					{
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(4));
+						tableColumn.Format.Alignment = ParagraphAlignment.Center;
+					}
 				}
 
 				Row headerRow = table.AddRow();
@@ -390,6 +512,11 @@ namespace Hemotica
 						{
 							var cellValue = dgvRow.Cells[i].Value?.ToString() ?? string.Empty;
 
+							if (recordType == "Appointment" && dgvRow.Cells[i].Value is DateTime dateValue)
+							{
+								cellValue = dateValue.ToString("MM/dd/yyyy");
+							}
+
 							Paragraph paragraph = row.Cells[i].AddParagraph(cellValue);
 							row.Cells[i].Format.Alignment = ParagraphAlignment.Center;
 							row.Cells[i].VerticalAlignment = VerticalAlignment.Center;
@@ -408,7 +535,7 @@ namespace Hemotica
 
 		private void pDonors_Click(object sender, EventArgs e)
 		{
-			exportPDF(dgvDataMax, "Donor");
+			exportPDF(dgvDataMin, "Donor");
 		}
 
 		private void pPatients_Click(object sender, EventArgs e)
@@ -419,6 +546,21 @@ namespace Hemotica
 		private void pPhysicians_Click(object sender, EventArgs e)
 		{
 			exportPDF(dgvDataMin, "Physician");
+		}
+
+		private void pAppointments_Click(object sender, EventArgs e)
+		{
+			exportPDF(dgvDataMax, "Appointment");
+		}
+
+		private void pExtraction_Click(object sender, EventArgs e)
+		{
+			exportPDF(dgvDataMax, "Extraction");
+		}
+
+		private void pTransfusion_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

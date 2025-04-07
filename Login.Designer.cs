@@ -36,13 +36,11 @@
 			btnClose = new Button();
 			lblSIGNUP = new Label();
 			lblAHAA = new Label();
-			lblEU = new Label();
 			cbxSPassword = new ReaLTaiizor.Controls.HopeCheckBox();
-			lblPassword = new Label();
 			lblForgetPassword = new Label();
 			btnLogin = new ReaLTaiizor.Controls.FoxButton();
-			tbxUnEA = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
-			tbxPassword = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+			tbxUnEA = new MaterialSkin.Controls.MaterialMaskedTextBox();
+			tbxPassword = new MaterialSkin.Controls.MaterialMaskedTextBox();
 			((System.ComponentModel.ISupportInitialize)pbxLogo).BeginInit();
 			((System.ComponentModel.ISupportInitialize)pbxRegister).BeginInit();
 			SuspendLayout();
@@ -110,17 +108,6 @@
 			lblAHAA.TabIndex = 52;
 			lblAHAA.Text = "Don't have an account?";
 			// 
-			// lblEU
-			// 
-			lblEU.AutoSize = true;
-			lblEU.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			lblEU.ForeColor = Color.FromArgb(216, 85, 101);
-			lblEU.Location = new Point(16, 212);
-			lblEU.Name = "lblEU";
-			lblEU.Size = new Size(193, 22);
-			lblEU.TabIndex = 54;
-			lblEU.Text = "Username / Email Address";
-			// 
 			// cbxSPassword
 			// 
 			cbxSPassword.AutoSize = true;
@@ -133,24 +120,13 @@
 			cbxSPassword.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
 			cbxSPassword.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
 			cbxSPassword.ForeColor = Color.FromArgb(236, 124, 132);
-			cbxSPassword.Location = new Point(258, 344);
+			cbxSPassword.Location = new Point(258, 352);
 			cbxSPassword.Name = "cbxSPassword";
 			cbxSPassword.Size = new Size(147, 20);
 			cbxSPassword.TabIndex = 57;
 			cbxSPassword.Text = "Show Password";
 			cbxSPassword.UseVisualStyleBackColor = true;
 			cbxSPassword.CheckedChanged += cbxSPassword_CheckedChanged;
-			// 
-			// lblPassword
-			// 
-			lblPassword.AutoSize = true;
-			lblPassword.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			lblPassword.ForeColor = Color.FromArgb(216, 85, 101);
-			lblPassword.Location = new Point(16, 278);
-			lblPassword.Name = "lblPassword";
-			lblPassword.Size = new Size(79, 22);
-			lblPassword.TabIndex = 56;
-			lblPassword.Text = "Password";
 			// 
 			// lblForgetPassword
 			// 
@@ -194,15 +170,16 @@
 			tbxUnEA.BeepOnError = false;
 			tbxUnEA.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
 			tbxUnEA.Depth = 0;
-			tbxUnEA.Font = new Font("Arial Narrow", 13F);
+			tbxUnEA.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
 			tbxUnEA.HidePromptOnLeave = false;
 			tbxUnEA.HideSelection = true;
+			tbxUnEA.Hint = "Username or Email Address";
 			tbxUnEA.InsertKeyMode = InsertKeyMode.Default;
-			tbxUnEA.LeadingIcon = null;
-			tbxUnEA.Location = new Point(16, 237);
+			tbxUnEA.LeadingIcon = (Image)resources.GetObject("tbxUnEA.LeadingIcon");
+			tbxUnEA.Location = new Point(16, 212);
 			tbxUnEA.Mask = "";
 			tbxUnEA.MaxLength = 32767;
-			tbxUnEA.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+			tbxUnEA.MouseState = MaterialSkin.MouseState.OUT;
 			tbxUnEA.Name = "tbxUnEA";
 			tbxUnEA.PasswordChar = '\0';
 			tbxUnEA.PrefixSuffixText = null;
@@ -216,15 +193,15 @@
 			tbxUnEA.SelectionLength = 0;
 			tbxUnEA.SelectionStart = 0;
 			tbxUnEA.ShortcutsEnabled = true;
-			tbxUnEA.Size = new Size(389, 36);
+			tbxUnEA.ShowAssistiveText = true;
+			tbxUnEA.Size = new Size(389, 64);
 			tbxUnEA.SkipLiterals = true;
-			tbxUnEA.TabIndex = 61;
+			tbxUnEA.TabIndex = 63;
 			tbxUnEA.TabStop = false;
 			tbxUnEA.TextAlign = HorizontalAlignment.Left;
 			tbxUnEA.TextMaskFormat = MaskFormat.IncludeLiterals;
 			tbxUnEA.TrailingIcon = null;
 			tbxUnEA.UseSystemPasswordChar = false;
-			tbxUnEA.UseTallSize = false;
 			tbxUnEA.ValidatingType = null;
 			// 
 			// tbxPassword
@@ -236,15 +213,16 @@
 			tbxPassword.BeepOnError = false;
 			tbxPassword.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
 			tbxPassword.Depth = 0;
-			tbxPassword.Font = new Font("Arial Narrow", 13F);
+			tbxPassword.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
 			tbxPassword.HidePromptOnLeave = false;
 			tbxPassword.HideSelection = true;
+			tbxPassword.Hint = "Password";
 			tbxPassword.InsertKeyMode = InsertKeyMode.Default;
-			tbxPassword.LeadingIcon = null;
-			tbxPassword.Location = new Point(16, 303);
+			tbxPassword.LeadingIcon = (Image)resources.GetObject("tbxPassword.LeadingIcon");
+			tbxPassword.Location = new Point(16, 282);
 			tbxPassword.Mask = "";
 			tbxPassword.MaxLength = 32767;
-			tbxPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+			tbxPassword.MouseState = MaterialSkin.MouseState.OUT;
 			tbxPassword.Name = "tbxPassword";
 			tbxPassword.PasswordChar = '●';
 			tbxPassword.PrefixSuffixText = null;
@@ -258,15 +236,15 @@
 			tbxPassword.SelectionLength = 0;
 			tbxPassword.SelectionStart = 0;
 			tbxPassword.ShortcutsEnabled = true;
-			tbxPassword.Size = new Size(389, 36);
+			tbxPassword.ShowAssistiveText = true;
+			tbxPassword.Size = new Size(389, 64);
 			tbxPassword.SkipLiterals = true;
-			tbxPassword.TabIndex = 62;
+			tbxPassword.TabIndex = 64;
 			tbxPassword.TabStop = false;
 			tbxPassword.TextAlign = HorizontalAlignment.Left;
 			tbxPassword.TextMaskFormat = MaskFormat.IncludeLiterals;
 			tbxPassword.TrailingIcon = null;
 			tbxPassword.UseSystemPasswordChar = false;
-			tbxPassword.UseTallSize = false;
 			tbxPassword.ValidatingType = null;
 			// 
 			// Login
@@ -276,18 +254,16 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			ClientSize = new Size(420, 568);
 			ControlBox = false;
+			Controls.Add(tbxPassword);
+			Controls.Add(tbxUnEA);
 			Controls.Add(btnLogin);
 			Controls.Add(lblForgetPassword);
 			Controls.Add(cbxSPassword);
-			Controls.Add(lblPassword);
-			Controls.Add(lblEU);
 			Controls.Add(lblSIGNUP);
 			Controls.Add(lblAHAA);
 			Controls.Add(btnClose);
 			Controls.Add(pbxRegister);
 			Controls.Add(pbxLogo);
-			Controls.Add(tbxPassword);
-			Controls.Add(tbxUnEA);
 			DoubleBuffered = true;
 			FormBorderStyle = FormBorderStyle.None;
 			Name = "Login";
@@ -309,12 +285,10 @@
         private Button btnClose;
         private Label lblSIGNUP;
         private Label lblAHAA;
-        private Label lblEU;
         private ReaLTaiizor.Controls.HopeCheckBox cbxSPassword;
-        private Label lblPassword;
         private Label lblForgetPassword;
         private ReaLTaiizor.Controls.FoxButton btnLogin;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxUnEA;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxPassword;
-    }
+		private MaterialSkin.Controls.MaterialMaskedTextBox tbxUnEA;
+		private MaterialSkin.Controls.MaterialMaskedTextBox tbxPassword;
+	}
 }

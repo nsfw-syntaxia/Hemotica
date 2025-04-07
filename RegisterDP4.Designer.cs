@@ -87,9 +87,9 @@
 			cmbxBType.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxBType.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxBType.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxBType.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxBType.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxBType.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxBType.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxBType.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxBType.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxBType.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxBType.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxBType.DropDownHeight = 100;
@@ -172,6 +172,7 @@
 			tbxContactNumber.Size = new Size(389, 36);
 			tbxContactNumber.SkipLiterals = true;
 			tbxContactNumber.TabIndex = 85;
+			tbxContactNumber.TabStop = false;
 			tbxContactNumber.TextAlign = HorizontalAlignment.Left;
 			tbxContactNumber.TextMaskFormat = MaskFormat.IncludeLiterals;
 			tbxContactNumber.TrailingIcon = null;

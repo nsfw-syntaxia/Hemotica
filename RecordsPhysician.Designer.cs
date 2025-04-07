@@ -241,9 +241,9 @@
 			cmbxSex.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxSex.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxSex.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxSex.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxSex.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxSex.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxSex.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxSex.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxSex.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxSex.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxSex.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxSex.DropDownHeight = 100;

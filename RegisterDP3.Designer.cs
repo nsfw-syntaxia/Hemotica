@@ -219,9 +219,9 @@
 			cmbxCity.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxCity.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxCity.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxCity.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxCity.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxCity.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxCity.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxCity.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxCity.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxCity.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxCity.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxCity.DropDownHeight = 100;
@@ -232,7 +232,7 @@
 			cmbxCity.HoverSelectionColor = Color.Empty;
 			cmbxCity.IntegralHeight = false;
 			cmbxCity.ItemHeight = 25;
-			cmbxCity.Items.AddRange(new object[] { "Alcantara", "Alcoy", "Alegria", "Aloguinsan", "Argao", "Asturias", "Badian", "Balamban", "Bantayan", "Barili", "City of Bogo", "Boljoon", "Borbon", "City of Carcar", "Carmen", "Catmon", "Cebu City", "Compostela", "Consolacion", "Cordova", "Daanbantayan", "Dalaguete", "Danao City", "Dumanjug", "Ginatilan", "Lapu-Lapu City", "Liloan", "Madridejos", "Malabuyoc", "Mandaue City", "Medellin", "Minglanilla", "Moalboal", "City of Naga", "Oslob", "Pilar", "Pinamungahan", "Poro", "Ronda", "Samboan", "San Fernando", "San Francisco", "San Remigio", "Santa Fe", "Santander", "Sibonga", "Sogod", "Tabogon", "Tabuelan", "City of Talisay", "Toledo City", "Tuburan", "Tudela" });
+			cmbxCity.Items.AddRange(new object[] { "Alcantara", "Alcoy", "Alegria", "Aloguinsan", "Argao", "Asturias", "Badian", "Balamban", "Bantayan", "Barili", "Bogo City", "Boljoon", "Borbon", "Carcar City", "Carmen", "Catmon", "Cebu City", "Compostela", "Consolacion", "Cordova", "Daanbantayan", "Dalaguete", "Danao City", "Dumanjug", "Ginatilan", "Lapu-Lapu City", "Liloan", "Madridejos", "Malabuyoc", "Mandaue City", "Medellin", "Minglanilla", "Moalboal", "Naga City", "Oslob", "Pilar", "Pinamungahan", "Poro", "Ronda", "Samboan", "San Fernando", "San Francisco", "San Remigio", "Santa Fe", "Santander", "Sibonga", "Sogod", "Tabogon", "Tabuelan", "Talisay City", "Toledo City", "Tuburan", "Tudela" });
 			cmbxCity.Location = new Point(3, 161);
 			cmbxCity.Name = "cmbxCity";
 			cmbxCity.Size = new Size(389, 31);
@@ -259,9 +259,9 @@
 			cmbxBarangay.ColorC = Color.FromArgb(242, 241, 240);
 			cmbxBarangay.ColorD = Color.FromArgb(253, 252, 252);
 			cmbxBarangay.ColorE = Color.FromArgb(239, 237, 236);
-			cmbxBarangay.ColorF = Color.FromArgb(180, 180, 180);
-			cmbxBarangay.ColorG = Color.FromArgb(119, 119, 118);
-			cmbxBarangay.ColorH = Color.FromArgb(224, 222, 220);
+			cmbxBarangay.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxBarangay.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxBarangay.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxBarangay.ColorI = Color.FromArgb(250, 249, 249);
 			cmbxBarangay.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxBarangay.DropDownHeight = 100;
