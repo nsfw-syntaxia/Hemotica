@@ -60,7 +60,9 @@ namespace Hemotica
 
 		private void loadAppointments()
 		{
-			DataTable appointments = db.executeQuery($"SELECT [Appointment Date], [Hospital], [Status] FROM Appointments WHERE [Donor Username] = '{UserLogs.Username}'");
+			string query = @"SELECT [Appointment Date], [Hospital], [Status] FROM Appointments WHERE [Donor Username] = ? ORDER BY [Appointment Date] ASC";
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable appointments = db.executeQuery(query, parameters);
 
 			if (appointments != null)
 			{

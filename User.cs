@@ -364,6 +364,15 @@ namespace Hemotica
 			return db.executeQuery(query, parameters);
 		}
 
+		internal DataTable loadStock(Database db)
+		{
+			string query = @"SELECT [Blood Type], COUNT(*) AS Unit FROM Extraction WHERE [Hospital Username] = ? AND Status = 'Available' AND [Expiration Date] >= Date()
+							 GROUP BY [Blood Type]";
+
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			return db.executeQuery(query, parameters);
+		}
+
 		internal bool accessDeleteDonor(int donorID, Database db)
 		{
 			string query = "SELECT Hospital FROM Donors WHERE [Donor ID] = ?";
