@@ -374,6 +374,7 @@
 			btnEdit.Size = new Size(187, 52);
 			btnEdit.TabIndex = 60;
 			btnEdit.Text = "Edit Details";
+			btnEdit.Click += btnEdit_Click;
 			// 
 			// btnSave
 			// 
@@ -386,6 +387,7 @@
 			btnSave.Size = new Size(187, 52);
 			btnSave.TabIndex = 61;
 			btnSave.Text = "Save Changes";
+			btnSave.Click += btnSave_Click;
 			// 
 			// btnProfile
 			// 
@@ -397,6 +399,7 @@
 			btnProfile.Size = new Size(187, 52);
 			btnProfile.TabIndex = 62;
 			btnProfile.Text = "Change Photo";
+			btnProfile.Click += btnProfile_Click;
 			// 
 			// btnDelete
 			// 
@@ -408,6 +411,7 @@
 			btnDelete.Size = new Size(187, 52);
 			btnDelete.TabIndex = 63;
 			btnDelete.Text = "Delete Account";
+			btnDelete.Click += btnDelete_Click;
 			// 
 			// HospitalProfile
 			// 

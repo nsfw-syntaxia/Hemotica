@@ -89,9 +89,98 @@ namespace Hemotica
 			}
 		}
 
+		private void btnEdit_Click(object sender, EventArgs e)
+		{
+			tbxEmail.Enabled = true;
+			tbxPassword.Enabled = true;
+			tbxAddress.Enabled = true;
+			tbxNumber.Enabled = true;
+			tbxOHours.Enabled = true;
+
+			anyChanges = false;
+			btnSave.Enabled = false;
+		}
+
+		private void btnSave_Click(object sender, EventArgs e)
+		{
+			// validate input and update database
+		}
+
+		private void btnProfile_Click(object sender, EventArgs e)
+		{
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.Filter = "Image Files | *.jpg; *.jpeg; *.png";
+				openFileDialog.Title = "";
+
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					try
+					{
+						pbxProfile.Image = new Bitmap(openFileDialog.FileName);
+
+						byte[] imageBytes;
+						using (MemoryStream ms = new MemoryStream())
+						{
+							pbxProfile.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+							imageBytes = ms.ToArray();
+						}
+
+						string query = "UPDATE Hospitals SET Profile = ? WHERE [Username] = ?";
+						OleDbParameter[] parameters =
+						{
+							new OleDbParameter("?", OleDbType.LongVarBinary) { Value = imageBytes },
+							new OleDbParameter("?", UserLogs.Username)
+						};
+
+						if (db.executeNonQuery(query, parameters))
+						{
+							MessageBox.Show("Profile photo updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						}
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show("ERROR: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+		}
+
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
+			Hospital hospital = new Hospital();
+			bool deleteAccount = hospital.deleteHospitalAccount(db);
 
+			if (deleteAccount)
+			{
+				MessageBox.Show("Account deleted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				logout();
+			}
+			else
+			{
+				MessageBox.Show("Account deletion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private async void logout()
+		{
+			UserLogs.LogoutUser(db);
+
+			if (Application.OpenForms["DashboardD"] is DashboardD dashboard)
+			{
+				dashboard.Close();
+			}
+
+			if (Application.OpenForms["Home"] is Home home)
+			{
+				home.WindowState = FormWindowState.Normal;
+				home.Show();
+				home.Activate();
+				await Task.Delay(1);
+			}
+
+			this.Parent?.Controls.Remove(this);
 		}
 	}
 }

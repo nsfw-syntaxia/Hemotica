@@ -325,6 +325,31 @@ namespace Hemotica
 			set { address = value; }
 		}
 
+		internal bool deleteHospitalAccount(Database db)
+		{
+			string query = "DELETE FROM Hospitals WHERE [Username] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+					cmd.Parameters.AddWithValue("?", UserLogs.Username);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
 		internal DataTable loadAppointments(Database db)
 		{
 			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
