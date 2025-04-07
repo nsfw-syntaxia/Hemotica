@@ -11,7 +11,6 @@ namespace Hemotica
 	public partial class DonorProfile : UserControl
 	{
 		private Database db = new Database();
-		private string donorEmail;
 		private bool anyChanges = false;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -53,8 +52,7 @@ namespace Hemotica
 			DataTable dt = db.executeQuery(query, parameters);
 
 			DataRow row = dt.Rows[0];
-			donorEmail = dt.Rows[0]["Email Address"].ToString();
-			tbxEmail.Text = donorEmail;
+			tbxEmail.Text = dt.Rows[0]["Email Address"].ToString();
 			tbxPassword.Text = "●●●●●●●●";
 			tbxName.Text = string.IsNullOrEmpty(row["Middle Name"].ToString()) ? $"{row["First Name"]} {row["Last Name"]}" : $"{row["First Name"]} {row["Middle Name"]} {row["Last Name"]}";
 			tbxGender.Text = row["Gender"].ToString();
@@ -134,36 +132,42 @@ namespace Hemotica
 			string barangay = addressParts[0].Trim();
 			string city = addressParts[1].Trim();
 			string province = addressParts[2].Trim();
-
+			
 			string hashedPassword = string.Empty;
 			if (!password.Contains("●"))
 			{
 				hashedPassword = db.hashPassword(password);
 			}
 
-			string query = @"UPDATE Donors SET [Email Address] = ?, [Gender] = ?, [Age] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ?";
+			string query;
+			List<OleDbParameter> parameters = new List<OleDbParameter>();
 
 			if (!string.IsNullOrEmpty(hashedPassword))
 			{
-				query += ", [Password] = ?";
+				query = @"UPDATE Donors SET [Email Address] = ?, [Password] = ?, [Gender] = ?, [Age] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ? WHERE [Username] = ?";
+
+				parameters.Add(new OleDbParameter("?", email));
+				parameters.Add(new OleDbParameter("?", hashedPassword));
+				parameters.Add(new OleDbParameter("?", gender));
+				parameters.Add(new OleDbParameter("?", age));
+				parameters.Add(new OleDbParameter("?", barangay));
+				parameters.Add(new OleDbParameter("?", city));
+				parameters.Add(new OleDbParameter("?", province));
+				parameters.Add(new OleDbParameter("?", contactNumber));
+				parameters.Add(new OleDbParameter("?", UserLogs.Username));
 			}
-			query += " WHERE [Username] = ?";
-
-			List<OleDbParameter> parameters = new List<OleDbParameter>
+			else
 			{
-				new OleDbParameter("?", email),
-				new OleDbParameter("?", gender),
-				new OleDbParameter("?", age),
-				new OleDbParameter("?", barangay),
-				new OleDbParameter("?", city),
-				new OleDbParameter("?", province),
-				new OleDbParameter("?", contactNumber),
-				new OleDbParameter("?", UserLogs.Username)
-			};
+				query = @"UPDATE Donors SET [Email Address] = ?, [Gender] = ?, [Age] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ? WHERE [Username] = ?";
 
-			if (!string.IsNullOrEmpty(hashedPassword))
-			{
-				parameters.Insert(1, new OleDbParameter("?", hashedPassword));
+				parameters.Add(new OleDbParameter("?", email));
+				parameters.Add(new OleDbParameter("?", gender));
+				parameters.Add(new OleDbParameter("?", age));
+				parameters.Add(new OleDbParameter("?", barangay));
+				parameters.Add(new OleDbParameter("?", city));
+				parameters.Add(new OleDbParameter("?", province));
+				parameters.Add(new OleDbParameter("?", contactNumber));
+				parameters.Add(new OleDbParameter("?", UserLogs.Username));
 			}
 
 			if (db.executeNonQuery(query, parameters.ToArray()))

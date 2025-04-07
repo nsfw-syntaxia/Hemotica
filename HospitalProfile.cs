@@ -2,11 +2,15 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Data.OleDb;
 
 namespace Hemotica
 {
 	public partial class HospitalProfile : UserControl
 	{
+		private Database db = new Database();
+		private bool anyChanges = false;
+
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
 		private static extern IntPtr CreateRoundRectRgn(
@@ -26,7 +30,10 @@ namespace Hemotica
 
 		private void loadHospitals()
 		{
-
+			string query = @"SELECT [Email Address], Password, [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type], Profile 
+							 FROM Donors WHERE [Username] = ?";
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable dt = db.executeQuery(query, parameters);
 		}
 
 		private void HospitalProfile_Load(object sender, EventArgs e)
