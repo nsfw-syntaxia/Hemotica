@@ -61,6 +61,35 @@ namespace Hemotica
 					}
 				}
 			}
+
+			List<string> lowStock = new List<string>();
+			foreach (DataGridViewRow row in dgvStock.Rows)
+			{
+				int unit = int.Parse(row.Cells["Unit"].Value.ToString());
+				if (unit <= 3)
+				{
+					lowStock.Add(row.Cells["BloodType"].Value.ToString());
+				}
+			}
+
+			if (lowStock.Count > 0)
+			{
+				lblWarning.Visible = true;
+				lblNote.Visible = true;
+
+				string bloodLowStock = string.Join(", ", lowStock);
+				lblNote.Text = $"ATTENTION: Blood types {bloodLowStock} are low in stock or unavailable.\n\n" +
+							   $"Kindly organize a blood donation drive to support the ongoing maintenance of the supply, readiness for emergencies, and the means to save lives.";
+				
+				lblNote.Width = 468;
+				lblNote.MaximumSize = new Size(468, 0);
+			}
+			else
+			{
+				lblWarning.Visible = false;
+				lblNote.Visible = false;
+				lblWarning.Text = string.Empty;
+			}
 		}
 
 		public void roundControls()
