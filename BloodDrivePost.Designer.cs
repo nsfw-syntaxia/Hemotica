@@ -33,7 +33,6 @@
 			lblTitle = new Label();
 			tbxTitle = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxDescription = new ReaLTaiizor.Controls.HopeTextBox();
-			label1 = new Label();
 			cmbxCity = new ReaLTaiizor.Controls.DungeonComboBox();
 			cmbxBarangay = new ReaLTaiizor.Controls.DungeonComboBox();
 			tlpPost.SuspendLayout();
@@ -60,9 +59,8 @@
 			tlpPost.Controls.Add(btnPost, 1, 9);
 			tlpPost.Controls.Add(tbxTitle, 0, 1);
 			tlpPost.Controls.Add(tbxDescription, 0, 2);
-			tlpPost.Controls.Add(cmbxCity, 0, 5);
-			tlpPost.Controls.Add(label1, 0, 4);
-			tlpPost.Controls.Add(cmbxBarangay, 1, 5);
+			tlpPost.Controls.Add(cmbxCity, 0, 7);
+			tlpPost.Controls.Add(cmbxBarangay, 1, 7);
 			tlpPost.Location = new Point(3, 3);
 			tlpPost.Name = "tlpPost";
 			tlpPost.Padding = new Padding(5);
@@ -115,7 +113,7 @@
 			tbxTitle.SelectedText = "";
 			tbxTitle.SelectionLength = 0;
 			tbxTitle.SelectionStart = 0;
-			tbxTitle.Size = new Size(584, 41);
+			tbxTitle.Size = new Size(584, 52);
 			tbxTitle.TabIndex = 93;
 			tbxTitle.TabStop = false;
 			tbxTitle.UseSystemPasswordChar = false;
@@ -145,20 +143,8 @@
 			tbxDescription.Size = new Size(584, 110);
 			tbxDescription.TabIndex = 95;
 			tbxDescription.TabStop = false;
+			tbxDescription.Text = "Description";
 			tbxDescription.UseSystemPasswordChar = false;
-			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			label1.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			label1.ForeColor = Color.FromArgb(216, 85, 101);
-			label1.Location = new Point(8, 237);
-			label1.Name = "label1";
-			label1.Padding = new Padding(5, 0, 0, 5);
-			label1.Size = new Size(71, 38);
-			label1.TabIndex = 96;
-			label1.Text = "Title";
-			label1.TextAlign = ContentAlignment.BottomLeft;
 			// 
 			// cmbxCity
 			// 
@@ -172,7 +158,6 @@
 			cmbxCity.ColorG = Color.FromArgb(216, 85, 101);
 			cmbxCity.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxCity.ColorI = Color.FromArgb(250, 249, 249);
-			cmbxCity.Dock = DockStyle.Fill;
 			cmbxCity.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxCity.DropDownHeight = 100;
 			cmbxCity.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -183,7 +168,7 @@
 			cmbxCity.IntegralHeight = false;
 			cmbxCity.ItemHeight = 35;
 			cmbxCity.Items.AddRange(new object[] { "Select city", "Alcantara", "Alcoy", "Alegria", "Aloguinsan", "Argao", "Asturias", "Badian", "Balamban", "Bantayan", "Barili", "Bogo City", "Boljoon", "Borbon", "Carcar City", "Carmen", "Catmon", "Cebu City", "Compostela", "Consolacion", "Cordova", "Daanbantayan", "Dalaguete", "Danao City", "Dumanjug", "Ginatilan", "Lapu-Lapu City", "Liloan", "Madridejos", "Malabuyoc", "Mandaue City", "Medellin", "Minglanilla", "Moalboal", "Naga City", "Oslob", "Pilar", "Pinamungahan", "Poro", "Ronda", "Samboan", "San Fernando", "San Francisco", "San Remigio", "Santa Fe", "Santander", "Sibonga", "Sogod", "Tabogon", "Tabuelan", "Talisay City", "Toledo City", "Tuburan", "Tudela" });
-			cmbxCity.Location = new Point(8, 298);
+			cmbxCity.Location = new Point(8, 414);
 			cmbxCity.Name = "cmbxCity";
 			cmbxCity.Size = new Size(289, 41);
 			cmbxCity.StartIndex = 0;
@@ -201,7 +186,6 @@
 			cmbxBarangay.ColorG = Color.FromArgb(216, 85, 101);
 			cmbxBarangay.ColorH = Color.FromArgb(244, 180, 180);
 			cmbxBarangay.ColorI = Color.FromArgb(250, 249, 249);
-			cmbxBarangay.Dock = DockStyle.Fill;
 			cmbxBarangay.DrawMode = DrawMode.OwnerDrawFixed;
 			cmbxBarangay.DropDownHeight = 100;
 			cmbxBarangay.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -211,7 +195,7 @@
 			cmbxBarangay.HoverSelectionColor = Color.Empty;
 			cmbxBarangay.IntegralHeight = false;
 			cmbxBarangay.ItemHeight = 35;
-			cmbxBarangay.Location = new Point(303, 298);
+			cmbxBarangay.Location = new Point(303, 414);
 			cmbxBarangay.Name = "cmbxBarangay";
 			cmbxBarangay.Size = new Size(289, 41);
 			cmbxBarangay.StartIndex = 0;
@@ -238,7 +222,6 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxTitle;
 		private Label lblDescription;
 		private ReaLTaiizor.Controls.HopeTextBox tbxDescription;
-		private Label label1;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxCity;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxBarangay;
 	}
