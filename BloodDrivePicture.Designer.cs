@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BloodDrivePicture));
 			btnPost = new AntdUI.Button();
 			tlpPost = new TableLayoutPanel();
 			lblImage = new Label();
@@ -111,6 +112,7 @@
 			// 
 			pbxImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			pbxImage.BackColor = Color.FromArgb(252, 228, 228);
+			pbxImage.Image = (Image)resources.GetObject("pbxImage.Image");
 			pbxImage.Location = new Point(8, 8);
 			pbxImage.Name = "pbxImage";
 			pbxImage.Size = new Size(568, 326);
