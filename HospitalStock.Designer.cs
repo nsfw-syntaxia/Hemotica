@@ -37,9 +37,12 @@
 			lblWarning = new Label();
 			pPost = new Panel();
 			tlpPost = new TableLayoutPanel();
+			tbxTitle = new ReaLTaiizor.Controls.HopeTextBox();
+			lblTitle = new Label();
 			((System.ComponentModel.ISupportInitialize)dgvStock).BeginInit();
 			pWarning.SuspendLayout();
 			pPost.SuspendLayout();
+			tlpPost.SuspendLayout();
 			SuspendLayout();
 			// 
 			// dgvStock
@@ -153,6 +156,8 @@
 			tlpPost.ColumnCount = 2;
 			tlpPost.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 			tlpPost.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+			tlpPost.Controls.Add(tbxTitle, 0, 1);
+			tlpPost.Controls.Add(lblTitle, 0, 0);
 			tlpPost.Dock = DockStyle.Fill;
 			tlpPost.Location = new Point(3, 3);
 			tlpPost.Name = "tlpPost";
@@ -169,6 +174,47 @@
 			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
 			tlpPost.Size = new Size(488, 599);
 			tlpPost.TabIndex = 0;
+			// 
+			// tbxTitle
+			// 
+			tbxTitle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			tbxTitle.BackColor = Color.White;
+			tbxTitle.BaseColor = Color.FromArgb(252, 228, 228);
+			tbxTitle.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxTitle.BorderColorB = Color.FromArgb(216, 85, 101);
+			tlpPost.SetColumnSpan(tbxTitle, 2);
+			tbxTitle.Enabled = false;
+			tbxTitle.Font = new Font("Bahnschrift", 15F);
+			tbxTitle.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxTitle.Hint = "";
+			tbxTitle.Location = new Point(3, 62);
+			tbxTitle.MaxLength = 32767;
+			tbxTitle.Multiline = false;
+			tbxTitle.Name = "tbxTitle";
+			tbxTitle.PasswordChar = '\0';
+			tbxTitle.ScrollBars = ScrollBars.None;
+			tbxTitle.SelectedText = "";
+			tbxTitle.SelectionLength = 0;
+			tbxTitle.SelectionStart = 0;
+			tbxTitle.Size = new Size(482, 41);
+			tbxTitle.TabIndex = 105;
+			tbxTitle.TabStop = false;
+			tbxTitle.UseSystemPasswordChar = false;
+			// 
+			// lblTitle
+			// 
+			lblTitle.AutoSize = true;
+			tlpPost.SetColumnSpan(lblTitle, 2);
+			lblTitle.Dock = DockStyle.Fill;
+			lblTitle.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblTitle.ForeColor = Color.FromArgb(216, 85, 101);
+			lblTitle.Location = new Point(3, 0);
+			lblTitle.Name = "lblTitle";
+			lblTitle.Padding = new Padding(5, 0, 0, 5);
+			lblTitle.Size = new Size(482, 59);
+			lblTitle.TabIndex = 77;
+			lblTitle.Text = "Title";
+			lblTitle.TextAlign = ContentAlignment.BottomLeft;
 			// 
 			// HospitalStock
 			// 
@@ -187,6 +233,8 @@
 			pWarning.ResumeLayout(false);
 			pWarning.PerformLayout();
 			pPost.ResumeLayout(false);
+			tlpPost.ResumeLayout(false);
+			tlpPost.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -199,5 +247,7 @@
 		private TableLayoutPanel tlpBloodDrive;
 		private Panel pPost;
 		private TableLayoutPanel tlpPost;
+		private Label lblTitle;
+		private ReaLTaiizor.Controls.HopeTextBox tbxTitle;
 	}
 }

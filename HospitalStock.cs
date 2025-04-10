@@ -24,7 +24,7 @@ namespace Hemotica
 		private void HospitalStock_Load(object sender, EventArgs e)
 		{
 			loadStock();
-			showBloodDrivePicture();
+			//showBloodDrivePicture();
 			//showBloodDrivePost();
 			roundControls();
 		}

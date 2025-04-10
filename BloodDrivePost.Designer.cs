@@ -97,7 +97,7 @@
 			tbxTime.SelectedText = "";
 			tbxTime.SelectionLength = 0;
 			tbxTime.SelectionStart = 0;
-			tbxTime.Size = new Size(292, 41);
+			tbxTime.Size = new Size(292, 52);
 			tbxTime.TabIndex = 107;
 			tbxTime.TabStop = false;
 			tbxTime.Text = "HH:MM (24-HOUR FORMAT)";
@@ -109,7 +109,6 @@
 			tbxDate.BaseColor = Color.FromArgb(252, 228, 228);
 			tbxDate.BorderColorA = Color.FromArgb(216, 85, 101);
 			tbxDate.BorderColorB = Color.FromArgb(216, 85, 101);
-			tbxDate.Dock = DockStyle.Fill;
 			tbxDate.Enabled = false;
 			tbxDate.Font = new Font("Bahnschrift", 15F);
 			tbxDate.ForeColor = Color.FromArgb(216, 85, 101);
@@ -202,13 +201,12 @@
 			// lblDate
 			// 
 			lblDate.AutoSize = true;
-			lblDate.Dock = DockStyle.Fill;
 			lblDate.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblDate.ForeColor = Color.FromArgb(216, 85, 101);
 			lblDate.Location = new Point(8, 237);
 			lblDate.Name = "lblDate";
 			lblDate.Padding = new Padding(5, 0, 0, 5);
-			lblDate.Size = new Size(292, 58);
+			lblDate.Size = new Size(75, 38);
 			lblDate.TabIndex = 101;
 			lblDate.Text = "Date";
 			lblDate.TextAlign = ContentAlignment.BottomLeft;
@@ -217,13 +215,12 @@
 			// 
 			lblLocation.AutoSize = true;
 			tlpPost.SetColumnSpan(lblLocation, 2);
-			lblLocation.Dock = DockStyle.Fill;
 			lblLocation.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblLocation.ForeColor = Color.FromArgb(216, 85, 101);
 			lblLocation.Location = new Point(8, 353);
 			lblLocation.Name = "lblLocation";
 			lblLocation.Padding = new Padding(5, 0, 0, 5);
-			lblLocation.Size = new Size(590, 58);
+			lblLocation.Size = new Size(123, 38);
 			lblLocation.TabIndex = 102;
 			lblLocation.Text = "Location";
 			lblLocation.TextAlign = ContentAlignment.BottomLeft;
@@ -231,13 +228,12 @@
 			// lblTime
 			// 
 			lblTime.AutoSize = true;
-			lblTime.Dock = DockStyle.Fill;
 			lblTime.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblTime.ForeColor = Color.FromArgb(216, 85, 101);
 			lblTime.Location = new Point(306, 237);
 			lblTime.Name = "lblTime";
 			lblTime.Padding = new Padding(5, 0, 0, 5);
-			lblTime.Size = new Size(292, 58);
+			lblTime.Size = new Size(77, 38);
 			lblTime.TabIndex = 103;
 			lblTime.Text = "Time";
 			lblTime.TextAlign = ContentAlignment.BottomLeft;
@@ -249,7 +245,6 @@
 			tbxTitle.BorderColorA = Color.FromArgb(216, 85, 101);
 			tbxTitle.BorderColorB = Color.FromArgb(216, 85, 101);
 			tlpPost.SetColumnSpan(tbxTitle, 2);
-			tbxTitle.Dock = DockStyle.Fill;
 			tbxTitle.Enabled = false;
 			tbxTitle.Font = new Font("Bahnschrift", 15F);
 			tbxTitle.ForeColor = Color.FromArgb(216, 85, 101);
@@ -275,7 +270,6 @@
 			tbxDescription.BorderColorA = Color.FromArgb(216, 85, 101);
 			tbxDescription.BorderColorB = Color.FromArgb(216, 85, 101);
 			tlpPost.SetColumnSpan(tbxDescription, 2);
-			tbxDescription.Dock = DockStyle.Fill;
 			tbxDescription.Enabled = false;
 			tbxDescription.Font = new Font("Bahnschrift", 15F);
 			tbxDescription.ForeColor = Color.FromArgb(216, 85, 101);
