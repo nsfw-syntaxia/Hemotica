@@ -28,16 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
 			dgvStock = new DataGridView();
-			flpStock = new FlowLayoutPanel();
 			pWarning = new Panel();
 			lblNote = new Label();
 			lblWarning = new Label();
+			pPost = new Panel();
+			tlpPost = new TableLayoutPanel();
 			((System.ComponentModel.ISupportInitialize)dgvStock).BeginInit();
 			pWarning.SuspendLayout();
+			pPost.SuspendLayout();
 			SuspendLayout();
 			// 
 			// dgvStock
@@ -53,15 +55,15 @@
 			dgvStock.BorderStyle = BorderStyle.None;
 			dgvStock.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 			dgvStock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle1.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
-			dataGridViewCellStyle1.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle1.Padding = new Padding(15, 5, 15, 5);
-			dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-			dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle4.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle4.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle4.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle4.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+			dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			dgvStock.ColumnHeadersHeight = 50;
 			dgvStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			dgvStock.EnableHeadersVisualStyles = false;
@@ -71,23 +73,23 @@
 			dgvStock.Name = "dgvStock";
 			dgvStock.ReadOnly = true;
 			dgvStock.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = SystemColors.Control;
-			dataGridViewCellStyle2.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-			dgvStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle5.BackColor = SystemColors.Control;
+			dataGridViewCellStyle5.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+			dgvStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			dgvStock.RowHeadersVisible = false;
 			dgvStock.RowHeadersWidth = 40;
-			dataGridViewCellStyle3.BackColor = Color.FromArgb(244, 180, 180);
-			dataGridViewCellStyle3.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle3.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle3.Padding = new Padding(20, 5, 20, 5);
-			dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(236, 124, 132);
-			dataGridViewCellStyle3.SelectionForeColor = Color.White;
-			dgvStock.RowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle6.BackColor = Color.FromArgb(244, 180, 180);
+			dataGridViewCellStyle6.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle6.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle6.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle6.SelectionForeColor = Color.White;
+			dgvStock.RowsDefaultCellStyle = dataGridViewCellStyle6;
 			dgvStock.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
 			dgvStock.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
 			dgvStock.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
@@ -101,17 +103,6 @@
 			dgvStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 			dgvStock.Size = new Size(494, 385);
 			dgvStock.TabIndex = 18;
-			// 
-			// flpStock
-			// 
-			flpStock.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			flpStock.AutoScroll = true;
-			flpStock.BackColor = Color.FromArgb(252, 196, 196);
-			flpStock.FlowDirection = FlowDirection.TopDown;
-			flpStock.Location = new Point(513, 18);
-			flpStock.Name = "flpStock";
-			flpStock.Size = new Size(494, 605);
-			flpStock.TabIndex = 17;
 			// 
 			// pWarning
 			// 
@@ -146,13 +137,46 @@
 			lblWarning.TabIndex = 0;
 			lblWarning.Text = "WARNING !";
 			// 
+			// pPost
+			// 
+			pPost.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pPost.BackColor = Color.FromArgb(252, 196, 196);
+			pPost.Controls.Add(tlpPost);
+			pPost.Location = new Point(513, 18);
+			pPost.Name = "pPost";
+			pPost.Padding = new Padding(3);
+			pPost.Size = new Size(494, 605);
+			pPost.TabIndex = 20;
+			// 
+			// tlpPost
+			// 
+			tlpPost.ColumnCount = 2;
+			tlpPost.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+			tlpPost.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+			tlpPost.Dock = DockStyle.Fill;
+			tlpPost.Location = new Point(3, 3);
+			tlpPost.Name = "tlpPost";
+			tlpPost.RowCount = 10;
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPost.Size = new Size(488, 599);
+			tlpPost.TabIndex = 0;
+			// 
 			// HospitalStock
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(pPost);
 			Controls.Add(pWarning);
-			Controls.Add(flpStock);
 			Controls.Add(dgvStock);
 			Name = "HospitalStock";
 			Padding = new Padding(10, 15, 10, 15);
@@ -162,15 +186,18 @@
 			((System.ComponentModel.ISupportInitialize)dgvStock).EndInit();
 			pWarning.ResumeLayout(false);
 			pWarning.PerformLayout();
+			pPost.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
 		#endregion
 
 		private DataGridView dgvStock;
-		private FlowLayoutPanel flpStock;
 		private Panel pWarning;
 		private Label lblWarning;
 		private Label lblNote;
+		private TableLayoutPanel tlpBloodDrive;
+		private Panel pPost;
+		private TableLayoutPanel tlpPost;
 	}
 }

@@ -24,6 +24,8 @@ namespace Hemotica
 		private void HospitalStock_Load(object sender, EventArgs e)
 		{
 			loadStock();
+			showBloodDrivePicture();
+			//showBloodDrivePost();
 			roundControls();
 		}
 
@@ -94,12 +96,26 @@ namespace Hemotica
 
 		public void roundControls()
 		{
-			flpStock.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpStock.Width, flpStock.Height, 20, 20));
+			pPost.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pPost.Width, pPost.Height, 20, 20));
 		}
 
 		private void HospitalStock_Resize(object sender, EventArgs e)
 		{
 			roundControls();
+		}
+
+		public void showBloodDrivePost()
+		{
+			pPost.Controls.Clear();
+			BloodDrivePost bloodDrivePost = new BloodDrivePost();
+			pPost.Controls.Add(bloodDrivePost);
+		}
+
+		public void showBloodDrivePicture()
+		{
+			pPost.Controls.Clear();
+			BloodDrivePicture bloodDrivePicture = new BloodDrivePicture();
+			pPost.Controls.Add(bloodDrivePicture);
 		}
 	}
 }

@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			tlpPost = new TableLayoutPanel();
+			tbxTime = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxDate = new ReaLTaiizor.Controls.HopeTextBox();
 			lblTitle = new Label();
 			cmbxCity = new ReaLTaiizor.Controls.DungeonComboBox();
 			cmbxBarangay = new ReaLTaiizor.Controls.DungeonComboBox();
@@ -37,14 +39,13 @@
 			lblTime = new Label();
 			tbxTitle = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxDescription = new ReaLTaiizor.Controls.HopeTextBox();
-			tbxDate = new ReaLTaiizor.Controls.HopeTextBox();
-			tbxTime = new ReaLTaiizor.Controls.HopeTextBox();
 			btnNext = new AntdUI.Button();
 			tlpPost.SuspendLayout();
 			SuspendLayout();
 			// 
 			// tlpPost
 			// 
+			tlpPost.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			tlpPost.ColumnCount = 2;
 			tlpPost.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 			tlpPost.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -59,7 +60,7 @@
 			tlpPost.Controls.Add(tbxTitle, 0, 1);
 			tlpPost.Controls.Add(tbxDescription, 0, 2);
 			tlpPost.Controls.Add(btnNext, 1, 9);
-			tlpPost.Location = new Point(3, 3);
+			tlpPost.Location = new Point(0, 0);
 			tlpPost.Name = "tlpPost";
 			tlpPost.Padding = new Padding(5);
 			tlpPost.RowCount = 10;
@@ -73,8 +74,60 @@
 			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
 			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
 			tlpPost.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tlpPost.Size = new Size(600, 591);
+			tlpPost.Size = new Size(606, 597);
 			tlpPost.TabIndex = 18;
+			// 
+			// tbxTime
+			// 
+			tbxTime.BackColor = Color.White;
+			tbxTime.BaseColor = Color.FromArgb(252, 228, 228);
+			tbxTime.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxTime.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxTime.Dock = DockStyle.Fill;
+			tbxTime.Enabled = false;
+			tbxTime.Font = new Font("Bahnschrift", 15F);
+			tbxTime.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxTime.Hint = "";
+			tbxTime.Location = new Point(306, 298);
+			tbxTime.MaxLength = 32767;
+			tbxTime.Multiline = false;
+			tbxTime.Name = "tbxTime";
+			tbxTime.PasswordChar = '\0';
+			tbxTime.ScrollBars = ScrollBars.None;
+			tbxTime.SelectedText = "";
+			tbxTime.SelectionLength = 0;
+			tbxTime.SelectionStart = 0;
+			tbxTime.Size = new Size(292, 41);
+			tbxTime.TabIndex = 107;
+			tbxTime.TabStop = false;
+			tbxTime.Text = "HH:MM (24-HOUR FORMAT)";
+			tbxTime.UseSystemPasswordChar = false;
+			// 
+			// tbxDate
+			// 
+			tbxDate.BackColor = Color.White;
+			tbxDate.BaseColor = Color.FromArgb(252, 228, 228);
+			tbxDate.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxDate.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxDate.Dock = DockStyle.Fill;
+			tbxDate.Enabled = false;
+			tbxDate.Font = new Font("Bahnschrift", 15F);
+			tbxDate.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxDate.Hint = "";
+			tbxDate.Location = new Point(8, 298);
+			tbxDate.MaxLength = 32767;
+			tbxDate.Multiline = false;
+			tbxDate.Name = "tbxDate";
+			tbxDate.PasswordChar = '\0';
+			tbxDate.ScrollBars = ScrollBars.None;
+			tbxDate.SelectedText = "";
+			tbxDate.SelectionLength = 0;
+			tbxDate.SelectionStart = 0;
+			tbxDate.Size = new Size(292, 41);
+			tbxDate.TabIndex = 106;
+			tbxDate.TabStop = false;
+			tbxDate.Text = "MM/DD/YYYY";
+			tbxDate.UseSystemPasswordChar = false;
 			// 
 			// lblTitle
 			// 
@@ -86,7 +139,7 @@
 			lblTitle.Location = new Point(8, 5);
 			lblTitle.Name = "lblTitle";
 			lblTitle.Padding = new Padding(5, 0, 0, 5);
-			lblTitle.Size = new Size(584, 58);
+			lblTitle.Size = new Size(590, 58);
 			lblTitle.TabIndex = 76;
 			lblTitle.Text = "Title";
 			lblTitle.TextAlign = ContentAlignment.BottomLeft;
@@ -140,7 +193,7 @@
 			cmbxBarangay.HoverSelectionColor = Color.Empty;
 			cmbxBarangay.IntegralHeight = false;
 			cmbxBarangay.ItemHeight = 35;
-			cmbxBarangay.Location = new Point(303, 414);
+			cmbxBarangay.Location = new Point(306, 414);
 			cmbxBarangay.Name = "cmbxBarangay";
 			cmbxBarangay.Size = new Size(289, 41);
 			cmbxBarangay.StartIndex = 0;
@@ -155,7 +208,7 @@
 			lblDate.Location = new Point(8, 237);
 			lblDate.Name = "lblDate";
 			lblDate.Padding = new Padding(5, 0, 0, 5);
-			lblDate.Size = new Size(289, 58);
+			lblDate.Size = new Size(292, 58);
 			lblDate.TabIndex = 101;
 			lblDate.Text = "Date";
 			lblDate.TextAlign = ContentAlignment.BottomLeft;
@@ -170,7 +223,7 @@
 			lblLocation.Location = new Point(8, 353);
 			lblLocation.Name = "lblLocation";
 			lblLocation.Padding = new Padding(5, 0, 0, 5);
-			lblLocation.Size = new Size(584, 58);
+			lblLocation.Size = new Size(590, 58);
 			lblLocation.TabIndex = 102;
 			lblLocation.Text = "Location";
 			lblLocation.TextAlign = ContentAlignment.BottomLeft;
@@ -181,10 +234,10 @@
 			lblTime.Dock = DockStyle.Fill;
 			lblTime.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblTime.ForeColor = Color.FromArgb(216, 85, 101);
-			lblTime.Location = new Point(303, 237);
+			lblTime.Location = new Point(306, 237);
 			lblTime.Name = "lblTime";
 			lblTime.Padding = new Padding(5, 0, 0, 5);
-			lblTime.Size = new Size(289, 58);
+			lblTime.Size = new Size(292, 58);
 			lblTime.TabIndex = 103;
 			lblTime.Text = "Time";
 			lblTime.TextAlign = ContentAlignment.BottomLeft;
@@ -210,7 +263,7 @@
 			tbxTitle.SelectedText = "";
 			tbxTitle.SelectionLength = 0;
 			tbxTitle.SelectionStart = 0;
-			tbxTitle.Size = new Size(584, 41);
+			tbxTitle.Size = new Size(590, 41);
 			tbxTitle.TabIndex = 104;
 			tbxTitle.TabStop = false;
 			tbxTitle.UseSystemPasswordChar = false;
@@ -237,63 +290,11 @@
 			tbxDescription.SelectedText = "";
 			tbxDescription.SelectionLength = 0;
 			tbxDescription.SelectionStart = 0;
-			tbxDescription.Size = new Size(584, 110);
+			tbxDescription.Size = new Size(590, 110);
 			tbxDescription.TabIndex = 105;
 			tbxDescription.TabStop = false;
 			tbxDescription.Text = "Description";
 			tbxDescription.UseSystemPasswordChar = false;
-			// 
-			// tbxDate
-			// 
-			tbxDate.BackColor = Color.White;
-			tbxDate.BaseColor = Color.FromArgb(252, 228, 228);
-			tbxDate.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxDate.BorderColorB = Color.FromArgb(216, 85, 101);
-			tbxDate.Dock = DockStyle.Fill;
-			tbxDate.Enabled = false;
-			tbxDate.Font = new Font("Bahnschrift", 15F);
-			tbxDate.ForeColor = Color.FromArgb(216, 85, 101);
-			tbxDate.Hint = "";
-			tbxDate.Location = new Point(8, 298);
-			tbxDate.MaxLength = 32767;
-			tbxDate.Multiline = false;
-			tbxDate.Name = "tbxDate";
-			tbxDate.PasswordChar = '\0';
-			tbxDate.ScrollBars = ScrollBars.None;
-			tbxDate.SelectedText = "";
-			tbxDate.SelectionLength = 0;
-			tbxDate.SelectionStart = 0;
-			tbxDate.Size = new Size(289, 41);
-			tbxDate.TabIndex = 106;
-			tbxDate.TabStop = false;
-			tbxDate.Text = "MM/DD/YYYY";
-			tbxDate.UseSystemPasswordChar = false;
-			// 
-			// tbxTime
-			// 
-			tbxTime.BackColor = Color.White;
-			tbxTime.BaseColor = Color.FromArgb(252, 228, 228);
-			tbxTime.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxTime.BorderColorB = Color.FromArgb(216, 85, 101);
-			tbxTime.Dock = DockStyle.Fill;
-			tbxTime.Enabled = false;
-			tbxTime.Font = new Font("Bahnschrift", 15F);
-			tbxTime.ForeColor = Color.FromArgb(216, 85, 101);
-			tbxTime.Hint = "";
-			tbxTime.Location = new Point(303, 298);
-			tbxTime.MaxLength = 32767;
-			tbxTime.Multiline = false;
-			tbxTime.Name = "tbxTime";
-			tbxTime.PasswordChar = '\0';
-			tbxTime.ScrollBars = ScrollBars.None;
-			tbxTime.SelectedText = "";
-			tbxTime.SelectionLength = 0;
-			tbxTime.SelectionStart = 0;
-			tbxTime.Size = new Size(289, 41);
-			tbxTime.TabIndex = 107;
-			tbxTime.TabStop = false;
-			tbxTime.Text = "HH:MM (24-HOUR FORMAT)";
-			tbxTime.UseSystemPasswordChar = false;
 			// 
 			// btnNext
 			// 
@@ -301,7 +302,7 @@
 			btnNext.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnNext.Font = new Font("Bahnschrift", 14F);
 			btnNext.ForeColor = Color.FromArgb(252, 228, 228);
-			btnNext.Location = new Point(447, 538);
+			btnNext.Location = new Point(453, 544);
 			btnNext.Name = "btnNext";
 			btnNext.Size = new Size(145, 45);
 			btnNext.TabIndex = 108;
