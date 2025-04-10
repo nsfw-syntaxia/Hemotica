@@ -210,7 +210,7 @@
 			tbxTitle.SelectedText = "";
 			tbxTitle.SelectionLength = 0;
 			tbxTitle.SelectionStart = 0;
-			tbxTitle.Size = new Size(584, 52);
+			tbxTitle.Size = new Size(584, 41);
 			tbxTitle.TabIndex = 104;
 			tbxTitle.TabStop = false;
 			tbxTitle.UseSystemPasswordChar = false;
@@ -263,7 +263,7 @@
 			tbxDate.SelectedText = "";
 			tbxDate.SelectionLength = 0;
 			tbxDate.SelectionStart = 0;
-			tbxDate.Size = new Size(289, 52);
+			tbxDate.Size = new Size(289, 41);
 			tbxDate.TabIndex = 106;
 			tbxDate.TabStop = false;
 			tbxDate.Text = "MM/DD/YYYY";
@@ -289,7 +289,7 @@
 			tbxTime.SelectedText = "";
 			tbxTime.SelectionLength = 0;
 			tbxTime.SelectionStart = 0;
-			tbxTime.Size = new Size(289, 52);
+			tbxTime.Size = new Size(289, 41);
 			tbxTime.TabIndex = 107;
 			tbxTime.TabStop = false;
 			tbxTime.Text = "HH:MM (24-HOUR FORMAT)";
