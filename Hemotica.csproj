@@ -20,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="BloodDrivePicture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="DashboardA.cs">
       <SubType>Form</SubType>
     </Compile>
