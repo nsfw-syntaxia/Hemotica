@@ -24,9 +24,9 @@ namespace Hemotica
 		private void HospitalStock_Load(object sender, EventArgs e)
 		{
 			loadStock();
-			//showBloodDrivePicture();
-			//showBloodDrivePost();
 			roundControls();
+
+			pImage.Visible = false;
 		}
 
 		private void loadStock()
@@ -82,7 +82,7 @@ namespace Hemotica
 				string bloodLowStock = string.Join(", ", lowStock);
 				lblNote.Text = $"ATTENTION: Blood types {bloodLowStock} are low in stock or unavailable.\n\n" +
 							   $"Kindly organize a blood donation drive to support the ongoing maintenance of the supply, readiness for emergencies, and the means to save lives.";
-				
+
 				lblNote.Width = 468;
 				lblNote.MaximumSize = new Size(468, 0);
 			}
@@ -97,6 +97,7 @@ namespace Hemotica
 		public void roundControls()
 		{
 			pPost.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pPost.Width, pPost.Height, 20, 20));
+			pImage.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pImage.Width, pImage.Height, 20, 20));
 		}
 
 		private void HospitalStock_Resize(object sender, EventArgs e)
@@ -104,18 +105,16 @@ namespace Hemotica
 			roundControls();
 		}
 
-		public void showBloodDrivePost()
-		{
-			pPost.Controls.Clear();
-			BloodDrivePost bloodDrivePost = new BloodDrivePost();
-			pPost.Controls.Add(bloodDrivePost);
-		}
-
 		public void showBloodDrivePicture()
 		{
 			pPost.Controls.Clear();
 			BloodDrivePicture bloodDrivePicture = new BloodDrivePicture();
 			pPost.Controls.Add(bloodDrivePicture);
+		}
+
+		private void btnNext_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
