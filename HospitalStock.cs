@@ -105,13 +105,6 @@ namespace Hemotica
 			roundControls();
 		}
 
-		public void showBloodDrivePicture()
-		{
-			pPost.Controls.Clear();
-			BloodDrivePicture bloodDrivePicture = new BloodDrivePicture();
-			pPost.Controls.Add(bloodDrivePicture);
-		}
-
 		private void btnNext_Click(object sender, EventArgs e)
 		{
 			pPost.Visible = false;
