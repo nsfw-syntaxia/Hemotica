@@ -114,6 +114,17 @@ namespace Hemotica
 
 		private void btnNext_Click(object sender, EventArgs e)
 		{
+			pPost.Visible = false;
+			pImage.Visible = true;
+		}
+
+		private void btnBack_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnPost_Click(object sender, EventArgs e)
+		{
 
 		}
 	}

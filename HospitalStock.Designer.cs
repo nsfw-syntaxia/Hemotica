@@ -28,27 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
 			dgvStock = new DataGridView();
 			pWarning = new Panel();
 			lblNote = new Label();
 			lblWarning = new Label();
 			pPost = new Panel();
-			pImage = new Panel();
-			tableLayoutPanel1 = new TableLayoutPanel();
-			button1 = new AntdUI.Button();
-			dungeonComboBox1 = new ReaLTaiizor.Controls.DungeonComboBox();
-			dungeonComboBox2 = new ReaLTaiizor.Controls.DungeonComboBox();
-			hopeTextBox1 = new ReaLTaiizor.Controls.HopeTextBox();
-			hopeTextBox2 = new ReaLTaiizor.Controls.HopeTextBox();
-			label1 = new Label();
-			label2 = new Label();
-			label3 = new Label();
-			hopeTextBox3 = new ReaLTaiizor.Controls.HopeTextBox();
-			hopeTextBox4 = new ReaLTaiizor.Controls.HopeTextBox();
-			label4 = new Label();
 			tlpPost = new TableLayoutPanel();
 			btnNext = new AntdUI.Button();
 			cmbxBarangay = new ReaLTaiizor.Controls.DungeonComboBox();
@@ -61,12 +48,23 @@
 			tbxDescription = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxTitle = new ReaLTaiizor.Controls.HopeTextBox();
 			lblTitle = new Label();
+			pImage = new Panel();
+			tlpPhoto = new TableLayoutPanel();
+			btnRemove = new AntdUI.Button();
+			btnAttach = new AntdUI.Button();
+			btnBack = new AntdUI.Button();
+			pPhoto = new Panel();
+			pbxPhoto = new PictureBox();
+			btnPost = new AntdUI.Button();
+			lblPhoto = new Label();
 			((System.ComponentModel.ISupportInitialize)dgvStock).BeginInit();
 			pWarning.SuspendLayout();
 			pPost.SuspendLayout();
-			pImage.SuspendLayout();
-			tableLayoutPanel1.SuspendLayout();
 			tlpPost.SuspendLayout();
+			pImage.SuspendLayout();
+			tlpPhoto.SuspendLayout();
+			pPhoto.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxPhoto).BeginInit();
 			SuspendLayout();
 			// 
 			// dgvStock
@@ -82,15 +80,15 @@
 			dgvStock.BorderStyle = BorderStyle.None;
 			dgvStock.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 			dgvStock.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle4.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
-			dataGridViewCellStyle4.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle4.Padding = new Padding(15, 5, 15, 5);
-			dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-			dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle13.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle13.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle13.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle13.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle13.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+			dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
 			dgvStock.ColumnHeadersHeight = 50;
 			dgvStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			dgvStock.EnableHeadersVisualStyles = false;
@@ -100,23 +98,23 @@
 			dgvStock.Name = "dgvStock";
 			dgvStock.ReadOnly = true;
 			dgvStock.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = SystemColors.Control;
-			dataGridViewCellStyle5.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-			dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-			dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-			dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-			dgvStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle14.BackColor = SystemColors.Control;
+			dataGridViewCellStyle14.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle14.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+			dgvStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
 			dgvStock.RowHeadersVisible = false;
 			dgvStock.RowHeadersWidth = 40;
-			dataGridViewCellStyle6.BackColor = Color.FromArgb(244, 180, 180);
-			dataGridViewCellStyle6.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle6.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle6.Padding = new Padding(20, 5, 20, 5);
-			dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(236, 124, 132);
-			dataGridViewCellStyle6.SelectionForeColor = Color.White;
-			dgvStock.RowsDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle15.BackColor = Color.FromArgb(244, 180, 180);
+			dataGridViewCellStyle15.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle15.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle15.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle15.SelectionForeColor = Color.White;
+			dgvStock.RowsDefaultCellStyle = dataGridViewCellStyle15;
 			dgvStock.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
 			dgvStock.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
 			dgvStock.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
@@ -168,290 +166,12 @@
 			// 
 			pPost.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			pPost.BackColor = Color.FromArgb(252, 196, 196);
-			pPost.Controls.Add(pImage);
 			pPost.Controls.Add(tlpPost);
 			pPost.Location = new Point(513, 18);
 			pPost.Name = "pPost";
 			pPost.Padding = new Padding(10);
 			pPost.Size = new Size(494, 605);
 			pPost.TabIndex = 20;
-			// 
-			// pImage
-			// 
-			pImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			pImage.BackColor = Color.FromArgb(252, 196, 196);
-			pImage.Controls.Add(tableLayoutPanel1);
-			pImage.Location = new Point(0, 0);
-			pImage.Name = "pImage";
-			pImage.Padding = new Padding(10);
-			pImage.Size = new Size(494, 605);
-			pImage.TabIndex = 21;
-			// 
-			// tableLayoutPanel1
-			// 
-			tableLayoutPanel1.ColumnCount = 2;
-			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-			tableLayoutPanel1.Controls.Add(button1, 1, 9);
-			tableLayoutPanel1.Controls.Add(dungeonComboBox1, 1, 7);
-			tableLayoutPanel1.Controls.Add(dungeonComboBox2, 0, 7);
-			tableLayoutPanel1.Controls.Add(hopeTextBox1, 1, 5);
-			tableLayoutPanel1.Controls.Add(hopeTextBox2, 0, 5);
-			tableLayoutPanel1.Controls.Add(label1, 0, 6);
-			tableLayoutPanel1.Controls.Add(label2, 1, 4);
-			tableLayoutPanel1.Controls.Add(label3, 0, 4);
-			tableLayoutPanel1.Controls.Add(hopeTextBox3, 0, 2);
-			tableLayoutPanel1.Controls.Add(hopeTextBox4, 0, 1);
-			tableLayoutPanel1.Controls.Add(label4, 0, 0);
-			tableLayoutPanel1.Dock = DockStyle.Fill;
-			tableLayoutPanel1.Location = new Point(10, 10);
-			tableLayoutPanel1.Name = "tableLayoutPanel1";
-			tableLayoutPanel1.RowCount = 10;
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-			tableLayoutPanel1.Size = new Size(474, 585);
-			tableLayoutPanel1.TabIndex = 0;
-			// 
-			// button1
-			// 
-			button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-			button1.DefaultBack = Color.FromArgb(236, 124, 132);
-			button1.Font = new Font("Bahnschrift", 14F);
-			button1.ForeColor = Color.FromArgb(252, 228, 228);
-			button1.Location = new Point(326, 537);
-			button1.Name = "button1";
-			button1.Size = new Size(145, 45);
-			button1.TabIndex = 109;
-			button1.Text = "Next";
-			// 
-			// dungeonComboBox1
-			// 
-			dungeonComboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			dungeonComboBox1.BackColor = Color.White;
-			dungeonComboBox1.ColorA = Color.FromArgb(236, 124, 132);
-			dungeonComboBox1.ColorB = Color.FromArgb(236, 124, 132);
-			dungeonComboBox1.ColorC = Color.FromArgb(242, 241, 240);
-			dungeonComboBox1.ColorD = Color.FromArgb(253, 252, 252);
-			dungeonComboBox1.ColorE = Color.FromArgb(239, 237, 236);
-			dungeonComboBox1.ColorF = Color.FromArgb(216, 85, 101);
-			dungeonComboBox1.ColorG = Color.FromArgb(216, 85, 101);
-			dungeonComboBox1.ColorH = Color.FromArgb(244, 180, 180);
-			dungeonComboBox1.ColorI = Color.FromArgb(250, 249, 249);
-			dungeonComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
-			dungeonComboBox1.DropDownHeight = 100;
-			dungeonComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-			dungeonComboBox1.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
-			dungeonComboBox1.ForeColor = Color.FromArgb(216, 85, 101);
-			dungeonComboBox1.FormattingEnabled = true;
-			dungeonComboBox1.HoverSelectionColor = Color.Empty;
-			dungeonComboBox1.IntegralHeight = false;
-			dungeonComboBox1.ItemHeight = 35;
-			dungeonComboBox1.Location = new Point(240, 409);
-			dungeonComboBox1.Name = "dungeonComboBox1";
-			dungeonComboBox1.Size = new Size(231, 41);
-			dungeonComboBox1.StartIndex = 0;
-			dungeonComboBox1.TabIndex = 99;
-			// 
-			// dungeonComboBox2
-			// 
-			dungeonComboBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			dungeonComboBox2.BackColor = Color.White;
-			dungeonComboBox2.ColorA = Color.FromArgb(236, 124, 132);
-			dungeonComboBox2.ColorB = Color.FromArgb(236, 124, 132);
-			dungeonComboBox2.ColorC = Color.FromArgb(242, 241, 240);
-			dungeonComboBox2.ColorD = Color.FromArgb(253, 252, 252);
-			dungeonComboBox2.ColorE = Color.FromArgb(239, 237, 236);
-			dungeonComboBox2.ColorF = Color.FromArgb(216, 85, 101);
-			dungeonComboBox2.ColorG = Color.FromArgb(216, 85, 101);
-			dungeonComboBox2.ColorH = Color.FromArgb(244, 180, 180);
-			dungeonComboBox2.ColorI = Color.FromArgb(250, 249, 249);
-			dungeonComboBox2.DrawMode = DrawMode.OwnerDrawFixed;
-			dungeonComboBox2.DropDownHeight = 100;
-			dungeonComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-			dungeonComboBox2.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
-			dungeonComboBox2.ForeColor = Color.FromArgb(216, 85, 101);
-			dungeonComboBox2.FormattingEnabled = true;
-			dungeonComboBox2.HoverSelectionColor = Color.Empty;
-			dungeonComboBox2.IntegralHeight = false;
-			dungeonComboBox2.ItemHeight = 35;
-			dungeonComboBox2.Items.AddRange(new object[] { "Select city", "Alcantara", "Alcoy", "Alegria", "Aloguinsan", "Argao", "Asturias", "Badian", "Balamban", "Bantayan", "Barili", "Bogo City", "Boljoon", "Borbon", "Carcar City", "Carmen", "Catmon", "Cebu City", "Compostela", "Consolacion", "Cordova", "Daanbantayan", "Dalaguete", "Danao City", "Dumanjug", "Ginatilan", "Lapu-Lapu City", "Liloan", "Madridejos", "Malabuyoc", "Mandaue City", "Medellin", "Minglanilla", "Moalboal", "Naga City", "Oslob", "Pilar", "Pinamungahan", "Poro", "Ronda", "Samboan", "San Fernando", "San Francisco", "San Remigio", "Santa Fe", "Santander", "Sibonga", "Sogod", "Tabogon", "Tabuelan", "Talisay City", "Toledo City", "Tuburan", "Tudela" });
-			dungeonComboBox2.Location = new Point(3, 409);
-			dungeonComboBox2.Name = "dungeonComboBox2";
-			dungeonComboBox2.Size = new Size(231, 41);
-			dungeonComboBox2.StartIndex = 0;
-			dungeonComboBox2.TabIndex = 98;
-			// 
-			// hopeTextBox1
-			// 
-			hopeTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			hopeTextBox1.BackColor = Color.White;
-			hopeTextBox1.BaseColor = Color.FromArgb(252, 228, 228);
-			hopeTextBox1.BorderColorA = Color.FromArgb(216, 85, 101);
-			hopeTextBox1.BorderColorB = Color.FromArgb(216, 85, 101);
-			hopeTextBox1.Enabled = false;
-			hopeTextBox1.Font = new Font("Bahnschrift", 15F);
-			hopeTextBox1.ForeColor = Color.FromArgb(216, 85, 101);
-			hopeTextBox1.Hint = "";
-			hopeTextBox1.Location = new Point(240, 293);
-			hopeTextBox1.MaxLength = 32767;
-			hopeTextBox1.Multiline = false;
-			hopeTextBox1.Name = "hopeTextBox1";
-			hopeTextBox1.PasswordChar = '\0';
-			hopeTextBox1.ScrollBars = ScrollBars.None;
-			hopeTextBox1.SelectedText = "";
-			hopeTextBox1.SelectionLength = 0;
-			hopeTextBox1.SelectionStart = 0;
-			hopeTextBox1.Size = new Size(231, 41);
-			hopeTextBox1.TabIndex = 108;
-			hopeTextBox1.TabStop = false;
-			hopeTextBox1.Text = "HH:MM (24H FORMAT)";
-			hopeTextBox1.UseSystemPasswordChar = false;
-			// 
-			// hopeTextBox2
-			// 
-			hopeTextBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			hopeTextBox2.BackColor = Color.White;
-			hopeTextBox2.BaseColor = Color.FromArgb(252, 228, 228);
-			hopeTextBox2.BorderColorA = Color.FromArgb(216, 85, 101);
-			hopeTextBox2.BorderColorB = Color.FromArgb(216, 85, 101);
-			hopeTextBox2.Enabled = false;
-			hopeTextBox2.Font = new Font("Bahnschrift", 15F);
-			hopeTextBox2.ForeColor = Color.FromArgb(216, 85, 101);
-			hopeTextBox2.Hint = "";
-			hopeTextBox2.Location = new Point(3, 293);
-			hopeTextBox2.MaxLength = 32767;
-			hopeTextBox2.Multiline = false;
-			hopeTextBox2.Name = "hopeTextBox2";
-			hopeTextBox2.PasswordChar = '\0';
-			hopeTextBox2.ScrollBars = ScrollBars.None;
-			hopeTextBox2.SelectedText = "";
-			hopeTextBox2.SelectionLength = 0;
-			hopeTextBox2.SelectionStart = 0;
-			hopeTextBox2.Size = new Size(231, 41);
-			hopeTextBox2.TabIndex = 107;
-			hopeTextBox2.TabStop = false;
-			hopeTextBox2.Text = "MM/DD/YYYY";
-			hopeTextBox2.UseSystemPasswordChar = false;
-			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			tableLayoutPanel1.SetColumnSpan(label1, 2);
-			label1.Dock = DockStyle.Fill;
-			label1.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			label1.ForeColor = Color.FromArgb(216, 85, 101);
-			label1.Location = new Point(3, 348);
-			label1.Name = "label1";
-			label1.Padding = new Padding(5, 0, 0, 5);
-			label1.Size = new Size(468, 58);
-			label1.TabIndex = 103;
-			label1.Text = "Location";
-			label1.TextAlign = ContentAlignment.BottomLeft;
-			// 
-			// label2
-			// 
-			label2.AutoSize = true;
-			label2.Dock = DockStyle.Fill;
-			label2.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			label2.ForeColor = Color.FromArgb(216, 85, 101);
-			label2.Location = new Point(240, 232);
-			label2.Name = "label2";
-			label2.Padding = new Padding(5, 0, 0, 5);
-			label2.Size = new Size(231, 58);
-			label2.TabIndex = 104;
-			label2.Text = "Time";
-			label2.TextAlign = ContentAlignment.BottomLeft;
-			// 
-			// label3
-			// 
-			label3.AutoSize = true;
-			label3.Dock = DockStyle.Fill;
-			label3.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			label3.ForeColor = Color.FromArgb(216, 85, 101);
-			label3.Location = new Point(3, 232);
-			label3.Name = "label3";
-			label3.Padding = new Padding(5, 0, 0, 5);
-			label3.Size = new Size(231, 58);
-			label3.TabIndex = 102;
-			label3.Text = "Date";
-			label3.TextAlign = ContentAlignment.BottomLeft;
-			// 
-			// hopeTextBox3
-			// 
-			hopeTextBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			hopeTextBox3.BackColor = Color.White;
-			hopeTextBox3.BaseColor = Color.FromArgb(252, 228, 228);
-			hopeTextBox3.BorderColorA = Color.FromArgb(216, 85, 101);
-			hopeTextBox3.BorderColorB = Color.FromArgb(216, 85, 101);
-			tableLayoutPanel1.SetColumnSpan(hopeTextBox3, 2);
-			hopeTextBox3.Enabled = false;
-			hopeTextBox3.Font = new Font("Bahnschrift", 15F);
-			hopeTextBox3.ForeColor = Color.FromArgb(216, 85, 101);
-			hopeTextBox3.Hint = "";
-			hopeTextBox3.Location = new Point(3, 119);
-			hopeTextBox3.MaxLength = 32767;
-			hopeTextBox3.Multiline = true;
-			hopeTextBox3.Name = "hopeTextBox3";
-			hopeTextBox3.PasswordChar = '\0';
-			tableLayoutPanel1.SetRowSpan(hopeTextBox3, 2);
-			hopeTextBox3.ScrollBars = ScrollBars.None;
-			hopeTextBox3.SelectedText = "";
-			hopeTextBox3.SelectionLength = 0;
-			hopeTextBox3.SelectionStart = 0;
-			hopeTextBox3.Size = new Size(468, 110);
-			hopeTextBox3.TabIndex = 106;
-			hopeTextBox3.TabStop = false;
-			hopeTextBox3.Text = "Description";
-			hopeTextBox3.UseSystemPasswordChar = false;
-			// 
-			// hopeTextBox4
-			// 
-			hopeTextBox4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			hopeTextBox4.BackColor = Color.White;
-			hopeTextBox4.BaseColor = Color.FromArgb(252, 228, 228);
-			hopeTextBox4.BorderColorA = Color.FromArgb(216, 85, 101);
-			hopeTextBox4.BorderColorB = Color.FromArgb(216, 85, 101);
-			tableLayoutPanel1.SetColumnSpan(hopeTextBox4, 2);
-			hopeTextBox4.Enabled = false;
-			hopeTextBox4.Font = new Font("Bahnschrift", 15F);
-			hopeTextBox4.ForeColor = Color.FromArgb(216, 85, 101);
-			hopeTextBox4.Hint = "";
-			hopeTextBox4.Location = new Point(3, 61);
-			hopeTextBox4.MaxLength = 32767;
-			hopeTextBox4.Multiline = false;
-			hopeTextBox4.Name = "hopeTextBox4";
-			hopeTextBox4.PasswordChar = '\0';
-			hopeTextBox4.ScrollBars = ScrollBars.None;
-			hopeTextBox4.SelectedText = "";
-			hopeTextBox4.SelectionLength = 0;
-			hopeTextBox4.SelectionStart = 0;
-			hopeTextBox4.Size = new Size(468, 41);
-			hopeTextBox4.TabIndex = 105;
-			hopeTextBox4.TabStop = false;
-			hopeTextBox4.UseSystemPasswordChar = false;
-			// 
-			// label4
-			// 
-			label4.AutoSize = true;
-			tableLayoutPanel1.SetColumnSpan(label4, 2);
-			label4.Dock = DockStyle.Fill;
-			label4.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			label4.ForeColor = Color.FromArgb(216, 85, 101);
-			label4.Location = new Point(3, 0);
-			label4.Name = "label4";
-			label4.Padding = new Padding(5, 0, 0, 5);
-			label4.Size = new Size(468, 58);
-			label4.TabIndex = 77;
-			label4.Text = "Title";
-			label4.TextAlign = ContentAlignment.BottomLeft;
 			// 
 			// tlpPost
 			// 
@@ -488,11 +208,11 @@
 			// 
 			// btnNext
 			// 
-			btnNext.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			btnNext.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			btnNext.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnNext.Font = new Font("Bahnschrift", 14F);
 			btnNext.ForeColor = Color.FromArgb(252, 228, 228);
-			btnNext.Location = new Point(326, 537);
+			btnNext.Location = new Point(326, 525);
 			btnNext.Name = "btnNext";
 			btnNext.Size = new Size(145, 45);
 			btnNext.TabIndex = 109;
@@ -720,11 +440,139 @@
 			lblTitle.Text = "Title";
 			lblTitle.TextAlign = ContentAlignment.BottomLeft;
 			// 
+			// pImage
+			// 
+			pImage.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pImage.BackColor = Color.FromArgb(252, 196, 196);
+			pImage.Controls.Add(tlpPhoto);
+			pImage.Location = new Point(513, 18);
+			pImage.Name = "pImage";
+			pImage.Padding = new Padding(10);
+			pImage.Size = new Size(494, 605);
+			pImage.TabIndex = 21;
+			// 
+			// tlpPhoto
+			// 
+			tlpPhoto.ColumnCount = 2;
+			tlpPhoto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+			tlpPhoto.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+			tlpPhoto.Controls.Add(btnRemove, 1, 7);
+			tlpPhoto.Controls.Add(btnAttach, 0, 7);
+			tlpPhoto.Controls.Add(btnBack, 0, 9);
+			tlpPhoto.Controls.Add(pPhoto, 0, 1);
+			tlpPhoto.Controls.Add(btnPost, 1, 9);
+			tlpPhoto.Controls.Add(lblPhoto, 0, 0);
+			tlpPhoto.Dock = DockStyle.Fill;
+			tlpPhoto.Location = new Point(10, 10);
+			tlpPhoto.Name = "tlpPhoto";
+			tlpPhoto.RowCount = 10;
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpPhoto.Size = new Size(474, 585);
+			tlpPhoto.TabIndex = 0;
+			// 
+			// btnRemove
+			// 
+			btnRemove.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnRemove.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnRemove.Font = new Font("Bahnschrift", 14F);
+			btnRemove.ForeColor = Color.FromArgb(252, 228, 228);
+			btnRemove.Location = new Point(240, 416);
+			btnRemove.Name = "btnRemove";
+			btnRemove.Size = new Size(185, 45);
+			btnRemove.TabIndex = 80;
+			btnRemove.Text = "Remove Photo";
+			// 
+			// btnAttach
+			// 
+			btnAttach.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+			btnAttach.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnAttach.Font = new Font("Bahnschrift", 14F);
+			btnAttach.ForeColor = Color.FromArgb(252, 228, 228);
+			btnAttach.Location = new Point(49, 416);
+			btnAttach.Name = "btnAttach";
+			btnAttach.Size = new Size(185, 45);
+			btnAttach.TabIndex = 79;
+			btnAttach.Text = "Attach Photo";
+			// 
+			// btnBack
+			// 
+			btnBack.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnBack.Font = new Font("Bahnschrift", 14F);
+			btnBack.ForeColor = Color.FromArgb(252, 228, 228);
+			btnBack.Location = new Point(3, 525);
+			btnBack.Name = "btnBack";
+			btnBack.Size = new Size(145, 45);
+			btnBack.TabIndex = 110;
+			btnBack.Text = "Back";
+			btnBack.Click += btnBack_Click;
+			// 
+			// pPhoto
+			// 
+			pPhoto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pPhoto.BackColor = Color.FromArgb(216, 85, 101);
+			tlpPhoto.SetColumnSpan(pPhoto, 2);
+			pPhoto.Controls.Add(pbxPhoto);
+			pPhoto.Location = new Point(3, 61);
+			pPhoto.Name = "pPhoto";
+			pPhoto.Padding = new Padding(5);
+			tlpPhoto.SetRowSpan(pPhoto, 6);
+			pPhoto.Size = new Size(468, 342);
+			pPhoto.TabIndex = 78;
+			// 
+			// pbxPhoto
+			// 
+			pbxPhoto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pbxPhoto.BackColor = Color.FromArgb(252, 228, 228);
+			pbxPhoto.Location = new Point(8, 8);
+			pbxPhoto.Name = "pbxPhoto";
+			pbxPhoto.Size = new Size(452, 326);
+			pbxPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
+			pbxPhoto.TabIndex = 22;
+			pbxPhoto.TabStop = false;
+			// 
+			// btnPost
+			// 
+			btnPost.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			btnPost.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnPost.Font = new Font("Bahnschrift", 14F);
+			btnPost.ForeColor = Color.FromArgb(252, 228, 228);
+			btnPost.Location = new Point(326, 525);
+			btnPost.Name = "btnPost";
+			btnPost.Size = new Size(145, 45);
+			btnPost.TabIndex = 109;
+			btnPost.Text = "Post";
+			btnPost.Click += btnPost_Click;
+			// 
+			// lblPhoto
+			// 
+			lblPhoto.AutoSize = true;
+			tlpPhoto.SetColumnSpan(lblPhoto, 2);
+			lblPhoto.Dock = DockStyle.Fill;
+			lblPhoto.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblPhoto.ForeColor = Color.FromArgb(216, 85, 101);
+			lblPhoto.Location = new Point(3, 0);
+			lblPhoto.Name = "lblPhoto";
+			lblPhoto.Padding = new Padding(5, 0, 0, 5);
+			lblPhoto.Size = new Size(468, 58);
+			lblPhoto.TabIndex = 77;
+			lblPhoto.Text = "Blood Donation Drive";
+			lblPhoto.TextAlign = ContentAlignment.BottomLeft;
+			// 
 			// HospitalStock
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(pImage);
 			Controls.Add(pPost);
 			Controls.Add(pWarning);
 			Controls.Add(dgvStock);
@@ -737,11 +585,13 @@
 			pWarning.ResumeLayout(false);
 			pWarning.PerformLayout();
 			pPost.ResumeLayout(false);
-			pImage.ResumeLayout(false);
-			tableLayoutPanel1.ResumeLayout(false);
-			tableLayoutPanel1.PerformLayout();
 			tlpPost.ResumeLayout(false);
 			tlpPost.PerformLayout();
+			pImage.ResumeLayout(false);
+			tlpPhoto.ResumeLayout(false);
+			tlpPhoto.PerformLayout();
+			pPhoto.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pbxPhoto).EndInit();
 			ResumeLayout(false);
 		}
 
@@ -766,17 +616,13 @@
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxBarangay;
 		private AntdUI.Button btnNext;
 		private Panel pImage;
-		private TableLayoutPanel tableLayoutPanel1;
-		private AntdUI.Button button1;
-		private ReaLTaiizor.Controls.DungeonComboBox dungeonComboBox1;
-		private ReaLTaiizor.Controls.DungeonComboBox dungeonComboBox2;
-		private ReaLTaiizor.Controls.HopeTextBox hopeTextBox1;
-		private ReaLTaiizor.Controls.HopeTextBox hopeTextBox2;
-		private Label label1;
-		private Label label2;
-		private Label label3;
-		private ReaLTaiizor.Controls.HopeTextBox hopeTextBox3;
-		private ReaLTaiizor.Controls.HopeTextBox hopeTextBox4;
-		private Label label4;
+		private TableLayoutPanel tlpPhoto;
+		private AntdUI.Button btnPost;
+		private Label lblPhoto;
+		private Panel pPhoto;
+		private AntdUI.Button btnBack;
+		private PictureBox pbxPhoto;
+		private AntdUI.Button btnAttach;
+		private AntdUI.Button btnRemove;
 	}
 }

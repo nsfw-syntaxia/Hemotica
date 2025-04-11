@@ -110,7 +110,6 @@
 			pImage.BackColor = Color.FromArgb(216, 85, 101);
 			tlpPost.SetColumnSpan(pImage, 2);
 			pImage.Controls.Add(pbxImage);
-			pImage.Dock = DockStyle.Fill;
 			pImage.Location = new Point(8, 66);
 			pImage.Name = "pImage";
 			pImage.Padding = new Padding(5);
