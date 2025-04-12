@@ -43,7 +43,7 @@ namespace Hemotica
 				return;
 			}
 
-			donor.Age = calculateAge(birthdate);
+			donor.Age = calculateAge(birthdate).ToString();
 
 			if (!ExceptionHandling.validAge(donor.Age, out int age))
 			{
