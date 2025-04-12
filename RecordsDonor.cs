@@ -19,7 +19,7 @@ namespace Hemotica
 			tbxFName.Text = "First Name";
 			tbxMName.Text = "Middle Name";
 			tbxLName.Text = "Last Name";
-			tbxAge.Text = "Age";
+			tbxBirthdate.Text = "Birthdate (MM/DD/YYYY)";
 			tbxCNumber.Text = "Contact Number";
 		}
 
@@ -33,7 +33,7 @@ namespace Hemotica
 					MiddleName = tbxMName.Text == "Middle Name" ? "" : tbxMName.Text,
 					LastName = tbxLName.Text,
 					Gender = cmbxSex.SelectedItem?.ToString(),
-					Age = tbxAge.Text,
+					Age = tbxBirthdate.Text,
 					Barangay = cmbxBarangay.SelectedItem?.ToString(),
 					City = cmbxCity.SelectedItem?.ToString(),
 					Province = "Cebu",
@@ -51,7 +51,7 @@ namespace Hemotica
 			tbxMName.Text = string.IsNullOrWhiteSpace(donor.MiddleName) ? "" : donor.MiddleName;
 			tbxLName.Text = donor.LastName;
 			cmbxSex.SelectedItem = donor.Gender;
-			tbxAge.Text = donor.Age;
+			tbxBirthdate.Text = donor.Age;
 			cmbxCity.SelectedItem = donor.City;
 			loadBarangays(donor.City);
 			cmbxBarangay.SelectedItem = donor.Barangay;
@@ -62,8 +62,8 @@ namespace Hemotica
 		private bool isValid()
 		{
 			if (string.IsNullOrWhiteSpace(tbxFName.Text) || string.IsNullOrWhiteSpace(tbxLName.Text) || string.IsNullOrWhiteSpace(cmbxSex.SelectedItem?.ToString()) ||
-				string.IsNullOrWhiteSpace(tbxAge.Text) || string.IsNullOrWhiteSpace(cmbxBarangay.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(cmbxCity.SelectedItem?.ToString()) ||
-				string.IsNullOrWhiteSpace(tbxCNumber.Text) || string.IsNullOrWhiteSpace(cmbxBType.SelectedItem?.ToString()) || cmbxSex.SelectedIndex == 0 || cmbxCity.SelectedIndex == 0 || 
+				string.IsNullOrWhiteSpace(tbxBirthdate.Text) || string.IsNullOrWhiteSpace(cmbxBarangay.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(cmbxCity.SelectedItem?.ToString()) ||
+				string.IsNullOrWhiteSpace(tbxCNumber.Text) || string.IsNullOrWhiteSpace(cmbxBType.SelectedItem?.ToString()) || cmbxSex.SelectedIndex == 0 || cmbxCity.SelectedIndex == 0 ||
 				cmbxBType.SelectedIndex == 0)
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -72,10 +72,10 @@ namespace Hemotica
 
 			List<string> errors = new List<string>();
 
-			if (!ExceptionHandling.validAge(tbxAge.Text, out int age))
+			if (!ExceptionHandling.validAge(tbxBirthdate.Text, out int age))
 				errors.Add("Invalid age.");
 
-			if(!ExceptionHandling.validContactNumber(tbxCNumber.Text))
+			if (!ExceptionHandling.validContactNumber(tbxCNumber.Text))
 				errors.Add("Invalid contact number.");
 
 			if (errors.Count > 0)
@@ -144,10 +144,10 @@ namespace Hemotica
 				tbxLName.Text = "";
 		}
 
-		private void tbxAge_Enter(object sender, EventArgs e)
+		private void tbxBirthdate_Enter(object sender, EventArgs e)
 		{
-			if (tbxAge.Text == "Age")
-				tbxAge.Text = "";
+			if (tbxBirthdate.Text == "Birthdate (MM/DD/YYYY)")
+				tbxBirthdate.Text = "";
 		}
 
 		private void tbxCNumber_Enter(object sender, EventArgs e)
@@ -174,10 +174,10 @@ namespace Hemotica
 				tbxLName.Text = "Last Name";
 		}
 
-		private void tbxAge_Leave(object sender, EventArgs e)
+		private void tbxBirthdate_Leave(object sender, EventArgs e)
 		{
-			if (string.IsNullOrWhiteSpace(tbxAge.Text))
-				tbxAge.Text = "Age";
+			if (string.IsNullOrWhiteSpace(tbxBirthdate.Text))
+				tbxBirthdate.Text = "Birthdate (MM/DD/YYYY)";
 		}
 
 		private void tbxCNumber_Leave(object sender, EventArgs e)
