@@ -114,7 +114,7 @@ namespace Hemotica
 		{
 			string hospitalAccess = "All";
 
-			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Age, [Contact Number], [Blood Type], Barangay, City, Province FROM Donors
+			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Birthdate, Age, [Contact Number], [Blood Type], Barangay, City, Province FROM Donors
 							 WHERE Hospital = ? OR Hospital = ?";
 
 			OleDbParameter[] parameters = 
