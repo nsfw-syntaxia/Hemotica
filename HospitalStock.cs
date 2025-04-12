@@ -117,7 +117,7 @@ namespace Hemotica
 				return;
 
 			title = tbxTitle.Text.Trim();
-			description = tbxDescription.Text.Trim();
+			description = tbxDescription.Text.Replace(Environment.NewLine, " ").Trim();
 			date = tbxDate.Text.Trim();
 			time = tbxTime.Text.Trim();
 			city = cmbxCity.SelectedItem?.ToString();
@@ -286,7 +286,65 @@ namespace Hemotica
 
 		private void btnPost_Click(object sender, EventArgs e)
 		{
-			// save to database (the prev inputs and the photo if user attached one)
+			string datetime = $"{date} {time}:00";
+			string province = "Cebu";
+
+			string query = @"INSERT INTO [Blood Drives] ([Hospital], [Title], [Description], [Date and Time], [Barangay], [City], [Province], [Image]) 
+							 VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					using (OleDbCommand cmd = new OleDbCommand(query, conn))
+					{
+						cmd.Parameters.AddWithValue("?", UserLogs.Username);
+						cmd.Parameters.AddWithValue("?", title);
+						cmd.Parameters.AddWithValue("?", description);
+						cmd.Parameters.AddWithValue("?", datetime);
+						cmd.Parameters.AddWithValue("?", barangay);
+						cmd.Parameters.AddWithValue("?", city);
+						cmd.Parameters.AddWithValue("?", province);
+
+						if (imageBytes != null)
+						{
+							cmd.Parameters.Add("?", OleDbType.VarBinary).Value = imageBytes;
+						}
+						else
+						{
+							cmd.Parameters.Add("?", OleDbType.VarBinary).Value = DBNull.Value;
+						}
+
+						conn.Open();
+						cmd.ExecuteNonQuery();
+						conn.Close();
+
+						MessageBox.Show("Blood donation drive successfully posted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+						clearInputs();
+						pImage.Visible = false;
+						pPost.Visible = true;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void clearInputs()
+		{
+			tbxTitle.Clear();
+			tbxDescription.Text = "Description";
+			tbxDate.Text = "MM/DD/YYYY";
+			tbxTime.Text = "HH:MM (24H FORMAT)";
+			cmbxCity.SelectedIndex = 0;
+			cmbxBarangay.Items.Clear();
+			pbxPhoto.Image = addPhoto;
+			imageBytes = null;
+
+			title = description = date = time = city = barangay = string.Empty;
 		}
 	}
 }
