@@ -109,14 +109,51 @@ namespace Hemotica
 		{
 			pPost.Visible = false;
 			pImage.Visible = true;
+
+			// store the data inputed and pass it to the next form (to save to database, including the next data)
 		}
 
 		private void btnBack_Click(object sender, EventArgs e)
 		{
-
+			// goes back to pPost and hides pImage, and the prev inputted data will still be there
 		}
 
 		private void btnPost_Click(object sender, EventArgs e)
+		{
+			// save to database
+		}
+
+		private void tbxDescription_Enter(object sender, EventArgs e)
+		{
+
+		}
+
+		private void tbxDescription_Leave(object sender, EventArgs e)
+		{
+
+		}
+
+		private void tbxDate_Enter(object sender, EventArgs e)
+		{
+
+		}
+
+		private void tbxDate_Leave(object sender, EventArgs e)
+		{
+
+		}
+
+		private void tbxTime_Enter(object sender, EventArgs e)
+		{
+
+		}
+
+		private void tbxTime_Leave(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cmbxCity_SelectedIndexChanged(object sender, EventArgs e)
 		{
 
 		}
