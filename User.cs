@@ -43,6 +43,7 @@ namespace Hemotica
 		private string middleName;
 		private string lastName;
 		private string gender;
+		private string birthdate;
 		private string age;
 		private string barangay;
 		private string city;
@@ -71,6 +72,12 @@ namespace Hemotica
 		{
 			get { return gender; }
 			set { gender = value; }
+		}
+
+		public string Birthdate
+		{
+			get { return birthdate; }
+			set { birthdate = value; }
 		}
 
 		public string Age
