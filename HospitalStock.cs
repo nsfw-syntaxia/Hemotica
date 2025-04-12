@@ -18,6 +18,8 @@ namespace Hemotica
 			int nWidthEllipse, int nHeightEllipse);
 
 		private string title, description, date, time, city, barangay;
+		private Image addPhoto;
+		private byte[] imageBytes = null;
 
 		public HospitalStock()
 		{
@@ -30,6 +32,7 @@ namespace Hemotica
 			roundControls();
 
 			pImage.Visible = false;
+			addPhoto = pbxPhoto.Image;
 		}
 
 		private void loadStock()
@@ -173,11 +176,6 @@ namespace Hemotica
 			}
 		}
 
-		private void btnPost_Click(object sender, EventArgs e)
-		{
-			// save to database
-		}
-
 		private void tbxDescription_Enter(object sender, EventArgs e)
 		{
 			if (tbxDescription.Text == "Description")
@@ -251,6 +249,44 @@ namespace Hemotica
 					cmbxBarangay.SelectedIndex = 0;
 				}
 			}
+		}
+
+		private void btnAttach_Click(object sender, EventArgs e)
+		{
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.Filter = "Image Files | *.jpg; *.jpeg; *.png";
+				openFileDialog.Title = "";
+
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					try
+					{
+						pbxPhoto.Image = new Bitmap(openFileDialog.FileName);
+
+						using (MemoryStream ms = new MemoryStream())
+						{
+							pbxPhoto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+							imageBytes = ms.ToArray();
+						}
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+		}
+
+		private void btnRemove_Click(object sender, EventArgs e)
+		{
+			pbxPhoto.Image = addPhoto;
+			imageBytes = null;
+		}
+
+		private void btnPost_Click(object sender, EventArgs e)
+		{
+			// save to database (the prev inputs and the photo if user attached one)
 		}
 	}
 }
