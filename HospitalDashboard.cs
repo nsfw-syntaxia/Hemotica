@@ -25,6 +25,7 @@ namespace Hemotica
 		{
 			roundControls();
 			loadAppointments();
+			loadPatients();
 		}
 
 		public void roundControls()
@@ -53,12 +54,18 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital, parameters);
 
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+			string status = "Scheduled";
 
 			string queryAppointments = $@"SELECT Appointments.[Appointment Date], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name] FROM Hospitals 
 										  INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital 
 										  WHERE Appointments.[Status] = 'Scheduled' AND Appointments.[Hospital] = '{hospitalName}' ORDER BY Appointments.[Appointment Date] ASC";
 
-			DataTable appointments = db.executeQuery(queryAppointments);
+			OleDbParameter[] appointmentParameters = 
+			{
+				new OleDbParameter("?", status),
+				new OleDbParameter("?", hospitalName)
+			};
+			DataTable appointments = db.executeQuery(queryAppointments, appointmentParameters);
 
 			if (appointments != null)
 			{
@@ -84,8 +91,10 @@ namespace Hemotica
 						Text = appointmentDate,
 						Font = new Font("Bahnschrift", 17F, FontStyle.Bold),
 						ForeColor = Color.FromArgb(216, 85, 101),
-						AutoSize = true,
-						Location = new Point(20, 30)
+						TextAlign = ContentAlignment.MiddleLeft,
+						AutoSize = false,
+						Width = 240,
+						Height = 30
 					};
 
 					Label lblDonor = new Label
@@ -93,9 +102,21 @@ namespace Hemotica
 						Text = donorName,
 						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
 						ForeColor = Color.FromArgb(216, 85, 101),
-						AutoSize = true,
-						Location = new Point(20, lblDate.Bottom + 15)
+						TextAlign = ContentAlignment.MiddleLeft,
+						AutoSize = false,
+						Width = 240,
+						MaximumSize = new Size(240, 0)
 					};
+
+					Size textSize = TextRenderer.MeasureText(lblDonor.Text, lblDonor.Font, lblDonor.MaximumSize, TextFormatFlags.WordBreak);
+					lblDonor.Height = textSize.Height;
+
+					int gap = 10;
+					int totalHeight = lblDate.Height + gap + lblDonor.Height;
+					int startY = (panel.Height - totalHeight) / 2 - 3;
+
+					lblDate.Location = new Point(25, startY);
+					lblDonor.Location = new Point(25, lblDate.Bottom + gap);
 
 					panel.Controls.Add(lblDate);
 					panel.Controls.Add(lblDonor);
@@ -111,6 +132,90 @@ namespace Hemotica
 			string format = DateTime.Now.Date.ToString("MM/dd/yyyy");
 			OleDbParameter[] appointmentParameter = { new OleDbParameter("?", format) };
 			db.executeNonQuery(cancelAppointmentsQuery, appointmentParameter);
+		}
+
+		private void loadPatients()
+		{
+			DataTable patients = db.executeQuery("SELECT [First Name], [Middle Name], [Last Name], [Blood Type], Priority FROM Patients");
+
+			if (patients != null)
+			{
+				var filteredPatients = patients.AsEnumerable().Where(row => row["Priority"].ToString() != "Resolved").CopyToDataTable();
+
+				filteredPatients.Columns.Add("SortOrder", typeof(int));
+
+				foreach (DataRow row in filteredPatients.Rows)
+				{
+					string priority = row["Priority"].ToString();
+					int sortOrder = 4;
+
+					switch (priority)
+					{
+						case "Critical": sortOrder = 0; break;
+						case "High": sortOrder = 1; break;
+						case "Medium": sortOrder = 2; break;
+						case "Low": sortOrder = 3; break;
+					}
+
+					row["SortOrder"] = sortOrder;
+				}
+
+				DataView sortedView = filteredPatients.DefaultView;
+				sortedView.Sort = "SortOrder ASC";
+				DataTable sortedPatients = sortedView.ToTable();
+
+				foreach (DataRow row in sortedPatients.Rows)
+				{
+					string firstName = row["First Name"].ToString();
+					string middleName = row["Middle Name"].ToString();
+					string lastName = row["Last Name"].ToString();
+					string bloodType = row["Blood Type"].ToString();
+					string priority = row["Priority"].ToString();
+					string patientName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
+
+					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
+					{
+						Size = new Size(250, 165),
+						BackColor = Color.FromArgb(244, 180, 180),
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 250, 165, 20, 20))
+					};
+
+					Label lblName = new Label
+					{
+						Text = patientName,
+						Font = new Font("Bahnschrift", 14F, FontStyle.Bold),
+						ForeColor = Color.FromArgb(216, 85, 101),
+						TextAlign = ContentAlignment.MiddleCenter,
+						AutoSize = false,
+						Width = panel.Width - 20,
+						MaximumSize = new Size(panel.Width - 20, 60),
+						Height = 50
+					};
+
+					Label lblInformation = new Label
+					{
+						Text = $"{bloodType} ({priority})",
+						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
+						ForeColor = Color.FromArgb(216, 85, 101),
+						TextAlign = ContentAlignment.MiddleCenter,
+						AutoSize = false,
+						Width = panel.Width - 20,
+						Height = 30
+					};
+
+					int gap = 10;
+					int totalHeight = lblName.Height + lblInformation.Height + gap;
+					int startY = (panel.Height - totalHeight) / 2;
+
+					lblName.Location = new Point((panel.Width - lblName.Width) / 2, startY);
+					lblInformation.Location = new Point((panel.Width - lblInformation.Width) / 2, startY + lblName.Height + gap);
+
+					panel.Controls.Add(lblName);
+					panel.Controls.Add(lblInformation);
+
+					flpPatients.Controls.Add(panel);
+				}
+			}
 		}
 	}
 }

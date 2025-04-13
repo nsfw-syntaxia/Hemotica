@@ -93,11 +93,15 @@ namespace Hemotica
 						OverColor = Color.FromArgb(216, 85, 101),
 						Size = new Size(120, 40),
 						Text = "DONATE",
-						Cursor = Cursors.Hand,
-						Location = new Point((panel.Width - 120) / 2, (panel.Height - 40) / 2 + 20)
+						Cursor = Cursors.Hand
 					};
 
-					lblHospital.Location = new Point((panel.Width - lblHospital.Width) / 2, btnDonate.Top - lblHospital.Height - 5);
+					int gap = 10;
+					int totalHeight = lblHospital.Height + btnDonate.Height + gap;
+					int startY = (panel.Height - totalHeight) / 2;
+
+					lblHospital.Location = new Point((panel.Width - lblHospital.Width) / 2, startY);
+					btnDonate.Location = new Point((panel.Width - btnDonate.Width) / 2, startY + lblHospital.Height + gap);
 
 					panel.Controls.Add(btnDonate);
 					panel.Controls.Add(lblHospital);
