@@ -194,7 +194,7 @@
 			btnProfile.Name = "btnProfile";
 			btnProfile.Size = new Size(187, 52);
 			btnProfile.TabIndex = 29;
-			btnProfile.Text = "Change Photo";
+			btnProfile.Text = "Add Photo";
 			btnProfile.Click += btnProfile_Click;
 			// 
 			// btnEdit
