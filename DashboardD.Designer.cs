@@ -41,8 +41,6 @@
 			btnDashboard = new Button();
 			pDonate = new Panel();
 			btnDonate = new Button();
-			pNotification = new Panel();
-			btnNotification = new Button();
 			pProfile = new Panel();
 			btnProfile = new Button();
 			pLogout = new Panel();
@@ -57,7 +55,6 @@
 			pMenu.SuspendLayout();
 			pDashboard.SuspendLayout();
 			pDonate.SuspendLayout();
-			pNotification.SuspendLayout();
 			pProfile.SuspendLayout();
 			pLogout.SuspendLayout();
 			pHeader.SuspendLayout();
@@ -116,7 +113,6 @@
 			flpSideBar.Controls.Add(pBlank);
 			flpSideBar.Controls.Add(pDashboard);
 			flpSideBar.Controls.Add(pDonate);
-			flpSideBar.Controls.Add(pNotification);
 			flpSideBar.Controls.Add(pProfile);
 			flpSideBar.Controls.Add(pLogout);
 			flpSideBar.Dock = DockStyle.Left;
@@ -218,38 +214,10 @@
 			btnDonate.UseVisualStyleBackColor = true;
 			btnDonate.Click += btnDonate_Click;
 			// 
-			// pNotification
-			// 
-			pNotification.Controls.Add(btnNotification);
-			pNotification.Location = new Point(3, 295);
-			pNotification.Name = "pNotification";
-			pNotification.Size = new Size(219, 60);
-			pNotification.TabIndex = 3;
-			// 
-			// btnNotification
-			// 
-			btnNotification.FlatAppearance.BorderSize = 0;
-			btnNotification.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
-			btnNotification.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
-			btnNotification.FlatStyle = FlatStyle.Flat;
-			btnNotification.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-			btnNotification.ForeColor = Color.FromArgb(253, 211, 211);
-			btnNotification.Image = (Image)resources.GetObject("btnNotification.Image");
-			btnNotification.ImageAlign = ContentAlignment.MiddleLeft;
-			btnNotification.Location = new Point(-16, -13);
-			btnNotification.Name = "btnNotification";
-			btnNotification.Padding = new Padding(20, 5, 5, 5);
-			btnNotification.Size = new Size(248, 86);
-			btnNotification.TabIndex = 10;
-			btnNotification.Text = "            NOTIFICATIONS";
-			btnNotification.TextAlign = ContentAlignment.MiddleLeft;
-			btnNotification.UseVisualStyleBackColor = true;
-			btnNotification.Click += btnNotification_Click;
-			// 
 			// pProfile
 			// 
 			pProfile.Controls.Add(btnProfile);
-			pProfile.Location = new Point(3, 361);
+			pProfile.Location = new Point(3, 295);
 			pProfile.Name = "pProfile";
 			pProfile.Size = new Size(219, 60);
 			pProfile.TabIndex = 5;
@@ -277,7 +245,7 @@
 			// pLogout
 			// 
 			pLogout.Controls.Add(btnLogout);
-			pLogout.Location = new Point(3, 427);
+			pLogout.Location = new Point(3, 361);
 			pLogout.Name = "pLogout";
 			pLogout.Size = new Size(219, 60);
 			pLogout.TabIndex = 6;
@@ -390,7 +358,6 @@
 			pMenu.ResumeLayout(false);
 			pDashboard.ResumeLayout(false);
 			pDonate.ResumeLayout(false);
-			pNotification.ResumeLayout(false);
 			pProfile.ResumeLayout(false);
 			pLogout.ResumeLayout(false);
 			pHeader.ResumeLayout(false);
@@ -406,11 +373,9 @@
         private Panel pMenu;
         private Panel pDashboard;
         private Panel pDonate;
-        private Panel pNotification;
         private Panel pProfile;
         private Button btnDashboard;
         private Button btnDonate;
-        private Button btnNotification;
         private Button btnProfile;
         private Panel pLogout;
         private Button btnLogout;

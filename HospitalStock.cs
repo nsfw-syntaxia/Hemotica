@@ -321,6 +321,8 @@ namespace Hemotica
 
 						MessageBox.Show("Blood donation drive successfully posted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+						// send an email notification to all donors within the baragay
+
 						clearInputs();
 						pImage.Visible = false;
 						pPost.Visible = true;

@@ -175,20 +175,6 @@ namespace Hemotica
 			adjustLayout();
 		}
 
-		private void btnNotification_Click(object sender, EventArgs e)
-		{
-			showDonorNotification();
-		}
-
-		internal void showDonorNotification()
-		{
-			lblHeader.Text = "Notifications";
-			flpDashboard.Controls.Clear();
-			DonorNotification donorNotification = new DonorNotification();
-			flpDashboard.Controls.Add(donorNotification);
-			adjustLayout();
-		}
-
 		private void btnProfile_Click(object sender, EventArgs e)
 		{
 			showDonorProfile();
