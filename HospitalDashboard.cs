@@ -54,15 +54,14 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital, parameters);
 
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
-			string status = "Scheduled";
 
-			string queryAppointments = $@"SELECT Appointments.[Appointment Date], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name] FROM Hospitals 
-										  INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital 
-										  WHERE Appointments.[Status] = 'Scheduled' AND Appointments.[Hospital] = '{hospitalName}' ORDER BY Appointments.[Appointment Date] ASC";
+			string queryAppointments = @"SELECT Appointments.[Appointment Date], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name] FROM Hospitals 
+										 INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital 
+										 WHERE Appointments.[Status] = ? AND Appointments.[Hospital] = ? ORDER BY Appointments.[Appointment Date] ASC";
 
 			OleDbParameter[] appointmentParameters = 
 			{
-				new OleDbParameter("?", status),
+				new OleDbParameter("?", "Scheduled"),
 				new OleDbParameter("?", hospitalName)
 			};
 			DataTable appointments = db.executeQuery(queryAppointments, appointmentParameters);
@@ -136,7 +135,15 @@ namespace Hemotica
 
 		private void loadPatients()
 		{
-			DataTable patients = db.executeQuery("SELECT [First Name], [Middle Name], [Last Name], [Blood Type], Priority FROM Patients");
+			string queryPatients = @"SELECT [First Name], [Middle Name], [Last Name], [Blood Type], Priority, [Hospital Username] FROM Patients 
+									 WHERE [Hospital Username] = ? AND Priority <> ?";
+
+			OleDbParameter[] patientParameters = 
+			{ 
+				new OleDbParameter("?", UserLogs.Username),
+				new OleDbParameter("?", "Resolved")
+			};
+			DataTable patients = db.executeQuery(queryPatients, patientParameters);
 
 			if (patients != null)
 			{
@@ -203,7 +210,7 @@ namespace Hemotica
 						Height = 30
 					};
 
-					int gap = 10;
+					int gap = 5;
 					int totalHeight = lblName.Height + lblInformation.Height + gap;
 					int startY = (panel.Height - totalHeight) / 2;
 
