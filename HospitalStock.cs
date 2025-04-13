@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Data;
+using System.Data.OleDb;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Data.OleDb;
+using System.Net;
+using System.Net.Mail;
+using Microsoft.VisualBasic.Logging;
 
 namespace Hemotica
 {
@@ -157,7 +160,6 @@ namespace Hemotica
 
 			return true;
 		}
-
 
 		private void btnBack_Click(object sender, EventArgs e)
 		{
@@ -321,7 +323,18 @@ namespace Hemotica
 
 						MessageBox.Show("Blood donation drive successfully posted!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-						// send an email notification to all donors within the baragay
+						DateTime parsedTime;
+						string formatTime = string.Empty;
+						if (DateTime.TryParseExact(time, "HH:mm", null, System.Globalization.DateTimeStyles.None, out parsedTime))
+						{
+							formatTime = parsedTime.ToString("hh:mm tt");
+						}
+
+						string location = $"{barangay}, {city}, {province}";
+
+						string subject = $"NOTICE: {title}";
+						string htmlBody = emailHTML(title, description, date, formatTime, location);
+						sendEmail(barangay, subject, htmlBody);
 
 						clearInputs();
 						pImage.Visible = false;
@@ -347,6 +360,110 @@ namespace Hemotica
 			imageBytes = null;
 
 			title = description = date = time = city = barangay = string.Empty;
+		}
+
+		private async Task sendEmail(string barangay, string subject, string htmlBody)
+		{
+			try
+			{
+				string query = "SELECT [Email Address] FROM Donors WHERE Barangay = ?";
+				OleDbParameter[] parameters = { new OleDbParameter("?", barangay) };
+				DataTable dt = db.executeQuery(query, parameters);
+
+				if (dt == null || dt.Rows.Count == 0)
+					return;
+
+				foreach (DataRow row in dt.Rows)
+				{
+					string recipient = row["Email Address"].ToString();
+
+					using (MailMessage mail = new MailMessage())
+					{
+						mail.From = new MailAddress("hemotica.io@gmail.com");
+						mail.To.Add(recipient);
+						mail.Subject = subject;
+						mail.Body = htmlBody;
+						mail.IsBodyHtml = true;
+
+						using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+						{
+							smtp.Credentials = new NetworkCredential("hemotica.io@gmail.com", "edus zeye hhcn fuoz");
+							smtp.EnableSsl = true;
+							await smtp.SendMailAsync(mail);
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private string emailHTML(string title, string description, string date, string time, string location)
+		{
+			string body = $@"
+			<html>
+			<head>
+				<style>
+					body {{
+						font-family: Bahnschrift;
+					}}
+					h2 {{
+						color: #D85565;
+						font-size: 28px;
+						margin-bottom: 10px;
+					}}
+					p {{
+						font-size: 18px;
+						margin-bottom: 5px;
+					}}
+					.footer {{
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						margin-top: 30px;
+					}}
+					.footer-text {{
+						margin-left: 50px;
+						text-align: left;
+					}}
+					.footer-title {{
+						color: #D85565;
+						font-weight: bold;
+						font-size: 22px;
+					}}
+					.footer-email {{
+						font-size: 18px;
+					}}
+					.spacer {{
+						margin-bottom: 5px;
+					}}	
+				</style>
+			</head>
+			<body>
+				<h2>New Blood Donation Drive Alert!</h2>
+
+				<div class='spacer'></div>
+				<p><strong>Title:</strong> {title}</p>
+				<p><strong>Description:</strong> {description}</p>
+				<div class='spacer'></div>
+				<p><strong>Date:</strong> {date}</p>
+				<p><strong>Time:</strong> {time}</p>	
+				<p><strong>Location:</strong> {location}</p>
+				<div class='spacer'></div>
+				<p>We urge you to participate and support this life-saving event.</p>
+
+				<div class='footer'>
+					<div class='footer-text'>
+						<div class='footer-title'>Hemotica</div>
+						<div class='footer-email'>hemotica.io@gmail.com</div>
+					</div>
+				</div>
+			</body>
+			</html>";
+
+			return body;
 		}
 	}
 }
