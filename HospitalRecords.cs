@@ -489,7 +489,7 @@ namespace Hemotica
 					}
 					else if (recordType == "Extraction")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(4));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.8));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 				}
