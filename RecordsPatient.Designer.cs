@@ -32,7 +32,7 @@
 			tbxFName = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxMName = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxLName = new ReaLTaiizor.Controls.HopeTextBox();
-			tbxAge = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxBirthdate = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxProvince = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxCNumber = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxRequest = new ReaLTaiizor.Controls.HopeTextBox();
@@ -134,31 +134,31 @@
 			tbxLName.Enter += tbxLName_Enter;
 			tbxLName.Leave += tbxLName_Leave;
 			// 
-			// tbxAge
+			// tbxBirthdate
 			// 
-			tbxAge.BackColor = Color.White;
-			tbxAge.BaseColor = Color.FromArgb(253, 211, 211);
-			tbxAge.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxAge.BorderColorB = Color.FromArgb(253, 211, 211);
-			tbxAge.Font = new Font("Bahnschrift", 15F);
-			tbxAge.ForeColor = Color.FromArgb(216, 85, 101);
-			tbxAge.Hint = "";
-			tbxAge.Location = new Point(354, 49);
-			tbxAge.MaxLength = 32767;
-			tbxAge.Multiline = false;
-			tbxAge.Name = "tbxAge";
-			tbxAge.PasswordChar = '\0';
-			tbxAge.ScrollBars = ScrollBars.None;
-			tbxAge.SelectedText = "";
-			tbxAge.SelectionLength = 0;
-			tbxAge.SelectionStart = 0;
-			tbxAge.Size = new Size(306, 41);
-			tbxAge.TabIndex = 35;
-			tbxAge.TabStop = false;
-			tbxAge.Text = "Age";
-			tbxAge.UseSystemPasswordChar = false;
-			tbxAge.Enter += tbxAge_Enter;
-			tbxAge.Leave += tbxAge_Leave;
+			tbxBirthdate.BackColor = Color.White;
+			tbxBirthdate.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxBirthdate.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxBirthdate.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxBirthdate.Font = new Font("Bahnschrift", 15F);
+			tbxBirthdate.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxBirthdate.Hint = "";
+			tbxBirthdate.Location = new Point(354, 49);
+			tbxBirthdate.MaxLength = 32767;
+			tbxBirthdate.Multiline = false;
+			tbxBirthdate.Name = "tbxBirthdate";
+			tbxBirthdate.PasswordChar = '\0';
+			tbxBirthdate.ScrollBars = ScrollBars.None;
+			tbxBirthdate.SelectedText = "";
+			tbxBirthdate.SelectionLength = 0;
+			tbxBirthdate.SelectionStart = 0;
+			tbxBirthdate.Size = new Size(306, 41);
+			tbxBirthdate.TabIndex = 35;
+			tbxBirthdate.TabStop = false;
+			tbxBirthdate.Text = "Birthdate (MM/DD/YYYY)";
+			tbxBirthdate.UseSystemPasswordChar = false;
+			tbxBirthdate.Enter += tbxBirthdate_Enter;
+			tbxBirthdate.Leave += tbxBirthdate_Leave;
 			// 
 			// tbxProvince
 			// 
@@ -404,7 +404,7 @@
 			Controls.Add(tbxRequest);
 			Controls.Add(tbxCNumber);
 			Controls.Add(tbxProvince);
-			Controls.Add(tbxAge);
+			Controls.Add(tbxBirthdate);
 			Controls.Add(tbxLName);
 			Controls.Add(tbxMName);
 			Controls.Add(tbxFName);
@@ -421,7 +421,7 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxFName;
 		private ReaLTaiizor.Controls.HopeTextBox tbxMName;
 		private ReaLTaiizor.Controls.HopeTextBox tbxLName;
-		private ReaLTaiizor.Controls.HopeTextBox tbxAge;
+		private ReaLTaiizor.Controls.HopeTextBox tbxBirthdate;
 		private ReaLTaiizor.Controls.HopeTextBox tbxProvince;
 		private ReaLTaiizor.Controls.HopeTextBox tbxCNumber;
 		private ReaLTaiizor.Controls.HopeTextBox tbxRequest;

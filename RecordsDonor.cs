@@ -33,7 +33,8 @@ namespace Hemotica
 					MiddleName = tbxMName.Text == "Middle Name" ? "" : tbxMName.Text,
 					LastName = tbxLName.Text,
 					Gender = cmbxSex.SelectedItem?.ToString(),
-					Age = tbxBirthdate.Text,
+					Birthdate = tbxBirthdate.Text,
+					Age = donor.Age,
 					Barangay = cmbxBarangay.SelectedItem?.ToString(),
 					City = cmbxCity.SelectedItem?.ToString(),
 					Province = "Cebu",
@@ -51,7 +52,7 @@ namespace Hemotica
 			tbxMName.Text = string.IsNullOrWhiteSpace(donor.MiddleName) ? "" : donor.MiddleName;
 			tbxLName.Text = donor.LastName;
 			cmbxSex.SelectedItem = donor.Gender;
-			tbxBirthdate.Text = donor.Age;
+			tbxBirthdate.Text = donor.Birthdate;
 			cmbxCity.SelectedItem = donor.City;
 			loadBarangays(donor.City);
 			cmbxBarangay.SelectedItem = donor.Barangay;
@@ -72,7 +73,12 @@ namespace Hemotica
 
 			List<string> errors = new List<string>();
 
-			if (!ExceptionHandling.validAge(tbxBirthdate.Text, out int age))
+			if (!ExceptionHandling.validBirthdate(tbxBirthdate.Text, out DateTime birthdate))
+				errors.Add("Invalid birthdate.");
+
+			donor.Age = calculateAge(birthdate).ToString();
+
+			if (!ExceptionHandling.validAge(donor.Age, out int age))
 				errors.Add("Invalid age.");
 
 			if (!ExceptionHandling.validContactNumber(tbxCNumber.Text))
@@ -85,6 +91,15 @@ namespace Hemotica
 			}
 
 			return true;
+		}
+
+		private int calculateAge(DateTime birthdate)
+		{
+			DateTime today = DateTime.Today;
+			int age = today.Year - birthdate.Year;
+			if (birthdate.Date > today.AddYears(-age))
+				age--;
+			return age;
 		}
 
 		private void cmbxCity_SelectedIndexChanged(object sender, EventArgs e)

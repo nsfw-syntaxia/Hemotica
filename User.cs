@@ -112,6 +112,8 @@ namespace Hemotica
 
 		internal DataTable loadDonors(Database db)
 		{
+			updateAge(db);
+
 			string hospitalAccess = "All";
 
 			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Birthdate, Age, [Contact Number], [Blood Type], Barangay, City, Province FROM Donors
@@ -171,8 +173,8 @@ namespace Hemotica
 			string donorUsername = generateWalkIn(db);
 			string hospitalUsername = UserLogs.Username;
 
-			string query = @"INSERT INTO Donors ([Username], [First Name], [Middle Name], [Last Name], [Gender], [Age], [Barangay], [City], [Province], [Contact Number], [Blood Type], [Hospital]) 
-							 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			string query = @"INSERT INTO Donors ([Username], [First Name], [Middle Name], [Last Name], [Gender], [Birthdate], [Age], [Barangay], [City], [Province], [Contact Number],
+							 [Blood Type], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			try
 			{
@@ -185,6 +187,7 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("?", MiddleName);
 					cmd.Parameters.AddWithValue("?", LastName);
 					cmd.Parameters.AddWithValue("?", Gender);
+					cmd.Parameters.AddWithValue("?", Birthdate);
 					cmd.Parameters.AddWithValue("?", Age);
 					cmd.Parameters.AddWithValue("?", Barangay);
 					cmd.Parameters.AddWithValue("?", City);
@@ -209,7 +212,7 @@ namespace Hemotica
 
 		internal bool updateDonor(Database db, int donorID)
 		{
-			string query = @"UPDATE Donors SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Contact Number] = ?, [Blood Type] = ?, 
+			string query = @"UPDATE Donors SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Birthdate] = ?, [Age] = ?, [Contact Number] = ?, [Blood Type] = ?, 
 							 [Barangay] = ?, [City] = ?, [Province] = ? WHERE [Donor ID] = ?";
 
 			try
@@ -222,6 +225,7 @@ namespace Hemotica
 						cmd.Parameters.AddWithValue("?", MiddleName);
 						cmd.Parameters.AddWithValue("?", LastName);
 						cmd.Parameters.AddWithValue("?", Gender);
+						cmd.Parameters.AddWithValue("?", Birthdate);
 						cmd.Parameters.AddWithValue("?", Age);
 						cmd.Parameters.AddWithValue("?", ContactNumber);
 						cmd.Parameters.AddWithValue("?", BloodType);
@@ -270,6 +274,14 @@ namespace Hemotica
 				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
+		}
+
+		internal virtual void updateAge(Database db)
+		{
+			string today = DateTime.Today.ToString("MM/dd/yyyy");
+			string query = "UPDATE Donors SET [Age] = INT(DATEDIFF('d', [Birthdate], ?) / 365.25)";
+			OleDbParameter[] parameters = { new OleDbParameter("?", today) };
+			db.executeNonQuery(query, parameters);
 		}
 	}
 
@@ -364,10 +376,10 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = $@"SELECT Appointments.[Appointment ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], 
-							  Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
-							  INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital
-							  WHERE Appointments.Hospital = ? ORDER BY Appointments.[Appointment Date] ASC";
+			string query = @"SELECT Appointments.[Appointment ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], 
+							 Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
+							 INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital
+							 WHERE Appointments.Hospital = ? ORDER BY Appointments.[Appointment Date] ASC";
 
 			OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
 			return db.executeQuery(query, parametersAppointments);
@@ -380,10 +392,10 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = $@"SELECT Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], 
-							  Extraction.[Extraction Date] FROM Donors INNER JOIN (Hospitals INNER JOIN Extraction ON Hospitals.Username = Extraction.[Hospital Username]) ON 
-							  Donors.Username = Extraction.[Donor Username] WHERE Extraction.Hospital = ? GROUP BY Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], 
-							  Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] ORDER BY Extraction.[Extraction Date] ASC";
+			string query = @"SELECT Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], 
+							 Extraction.[Extraction Date] FROM Donors INNER JOIN (Hospitals INNER JOIN Extraction ON Hospitals.Username = Extraction.[Hospital Username]) ON 
+							 Donors.Username = Extraction.[Donor Username] WHERE Extraction.Hospital = ? GROUP BY Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], 
+							 Donors.[Last Name], Donors.Gender, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] ORDER BY Extraction.[Extraction Date] ASC";
 
 			OleDbParameter[] parametersExtraction = { new OleDbParameter("?", hospitalName) };
 			return db.executeQuery(query, parametersExtraction);
@@ -437,7 +449,6 @@ namespace Hemotica
 
 			return true;
 		}
-
 	}
 
 	public class Admin : User
@@ -464,13 +475,15 @@ namespace Hemotica
 
 		internal DataTable loadPatients(Database db)
 		{
+			updateAge(db);
+
 			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
 			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = $@"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Age, [Contact Number], [Blood Type], Request, Priority, Barangay, City, Province FROM Patients 
-							  WHERE [Hospital] = ?";
+			string query = @"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Birthdate, Age, [Contact Number], [Blood Type], Request, Priority, 
+							  Barangay, City, Province FROM Patients WHERE [Hospital] = ?";
 
 			OleDbParameter[] parametersPatients = { new OleDbParameter("?", hospitalName) };
 			return db.executeQuery(query, parametersPatients);
@@ -484,8 +497,8 @@ namespace Hemotica
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 			string hospitalUsername = UserLogs.Username;
 
-			string query = @"INSERT INTO Donors ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Contact Number], [Blood Type], [Request], [Priority], [Barangay], [City], [Province],  
-							 [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Birthdate], [Age], [Contact Number], [Blood Type], [Request], 
+							 [Priority], [Barangay], [City], [Province], [Hospital Username], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			try
 			{
@@ -497,6 +510,7 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("?", MiddleName);
 					cmd.Parameters.AddWithValue("?", LastName);
 					cmd.Parameters.AddWithValue("?", Gender);
+					cmd.Parameters.AddWithValue("?", Birthdate);
 					cmd.Parameters.AddWithValue("?", Age);
 					cmd.Parameters.AddWithValue("?", ContactNumber);
 					cmd.Parameters.AddWithValue("?", BloodType);
@@ -506,7 +520,8 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("?", City);
 					cmd.Parameters.AddWithValue("?", Province);
 					cmd.Parameters.AddWithValue("?", hospitalUsername);
-					
+					cmd.Parameters.AddWithValue("?", hospitalName);
+
 					conn.Open();
 					cmd.ExecuteNonQuery();
 					conn.Close();
@@ -523,8 +538,8 @@ namespace Hemotica
 
 		internal bool updatePatient(Database db, int patientID)
 		{
-			string query = @"UPDATE Patients SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Contact Number] = ?, [Blood Type] = ?, [Request] = ?,
-							 [Priority] = ?, [Barangay] = ?, [City] = ?, [Province] = ? WHERE [Patient ID] = ?";
+			string query = @"UPDATE Patients SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Birthdate] = ?, [Age] = ?, [Contact Number] = ?, 
+							 [Blood Type] = ?, [Request] = ?, [Priority] = ?, [Barangay] = ?, [City] = ?, [Province] = ? WHERE [Patient ID] = ?";
 
 			try
 			{
@@ -536,6 +551,7 @@ namespace Hemotica
 						cmd.Parameters.AddWithValue("?", MiddleName);
 						cmd.Parameters.AddWithValue("?", LastName);
 						cmd.Parameters.AddWithValue("?", Gender);
+						cmd.Parameters.AddWithValue("?", Birthdate);
 						cmd.Parameters.AddWithValue("?", Age);
 						cmd.Parameters.AddWithValue("?", ContactNumber);
 						cmd.Parameters.AddWithValue("?", BloodType);
@@ -585,6 +601,14 @@ namespace Hemotica
 				return false;
 			}
 		}
+
+		internal override void updateAge(Database db)
+		{
+			string today = DateTime.Today.ToString("MM/dd/yyyy");
+			string query = "UPDATE Patients SET [Age] = INT(DATEDIFF('d', [Birthdate], ?) / 365.25)";
+			OleDbParameter[] parameters = { new OleDbParameter("?", today) };
+			db.executeNonQuery(query, parameters);
+		}
 	}
 
 	public class Physician : Donor
@@ -606,13 +630,15 @@ namespace Hemotica
 
 		internal DataTable loadPhysicians(Database db)
 		{
+			updateAge(db);
+
 			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
 			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = $@"SELECT [Physician ID], [First Name], [Middle Name], [Last Name], Gender, Age, Specialization, [License Number], [Contact Number] FROM Physicians 
-							  WHERE [Hospital] = ?";
+			string query = @"SELECT [Physician ID], [First Name], [Middle Name], [Last Name], Gender, Birthdate, Age, [Contact Number], Specialization, 
+							 [License Number] FROM Physicians WHERE [Hospital] = ?";
 
 			OleDbParameter[] parametersPhysicians = { new OleDbParameter("?", hospitalName) };
 			return db.executeQuery(query, parametersPhysicians);
@@ -626,8 +652,8 @@ namespace Hemotica
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 			string hospitalUsername = UserLogs.Username;
 
-			string query = @"INSERT INTO Physicians ([First Name], [Middle Name], [Last Name], [Gender], [Age], [Specialization], [License Number], [Contact Number], [Hospital Username], [Hospital]) 
-							 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			string query = @"INSERT INTO Physicians ([First Name], [Middle Name], [Last Name], [Gender], [Birthdate], [Age], [Contact Number], [Specialization], 
+							 [License Number], [Hospital Username], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			try
 			{
@@ -639,10 +665,11 @@ namespace Hemotica
 					cmd.Parameters.AddWithValue("?", MiddleName);
 					cmd.Parameters.AddWithValue("?", LastName);
 					cmd.Parameters.AddWithValue("?", Gender);
+					cmd.Parameters.AddWithValue("?", Birthdate);
 					cmd.Parameters.AddWithValue("?", Age);
+					cmd.Parameters.AddWithValue("?", ContactNumber);
 					cmd.Parameters.AddWithValue("?", Specialization);
 					cmd.Parameters.AddWithValue("?", License);
-					cmd.Parameters.AddWithValue("?", ContactNumber);
 					cmd.Parameters.AddWithValue("?", hospitalUsername);
 					cmd.Parameters.AddWithValue("?", hospitalName);
 
@@ -662,8 +689,8 @@ namespace Hemotica
 
 		internal bool updatePhysician(Database db, int physicianID)
 		{
-			string query = @"UPDATE Physicians SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Age] = ?, [Specialization] = ?, [License Number] = ?, 
-							 [Contact Number] = ? WHERE [Physician ID] = ?";
+			string query = @"UPDATE Physicians SET [First Name] = ?, [Middle Name] = ?, [Last Name] = ?, [Gender] = ?, [Birthdate] = ?, [Age] = ?, [Contact Number] = ?, 
+							 [Specialization] = ?, [License Number] = ? WHERE [Physician ID] = ?";
 
 			try
 			{
@@ -675,10 +702,11 @@ namespace Hemotica
 						cmd.Parameters.AddWithValue("?", MiddleName);
 						cmd.Parameters.AddWithValue("?", LastName);
 						cmd.Parameters.AddWithValue("?", Gender);
+						cmd.Parameters.AddWithValue("?", Birthdate);
 						cmd.Parameters.AddWithValue("?", Age);
+						cmd.Parameters.AddWithValue("?", ContactNumber);
 						cmd.Parameters.AddWithValue("?", Specialization);
 						cmd.Parameters.AddWithValue("?", License);
-						cmd.Parameters.AddWithValue("?", ContactNumber);
 						cmd.Parameters.AddWithValue("?", physicianID);
 
 						conn.Open();
@@ -719,6 +747,14 @@ namespace Hemotica
 				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
+		}
+
+		internal override void updateAge(Database db)
+		{
+			string today = DateTime.Today.ToString("MM/dd/yyyy");
+			string query = "UPDATE Physicians SET [Age] = INT(DATEDIFF('d', [Birthdate], ?) / 365.25)";
+			OleDbParameter[] parameters = { new OleDbParameter("?", today) };
+			db.executeNonQuery(query, parameters);
 		}
 	}
 
