@@ -31,8 +31,8 @@ namespace Hemotica
 		{
 			pBloods.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pBloods.Width, pBloods.Height, 20, 20));
 			flpBloods.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpBloods.Width, flpBloods.Height, 20, 20));
-			pUrgent.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pUrgent.Width, pUrgent.Height, 20, 20));
-			flpUrgent.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpUrgent.Width, flpUrgent.Height, 20, 20));
+			pPatients.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pPatients.Width, pPatients.Height, 20, 20));
+			flpPatients.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpPatients.Width, flpPatients.Height, 20, 20));
 			pAppointments.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pAppointments.Width, pAppointments.Height, 20, 20));
 			flpAppointments.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpAppointments.Width, flpAppointments.Height, 20, 20));
 			pOperations.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pOperations.Width, pOperations.Height, 20, 20));
