@@ -47,8 +47,6 @@
 			btnStock = new Button();
 			pTransfer = new Panel();
 			btnTransfer = new Button();
-			pNotification = new Panel();
-			btnNotification = new Button();
 			pHospital = new Panel();
 			btnProfile = new Button();
 			pLogout = new Panel();
@@ -56,10 +54,10 @@
 			flpDashboard = new FlowLayoutPanel();
 			tSidebar = new System.Windows.Forms.Timer(components);
 			pHeader = new Panel();
+			lblUsername = new Label();
 			btnQR = new Button();
 			lblHeader = new Label();
 			lblUserID = new Label();
-			lblUsername = new Label();
 			flpSideBar.SuspendLayout();
 			pMenu.SuspendLayout();
 			pDashboard.SuspendLayout();
@@ -67,7 +65,6 @@
 			pExtraction.SuspendLayout();
 			pStock.SuspendLayout();
 			pTransfer.SuspendLayout();
-			pNotification.SuspendLayout();
 			pHospital.SuspendLayout();
 			pLogout.SuspendLayout();
 			pHeader.SuspendLayout();
@@ -129,7 +126,6 @@
 			flpSideBar.Controls.Add(pExtraction);
 			flpSideBar.Controls.Add(pStock);
 			flpSideBar.Controls.Add(pTransfer);
-			flpSideBar.Controls.Add(pNotification);
 			flpSideBar.Controls.Add(pHospital);
 			flpSideBar.Controls.Add(pLogout);
 			flpSideBar.Dock = DockStyle.Left;
@@ -315,38 +311,10 @@
 			btnTransfer.UseVisualStyleBackColor = true;
 			btnTransfer.Click += btnTransfer_Click;
 			// 
-			// pNotification
-			// 
-			pNotification.Controls.Add(btnNotification);
-			pNotification.Location = new Point(3, 493);
-			pNotification.Name = "pNotification";
-			pNotification.Size = new Size(219, 60);
-			pNotification.TabIndex = 14;
-			// 
-			// btnNotification
-			// 
-			btnNotification.FlatAppearance.BorderSize = 0;
-			btnNotification.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
-			btnNotification.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
-			btnNotification.FlatStyle = FlatStyle.Flat;
-			btnNotification.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-			btnNotification.ForeColor = Color.FromArgb(253, 211, 211);
-			btnNotification.Image = (Image)resources.GetObject("btnNotification.Image");
-			btnNotification.ImageAlign = ContentAlignment.MiddleLeft;
-			btnNotification.Location = new Point(-16, -13);
-			btnNotification.Name = "btnNotification";
-			btnNotification.Padding = new Padding(20, 5, 5, 5);
-			btnNotification.Size = new Size(248, 86);
-			btnNotification.TabIndex = 11;
-			btnNotification.Text = "            NOTIFICATIONS";
-			btnNotification.TextAlign = ContentAlignment.MiddleLeft;
-			btnNotification.UseVisualStyleBackColor = true;
-			btnNotification.Click += btnNotification_Click;
-			// 
 			// pHospital
 			// 
 			pHospital.Controls.Add(btnProfile);
-			pHospital.Location = new Point(3, 559);
+			pHospital.Location = new Point(3, 493);
 			pHospital.Name = "pHospital";
 			pHospital.Size = new Size(219, 60);
 			pHospital.TabIndex = 15;
@@ -374,7 +342,7 @@
 			// pLogout
 			// 
 			pLogout.Controls.Add(btnLogout);
-			pLogout.Location = new Point(3, 625);
+			pLogout.Location = new Point(3, 559);
 			pLogout.Name = "pLogout";
 			pLogout.Size = new Size(219, 60);
 			pLogout.TabIndex = 16;
@@ -425,6 +393,19 @@
 			pHeader.Size = new Size(1020, 101);
 			pHeader.TabIndex = 12;
 			// 
+			// lblUsername
+			// 
+			lblUsername.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblUsername.AutoSize = true;
+			lblUsername.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblUsername.ForeColor = Color.FromArgb(244, 180, 180);
+			lblUsername.Location = new Point(119, 62);
+			lblUsername.Name = "lblUsername";
+			lblUsername.Padding = new Padding(5, 0, 0, 0);
+			lblUsername.Size = new Size(164, 33);
+			lblUsername.TabIndex = 11;
+			lblUsername.Text = "<username>";
+			// 
 			// btnQR
 			// 
 			btnQR.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -465,19 +446,6 @@
 			lblUserID.TabIndex = 8;
 			lblUserID.Text = "User ID:";
 			// 
-			// lblUsername
-			// 
-			lblUsername.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-			lblUsername.AutoSize = true;
-			lblUsername.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			lblUsername.ForeColor = Color.FromArgb(244, 180, 180);
-			lblUsername.Location = new Point(119, 62);
-			lblUsername.Name = "lblUsername";
-			lblUsername.Padding = new Padding(5, 0, 0, 0);
-			lblUsername.Size = new Size(164, 33);
-			lblUsername.TabIndex = 11;
-			lblUsername.Text = "<username>";
-			// 
 			// DashboardH
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -505,7 +473,6 @@
 			pExtraction.ResumeLayout(false);
 			pStock.ResumeLayout(false);
 			pTransfer.ResumeLayout(false);
-			pNotification.ResumeLayout(false);
 			pHospital.ResumeLayout(false);
 			pLogout.ResumeLayout(false);
 			pHeader.ResumeLayout(false);
@@ -532,8 +499,6 @@
         private Button btnStock;
         private Panel pTransfer;
         private Button btnTransfer;
-        private Panel pNotification;
-        private Button btnNotification;
         private Panel pHospital;
         private Panel pLogout;
         private Button btnProfile;

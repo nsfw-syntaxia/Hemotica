@@ -46,7 +46,7 @@ namespace Hemotica
 
 		private void loadDonors()
 		{
-			string query = @"SELECT [Email Address], Password, [First Name], [Middle Name], [Last Name], Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type], Profile 
+			string query = @"SELECT [Email Address], Password, [First Name], [Middle Name], [Last Name], Gender, Birthdate, Barangay, City, Province, [Contact Number], [Blood Type], Profile 
 							 FROM Donors WHERE [Username] = ?";
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable dt = db.executeQuery(query, parameters);
@@ -56,7 +56,8 @@ namespace Hemotica
 			tbxPassword.Text = "●●●●●●●●";
 			tbxName.Text = string.IsNullOrEmpty(row["Middle Name"].ToString()) ? $"{row["First Name"]} {row["Last Name"]}" : $"{row["First Name"]} {row["Middle Name"]} {row["Last Name"]}";
 			tbxGender.Text = row["Gender"].ToString();
-			tbxAge.Text = row["Age"].ToString();
+			DateTime birthdate = Convert.ToDateTime(row["Birthdate"]);
+			tbxBirthdate.Text = birthdate.ToString("MMMM dd, yyyy");
 			tbxHomeAddress.Text = $"{row["Barangay"]}, {row["City"]}, {row["Province"]}";
 			tbxNumber.Text = row["Contact Number"].ToString();
 			tbxBType.Text = row["Blood Type"].ToString();
@@ -76,7 +77,6 @@ namespace Hemotica
 			tbxEmail.Enabled = true;
 			tbxPassword.Enabled = true;
 			tbxGender.Enabled = true;
-			tbxAge.Enabled = true;
 			tbxHomeAddress.Enabled = true;
 			tbxNumber.Enabled = true;
 
@@ -89,12 +89,10 @@ namespace Hemotica
 			string email = tbxEmail.Text.Trim();
 			string password = tbxPassword.Text.Trim();
 			string gender = tbxGender.Text.Trim();
-			string ageDonor = tbxAge.Text.Trim();
 			string contactNumber = tbxNumber.Text.Trim();
 			string[] addressParts = tbxHomeAddress.Text.Split(',');
 
-			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(ageDonor) || string.IsNullOrWhiteSpace(contactNumber) ||
-				string.IsNullOrWhiteSpace(tbxHomeAddress.Text))
+			if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(contactNumber) || string.IsNullOrWhiteSpace(tbxHomeAddress.Text))
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
@@ -113,9 +111,6 @@ namespace Hemotica
 
 			if (gender.ToLower() != "male" && gender.ToLower() != "female" && gender.ToLower() != "other" && gender.ToLower() != "prefer not to say")
 				errors.Add("Invalid gender.");
-
-			if (!ExceptionHandling.validAge(ageDonor, out int age))
-				errors.Add("Invalid age.");
 
 			if (!ExceptionHandling.validContactNumber(contactNumber))
 				errors.Add("Invalid contact number.");
@@ -144,12 +139,11 @@ namespace Hemotica
 
 			if (!string.IsNullOrEmpty(hashedPassword))
 			{
-				query = @"UPDATE Donors SET [Email Address] = ?, [Password] = ?, [Gender] = ?, [Age] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ? WHERE [Username] = ?";
+				query = @"UPDATE Donors SET [Email Address] = ?, [Password] = ?, [Gender] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ? WHERE [Username] = ?";
 
 				parameters.Add(new OleDbParameter("?", email));
 				parameters.Add(new OleDbParameter("?", hashedPassword));
 				parameters.Add(new OleDbParameter("?", gender));
-				parameters.Add(new OleDbParameter("?", age));
 				parameters.Add(new OleDbParameter("?", barangay));
 				parameters.Add(new OleDbParameter("?", city));
 				parameters.Add(new OleDbParameter("?", province));
@@ -158,11 +152,10 @@ namespace Hemotica
 			}
 			else
 			{
-				query = @"UPDATE Donors SET [Email Address] = ?, [Gender] = ?, [Age] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ? WHERE [Username] = ?";
+				query = @"UPDATE Donors SET [Email Address] = ?, [Gender] = ?, Barangay = ?, City = ?, Province = ?, [Contact Number] = ? WHERE [Username] = ?";
 
 				parameters.Add(new OleDbParameter("?", email));
 				parameters.Add(new OleDbParameter("?", gender));
-				parameters.Add(new OleDbParameter("?", age));
 				parameters.Add(new OleDbParameter("?", barangay));
 				parameters.Add(new OleDbParameter("?", city));
 				parameters.Add(new OleDbParameter("?", province));
@@ -177,7 +170,6 @@ namespace Hemotica
 				tbxEmail.Enabled = false;
 				tbxPassword.Enabled = false;
 				tbxGender.Enabled = false;
-				tbxAge.Enabled = false;
 				tbxHomeAddress.Enabled = false;
 				tbxNumber.Enabled = false;
 
@@ -280,12 +272,6 @@ namespace Hemotica
 		}
 
 		private void tbxGender_TextChanged(object sender, EventArgs e)
-		{
-			anyChanges = true;
-			btnSave.Enabled = true;
-		}
-
-		private void tbxAge_TextChanged(object sender, EventArgs e)
 		{
 			anyChanges = true;
 			btnSave.Enabled = true;

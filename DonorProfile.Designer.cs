@@ -34,7 +34,7 @@
 			dName = new Label();
 			lblEmail = new Label();
 			lblGender = new Label();
-			lblAge = new Label();
+			lblBirthdate = new Label();
 			lblHomeAddress = new Label();
 			lblBType = new Label();
 			lblNumber = new Label();
@@ -46,7 +46,7 @@
 			tbxPassword = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxName = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxGender = new ReaLTaiizor.Controls.HopeTextBox();
-			tbxAge = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxBirthdate = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxHomeAddress = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxNumber = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxBType = new ReaLTaiizor.Controls.HopeTextBox();
@@ -112,17 +112,17 @@
 			lblGender.TabIndex = 16;
 			lblGender.Text = "Gender";
 			// 
-			// lblAge
+			// lblBirthdate
 			// 
-			lblAge.AutoSize = true;
-			lblAge.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			lblAge.ForeColor = Color.FromArgb(216, 85, 101);
-			lblAge.Location = new Point(188, 275);
-			lblAge.Name = "lblAge";
-			lblAge.Padding = new Padding(5, 0, 0, 5);
-			lblAge.Size = new Size(66, 38);
-			lblAge.TabIndex = 18;
-			lblAge.Text = "Age";
+			lblBirthdate.AutoSize = true;
+			lblBirthdate.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblBirthdate.ForeColor = Color.FromArgb(216, 85, 101);
+			lblBirthdate.Location = new Point(122, 275);
+			lblBirthdate.Name = "lblBirthdate";
+			lblBirthdate.Padding = new Padding(5, 0, 0, 5);
+			lblBirthdate.Size = new Size(132, 38);
+			lblBirthdate.TabIndex = 18;
+			lblBirthdate.Text = "Birthdate";
 			// 
 			// lblHomeAddress
 			// 
@@ -194,7 +194,7 @@
 			btnProfile.Name = "btnProfile";
 			btnProfile.Size = new Size(187, 52);
 			btnProfile.TabIndex = 29;
-			btnProfile.Text = "Change Photo";
+			btnProfile.Text = "Upload Photo";
 			btnProfile.Click += btnProfile_Click;
 			// 
 			// btnEdit
@@ -308,30 +308,29 @@
 			tbxGender.UseSystemPasswordChar = false;
 			tbxGender.TextChanged += tbxGender_TextChanged;
 			// 
-			// tbxAge
+			// tbxBirthdate
 			// 
-			tbxAge.BackColor = Color.White;
-			tbxAge.BaseColor = Color.FromArgb(253, 211, 211);
-			tbxAge.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxAge.BorderColorB = Color.FromArgb(216, 85, 101);
-			tbxAge.Enabled = false;
-			tbxAge.Font = new Font("Bahnschrift", 15F);
-			tbxAge.ForeColor = Color.FromArgb(216, 85, 101);
-			tbxAge.Hint = "";
-			tbxAge.Location = new Point(260, 272);
-			tbxAge.MaxLength = 32767;
-			tbxAge.Multiline = false;
-			tbxAge.Name = "tbxAge";
-			tbxAge.PasswordChar = '\0';
-			tbxAge.ScrollBars = ScrollBars.None;
-			tbxAge.SelectedText = "";
-			tbxAge.SelectionLength = 0;
-			tbxAge.SelectionStart = 0;
-			tbxAge.Size = new Size(349, 41);
-			tbxAge.TabIndex = 35;
-			tbxAge.TabStop = false;
-			tbxAge.UseSystemPasswordChar = false;
-			tbxAge.TextChanged += tbxAge_TextChanged;
+			tbxBirthdate.BackColor = Color.White;
+			tbxBirthdate.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxBirthdate.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxBirthdate.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxBirthdate.Enabled = false;
+			tbxBirthdate.Font = new Font("Bahnschrift", 15F);
+			tbxBirthdate.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxBirthdate.Hint = "";
+			tbxBirthdate.Location = new Point(260, 272);
+			tbxBirthdate.MaxLength = 32767;
+			tbxBirthdate.Multiline = false;
+			tbxBirthdate.Name = "tbxBirthdate";
+			tbxBirthdate.PasswordChar = '\0';
+			tbxBirthdate.ScrollBars = ScrollBars.None;
+			tbxBirthdate.SelectedText = "";
+			tbxBirthdate.SelectionLength = 0;
+			tbxBirthdate.SelectionStart = 0;
+			tbxBirthdate.Size = new Size(349, 41);
+			tbxBirthdate.TabIndex = 35;
+			tbxBirthdate.TabStop = false;
+			tbxBirthdate.UseSystemPasswordChar = false;
 			// 
 			// tbxHomeAddress
 			// 
@@ -432,7 +431,7 @@
 			Controls.Add(lblBType);
 			Controls.Add(lblNumber);
 			Controls.Add(lblHomeAddress);
-			Controls.Add(lblAge);
+			Controls.Add(lblBirthdate);
 			Controls.Add(lblGender);
 			Controls.Add(lblEmail);
 			Controls.Add(dName);
@@ -441,7 +440,7 @@
 			Controls.Add(tbxEmail);
 			Controls.Add(tbxName);
 			Controls.Add(tbxGender);
-			Controls.Add(tbxAge);
+			Controls.Add(tbxBirthdate);
 			Controls.Add(tbxHomeAddress);
 			Controls.Add(tbxNumber);
 			Controls.Add(tbxBType);
@@ -461,7 +460,7 @@
 		private Label dName;
 		private Label lblEmail;
 		private Label lblGender;
-		private Label lblAge;
+		private Label lblBirthdate;
 		private Label lblHomeAddress;
 		private Label lblBType;
 		private Label lblNumber;
@@ -474,7 +473,7 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxPassword;
 		private ReaLTaiizor.Controls.HopeTextBox tbxName;
 		private ReaLTaiizor.Controls.HopeTextBox tbxGender;
-		private ReaLTaiizor.Controls.HopeTextBox tbxAge;
+		private ReaLTaiizor.Controls.HopeTextBox tbxBirthdate;
 		private ReaLTaiizor.Controls.HopeTextBox tbxHomeAddress;
 		private ReaLTaiizor.Controls.HopeTextBox tbxNumber;
 		private ReaLTaiizor.Controls.HopeTextBox tbxBType;

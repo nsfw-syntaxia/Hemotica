@@ -182,20 +182,6 @@ namespace Hemotica
 			adjustLayout();
 		}
 
-		private void btnNotification_Click(object sender, EventArgs e)
-		{
-			showHospitalNotification();
-		}
-
-		internal void showHospitalNotification()
-		{
-			lblHeader.Text = "Notifications";
-			flpDashboard.Controls.Clear();
-			HospitalNotification hospitalNotification = new HospitalNotification();
-			flpDashboard.Controls.Add(hospitalNotification);
-			adjustLayout();
-		}
-
 		private void btnExtraction_Click(object sender, EventArgs e)
 		{
 			showBloodExtraction();

@@ -31,9 +31,9 @@
 			lblPage = new Label();
 			btnNext = new ReaLTaiizor.Controls.FoxButton();
 			lblProvince = new Label();
-			lblAge = new Label();
+			lblBirthdate = new Label();
 			btnBack = new ReaLTaiizor.Controls.FoxButton();
-			tbxAge = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
+			tbxBirthdate = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
 			lblCity = new Label();
 			tbxProvince = new ReaLTaiizor.Controls.MaterialMaskedTextBox();
 			cmbxCity = new ReaLTaiizor.Controls.DungeonComboBox();
@@ -83,16 +83,16 @@
 			lblProvince.TabIndex = 70;
 			lblProvince.Text = "Province";
 			// 
-			// lblAge
+			// lblBirthdate
 			// 
-			lblAge.AutoSize = true;
-			lblAge.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			lblAge.ForeColor = Color.FromArgb(216, 85, 101);
-			lblAge.Location = new Point(3, 4);
-			lblAge.Name = "lblAge";
-			lblAge.Size = new Size(38, 22);
-			lblAge.TabIndex = 75;
-			lblAge.Text = "Age";
+			lblBirthdate.AutoSize = true;
+			lblBirthdate.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+			lblBirthdate.ForeColor = Color.FromArgb(216, 85, 101);
+			lblBirthdate.Location = new Point(3, 4);
+			lblBirthdate.Name = "lblBirthdate";
+			lblBirthdate.Size = new Size(185, 22);
+			lblBirthdate.TabIndex = 75;
+			lblBirthdate.Text = "Birthdate (MM/DD/YYYY)";
 			// 
 			// btnBack
 			// 
@@ -114,47 +114,47 @@
 			btnBack.Text = "BACK";
 			btnBack.Click += btnBack_Click;
 			// 
-			// tbxAge
+			// tbxBirthdate
 			// 
-			tbxAge.AllowPromptAsInput = true;
-			tbxAge.AnimateReadOnly = false;
-			tbxAge.AsciiOnly = false;
-			tbxAge.BackgroundImageLayout = ImageLayout.None;
-			tbxAge.BeepOnError = false;
-			tbxAge.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
-			tbxAge.Depth = 0;
-			tbxAge.Font = new Font("Arial Narrow", 13F);
-			tbxAge.HidePromptOnLeave = false;
-			tbxAge.HideSelection = true;
-			tbxAge.InsertKeyMode = InsertKeyMode.Default;
-			tbxAge.LeadingIcon = null;
-			tbxAge.Location = new Point(3, 29);
-			tbxAge.Mask = "";
-			tbxAge.MaxLength = 32767;
-			tbxAge.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-			tbxAge.Name = "tbxAge";
-			tbxAge.PasswordChar = '\0';
-			tbxAge.PrefixSuffixText = null;
-			tbxAge.PromptChar = '_';
-			tbxAge.ReadOnly = false;
-			tbxAge.RejectInputOnFirstFailure = false;
-			tbxAge.ResetOnPrompt = true;
-			tbxAge.ResetOnSpace = true;
-			tbxAge.RightToLeft = RightToLeft.No;
-			tbxAge.SelectedText = "";
-			tbxAge.SelectionLength = 0;
-			tbxAge.SelectionStart = 0;
-			tbxAge.ShortcutsEnabled = true;
-			tbxAge.Size = new Size(389, 36);
-			tbxAge.SkipLiterals = true;
-			tbxAge.TabIndex = 83;
-			tbxAge.TabStop = false;
-			tbxAge.TextAlign = HorizontalAlignment.Left;
-			tbxAge.TextMaskFormat = MaskFormat.IncludeLiterals;
-			tbxAge.TrailingIcon = null;
-			tbxAge.UseSystemPasswordChar = false;
-			tbxAge.UseTallSize = false;
-			tbxAge.ValidatingType = null;
+			tbxBirthdate.AllowPromptAsInput = true;
+			tbxBirthdate.AnimateReadOnly = false;
+			tbxBirthdate.AsciiOnly = false;
+			tbxBirthdate.BackgroundImageLayout = ImageLayout.None;
+			tbxBirthdate.BeepOnError = false;
+			tbxBirthdate.CutCopyMaskFormat = MaskFormat.IncludeLiterals;
+			tbxBirthdate.Depth = 0;
+			tbxBirthdate.Font = new Font("Arial Narrow", 13F);
+			tbxBirthdate.HidePromptOnLeave = false;
+			tbxBirthdate.HideSelection = true;
+			tbxBirthdate.InsertKeyMode = InsertKeyMode.Default;
+			tbxBirthdate.LeadingIcon = null;
+			tbxBirthdate.Location = new Point(3, 29);
+			tbxBirthdate.Mask = "";
+			tbxBirthdate.MaxLength = 32767;
+			tbxBirthdate.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+			tbxBirthdate.Name = "tbxBirthdate";
+			tbxBirthdate.PasswordChar = '\0';
+			tbxBirthdate.PrefixSuffixText = null;
+			tbxBirthdate.PromptChar = '_';
+			tbxBirthdate.ReadOnly = false;
+			tbxBirthdate.RejectInputOnFirstFailure = false;
+			tbxBirthdate.ResetOnPrompt = true;
+			tbxBirthdate.ResetOnSpace = true;
+			tbxBirthdate.RightToLeft = RightToLeft.No;
+			tbxBirthdate.SelectedText = "";
+			tbxBirthdate.SelectionLength = 0;
+			tbxBirthdate.SelectionStart = 0;
+			tbxBirthdate.ShortcutsEnabled = true;
+			tbxBirthdate.Size = new Size(389, 36);
+			tbxBirthdate.SkipLiterals = true;
+			tbxBirthdate.TabIndex = 83;
+			tbxBirthdate.TabStop = false;
+			tbxBirthdate.TextAlign = HorizontalAlignment.Left;
+			tbxBirthdate.TextMaskFormat = MaskFormat.IncludeLiterals;
+			tbxBirthdate.TrailingIcon = null;
+			tbxBirthdate.UseSystemPasswordChar = false;
+			tbxBirthdate.UseTallSize = false;
+			tbxBirthdate.ValidatingType = null;
 			// 
 			// lblCity
 			// 
@@ -284,9 +284,9 @@
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
 			Controls.Add(cmbxCity);
-			Controls.Add(tbxAge);
+			Controls.Add(tbxBirthdate);
 			Controls.Add(btnBack);
-			Controls.Add(lblAge);
+			Controls.Add(lblBirthdate);
 			Controls.Add(lblCity);
 			Controls.Add(lblPage);
 			Controls.Add(btnNext);
@@ -303,10 +303,10 @@
 		#endregion
 		private Label lblPage;
         private Label lblProvince;
-        private Label lblAge;
+        private Label lblBirthdate;
         private ReaLTaiizor.Controls.FoxButton btnNext;
         private ReaLTaiizor.Controls.FoxButton btnBack;
-        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxAge;
+        private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxBirthdate;
 		private Label lblCity;
 		private ReaLTaiizor.Controls.MaterialMaskedTextBox tbxProvince;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxCity;

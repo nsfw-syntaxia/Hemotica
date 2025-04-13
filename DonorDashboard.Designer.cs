@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonorDashboard));
 			pBloodDrives = new Panel();
 			pBDrives = new Panel();
 			pbxBloodDrives = new PictureBox();
@@ -71,8 +70,8 @@
 			// 
 			// pbxBloodDrives
 			// 
+			pbxBloodDrives.BackColor = Color.FromArgb(252, 228, 228);
 			pbxBloodDrives.Dock = DockStyle.Fill;
-			pbxBloodDrives.Image = (Image)resources.GetObject("pbxBloodDrives.Image");
 			pbxBloodDrives.Location = new Point(0, 0);
 			pbxBloodDrives.Name = "pbxBloodDrives";
 			pbxBloodDrives.Size = new Size(580, 352);

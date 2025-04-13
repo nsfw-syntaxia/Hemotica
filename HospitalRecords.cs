@@ -95,7 +95,7 @@ namespace Hemotica
 					MiddleName = row.Cells["Middle Name"].Value?.ToString() ?? "",
 					LastName = row.Cells["Last Name"].Value?.ToString(),
 					Gender = row.Cells["Gender"].Value?.ToString(),
-					Age = row.Cells["Age"].Value?.ToString(),
+					Birthdate = row.Cells["Birthdate"].Value?.ToString(),
 					Barangay = row.Cells["Barangay"].Value?.ToString(),
 					City = row.Cells["City"].Value?.ToString(),
 					Province = "Cebu",
@@ -113,7 +113,7 @@ namespace Hemotica
 					MiddleName = row.Cells["Middle Name"].Value?.ToString() ?? "",
 					LastName = row.Cells["Last Name"].Value?.ToString(),
 					Gender = row.Cells["Gender"].Value?.ToString(),
-					Age = row.Cells["Age"].Value?.ToString(),
+					Birthdate = row.Cells["Birthdate"].Value?.ToString(),
 					Barangay = row.Cells["Barangay"].Value?.ToString(),
 					City = row.Cells["City"].Value?.ToString(),
 					Province = "Cebu",
@@ -133,7 +133,7 @@ namespace Hemotica
 					MiddleName = row.Cells["Middle Name"].Value?.ToString() ?? "",
 					LastName = row.Cells["Last Name"].Value?.ToString(),
 					Gender = row.Cells["Gender"].Value?.ToString(),
-					Age = row.Cells["Age"].Value?.ToString(),
+					Birthdate = row.Cells["Birthdate"].Value?.ToString(),
 					Specialization = row.Cells["Specialization"].Value?.ToString(),
 					License = row.Cells["License Number"].Value?.ToString(),
 					ContactNumber = row.Cells["Contact Number"].Value?.ToString()
@@ -469,17 +469,17 @@ namespace Hemotica
 				{
 					if (recordType == "Donor")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(2.8));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 					else if (recordType == "Patient")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(2.5));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(2.4));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 					else if (recordType == "Physician")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.5));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.3));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 					else if (recordType == "Appointment")
@@ -489,7 +489,7 @@ namespace Hemotica
 					}
 					else if (recordType == "Extraction")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(4));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.8));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 				}

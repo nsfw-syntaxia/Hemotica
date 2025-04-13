@@ -19,7 +19,7 @@ namespace Hemotica
 			tbxFName.Text = "First Name";
 			tbxMName.Text = "Middle Name";
 			tbxLName.Text = "Last Name";
-			tbxAge.Text = "Age";
+			tbxBirthdate.Text = "Birthdate (MM/DD/YYYY)";
 			tbxCNumber.Text = "Contact Number";
 			tbxRequest.Text = "Request number of";
 		}
@@ -34,7 +34,8 @@ namespace Hemotica
 					MiddleName = tbxMName.Text == "Middle Name" ? "" : tbxMName.Text,
 					LastName = tbxLName.Text,
 					Gender = cmbxSex.SelectedItem?.ToString(),
-					Age = tbxAge.Text,
+					Birthdate = tbxBirthdate.Text,
+					Age = patient.Age,
 					Barangay = cmbxBarangay.SelectedItem?.ToString(),
 					City = cmbxCity.SelectedItem?.ToString(),
 					Province = "Cebu",
@@ -54,7 +55,7 @@ namespace Hemotica
 			tbxMName.Text = string.IsNullOrWhiteSpace(patient.MiddleName) ? "" : patient.MiddleName;
 			tbxLName.Text = patient.LastName;
 			cmbxSex.SelectedItem = patient.Gender;
-			tbxAge.Text = patient.Age;
+			tbxBirthdate.Text = patient.Birthdate;
 			cmbxCity.SelectedItem = patient.City;
 			loadBarangays(patient.City);
 			cmbxBarangay.SelectedItem = patient.Barangay;
@@ -67,7 +68,7 @@ namespace Hemotica
 		private bool isValid()
 		{
 			if (string.IsNullOrWhiteSpace(tbxFName.Text) || string.IsNullOrWhiteSpace(tbxLName.Text) || string.IsNullOrWhiteSpace(cmbxSex.SelectedItem?.ToString()) ||
-				string.IsNullOrWhiteSpace(tbxAge.Text) || string.IsNullOrWhiteSpace(cmbxBarangay.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(cmbxCity.SelectedItem?.ToString()) ||
+				string.IsNullOrWhiteSpace(tbxBirthdate.Text) || string.IsNullOrWhiteSpace(cmbxBarangay.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(cmbxCity.SelectedItem?.ToString()) ||
 				string.IsNullOrWhiteSpace(tbxCNumber.Text) || string.IsNullOrWhiteSpace(cmbxBType.SelectedItem?.ToString()) || string.IsNullOrWhiteSpace(tbxRequest.Text) ||
 				string.IsNullOrWhiteSpace(cmbxPriority.SelectedItem?.ToString()) || cmbxSex.SelectedIndex == 0 || cmbxCity.SelectedIndex == 0 || cmbxBType.SelectedIndex == 0 || 
 				cmbxPriority.SelectedIndex == 0)
@@ -78,7 +79,12 @@ namespace Hemotica
 
 			List<string> errors = new List<string>();
 
-			if (!ExceptionHandling.validAge(tbxAge.Text, out int age))
+			if (!ExceptionHandling.validBirthdate(tbxBirthdate.Text, out DateTime birthdate))
+				errors.Add("Invalid birthdate.");
+
+			patient.Age = calculateAge(birthdate).ToString();
+
+			if (!ExceptionHandling.validAge(patient.Age, out int age))
 				errors.Add("Invalid age.");
 
 			if(!ExceptionHandling.validContactNumber(tbxCNumber.Text))
@@ -91,6 +97,15 @@ namespace Hemotica
 			}
 
 			return true;
+		}
+
+		private int calculateAge(DateTime birthdate)
+		{
+			DateTime today = DateTime.Today;
+			int age = today.Year - birthdate.Year;
+			if (birthdate.Date > today.AddYears(-age))
+				age--;
+			return age;
 		}
 
 		private void cmbxCity_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,10 +165,10 @@ namespace Hemotica
 				tbxLName.Text = "";
 		}
 
-		private void tbxAge_Enter(object sender, EventArgs e)
+		private void tbxBirthdate_Enter(object sender, EventArgs e)
 		{
-			if (tbxAge.Text == "Age")
-				tbxAge.Text = "";
+			if (tbxBirthdate.Text == "Birthdate (MM/DD/YYYY)")
+				tbxBirthdate.Text = "";
 		}
 
 		private void tbxCNumber_Enter(object sender, EventArgs e)
@@ -186,10 +201,10 @@ namespace Hemotica
 				tbxLName.Text = "Last Name";
 		}
 
-		private void tbxAge_Leave(object sender, EventArgs e)
+		private void tbxBirthdate_Leave(object sender, EventArgs e)
 		{
-			if (string.IsNullOrWhiteSpace(tbxAge.Text))
-				tbxAge.Text = "Age";
+			if (string.IsNullOrWhiteSpace(tbxBirthdate.Text))
+				tbxBirthdate.Text = "Birthdate (MM/DD/YYYY)";
 		}
 
 		private void tbxCNumber_Leave(object sender, EventArgs e)

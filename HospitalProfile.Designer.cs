@@ -403,7 +403,7 @@
 			btnProfile.Name = "btnProfile";
 			btnProfile.Size = new Size(187, 52);
 			btnProfile.TabIndex = 62;
-			btnProfile.Text = "Change Photo";
+			btnProfile.Text = "Upload Photo";
 			btnProfile.Click += btnProfile_Click;
 			// 
 			// btnDelete

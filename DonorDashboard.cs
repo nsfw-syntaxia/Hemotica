@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.OleDb;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ReaLTaiizor.Controls;
@@ -25,6 +26,7 @@ namespace Hemotica
 		{
 			roundControls();
 			loadHospitals();
+			loadDonationHistory();
 		}
 
 		private void DonorDashboard_Resize(object sender, EventArgs e)
@@ -93,11 +95,15 @@ namespace Hemotica
 						OverColor = Color.FromArgb(216, 85, 101),
 						Size = new Size(120, 40),
 						Text = "DONATE",
-						Cursor = Cursors.Hand,
-						Location = new Point((panel.Width - 120) / 2, (panel.Height - 40) / 2 + 20)
+						Cursor = Cursors.Hand
 					};
 
-					lblHospital.Location = new Point((panel.Width - lblHospital.Width) / 2, btnDonate.Top - lblHospital.Height - 5);
+					int gap = 10;
+					int totalHeight = lblHospital.Height + btnDonate.Height + gap;
+					int startY = (panel.Height - totalHeight) / 2;
+
+					lblHospital.Location = new Point((panel.Width - lblHospital.Width) / 2, startY);
+					btnDonate.Location = new Point((panel.Width - btnDonate.Width) / 2, startY + lblHospital.Height + gap);
 
 					panel.Controls.Add(btnDonate);
 					panel.Controls.Add(lblHospital);
@@ -112,10 +118,68 @@ namespace Hemotica
 				}
 			}
 		}
-		
-		private void lblLogs_Click(object sender, EventArgs e)
+
+		private void loadDonationHistory()
 		{
-			// show list of donation history
+			string query = @"SELECT Extraction.[Extraction Date], Extraction.Hospital FROM Donors INNER JOIN Extraction ON Donors.Username = Extraction.[Donor Username]
+							 WHERE Extraction.[Donor Username] = ? ORDER BY Extraction.[Extraction Date] DESC";
+
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable donationHistory = db.executeQuery(query, parameters);
+
+			if (donationHistory != null )
+			{
+				foreach (DataRow row in donationHistory.Rows)
+				{
+					string extractionDate = Convert.ToDateTime(row["Extraction Date"]).ToString("MM/dd/yyyy");
+					string hospital = row["Hospital"].ToString();
+
+					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
+					{
+						Size = new Size(350, 125),
+						BackColor = Color.FromArgb(244, 180, 180),
+						Margin = new Padding(5),
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 350, 125, 20, 20))
+					};
+
+					Label lblDate = new Label
+					{
+						Text = extractionDate,
+						Font = new Font("Bahnschrift", 17F, FontStyle.Bold),
+						ForeColor = Color.FromArgb(216, 85, 101),
+						TextAlign = ContentAlignment.MiddleLeft,
+						AutoSize = false,
+						Width = 240,
+						Height = 30
+					};
+
+					Label lblHospital = new Label
+					{
+						Text = hospital,
+						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
+						ForeColor = Color.FromArgb(216, 85, 101),
+						TextAlign = ContentAlignment.MiddleLeft,
+						AutoSize = false,
+						Width = 240,
+						MaximumSize = new Size(240, 0)
+					};
+
+					Size textSize = TextRenderer.MeasureText(lblHospital.Text, lblHospital.Font, lblHospital.MaximumSize, TextFormatFlags.WordBreak);
+					lblHospital.Height = textSize.Height;
+
+					int gap = 10;
+					int totalHeight = lblDate.Height + gap + lblHospital.Height;
+					int startY = (panel.Height - totalHeight) / 2 - 3;
+
+					lblDate.Location = new Point(25, startY);
+					lblHospital.Location = new Point(25, lblDate.Bottom + gap);
+
+					panel.Controls.Add(lblDate);
+					panel.Controls.Add(lblHospital);
+
+					flpLogs.Controls.Add(panel);
+				}
+			}
 		}
 	}
 }

@@ -30,16 +30,16 @@
 		{
 			pBloods = new Panel();
 			flpBloods = new FlowLayoutPanel();
-			pUrgent = new Panel();
-			flpUrgent = new FlowLayoutPanel();
-			lblUrgent = new Label();
+			pPatients = new Panel();
+			flpPatients = new FlowLayoutPanel();
+			lblPatients = new Label();
 			pAppointments = new Panel();
 			flpAppointments = new FlowLayoutPanel();
 			lblAppointments = new Label();
 			pOperations = new Panel();
 			flpOperations = new FlowLayoutPanel();
 			pBloods.SuspendLayout();
-			pUrgent.SuspendLayout();
+			pPatients.SuspendLayout();
 			pAppointments.SuspendLayout();
 			pOperations.SuspendLayout();
 			SuspendLayout();
@@ -65,41 +65,41 @@
 			flpBloods.TabIndex = 17;
 			flpBloods.WrapContents = false;
 			// 
-			// pUrgent
+			// pPatients
 			// 
-			pUrgent.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			pUrgent.BackColor = Color.FromArgb(216, 85, 101);
-			pUrgent.Controls.Add(flpUrgent);
-			pUrgent.Controls.Add(lblUrgent);
-			pUrgent.Location = new Point(8, 386);
-			pUrgent.Name = "pUrgent";
-			pUrgent.Padding = new Padding(7);
-			pUrgent.Size = new Size(670, 247);
-			pUrgent.TabIndex = 2;
+			pPatients.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pPatients.BackColor = Color.FromArgb(216, 85, 101);
+			pPatients.Controls.Add(flpPatients);
+			pPatients.Controls.Add(lblPatients);
+			pPatients.Location = new Point(8, 386);
+			pPatients.Name = "pPatients";
+			pPatients.Padding = new Padding(7);
+			pPatients.Size = new Size(670, 247);
+			pPatients.TabIndex = 2;
 			// 
-			// flpUrgent
+			// flpPatients
 			// 
-			flpUrgent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			flpUrgent.AutoScroll = true;
-			flpUrgent.BackColor = Color.FromArgb(252, 228, 228);
-			flpUrgent.Location = new Point(10, 48);
-			flpUrgent.Name = "flpUrgent";
-			flpUrgent.Size = new Size(650, 189);
-			flpUrgent.TabIndex = 14;
-			flpUrgent.WrapContents = false;
+			flpPatients.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			flpPatients.AutoScroll = true;
+			flpPatients.BackColor = Color.FromArgb(252, 228, 228);
+			flpPatients.Location = new Point(10, 48);
+			flpPatients.Name = "flpPatients";
+			flpPatients.Size = new Size(650, 189);
+			flpPatients.TabIndex = 14;
+			flpPatients.WrapContents = false;
 			// 
-			// lblUrgent
+			// lblPatients
 			// 
-			lblUrgent.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-			lblUrgent.AutoSize = true;
-			lblUrgent.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			lblUrgent.ForeColor = Color.FromArgb(253, 211, 211);
-			lblUrgent.Location = new Point(0, 7);
-			lblUrgent.Name = "lblUrgent";
-			lblUrgent.Padding = new Padding(5, 0, 0, 5);
-			lblUrgent.Size = new Size(122, 38);
-			lblUrgent.TabIndex = 13;
-			lblUrgent.Text = "Urgent >";
+			lblPatients.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblPatients.AutoSize = true;
+			lblPatients.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblPatients.ForeColor = Color.FromArgb(253, 211, 211);
+			lblPatients.Location = new Point(0, 7);
+			lblPatients.Name = "lblPatients";
+			lblPatients.Padding = new Padding(5, 0, 0, 5);
+			lblPatients.Size = new Size(137, 38);
+			lblPatients.TabIndex = 13;
+			lblPatients.Text = "Patients >";
 			// 
 			// pAppointments
 			// 
@@ -168,7 +168,7 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			Controls.Add(pOperations);
 			Controls.Add(pAppointments);
-			Controls.Add(pUrgent);
+			Controls.Add(pPatients);
 			Controls.Add(pBloods);
 			Name = "HospitalDashboard";
 			Padding = new Padding(5);
@@ -176,8 +176,8 @@
 			Load += HospitalDashboard_Load;
 			Resize += HospitalDashboard_Resize;
 			pBloods.ResumeLayout(false);
-			pUrgent.ResumeLayout(false);
-			pUrgent.PerformLayout();
+			pPatients.ResumeLayout(false);
+			pPatients.PerformLayout();
 			pAppointments.ResumeLayout(false);
 			pAppointments.PerformLayout();
 			pOperations.ResumeLayout(false);
@@ -186,11 +186,11 @@
 
 		#endregion
 		private Panel pBloods;
-		private Panel pUrgent;
+		private Panel pPatients;
 		private Panel pAppointments;
 		private Panel pOperations;
-		private Label lblUrgent;
-		private FlowLayoutPanel flpUrgent;
+		private Label lblPatients;
+		private FlowLayoutPanel flpPatients;
 		private Label lblAppointments;
 		private FlowLayoutPanel flpAppointments;
 		private FlowLayoutPanel flpOperations;

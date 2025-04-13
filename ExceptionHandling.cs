@@ -20,5 +20,18 @@ namespace Hemotica
 		{
 			return Regex.IsMatch(number, @"^(\(\d{3}\) \d{3}-\d{4}|\d{10,15})$");
 		}
+
+		public static bool validBirthdate(string birthdate, out DateTime parsedDate)
+		{
+			parsedDate = default;
+
+			if (!Regex.IsMatch(birthdate, @"^(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01])/\d{4}$"))
+				return false;
+
+			if (!DateTime.TryParseExact(birthdate, "MM/dd/yyyy", null, System.Globalization.DateTimeStyles.None, out parsedDate))
+				return false;
+
+			return true;
+		}
 	}
 }

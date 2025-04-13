@@ -17,7 +17,7 @@ namespace Hemotica
 			this.register = parent;
 			this.donor = donor;
 
-			tbxAge.Text = donor.Age;
+			tbxBirthdate.Text = donor.Birthdate;
 			tbxProvince.Text = donor.Province;
 			cmbxCity.SelectedItem = donor.City;
 			loadBarangays(donor.City);
@@ -26,16 +26,24 @@ namespace Hemotica
 
 		private void btnNext_Click(object sender, EventArgs e)
 		{
-			donor.Age = tbxAge.Text.Trim();
+			donor.Birthdate = tbxBirthdate.Text.Trim();
 			donor.Province = "Cebu";
 			donor.City = cmbxCity.SelectedItem?.ToString();
 			donor.Barangay = cmbxBarangay.SelectedItem?.ToString();
 
-			if (string.IsNullOrWhiteSpace(donor.Age) || string.IsNullOrWhiteSpace(donor.City) || string.IsNullOrWhiteSpace(donor.Barangay))
+			if (string.IsNullOrWhiteSpace(donor.Birthdate) || string.IsNullOrWhiteSpace(donor.City) || string.IsNullOrWhiteSpace(donor.Barangay))
 			{
 				MessageBox.Show("Please fill all required fields.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
+
+			if (!ExceptionHandling.validBirthdate(donor.Birthdate, out DateTime birthdate))
+			{
+				MessageBox.Show("Invalid birthdate.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			donor.Age = calculateAge(birthdate).ToString();
 
 			if (!ExceptionHandling.validAge(donor.Age, out int age))
 			{
@@ -75,6 +83,15 @@ namespace Hemotica
 				}
 				cmbxBarangay.SelectedIndex = 0;
 			}
+		}
+
+		private int calculateAge(DateTime birthdate)
+		{
+			DateTime today = DateTime.Today;
+			int age = today.Year - birthdate.Year;
+			if (birthdate.Date > today.AddYears(-age))
+				age--;
+			return age;
 		}
 
 		private void btnBack_Click(object sender, EventArgs e)

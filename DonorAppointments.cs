@@ -109,9 +109,9 @@ namespace Hemotica
 					panel.Controls.Add(lblStatus);
 
 					lblHospital.Location = new Point(20, lblDate.Bottom + 10);
-					lblStatus.Location = new Point(300, lblHospital.Top);
+					lblStatus.Location = new Point(350, lblHospital.Top);
 
-					if (status != "Denied" && status != "Cancelled")
+					if (status != "Denied" && status != "Cancelled" && status != "Completed")
 					{
 						FoxButton btnCancel = new FoxButton
 						{
