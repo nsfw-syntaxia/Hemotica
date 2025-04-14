@@ -279,6 +279,7 @@
 			cmbxPatient.Size = new Size(349, 41);
 			cmbxPatient.StartIndex = 0;
 			cmbxPatient.TabIndex = 92;
+			cmbxPatient.SelectedIndexChanged += cmbxPatient_SelectedIndexChanged;
 			// 
 			// HospitalTransfusion
 			// 
