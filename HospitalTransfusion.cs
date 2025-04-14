@@ -15,5 +15,20 @@ namespace Hemotica
 		{
 
 		}
+
+		public void loadPhysicians()
+		{
+
+		}
+
+		public void loadPatients()
+		{
+
+		}
+
+		public void loadPatientDetails()
+		{
+
+		}
 	}
 }
