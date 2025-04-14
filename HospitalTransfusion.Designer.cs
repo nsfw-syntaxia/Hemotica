@@ -54,6 +54,7 @@
 			btnAvailability.Size = new Size(187, 52);
 			btnAvailability.TabIndex = 68;
 			btnAvailability.Text = "Check Availability";
+			btnAvailability.Click += btnAvailability_Click;
 			// 
 			// btnTransfusion
 			// 
@@ -65,6 +66,7 @@
 			btnTransfusion.Size = new Size(187, 52);
 			btnTransfusion.TabIndex = 67;
 			btnTransfusion.Text = "Blood Transfer";
+			btnTransfusion.Click += btnTransfusion_Click;
 			// 
 			// lblQuantity
 			// 
@@ -138,6 +140,7 @@
 			lblResult.Size = new Size(129, 38);
 			lblResult.TabIndex = 70;
 			lblResult.Text = "<results>";
+			lblResult.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// cmbxPhysician
 			// 
@@ -166,7 +169,6 @@
 			cmbxPhysician.Size = new Size(349, 41);
 			cmbxPhysician.StartIndex = 0;
 			cmbxPhysician.TabIndex = 86;
-			cmbxPhysician.SelectedIndexChanged += cmbxPhysician_SelectedIndexChanged;
 			// 
 			// tbxBlood
 			// 

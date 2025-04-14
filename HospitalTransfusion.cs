@@ -87,11 +87,6 @@ namespace Hemotica
 			}
 		}
 
-		private void cmbxPhysician_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			// get whats selected in the combobox
-		}
-
 		private void cmbxPatient_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cmbxPatient.SelectedIndex <= 0)
@@ -106,6 +101,64 @@ namespace Hemotica
 			string patientID = patientList.Rows[dataIndex]["Patient ID"].ToString();
 
 			loadPatientDetails(patientID);
+		}
+
+		private void btnAvailability_Click(object sender, EventArgs e)
+		{
+			if (cmbxPatient.SelectedIndex <= 0)
+			{
+				MessageBox.Show("Please select a patient.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			string bloodType = tbxBlood.Text.Trim();
+
+			if (!int.TryParse(tbxQuantity.Text.Trim(), out int quantity))
+			{
+				MessageBox.Show("Invalid quantity.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			string query = @"SELECT Count(*) AS Unit FROM Extraction WHERE [Status] = 'Available' AND [Expiration Date] >= Date() AND [Hospital Username] = ? AND [Blood Type] = ?";
+			OleDbParameter[] parameters =
+			{
+				new OleDbParameter("?", UserLogs.Username),
+				new OleDbParameter("?", bloodType)
+			};
+
+			DataTable dt = db.executeQuery(query, parameters);
+			int availableUnits = dt.Rows.Count > 0 ? Convert.ToInt32(dt.Rows[0]["Unit"]) : 0;
+
+			lblResult.Size = new Size(1020, lblResult.Height);
+			lblResult.Location = new Point(0, (this.Height - lblResult.Height) / 2);
+
+			if (availableUnits >= quantity)
+			{
+				lblResult.Text = "Blood units are available for this request.";
+				btnTransfusion.Enabled = true;
+				cmbxPhysician.Enabled = true;
+			}
+			else
+			{
+				lblResult.Text = "Insufficient blood units available for transfusion.";
+				btnTransfusion.Enabled = false;
+				cmbxPhysician.Enabled = false;
+			}
+
+
+			// validate if patient is selected (just patient, disable cmbxPhysician first)
+			// check if blood type and needed quantity is currently available from database under that logged in hospital
+			// if available, show "Blood request is available." or sumthing better in lblResult (make it so lbl is always center horizontically in panel size 1020, 641)
+			// if not available, show "Blood request is not available." or sumthing better in lblResult (make it so lbl is always center horizontically in panel size 1020, 641)
+			// if available, enable btnTransfusion and cmbxPhysician
+		}
+
+		private void btnTransfusion_Click(object sender, EventArgs e)
+		{
+			// validate if physician is selected and if patient is selected
+			// insert to database to record successful transfusion
+			// updates the patient's priority to "Resolved"
+			// update the extraction status in table Extraction to "Used" so that it updates blood stock
 		}
 	}
 }
