@@ -30,18 +30,18 @@
 		{
 			btnAvailability = new AntdUI.Button();
 			btnTransfusion = new AntdUI.Button();
-			tbxAddress = new ReaLTaiizor.Controls.BigTextBox();
 			lblQuantity = new Label();
-			tbxBType = new ReaLTaiizor.Controls.BigTextBox();
-			tbxPatientName = new ReaLTaiizor.Controls.BigTextBox();
-			lblPatientName = new Label();
-			tbxPhysician = new ReaLTaiizor.Controls.BigTextBox();
-			tbxPatientID = new ReaLTaiizor.Controls.BigTextBox();
-			dPatientID = new Label();
-			lblBType = new Label();
+			lblPatient = new Label();
+			lblBlood = new Label();
 			lblPhysician = new Label();
 			lblUnit = new Label();
 			lblResult = new Label();
+			cmbxPhysician = new ReaLTaiizor.Controls.DungeonComboBox();
+			tbxBlood = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxPriority = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxQuantity = new ReaLTaiizor.Controls.HopeTextBox();
+			lblPriority = new Label();
+			cmbxPatient = new ReaLTaiizor.Controls.DungeonComboBox();
 			SuspendLayout();
 			// 
 			// btnAvailability
@@ -66,22 +66,6 @@
 			btnTransfusion.TabIndex = 67;
 			btnTransfusion.Text = "Blood Transfer";
 			// 
-			// tbxAddress
-			// 
-			tbxAddress.BackColor = Color.Transparent;
-			tbxAddress.Font = new Font("Tahoma", 11F);
-			tbxAddress.ForeColor = Color.DimGray;
-			tbxAddress.Image = null;
-			tbxAddress.Location = new Point(430, 312);
-			tbxAddress.MaxLength = 32767;
-			tbxAddress.Multiline = false;
-			tbxAddress.Name = "tbxAddress";
-			tbxAddress.ReadOnly = false;
-			tbxAddress.Size = new Size(180, 41);
-			tbxAddress.TabIndex = 60;
-			tbxAddress.TextAlignment = HorizontalAlignment.Left;
-			tbxAddress.UseSystemPasswordChar = false;
-			// 
 			// lblQuantity
 			// 
 			lblQuantity.AutoSize = true;
@@ -94,105 +78,29 @@
 			lblQuantity.TabIndex = 59;
 			lblQuantity.Text = "Quantity";
 			// 
-			// tbxBType
+			// lblPatient
 			// 
-			tbxBType.BackColor = Color.Transparent;
-			tbxBType.Font = new Font("Tahoma", 11F);
-			tbxBType.ForeColor = Color.DimGray;
-			tbxBType.Image = null;
-			tbxBType.Location = new Point(430, 265);
-			tbxBType.MaxLength = 32767;
-			tbxBType.Multiline = false;
-			tbxBType.Name = "tbxBType";
-			tbxBType.ReadOnly = false;
-			tbxBType.Size = new Size(349, 41);
-			tbxBType.TabIndex = 58;
-			tbxBType.TextAlignment = HorizontalAlignment.Left;
-			tbxBType.UseSystemPasswordChar = false;
+			lblPatient.AutoSize = true;
+			lblPatient.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblPatient.ForeColor = Color.FromArgb(216, 85, 101);
+			lblPatient.Location = new Point(320, 174);
+			lblPatient.Name = "lblPatient";
+			lblPatient.Padding = new Padding(5, 0, 0, 5);
+			lblPatient.Size = new Size(104, 38);
+			lblPatient.TabIndex = 55;
+			lblPatient.Text = "Patient";
 			// 
-			// tbxPatientName
+			// lblBlood
 			// 
-			tbxPatientName.BackColor = Color.Transparent;
-			tbxPatientName.Font = new Font("Tahoma", 11F);
-			tbxPatientName.ForeColor = Color.DimGray;
-			tbxPatientName.Image = null;
-			tbxPatientName.Location = new Point(430, 218);
-			tbxPatientName.MaxLength = 32767;
-			tbxPatientName.Multiline = false;
-			tbxPatientName.Name = "tbxPatientName";
-			tbxPatientName.ReadOnly = false;
-			tbxPatientName.Size = new Size(349, 41);
-			tbxPatientName.TabIndex = 56;
-			tbxPatientName.TextAlignment = HorizontalAlignment.Left;
-			tbxPatientName.UseSystemPasswordChar = false;
-			// 
-			// lblPatientName
-			// 
-			lblPatientName.AutoSize = true;
-			lblPatientName.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			lblPatientName.ForeColor = Color.FromArgb(216, 85, 101);
-			lblPatientName.Location = new Point(243, 221);
-			lblPatientName.Name = "lblPatientName";
-			lblPatientName.Padding = new Padding(5, 0, 0, 5);
-			lblPatientName.Size = new Size(181, 38);
-			lblPatientName.TabIndex = 55;
-			lblPatientName.Text = "Patient Name";
-			// 
-			// tbxPhysician
-			// 
-			tbxPhysician.BackColor = Color.Transparent;
-			tbxPhysician.Font = new Font("Tahoma", 11F);
-			tbxPhysician.ForeColor = Color.DimGray;
-			tbxPhysician.Image = null;
-			tbxPhysician.Location = new Point(430, 100);
-			tbxPhysician.MaxLength = 32767;
-			tbxPhysician.Multiline = false;
-			tbxPhysician.Name = "tbxPhysician";
-			tbxPhysician.ReadOnly = false;
-			tbxPhysician.Size = new Size(349, 41);
-			tbxPhysician.TabIndex = 54;
-			tbxPhysician.TextAlignment = HorizontalAlignment.Left;
-			tbxPhysician.UseSystemPasswordChar = false;
-			// 
-			// tbxPatientID
-			// 
-			tbxPatientID.BackColor = Color.Transparent;
-			tbxPatientID.Font = new Font("Tahoma", 11F);
-			tbxPatientID.ForeColor = Color.DimGray;
-			tbxPatientID.Image = null;
-			tbxPatientID.Location = new Point(430, 171);
-			tbxPatientID.MaxLength = 32767;
-			tbxPatientID.Multiline = false;
-			tbxPatientID.Name = "tbxPatientID";
-			tbxPatientID.ReadOnly = false;
-			tbxPatientID.Size = new Size(349, 41);
-			tbxPatientID.TabIndex = 52;
-			tbxPatientID.TextAlignment = HorizontalAlignment.Left;
-			tbxPatientID.UseSystemPasswordChar = false;
-			// 
-			// dPatientID
-			// 
-			dPatientID.AutoSize = true;
-			dPatientID.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			dPatientID.ForeColor = Color.FromArgb(216, 85, 101);
-			dPatientID.Location = new Point(288, 174);
-			dPatientID.Name = "dPatientID";
-			dPatientID.Padding = new Padding(5, 0, 0, 5);
-			dPatientID.Size = new Size(136, 38);
-			dPatientID.TabIndex = 51;
-			dPatientID.Text = "Patient ID";
-			// 
-			// lblBType
-			// 
-			lblBType.AutoSize = true;
-			lblBType.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
-			lblBType.ForeColor = Color.FromArgb(216, 85, 101);
-			lblBType.Location = new Point(273, 268);
-			lblBType.Name = "lblBType";
-			lblBType.Padding = new Padding(5, 0, 0, 5);
-			lblBType.Size = new Size(151, 38);
-			lblBType.TabIndex = 57;
-			lblBType.Text = "Blood Type";
+			lblBlood.AutoSize = true;
+			lblBlood.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblBlood.ForeColor = Color.FromArgb(216, 85, 101);
+			lblBlood.Location = new Point(273, 221);
+			lblBlood.Name = "lblBlood";
+			lblBlood.Padding = new Padding(5, 0, 0, 5);
+			lblBlood.Size = new Size(151, 38);
+			lblBlood.TabIndex = 57;
+			lblBlood.Text = "Blood Type";
 			// 
 			// lblPhysician
 			// 
@@ -231,27 +139,168 @@
 			lblResult.TabIndex = 70;
 			lblResult.Text = "<results>";
 			// 
+			// cmbxPhysician
+			// 
+			cmbxPhysician.BackColor = Color.White;
+			cmbxPhysician.ColorA = Color.FromArgb(236, 124, 132);
+			cmbxPhysician.ColorB = Color.FromArgb(236, 124, 132);
+			cmbxPhysician.ColorC = Color.FromArgb(242, 241, 240);
+			cmbxPhysician.ColorD = Color.FromArgb(253, 252, 252);
+			cmbxPhysician.ColorE = Color.FromArgb(239, 237, 236);
+			cmbxPhysician.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxPhysician.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxPhysician.ColorH = Color.FromArgb(244, 180, 180);
+			cmbxPhysician.ColorI = Color.FromArgb(250, 249, 249);
+			cmbxPhysician.DrawMode = DrawMode.OwnerDrawFixed;
+			cmbxPhysician.DropDownHeight = 100;
+			cmbxPhysician.DropDownStyle = ComboBoxStyle.DropDownList;
+			cmbxPhysician.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			cmbxPhysician.ForeColor = Color.FromArgb(216, 85, 101);
+			cmbxPhysician.FormattingEnabled = true;
+			cmbxPhysician.HoverSelectionColor = Color.Empty;
+			cmbxPhysician.IntegralHeight = false;
+			cmbxPhysician.ItemHeight = 35;
+			cmbxPhysician.Items.AddRange(new object[] { "Select a physician" });
+			cmbxPhysician.Location = new Point(430, 100);
+			cmbxPhysician.Name = "cmbxPhysician";
+			cmbxPhysician.Size = new Size(349, 41);
+			cmbxPhysician.StartIndex = 0;
+			cmbxPhysician.TabIndex = 86;
+			// 
+			// tbxBlood
+			// 
+			tbxBlood.BackColor = Color.White;
+			tbxBlood.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxBlood.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxBlood.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxBlood.Enabled = false;
+			tbxBlood.Font = new Font("Bahnschrift", 15F);
+			tbxBlood.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxBlood.Hint = "";
+			tbxBlood.Location = new Point(430, 218);
+			tbxBlood.MaxLength = 32767;
+			tbxBlood.Multiline = false;
+			tbxBlood.Name = "tbxBlood";
+			tbxBlood.PasswordChar = '\0';
+			tbxBlood.ScrollBars = ScrollBars.None;
+			tbxBlood.SelectedText = "";
+			tbxBlood.SelectionLength = 0;
+			tbxBlood.SelectionStart = 0;
+			tbxBlood.Size = new Size(349, 41);
+			tbxBlood.TabIndex = 88;
+			tbxBlood.TabStop = false;
+			tbxBlood.UseSystemPasswordChar = false;
+			// 
+			// tbxPriority
+			// 
+			tbxPriority.BackColor = Color.White;
+			tbxPriority.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxPriority.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxPriority.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxPriority.Enabled = false;
+			tbxPriority.Font = new Font("Bahnschrift", 15F);
+			tbxPriority.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxPriority.Hint = "";
+			tbxPriority.Location = new Point(430, 265);
+			tbxPriority.MaxLength = 32767;
+			tbxPriority.Multiline = false;
+			tbxPriority.Name = "tbxPriority";
+			tbxPriority.PasswordChar = '\0';
+			tbxPriority.ScrollBars = ScrollBars.None;
+			tbxPriority.SelectedText = "";
+			tbxPriority.SelectionLength = 0;
+			tbxPriority.SelectionStart = 0;
+			tbxPriority.Size = new Size(349, 41);
+			tbxPriority.TabIndex = 89;
+			tbxPriority.TabStop = false;
+			tbxPriority.UseSystemPasswordChar = false;
+			// 
+			// tbxQuantity
+			// 
+			tbxQuantity.BackColor = Color.White;
+			tbxQuantity.BaseColor = Color.FromArgb(253, 211, 211);
+			tbxQuantity.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxQuantity.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxQuantity.Enabled = false;
+			tbxQuantity.Font = new Font("Bahnschrift", 15F);
+			tbxQuantity.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxQuantity.Hint = "";
+			tbxQuantity.Location = new Point(430, 312);
+			tbxQuantity.MaxLength = 32767;
+			tbxQuantity.Multiline = false;
+			tbxQuantity.Name = "tbxQuantity";
+			tbxQuantity.PasswordChar = '\0';
+			tbxQuantity.ScrollBars = ScrollBars.None;
+			tbxQuantity.SelectedText = "";
+			tbxQuantity.SelectionLength = 0;
+			tbxQuantity.SelectionStart = 0;
+			tbxQuantity.Size = new Size(180, 41);
+			tbxQuantity.TabIndex = 90;
+			tbxQuantity.TabStop = false;
+			tbxQuantity.UseSystemPasswordChar = false;
+			// 
+			// lblPriority
+			// 
+			lblPriority.AutoSize = true;
+			lblPriority.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblPriority.ForeColor = Color.FromArgb(216, 85, 101);
+			lblPriority.Location = new Point(313, 268);
+			lblPriority.Name = "lblPriority";
+			lblPriority.Padding = new Padding(5, 0, 0, 5);
+			lblPriority.Size = new Size(111, 38);
+			lblPriority.TabIndex = 91;
+			lblPriority.Text = "Priority";
+			// 
+			// cmbxPatient
+			// 
+			cmbxPatient.BackColor = Color.White;
+			cmbxPatient.ColorA = Color.FromArgb(236, 124, 132);
+			cmbxPatient.ColorB = Color.FromArgb(236, 124, 132);
+			cmbxPatient.ColorC = Color.FromArgb(242, 241, 240);
+			cmbxPatient.ColorD = Color.FromArgb(253, 252, 252);
+			cmbxPatient.ColorE = Color.FromArgb(239, 237, 236);
+			cmbxPatient.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxPatient.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxPatient.ColorH = Color.FromArgb(244, 180, 180);
+			cmbxPatient.ColorI = Color.FromArgb(250, 249, 249);
+			cmbxPatient.DrawMode = DrawMode.OwnerDrawFixed;
+			cmbxPatient.DropDownHeight = 100;
+			cmbxPatient.DropDownStyle = ComboBoxStyle.DropDownList;
+			cmbxPatient.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			cmbxPatient.ForeColor = Color.FromArgb(216, 85, 101);
+			cmbxPatient.FormattingEnabled = true;
+			cmbxPatient.HoverSelectionColor = Color.Empty;
+			cmbxPatient.IntegralHeight = false;
+			cmbxPatient.ItemHeight = 35;
+			cmbxPatient.Items.AddRange(new object[] { "Select a patient" });
+			cmbxPatient.Location = new Point(430, 171);
+			cmbxPatient.Name = "cmbxPatient";
+			cmbxPatient.Size = new Size(349, 41);
+			cmbxPatient.StartIndex = 0;
+			cmbxPatient.TabIndex = 92;
+			// 
 			// HospitalTransfusion
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(lblPriority);
 			Controls.Add(lblResult);
 			Controls.Add(lblUnit);
 			Controls.Add(btnAvailability);
 			Controls.Add(btnTransfusion);
-			Controls.Add(tbxAddress);
 			Controls.Add(lblQuantity);
-			Controls.Add(tbxBType);
-			Controls.Add(tbxPatientName);
-			Controls.Add(lblPatientName);
-			Controls.Add(tbxPatientID);
-			Controls.Add(dPatientID);
-			Controls.Add(lblBType);
-			Controls.Add(tbxPhysician);
+			Controls.Add(lblPatient);
+			Controls.Add(lblBlood);
 			Controls.Add(lblPhysician);
+			Controls.Add(cmbxPhysician);
+			Controls.Add(tbxBlood);
+			Controls.Add(tbxPriority);
+			Controls.Add(tbxQuantity);
+			Controls.Add(cmbxPatient);
 			Name = "HospitalTransfusion";
 			Size = new Size(1020, 641);
+			Load += HospitalTransfusion_Load;
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -260,17 +309,18 @@
 
 		private AntdUI.Button btnAvailability;
 		private AntdUI.Button btnTransfusion;
-		private ReaLTaiizor.Controls.BigTextBox tbxAddress;
 		private Label lblQuantity;
-		private ReaLTaiizor.Controls.BigTextBox tbxBType;
-		private ReaLTaiizor.Controls.BigTextBox tbxPatientName;
-		private Label lblPatientName;
+		private Label lblPatient;
 		private ReaLTaiizor.Controls.BigTextBox tbxPhysician;
-		private ReaLTaiizor.Controls.BigTextBox tbxPatientID;
-		private Label dPatientID;
-		private Label lblBType;
+		private Label lblBlood;
 		private Label lblPhysician;
 		private Label lblUnit;
 		private Label lblResult;
+		private ReaLTaiizor.Controls.DungeonComboBox cmbxPhysician;
+		private ReaLTaiizor.Controls.HopeTextBox tbxBlood;
+		private ReaLTaiizor.Controls.HopeTextBox tbxPriority;
+		private ReaLTaiizor.Controls.HopeTextBox tbxQuantity;
+		private Label lblPriority;
+		private ReaLTaiizor.Controls.DungeonComboBox cmbxPatient;
 	}
 }
