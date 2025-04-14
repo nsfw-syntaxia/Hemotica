@@ -160,12 +160,13 @@
 			cmbxPhysician.HoverSelectionColor = Color.Empty;
 			cmbxPhysician.IntegralHeight = false;
 			cmbxPhysician.ItemHeight = 35;
-			cmbxPhysician.Items.AddRange(new object[] { "Select a physician" });
+			cmbxPhysician.Items.AddRange(new object[] { "Select physician" });
 			cmbxPhysician.Location = new Point(430, 100);
 			cmbxPhysician.Name = "cmbxPhysician";
 			cmbxPhysician.Size = new Size(349, 41);
 			cmbxPhysician.StartIndex = 0;
 			cmbxPhysician.TabIndex = 86;
+			cmbxPhysician.SelectedIndexChanged += cmbxPhysician_SelectedIndexChanged;
 			// 
 			// tbxBlood
 			// 
@@ -272,7 +273,7 @@
 			cmbxPatient.HoverSelectionColor = Color.Empty;
 			cmbxPatient.IntegralHeight = false;
 			cmbxPatient.ItemHeight = 35;
-			cmbxPatient.Items.AddRange(new object[] { "Select a patient" });
+			cmbxPatient.Items.AddRange(new object[] { "Select patient" });
 			cmbxPatient.Location = new Point(430, 171);
 			cmbxPatient.Name = "cmbxPatient";
 			cmbxPatient.Size = new Size(349, 41);
