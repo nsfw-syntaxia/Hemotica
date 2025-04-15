@@ -35,7 +35,7 @@
 			lblGender = new Label();
 			rbtnMale = new ReaLTaiizor.Controls.HopeRadioButton();
 			rbtnFemale = new ReaLTaiizor.Controls.HopeRadioButton();
-			rbtnOther = new ReaLTaiizor.Controls.HopeRadioButton();
+			rbtnNonBinary = new ReaLTaiizor.Controls.HopeRadioButton();
 			rbtnPNTS = new ReaLTaiizor.Controls.HopeRadioButton();
 			btnNext = new ReaLTaiizor.Controls.FoxButton();
 			btnBack = new ReaLTaiizor.Controls.FoxButton();
@@ -139,25 +139,25 @@
 			rbtnFemale.Text = "Female";
 			rbtnFemale.UseVisualStyleBackColor = true;
 			// 
-			// rbtnOther
+			// rbtnNonBinary
 			// 
-			rbtnOther.AutoSize = true;
-			rbtnOther.CheckedColor = Color.FromArgb(236, 124, 132);
-			rbtnOther.DisabledColor = Color.FromArgb(216, 85, 101);
-			rbtnOther.DisabledStringColor = Color.FromArgb(216, 85, 101);
-			rbtnOther.Enable = true;
-			rbtnOther.EnabledCheckedColor = Color.FromArgb(216, 85, 101);
-			rbtnOther.EnabledStringColor = Color.FromArgb(216, 85, 101);
-			rbtnOther.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
-			rbtnOther.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
-			rbtnOther.ForeColor = Color.FromArgb(236, 124, 132);
-			rbtnOther.Location = new Point(196, 228);
-			rbtnOther.Name = "rbtnOther";
-			rbtnOther.Size = new Size(75, 20);
-			rbtnOther.TabIndex = 69;
-			rbtnOther.TabStop = true;
-			rbtnOther.Text = "Other";
-			rbtnOther.UseVisualStyleBackColor = true;
+			rbtnNonBinary.AutoSize = true;
+			rbtnNonBinary.CheckedColor = Color.FromArgb(236, 124, 132);
+			rbtnNonBinary.DisabledColor = Color.FromArgb(216, 85, 101);
+			rbtnNonBinary.DisabledStringColor = Color.FromArgb(216, 85, 101);
+			rbtnNonBinary.Enable = true;
+			rbtnNonBinary.EnabledCheckedColor = Color.FromArgb(216, 85, 101);
+			rbtnNonBinary.EnabledStringColor = Color.FromArgb(216, 85, 101);
+			rbtnNonBinary.EnabledUncheckedColor = Color.FromArgb(216, 85, 101);
+			rbtnNonBinary.Font = new Font("Arial Narrow", 13F, FontStyle.Bold);
+			rbtnNonBinary.ForeColor = Color.FromArgb(236, 124, 132);
+			rbtnNonBinary.Location = new Point(196, 228);
+			rbtnNonBinary.Name = "rbtnNonBinary";
+			rbtnNonBinary.Size = new Size(113, 20);
+			rbtnNonBinary.TabIndex = 69;
+			rbtnNonBinary.TabStop = true;
+			rbtnNonBinary.Text = "Non-binary";
+			rbtnNonBinary.UseVisualStyleBackColor = true;
 			// 
 			// rbtnPNTS
 			// 
@@ -352,7 +352,7 @@
 			BackColor = Color.FromArgb(253, 211, 211);
 			Controls.Add(btnBack);
 			Controls.Add(rbtnPNTS);
-			Controls.Add(rbtnOther);
+			Controls.Add(rbtnNonBinary);
 			Controls.Add(rbtnFemale);
 			Controls.Add(rbtnMale);
 			Controls.Add(lblGender);
@@ -378,7 +378,7 @@
         private Label lblGender;
         private ReaLTaiizor.Controls.HopeRadioButton rbtnMale;
         private ReaLTaiizor.Controls.HopeRadioButton rbtnFemale;
-        private ReaLTaiizor.Controls.HopeRadioButton rbtnOther;
+        private ReaLTaiizor.Controls.HopeRadioButton rbtnNonBinary;
         private ReaLTaiizor.Controls.HopeRadioButton rbtnPNTS;
         private ReaLTaiizor.Controls.FoxButton btnNext;
         private ReaLTaiizor.Controls.FoxButton btnBack;
