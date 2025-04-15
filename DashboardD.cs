@@ -9,7 +9,7 @@ namespace Hemotica
 	{
 		private Database db = new Database();
 
-		bool sidebarExpand = false;
+		bool sidebarExpand = true;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -27,8 +27,8 @@ namespace Hemotica
 		private void DashboardD_Load(object sender, EventArgs e)
 		{
 			btnSettings();
-			flpSideBar.Width = flpSideBar.MinimumSize.Width;
-			sidebarExpand = false;
+			flpSideBar.Width = flpSideBar.MaximumSize.Width;
+			sidebarExpand = true;
 
 			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
 			showDonorDashboard();
