@@ -135,7 +135,7 @@
 			lblResult.AutoSize = true;
 			lblResult.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblResult.ForeColor = Color.FromArgb(216, 85, 101);
-			lblResult.Location = new Point(301, 506);
+			lblResult.Location = new Point(300, 502);
 			lblResult.Name = "lblResult";
 			lblResult.Padding = new Padding(5, 0, 0, 5);
 			lblResult.Size = new Size(129, 38);
@@ -287,9 +287,9 @@
 			// pCompatibility
 			// 
 			pCompatibility.BackColor = Color.FromArgb(236, 124, 132);
-			pCompatibility.Location = new Point(722, 8);
+			pCompatibility.Location = new Point(717, 13);
 			pCompatibility.Name = "pCompatibility";
-			pCompatibility.Size = new Size(290, 625);
+			pCompatibility.Size = new Size(290, 615);
 			pCompatibility.TabIndex = 93;
 			// 
 			// HospitalTransfusion
@@ -313,7 +313,7 @@
 			Controls.Add(tbxQuantity);
 			Controls.Add(cmbxPatient);
 			Name = "HospitalTransfusion";
-			Padding = new Padding(5);
+			Padding = new Padding(10);
 			Size = new Size(1020, 641);
 			Load += HospitalTransfusion_Load;
 			ResumeLayout(false);
