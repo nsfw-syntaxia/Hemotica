@@ -135,7 +135,7 @@
 			lblResult.AutoSize = true;
 			lblResult.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblResult.ForeColor = Color.FromArgb(216, 85, 101);
-			lblResult.Location = new Point(300, 502);
+			lblResult.Location = new Point(295, 509);
 			lblResult.Name = "lblResult";
 			lblResult.Padding = new Padding(5, 0, 0, 5);
 			lblResult.Size = new Size(129, 38);
