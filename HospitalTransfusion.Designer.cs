@@ -42,6 +42,7 @@
 			tbxQuantity = new ReaLTaiizor.Controls.HopeTextBox();
 			lblPriority = new Label();
 			cmbxPatient = new ReaLTaiizor.Controls.DungeonComboBox();
+			pCompatibility = new Panel();
 			SuspendLayout();
 			// 
 			// btnAvailability
@@ -49,7 +50,7 @@
 			btnAvailability.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnAvailability.Font = new Font("Bahnschrift", 14F);
 			btnAvailability.ForeColor = Color.FromArgb(252, 228, 228);
-			btnAvailability.Location = new Point(321, 409);
+			btnAvailability.Location = new Point(176, 409);
 			btnAvailability.Name = "btnAvailability";
 			btnAvailability.Size = new Size(187, 52);
 			btnAvailability.TabIndex = 68;
@@ -61,7 +62,7 @@
 			btnTransfusion.DefaultBack = Color.FromArgb(236, 124, 132);
 			btnTransfusion.Font = new Font("Bahnschrift", 14F);
 			btnTransfusion.ForeColor = Color.FromArgb(252, 228, 228);
-			btnTransfusion.Location = new Point(514, 409);
+			btnTransfusion.Location = new Point(369, 409);
 			btnTransfusion.Name = "btnTransfusion";
 			btnTransfusion.Size = new Size(187, 52);
 			btnTransfusion.TabIndex = 67;
@@ -73,7 +74,7 @@
 			lblQuantity.AutoSize = true;
 			lblQuantity.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblQuantity.ForeColor = Color.FromArgb(216, 85, 101);
-			lblQuantity.Location = new Point(304, 315);
+			lblQuantity.Location = new Point(133, 315);
 			lblQuantity.Name = "lblQuantity";
 			lblQuantity.Padding = new Padding(5, 0, 0, 5);
 			lblQuantity.Size = new Size(120, 38);
@@ -85,7 +86,7 @@
 			lblPatient.AutoSize = true;
 			lblPatient.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblPatient.ForeColor = Color.FromArgb(216, 85, 101);
-			lblPatient.Location = new Point(320, 174);
+			lblPatient.Location = new Point(149, 174);
 			lblPatient.Name = "lblPatient";
 			lblPatient.Padding = new Padding(5, 0, 0, 5);
 			lblPatient.Size = new Size(104, 38);
@@ -97,7 +98,7 @@
 			lblBlood.AutoSize = true;
 			lblBlood.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblBlood.ForeColor = Color.FromArgb(216, 85, 101);
-			lblBlood.Location = new Point(273, 221);
+			lblBlood.Location = new Point(102, 221);
 			lblBlood.Name = "lblBlood";
 			lblBlood.Padding = new Padding(5, 0, 0, 5);
 			lblBlood.Size = new Size(151, 38);
@@ -109,7 +110,7 @@
 			lblPhysician.AutoSize = true;
 			lblPhysician.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblPhysician.ForeColor = Color.FromArgb(216, 85, 101);
-			lblPhysician.Location = new Point(289, 103);
+			lblPhysician.Location = new Point(118, 103);
 			lblPhysician.Name = "lblPhysician";
 			lblPhysician.Padding = new Padding(5, 0, 0, 5);
 			lblPhysician.Size = new Size(135, 38);
@@ -121,7 +122,7 @@
 			lblUnit.AutoSize = true;
 			lblUnit.Font = new Font("Bahnschrift", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			lblUnit.ForeColor = Color.FromArgb(216, 85, 101);
-			lblUnit.Location = new Point(616, 315);
+			lblUnit.Location = new Point(445, 315);
 			lblUnit.Name = "lblUnit";
 			lblUnit.Padding = new Padding(5, 0, 0, 5);
 			lblUnit.Size = new Size(163, 38);
@@ -134,7 +135,7 @@
 			lblResult.AutoSize = true;
 			lblResult.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblResult.ForeColor = Color.FromArgb(216, 85, 101);
-			lblResult.Location = new Point(445, 511);
+			lblResult.Location = new Point(301, 506);
 			lblResult.Name = "lblResult";
 			lblResult.Padding = new Padding(5, 0, 0, 5);
 			lblResult.Size = new Size(129, 38);
@@ -164,7 +165,7 @@
 			cmbxPhysician.IntegralHeight = false;
 			cmbxPhysician.ItemHeight = 35;
 			cmbxPhysician.Items.AddRange(new object[] { "Select physician" });
-			cmbxPhysician.Location = new Point(430, 100);
+			cmbxPhysician.Location = new Point(259, 100);
 			cmbxPhysician.Name = "cmbxPhysician";
 			cmbxPhysician.Size = new Size(349, 41);
 			cmbxPhysician.StartIndex = 0;
@@ -180,7 +181,7 @@
 			tbxBlood.Font = new Font("Bahnschrift", 15F);
 			tbxBlood.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxBlood.Hint = "";
-			tbxBlood.Location = new Point(430, 218);
+			tbxBlood.Location = new Point(259, 218);
 			tbxBlood.MaxLength = 32767;
 			tbxBlood.Multiline = false;
 			tbxBlood.Name = "tbxBlood";
@@ -204,7 +205,7 @@
 			tbxPriority.Font = new Font("Bahnschrift", 15F);
 			tbxPriority.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxPriority.Hint = "";
-			tbxPriority.Location = new Point(430, 265);
+			tbxPriority.Location = new Point(259, 265);
 			tbxPriority.MaxLength = 32767;
 			tbxPriority.Multiline = false;
 			tbxPriority.Name = "tbxPriority";
@@ -228,7 +229,7 @@
 			tbxQuantity.Font = new Font("Bahnschrift", 15F);
 			tbxQuantity.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxQuantity.Hint = "";
-			tbxQuantity.Location = new Point(430, 312);
+			tbxQuantity.Location = new Point(259, 312);
 			tbxQuantity.MaxLength = 32767;
 			tbxQuantity.Multiline = false;
 			tbxQuantity.Name = "tbxQuantity";
@@ -247,7 +248,7 @@
 			lblPriority.AutoSize = true;
 			lblPriority.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
 			lblPriority.ForeColor = Color.FromArgb(216, 85, 101);
-			lblPriority.Location = new Point(313, 268);
+			lblPriority.Location = new Point(142, 268);
 			lblPriority.Name = "lblPriority";
 			lblPriority.Padding = new Padding(5, 0, 0, 5);
 			lblPriority.Size = new Size(111, 38);
@@ -276,18 +277,27 @@
 			cmbxPatient.IntegralHeight = false;
 			cmbxPatient.ItemHeight = 35;
 			cmbxPatient.Items.AddRange(new object[] { "Select patient" });
-			cmbxPatient.Location = new Point(430, 171);
+			cmbxPatient.Location = new Point(259, 171);
 			cmbxPatient.Name = "cmbxPatient";
 			cmbxPatient.Size = new Size(349, 41);
 			cmbxPatient.StartIndex = 0;
 			cmbxPatient.TabIndex = 92;
 			cmbxPatient.SelectedIndexChanged += cmbxPatient_SelectedIndexChanged;
 			// 
+			// pCompatibility
+			// 
+			pCompatibility.BackColor = Color.FromArgb(236, 124, 132);
+			pCompatibility.Location = new Point(722, 8);
+			pCompatibility.Name = "pCompatibility";
+			pCompatibility.Size = new Size(290, 625);
+			pCompatibility.TabIndex = 93;
+			// 
 			// HospitalTransfusion
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(pCompatibility);
 			Controls.Add(lblPriority);
 			Controls.Add(lblResult);
 			Controls.Add(lblUnit);
@@ -303,6 +313,7 @@
 			Controls.Add(tbxQuantity);
 			Controls.Add(cmbxPatient);
 			Name = "HospitalTransfusion";
+			Padding = new Padding(5);
 			Size = new Size(1020, 641);
 			Load += HospitalTransfusion_Load;
 			ResumeLayout(false);
@@ -326,5 +337,6 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxQuantity;
 		private Label lblPriority;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxPatient;
+		private Panel pCompatibility;
 	}
 }
