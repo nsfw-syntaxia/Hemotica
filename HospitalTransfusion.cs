@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Hemotica
@@ -10,6 +11,12 @@ namespace Hemotica
 		Database db = new Database();
 		DataTable patientList;
 
+		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+
+		private static extern IntPtr CreateRoundRectRgn(
+			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
+			int nWidthEllipse, int nHeightEllipse);
+
 		public HospitalTransfusion()
 		{
 			InitializeComponent();
@@ -17,10 +24,30 @@ namespace Hemotica
 
 		private void HospitalTransfusion_Load(object sender, EventArgs e)
 		{
-			loadPhysicianList();
+			roundControls();
+			//loadPhysicianList();
 			loadPatientList();
 		}
 
+		public void roundControls()
+		{
+			pBlood.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pBlood.Width, pBlood.Height, 20, 20));
+			pCompatibility.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pCompatibility.Width, pCompatibility.Height, 20, 20));
+			pPatient.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pPatient.Width, pPatient.Height, 20, 20));
+			pTransfusion.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pTransfusion.Width, pTransfusion.Height, 20, 20));
+
+			if (pbxCompatibility.Width > 0 && pbxCompatibility.Height > 0)
+			{
+				pbxCompatibility.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pbxCompatibility.Width, pbxCompatibility.Height, 20, 20));
+			}
+		}
+
+		private void HospitalTransfusion_Resize(object sender, EventArgs e)
+		{
+			roundControls();
+		}
+
+		/*
 		public void loadPhysicianList()
 		{
 			string hospitalAccess = "All";
@@ -44,6 +71,7 @@ namespace Hemotica
 				cmbxPhysician.Items.Add(fullName);
 			}
 		}
+		*/
 
 		public void loadPatientList()
 		{
@@ -81,7 +109,7 @@ namespace Hemotica
 			if (dt.Rows.Count > 0)
 			{
 				DataRow row = dt.Rows[0];
-				tbxBlood.Text = row["Blood Type"].ToString();
+				tbxBloodType.Text = row["Blood Type"].ToString();
 				tbxPriority.Text = row["Priority"].ToString();
 				tbxQuantity.Text = row["Request"].ToString();
 			}
@@ -91,7 +119,7 @@ namespace Hemotica
 		{
 			if (cmbxPatient.SelectedIndex <= 0)
 			{
-				tbxBlood.Text = "";
+				tbxBloodType.Text = "";
 				tbxPriority.Text = "";
 				tbxQuantity.Text = "";
 				return;
@@ -103,6 +131,7 @@ namespace Hemotica
 			loadPatientDetails(patientID);
 		}
 
+		/*
 		private void btnAvailability_Click(object sender, EventArgs e)
 		{
 			if (cmbxPatient.SelectedIndex <= 0)
@@ -111,7 +140,7 @@ namespace Hemotica
 				return;
 			}
 
-			string bloodType = tbxBlood.Text.Trim();
+			string bloodType = tbxBloodType.Text.Trim();
 
 			if (!int.TryParse(tbxQuantity.Text.Trim(), out int quantity))
 			{
@@ -160,5 +189,6 @@ namespace Hemotica
 			// updates the patient's priority to "Resolved"
 			// update the extraction status in table Extraction to "Used" so that it updates blood stock
 		}
+		*/
 	}
 }
