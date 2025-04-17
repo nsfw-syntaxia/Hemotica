@@ -72,7 +72,7 @@ namespace Hemotica
 		{
 			string hospitalAccess = "All";
 
-			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name] FROM Donors WHERE Hospital = ? OR Hospital = ?";
+			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name] FROM Donors WHERE Hospital = ? OR Hospital = ? ORDER BY [First Name], [Last Name]";
 
 			OleDbParameter[] parameters =
 			{
