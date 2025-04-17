@@ -138,8 +138,9 @@ namespace Hemotica
 			string donorUsername = db.donorUsername(donorID);
 			string hospitalUsername = UserLogs.Username;
 
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = '{hospitalUsername}'";
-			DataTable hospitalData = db.executeQuery(queryHospital);
+			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] donateParameters = { new OleDbParameter("?", hospitalUsername) };
+			DataTable hospitalData = db.executeQuery(queryHospital, donateParameters);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
 			string bloodType = tbxBloodType.Text;

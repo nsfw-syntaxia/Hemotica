@@ -241,8 +241,15 @@ namespace Hemotica
 			}
 
 			// insert to database to record successful transfusion
-			// updates the patient's priority to "Resolved"
-			// update the extraction status in table Extraction to "Used" so that it updates blood stock
+			// update the Priority in table Patients to "Resolved"
+			// update the Status in table Extraction to "Used" so that it updates blood stock
+
+			//table Transfusion has fields Patient ID, Physician ID, Blood Type, Quantity, Hospital Username (just UserLogs.Username), Hospital, Transfusion Date
+		}
+
+		private void addTransfusion()
+		{
+			//get patientID and physicianID
 		}
 	}
 }
