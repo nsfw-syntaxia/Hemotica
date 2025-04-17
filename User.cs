@@ -490,6 +490,30 @@ namespace Hemotica
 			return db.executeQuery(query, parametersPatients);
 		}
 
+		internal bool duplicatePatient(Database db)
+		{
+			string hospitalUsername = UserLogs.Username;
+
+			string query = @"SELECT COUNT(*) FROM Patients WHERE [First Name] = ? AND [Last Name] = ? AND [Birthdate] = ? AND [Blood Type] = ? AND [Hospital Username] = ? 
+							 AND [Priority] <> 'Resolved'";
+
+			OleDbParameter[] checkParameters =
+			{
+				new OleDbParameter("?", FirstName),
+				new OleDbParameter("?", LastName),
+				new OleDbParameter("?", Birthdate),
+				new OleDbParameter("?", BloodType),
+				new OleDbParameter("?", hospitalUsername)
+			};
+
+			object result = db.executeScalar(query, checkParameters);
+			if (result != null && Convert.ToInt32(result) > 0)
+			{
+				return true;
+			}
+			return false;
+		}
+
 		internal bool addPatient(Database db)
 		{
 			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
@@ -497,6 +521,12 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 			string hospitalUsername = UserLogs.Username;
+
+			if (duplicatePatient(db))
+			{
+				MessageBox.Show("Patient record already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return false;
+			}
 
 			string query = @"INSERT INTO Patients ([First Name], [Middle Name], [Last Name], [Gender], [Birthdate], [Age], [Contact Number], [Blood Type], [Request], 
 							 [Priority], [Barangay], [City], [Province], [Hospital Username], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

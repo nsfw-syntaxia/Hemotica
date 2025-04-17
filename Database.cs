@@ -68,6 +68,27 @@ namespace Hemotica
 			}
 		}
 
+		public object executeScalar(string query, OleDbParameter[] parameters = null)
+		{
+			using (OleDbConnection conn = getConnection())
+			using (OleDbCommand cmd = new OleDbCommand(query, conn))
+			{
+				try
+				{
+					conn.Open();
+					if (parameters != null)
+						cmd.Parameters.AddRange(parameters);
+
+					return cmd.ExecuteScalar();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return null;
+				}
+			}
+		}
+
 		public DataTable executeQuery(string query, OleDbParameter[] parameters = null)
 		{
 			using (OleDbConnection conn = getConnection())

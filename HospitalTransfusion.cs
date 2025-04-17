@@ -305,44 +305,9 @@ namespace Hemotica
 		{
 			int patientIndex = cmbxPatient.SelectedIndex - 1;
 			string patientID = patientList.Rows[patientIndex]["Patient ID"].ToString();
-
-			string selectQuery = @"SELECT * FROM Patients WHERE [Patient ID] = ?";
-			OleDbParameter[] selectParameters = { new OleDbParameter("?", patientID) };
-			DataTable patientData = db.executeQuery(selectQuery, selectParameters);
-
-			if (patientData.Rows.Count == 0)
-			{
-				MessageBox.Show("ERROR: Patient record not found.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				return;
-			}
-			DataRow row = patientData.Rows[0];
-
-			string insertQuery = @"INSERT INTO [Patients Archive] ([First Name], [Middle Name], [Last Name], [Gender], [Birthdate], [Age], [Contact Number], [Blood Type], [Request], 
-								   [Priority], [Barangay], [City], [Province], [Hospital Username], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-			OleDbParameter[] insertParameters =
-			{
-				new OleDbParameter("?", row["First Name"]),
-				new OleDbParameter("?", row["Middle Name"]),
-				new OleDbParameter("?", row["Last Name"]),
-				new OleDbParameter("?", row["Gender"]),
-				new OleDbParameter("?", row["Birthdate"]),
-				new OleDbParameter("?", row["Age"]),
-				new OleDbParameter("?", row["Contact Number"]),
-				new OleDbParameter("?", row["Blood Type"]),
-				new OleDbParameter("?", row["Request"]),
-				new OleDbParameter("?", "Resolved"),
-				new OleDbParameter("?", row["Barangay"]),
-				new OleDbParameter("?", row["City"]),
-				new OleDbParameter("?", row["Province"]),
-				new OleDbParameter("?", row["Hospital Username"]),
-				new OleDbParameter("?", row["Hospital"])
-			};
-			db.executeNonQuery(insertQuery, insertParameters);
-
-			string deleteQuery = @"DELETE FROM Patients WHERE [Patient ID] = ?";
-			OleDbParameter[] deleteParameters = { new OleDbParameter("?", patientID) };
-			db.executeNonQuery(deleteQuery, deleteParameters);
+			string query = @"UPDATE Patients SET Priority = 'Resolved' WHERE [Patient ID] = ?";
+			OleDbParameter[] parameters = { new OleDbParameter("?", patientID) };
+			db.executeNonQuery(query, parameters);
 		}
 
 		private void updateExtraction()
