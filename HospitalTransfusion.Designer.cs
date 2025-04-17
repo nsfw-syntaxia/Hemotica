@@ -251,9 +251,9 @@
 			lblUnit.ForeColor = Color.FromArgb(216, 85, 101);
 			lblUnit.Location = new Point(342, 225);
 			lblUnit.Name = "lblUnit";
-			lblUnit.Size = new Size(102, 24);
+			lblUnit.Size = new Size(107, 24);
 			lblUnit.TabIndex = 105;
-			lblUnit.Text = "blood bag/s";
+			lblUnit.Text = "blood bag(s)";
 			// 
 			// tbxQuantity
 			// 

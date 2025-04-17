@@ -174,7 +174,15 @@ namespace Hemotica
 			}
 			else
 			{
-				lblResult.Text = $"UNAVAILABLE: Only {totalAvailableUnits} compatible unit(s) available.";
+				if (totalAvailableUnits == 0)
+				{
+					lblResult.Text = "UNAVAILABLE: No compatible unit(s) available.";
+				}
+				else
+				{
+					lblResult.Text = $"UNAVAILABLE: Only {totalAvailableUnits} compatible unit(s) available.";
+				}
+
 				btnCrossmatch.Visible = true;
 				btnPhysician.Visible = false;
 				lblPhysician.Visible = false;

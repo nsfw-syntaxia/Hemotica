@@ -246,9 +246,9 @@
 			lblBloodBags.Location = new Point(869, 150);
 			lblBloodBags.Name = "lblBloodBags";
 			lblBloodBags.Padding = new Padding(5, 0, 0, 5);
-			lblBloodBags.Size = new Size(132, 32);
+			lblBloodBags.Size = new Size(138, 32);
 			lblBloodBags.TabIndex = 82;
-			lblBloodBags.Text = "blood bag/s";
+			lblBloodBags.Text = "blood bag(s)";
 			// 
 			// cmbxSex
 			// 
