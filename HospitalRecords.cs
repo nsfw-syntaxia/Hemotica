@@ -535,11 +535,13 @@ namespace Hemotica
 					}
 				}
 
+				MigraDoc.DocumentObjectModel.Color headerColor = MigraDoc.DocumentObjectModel.Color.FromArgb(255, 252, 212, 212);
+
 				Row headerRow = table.AddRow();
 				for (int i = 0; i < dgv.Columns.Count; i++)
 				{
 					headerRow.Cells[i].AddParagraph(dgv.Columns[i].HeaderText);
-					headerRow.Cells[i].Shading.Color = Colors.LightGray;
+					headerRow.Cells[i].Shading.Color = headerColor;
 					headerRow.Cells[i].Format.Alignment = ParagraphAlignment.Center;
 					headerRow.Cells[i].VerticalAlignment = VerticalAlignment.Center;
 				}
