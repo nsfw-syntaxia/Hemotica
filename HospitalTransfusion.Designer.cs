@@ -50,6 +50,8 @@
 			cmbxPatient = new ReaLTaiizor.Controls.DungeonComboBox();
 			tbxPriority = new ReaLTaiizor.Controls.HopeTextBox();
 			pTransfer = new Panel();
+			btnCrossmatch = new AntdUI.Button();
+			lblResult = new Label();
 			tplTransfusion.SuspendLayout();
 			pBlood.SuspendLayout();
 			pCompatibility.SuspendLayout();
@@ -58,6 +60,7 @@
 			pTransfusion.SuspendLayout();
 			tlpPatient.SuspendLayout();
 			pTranfusion.SuspendLayout();
+			pTransfer.SuspendLayout();
 			SuspendLayout();
 			// 
 			// tplTransfusion
@@ -111,6 +114,7 @@
 			// pPatient
 			// 
 			pPatient.BackColor = Color.FromArgb(216, 85, 101);
+			pPatient.Controls.Add(btnCrossmatch);
 			pPatient.Controls.Add(pTransfusion);
 			pPatient.Dock = DockStyle.Fill;
 			pPatient.Location = new Point(3, 3);
@@ -393,12 +397,37 @@
 			// pTransfer
 			// 
 			tlpPatient.SetColumnSpan(pTransfer, 2);
+			pTransfer.Controls.Add(lblResult);
 			pTransfer.Dock = DockStyle.Fill;
 			pTransfer.Location = new Point(3, 363);
 			pTransfer.Name = "pTransfer";
 			tlpPatient.SetRowSpan(pTransfer, 2);
 			pTransfer.Size = new Size(452, 92);
 			pTransfer.TabIndex = 78;
+			// 
+			// btnCrossmatch
+			// 
+			btnCrossmatch.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			btnCrossmatch.DefaultBack = Color.FromArgb(252, 228, 228);
+			btnCrossmatch.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+			btnCrossmatch.ForeColor = Color.FromArgb(216, 85, 101);
+			btnCrossmatch.Location = new Point(13, 492);
+			btnCrossmatch.Name = "btnCrossmatch";
+			btnCrossmatch.Size = new Size(468, 60);
+			btnCrossmatch.TabIndex = 24;
+			btnCrossmatch.Text = "Crossmatch";
+			// 
+			// lblResult
+			// 
+			lblResult.AutoSize = true;
+			lblResult.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			lblResult.ForeColor = Color.FromArgb(216, 85, 101);
+			lblResult.Location = new Point(185, 34);
+			lblResult.Name = "lblResult";
+			lblResult.Size = new Size(83, 24);
+			lblResult.TabIndex = 106;
+			lblResult.Text = "< result >";
+			lblResult.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// HospitalTransfusion
 			// 
@@ -421,6 +450,8 @@
 			tlpPatient.PerformLayout();
 			pTranfusion.ResumeLayout(false);
 			pTranfusion.PerformLayout();
+			pTransfer.ResumeLayout(false);
+			pTransfer.PerformLayout();
 			ResumeLayout(false);
 		}
 
@@ -447,5 +478,7 @@
 		private ReaLTaiizor.Controls.HopeTextBox tbxQuantity;
 		private Label lblUnit;
 		private Panel pTransfer;
+		private AntdUI.Button btnCrossmatch;
+		private Label lblResult;
 	}
 }
