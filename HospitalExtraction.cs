@@ -55,7 +55,7 @@ namespace Hemotica
 			if (cmbxDonor.SelectedIndex <= 0)
 			{
 				tbxGender.Text = "";
-				tbxAge.Text = "";
+				tbxBirthdate.Text = "";
 				tbxAddress.Text = "";
 				tbxCNumber.Text = "";
 				tbxBloodType.Text = "";
@@ -100,7 +100,7 @@ namespace Hemotica
 
 		private void loadDonorDetails(string donorID)
 		{
-			string query = @"SELECT Gender, Age, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors WHERE [Donor ID] = ?";
+			string query = @"SELECT Gender, Birthdate, Barangay, City, Province, [Contact Number], [Blood Type] FROM Donors WHERE [Donor ID] = ?";
 			OleDbParameter[] parameter = { new OleDbParameter("?", donorID) };
 			DataTable dt = db.executeQuery(query, parameter);
 
@@ -108,7 +108,7 @@ namespace Hemotica
 			{
 				DataRow row = dt.Rows[0];
 				tbxGender.Text = row["Gender"].ToString();
-				tbxAge.Text = row["Age"].ToString();
+				tbxBirthdate.Text = row["Birthdate"].ToString();
 				tbxAddress.Text = $"{row["Barangay"]}, {row["City"]}, {row["Province"]}";
 				tbxCNumber.Text = row["Contact Number"].ToString();
 				tbxBloodType.Text = row["Blood Type"].ToString();

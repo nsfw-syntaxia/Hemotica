@@ -43,12 +43,12 @@
 			tbxCNumber = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxBloodType = new ReaLTaiizor.Controls.HopeTextBox();
 			tbxGender = new ReaLTaiizor.Controls.HopeTextBox();
-			tbxAge = new ReaLTaiizor.Controls.HopeTextBox();
+			tbxBirthdate = new ReaLTaiizor.Controls.HopeTextBox();
 			lblAddress = new Label();
 			lblCNumber = new Label();
 			lblBType = new Label();
 			lblGender = new Label();
-			lblAge = new Label();
+			lblBirthdate = new Label();
 			lblName = new Label();
 			cmbxDonor = new ReaLTaiizor.Controls.DungeonComboBox();
 			tlpBloodExtraction.SuspendLayout();
@@ -195,12 +195,12 @@
 			pDonor.Controls.Add(tbxCNumber);
 			pDonor.Controls.Add(tbxBloodType);
 			pDonor.Controls.Add(tbxGender);
-			pDonor.Controls.Add(tbxAge);
+			pDonor.Controls.Add(tbxBirthdate);
 			pDonor.Controls.Add(lblAddress);
 			pDonor.Controls.Add(lblCNumber);
 			pDonor.Controls.Add(lblBType);
 			pDonor.Controls.Add(lblGender);
-			pDonor.Controls.Add(lblAge);
+			pDonor.Controls.Add(lblBirthdate);
 			pDonor.Controls.Add(lblName);
 			pDonor.Controls.Add(cmbxDonor);
 			pDonor.Dock = DockStyle.Fill;
@@ -309,29 +309,29 @@
 			tbxGender.TabStop = false;
 			tbxGender.UseSystemPasswordChar = false;
 			// 
-			// tbxAge
+			// tbxBirthdate
 			// 
-			tbxAge.BackColor = Color.White;
-			tbxAge.BaseColor = Color.FromArgb(252, 228, 228);
-			tbxAge.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxAge.BorderColorB = Color.FromArgb(216, 85, 101);
-			tbxAge.Enabled = false;
-			tbxAge.Font = new Font("Bahnschrift", 15F);
-			tbxAge.ForeColor = Color.FromArgb(216, 85, 101);
-			tbxAge.Hint = "";
-			tbxAge.Location = new Point(5, 131);
-			tbxAge.MaxLength = 32767;
-			tbxAge.Multiline = false;
-			tbxAge.Name = "tbxAge";
-			tbxAge.PasswordChar = '\0';
-			tbxAge.ScrollBars = ScrollBars.None;
-			tbxAge.SelectedText = "";
-			tbxAge.SelectionLength = 0;
-			tbxAge.SelectionStart = 0;
-			tbxAge.Size = new Size(218, 41);
-			tbxAge.TabIndex = 92;
-			tbxAge.TabStop = false;
-			tbxAge.UseSystemPasswordChar = false;
+			tbxBirthdate.BackColor = Color.White;
+			tbxBirthdate.BaseColor = Color.FromArgb(252, 228, 228);
+			tbxBirthdate.BorderColorA = Color.FromArgb(216, 85, 101);
+			tbxBirthdate.BorderColorB = Color.FromArgb(216, 85, 101);
+			tbxBirthdate.Enabled = false;
+			tbxBirthdate.Font = new Font("Bahnschrift", 15F);
+			tbxBirthdate.ForeColor = Color.FromArgb(216, 85, 101);
+			tbxBirthdate.Hint = "";
+			tbxBirthdate.Location = new Point(5, 131);
+			tbxBirthdate.MaxLength = 32767;
+			tbxBirthdate.Multiline = false;
+			tbxBirthdate.Name = "tbxBirthdate";
+			tbxBirthdate.PasswordChar = '\0';
+			tbxBirthdate.ScrollBars = ScrollBars.None;
+			tbxBirthdate.SelectedText = "";
+			tbxBirthdate.SelectionLength = 0;
+			tbxBirthdate.SelectionStart = 0;
+			tbxBirthdate.Size = new Size(218, 41);
+			tbxBirthdate.TabIndex = 92;
+			tbxBirthdate.TabStop = false;
+			tbxBirthdate.UseSystemPasswordChar = false;
 			// 
 			// lblAddress
 			// 
@@ -381,17 +381,17 @@
 			lblGender.TabIndex = 94;
 			lblGender.Text = "Gender";
 			// 
-			// lblAge
+			// lblBirthdate
 			// 
-			lblAge.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-			lblAge.AutoSize = true;
-			lblAge.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
-			lblAge.ForeColor = Color.FromArgb(216, 85, 101);
-			lblAge.Location = new Point(5, 104);
-			lblAge.Name = "lblAge";
-			lblAge.Size = new Size(40, 24);
-			lblAge.TabIndex = 91;
-			lblAge.Text = "Age";
+			lblBirthdate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			lblBirthdate.AutoSize = true;
+			lblBirthdate.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			lblBirthdate.ForeColor = Color.FromArgb(216, 85, 101);
+			lblBirthdate.Location = new Point(5, 104);
+			lblBirthdate.Name = "lblBirthdate";
+			lblBirthdate.Size = new Size(80, 24);
+			lblBirthdate.TabIndex = 91;
+			lblBirthdate.Text = "Birthdate";
 			// 
 			// lblName
 			// 
@@ -476,8 +476,8 @@
 		private Label lblBType;
 		private ReaLTaiizor.Controls.HopeTextBox tbxCNumber;
 		private Label lblGender;
-		private ReaLTaiizor.Controls.HopeTextBox tbxAge;
-		private Label lblAge;
+		private ReaLTaiizor.Controls.HopeTextBox tbxBirthdate;
+		private Label lblBirthdate;
 		private Label lblName;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxDonor;
 		private ReaLTaiizor.Controls.HopeTextBox tbxGender;
