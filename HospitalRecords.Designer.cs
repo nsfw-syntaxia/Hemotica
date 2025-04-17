@@ -97,7 +97,7 @@
 			load.Font = new Font("Bahnschrift", 12F);
 			load.ForeColor = Color.FromArgb(54, 40, 40);
 			load.Name = "load";
-			load.Size = new Size(180, 24);
+			load.Size = new Size(123, 24);
 			load.Text = "LOAD";
 			// 
 			// lTable
@@ -106,7 +106,7 @@
 			lTable.Font = new Font("Bahnschrift", 12F);
 			lTable.ForeColor = Color.FromArgb(54, 40, 40);
 			lTable.Name = "lTable";
-			lTable.Size = new Size(180, 24);
+			lTable.Size = new Size(127, 24);
 			lTable.Text = "TABLE";
 			// 
 			// lDonors
@@ -137,7 +137,7 @@
 			lQuery.DropDownItems.AddRange(new ToolStripItem[] { lAppointments, lExtraction, lTransfusion });
 			lQuery.ForeColor = Color.FromArgb(54, 40, 40);
 			lQuery.Name = "lQuery";
-			lQuery.Size = new Size(180, 24);
+			lQuery.Size = new Size(127, 24);
 			lQuery.Text = "QUERY";
 			// 
 			// lAppointments
@@ -169,7 +169,7 @@
 			print.Font = new Font("Bahnschrift", 12F);
 			print.ForeColor = Color.FromArgb(54, 40, 40);
 			print.Name = "print";
-			print.Size = new Size(180, 24);
+			print.Size = new Size(123, 24);
 			print.Text = "PRINT";
 			// 
 			// pTable
@@ -177,7 +177,7 @@
 			pTable.DropDownItems.AddRange(new ToolStripItem[] { pDonors, pPatients, pPhysicians });
 			pTable.ForeColor = Color.FromArgb(54, 40, 40);
 			pTable.Name = "pTable";
-			pTable.Size = new Size(180, 24);
+			pTable.Size = new Size(127, 24);
 			pTable.Text = "TABLE";
 			// 
 			// pDonors
@@ -208,7 +208,7 @@
 			pQuery.DropDownItems.AddRange(new ToolStripItem[] { pAppointments, pExtraction, pTransfusion });
 			pQuery.ForeColor = Color.FromArgb(54, 40, 40);
 			pQuery.Name = "pQuery";
-			pQuery.Size = new Size(180, 24);
+			pQuery.Size = new Size(127, 24);
 			pQuery.Text = "QUERY";
 			// 
 			// pAppointments
@@ -436,6 +436,7 @@
 			Controls.Add(dgvDataMax);
 			Name = "HospitalRecords";
 			Size = new Size(1020, 641);
+			Load += HospitalRecords_Load;
 			mstrpRecords.ResumeLayout(false);
 			mstrpRecords.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)dgvDataMax).EndInit();

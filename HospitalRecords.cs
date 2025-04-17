@@ -556,7 +556,7 @@ namespace Hemotica
 			loadDonors();
 			exportPDF(dgvDataMin, "Donor");
 		}
-		
+
 		private void pPatients_Click(object sender, EventArgs e)
 		{
 			loadPatients();
@@ -584,6 +584,11 @@ namespace Hemotica
 		private void pTransfusion_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void HospitalRecords_Load(object sender, EventArgs e)
+		{
+			mstrpRecords.Focus();
 		}
 	}
 }
