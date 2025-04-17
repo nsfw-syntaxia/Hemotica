@@ -77,12 +77,14 @@ namespace Hemotica
 
 					string donorName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
 
+					int panelWidth = 297;
+
 					Panel panel = new Panel
 					{
-						Size = new Size(280, 125),
+						Size = new Size(panelWidth, 125),
 						BackColor = Color.FromArgb(244, 180, 180),
 						Margin = new Padding(5),
-						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 280, 125, 20, 20))
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelWidth, 125, 20, 20))
 					};
 
 					Label lblDate = new Label
@@ -121,6 +123,15 @@ namespace Hemotica
 					panel.Controls.Add(lblDonor);
 
 					flpAppointments.Controls.Add(panel);
+				}
+
+				if (flpAppointments.VerticalScroll.Visible)
+				{
+					foreach (Control panel in flpAppointments.Controls)
+					{
+						panel.Width = flpAppointments.Width - 27;
+						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+					}
 				}
 			}
 		}
