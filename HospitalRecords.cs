@@ -553,26 +553,31 @@ namespace Hemotica
 
 		private void pDonors_Click(object sender, EventArgs e)
 		{
+			loadDonors();
 			exportPDF(dgvDataMin, "Donor");
 		}
-
+		
 		private void pPatients_Click(object sender, EventArgs e)
 		{
+			loadPatients();
 			exportPDF(dgvDataMin, "Patient");
 		}
 
 		private void pPhysicians_Click(object sender, EventArgs e)
 		{
+			loadPhysicians();
 			exportPDF(dgvDataMin, "Physician");
 		}
 
 		private void pAppointments_Click(object sender, EventArgs e)
 		{
+			loadAppointments();
 			exportPDF(dgvDataMax, "Appointment");
 		}
 
 		private void pExtraction_Click(object sender, EventArgs e)
 		{
+			loadExtraction();
 			exportPDF(dgvDataMax, "Extraction");
 		}
 
