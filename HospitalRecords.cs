@@ -502,12 +502,12 @@ namespace Hemotica
 					}
 					else if (recordType == "Appointment")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.7));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 					else if (recordType == "Extraction")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.8));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(4.8));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 				}
