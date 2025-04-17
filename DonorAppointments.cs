@@ -24,6 +24,8 @@ namespace Hemotica
 
 		private void DonorAppointments_Load(object sender, EventArgs e)
 		{
+			flpAppointments.WrapContents = false;
+
 			roundControls();
 			loadAppointments();
 		}
@@ -72,11 +74,15 @@ namespace Hemotica
 					string hospitalName = row["Hospital"].ToString();
 					string status = row["Status"].ToString();
 
+					//int panelWidth = flpAppointments.VerticalScroll.Visible ? (flpAppointments.Width - 25) : 1005;
+
+					int panelWidth = 1005;
+
 					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
 					{
 						BackColor = Color.FromArgb(244, 180, 180),
 						Padding = new Padding(15),
-						Size = new Size(1005, 165)
+						Size = new Size(panelWidth, 165)
 					};
 
 					Label lblDate = new Label
@@ -162,12 +168,21 @@ namespace Hemotica
 					}
 					else
 					{
-						panel.Size = new Size(1005, lblStatus.Bottom + 30);
+						panel.Size = new Size(panelWidth, lblStatus.Bottom + 30);
 					}
 
 					panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 
 					flpAppointments.Controls.Add(panel);
+				}
+
+				if (flpAppointments.VerticalScroll.Visible)
+				{
+					foreach (Control panel in flpAppointments.Controls)
+					{
+						panel.Width = flpAppointments.Width - 25;
+						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+					}
 				}
 			}
 		}

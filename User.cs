@@ -403,7 +403,8 @@ namespace Hemotica
 
 		internal DataTable loadBarcodes(Database db)
 		{
-			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction WHERE [Hospital Username] = ?";
+			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction WHERE [Hospital Username] = ? 
+							 ORDER BY [Extraction Date] ASC";
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			return db.executeQuery(query, parameters);
 		}
