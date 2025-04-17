@@ -399,9 +399,9 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = @"SELECT Appointments.[Appointment ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Birthdate, Donors.Age, 
-							 Donors.[Blood Type], Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
-							 INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital
+			string query = @"SELECT Appointments.[Appointment ID], Donors.[First Name] & ' ' & Donors.[Middle Name] & ' ' & Donors.[Last Name] AS [Donor Name], Donors.Gender, 
+							 Donors.Birthdate, Donors.Age, Donors.[Blood Type], Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
+							 INNER JOIN (Appointments INNER JOIN Donors ON Appointments.[Donor Username] = Donors.Username) ON Hospitals.Username = Appointments.[Hospital Username]
 							 WHERE Appointments.Hospital = ? ORDER BY Appointments.[Appointment Date] ASC";
 
 			OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
@@ -414,11 +414,12 @@ namespace Hemotica
 			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
-
-			string query = @"SELECT Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Birthdate, Donors.Age, Donors.[Blood Type], 
-							 Extraction.[Extraction Date] FROM Donors INNER JOIN (Hospitals INNER JOIN Extraction ON Hospitals.Username = Extraction.[Hospital Username]) ON 
-							 Donors.Username = Extraction.[Donor Username] WHERE Extraction.Hospital = ? GROUP BY Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], 
-							 Donors.[Last Name], Donors.Gender, Donors.Birthdate, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] ORDER BY Extraction.[Extraction Date] ASC";
+			
+			string query = @"SELECT Extraction.[Extraction ID], Donors.[First Name] & ' ' & Donors.[Middle Name] & ' ' & Donors.[Last Name] AS [Donor Name], Donors.Gender, 
+							 Donors.Birthdate, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] FROM Donors
+							 INNER JOIN (Hospitals INNER JOIN Extraction ON Hospitals.Username = Extraction.[Hospital Username]) ON Donors.Username = Extraction.[Donor Username] 
+							 WHERE Extraction.Hospital = ? GROUP BY Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, 
+							 Donors.Birthdate, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] ORDER BY Extraction.[Extraction Date] ASC";
 
 			OleDbParameter[] parametersExtraction = { new OleDbParameter("?", hospitalName) };
 			return db.executeQuery(query, parametersExtraction);
