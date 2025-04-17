@@ -425,6 +425,20 @@ namespace Hemotica
 			return db.executeQuery(query, parametersExtraction);
 		}
 
+		internal DataTable loadTransfusion(Database db)
+		{
+			string query = @"SELECT Transfusion.[Transfusion ID], Patients.[First Name] & ' ' & Patients.[Middle Name] & ' ' & Patients.[Last Name] AS [Patient Name], Patients.Gender, 
+							 Patients.Birthdate, Patients.Age, Patients.[Contact Number], Patients.Barangay & ', ' & Patients.City & ', ' & Patients.Province AS [Address], 
+							 Transfusion.[Blood Type], Transfusion.Quantity, 
+							 Transfusion.[Transfusion Date], Physicians.[First Name] & ' ' & Physicians.[Middle Name] & ' ' & Physicians.[Last Name] AS [Physician Name], 
+							 Physicians.[License Number] FROM Physicians 
+							 INNER JOIN (Patients INNER JOIN Transfusion ON Patients.[Patient ID] = Transfusion.[Patient ID]) ON Physicians.[Physician ID] = Transfusion.[Physician ID]
+							 WHERE Transfusion.[Hospital Username] = ? ORDER BY Transfusion.[Transfusion Date] ASC";
+
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			return db.executeQuery(query, parameters);
+		}
+
 		internal DataTable loadBarcodes(Database db)
 		{
 			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction WHERE [Hospital Username] = ? 

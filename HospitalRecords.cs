@@ -452,7 +452,25 @@ namespace Hemotica
 
 		private void lTransfusion_Click(object sender, EventArgs e)
 		{
-			// after transfusion functionality
+			btnConnection.Visible = false;
+			dgvDataMax.Visible = true;
+
+			dgvDataMin.Visible = false;
+			flpInputs.Visible = false;
+			btnInsert.Visible = false;
+			btnUpdate.Visible = false;
+			btnDelete.Visible = false;
+
+			loadTransfusion();
+		}
+
+		private void loadTransfusion()
+		{
+			DataTable dt = hospital.loadTransfusion(db);
+			if (dt != null)
+			{
+				dgvDataMax.DataSource = dt;
+			}
 		}
 
 		public void exportPDF(DataGridView dgv, string recordType)
@@ -508,6 +526,11 @@ namespace Hemotica
 					else if (recordType == "Extraction")
 					{
 						Column tableColumn = table.AddColumn(Unit.FromCentimeter(4.8));
+						tableColumn.Format.Alignment = ParagraphAlignment.Center;
+					}
+					else if (recordType == "Transfusion")
+					{
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(2.8));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 				}
@@ -583,7 +606,8 @@ namespace Hemotica
 
 		private void pTransfusion_Click(object sender, EventArgs e)
 		{
-
+			loadTransfusion();
+			exportPDF(dgvDataMax, "Transfusion");
 		}
 
 		private void HospitalRecords_Load(object sender, EventArgs e)
