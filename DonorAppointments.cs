@@ -74,8 +74,6 @@ namespace Hemotica
 					string hospitalName = row["Hospital"].ToString();
 					string status = row["Status"].ToString();
 
-					//int panelWidth = flpAppointments.VerticalScroll.Visible ? (flpAppointments.Width - 25) : 1005;
-
 					int panelWidth = 1005;
 
 					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel

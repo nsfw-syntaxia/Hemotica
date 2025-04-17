@@ -134,12 +134,14 @@ namespace Hemotica
 					string extractionDate = Convert.ToDateTime(row["Extraction Date"]).ToString("MM/dd/yyyy");
 					string hospital = row["Hospital"].ToString();
 
+					int panelWidth = 367;
+
 					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
 					{
-						Size = new Size(350, 125),
+						Size = new Size(panelWidth, 125),
 						BackColor = Color.FromArgb(244, 180, 180),
 						Margin = new Padding(5),
-						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 350, 125, 20, 20))
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelWidth, 125, 20, 20))
 					};
 
 					Label lblDate = new Label
@@ -178,6 +180,15 @@ namespace Hemotica
 					panel.Controls.Add(lblHospital);
 
 					flpLogs.Controls.Add(panel);
+				}
+
+				if (flpLogs.VerticalScroll.Visible)
+				{
+					foreach (Control panel in flpLogs.Controls)
+					{
+						panel.Width = flpLogs.Width - 27;
+						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+					}
 				}
 			}
 		}
