@@ -507,9 +507,13 @@ namespace Hemotica
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
 			string query = @"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Birthdate, Age, [Contact Number], [Blood Type], Request, Priority, 
-							  Barangay, City, Province FROM Patients WHERE [Hospital] = ?";
+							  Barangay, City, Province FROM Patients WHERE [Hospital] = ? AND Priority <> ?";
 
-			OleDbParameter[] parametersPatients = { new OleDbParameter("?", hospitalName) };
+			OleDbParameter[] parametersPatients = 
+			{ 
+				new OleDbParameter("?", hospitalName),
+				new OleDbParameter("?", "Resolved")
+			};
 			return db.executeQuery(query, parametersPatients);
 		}
 

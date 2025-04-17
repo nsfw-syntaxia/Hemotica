@@ -242,11 +242,19 @@ namespace Hemotica
 				return;
 			}
 
-			addTransfusion();
+			bool success = addTransfusion();
 			updatePatient();
 			updateExtraction();
 
-			MessageBox.Show("Blood transfer recorded successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			if (success)
+			{
+				MessageBox.Show("Blood transfer recorded successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
+				MessageBox.Show("Blood transfer record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 
 			cmbxPatient.SelectedIndex = 0;
 			cmbxPhysician.SelectedIndex = 0;
@@ -266,39 +274,47 @@ namespace Hemotica
 			pbxCompatibility.Focus();
 		}
 
-		private void addTransfusion()
+		private bool addTransfusion()
 		{
-			int patientIndex = cmbxPatient.SelectedIndex - 1;
-			string patientID = patientList.Rows[patientIndex]["Patient ID"].ToString();
-
-			int physicianIndex = cmbxPhysician.SelectedIndex - 1;
-			string physicianID = physicianList.Rows[physicianIndex]["Physician ID"].ToString();
-
-			string bloodType = tbxBloodType.Text.Trim();
-			string quantity = tbxQuantity.Text.Trim();
-			string hospitalUsername = UserLogs.Username;
-
-			string queryHospital = @"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
-			OleDbParameter[] transfusionParameters = { new OleDbParameter("?", hospitalUsername) };
-			DataTable hospitalData = db.executeQuery(queryHospital, transfusionParameters);
-			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
-
-			string transfusionDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
-
-			string insertQuery = @"INSERT INTO Transfusion ([Patient ID], [Physician ID], [Blood Type], [Quantity], [Hospital Username], [Hospital], [Transfusion Date])
-								   VALUES (?, ?, ?, ?, ?, ?, ?)";
-			OleDbParameter[] parameters = 
+			try
 			{
-				new OleDbParameter("?", patientID),
-				new OleDbParameter("?", physicianID),
-				new OleDbParameter("?", bloodType),
-				new OleDbParameter("?", quantity),
-				new OleDbParameter("?", hospitalUsername),
-				new OleDbParameter("?", hospitalName),
-				new OleDbParameter("?", transfusionDate)
-			};
+				int patientIndex = cmbxPatient.SelectedIndex - 1;
+				string patientID = patientList.Rows[patientIndex]["Patient ID"].ToString();
 
-			db.executeNonQuery(insertQuery, parameters);
+				int physicianIndex = cmbxPhysician.SelectedIndex - 1;
+				string physicianID = physicianList.Rows[physicianIndex]["Physician ID"].ToString();
+
+				string bloodType = tbxBloodType.Text.Trim();
+				string quantity = tbxQuantity.Text.Trim();
+				string hospitalUsername = UserLogs.Username;
+
+				string queryHospital = @"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+				OleDbParameter[] transfusionParameters = { new OleDbParameter("?", hospitalUsername) };
+				DataTable hospitalData = db.executeQuery(queryHospital, transfusionParameters);
+				string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+				string transfusionDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+				string insertQuery = @"INSERT INTO Transfusion ([Patient ID], [Physician ID], [Blood Type], [Quantity], [Hospital Username], [Hospital], [Transfusion Date])
+								   VALUES (?, ?, ?, ?, ?, ?, ?)";
+				OleDbParameter[] parameters =
+				{
+					new OleDbParameter("?", patientID),
+					new OleDbParameter("?", physicianID),
+					new OleDbParameter("?", bloodType),
+					new OleDbParameter("?", quantity),
+					new OleDbParameter("?", hospitalUsername),
+					new OleDbParameter("?", hospitalName),
+					new OleDbParameter("?", transfusionDate)
+				};
+
+				db.executeNonQuery(insertQuery, parameters);
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
 		}
 
 		private void updatePatient()

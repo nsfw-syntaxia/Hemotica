@@ -127,10 +127,18 @@ namespace Hemotica
 			string donorID = donorList.Rows[dataIndex]["Donor ID"].ToString();
 			string donorUsername = db.donorUsername(donorID);
 
-			addDonation(donorID);
+			bool success = addDonation(donorID);
 			updateAppointments(donorUsername);
 
-			MessageBox.Show("Donation recorded successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			if (success)
+			{
+				MessageBox.Show("Donation recorded successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
+				MessageBox.Show("Donation record insertion failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 
 			cmbxDonor.SelectedIndex = 0;
 			tbxBirthdate.Text = "";
@@ -143,51 +151,59 @@ namespace Hemotica
 			pbxBarCode.Focus();
 		}
 
-		private void addDonation(string donorID)
+		private bool addDonation(string donorID)
 		{
-			string donorUsername = db.donorUsername(donorID);
-			string hospitalUsername = UserLogs.Username;
-
-			string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
-			OleDbParameter[] donateParameters = { new OleDbParameter("?", hospitalUsername) };
-			DataTable hospitalData = db.executeQuery(queryHospital, donateParameters);
-			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
-
-			string bloodType = tbxBloodType.Text;
-			string extractionDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
-			string expirationDate = DateTime.Now.AddDays(42).ToString("MM/dd/yyyy HH:mm:ss");
-			string status = "Available";
-
-			string barcodeValue = Guid.NewGuid().ToString().Substring(0, 10);
-
-			Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
-			Image barcodeImage = barcode.Draw(barcodeValue, 100);
-
-			Bitmap barcodeBitmap = new Bitmap(barcodeImage);
-
-			byte[] barcodeBytes;
-			using (MemoryStream ms = new MemoryStream())
+			try
 			{
-				barcodeBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-				barcodeBytes = ms.ToArray();
-			}
+				string donorUsername = db.donorUsername(donorID);
+				string hospitalUsername = UserLogs.Username;
 
-			string insertQuery = @"INSERT INTO Extraction ([Donor Username], [Hospital Username], [Hospital], [Blood Type], [Extraction Date], [Expiration Date], [Status], [Barcode]) 
+				string queryHospital = $"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+				OleDbParameter[] donateParameters = { new OleDbParameter("?", hospitalUsername) };
+				DataTable hospitalData = db.executeQuery(queryHospital, donateParameters);
+				string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+				string bloodType = tbxBloodType.Text;
+				string extractionDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+				string expirationDate = DateTime.Now.AddDays(42).ToString("MM/dd/yyyy HH:mm:ss");
+				string status = "Available";
+
+				string barcodeValue = Guid.NewGuid().ToString().Substring(0, 10);
+
+				Zen.Barcode.Code128BarcodeDraw barcode = Zen.Barcode.BarcodeDrawFactory.Code128WithChecksum;
+				Image barcodeImage = barcode.Draw(barcodeValue, 100);
+
+				Bitmap barcodeBitmap = new Bitmap(barcodeImage);
+
+				byte[] barcodeBytes;
+				using (MemoryStream ms = new MemoryStream())
+				{
+					barcodeBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+					barcodeBytes = ms.ToArray();
+				}
+
+				string insertQuery = @"INSERT INTO Extraction ([Donor Username], [Hospital Username], [Hospital], [Blood Type], [Extraction Date], [Expiration Date], [Status], [Barcode]) 
 								   VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-			OleDbParameter[] insertParameters =
-			{
-				new OleDbParameter("?", donorUsername),
-				new OleDbParameter("?", hospitalUsername),
-				new OleDbParameter("?", hospitalName),
-				new OleDbParameter("?", bloodType),
-				new OleDbParameter("?", extractionDate),
-				new OleDbParameter("?", expirationDate),
-				new OleDbParameter("?", status),
-				new OleDbParameter("?", OleDbType.LongVarBinary) { Value = barcodeBytes }
-			};
+				OleDbParameter[] insertParameters =
+				{
+					new OleDbParameter("?", donorUsername),
+					new OleDbParameter("?", hospitalUsername),
+					new OleDbParameter("?", hospitalName),
+					new OleDbParameter("?", bloodType),
+					new OleDbParameter("?", extractionDate),
+					new OleDbParameter("?", expirationDate),
+					new OleDbParameter("?", status),
+					new OleDbParameter("?", OleDbType.LongVarBinary) { Value = barcodeBytes }
+				};
 
-			db.executeNonQuery(insertQuery, insertParameters);
+				db.executeNonQuery(insertQuery, insertParameters);
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
 		}
 
 		private void updateAppointments(string donorUsername)
