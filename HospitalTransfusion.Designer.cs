@@ -34,6 +34,9 @@
 			pCompatibility = new Panel();
 			pbxCompatibility = new PictureBox();
 			pPatient = new Panel();
+			btnTransfusion = new AntdUI.Button();
+			btnPhysician = new AntdUI.Button();
+			btnCrossmatch = new AntdUI.Button();
 			pTransfusion = new Panel();
 			tlpPatient = new TableLayoutPanel();
 			lblBloodTransfusion = new Label();
@@ -46,11 +49,12 @@
 			lblBType = new Label();
 			tbxBirthdate = new ReaLTaiizor.Controls.HopeTextBox();
 			lblBirthdate = new Label();
-			lblName = new Label();
+			lblPatient = new Label();
 			cmbxPatient = new ReaLTaiizor.Controls.DungeonComboBox();
 			tbxPriority = new ReaLTaiizor.Controls.HopeTextBox();
 			pTransfer = new Panel();
-			btnCrossmatch = new AntdUI.Button();
+			lblPhysician = new Label();
+			cmbxPhysician = new ReaLTaiizor.Controls.DungeonComboBox();
 			lblResult = new Label();
 			tplTransfusion.SuspendLayout();
 			pBlood.SuspendLayout();
@@ -114,6 +118,8 @@
 			// pPatient
 			// 
 			pPatient.BackColor = Color.FromArgb(216, 85, 101);
+			pPatient.Controls.Add(btnTransfusion);
+			pPatient.Controls.Add(btnPhysician);
 			pPatient.Controls.Add(btnCrossmatch);
 			pPatient.Controls.Add(pTransfusion);
 			pPatient.Dock = DockStyle.Fill;
@@ -122,6 +128,47 @@
 			pPatient.Padding = new Padding(10);
 			pPatient.Size = new Size(494, 565);
 			pPatient.TabIndex = 0;
+			// 
+			// btnTransfusion
+			// 
+			btnTransfusion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			btnTransfusion.DefaultBack = Color.FromArgb(252, 228, 228);
+			btnTransfusion.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+			btnTransfusion.ForeColor = Color.FromArgb(216, 85, 101);
+			btnTransfusion.Location = new Point(13, 492);
+			btnTransfusion.Name = "btnTransfusion";
+			btnTransfusion.Size = new Size(468, 60);
+			btnTransfusion.TabIndex = 26;
+			btnTransfusion.Text = "Blood Transfer";
+			btnTransfusion.Visible = false;
+			btnTransfusion.Click += btnTransfusion_Click;
+			// 
+			// btnPhysician
+			// 
+			btnPhysician.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			btnPhysician.DefaultBack = Color.FromArgb(252, 228, 228);
+			btnPhysician.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+			btnPhysician.ForeColor = Color.FromArgb(216, 85, 101);
+			btnPhysician.Location = new Point(13, 492);
+			btnPhysician.Name = "btnPhysician";
+			btnPhysician.Size = new Size(468, 60);
+			btnPhysician.TabIndex = 25;
+			btnPhysician.Text = "Designate Operating Physician";
+			btnPhysician.Visible = false;
+			btnPhysician.Click += btnPhysician_Click;
+			// 
+			// btnCrossmatch
+			// 
+			btnCrossmatch.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			btnCrossmatch.DefaultBack = Color.FromArgb(252, 228, 228);
+			btnCrossmatch.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
+			btnCrossmatch.ForeColor = Color.FromArgb(216, 85, 101);
+			btnCrossmatch.Location = new Point(13, 492);
+			btnCrossmatch.Name = "btnCrossmatch";
+			btnCrossmatch.Size = new Size(468, 60);
+			btnCrossmatch.TabIndex = 24;
+			btnCrossmatch.Text = "Crossmatch";
+			btnCrossmatch.Click += btnCrossmatch_Click;
 			// 
 			// pTransfusion
 			// 
@@ -186,7 +233,7 @@
 			pTranfusion.Controls.Add(lblBType);
 			pTranfusion.Controls.Add(tbxBirthdate);
 			pTranfusion.Controls.Add(lblBirthdate);
-			pTranfusion.Controls.Add(lblName);
+			pTranfusion.Controls.Add(lblPatient);
 			pTranfusion.Controls.Add(cmbxPatient);
 			pTranfusion.Controls.Add(tbxPriority);
 			pTranfusion.Dock = DockStyle.Fill;
@@ -202,7 +249,7 @@
 			lblUnit.AutoSize = true;
 			lblUnit.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
 			lblUnit.ForeColor = Color.FromArgb(216, 85, 101);
-			lblUnit.Location = new Point(349, 225);
+			lblUnit.Location = new Point(342, 225);
 			lblUnit.Name = "lblUnit";
 			lblUnit.Size = new Size(102, 24);
 			lblUnit.TabIndex = 105;
@@ -228,7 +275,7 @@
 			tbxQuantity.SelectedText = "";
 			tbxQuantity.SelectionLength = 0;
 			tbxQuantity.SelectionStart = 0;
-			tbxQuantity.Size = new Size(114, 41);
+			tbxQuantity.Size = new Size(109, 41);
 			tbxQuantity.TabIndex = 104;
 			tbxQuantity.TabStop = false;
 			tbxQuantity.UseSystemPasswordChar = false;
@@ -329,16 +376,16 @@
 			lblBirthdate.TabIndex = 95;
 			lblBirthdate.Text = "Birthdate";
 			// 
-			// lblName
+			// lblPatient
 			// 
-			lblName.AutoSize = true;
-			lblName.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
-			lblName.ForeColor = Color.FromArgb(216, 85, 101);
-			lblName.Location = new Point(5, 19);
-			lblName.Name = "lblName";
-			lblName.Size = new Size(54, 24);
-			lblName.TabIndex = 92;
-			lblName.Text = "Name";
+			lblPatient.AutoSize = true;
+			lblPatient.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			lblPatient.ForeColor = Color.FromArgb(216, 85, 101);
+			lblPatient.Location = new Point(5, 19);
+			lblPatient.Name = "lblPatient";
+			lblPatient.Size = new Size(112, 24);
+			lblPatient.TabIndex = 92;
+			lblPatient.Text = "Patient Name";
 			// 
 			// cmbxPatient
 			// 
@@ -368,6 +415,7 @@
 			cmbxPatient.Size = new Size(442, 41);
 			cmbxPatient.StartIndex = 0;
 			cmbxPatient.TabIndex = 91;
+			cmbxPatient.SelectedIndexChanged += cmbxPatient_SelectedIndexChanged;
 			// 
 			// tbxPriority
 			// 
@@ -397,6 +445,8 @@
 			// pTransfer
 			// 
 			tlpPatient.SetColumnSpan(pTransfer, 2);
+			pTransfer.Controls.Add(lblPhysician);
+			pTransfer.Controls.Add(cmbxPhysician);
 			pTransfer.Controls.Add(lblResult);
 			pTransfer.Dock = DockStyle.Fill;
 			pTransfer.Location = new Point(3, 363);
@@ -405,17 +455,47 @@
 			pTransfer.Size = new Size(452, 92);
 			pTransfer.TabIndex = 78;
 			// 
-			// btnCrossmatch
+			// lblPhysician
 			// 
-			btnCrossmatch.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			btnCrossmatch.DefaultBack = Color.FromArgb(252, 228, 228);
-			btnCrossmatch.Font = new Font("Bahnschrift SemiBold", 20F, FontStyle.Bold);
-			btnCrossmatch.ForeColor = Color.FromArgb(216, 85, 101);
-			btnCrossmatch.Location = new Point(13, 492);
-			btnCrossmatch.Name = "btnCrossmatch";
-			btnCrossmatch.Size = new Size(468, 60);
-			btnCrossmatch.TabIndex = 24;
-			btnCrossmatch.Text = "Crossmatch";
+			lblPhysician.AutoSize = true;
+			lblPhysician.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			lblPhysician.ForeColor = Color.FromArgb(216, 85, 101);
+			lblPhysician.Location = new Point(5, 4);
+			lblPhysician.Name = "lblPhysician";
+			lblPhysician.Size = new Size(134, 24);
+			lblPhysician.TabIndex = 108;
+			lblPhysician.Text = "Physician Name";
+			lblPhysician.Visible = false;
+			// 
+			// cmbxPhysician
+			// 
+			cmbxPhysician.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			cmbxPhysician.BackColor = Color.FromArgb(241, 241, 241);
+			cmbxPhysician.ColorA = Color.FromArgb(236, 124, 132);
+			cmbxPhysician.ColorB = Color.FromArgb(236, 124, 132);
+			cmbxPhysician.ColorC = Color.FromArgb(242, 241, 240);
+			cmbxPhysician.ColorD = Color.FromArgb(253, 252, 252);
+			cmbxPhysician.ColorE = Color.FromArgb(239, 237, 236);
+			cmbxPhysician.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxPhysician.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxPhysician.ColorH = Color.FromArgb(244, 180, 180);
+			cmbxPhysician.ColorI = Color.FromArgb(250, 249, 249);
+			cmbxPhysician.DrawMode = DrawMode.OwnerDrawFixed;
+			cmbxPhysician.DropDownHeight = 100;
+			cmbxPhysician.DropDownStyle = ComboBoxStyle.DropDownList;
+			cmbxPhysician.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			cmbxPhysician.ForeColor = Color.FromArgb(216, 85, 101);
+			cmbxPhysician.FormattingEnabled = true;
+			cmbxPhysician.HoverSelectionColor = Color.Empty;
+			cmbxPhysician.IntegralHeight = false;
+			cmbxPhysician.ItemHeight = 35;
+			cmbxPhysician.Items.AddRange(new object[] { "Select physician" });
+			cmbxPhysician.Location = new Point(5, 31);
+			cmbxPhysician.Name = "cmbxPhysician";
+			cmbxPhysician.Size = new Size(442, 41);
+			cmbxPhysician.StartIndex = 0;
+			cmbxPhysician.TabIndex = 107;
+			cmbxPhysician.Visible = false;
 			// 
 			// lblResult
 			// 
@@ -466,7 +546,7 @@
 		private TableLayoutPanel tlpPatient;
 		private Label lblBloodTransfusion;
 		private Panel pTranfusion;
-		private Label lblName;
+		private Label lblPatient;
 		private ReaLTaiizor.Controls.DungeonComboBox cmbxPatient;
 		private ReaLTaiizor.Controls.HopeTextBox tbxBirthdate;
 		private Label lblBirthdate;
@@ -480,5 +560,9 @@
 		private Panel pTransfer;
 		private AntdUI.Button btnCrossmatch;
 		private Label lblResult;
+		private AntdUI.Button btnPhysician;
+		private AntdUI.Button btnTransfusion;
+		private Label lblPhysician;
+		private ReaLTaiizor.Controls.DungeonComboBox cmbxPhysician;
 	}
 }

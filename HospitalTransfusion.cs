@@ -25,8 +25,13 @@ namespace Hemotica
 		private void HospitalTransfusion_Load(object sender, EventArgs e)
 		{
 			roundControls();
-			//loadPhysicianList();
 			loadPatientList();
+
+			lblResult.Text = "";
+			btnCrossmatch.Visible = true;
+			btnPhysician.Visible = false;
+			lblPhysician.Visible = false;
+			cmbxPhysician.Visible = false;
 		}
 
 		public void roundControls()
@@ -47,41 +52,12 @@ namespace Hemotica
 			roundControls();
 		}
 
-		/*
-		public void loadPhysicianList()
-		{
-			string hospitalAccess = "All";
-
-			string query = @"SELECT [First Name], [Middle Name], [Last Name] FROM Physicians WHERE [Hospital Username] = ?";
-			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
-			DataTable physicianList = db.executeQuery(query, parameters);
-
-			cmbxPhysician.Items.Clear();
-			cmbxPhysician.Items.Add("Select physician");
-			cmbxPhysician.SelectedIndex = 0;
-
-			foreach (DataRow row in physicianList.Rows)
-			{
-				string firstName = row["First Name"].ToString();
-				string middleName = row["Middle Name"].ToString();
-				string lastName = row["Last Name"].ToString();
-
-				string fullName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
-
-				cmbxPhysician.Items.Add(fullName);
-			}
-		}
-		*/
-
 		public void loadPatientList()
 		{
-			string query = @"SELECT [Patient ID], [First Name], [Middle Name], [Last Name] FROM Patients WHERE [Hospital Username] = ? AND NOT [Priority] = 'Resolved'";
+			string query = @"SELECT [Patient ID], [First Name], [Middle Name], [Last Name] FROM Patients WHERE [Hospital Username] = ? AND NOT [Priority] = 'Resolved' 
+							 ORDER BY [First Name], [Last Name]";
 
-			OleDbParameter[] parameters =
-			{
-				new OleDbParameter("?", UserLogs.Username)
-			};
-
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			patientList = db.executeQuery(query, parameters);
 
 			cmbxPatient.Items.Clear();
@@ -102,7 +78,7 @@ namespace Hemotica
 
 		public void loadPatientDetails(string patientID)
 		{
-			string query = @"SELECT [Blood Type], Priority, Request FROM Patients WHERE [Patient ID] = ?";
+			string query = @"SELECT [Blood Type], Birthdate, Priority, Request FROM Patients WHERE [Patient ID] = ?";
 			OleDbParameter[] parameter = { new OleDbParameter("?", patientID) };
 			DataTable dt = db.executeQuery(query, parameter);
 
@@ -110,9 +86,17 @@ namespace Hemotica
 			{
 				DataRow row = dt.Rows[0];
 				tbxBloodType.Text = row["Blood Type"].ToString();
+				tbxBirthdate.Text = row["Birthdate"].ToString();
 				tbxPriority.Text = row["Priority"].ToString();
 				tbxQuantity.Text = row["Request"].ToString();
 			}
+
+			lblResult.Text = "";
+			btnCrossmatch.Visible = true;
+			btnPhysician.Visible = false;
+			lblPhysician.Visible = false;
+			cmbxPhysician.Visible = false;
+			centerLabel(lblResult);
 		}
 
 		private void cmbxPatient_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,8 +104,10 @@ namespace Hemotica
 			if (cmbxPatient.SelectedIndex <= 0)
 			{
 				tbxBloodType.Text = "";
+				tbxBirthdate.Text = "";
 				tbxPriority.Text = "";
 				tbxQuantity.Text = "";
+				lblResult.Text = "";
 				return;
 			}
 
@@ -131,8 +117,7 @@ namespace Hemotica
 			loadPatientDetails(patientID);
 		}
 
-		/*
-		private void btnAvailability_Click(object sender, EventArgs e)
+		private void btnCrossmatch_Click(object sender, EventArgs e)
 		{
 			if (cmbxPatient.SelectedIndex <= 0)
 			{
@@ -140,55 +125,116 @@ namespace Hemotica
 				return;
 			}
 
-			string bloodType = tbxBloodType.Text.Trim();
-
-			if (!int.TryParse(tbxQuantity.Text.Trim(), out int quantity))
+			string requestedBloodType = tbxBloodType.Text.Trim();
+			if (!int.TryParse(tbxQuantity.Text.Trim(), out int requiredQuantity))
 			{
 				MessageBox.Show("Invalid quantity.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
-			string query = @"SELECT Count(*) AS Unit FROM Extraction WHERE [Status] = 'Available' AND [Expiration Date] >= Date() AND [Hospital Username] = ? AND [Blood Type] = ?";
-			OleDbParameter[] parameters =
+			Dictionary<string, List<string>> compatibility = new Dictionary<string, List<string>>()
 			{
-				new OleDbParameter("?", UserLogs.Username),
-				new OleDbParameter("?", bloodType)
+				["AB+"] = new List<string> { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" },
+				["AB-"] = new List<string> { "A-", "B-", "AB-", "O-" },
+				["A+"] = new List<string> { "A+", "A-", "O+", "O-" },
+				["A-"] = new List<string> { "A-", "O-" },
+				["B+"] = new List<string> { "B+", "B-", "O+", "O-" },
+				["B-"] = new List<string> { "B-", "O-" },
+				["O+"] = new List<string> { "O+", "O-" },
+				["O-"] = new List<string> { "O-" }
 			};
 
+			List<string> compatibleTypes = compatibility[requestedBloodType];
+
+			string query = @"SELECT [Blood Type], COUNT(*) AS Unit FROM Extraction WHERE [Status] = 'Available' AND [Expiration Date] >= Date() AND [Hospital Username] = ?
+							 GROUP BY [Blood Type]";
+
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable dt = db.executeQuery(query, parameters);
-			int availableUnits = dt.Rows.Count > 0 ? Convert.ToInt32(dt.Rows[0]["Unit"]) : 0;
 
-			lblResult.Size = new Size(1020, lblResult.Height);
-			lblResult.Location = new Point(0, (this.Height - lblResult.Height) / 2);
-
-			if (availableUnits >= quantity)
+			int totalAvailableUnits = 0;
+			foreach (DataRow row in dt.Rows)
 			{
-				lblResult.Text = "Blood units are available for this request.";
-				btnTransfusion.Enabled = true;
-				cmbxPhysician.Enabled = true;
+				string type = row["Blood Type"].ToString();
+				int units = Convert.ToInt32(row["Unit"]);
+
+				if (compatibleTypes.Contains(type))
+				{
+					totalAvailableUnits += units;
+				}
+			}
+
+			if (totalAvailableUnits >= requiredQuantity)
+			{
+				lblResult.Text = $"AVAILABLE: {totalAvailableUnits} compatible unit(s) found.";
+				btnCrossmatch.Visible = false;
+				btnPhysician.Visible = true;
+				lblPhysician.Visible = false;
+				cmbxPhysician.Visible = false;
 			}
 			else
 			{
-				lblResult.Text = "Insufficient blood units available for transfusion.";
-				btnTransfusion.Enabled = false;
-				cmbxPhysician.Enabled = false;
+				lblResult.Text = $"UNAVAILABLE: Only {totalAvailableUnits} compatible unit(s) available.";
+				btnCrossmatch.Visible = true;
+				btnPhysician.Visible = false;
+				lblPhysician.Visible = false;
+				cmbxPhysician.Visible = false;
 			}
 
+			centerLabel(lblResult);
+		}
 
-			// validate if patient is selected (just patient, disable cmbxPhysician first)
-			// check if blood type and needed quantity is currently available from database under that logged in hospital
-			// if available, show "Blood request is available." or sumthing better in lblResult (make it so lbl is always center horizontically in panel size 1020, 641)
-			// if not available, show "Blood request is not available." or sumthing better in lblResult (make it so lbl is always center horizontically in panel size 1020, 641)
-			// if available, enable btnTransfusion and cmbxPhysician
+		private void centerLabel(Label lbl)
+		{
+			int panelWidth = 452;
+			lbl.Left = (panelWidth - lbl.PreferredWidth) / 2;
+		}
+
+		private void btnPhysician_Click(object sender, EventArgs e)
+		{
+			lblResult.Visible = false;
+			btnCrossmatch.Visible = false;
+			btnPhysician.Visible = false;
+			lblPhysician.Visible = true;
+			cmbxPhysician.Visible = true;
+			btnTransfusion.Visible = true;
+
+			loadPhysicianList();
+		}
+
+		private void loadPhysicianList()
+		{
+			string query = @"SELECT [First Name], [Middle Name], [Last Name] FROM Physicians WHERE [Hospital Username] = ? ORDER BY [First Name], [Last Name]";
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable physicianList = db.executeQuery(query, parameters);
+
+			cmbxPhysician.Items.Clear();
+			cmbxPhysician.Items.Add("Select physician");
+			cmbxPhysician.SelectedIndex = 0;
+
+			foreach (DataRow row in physicianList.Rows)
+			{
+				string firstName = row["First Name"].ToString();
+				string middleName = row["Middle Name"].ToString();
+				string lastName = row["Last Name"].ToString();
+
+				string fullName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
+
+				cmbxPhysician.Items.Add(fullName);
+			}
 		}
 
 		private void btnTransfusion_Click(object sender, EventArgs e)
 		{
-			// validate if physician is selected and if patient is selected
+			if (cmbxPhysician.SelectedIndex <= 0)
+			{
+				MessageBox.Show("Please select a physician.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
 			// insert to database to record successful transfusion
 			// updates the patient's priority to "Resolved"
 			// update the extraction status in table Extraction to "Used" so that it updates blood stock
 		}
-		*/
 	}
 }
