@@ -131,6 +131,16 @@ namespace Hemotica
 			updateAppointments(donorUsername);
 
 			MessageBox.Show("Donation recorded successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			cmbxDonor.SelectedIndex = 0;
+			tbxBirthdate.Text = "";
+			tbxGender.Text = "";
+			tbxBloodType.Text = "";
+			tbxCNumber.Text = "";
+			tbxAddress.Text = "";
+
+			loadDonorList();
+			pbxBarCode.Focus();
 		}
 
 		private void addDonation(string donorID)

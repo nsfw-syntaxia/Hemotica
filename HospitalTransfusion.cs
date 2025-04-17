@@ -10,6 +10,7 @@ namespace Hemotica
 	{
 		Database db = new Database();
 		DataTable patientList;
+		DataTable physicianList;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -32,6 +33,7 @@ namespace Hemotica
 			btnPhysician.Visible = false;
 			lblPhysician.Visible = false;
 			cmbxPhysician.Visible = false;
+			btnTransfusion.Visible = false;
 		}
 
 		public void roundControls()
@@ -96,6 +98,7 @@ namespace Hemotica
 			btnPhysician.Visible = false;
 			lblPhysician.Visible = false;
 			cmbxPhysician.Visible = false;
+			btnTransfusion.Visible = false;
 			centerLabel(lblResult);
 		}
 
@@ -127,10 +130,7 @@ namespace Hemotica
 
 			string requestedBloodType = tbxBloodType.Text.Trim();
 			if (!int.TryParse(tbxQuantity.Text.Trim(), out int requiredQuantity))
-			{
-				MessageBox.Show("Invalid quantity.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
-			}
 
 			Dictionary<string, List<string>> compatibility = new Dictionary<string, List<string>>()
 			{
@@ -171,6 +171,7 @@ namespace Hemotica
 				btnPhysician.Visible = true;
 				lblPhysician.Visible = false;
 				cmbxPhysician.Visible = false;
+				btnTransfusion.Visible = false;
 			}
 			else
 			{
@@ -187,6 +188,7 @@ namespace Hemotica
 				btnPhysician.Visible = false;
 				lblPhysician.Visible = false;
 				cmbxPhysician.Visible = false;
+				btnTransfusion.Visible = false;
 			}
 
 			centerLabel(lblResult);
@@ -212,9 +214,9 @@ namespace Hemotica
 
 		private void loadPhysicianList()
 		{
-			string query = @"SELECT [First Name], [Middle Name], [Last Name] FROM Physicians WHERE [Hospital Username] = ? ORDER BY [First Name], [Last Name]";
+			string query = @"SELECT [Physician ID], [First Name], [Middle Name], [Last Name] FROM Physicians WHERE [Hospital Username] = ? ORDER BY [First Name], [Last Name]";
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
-			DataTable physicianList = db.executeQuery(query, parameters);
+			physicianList = db.executeQuery(query, parameters);
 
 			cmbxPhysician.Items.Clear();
 			cmbxPhysician.Items.Add("Select physician");
@@ -240,16 +242,152 @@ namespace Hemotica
 				return;
 			}
 
-			// insert to database to record successful transfusion
-			// update the Priority in table Patients to "Resolved"
-			// update the Status in table Extraction to "Used" so that it updates blood stock
+			addTransfusion();
+			updatePatient();
+			updateExtraction();
 
-			//table Transfusion has fields Patient ID, Physician ID, Blood Type, Quantity, Hospital Username (just UserLogs.Username), Hospital, Transfusion Date
+			MessageBox.Show("Blood transfer recorded successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			cmbxPatient.SelectedIndex = 0;
+			cmbxPhysician.SelectedIndex = 0;
+			tbxBirthdate.Clear();
+			tbxPriority.Clear();
+			tbxBloodType.Clear();
+			tbxQuantity.Clear();
+			lblResult.Text = "";
+			lblResult.Visible = true;
+			btnCrossmatch.Visible = true;
+			btnPhysician.Visible = false;
+			lblPhysician.Visible = false;
+			cmbxPhysician.Visible = false;
+			btnTransfusion.Visible = false;
+
+			loadPatientList();
+			pbxCompatibility.Focus();
 		}
 
 		private void addTransfusion()
 		{
-			//get patientID and physicianID
+			int patientIndex = cmbxPatient.SelectedIndex - 1;
+			string patientID = patientList.Rows[patientIndex]["Patient ID"].ToString();
+
+			int physicianIndex = cmbxPhysician.SelectedIndex - 1;
+			string physicianID = physicianList.Rows[physicianIndex]["Physician ID"].ToString();
+
+			string bloodType = tbxBloodType.Text.Trim();
+			string quantity = tbxQuantity.Text.Trim();
+			string hospitalUsername = UserLogs.Username;
+
+			string queryHospital = @"SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
+			OleDbParameter[] transfusionParameters = { new OleDbParameter("?", hospitalUsername) };
+			DataTable hospitalData = db.executeQuery(queryHospital, transfusionParameters);
+			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
+
+			string transfusionDate = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
+
+			string insertQuery = @"INSERT INTO Transfusion ([Patient ID], [Physician ID], [Blood Type], [Quantity], [Hospital Username], [Hospital], [Transfusion Date])
+								   VALUES (?, ?, ?, ?, ?, ?, ?)";
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", patientID),
+				new OleDbParameter("?", physicianID),
+				new OleDbParameter("?", bloodType),
+				new OleDbParameter("?", quantity),
+				new OleDbParameter("?", hospitalUsername),
+				new OleDbParameter("?", hospitalName),
+				new OleDbParameter("?", transfusionDate)
+			};
+
+			db.executeNonQuery(insertQuery, parameters);
+		}
+
+		private void updatePatient()
+		{
+			int patientIndex = cmbxPatient.SelectedIndex - 1;
+			string patientID = patientList.Rows[patientIndex]["Patient ID"].ToString();
+
+			string selectQuery = @"SELECT * FROM Patients WHERE [Patient ID] = ?";
+			OleDbParameter[] selectParameters = { new OleDbParameter("?", patientID) };
+			DataTable patientData = db.executeQuery(selectQuery, selectParameters);
+
+			if (patientData.Rows.Count == 0)
+			{
+				MessageBox.Show("ERROR: Patient record not found.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+			DataRow row = patientData.Rows[0];
+
+			string insertQuery = @"INSERT INTO [Patients Archive] ([First Name], [Middle Name], [Last Name], [Gender], [Birthdate], [Age], [Contact Number], [Blood Type], [Request], 
+								   [Priority], [Barangay], [City], [Province], [Hospital Username], [Hospital]) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+			OleDbParameter[] insertParameters =
+			{
+				new OleDbParameter("?", row["First Name"]),
+				new OleDbParameter("?", row["Middle Name"]),
+				new OleDbParameter("?", row["Last Name"]),
+				new OleDbParameter("?", row["Gender"]),
+				new OleDbParameter("?", row["Birthdate"]),
+				new OleDbParameter("?", row["Age"]),
+				new OleDbParameter("?", row["Contact Number"]),
+				new OleDbParameter("?", row["Blood Type"]),
+				new OleDbParameter("?", row["Request"]),
+				new OleDbParameter("?", "Resolved"),
+				new OleDbParameter("?", row["Barangay"]),
+				new OleDbParameter("?", row["City"]),
+				new OleDbParameter("?", row["Province"]),
+				new OleDbParameter("?", row["Hospital Username"]),
+				new OleDbParameter("?", row["Hospital"])
+			};
+			db.executeNonQuery(insertQuery, insertParameters);
+
+			string deleteQuery = @"DELETE FROM Patients WHERE [Patient ID] = ?";
+			OleDbParameter[] deleteParameters = { new OleDbParameter("?", patientID) };
+			db.executeNonQuery(deleteQuery, deleteParameters);
+		}
+
+		private void updateExtraction()
+		{
+			string requestedBloodType = tbxBloodType.Text.Trim();
+			int requiredQuantity = int.Parse(tbxQuantity.Text.Trim());
+
+			Dictionary<string, List<string>> compatibility = new Dictionary<string, List<string>>()
+			{
+				["AB+"] = new List<string> { "AB+", "A+", "A-", "B+", "B-", "AB-", "O+", "O-" },
+				["AB-"] = new List<string> { "AB-", "A-", "B-", "O-" },
+				["A+"] = new List<string> { "A+", "A-", "O+", "O-" },
+				["A-"] = new List<string> { "A-", "O-" },
+				["B+"] = new List<string> { "B+", "B-", "O+", "O-" },
+				["B-"] = new List<string> { "B-", "O-" },
+				["O+"] = new List<string> { "O+", "O-" },
+				["O-"] = new List<string> { "O-" }
+			};
+
+			List<string> compatibleTypes = compatibility[requestedBloodType];
+
+			string selectQuery = @"SELECT [Extraction ID], [Blood Type] FROM Extraction WHERE [Status] = 'Available' AND [Expiration Date] >= Date() AND [Hospital Username] = ? 
+								   ORDER BY [Blood Type] = ? DESC, [Extraction ID]";
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", UserLogs.Username),
+				new OleDbParameter("?", requestedBloodType)
+			};
+			DataTable extractionList = db.executeQuery(selectQuery, parameters);
+
+			int updatedCount = 0;
+			foreach (DataRow row in extractionList.Rows)
+			{
+				if (updatedCount >= requiredQuantity) break;
+
+				string type = row["Blood Type"].ToString();
+				if (compatibleTypes.Contains(type))
+				{
+					string extractionID = row["Extraction ID"].ToString();
+					string updateQuery = @"UPDATE Extraction SET Status = 'Used' WHERE [Extraction ID] = ?";
+					OleDbParameter[] updateParams = { new OleDbParameter("?", extractionID) };
+					db.executeNonQuery(updateQuery, updateParams);
+					updatedCount++;
+				}
+			}
 		}
 	}
 }
