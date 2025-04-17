@@ -175,6 +175,12 @@ namespace Hemotica
 
 				if (donor != null)
 				{
+					if (donor.duplicateDonor(db))
+					{
+						MessageBox.Show("Donor record already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+
 					if (donor.addDonor(db))
 					{
 						MessageBox.Show("Donor record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -195,6 +201,12 @@ namespace Hemotica
 
 				if (patient != null)
 				{
+					if (patient.duplicatePatient(db))
+					{
+						MessageBox.Show("Patient record already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+
 					if (patient.addPatient(db))
 					{
 						MessageBox.Show("Patient record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -215,6 +227,12 @@ namespace Hemotica
 
 				if (physician != null)
 				{
+					if (physician.duplicatePhysician(db))
+					{
+						MessageBox.Show("Physician record already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+
 					if (physician.addPhysician(db))
 					{
 						MessageBox.Show("Physician record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
