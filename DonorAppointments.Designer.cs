@@ -34,6 +34,9 @@
 			btnCalendar = new AntdUI.Button();
 			btnList = new AntdUI.Button();
 			flpAppointments = new FlowLayoutPanel();
+			pbxNoAppointments = new PictureBox();
+			flpAppointments.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxNoAppointments).BeginInit();
 			SuspendLayout();
 			// 
 			// lblAppointments
@@ -93,11 +96,23 @@
 			flpAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			flpAppointments.AutoScroll = true;
 			flpAppointments.BackColor = Color.FromArgb(236, 124, 132);
+			flpAppointments.Controls.Add(pbxNoAppointments);
 			flpAppointments.FlowDirection = FlowDirection.TopDown;
 			flpAppointments.Location = new Point(3, 54);
 			flpAppointments.Name = "flpAppointments";
 			flpAppointments.Size = new Size(1014, 584);
 			flpAppointments.TabIndex = 15;
+			// 
+			// pbxNoAppointments
+			// 
+			pbxNoAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+			pbxNoAppointments.Image = (Image)resources.GetObject("pbxNoAppointments.Image");
+			pbxNoAppointments.Location = new Point(3, 3);
+			pbxNoAppointments.Name = "pbxNoAppointments";
+			pbxNoAppointments.Size = new Size(1006, 576);
+			pbxNoAppointments.SizeMode = PictureBoxSizeMode.Zoom;
+			pbxNoAppointments.TabIndex = 0;
+			pbxNoAppointments.TabStop = false;
 			// 
 			// DonorAppointments
 			// 
@@ -113,6 +128,8 @@
 			Size = new Size(1020, 641);
 			Load += DonorAppointments_Load;
 			Resize += DonorAppointments_Resize;
+			flpAppointments.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pbxNoAppointments).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -124,5 +141,6 @@
 		private AntdUI.Button btnCalendar;
 		private AntdUI.Button btnList;
 		private FlowLayoutPanel flpAppointments;
+		private PictureBox pbxNoAppointments;
 	}
 }

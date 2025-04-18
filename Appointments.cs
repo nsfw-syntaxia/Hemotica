@@ -61,8 +61,14 @@ namespace Hemotica
 				return;
 			}
 
+			DateTime appointmentDate = dtpAppointments.Value;
 			string status = (rbtnYes1.Checked && rbtnYes2.Checked && rbtnYes3.Checked &&
 							 rbtnYes4.Checked && rbtnYes5.Checked && rbtnYes6.Checked) ? "Scheduled" : "Denied";
+
+			if (status == "Scheduled" && !eligibility(appointmentDate))
+			{
+				status = "Denied";
+			}
 
 			string hospitalName = cmbxHospitals.SelectedValue.ToString();
 			string hospitalUsername = db.hospitalUsername(hospitalName);
@@ -72,7 +78,7 @@ namespace Hemotica
 			OleDbParameter[] parameters =
 			{
 				new OleDbParameter("?", UserLogs.Username),
-				new OleDbParameter("?", dtpAppointments.Value.ToString("MM/dd/yyyy")),
+				new OleDbParameter("?", appointmentDate.ToString("MM/dd/yyyy")),
 				new OleDbParameter("?", hospitalUsername),
 				new OleDbParameter("?", hospitalName),
 				new OleDbParameter("?", status)
@@ -91,6 +97,43 @@ namespace Hemotica
 				this.Close();
 			}
 		}
+
+		private bool eligibility(DateTime appointmentDate)
+		{
+			if (rbtnYes1.Checked)
+			{
+				string ageQuery = "SELECT Age FROM Donors WHERE Username = ?";
+				OleDbParameter[] ageParameter = { new OleDbParameter("?", UserLogs.Username) };
+				DataTable ageResult = db.executeQuery(ageQuery, ageParameter);
+
+				int age = Convert.ToInt32(ageResult.Rows[0]["Age"]);
+				if (age < 16 || age > 65)
+				{
+					return false;
+				}
+			}
+
+			if (rbtnYes4.Checked)
+			{
+				string donationQuery = @"SELECT TOP 1 [Extraction Date] FROM Extraction WHERE [Donor Username] = ? ORDER BY [Extraction Date] DESC";
+				OleDbParameter[] donationParameter = { new OleDbParameter("?", UserLogs.Username) };
+				DataTable donationResult = db.executeQuery(donationQuery, donationParameter);
+
+				if (donationResult.Rows.Count > 0)
+				{
+					DateTime lastDonationDate = Convert.ToDateTime(donationResult.Rows[0]["Extraction Date"]);
+					TimeSpan difference = appointmentDate - lastDonationDate;
+
+					if (difference.TotalDays < 56)
+					{
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
 
 		private void lblInformation_Click(object sender, EventArgs e)
 		{

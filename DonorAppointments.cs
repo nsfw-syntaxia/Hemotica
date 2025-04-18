@@ -186,6 +186,20 @@ namespace Hemotica
 					}
 				}
 			}
+			else
+			{
+				showpNoAppointments();
+			}
+		}
+
+		private void showpNoAppointments()
+		{
+			if (!flpAppointments.Controls.Contains(pbxNoAppointments))
+			{
+				flpAppointments.Controls.Add(pbxNoAppointments);
+			}
+
+			pbxNoAppointments.Visible = true;
 		}
 
 		private void resizePanels()
