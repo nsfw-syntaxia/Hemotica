@@ -230,6 +230,20 @@ namespace Hemotica
 					}
 				}
 			}
+			else
+			{
+				showNoDonations();
+			}
+		}
+
+		private void showNoDonations()
+		{
+			if (!flpLogs.Controls.Contains(pbxNoDonations))
+			{
+				flpLogs.Controls.Add(pbxNoDonations);
+			}
+
+			pbxNoDonations.Visible = true;
 		}
 
 		private void resizePanels()

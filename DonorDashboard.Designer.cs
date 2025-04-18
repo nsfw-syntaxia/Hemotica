@@ -40,6 +40,7 @@
 			lblHospitals = new Label();
 			pLogs = new Panel();
 			flpLogs = new FlowLayoutPanel();
+			pbxNoDonations = new PictureBox();
 			lblLogs = new Label();
 			pBloodDrives.SuspendLayout();
 			pBDrives.SuspendLayout();
@@ -49,6 +50,8 @@
 			flpHospitals.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxNoHospitals).BeginInit();
 			pLogs.SuspendLayout();
+			flpLogs.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxNoDonations).BeginInit();
 			SuspendLayout();
 			// 
 			// pBloodDrives
@@ -168,12 +171,24 @@
 			flpLogs.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			flpLogs.AutoScroll = true;
 			flpLogs.BackColor = Color.FromArgb(252, 228, 228);
+			flpLogs.Controls.Add(pbxNoDonations);
 			flpLogs.FlowDirection = FlowDirection.TopDown;
 			flpLogs.Location = new Point(10, 48);
 			flpLogs.Name = "flpLogs";
 			flpLogs.Size = new Size(378, 315);
 			flpLogs.TabIndex = 14;
 			flpLogs.WrapContents = false;
+			// 
+			// pbxNoDonations
+			// 
+			pbxNoDonations.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+			pbxNoDonations.Image = (Image)resources.GetObject("pbxNoDonations.Image");
+			pbxNoDonations.Location = new Point(3, 3);
+			pbxNoDonations.Name = "pbxNoDonations";
+			pbxNoDonations.Size = new Size(370, 307);
+			pbxNoDonations.SizeMode = PictureBoxSizeMode.Zoom;
+			pbxNoDonations.TabIndex = 0;
+			pbxNoDonations.TabStop = false;
 			// 
 			// lblLogs
 			// 
@@ -213,6 +228,8 @@
 			((System.ComponentModel.ISupportInitialize)pbxNoHospitals).EndInit();
 			pLogs.ResumeLayout(false);
 			pLogs.PerformLayout();
+			flpLogs.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pbxNoDonations).EndInit();
 			ResumeLayout(false);
 		}
 
@@ -230,5 +247,6 @@
 		private PictureBox pbxBloodDrives;
 		private Panel pBDrives;
 		private PictureBox pbxNoHospitals;
+		private PictureBox pbxNoDonations;
 	}
 }

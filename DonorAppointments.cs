@@ -69,7 +69,7 @@ namespace Hemotica
 
 			flpAppointments.Controls.Clear();
 
-			if (appointments != null)
+			if (appointments != null && appointments.Rows.Count > 0)
 			{
 				foreach (DataRow row in appointments.Rows)
 				{
