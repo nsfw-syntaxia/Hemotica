@@ -28,20 +28,27 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalDashboard));
 			pBloods = new Panel();
 			flpBloods = new FlowLayoutPanel();
 			pPatients = new Panel();
 			flpPatients = new FlowLayoutPanel();
+			pbxNoPatients = new PictureBox();
 			lblPatients = new Label();
 			pAppointments = new Panel();
 			flpAppointments = new FlowLayoutPanel();
 			lblAppointments = new Label();
 			pOperations = new Panel();
 			flpOperations = new FlowLayoutPanel();
+			pbxNoAppointments = new PictureBox();
 			pBloods.SuspendLayout();
 			pPatients.SuspendLayout();
+			flpPatients.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxNoPatients).BeginInit();
 			pAppointments.SuspendLayout();
+			flpAppointments.SuspendLayout();
 			pOperations.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxNoAppointments).BeginInit();
 			SuspendLayout();
 			// 
 			// pBloods
@@ -82,11 +89,23 @@
 			flpPatients.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			flpPatients.AutoScroll = true;
 			flpPatients.BackColor = Color.FromArgb(252, 228, 228);
+			flpPatients.Controls.Add(pbxNoPatients);
 			flpPatients.Location = new Point(10, 48);
 			flpPatients.Name = "flpPatients";
 			flpPatients.Size = new Size(650, 189);
 			flpPatients.TabIndex = 14;
 			flpPatients.WrapContents = false;
+			// 
+			// pbxNoPatients
+			// 
+			pbxNoPatients.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+			pbxNoPatients.Image = (Image)resources.GetObject("pbxNoPatients.Image");
+			pbxNoPatients.Location = new Point(3, 3);
+			pbxNoPatients.Name = "pbxNoPatients";
+			pbxNoPatients.Size = new Size(642, 181);
+			pbxNoPatients.SizeMode = PictureBoxSizeMode.Zoom;
+			pbxNoPatients.TabIndex = 0;
+			pbxNoPatients.TabStop = false;
 			// 
 			// lblPatients
 			// 
@@ -118,6 +137,7 @@
 			flpAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			flpAppointments.AutoScroll = true;
 			flpAppointments.BackColor = Color.FromArgb(252, 228, 228);
+			flpAppointments.Controls.Add(pbxNoAppointments);
 			flpAppointments.FlowDirection = FlowDirection.TopDown;
 			flpAppointments.Location = new Point(10, 48);
 			flpAppointments.Name = "flpAppointments";
@@ -161,6 +181,17 @@
 			flpOperations.TabIndex = 16;
 			flpOperations.WrapContents = false;
 			// 
+			// pbxNoAppointments
+			// 
+			pbxNoAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+			pbxNoAppointments.Image = (Image)resources.GetObject("pbxNoAppointments.Image");
+			pbxNoAppointments.Location = new Point(3, 3);
+			pbxNoAppointments.Name = "pbxNoAppointments";
+			pbxNoAppointments.Size = new Size(300, 244);
+			pbxNoAppointments.SizeMode = PictureBoxSizeMode.Zoom;
+			pbxNoAppointments.TabIndex = 0;
+			pbxNoAppointments.TabStop = false;
+			// 
 			// HospitalDashboard
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -178,9 +209,13 @@
 			pBloods.ResumeLayout(false);
 			pPatients.ResumeLayout(false);
 			pPatients.PerformLayout();
+			flpPatients.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pbxNoPatients).EndInit();
 			pAppointments.ResumeLayout(false);
 			pAppointments.PerformLayout();
+			flpAppointments.ResumeLayout(false);
 			pOperations.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pbxNoAppointments).EndInit();
 			ResumeLayout(false);
 		}
 
@@ -195,5 +230,7 @@
 		private FlowLayoutPanel flpAppointments;
 		private FlowLayoutPanel flpOperations;
 		private FlowLayoutPanel flpBloods;
+		private PictureBox pbxNoPatients;
+		private PictureBox pbxNoAppointments;
 	}
 }

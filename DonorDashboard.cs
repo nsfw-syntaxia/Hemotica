@@ -32,6 +32,7 @@ namespace Hemotica
 		private void DonorDashboard_Resize(object sender, EventArgs e)
 		{
 			roundControls();
+			resizePanels();
 		}
 
 		public void roundControls()
@@ -55,17 +56,21 @@ namespace Hemotica
 		{
 			DataTable hospitals = db.executeQuery("SELECT [Hospital Name] FROM Hospitals ORDER BY [Hospital Name] ASC");
 
-			if (hospitals != null)
+			flpHospitals.Controls.Clear();
+
+			if (hospitals != null && hospitals.Rows.Count > 0)
 			{
 				foreach (DataRow row in hospitals.Rows)
 				{
 					string hospitalName = row["Hospital Name"].ToString();
 
+					int panelWidth = 290;
+
 					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
 					{
-						Size = new Size(250, 165),
+						Size = new Size(panelWidth, 165),
 						BackColor = Color.FromArgb(244, 180, 180),
-						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 250, 165, 20, 20))
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelWidth, 165, 20, 20))
 					};
 
 					Label lblHospital = new Label
@@ -125,6 +130,15 @@ namespace Hemotica
 
 					flpHospitals.Controls.Add(panel);
 				}
+
+				if (flpHospitals.HorizontalScroll.Visible)
+				{
+					foreach (Control panel in flpHospitals.Controls)
+					{
+						panel.Height = flpHospitals.Height - 27;
+						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+					}
+				}
 			}
 		}
 
@@ -136,7 +150,9 @@ namespace Hemotica
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable donationHistory = db.executeQuery(query, parameters);
 
-			if (donationHistory != null )
+			flpLogs.Controls.Clear();
+
+			if (donationHistory != null && donationHistory.Rows.Count > 0)
 			{
 				foreach (DataRow row in donationHistory.Rows)
 				{
@@ -199,6 +215,15 @@ namespace Hemotica
 						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 					}
 				}
+			}
+		}
+
+		private void resizePanels()
+		{
+			foreach (Control panel in flpHospitals.Controls)
+			{
+				panel.Height = flpHospitals.Height - (flpHospitals.HorizontalScroll.Visible ? 24 : 7);
+				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 			}
 		}
 	}

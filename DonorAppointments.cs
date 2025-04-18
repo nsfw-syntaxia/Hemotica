@@ -67,6 +67,8 @@ namespace Hemotica
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable appointments = db.executeQuery(query, parameters);
 
+			flpAppointments.Controls.Clear();
+
 			if (appointments != null)
 			{
 				foreach (DataRow row in appointments.Rows)

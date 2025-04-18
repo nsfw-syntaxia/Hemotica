@@ -43,6 +43,7 @@ namespace Hemotica
 		private void HospitalDashboard_Resize(object sender, EventArgs e)
 		{
 			roundControls();
+			resizePanels();
 		}
 
 		private void loadAppointments()
@@ -66,7 +67,9 @@ namespace Hemotica
 			};
 			DataTable appointments = db.executeQuery(queryAppointments, appointmentParameters);
 
-			if (appointments != null)
+			flpAppointments.Controls.Clear();
+
+			if (appointments != null && appointments.Rows.Count > 0)
 			{
 				foreach (DataRow row in appointments.Rows)
 				{
@@ -134,6 +137,10 @@ namespace Hemotica
 					}
 				}
 			}
+			else
+			{
+				showNoAppointments();
+			}
 		}
 
 		private void updateAppointments()
@@ -142,6 +149,16 @@ namespace Hemotica
 			string format = DateTime.Now.Date.ToString("MM/dd/yyyy");
 			OleDbParameter[] appointmentParameter = { new OleDbParameter("?", format) };
 			db.executeNonQuery(cancelAppointmentsQuery, appointmentParameter);
+		}
+
+		private void showNoAppointments()
+		{
+			if (!flpAppointments.Controls.Contains(pbxNoAppointments))
+			{
+				flpAppointments.Controls.Add(pbxNoAppointments);
+			}
+
+			pbxNoAppointments.Visible = true;
 		}
 
 		private void loadPatients()
@@ -156,10 +173,13 @@ namespace Hemotica
 			};
 			DataTable patients = db.executeQuery(queryPatients, patientParameters);
 
-			if (patients != null)
-			{
-				var filteredPatients = patients.AsEnumerable().Where(row => row["Priority"].ToString() != "Resolved").CopyToDataTable();
+			flpPatients.Controls.Clear();
 
+			if (patients != null && patients.Rows.Count > 0)
+			{
+				var filteredRows = patients.AsEnumerable().Where(row => row["Priority"].ToString() != "Resolved");
+
+				DataTable filteredPatients = filteredRows.CopyToDataTable();
 				filteredPatients.Columns.Add("SortOrder", typeof(int));
 
 				foreach (DataRow row in filteredPatients.Rows)
@@ -191,11 +211,13 @@ namespace Hemotica
 					string priority = row["Priority"].ToString();
 					string patientName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
 
+					int panelWidth = 290;
+
 					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
 					{
-						Size = new Size(250, 165),
+						Size = new Size(panelWidth, 165),
 						BackColor = Color.FromArgb(244, 180, 180),
-						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 250, 165, 20, 20))
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelWidth, 165, 20, 20))
 					};
 
 					Label lblName = new Label
@@ -233,6 +255,38 @@ namespace Hemotica
 
 					flpPatients.Controls.Add(panel);
 				}
+
+				if (flpPatients.HorizontalScroll.Visible)
+				{
+					foreach (Control panel in flpPatients.Controls)
+					{
+						panel.Height = flpPatients.Height - 27;
+						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+					}
+				}
+			}
+			else
+			{
+				showNoPatients();
+			}
+		}
+
+		private void showNoPatients()
+		{
+			if (!flpPatients.Controls.Contains(pbxNoPatients))
+			{
+				flpPatients.Controls.Add(pbxNoPatients);
+			}
+
+			pbxNoPatients.Visible = true;
+		}
+
+		private void resizePanels()
+		{
+			foreach (Control panel in flpPatients.Controls)
+			{
+				panel.Height = flpPatients.Height - (flpPatients.HorizontalScroll.Visible ? 24 : 7);
+				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 			}
 		}
 	}
