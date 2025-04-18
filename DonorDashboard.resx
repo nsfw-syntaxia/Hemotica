@@ -121,7 +121,7 @@
   <data name="pbxNoHospitals.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAjwAAAC1CAYAAABbLyWjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAOTlJREFUeF7tnfl3LFW5/u8/+eXgcK/er3oAUVFGRVQEFRFEmQWUSRwRRBBFgQOk
+        vAAADrwBlbxySQAAOTlJREFUeF7tnfl3LFW5/u8/+eXgcK/er3oAUVFGRVQEFRFEmQWUSRwRRBBFgQOk
         0+kMnaTT85BOZzgz52Qeujuute963qrqrt57Vw9Jeszzw2flnPSuXZWq6tpPveN//ef8eUUIIYQQMsr8
         l/4LQgghhJBRg4KHEEIIISMPBQ8hhBBCRh4KHkIIIYSMPBQ8hBBCCBl5KHgIIYQQMvJQ8BBCCCFk5KHg
         IYQQQsjIQ8FDCCGEkJGHgocQQgghIw8FDyGEEEJGHgoeQgghhIw8FDyEEEIIGXkoeAghhBAy8lDwEEII
@@ -371,7 +371,7 @@
   <data name="pbxNoDonations.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAXIAAAEzCAYAAAAsIIjAAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAANBVJREFUeF7tnfd7I0W2hu8/eYF72Xt3lwWGSw5LDkteWGCXBRaGOMAAw5JzHJKj
+        vAAADrwBlbxySQAANBVJREFUeF7tnfd7I0W2hu8/eYF72Xt3lwWGSw5LDkteWGCXBRaGOMAAw5JzHJKj
         LGcry3KeGSY6Z/M8dZ/vdLfUXVWSJc/YVrW+H95nxnZ1K9h6u/rUOaf+47djxxQhhBB3+Q/9G4QQQtyC
         IieEEMehyAkhxHEockIIcRyKnBBCHIciJ4QQx6HICSHEcShyQghxHIqcEEIchyInhBDHocgJIcRxKHJC
         CHEcipwQQhyHIieEEMehyAkhxHEockIIcRyKnBBCHIciJ4QQx6HICSHEcShyQghxHIqcEEIchyInhBDH

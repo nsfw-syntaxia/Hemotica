@@ -24,7 +24,11 @@ namespace Hemotica
 
 		private void DonorDashboard_Load(object sender, EventArgs e)
 		{
+			pbDonation.Percentage = 0;
+			lblNumber.Text = "0";
+
 			roundControls();
+			totalDonations();
 			loadHospitals();
 			loadDonationHistory();
 		}
@@ -40,6 +44,7 @@ namespace Hemotica
 			pBloodDrives.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pBloodDrives.Width, pBloodDrives.Height, 20, 20));
 			pHospitals.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHospitals.Width, pHospitals.Height, 20, 20));
 			pAnalytics.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pAnalytics.Width, pAnalytics.Height, 20, 20));
+			pDonations.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pDonations.Width, pDonations.Height, 20, 20));
 			pLogs.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pLogs.Width, pLogs.Height, 20, 20));
 
 			if (pbxBloodDrives.Width > 0 && pbxBloodDrives.Height > 0)
@@ -48,8 +53,26 @@ namespace Hemotica
 			}
 
 			flpHospitals.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpHospitals.Width, flpHospitals.Height, 20, 20));
-			flpAnalytics.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpAnalytics.Width, flpAnalytics.Height, 20, 20));
 			flpLogs.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpLogs.Width, flpLogs.Height, 20, 20));
+		}
+
+		private void totalDonations()
+		{
+			string query = @"SELECT Extraction.[Extraction Date], Extraction.Hospital FROM Donors INNER JOIN Extraction ON Donors.Username = Extraction.[Donor Username]
+							 WHERE Extraction.[Donor Username] = ? ORDER BY Extraction.[Extraction Date] DESC";
+
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			DataTable dt = db.executeQuery(query, parameters);
+
+			int donationCount = dt.Rows.Count;
+
+			lblNumber.Text = donationCount.ToString();
+			lblNumber.Location = new Point(
+				(pDonations.Width - lblNumber.Width) / 2,
+				(pDonations.Height - lblNumber.Height) / 2 + 18
+			);
+
+			pbDonation.Percentage = Math.Min(donationCount, 100);
 		}
 		
 		private void loadHospitals()

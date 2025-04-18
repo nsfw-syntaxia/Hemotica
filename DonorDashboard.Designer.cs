@@ -32,8 +32,11 @@
 			pBloodDrives = new Panel();
 			pBDrives = new Panel();
 			pbxBloodDrives = new PictureBox();
+			pbDonation = new ReaLTaiizor.Controls.ParrotCircleProgressBar();
 			pAnalytics = new Panel();
-			flpAnalytics = new FlowLayoutPanel();
+			pDonations = new Panel();
+			lblNumber = new Label();
+			lblDonations = new Label();
 			pHospitals = new Panel();
 			flpHospitals = new FlowLayoutPanel();
 			pbxNoHospitals = new PictureBox();
@@ -46,6 +49,7 @@
 			pBDrives.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxBloodDrives).BeginInit();
 			pAnalytics.SuspendLayout();
+			pDonations.SuspendLayout();
 			pHospitals.SuspendLayout();
 			flpHospitals.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxNoHospitals).BeginInit();
@@ -86,25 +90,78 @@
 			pbxBloodDrives.TabIndex = 0;
 			pbxBloodDrives.TabStop = false;
 			// 
+			// pbDonation
+			// 
+			pbDonation.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+			pbDonation.AnimationSpeed = 5;
+			pbDonation.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+			pbDonation.FilledColor = Color.FromArgb(216, 85, 101);
+			pbDonation.FilledColorAlpha = 130;
+			pbDonation.FilledThickness = 30;
+			pbDonation.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+			pbDonation.IsAnimated = false;
+			pbDonation.Location = new Point(101, 44);
+			pbDonation.Name = "pbDonation";
+			pbDonation.Percentage = 0;
+			pbDonation.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+			pbDonation.ShowText = false;
+			pbDonation.Size = new Size(175, 175);
+			pbDonation.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+			pbDonation.TabIndex = 17;
+			pbDonation.TextColor = Color.FromArgb(216, 85, 101);
+			pbDonation.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+			pbDonation.TextSize = 25;
+			pbDonation.UnFilledColor = Color.FromArgb(244, 180, 180);
+			pbDonation.UnfilledThickness = 30;
+			// 
 			// pAnalytics
 			// 
 			pAnalytics.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 			pAnalytics.BackColor = Color.FromArgb(216, 85, 101);
-			pAnalytics.Controls.Add(flpAnalytics);
+			pAnalytics.Controls.Add(pDonations);
 			pAnalytics.Location = new Point(614, 8);
 			pAnalytics.Name = "pAnalytics";
 			pAnalytics.Padding = new Padding(7);
 			pAnalytics.Size = new Size(398, 246);
 			pAnalytics.TabIndex = 1;
 			// 
-			// flpAnalytics
+			// pDonations
 			// 
-			flpAnalytics.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			flpAnalytics.BackColor = Color.FromArgb(252, 228, 228);
-			flpAnalytics.Location = new Point(10, 10);
-			flpAnalytics.Name = "flpAnalytics";
-			flpAnalytics.Size = new Size(378, 226);
-			flpAnalytics.TabIndex = 0;
+			pDonations.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pDonations.BackColor = Color.FromArgb(252, 228, 228);
+			pDonations.Controls.Add(lblNumber);
+			pDonations.Controls.Add(lblDonations);
+			pDonations.Controls.Add(pbDonation);
+			pDonations.Location = new Point(10, 10);
+			pDonations.Name = "pDonations";
+			pDonations.Padding = new Padding(5);
+			pDonations.Size = new Size(378, 226);
+			pDonations.TabIndex = 0;
+			// 
+			// lblNumber
+			// 
+			lblNumber.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblNumber.AutoSize = true;
+			lblNumber.Font = new Font("Bahnschrift", 25F, FontStyle.Bold);
+			lblNumber.ForeColor = Color.FromArgb(216, 85, 101);
+			lblNumber.Location = new Point(171, 111);
+			lblNumber.Name = "lblNumber";
+			lblNumber.Size = new Size(37, 41);
+			lblNumber.TabIndex = 19;
+			lblNumber.Text = "0";
+			// 
+			// lblDonations
+			// 
+			lblDonations.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblDonations.AutoSize = true;
+			lblDonations.Font = new Font("Bahnschrift", 20F, FontStyle.Bold);
+			lblDonations.ForeColor = Color.FromArgb(216, 85, 101);
+			lblDonations.Location = new Point(88, 5);
+			lblDonations.Name = "lblDonations";
+			lblDonations.Padding = new Padding(0, 3, 0, 0);
+			lblDonations.Size = new Size(202, 36);
+			lblDonations.TabIndex = 18;
+			lblDonations.Text = "Total Donations";
 			// 
 			// pHospitals
 			// 
@@ -222,6 +279,8 @@
 			pBDrives.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)pbxBloodDrives).EndInit();
 			pAnalytics.ResumeLayout(false);
+			pDonations.ResumeLayout(false);
+			pDonations.PerformLayout();
 			pHospitals.ResumeLayout(false);
 			pHospitals.PerformLayout();
 			flpHospitals.ResumeLayout(false);
@@ -243,10 +302,13 @@
 		private FlowLayoutPanel flpHospitals;
 		private Label lblLogs;
 		private FlowLayoutPanel flpLogs;
-		private FlowLayoutPanel flpAnalytics;
 		private PictureBox pbxBloodDrives;
 		private Panel pBDrives;
 		private PictureBox pbxNoHospitals;
 		private PictureBox pbxNoDonations;
+		private ReaLTaiizor.Controls.ParrotCircleProgressBar pbDonation;
+		private Panel pDonations;
+		private Label lblDonations;
+		private Label lblNumber;
 	}
 }
