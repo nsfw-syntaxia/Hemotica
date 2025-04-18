@@ -10,6 +10,8 @@ namespace Hemotica
 	public partial class DonorDashboard : UserControl
 	{
 		private Database db = new Database();
+		private List<Image> slideshowImages = new List<Image>();
+		private int imageIndex = 0;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -27,6 +29,7 @@ namespace Hemotica
 			pbDonation.Percentage = 0;
 			lblNumber.Text = "0";
 
+			slideshow();
 			roundControls();
 			totalDonations();
 			loadHospitals();
@@ -56,6 +59,45 @@ namespace Hemotica
 			flpLogs.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpLogs.Width, flpLogs.Height, 20, 20));
 		}
 
+		private void slideshow()
+		{
+			slideshowImages.Clear();
+
+			slideshowImages.Add(Image.FromFile(@"C:\Users\Trixie\Downloads\CPE262\Hemotica\Resources\banner.png"));
+			slideshowImages.Add(Image.FromFile(@"C:\Users\Trixie\Downloads\CPE262\Hemotica\Resources\blood_donation.png"));
+
+			string query = @"SELECT [Image] FROM [Blood Drives]";
+			DataTable dt = db.executeQuery(query);
+
+			foreach (DataRow row in dt.Rows)
+			{
+				if (row["Image"] != DBNull.Value)
+				{
+					byte[] imageBytes = (byte[])row["Image"];
+					using (MemoryStream ms = new MemoryStream(imageBytes))
+					{
+						try
+						{
+							Image img = Image.FromStream(ms);
+							slideshowImages.Add(img);
+						}
+						catch (Exception ex)
+						{
+							MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						}
+					}
+				}
+			}
+
+			if (slideshowImages.Count > 0)
+			{
+				imageIndex = 0;
+				pbxBloodDrives.Image = slideshowImages[imageIndex];
+
+				tSlideshow.Start();
+			}
+		}
+
 		private void totalDonations()
 		{
 			string query = @"SELECT Extraction.[Extraction Date], Extraction.Hospital FROM Donors INNER JOIN Extraction ON Donors.Username = Extraction.[Donor Username]
@@ -74,7 +116,7 @@ namespace Hemotica
 
 			pbDonation.Percentage = Math.Min(donationCount, 100);
 		}
-		
+
 		private void loadHospitals()
 		{
 			DataTable hospitals = db.executeQuery("SELECT [Hospital Name] FROM Hospitals ORDER BY [Hospital Name] ASC");
@@ -282,6 +324,12 @@ namespace Hemotica
 				panel.Width = flpLogs.Width - (flpLogs.VerticalScroll.Visible ? 27 : 10);
 				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 			}
+		}
+
+		private void tSlideshow_Tick(object sender, EventArgs e)
+		{
+			imageIndex = (imageIndex + 1) % slideshowImages.Count;
+			pbxBloodDrives.Image = slideshowImages[imageIndex];
 		}
 	}
 }

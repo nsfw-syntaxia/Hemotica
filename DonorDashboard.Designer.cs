@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonorDashboard));
 			pBloodDrives = new Panel();
 			pBDrives = new Panel();
@@ -45,6 +46,7 @@
 			flpLogs = new FlowLayoutPanel();
 			pbxNoDonations = new PictureBox();
 			lblLogs = new Label();
+			tSlideshow = new System.Windows.Forms.Timer(components);
 			pBloodDrives.SuspendLayout();
 			pBDrives.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxBloodDrives).BeginInit();
@@ -260,6 +262,11 @@
 			lblLogs.TabIndex = 10;
 			lblLogs.Text = "Donation History >";
 			// 
+			// tSlideshow
+			// 
+			tSlideshow.Interval = 3000;
+			tSlideshow.Tick += tSlideshow_Tick;
+			// 
 			// DonorDashboard
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -310,5 +317,6 @@
 		private Panel pDonations;
 		private Label lblDonations;
 		private Label lblNumber;
+		private System.Windows.Forms.Timer tSlideshow;
 	}
 }
