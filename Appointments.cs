@@ -10,11 +10,13 @@ namespace Hemotica
 	{
 		private DateTime selectedDate;
 		private Database db = new Database();
+		private string selectedHospital;
 
-		public Appointments(DateTime date)
+		public Appointments(DateTime date, string hospitalName)
 		{
 			InitializeComponent();
 			selectedDate = date;
+			selectedHospital = hospitalName;
 		}
 
 		private void Appointments_Load(object sender, EventArgs e)
@@ -27,12 +29,17 @@ namespace Hemotica
 		{
 			try
 			{
-				string query = "SELECT [Hospital Name] FROM Hospitals";
+				string query = "SELECT [Hospital Name] FROM Hospitals ORDER BY [Hospital Name] ASC";
 				DataTable dt = db.executeQuery(query);
 
 				cmbxHospitals.DataSource = dt;
 				cmbxHospitals.DisplayMember = "Hospital Name";
 				cmbxHospitals.ValueMember = "Hospital Name";
+
+				if (!string.IsNullOrEmpty(selectedHospital))
+				{
+					cmbxHospitals.SelectedValue = selectedHospital;
+				}
 			}
 			catch (Exception ex)
 			{

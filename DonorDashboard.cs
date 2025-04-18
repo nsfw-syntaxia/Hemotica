@@ -53,7 +53,7 @@ namespace Hemotica
 		
 		private void loadHospitals()
 		{
-			DataTable hospitals = db.executeQuery("SELECT [Hospital Name] FROM Hospitals");
+			DataTable hospitals = db.executeQuery("SELECT [Hospital Name] FROM Hospitals ORDER BY [Hospital Name] ASC");
 
 			if (hospitals != null)
 			{
@@ -110,8 +110,17 @@ namespace Hemotica
 
 					btnDonate.Click += (s, e) =>
 					{
-						DashboardD donateCalendar = Application.OpenForms["DashboardD"] as DashboardD;
-						donateCalendar?.showCalendar();
+						string selectedHospital = hospitalName;
+
+						DashboardD donateDashboard = Application.OpenForms["DashboardD"] as DashboardD;
+						if (donateDashboard != null)
+						{
+							DateTime dayDate = DateTime.Now;
+
+							donateDashboard.showCalendar();
+							Appointments appointments = new Appointments(dayDate, selectedHospital);
+							appointments.ShowDialog();
+						}
 					};
 
 					flpHospitals.Controls.Add(panel);

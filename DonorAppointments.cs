@@ -58,6 +58,7 @@ namespace Hemotica
 		private void DonorAppointments_Resize(object sender, EventArgs e)
 		{
 			roundControls();
+			resizePanels();
 		}
 
 		private void loadAppointments()
@@ -185,11 +186,20 @@ namespace Hemotica
 			}
 		}
 
+		private void resizePanels()
+		{
+			foreach (Control panel in flpAppointments.Controls)
+			{
+				panel.Width = flpAppointments.Width - (flpAppointments.VerticalScroll.Visible ? 24 : 7);
+				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+			}
+		}
+
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			DateTime dayDate = DateTime.Now;
 
-			Appointments appointments = new Appointments(dayDate);
+			Appointments appointments = new Appointments(dayDate, "");
 			appointments.ShowDialog();
 		}
 	}
