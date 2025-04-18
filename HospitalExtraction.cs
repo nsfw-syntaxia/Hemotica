@@ -126,6 +126,17 @@ namespace Hemotica
 			int dataIndex = cmbxDonor.SelectedIndex - 1;
 			string donorID = donorList.Rows[dataIndex]["Donor ID"].ToString();
 			string donorUsername = db.donorUsername(donorID);
+			DateTime? lastDonation = lastDonationDate(donorID, donorUsername);
+
+			if (lastDonation.HasValue)
+			{
+				TimeSpan difference = DateTime.Now - lastDonation.Value;
+				if (difference.TotalDays < 56)
+				{
+					MessageBox.Show($"Donor is not eligible to donate yet.\nWait at least {56 - (int)difference.TotalDays} more day(s).", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					return;
+				}
+			}
 
 			bool success = addDonation(donorID);
 			updateAppointments(donorUsername);
@@ -150,6 +161,24 @@ namespace Hemotica
 			loadDonorList();
 			pbxBarCode.Focus();
 		}
+
+		private DateTime? lastDonationDate(string donorID, string donorUsername)
+		{
+			string query = @"SELECT TOP 1 [Extraction Date] FROM Extraction WHERE [Donor Username] = ? ORDER BY [Extraction Date] DESC";
+
+			OleDbParameter[] parameter = { new OleDbParameter("?", donorUsername) };
+			DataTable dt = db.executeQuery(query, parameter);
+
+			if (dt.Rows.Count > 0)
+			{
+				return Convert.ToDateTime(dt.Rows[0]["Extraction Date"]);
+			}
+			else
+			{
+				return null;
+			}
+		}
+
 
 		private bool addDonation(string donorID)
 		{
