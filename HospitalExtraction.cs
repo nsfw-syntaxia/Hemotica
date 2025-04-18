@@ -179,7 +179,6 @@ namespace Hemotica
 			}
 		}
 
-
 		private bool addDonation(string donorID)
 		{
 			try

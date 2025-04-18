@@ -64,6 +64,7 @@ namespace Hemotica
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
+			UserLogs.LogoutUser(db);
 			Application.Exit();
 		}
 
