@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DonorDashboard));
 			pBloodDrives = new Panel();
 			pBDrives = new Panel();
 			pbxBloodDrives = new PictureBox();
@@ -35,6 +36,7 @@
 			flpAnalytics = new FlowLayoutPanel();
 			pHospitals = new Panel();
 			flpHospitals = new FlowLayoutPanel();
+			pbxNoHospitals = new PictureBox();
 			lblHospitals = new Label();
 			pLogs = new Panel();
 			flpLogs = new FlowLayoutPanel();
@@ -44,6 +46,8 @@
 			((System.ComponentModel.ISupportInitialize)pbxBloodDrives).BeginInit();
 			pAnalytics.SuspendLayout();
 			pHospitals.SuspendLayout();
+			flpHospitals.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxNoHospitals).BeginInit();
 			pLogs.SuspendLayout();
 			SuspendLayout();
 			// 
@@ -116,11 +120,23 @@
 			flpHospitals.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			flpHospitals.AutoScroll = true;
 			flpHospitals.BackColor = Color.FromArgb(252, 228, 228);
+			flpHospitals.Controls.Add(pbxNoHospitals);
 			flpHospitals.Location = new Point(10, 48);
 			flpHospitals.Name = "flpHospitals";
 			flpHospitals.Size = new Size(580, 189);
 			flpHospitals.TabIndex = 13;
 			flpHospitals.WrapContents = false;
+			// 
+			// pbxNoHospitals
+			// 
+			pbxNoHospitals.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+			pbxNoHospitals.Image = (Image)resources.GetObject("pbxNoHospitals.Image");
+			pbxNoHospitals.Location = new Point(3, 3);
+			pbxNoHospitals.Name = "pbxNoHospitals";
+			pbxNoHospitals.Size = new Size(572, 181);
+			pbxNoHospitals.SizeMode = PictureBoxSizeMode.Zoom;
+			pbxNoHospitals.TabIndex = 0;
+			pbxNoHospitals.TabStop = false;
 			// 
 			// lblHospitals
 			// 
@@ -193,6 +209,8 @@
 			pAnalytics.ResumeLayout(false);
 			pHospitals.ResumeLayout(false);
 			pHospitals.PerformLayout();
+			flpHospitals.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)pbxNoHospitals).EndInit();
 			pLogs.ResumeLayout(false);
 			pLogs.PerformLayout();
 			ResumeLayout(false);
@@ -211,5 +229,6 @@
 		private FlowLayoutPanel flpAnalytics;
 		private PictureBox pbxBloodDrives;
 		private Panel pBDrives;
+		private PictureBox pbxNoHospitals;
 	}
 }

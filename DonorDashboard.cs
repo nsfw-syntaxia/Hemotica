@@ -140,6 +140,20 @@ namespace Hemotica
 					}
 				}
 			}
+			else
+			{
+				showNoHospitals();
+			}
+		}
+
+		private void showNoHospitals()
+		{
+			if (!flpHospitals.Controls.Contains(pbxNoHospitals))
+			{
+				flpHospitals.Controls.Add(pbxNoHospitals);
+			}
+
+			pbxNoHospitals.Visible = true;
 		}
 
 		private void loadDonationHistory()
@@ -223,6 +237,12 @@ namespace Hemotica
 			foreach (Control panel in flpHospitals.Controls)
 			{
 				panel.Height = flpHospitals.Height - (flpHospitals.HorizontalScroll.Visible ? 24 : 7);
+				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+			}
+
+			foreach (Control panel in flpLogs.Controls)
+			{
+				panel.Width = flpLogs.Width - (flpLogs.VerticalScroll.Visible ? 27 : 10);
 				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 			}
 		}
