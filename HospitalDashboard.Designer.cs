@@ -47,6 +47,8 @@
 			pbxExtraction = new PictureBox();
 			pbxTransfusion = new PictureBox();
 			lblTransfusions = new Label();
+			lblENumber = new Label();
+			lblTNumber = new Label();
 			pBloods.SuspendLayout();
 			pPatients.SuspendLayout();
 			flpPatients.SuspendLayout();
@@ -210,6 +212,7 @@
 			// 
 			pExtraction.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
 			pExtraction.BackColor = Color.FromArgb(244, 180, 180);
+			pExtraction.Controls.Add(lblENumber);
 			pExtraction.Controls.Add(lblExtractions);
 			pExtraction.Controls.Add(pbxExtraction);
 			pExtraction.Location = new Point(6, 6);
@@ -222,6 +225,7 @@
 			// 
 			pTransfusion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
 			pTransfusion.BackColor = Color.FromArgb(244, 180, 180);
+			pTransfusion.Controls.Add(lblTNumber);
 			pTransfusion.Controls.Add(lblTransfusions);
 			pTransfusion.Controls.Add(pbxTransfusion);
 			pTransfusion.Location = new Point(6, 148);
@@ -236,7 +240,7 @@
 			lblExtractions.AutoSize = true;
 			lblExtractions.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
 			lblExtractions.ForeColor = Color.FromArgb(216, 85, 101);
-			lblExtractions.Location = new Point(155, 8);
+			lblExtractions.Location = new Point(155, 13);
 			lblExtractions.Name = "lblExtractions";
 			lblExtractions.Padding = new Padding(0, 3, 0, 0);
 			lblExtractions.Size = new Size(113, 51);
@@ -270,13 +274,37 @@
 			lblTransfusions.AutoSize = true;
 			lblTransfusions.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
 			lblTransfusions.ForeColor = Color.FromArgb(216, 85, 101);
-			lblTransfusions.Location = new Point(150, 8);
+			lblTransfusions.Location = new Point(150, 13);
 			lblTransfusions.Name = "lblTransfusions";
 			lblTransfusions.Padding = new Padding(0, 3, 0, 0);
 			lblTransfusions.Size = new Size(124, 51);
 			lblTransfusions.TabIndex = 20;
 			lblTransfusions.Text = "Blood\r\nTransfusions";
 			lblTransfusions.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// lblENumber
+			// 
+			lblENumber.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblENumber.AutoSize = true;
+			lblENumber.Font = new Font("Bahnschrift", 25F, FontStyle.Bold);
+			lblENumber.ForeColor = Color.FromArgb(216, 85, 101);
+			lblENumber.Location = new Point(195, 77);
+			lblENumber.Name = "lblENumber";
+			lblENumber.Size = new Size(37, 41);
+			lblENumber.TabIndex = 20;
+			lblENumber.Text = "0";
+			// 
+			// lblTNumber
+			// 
+			lblTNumber.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblTNumber.AutoSize = true;
+			lblTNumber.Font = new Font("Bahnschrift", 25F, FontStyle.Bold);
+			lblTNumber.ForeColor = Color.FromArgb(216, 85, 101);
+			lblTNumber.Location = new Point(195, 77);
+			lblTNumber.Name = "lblTNumber";
+			lblTNumber.Size = new Size(37, 41);
+			lblTNumber.TabIndex = 21;
+			lblTNumber.Text = "0";
 			// 
 			// HospitalDashboard
 			// 
@@ -331,5 +359,7 @@
 		private PictureBox pbxExtraction;
 		private PictureBox pbxTransfusion;
 		private Label lblTransfusions;
+		private Label lblENumber;
+		private Label lblTNumber;
 	}
 }
