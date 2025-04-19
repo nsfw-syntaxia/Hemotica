@@ -9,6 +9,7 @@ namespace Hemotica
 	public partial class HospitalDashboard : UserControl
 	{
 		private Database db = new Database();
+		private Hospital hospital = new Hospital();
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -26,6 +27,8 @@ namespace Hemotica
 			roundControls();
 			loadAppointments();
 			loadPatients();
+			totalExtractions();
+			totalTransfusions();
 		}
 
 		public void roundControls()
@@ -46,6 +49,54 @@ namespace Hemotica
 		{
 			roundControls();
 			resizePanels();
+		}
+
+		private void totalExtractions()
+		{
+			DataTable dt = hospital.loadExtraction(db);
+			int extractionCount = dt.Rows.Count;
+
+			lblENumber.Text = formatCount(extractionCount);
+			lblENumber.Location = new Point(
+				(pExtraction.Width - lblENumber.Width) / 2 + 66,
+				(pExtraction.Height - lblENumber.Height) / 2 + 28
+			);
+		}
+
+		private void totalTransfusions()
+		{
+			DataTable dt = hospital.loadTransfusion(db);
+			int transfusionCount = dt.Rows.Count;
+
+			lblTNumber.Text = formatCount(transfusionCount);
+			lblTNumber.Location = new Point(
+				(pTransfusion.Width - lblTNumber.Width) / 2 + 66,
+				(pTransfusion.Height - lblTNumber.Height) / 2 + 28
+			);
+		}
+
+		private string formatCount(int count)
+		{
+			if (count >= 1000)
+			{
+				double value = count / 1000.0;
+
+				string formatted;
+				if (value % 1 == 0)
+				{
+					formatted = $"{value:0}";
+				}
+				else
+				{
+					formatted = $"{value:0.##}";
+				}
+
+				return $"{formatted}K";
+			}
+			else
+			{
+				return $"{count}";
+			}
 		}
 
 		private void loadAppointments()
