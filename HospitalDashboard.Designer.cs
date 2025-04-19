@@ -43,6 +43,10 @@
 			flpOperations = new FlowLayoutPanel();
 			pExtraction = new Panel();
 			pTransfusion = new Panel();
+			lblExtractions = new Label();
+			pbxExtraction = new PictureBox();
+			pbxTransfusion = new PictureBox();
+			lblTransfusions = new Label();
 			pBloods.SuspendLayout();
 			pPatients.SuspendLayout();
 			flpPatients.SuspendLayout();
@@ -52,6 +56,10 @@
 			((System.ComponentModel.ISupportInitialize)pbxNoAppointments).BeginInit();
 			pOperations.SuspendLayout();
 			flpOperations.SuspendLayout();
+			pExtraction.SuspendLayout();
+			pTransfusion.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pbxExtraction).BeginInit();
+			((System.ComponentModel.ISupportInitialize)pbxTransfusion).BeginInit();
 			SuspendLayout();
 			// 
 			// pBloods
@@ -125,7 +133,7 @@
 			// 
 			// pAppointments
 			// 
-			pAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+			pAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
 			pAppointments.BackColor = Color.FromArgb(216, 85, 101);
 			pAppointments.Controls.Add(flpAppointments);
 			pAppointments.Controls.Add(lblAppointments);
@@ -174,7 +182,7 @@
 			// 
 			// pOperations
 			// 
-			pOperations.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+			pOperations.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
 			pOperations.BackColor = Color.FromArgb(216, 85, 101);
 			pOperations.Controls.Add(flpOperations);
 			pOperations.Location = new Point(684, 324);
@@ -200,17 +208,75 @@
 			// 
 			// pExtraction
 			// 
+			pExtraction.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+			pExtraction.BackColor = Color.FromArgb(244, 180, 180);
+			pExtraction.Controls.Add(lblExtractions);
+			pExtraction.Controls.Add(pbxExtraction);
 			pExtraction.Location = new Point(6, 6);
 			pExtraction.Name = "pExtraction";
+			pExtraction.Padding = new Padding(5);
 			pExtraction.Size = new Size(296, 136);
 			pExtraction.TabIndex = 0;
 			// 
 			// pTransfusion
 			// 
+			pTransfusion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+			pTransfusion.BackColor = Color.FromArgb(244, 180, 180);
+			pTransfusion.Controls.Add(lblTransfusions);
+			pTransfusion.Controls.Add(pbxTransfusion);
 			pTransfusion.Location = new Point(6, 148);
 			pTransfusion.Name = "pTransfusion";
+			pTransfusion.Padding = new Padding(5);
 			pTransfusion.Size = new Size(296, 136);
 			pTransfusion.TabIndex = 1;
+			// 
+			// lblExtractions
+			// 
+			lblExtractions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblExtractions.AutoSize = true;
+			lblExtractions.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+			lblExtractions.ForeColor = Color.FromArgb(216, 85, 101);
+			lblExtractions.Location = new Point(155, 8);
+			lblExtractions.Name = "lblExtractions";
+			lblExtractions.Padding = new Padding(0, 3, 0, 0);
+			lblExtractions.Size = new Size(113, 51);
+			lblExtractions.TabIndex = 19;
+			lblExtractions.Text = "Blood\r\nExtractions";
+			lblExtractions.TextAlign = ContentAlignment.MiddleCenter;
+			// 
+			// pbxExtraction
+			// 
+			pbxExtraction.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			pbxExtraction.Image = (Image)resources.GetObject("pbxExtraction.Image");
+			pbxExtraction.Location = new Point(8, 8);
+			pbxExtraction.Name = "pbxExtraction";
+			pbxExtraction.Size = new Size(120, 120);
+			pbxExtraction.TabIndex = 0;
+			pbxExtraction.TabStop = false;
+			// 
+			// pbxTransfusion
+			// 
+			pbxTransfusion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+			pbxTransfusion.Image = (Image)resources.GetObject("pbxTransfusion.Image");
+			pbxTransfusion.Location = new Point(8, 8);
+			pbxTransfusion.Name = "pbxTransfusion";
+			pbxTransfusion.Size = new Size(120, 120);
+			pbxTransfusion.TabIndex = 1;
+			pbxTransfusion.TabStop = false;
+			// 
+			// lblTransfusions
+			// 
+			lblTransfusions.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblTransfusions.AutoSize = true;
+			lblTransfusions.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+			lblTransfusions.ForeColor = Color.FromArgb(216, 85, 101);
+			lblTransfusions.Location = new Point(150, 8);
+			lblTransfusions.Name = "lblTransfusions";
+			lblTransfusions.Padding = new Padding(0, 3, 0, 0);
+			lblTransfusions.Size = new Size(124, 51);
+			lblTransfusions.TabIndex = 20;
+			lblTransfusions.Text = "Blood\r\nTransfusions";
+			lblTransfusions.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// HospitalDashboard
 			// 
@@ -237,6 +303,12 @@
 			((System.ComponentModel.ISupportInitialize)pbxNoAppointments).EndInit();
 			pOperations.ResumeLayout(false);
 			flpOperations.ResumeLayout(false);
+			pExtraction.ResumeLayout(false);
+			pExtraction.PerformLayout();
+			pTransfusion.ResumeLayout(false);
+			pTransfusion.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pbxExtraction).EndInit();
+			((System.ComponentModel.ISupportInitialize)pbxTransfusion).EndInit();
 			ResumeLayout(false);
 		}
 
@@ -255,5 +327,9 @@
 		private PictureBox pbxNoAppointments;
 		private Panel pExtraction;
 		private Panel pTransfusion;
+		private Label lblExtractions;
+		private PictureBox pbxExtraction;
+		private PictureBox pbxTransfusion;
+		private Label lblTransfusions;
 	}
 }

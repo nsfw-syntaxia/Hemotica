@@ -38,6 +38,8 @@ namespace Hemotica
 			flpAppointments.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpAppointments.Width, flpAppointments.Height, 20, 20));
 			pOperations.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pOperations.Width, pOperations.Height, 20, 20));
 			flpOperations.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpOperations.Width, flpOperations.Height, 20, 20));
+			pExtraction.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pExtraction.Width, pExtraction.Height, 20, 20));
+			pTransfusion.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pTransfusion.Width, pTransfusion.Height, 20, 20));
 		}
 
 		private void HospitalDashboard_Resize(object sender, EventArgs e)
