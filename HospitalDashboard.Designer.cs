@@ -274,7 +274,7 @@
 			lblTransfusions.AutoSize = true;
 			lblTransfusions.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
 			lblTransfusions.ForeColor = Color.FromArgb(216, 85, 101);
-			lblTransfusions.Location = new Point(150, 13);
+			lblTransfusions.Location = new Point(149, 13);
 			lblTransfusions.Name = "lblTransfusions";
 			lblTransfusions.Padding = new Padding(0, 3, 0, 0);
 			lblTransfusions.Size = new Size(124, 51);
@@ -288,7 +288,7 @@
 			lblENumber.AutoSize = true;
 			lblENumber.Font = new Font("Bahnschrift", 25F, FontStyle.Bold);
 			lblENumber.ForeColor = Color.FromArgb(216, 85, 101);
-			lblENumber.Location = new Point(195, 77);
+			lblENumber.Location = new Point(193, 77);
 			lblENumber.Name = "lblENumber";
 			lblENumber.Size = new Size(37, 41);
 			lblENumber.TabIndex = 20;
@@ -300,7 +300,7 @@
 			lblTNumber.AutoSize = true;
 			lblTNumber.Font = new Font("Bahnschrift", 25F, FontStyle.Bold);
 			lblTNumber.ForeColor = Color.FromArgb(216, 85, 101);
-			lblTNumber.Location = new Point(195, 77);
+			lblTNumber.Location = new Point(193, 77);
 			lblTNumber.Name = "lblTNumber";
 			lblTNumber.Size = new Size(37, 41);
 			lblTNumber.TabIndex = 21;
