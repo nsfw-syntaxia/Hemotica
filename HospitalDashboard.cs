@@ -10,6 +10,7 @@ namespace Hemotica
 	{
 		private Database db = new Database();
 		private Hospital hospital = new Hospital();
+		private Analytics analytics = new Analytics();
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -49,6 +50,8 @@ namespace Hemotica
 				btn.MouseLeave += btnAnalytics_MouseLeave;
 				btn.Click += btnAnalytics_Click;
 			}
+
+			btnBGAnalytics.PerformClick();
 		}
 
 		public void roundControls()
@@ -385,7 +388,7 @@ namespace Hemotica
 
 		private void btnAnalytics_Click(object sender, EventArgs e)
 		{
-			Button btn = sender as Button;
+			Button clickedButton = (Button)sender;
 
 			if (selectedButton != null)
 			{
@@ -393,9 +396,26 @@ namespace Hemotica
 				selectedButton.ForeColor = Color.FromArgb(216, 85, 101);
 			}
 
-			selectedButton = btn;
-			selectedButton.BackColor = Color.FromArgb(216, 85, 101);
-			selectedButton.ForeColor = Color.FromArgb(252, 228, 228);
+			clickedButton.BackColor = Color.FromArgb(216, 85, 101);
+			clickedButton.ForeColor = Color.White;
+			selectedButton = clickedButton;
+
+			if (clickedButton == btnBGAnalytics)
+			{
+				analytics.displayBloodGroups(pvOxyplot);
+			}
+			else if (clickedButton == btnPAnalytics)
+			{
+				//
+			}
+			else if (clickedButton == btnEAnalytics)
+			{
+				//
+			}
+			else if (clickedButton == btnTAnalytics)
+			{
+				//
+			}
 		}
 
 		private void btnBGAnalytics_Click(object sender, EventArgs e)
@@ -403,23 +423,25 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			Analytics analytics = new Analytics();
 			analytics.displayBloodGroups(pvOxyplot);
 		}
 
 		private void btnPAnalytics_Click(object sender, EventArgs e)
 		{
-
+			pvOxyplot.Model = null;
+			pvOxyplot.InvalidatePlot(true);
 		}
 
 		private void btnEAnalytics_Click(object sender, EventArgs e)
 		{
-
+			pvOxyplot.Model = null;
+			pvOxyplot.InvalidatePlot(true);
 		}
 
 		private void btnTAnalytics_Click(object sender, EventArgs e)
 		{
-
+			pvOxyplot.Model = null;
+			pvOxyplot.InvalidatePlot(true);
 		}
 	}
 }
