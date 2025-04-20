@@ -22,7 +22,7 @@ namespace Hemotica
 		{
 			string inputCode = tbxCode.Text.Trim();
 
-			if (string.IsNullOrEmpty(inputCode))
+			if (string.IsNullOrWhiteSpace(inputCode))
 			{
 				MessageBox.Show("Please enter the verification code.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;

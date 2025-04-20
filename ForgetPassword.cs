@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace Hemotica
 {
     public partial class ForgetPassword : Form
     {
-        public string email { get; set; }
+		private Database db = new Database();
+
+		public string email { get; set; }
 		public string code { get; set; }
 
 		public ForgetPassword()
@@ -75,6 +78,65 @@ namespace Hemotica
 			flpForgetPassword.Controls.Clear();
 			ChangePassword changePassword = new ChangePassword(this);
 			flpForgetPassword.Controls.Add(changePassword);
+		}
+
+		public string getUserType(string email)
+		{
+			string query = @"SELECT UserType FROM (SELECT [Email Address] AS Email, 'Donor' AS UserType FROM Donors WHERE [Email Address] = ? UNION
+							 SELECT [Email Address] AS Email, 'Hospital' AS UserType FROM Hospitals WHERE [Email Address] = ?) AS UserCheck WHERE Email = ?";
+
+			using (OleDbConnection conn = db.getConnection())
+			using (OleDbCommand cmd = new OleDbCommand(query, conn))
+			{
+				cmd.Parameters.AddWithValue("?", email);
+				cmd.Parameters.AddWithValue("?", email);
+				cmd.Parameters.AddWithValue("?", email);
+
+				try
+				{
+					conn.Open();
+					object result = cmd.ExecuteScalar();
+					return result?.ToString();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return null;
+				}
+			}
+		}
+
+		public bool updatePassword(string email, string newPassword, string userType)
+		{
+			string hashedPassword = db.hashPassword(newPassword);
+
+			string query = "";
+
+			if (userType == "Donor")
+				query = "UPDATE Donors SET [Password] = ? WHERE [Email Address] = ?";
+			else if (userType == "Hospital")
+				query = "UPDATE Hospitals SET [Password] = ? WHERE [Email Address] = ?";
+			else
+				return false;
+
+			using (OleDbConnection conn = db.getConnection())
+			using (OleDbCommand cmd = new OleDbCommand(query, conn))
+			{
+				cmd.Parameters.AddWithValue("?", hashedPassword);
+				cmd.Parameters.AddWithValue("?", email);
+
+				try
+				{
+					conn.Open();
+					int rowsAffected = cmd.ExecuteNonQuery();
+					return rowsAffected > 0;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
+			}
 		}
 	}
 }

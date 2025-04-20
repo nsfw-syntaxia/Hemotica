@@ -55,6 +55,7 @@
 			cbxSPassword.TabIndex = 74;
 			cbxSPassword.Text = "Show Password";
 			cbxSPassword.UseVisualStyleBackColor = true;
+			cbxSPassword.CheckedChanged += cbxSPassword_CheckedChanged;
 			// 
 			// lblNewPassword
 			// 
@@ -97,7 +98,7 @@
 			tbxPassword.MaxLength = 32767;
 			tbxPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
 			tbxPassword.Name = "tbxPassword";
-			tbxPassword.PasswordChar = '\0';
+			tbxPassword.PasswordChar = '●';
 			tbxPassword.PrefixSuffixText = null;
 			tbxPassword.PromptChar = '_';
 			tbxPassword.ReadOnly = false;
@@ -139,7 +140,7 @@
 			tbxNewPassword.MaxLength = 32767;
 			tbxNewPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
 			tbxNewPassword.Name = "tbxNewPassword";
-			tbxNewPassword.PasswordChar = '\0';
+			tbxNewPassword.PasswordChar = '●';
 			tbxNewPassword.PrefixSuffixText = null;
 			tbxNewPassword.PromptChar = '_';
 			tbxNewPassword.ReadOnly = false;
