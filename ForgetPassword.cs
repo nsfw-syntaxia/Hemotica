@@ -5,7 +5,9 @@ namespace Hemotica
 {
     public partial class ForgetPassword : Form
     {
-        public ForgetPassword()
+        public string code { get; set; }
+
+		public ForgetPassword()
         {
             InitializeComponent();
         }

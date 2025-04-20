@@ -4,6 +4,7 @@ using System.Data.OleDb;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Hemotica
 {
@@ -115,13 +116,39 @@ namespace Hemotica
 
 		public bool userExists(string columnName, string value)
 		{
-			string query = $@"SELECT COUNT(*) FROM (SELECT [Email Address] AS EmailAddress, [Username] FROM Donors UNION 
-							  SELECT [Email Address] AS EmailAddress, [Username] FROM Hospitals) WHERE [{columnName}] = ?";
+			string query = @"SELECT COUNT(*) FROM (SELECT [Email Address] AS EmailAddress, [Username] FROM Donors UNION 
+							 SELECT [Email Address] AS EmailAddress, [Username] FROM Hospitals) WHERE [{columnName}] = ?";
 
 			using (OleDbConnection conn = getConnection())
 			using (OleDbCommand cmd = new OleDbCommand(query, conn))
 			{
 				cmd.Parameters.AddWithValue("?", value);
+				try
+				{
+					conn.Open();
+					int count = (int)cmd.ExecuteScalar();
+					return count > 0;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
+			}
+		}
+
+		public bool emailExists(string email)
+		{
+			string query = @"SELECT COUNT(*) FROM (SELECT [Donor ID] AS UserID, [Email Address] AS EmailAddress, [Username], [Password], 'Donor' AS UserType FROM Donors 
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> '' UNION 
+							 SELECT [Hospital ID] AS UserID, [Email Address] AS EmailAddress, [Username], [Password], 'Hospital' AS UserType FROM Hospitals
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> '') AS UsersWithPasswords
+							 WHERE [EmailAddress] = ?";
+
+			using (OleDbConnection conn = getConnection())
+			using (OleDbCommand cmd = new OleDbCommand(query, conn))
+			{
+				cmd.Parameters.AddWithValue("?", email);
 				try
 				{
 					conn.Open();
@@ -178,7 +205,7 @@ namespace Hemotica
 
 		public string donorUsername(string donorID)
 		{
-			string query = $"SELECT [Username] FROM Donors WHERE [Donor ID] = ?";
+			string query = @"SELECT [Username] FROM Donors WHERE [Donor ID] = ?";
 			OleDbParameter[] parameters = { new OleDbParameter("?", donorID) };
 			DataTable dt = executeQuery(query, parameters);
 
