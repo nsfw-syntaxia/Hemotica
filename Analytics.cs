@@ -192,60 +192,6 @@ namespace Hemotica
 			plotView.Model = model;
 		}
 
-		public void displayDailyExtractions(PlotView plotView)
-		{
-			DataTable dt = hospital.loadExtraction(db);
-
-			Dictionary<string, int> dailyCounts = new Dictionary<string, int>();
-
-			foreach (DataRow row in dt.Rows)
-			{
-				if (DateTime.TryParse(row["Extraction Date"].ToString(), out DateTime extractionDate))
-				{
-					string dayKey = extractionDate.ToString("MM-dd-yyyy");
-					if (!dailyCounts.ContainsKey(dayKey))
-						dailyCounts[dayKey] = 0;
-
-					dailyCounts[dayKey]++;
-				}
-			}
-
-			if (dailyCounts.Count == 0)
-				return;
-
-			var sortedDaily = dailyCounts.OrderBy(kvp => DateTime.ParseExact(kvp.Key, "MM-dd-yyyy", null)).ToList();
-			LineSeries dailySeries = new LineSeries
-			{
-				MarkerType = MarkerType.Circle
-			};
-
-			List<string> dayLabels = new List<string>();
-			for (int i = 0; i < sortedDaily.Count; i++)
-			{
-				dailySeries.Points.Add(new DataPoint(i, sortedDaily[i].Value));
-				dayLabels.Add(sortedDaily[i].Key);
-			}
-
-			var plotModel = new PlotModel { Title = "BLOOD EXTRACTIONS (DAILY)" };
-			plotModel.Series.Add(dailySeries);
-
-			plotModel.Axes.Add(new OxyPlot.Axes.CategoryAxis
-			{
-				Position = OxyPlot.Axes.AxisPosition.Bottom,
-				ItemsSource = dayLabels,
-				Title = "Date",
-				Angle = 45
-			});
-
-			plotModel.Axes.Add(new OxyPlot.Axes.LinearAxis
-			{
-				Position = OxyPlot.Axes.AxisPosition.Left,
-				Title = "Total Extracted Units"
-			});
-
-			plotView.Model = plotModel;
-		}
-
 		public void displayExtractions(PlotView plotView)
 		{
 			DataTable dt = hospital.loadExtraction(db);
@@ -271,21 +217,42 @@ namespace Hemotica
 			if (monthlyCounts.Count == 0)
 				return;
 
-			var sortedMonthly = monthlyCounts.OrderBy(kvp => kvp.Key).ToList();
+			var allMonths = new SortedDictionary<DateTime, int>();
+			DateTime startMonth = monthlyCounts.Keys.Min();
+			DateTime endMonth = monthlyCounts.Keys.Max();
+			DateTime currentMonth = startMonth;
+
+			while (currentMonth <= endMonth)
+			{
+				allMonths[currentMonth] = monthlyCounts.ContainsKey(currentMonth) ? monthlyCounts[currentMonth] : 0;
+				currentMonth = currentMonth.AddMonths(1);
+			}
 
 			LineSeries monthlySeries = new LineSeries
 			{
-				MarkerType = MarkerType.Circle
+				MarkerType = MarkerType.Circle,
+				Color = OxyColor.FromRgb(216, 85, 101),
+				StrokeThickness = 2
 			};
 
 			List<string> monthLabels = new List<string>();
-			for (int i = 0; i < sortedMonthly.Count; i++)
+			int index = 0;
+			foreach (var kvp in allMonths)
 			{
-				monthlySeries.Points.Add(new DataPoint(i, sortedMonthly[i].Value));
-				monthLabels.Add(sortedMonthly[i].Key.ToString("MM-yyyy"));
+				monthlySeries.Points.Add(new DataPoint(index++, kvp.Value));
+				monthLabels.Add(kvp.Key.ToString("MM-yyyy"));
 			}
 
-			var plotModel = new PlotModel { Title = "MONTHLY BLOOD EXTRACTIONS" };
+			var plotModel = new PlotModel
+			{
+				Title = "MONTHLY BLOOD EXTRACTIONS",
+				TextColor = OxyColor.FromRgb(216, 85, 101),
+				PlotAreaBorderColor = OxyColor.FromRgb(216, 85, 101),
+
+				TitleFont = "Bahnschrift",
+				TitleFontSize = 20,
+				TitleFontWeight = FontWeights.Bold
+			};
 			plotModel.Series.Add(monthlySeries);
 
 			plotModel.Axes.Add(new OxyPlot.Axes.CategoryAxis
@@ -293,13 +260,17 @@ namespace Hemotica
 				Position = OxyPlot.Axes.AxisPosition.Bottom,
 				ItemsSource = monthLabels,
 				Title = "Date",
-				Angle = 45
+				Angle = 45,
+				AxislineColor = OxyColor.FromRgb(216, 85, 101),
+				TicklineColor = OxyColor.FromRgb(216, 85, 101)
 			});
 
 			plotModel.Axes.Add(new OxyPlot.Axes.LinearAxis
 			{
 				Position = OxyPlot.Axes.AxisPosition.Left,
-				Title = "Blood Bags Extracted"
+				Title = "Blood Bags Extracted",
+				AxislineColor = OxyColor.FromRgb(216, 85, 101),
+				TicklineColor = OxyColor.FromRgb(216, 85, 101)
 			});
 
 			plotView.Model = plotModel;
