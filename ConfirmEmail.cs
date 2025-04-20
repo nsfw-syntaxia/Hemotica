@@ -37,7 +37,7 @@ namespace Hemotica
 
 			string code = new Random().Next(100000, 999999).ToString();
 
-			string subject = $"REQUEST: Reset Password Code";
+			string subject = "REQUEST: Reset Password Code";
 			string htmlBody = emailHTML(code);
 			sendEmail(email, subject, htmlBody);
 

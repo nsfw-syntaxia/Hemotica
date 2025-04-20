@@ -114,15 +114,18 @@ namespace Hemotica
 			}
 		}
 
-		public bool userExists(string columnName, string value)
+		public bool usernameExists(string username)
 		{
-			string query = @"SELECT COUNT(*) FROM (SELECT [Email Address] AS EmailAddress, [Username] FROM Donors UNION 
-							 SELECT [Email Address] AS EmailAddress, [Username] FROM Hospitals) WHERE [{columnName}] = ?";
+			string query = @"SELECT COUNT(*) FROM (SELECT [Donor ID] AS UserID, [Email Address] AS EmailAddress, [Username], [Password], 'Donor' AS UserType FROM Donors 
+							 WHERE [Username] IS NOT NULL AND [Username] <> '' AND [Password] IS NOT NULL AND [Password] <> '' UNION 
+							 SELECT [Hospital ID] AS UserID, [Email Address] AS EmailAddress, [Username], [Password], 'Hospital' AS UserType FROM Hospitals
+							 WHERE [Username] IS NOT NULL AND [Username] <> '' AND [Password] IS NOT NULL AND [Password] <> '') AS UsersWithPasswords
+							 WHERE [Username] = ?";
 
 			using (OleDbConnection conn = getConnection())
 			using (OleDbCommand cmd = new OleDbCommand(query, conn))
 			{
-				cmd.Parameters.AddWithValue("?", value);
+				cmd.Parameters.AddWithValue("?", username);
 				try
 				{
 					conn.Open();

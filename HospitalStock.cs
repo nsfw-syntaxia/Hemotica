@@ -331,7 +331,7 @@ namespace Hemotica
 
 						string location = $"{barangay}, {city}, {province}";
 
-						string subject = $"NOTICE: {title}";
+						string subject = $"NEW: {title}";
 						string htmlBody = emailHTML(title, description, date, formatTime, location);
 						sendEmail(barangay, subject, htmlBody);
 
