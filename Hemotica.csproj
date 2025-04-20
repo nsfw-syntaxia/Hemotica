@@ -9,12 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AntdUI" Version="1.9.9" />
+    <PackageReference Include="AntdUI" Version="1.9.11" />
     <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
+    <PackageReference Include="OxyPlot.Core" Version="2.2.0" />
+    <PackageReference Include="OxyPlot.WindowsForms" Version="2.2.0" />
     <PackageReference Include="PDFsharp" Version="6.1.1" />
     <PackageReference Include="PDFsharp-MigraDoc-GDI" Version="6.1.1" />
     <PackageReference Include="ReaLTaiizor" Version="3.8.1.2" />
-    <PackageReference Include="System.Data.OleDb" Version="9.0.3" />
+    <PackageReference Include="System.Data.OleDb" Version="9.0.4" />
     <PackageReference Include="Zen.Barcode.Rendering.Framework" Version="3.1.10729.1" />
     <PackageReference Include="ZXing.Net" Version="0.16.10" />
   </ItemGroup>

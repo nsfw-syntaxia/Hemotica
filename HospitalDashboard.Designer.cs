@@ -29,8 +29,15 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalDashboard));
-			pBloods = new Panel();
-			flpBloods = new FlowLayoutPanel();
+			pDashboard = new Panel();
+			pAnalytics = new Panel();
+			tlpAnalytics = new TableLayoutPanel();
+			btnTAnalytics = new Button();
+			btnEAnalytics = new Button();
+			btnPAnalytics = new Button();
+			btnBGAnalytics = new Button();
+			pOxyplot = new Panel();
+			pvOxyplot = new OxyPlot.WindowsForms.PlotView();
 			pPatients = new Panel();
 			flpPatients = new FlowLayoutPanel();
 			pbxNoPatients = new PictureBox();
@@ -49,7 +56,10 @@
 			lblTNumber = new Label();
 			lblTransfusions = new Label();
 			pbxTransfusion = new PictureBox();
-			pBloods.SuspendLayout();
+			pDashboard.SuspendLayout();
+			pAnalytics.SuspendLayout();
+			tlpAnalytics.SuspendLayout();
+			pOxyplot.SuspendLayout();
 			pPatients.SuspendLayout();
 			flpPatients.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pbxNoPatients).BeginInit();
@@ -64,26 +74,134 @@
 			((System.ComponentModel.ISupportInitialize)pbxTransfusion).BeginInit();
 			SuspendLayout();
 			// 
-			// pBloods
+			// pDashboard
 			// 
-			pBloods.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			pBloods.BackColor = Color.FromArgb(216, 85, 101);
-			pBloods.Controls.Add(flpBloods);
-			pBloods.Location = new Point(8, 8);
-			pBloods.Name = "pBloods";
-			pBloods.Padding = new Padding(7);
-			pBloods.Size = new Size(670, 372);
-			pBloods.TabIndex = 1;
+			pDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pDashboard.BackColor = Color.FromArgb(216, 85, 101);
+			pDashboard.Controls.Add(pAnalytics);
+			pDashboard.Location = new Point(8, 8);
+			pDashboard.Name = "pDashboard";
+			pDashboard.Padding = new Padding(7);
+			pDashboard.Size = new Size(670, 372);
+			pDashboard.TabIndex = 1;
 			// 
-			// flpBloods
+			// pAnalytics
 			// 
-			flpBloods.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-			flpBloods.BackColor = Color.FromArgb(252, 228, 228);
-			flpBloods.Location = new Point(10, 10);
-			flpBloods.Name = "flpBloods";
-			flpBloods.Size = new Size(650, 352);
-			flpBloods.TabIndex = 17;
-			flpBloods.WrapContents = false;
+			pAnalytics.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			pAnalytics.BackColor = Color.FromArgb(252, 228, 228);
+			pAnalytics.Controls.Add(tlpAnalytics);
+			pAnalytics.Location = new Point(10, 10);
+			pAnalytics.Name = "pAnalytics";
+			pAnalytics.Padding = new Padding(1);
+			pAnalytics.Size = new Size(650, 352);
+			pAnalytics.TabIndex = 21;
+			// 
+			// tlpAnalytics
+			// 
+			tlpAnalytics.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			tlpAnalytics.ColumnCount = 4;
+			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+			tlpAnalytics.Controls.Add(btnTAnalytics, 3, 0);
+			tlpAnalytics.Controls.Add(btnEAnalytics, 2, 0);
+			tlpAnalytics.Controls.Add(btnPAnalytics, 1, 0);
+			tlpAnalytics.Controls.Add(btnBGAnalytics, 0, 0);
+			tlpAnalytics.Controls.Add(pOxyplot, 0, 1);
+			tlpAnalytics.Location = new Point(4, 4);
+			tlpAnalytics.Name = "tlpAnalytics";
+			tlpAnalytics.RowCount = 2;
+			tlpAnalytics.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+			tlpAnalytics.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
+			tlpAnalytics.Size = new Size(642, 344);
+			tlpAnalytics.TabIndex = 0;
+			// 
+			// btnTAnalytics
+			// 
+			btnTAnalytics.Dock = DockStyle.Fill;
+			btnTAnalytics.FlatAppearance.BorderSize = 0;
+			btnTAnalytics.FlatStyle = FlatStyle.Flat;
+			btnTAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			btnTAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
+			btnTAnalytics.Location = new Point(483, 3);
+			btnTAnalytics.Name = "btnTAnalytics";
+			btnTAnalytics.Size = new Size(156, 28);
+			btnTAnalytics.TabIndex = 3;
+			btnTAnalytics.Text = "TRANSFUSIONS";
+			btnTAnalytics.UseVisualStyleBackColor = true;
+			btnTAnalytics.Click += btnTAnalytics_Click;
+			// 
+			// btnEAnalytics
+			// 
+			btnEAnalytics.Dock = DockStyle.Fill;
+			btnEAnalytics.FlatAppearance.BorderSize = 0;
+			btnEAnalytics.FlatStyle = FlatStyle.Flat;
+			btnEAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			btnEAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
+			btnEAnalytics.Location = new Point(323, 3);
+			btnEAnalytics.Name = "btnEAnalytics";
+			btnEAnalytics.Size = new Size(154, 28);
+			btnEAnalytics.TabIndex = 2;
+			btnEAnalytics.Text = "EXTRACTIONS";
+			btnEAnalytics.UseVisualStyleBackColor = true;
+			btnEAnalytics.Click += btnEAnalytics_Click;
+			// 
+			// btnPAnalytics
+			// 
+			btnPAnalytics.Dock = DockStyle.Fill;
+			btnPAnalytics.FlatAppearance.BorderSize = 0;
+			btnPAnalytics.FlatStyle = FlatStyle.Flat;
+			btnPAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			btnPAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
+			btnPAnalytics.Location = new Point(163, 3);
+			btnPAnalytics.Name = "btnPAnalytics";
+			btnPAnalytics.Size = new Size(154, 28);
+			btnPAnalytics.TabIndex = 1;
+			btnPAnalytics.Text = "PATIENTS";
+			btnPAnalytics.UseVisualStyleBackColor = true;
+			btnPAnalytics.Click += btnPAnalytics_Click;
+			// 
+			// btnBGAnalytics
+			// 
+			btnBGAnalytics.Dock = DockStyle.Fill;
+			btnBGAnalytics.FlatAppearance.BorderSize = 0;
+			btnBGAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnBGAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
+			btnBGAnalytics.FlatStyle = FlatStyle.Flat;
+			btnBGAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			btnBGAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
+			btnBGAnalytics.Location = new Point(3, 3);
+			btnBGAnalytics.Name = "btnBGAnalytics";
+			btnBGAnalytics.Size = new Size(154, 28);
+			btnBGAnalytics.TabIndex = 0;
+			btnBGAnalytics.Text = "BLOOD GROUPS";
+			btnBGAnalytics.UseVisualStyleBackColor = true;
+			btnBGAnalytics.Click += btnBGAnalytics_Click;
+			// 
+			// pOxyplot
+			// 
+			tlpAnalytics.SetColumnSpan(pOxyplot, 4);
+			pOxyplot.Controls.Add(pvOxyplot);
+			pOxyplot.Dock = DockStyle.Fill;
+			pOxyplot.Location = new Point(3, 37);
+			pOxyplot.Name = "pOxyplot";
+			pOxyplot.Size = new Size(636, 304);
+			pOxyplot.TabIndex = 4;
+			// 
+			// pvOxyplot
+			// 
+			pvOxyplot.Dock = DockStyle.Fill;
+			pvOxyplot.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			pvOxyplot.ForeColor = Color.FromArgb(216, 85, 101);
+			pvOxyplot.Location = new Point(0, 0);
+			pvOxyplot.Name = "pvOxyplot";
+			pvOxyplot.PanCursor = Cursors.Hand;
+			pvOxyplot.Size = new Size(636, 304);
+			pvOxyplot.TabIndex = 0;
+			pvOxyplot.ZoomHorizontalCursor = Cursors.SizeWE;
+			pvOxyplot.ZoomRectangleCursor = Cursors.SizeNWSE;
+			pvOxyplot.ZoomVerticalCursor = Cursors.SizeNS;
 			// 
 			// pPatients
 			// 
@@ -314,13 +432,16 @@
 			Controls.Add(pOperations);
 			Controls.Add(pAppointments);
 			Controls.Add(pPatients);
-			Controls.Add(pBloods);
+			Controls.Add(pDashboard);
 			Name = "HospitalDashboard";
 			Padding = new Padding(5);
 			Size = new Size(1020, 641);
 			Load += HospitalDashboard_Load;
 			Resize += HospitalDashboard_Resize;
-			pBloods.ResumeLayout(false);
+			pDashboard.ResumeLayout(false);
+			pAnalytics.ResumeLayout(false);
+			tlpAnalytics.ResumeLayout(false);
+			pOxyplot.ResumeLayout(false);
 			pPatients.ResumeLayout(false);
 			pPatients.PerformLayout();
 			flpPatients.ResumeLayout(false);
@@ -341,7 +462,7 @@
 		}
 
 		#endregion
-		private Panel pBloods;
+		private Panel pDashboard;
 		private Panel pPatients;
 		private Panel pAppointments;
 		private Panel pOperations;
@@ -350,7 +471,6 @@
 		private Label lblAppointments;
 		private FlowLayoutPanel flpAppointments;
 		private FlowLayoutPanel flpOperations;
-		private FlowLayoutPanel flpBloods;
 		private PictureBox pbxNoPatients;
 		private PictureBox pbxNoAppointments;
 		private Panel pExtraction;
@@ -361,5 +481,13 @@
 		private Label lblTransfusions;
 		private Label lblENumber;
 		private Label lblTNumber;
+		private TableLayoutPanel tlpAnalytics;
+		private Button btnBGAnalytics;
+		private Button btnPAnalytics;
+		private Button btnEAnalytics;
+		private Button btnTAnalytics;
+		private Panel pAnalytics;
+		private Panel pOxyplot;
+		private OxyPlot.WindowsForms.PlotView pvOxyplot;
 	}
 }

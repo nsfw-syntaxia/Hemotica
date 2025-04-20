@@ -17,6 +17,9 @@ namespace Hemotica
 			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
 			int nWidthEllipse, int nHeightEllipse);
 
+		private List<Button> analyticsButtons = new List<Button>();
+		private Button selectedButton = null;
+
 		public HospitalDashboard()
 		{
 			InitializeComponent();
@@ -29,12 +32,29 @@ namespace Hemotica
 			loadPatients();
 			totalExtractions();
 			totalTransfusions();
+
+			analyticsButtons.Add(btnBGAnalytics);
+			analyticsButtons.Add(btnPAnalytics);
+			analyticsButtons.Add(btnEAnalytics);
+			analyticsButtons.Add(btnTAnalytics);
+
+			foreach (var btn in analyticsButtons)
+			{
+				btn.BackColor = Color.FromArgb(252, 228, 228);
+				btn.ForeColor = Color.FromArgb(216, 85, 101);
+				btn.FlatStyle = FlatStyle.Flat;
+				btn.FlatAppearance.BorderSize = 0;
+
+				btn.MouseEnter += btnAnalytics_MouseEnter;
+				btn.MouseLeave += btnAnalytics_MouseLeave;
+				btn.Click += btnAnalytics_Click;
+			}
 		}
 
 		public void roundControls()
 		{
-			pBloods.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pBloods.Width, pBloods.Height, 20, 20));
-			flpBloods.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpBloods.Width, flpBloods.Height, 20, 20));
+			pDashboard.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pDashboard.Width, pDashboard.Height, 20, 20));
+			pAnalytics.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pAnalytics.Width, pAnalytics.Height, 20, 20));
 			pPatients.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pPatients.Width, pPatients.Height, 20, 20));
 			flpPatients.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpPatients.Width, flpPatients.Height, 20, 20));
 			pAppointments.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pAppointments.Width, pAppointments.Height, 20, 20));
@@ -113,7 +133,7 @@ namespace Hemotica
 										 INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital 
 										 WHERE Appointments.[Status] = ? AND Appointments.[Hospital] = ? ORDER BY Appointments.[Appointment Date] ASC";
 
-			OleDbParameter[] appointmentParameters = 
+			OleDbParameter[] appointmentParameters =
 			{
 				new OleDbParameter("?", "Scheduled"),
 				new OleDbParameter("?", hospitalName)
@@ -219,8 +239,8 @@ namespace Hemotica
 			string queryPatients = @"SELECT [First Name], [Middle Name], [Last Name], [Blood Type], Priority, [Hospital Username] FROM Patients 
 									 WHERE [Hospital Username] = ? AND Priority <> ?";
 
-			OleDbParameter[] patientParameters = 
-			{ 
+			OleDbParameter[] patientParameters =
+			{
 				new OleDbParameter("?", UserLogs.Username),
 				new OleDbParameter("?", "Resolved")
 			};
@@ -341,6 +361,65 @@ namespace Hemotica
 				panel.Height = flpPatients.Height - (flpPatients.HorizontalScroll.Visible ? 24 : 7);
 				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 			}
+		}
+
+		private void btnAnalytics_MouseEnter(object sender, EventArgs e)
+		{
+			Button btn = sender as Button;
+			if (btn != selectedButton)
+			{
+				btn.BackColor = Color.FromArgb(216, 85, 101);
+				btn.ForeColor = Color.FromArgb(252, 228, 228);
+			}
+		}
+
+		private void btnAnalytics_MouseLeave(object sender, EventArgs e)
+		{
+			Button btn = sender as Button;
+			if (btn != selectedButton)
+			{
+				btn.BackColor = Color.FromArgb(252, 228, 228);
+				btn.ForeColor = Color.FromArgb(216, 85, 101);
+			}
+		}
+
+		private void btnAnalytics_Click(object sender, EventArgs e)
+		{
+			Button btn = sender as Button;
+
+			if (selectedButton != null)
+			{
+				selectedButton.BackColor = Color.FromArgb(252, 228, 228);
+				selectedButton.ForeColor = Color.FromArgb(216, 85, 101);
+			}
+
+			selectedButton = btn;
+			selectedButton.BackColor = Color.FromArgb(216, 85, 101);
+			selectedButton.ForeColor = Color.FromArgb(252, 228, 228);
+		}
+
+		private void btnBGAnalytics_Click(object sender, EventArgs e)
+		{
+			pvOxyplot.Model = null;
+			pvOxyplot.InvalidatePlot(true);
+
+			Analytics analytics = new Analytics();
+			analytics.displayBloodGroups(pvOxyplot);
+		}
+
+		private void btnPAnalytics_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnEAnalytics_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnTAnalytics_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
