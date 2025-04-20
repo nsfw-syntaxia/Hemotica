@@ -142,7 +142,7 @@
 			tbxEmail.UseTallSize = false;
 			tbxEmail.ValidatingType = null;
 			// 
-			// ConfirmationEmail
+			// ConfirmEmail
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
@@ -153,7 +153,7 @@
 			Controls.Add(lblL1Instruction);
 			Controls.Add(lblHeader);
 			Controls.Add(tbxEmail);
-			Name = "ConfirmationEmail";
+			Name = "ConfirmEmail";
 			Size = new Size(396, 266);
 			ResumeLayout(false);
 			PerformLayout();

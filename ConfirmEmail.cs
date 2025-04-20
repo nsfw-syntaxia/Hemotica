@@ -14,6 +14,9 @@ namespace Hemotica
 		{
 			InitializeComponent();
 			this.forgetPassword = parent;
+
+			if (!string.IsNullOrEmpty(forgetPassword.email))
+				tbxEmail.Text = forgetPassword.email;
 		}
 
 		private void btnSendCode_Click(object sender, EventArgs e)
@@ -38,6 +41,7 @@ namespace Hemotica
 			string htmlBody = emailHTML(code);
 			sendEmail(email, subject, htmlBody);
 
+			forgetPassword.email = email;
 			forgetPassword.code = code;
 			forgetPassword.showFP2();
 		}
