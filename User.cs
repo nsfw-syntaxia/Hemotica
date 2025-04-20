@@ -518,6 +518,24 @@ namespace Hemotica
 				}
 			}
 		}
+
+		internal int totalDonors(Database db)
+		{
+			string query = @"SELECT [Donor ID] AS UserID, [Email Address], [Username], [Password], 'Donor' AS UserType FROM Donors 
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
+
+			DataTable dt = db.executeQuery(query, null);
+			return dt != null ? dt.Rows.Count : 0;
+		}
+
+		internal int totalHospitals(Database db)
+		{
+			string query = @"SELECT [Hospital ID] AS UserID, [Email Address], [Username], [Password], 'Hospital' AS UserType FROM Hospitals 
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
+
+			DataTable dt = db.executeQuery(query, null);
+			return dt != null ? dt.Rows.Count : 0;
+		}
 	}
 
 	public class Patient : Donor

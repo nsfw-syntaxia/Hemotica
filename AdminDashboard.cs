@@ -8,6 +8,7 @@ namespace Hemotica
 {
 	public partial class AdminDashboard : UserControl
 	{
+		private Admin admin = new Admin();
 		private Database db = new Database();
 		private Analytics analytics = new Analytics();
 
@@ -75,12 +76,22 @@ namespace Hemotica
 
 		private void totalDonors()
 		{
-			// code for total extractions
+			int donorCount = admin.totalDonors(db);
+			lblDNumber.Text = formatCount(donorCount);
+			lblDNumber.Location = new Point(
+				(pDUsers.Width - lblDNumber.Width) / 2 + 66,
+				(pDUsers.Height - lblDNumber.Height) / 2 + 18
+			);
 		}
 
 		private void totalHospitals()
 		{
-			// code for total
+			int hospitalCount = admin.totalHospitals(db);
+			lblHNumber.Text = formatCount(hospitalCount);
+			lblHNumber.Location = new Point(
+				(pHUsers.Width - lblHNumber.Width) / 2 + 66,
+				(pHUsers.Height - lblHNumber.Height) / 2 + 18
+			);
 		}
 
 		private string formatCount(int count)

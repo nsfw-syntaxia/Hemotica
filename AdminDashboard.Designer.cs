@@ -357,7 +357,7 @@
 			lblDUsers.AutoSize = true;
 			lblDUsers.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
 			lblDUsers.ForeColor = Color.FromArgb(216, 85, 101);
-			lblDUsers.Location = new Point(174, 23);
+			lblDUsers.Location = new Point(174, 28);
 			lblDUsers.Name = "lblDUsers";
 			lblDUsers.Padding = new Padding(0, 3, 0, 0);
 			lblDUsers.Size = new Size(75, 27);
@@ -406,7 +406,7 @@
 			lblHUsers.AutoSize = true;
 			lblHUsers.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
 			lblHUsers.ForeColor = Color.FromArgb(216, 85, 101);
-			lblHUsers.Location = new Point(164, 23);
+			lblHUsers.Location = new Point(164, 28);
 			lblHUsers.Name = "lblHUsers";
 			lblHUsers.Padding = new Padding(0, 3, 0, 0);
 			lblHUsers.Size = new Size(95, 27);
