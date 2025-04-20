@@ -24,7 +24,7 @@ namespace Hemotica
 			lblUsername.Text = username;
 		}
 
-		private void DashboardD_Load(object sender, EventArgs e)
+		private void DashboardA_Load(object sender, EventArgs e)
 		{
 			btnSettings();
 			flpSideBar.Width = flpSideBar.MinimumSize.Width;
@@ -93,7 +93,7 @@ namespace Hemotica
 			tSidebar.Start();
 		}
 
-		private void DashboardD_Resize(object sender, EventArgs e)
+		private void DashboardA_Resize(object sender, EventArgs e)
 		{
 			flpSideBar.Height = this.ClientSize.Height;
 			flpSideBar.MaximumSize = new Size(flpSideBar.MaximumSize.Width, this.ClientSize.Height);

@@ -306,6 +306,7 @@
 			btnConnection.Size = new Size(290, 45);
 			btnConnection.TabIndex = 12;
 			btnConnection.Text = "Connection Test";
+			btnConnection.Visible = false;
 			btnConnection.Click += btnConnection_Click;
 			// 
 			// btnInsert

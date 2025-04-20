@@ -352,8 +352,8 @@
 			Icon = (Icon)resources.GetObject("$this.Icon");
 			Name = "DashboardA";
 			StartPosition = FormStartPosition.CenterScreen;
-			Load += DashboardD_Load;
-			Resize += DashboardD_Resize;
+			Load += DashboardA_Load;
+			Resize += DashboardA_Resize;
 			flpSideBar.ResumeLayout(false);
 			pMenu.ResumeLayout(false);
 			pDashboard.ResumeLayout(false);

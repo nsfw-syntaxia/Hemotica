@@ -615,6 +615,7 @@ namespace Hemotica
 		private void HospitalRecords_Load(object sender, EventArgs e)
 		{
 			mstrpRecords.Focus();
+			lDonors.PerformClick();
 		}
 	}
 }
