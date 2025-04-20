@@ -121,6 +121,8 @@
 			// 
 			btnTAnalytics.Dock = DockStyle.Fill;
 			btnTAnalytics.FlatAppearance.BorderSize = 0;
+			btnTAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnTAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
 			btnTAnalytics.FlatStyle = FlatStyle.Flat;
 			btnTAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
 			btnTAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
@@ -136,6 +138,8 @@
 			// 
 			btnEAnalytics.Dock = DockStyle.Fill;
 			btnEAnalytics.FlatAppearance.BorderSize = 0;
+			btnEAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnEAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
 			btnEAnalytics.FlatStyle = FlatStyle.Flat;
 			btnEAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
 			btnEAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
@@ -151,6 +155,8 @@
 			// 
 			btnPAnalytics.Dock = DockStyle.Fill;
 			btnPAnalytics.FlatAppearance.BorderSize = 0;
+			btnPAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnPAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
 			btnPAnalytics.FlatStyle = FlatStyle.Flat;
 			btnPAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
 			btnPAnalytics.ForeColor = Color.FromArgb(216, 85, 101);

@@ -406,15 +406,15 @@ namespace Hemotica
 			}
 			else if (clickedButton == btnPAnalytics)
 			{
-				//
+				analytics.displayPatients(pvOxyplot);
 			}
 			else if (clickedButton == btnEAnalytics)
 			{
-				//
+				analytics.displayExtractions(pvOxyplot);
 			}
 			else if (clickedButton == btnTAnalytics)
 			{
-				//
+				analytics.displayTransfusions(pvOxyplot);
 			}
 		}
 

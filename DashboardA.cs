@@ -32,6 +32,7 @@ namespace Hemotica
 
 			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
 			adjustLayout();
+			showAdminDashboard();
 		}
 
 		private void btnEffects(Button button, Color highlightColor)
@@ -163,8 +164,8 @@ namespace Hemotica
 		{
 			lblHeader.Text = "Dashboard";
 			flpDashboard.Controls.Clear();
-			//AdminDashboard adminDashboard = new AdminDashboard();
-			//flpDashboard.Controls.Add(adminDashboard);
+			AdminDashboard adminDashboard = new AdminDashboard();
+			flpDashboard.Controls.Add(adminDashboard);
 			adjustLayout();
 		}
 

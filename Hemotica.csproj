@@ -35,6 +35,9 @@
     <Compile Update="BloodBagBarcodes.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="AdminDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="HospitalExtraction.cs">
       <SubType>UserControl</SubType>
     </Compile>
