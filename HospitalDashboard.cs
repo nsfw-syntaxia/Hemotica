@@ -430,12 +430,17 @@ namespace Hemotica
 		{
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
+
+			analytics.displayPatients(pvOxyplot);
 		}
 
 		private void btnEAnalytics_Click(object sender, EventArgs e)
 		{
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
+
+			//analytics.displayDailyExtractions(pvOxyplot);
+			analytics.displayExtractions(pvOxyplot);
 		}
 
 		private void btnTAnalytics_Click(object sender, EventArgs e)

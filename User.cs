@@ -512,6 +512,17 @@ namespace Hemotica
 			set { priority = value; }
 		}
 
+		internal DataTable loadAllPatients(Database db)
+		{
+			string query = @"SELECT [Patient ID], Priority FROM Patients WHERE [Hospital Username] = ?";
+
+			OleDbParameter[] parametersPatients =
+			{
+				new OleDbParameter("?", UserLogs.Username)
+			};
+			return db.executeQuery(query, parametersPatients);
+		}
+
 		internal DataTable loadPatients(Database db)
 		{
 			updateAge(db);
