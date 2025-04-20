@@ -39,8 +39,6 @@
 			pBlank = new Panel();
 			pDashboard = new Panel();
 			btnDashboard = new Button();
-			pUserLogs = new Panel();
-			btnLogs = new Button();
 			pSettings = new Panel();
 			btnSetting = new Button();
 			pLogout = new Panel();
@@ -54,7 +52,6 @@
 			flpSideBar.SuspendLayout();
 			pMenu.SuspendLayout();
 			pDashboard.SuspendLayout();
-			pUserLogs.SuspendLayout();
 			pSettings.SuspendLayout();
 			pLogout.SuspendLayout();
 			pHeader.SuspendLayout();
@@ -112,7 +109,6 @@
 			flpSideBar.Controls.Add(pMenu);
 			flpSideBar.Controls.Add(pBlank);
 			flpSideBar.Controls.Add(pDashboard);
-			flpSideBar.Controls.Add(pUserLogs);
 			flpSideBar.Controls.Add(pSettings);
 			flpSideBar.Controls.Add(pLogout);
 			flpSideBar.Dock = DockStyle.Left;
@@ -186,38 +182,10 @@
 			btnDashboard.UseVisualStyleBackColor = true;
 			btnDashboard.Click += btnDashboard_Click;
 			// 
-			// pUserLogs
-			// 
-			pUserLogs.Controls.Add(btnLogs);
-			pUserLogs.Location = new Point(3, 229);
-			pUserLogs.Name = "pUserLogs";
-			pUserLogs.Size = new Size(219, 60);
-			pUserLogs.TabIndex = 2;
-			// 
-			// btnLogs
-			// 
-			btnLogs.FlatAppearance.BorderSize = 0;
-			btnLogs.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
-			btnLogs.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
-			btnLogs.FlatStyle = FlatStyle.Flat;
-			btnLogs.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
-			btnLogs.ForeColor = Color.FromArgb(253, 211, 211);
-			btnLogs.Image = (Image)resources.GetObject("btnLogs.Image");
-			btnLogs.ImageAlign = ContentAlignment.MiddleLeft;
-			btnLogs.Location = new Point(-16, -13);
-			btnLogs.Name = "btnLogs";
-			btnLogs.Padding = new Padding(20, 5, 5, 5);
-			btnLogs.Size = new Size(248, 86);
-			btnLogs.TabIndex = 9;
-			btnLogs.Text = "            USER LOGS";
-			btnLogs.TextAlign = ContentAlignment.MiddleLeft;
-			btnLogs.UseVisualStyleBackColor = true;
-			btnLogs.Click += btnLogs_Click;
-			// 
 			// pSettings
 			// 
 			pSettings.Controls.Add(btnSetting);
-			pSettings.Location = new Point(3, 295);
+			pSettings.Location = new Point(3, 229);
 			pSettings.Name = "pSettings";
 			pSettings.Size = new Size(219, 60);
 			pSettings.TabIndex = 5;
@@ -245,7 +213,7 @@
 			// pLogout
 			// 
 			pLogout.Controls.Add(btnLogout);
-			pLogout.Location = new Point(3, 361);
+			pLogout.Location = new Point(3, 295);
 			pLogout.Name = "pLogout";
 			pLogout.Size = new Size(219, 60);
 			pLogout.TabIndex = 6;
@@ -357,7 +325,6 @@
 			flpSideBar.ResumeLayout(false);
 			pMenu.ResumeLayout(false);
 			pDashboard.ResumeLayout(false);
-			pUserLogs.ResumeLayout(false);
 			pSettings.ResumeLayout(false);
 			pLogout.ResumeLayout(false);
 			pHeader.ResumeLayout(false);
@@ -372,10 +339,8 @@
         private FlowLayoutPanel flpSideBar;
         private Panel pMenu;
         private Panel pDashboard;
-        private Panel pUserLogs;
         private Panel pSettings;
         private Button btnDashboard;
-        private Button btnLogs;
         private Button btnSetting;
         private Panel pLogout;
         private Button btnLogout;

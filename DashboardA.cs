@@ -9,7 +9,7 @@ namespace Hemotica
 	{
 		private Database db = new Database();
 
-		bool sidebarExpand = false;
+		bool sidebarExpand = true;
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -27,12 +27,11 @@ namespace Hemotica
 		private void DashboardA_Load(object sender, EventArgs e)
 		{
 			btnSettings();
-			flpSideBar.Width = flpSideBar.MinimumSize.Width;
-			sidebarExpand = false;
+			flpSideBar.Width = flpSideBar.MaximumSize.Width;
+			sidebarExpand = true;
 
 			pHeader.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pHeader.Width, pHeader.Height, 20, 20));
 			adjustLayout();
-			//showDonorDashboard();
 		}
 
 		private void btnEffects(Button button, Color highlightColor)
@@ -65,6 +64,7 @@ namespace Hemotica
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
+			UserLogs.LogoutUser(db);
 			Application.Exit();
 		}
 
@@ -156,27 +156,27 @@ namespace Hemotica
 
 		private void btnDashboard_Click(object sender, EventArgs e)
 		{
-			//showDonorDashboard();
+			showAdminDashboard();
 		}
 
-		/*
-		internal void showDonorDashboard()
+		internal void showAdminDashboard()
 		{
 			lblHeader.Text = "Dashboard";
 			flpDashboard.Controls.Clear();
-			DonorDashboard donorDashboard = new DonorDashboard();
-			flpDashboard.Controls.Add(donorDashboard);
+			//AdminDashboard adminDashboard = new AdminDashboard();
+			//flpDashboard.Controls.Add(adminDashboard);
 			adjustLayout();
-		}*/
-
-		private void btnLogs_Click(object sender, EventArgs e)
-		{
-
 		}
 
 		private void btnSetting_Click(object sender, EventArgs e)
 		{
+			showSettings();
+		}
 
+		internal void showSettings()
+		{
+			AdminSettings adminSettings = new AdminSettings();
+			adminSettings.ShowDialog();
 		}
 	}
 }

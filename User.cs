@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Hemotica
 {
@@ -492,7 +493,31 @@ namespace Hemotica
 
 	public class Admin : User
 	{
-		//
+		internal bool updatePassword(Database db, string password)
+		{
+			string hashedPassword = db.hashPassword(password);
+
+			string query = "UPDATE Admin SET [Password] = ? WHERE [Username] = ?";
+
+			using (OleDbConnection conn = db.getConnection())
+			using (OleDbCommand cmd = new OleDbCommand(query, conn))
+			{
+				cmd.Parameters.AddWithValue("?", hashedPassword);
+				cmd.Parameters.AddWithValue("?", UserLogs.Username);
+
+				try
+				{
+					conn.Open();
+					int rowsAffected = cmd.ExecuteNonQuery();
+					return rowsAffected > 0;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
+			}
+		}
 	}
 
 	public class Patient : Donor
