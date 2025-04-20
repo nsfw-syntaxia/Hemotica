@@ -439,7 +439,6 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			//analytics.displayDailyExtractions(pvOxyplot);
 			analytics.displayExtractions(pvOxyplot);
 		}
 
@@ -447,6 +446,8 @@ namespace Hemotica
 		{
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
+
+			analytics.displayTransfusions(pvOxyplot);
 		}
 	}
 }
