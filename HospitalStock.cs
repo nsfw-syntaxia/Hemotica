@@ -102,6 +102,61 @@ namespace Hemotica
 			}
 		}
 
+		private void dgvStock_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Right)
+			{
+				var hitTest = dgvStock.HitTest(e.X, e.Y);
+				if (hitTest.RowIndex >= 0)
+				{
+					dgvStock.ClearSelection();
+					dgvStock.Rows[hitTest.RowIndex].Selected = true;
+					dgvStock.CurrentCell = dgvStock.Rows[hitTest.RowIndex].Cells[0];
+				}
+			}
+		}
+
+		private void unitRequest_Click(object sender, EventArgs e)
+		{
+			if (dgvStock.SelectedRows.Count == 0) return;
+
+			string bloodType = dgvStock.SelectedRows[0].Cells["BloodType"].Value.ToString();
+			string quantity = ((ToolStripMenuItem)sender).Text.Split(' ')[0];
+			string hospital = UserLogs.Username;
+			string status = "Pending Approval";
+
+			sendBloodRequest(bloodType, quantity, hospital, status);
+		}
+
+		private void sendBloodRequest(string bloodType, string quantity, string hospital, string status)
+		{
+			bool success = addBloodRequest(bloodType, int.Parse(quantity), hospital, status);
+
+			if (success)
+			{
+				MessageBox.Show("Blood request sent successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
+				MessageBox.Show("Blood request failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		public bool addBloodRequest(string bloodType, int quantity, string hospital, string status)
+		{
+			string query = "INSERT INTO [Blood Requests] ([Blood Type], [Quantity], [Hospital], [Status]) VALUES (?, ?, ?, ?)";
+
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", bloodType),
+				new OleDbParameter("?", quantity),
+				new OleDbParameter("?", hospital),
+				new OleDbParameter("?", status)
+			};
+
+			return db.executeNonQuery(query, parameters);
+		}
+
 		public void roundControls()
 		{
 			pPost.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pPost.Width, pPost.Height, 20, 20));

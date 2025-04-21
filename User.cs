@@ -405,9 +405,6 @@ namespace Hemotica
 							 INNER JOIN (Appointments INNER JOIN Donors ON Appointments.[Donor Username] = Donors.Username) ON Hospitals.Username = Appointments.[Hospital Username]
 							 WHERE Appointments.Hospital = ?";
 
-			//OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
-			//return db.executeQuery(query, parametersAppointments);
-
 			List<OleDbParameter> parameters = new List<OleDbParameter> { new OleDbParameter("?", hospitalName) };
 
 			if (status != "All")
