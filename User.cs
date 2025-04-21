@@ -528,6 +528,14 @@ namespace Hemotica
 			return dt != null ? dt.Rows.Count : 0;
 		}
 
+		internal DataTable loadDonors(Database db)
+		{
+			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Birthdate, Age, [Contact Number], [Blood Type], Barangay, City, Province 
+							 FROM Donors WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
+
+			return db.executeQuery(query);
+		}
+
 		internal int totalHospitals(Database db)
 		{
 			string query = @"SELECT [Hospital ID] AS UserID, [Email Address], [Username], [Password], 'Hospital' AS UserType FROM Hospitals 
@@ -535,6 +543,45 @@ namespace Hemotica
 
 			DataTable dt = db.executeQuery(query, null);
 			return dt != null ? dt.Rows.Count : 0;
+		}
+
+		internal DataTable loadHospitals(Database db)
+		{
+			string query = @"SELECT [Hospital ID], [Hospital Name], [License Number], [Classification], [Operating Hours (Weekdays) Start], [Operating Hours (Weekdays) End], 
+							 [Operating Hours (Weekend) Start], [Operating Hours (Weekend) End], [Address], [Contact Number] FROM Hospitals
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
+
+			DataTable dt = db.executeQuery(query);
+
+			if (dt != null)
+			{
+				dt.Columns.Add("WeekdayStart", typeof(string));
+				dt.Columns.Add("WeekdayEnd", typeof(string));
+				dt.Columns.Add("WeekendStart", typeof(string));
+				dt.Columns.Add("WeekendEnd", typeof(string));
+
+				foreach (DataRow row in dt.Rows)
+				{
+					row["WeekdayStart"] = formatTime(row["Operating Hours (Weekdays) Start"]);
+					row["WeekdayEnd"] = formatTime(row["Operating Hours (Weekdays) End"]);
+					row["WeekendStart"] = formatTime(row["Operating Hours (Weekend) Start"]);
+					row["WeekendEnd"] = formatTime(row["Operating Hours (Weekend) End"]);
+				}
+			}
+
+			return dt;
+
+			//return db.executeQuery(query);
+		}
+
+		private string formatTime(object value)
+		{
+			if (value != DBNull.Value)
+			{
+				DateTime dt = Convert.ToDateTime(value);
+				return dt.ToString("hh:mm tt");
+			}
+			return string.Empty;
 		}
 
 		internal DataTable totalBloodBags(Database db)
@@ -554,11 +601,18 @@ namespace Hemotica
 		internal DataTable hospitalExtractions(Database db)
 		{
 			string query = @"SELECT Hospitals.[Hospital Name], Extraction.[Extraction Date] FROM Extraction 
-							 INNER JOIN Hospitals ON Hospitals.Username = Extraction.[Hospital Username] GROUP BY Hospitals.[Hospital Name], Extraction.[Extraction Date]";
+							 INNER JOIN Hospitals ON Hospitals.Username = Extraction.[Hospital Username]";
 
 			return db.executeQuery(query);
 		}
 
+		internal DataTable hospitalTransfusions(Database db)
+		{
+			string query = @"SELECT Hospitals.[Hospital Name], Transfusion.[Transfusion Date]FROM Transfusion
+							 INNER JOIN Hospitals ON Hospitals.Username = Transfusion.[Hospital Username]";
+
+			return db.executeQuery(query);
+		}
 	}
 
 	public class Patient : Donor

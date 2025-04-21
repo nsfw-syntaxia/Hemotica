@@ -646,7 +646,105 @@ namespace Hemotica
 
 		internal void adminTransfusions(PlotView plotView)
 		{
-			// do line graph for transfusions per hospital
+			DataTable dt = admin.hospitalTransfusions(db);
+
+			if (dt == null || dt.Rows.Count == 0)
+				return;
+
+			var hospitalMonthlyCounts = new Dictionary<string, Dictionary<DateTime, int>>();
+
+			foreach (DataRow row in dt.Rows)
+			{
+				string hospital = row["Hospital Name"].ToString().Trim();
+				if (!DateTime.TryParse(row["Transfusion Date"].ToString(), out DateTime transfusionDate))
+					continue;
+
+				DateTime monthKey = new DateTime(transfusionDate.Year, transfusionDate.Month, 1);
+
+				if (!hospitalMonthlyCounts.ContainsKey(hospital))
+					hospitalMonthlyCounts[hospital] = new Dictionary<DateTime, int>();
+
+				if (!hospitalMonthlyCounts[hospital].ContainsKey(monthKey))
+					hospitalMonthlyCounts[hospital][monthKey] = 0;
+
+				hospitalMonthlyCounts[hospital][monthKey]++;
+			}
+
+			if (hospitalMonthlyCounts.Count == 0)
+				return;
+
+			var allMonths = new SortedSet<DateTime>();
+			foreach (var hospital in hospitalMonthlyCounts.Values)
+				foreach (var month in hospital.Keys)
+					allMonths.Add(month);
+
+			DateTime startMonth = allMonths.Min;
+			DateTime endMonth = allMonths.Max;
+
+			List<DateTime> monthRange = new List<DateTime>();
+			DateTime current = startMonth;
+			while (current <= endMonth)
+			{
+				monthRange.Add(current);
+				current = current.AddMonths(1);
+			}
+
+			List<string> monthLabels = monthRange.Select(m => m.ToString("MM-yyyy")).ToList();
+
+			var plotModel = new PlotModel
+			{
+				Title = "BLOOD TRANSFUSIONS OF HOSPITALS PER MONTH",
+				TextColor = OxyColor.FromRgb(216, 85, 101),
+				PlotAreaBorderColor = OxyColor.FromRgb(216, 85, 101),
+				TitleFont = "Bahnschrift",
+				TitleFontSize = 20,
+				TitleFontWeight = FontWeights.Bold
+			};
+
+			Random rand = new Random();
+			foreach (var kvp in hospitalMonthlyCounts)
+			{
+				string hospitalName = kvp.Key;
+				var monthCounts = kvp.Value;
+
+				LineSeries series = new LineSeries
+				{
+					Title = hospitalName,
+					MarkerType = MarkerType.Circle,
+					StrokeThickness = 2,
+					Color = OxyColor.FromRgb((byte)rand.Next(50, 200), (byte)rand.Next(50, 200), (byte)rand.Next(50, 200))
+				};
+
+				for (int i = 0; i < monthRange.Count; i++)
+				{
+					DateTime month = monthRange[i];
+					int count = monthCounts.ContainsKey(month) ? monthCounts[month] : 0;
+					series.Points.Add(new DataPoint(i, count));
+				}
+
+				plotModel.Series.Add(series);
+			}
+
+			plotModel.Axes.Add(new OxyPlot.Axes.CategoryAxis
+			{
+				Position = OxyPlot.Axes.AxisPosition.Bottom,
+				ItemsSource = monthLabels,
+				Title = "Date",
+				Angle = 45,
+				AxislineColor = OxyColor.FromRgb(216, 85, 101),
+				TicklineColor = OxyColor.FromRgb(216, 85, 101)
+			});
+
+			plotModel.Axes.Add(new OxyPlot.Axes.LinearAxis
+			{
+				Position = OxyPlot.Axes.AxisPosition.Left,
+				Title = "Blood Bags Transfused",
+				AxislineColor = OxyColor.FromRgb(216, 85, 101),
+				TicklineColor = OxyColor.FromRgb(216, 85, 101),
+				Minimum = 0
+			});
+
+			plotView.Model = plotModel;
 		}
 	}
 }

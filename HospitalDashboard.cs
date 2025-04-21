@@ -178,7 +178,7 @@ namespace Hemotica
 					Label lblDonor = new Label
 					{
 						Text = donorName,
-						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
+						Font = new Font("Bahnschrift", 13F, FontStyle.Regular),
 						ForeColor = Color.FromArgb(216, 85, 101),
 						TextAlign = ContentAlignment.MiddleLeft,
 						AutoSize = false,
@@ -309,7 +309,7 @@ namespace Hemotica
 					Label lblInformation = new Label
 					{
 						Text = $"Blood Type: {bloodType}\nPriority: {priority}",
-						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
+						Font = new Font("Bahnschrift", 13F, FontStyle.Regular),
 						ForeColor = Color.FromArgb(216, 85, 101),
 						TextAlign = ContentAlignment.MiddleCenter,
 						AutoSize = false,

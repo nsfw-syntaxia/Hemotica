@@ -39,10 +39,12 @@
 			pOxyplot = new Panel();
 			pvOxyplot = new OxyPlot.WindowsForms.PlotView();
 			pDonors = new Panel();
+			lblVAD = new Label();
 			flpDonors = new FlowLayoutPanel();
 			pbxNoDonors = new PictureBox();
 			lblDonors = new Label();
 			pHospitals = new Panel();
+			lblVAH = new Label();
 			flpHospitals = new FlowLayoutPanel();
 			pbxNoHospitals = new PictureBox();
 			lblHospitals = new Label();
@@ -207,6 +209,7 @@
 			// 
 			pDonors.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			pDonors.BackColor = Color.FromArgb(216, 85, 101);
+			pDonors.Controls.Add(lblVAD);
 			pDonors.Controls.Add(flpDonors);
 			pDonors.Controls.Add(lblDonors);
 			pDonors.Location = new Point(8, 386);
@@ -214,6 +217,21 @@
 			pDonors.Padding = new Padding(7);
 			pDonors.Size = new Size(670, 247);
 			pDonors.TabIndex = 2;
+			// 
+			// lblVAD
+			// 
+			lblVAD.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblVAD.AutoSize = true;
+			lblVAD.Cursor = Cursors.Hand;
+			lblVAD.Font = new Font("Bahnschrift", 12F, FontStyle.Bold | FontStyle.Underline);
+			lblVAD.ForeColor = Color.FromArgb(253, 211, 211);
+			lblVAD.Location = new Point(593, 18);
+			lblVAD.Name = "lblVAD";
+			lblVAD.Padding = new Padding(0, 0, 0, 5);
+			lblVAD.Size = new Size(67, 24);
+			lblVAD.TabIndex = 17;
+			lblVAD.Text = "View All";
+			lblVAD.Click += lblVAD_Click;
 			// 
 			// flpDonors
 			// 
@@ -255,6 +273,7 @@
 			// 
 			pHospitals.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
 			pHospitals.BackColor = Color.FromArgb(216, 85, 101);
+			pHospitals.Controls.Add(lblVAH);
 			pHospitals.Controls.Add(flpHospitals);
 			pHospitals.Controls.Add(lblHospitals);
 			pHospitals.Location = new Point(684, 8);
@@ -262,6 +281,21 @@
 			pHospitals.Padding = new Padding(7);
 			pHospitals.Size = new Size(328, 310);
 			pHospitals.TabIndex = 3;
+			// 
+			// lblVAH
+			// 
+			lblVAH.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblVAH.AutoSize = true;
+			lblVAH.Cursor = Cursors.Hand;
+			lblVAH.Font = new Font("Bahnschrift", 12F, FontStyle.Bold | FontStyle.Underline);
+			lblVAH.ForeColor = Color.FromArgb(253, 211, 211);
+			lblVAH.Location = new Point(251, 18);
+			lblVAH.Name = "lblVAH";
+			lblVAH.Padding = new Padding(0, 0, 0, 5);
+			lblVAH.Size = new Size(67, 24);
+			lblVAH.TabIndex = 17;
+			lblVAH.Text = "View All";
+			lblVAH.Click += lblVAH_Click;
 			// 
 			// flpHospitals
 			// 
@@ -328,16 +362,17 @@
 			// 
 			// pDUsers
 			// 
-			pDUsers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
 			pDUsers.BackColor = Color.FromArgb(244, 180, 180);
 			pDUsers.Controls.Add(lblDNumber);
 			pDUsers.Controls.Add(lblDUsers);
 			pDUsers.Controls.Add(pbxDUsers);
+			pDUsers.Cursor = Cursors.Hand;
 			pDUsers.Location = new Point(6, 6);
 			pDUsers.Name = "pDUsers";
 			pDUsers.Padding = new Padding(5);
 			pDUsers.Size = new Size(296, 136);
 			pDUsers.TabIndex = 0;
+			pDUsers.Click += pDUsers_Click;
 			// 
 			// lblDNumber
 			// 
@@ -355,12 +390,12 @@
 			// 
 			lblDUsers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblDUsers.AutoSize = true;
-			lblDUsers.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+			lblDUsers.Font = new Font("Bahnschrift", 17F, FontStyle.Bold);
 			lblDUsers.ForeColor = Color.FromArgb(216, 85, 101);
-			lblDUsers.Location = new Point(174, 28);
+			lblDUsers.Location = new Point(167, 28);
 			lblDUsers.Name = "lblDUsers";
 			lblDUsers.Padding = new Padding(0, 3, 0, 0);
-			lblDUsers.Size = new Size(75, 27);
+			lblDUsers.Size = new Size(88, 31);
 			lblDUsers.TabIndex = 19;
 			lblDUsers.Text = "Donors";
 			lblDUsers.TextAlign = ContentAlignment.MiddleCenter;
@@ -374,6 +409,7 @@
 			pbxDUsers.Size = new Size(120, 120);
 			pbxDUsers.TabIndex = 0;
 			pbxDUsers.TabStop = false;
+			pbxDUsers.Click += pbxDUsers_Click;
 			// 
 			// pHUsers
 			// 
@@ -382,11 +418,13 @@
 			pHUsers.Controls.Add(lblHNumber);
 			pHUsers.Controls.Add(lblHUsers);
 			pHUsers.Controls.Add(pbxHUsers);
+			pHUsers.Cursor = Cursors.Hand;
 			pHUsers.Location = new Point(6, 148);
 			pHUsers.Name = "pHUsers";
 			pHUsers.Padding = new Padding(5);
 			pHUsers.Size = new Size(296, 136);
 			pHUsers.TabIndex = 1;
+			pHUsers.Click += pHUsers_Click;
 			// 
 			// lblHNumber
 			// 
@@ -404,12 +442,12 @@
 			// 
 			lblHUsers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblHUsers.AutoSize = true;
-			lblHUsers.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+			lblHUsers.Font = new Font("Bahnschrift", 17F, FontStyle.Bold);
 			lblHUsers.ForeColor = Color.FromArgb(216, 85, 101);
-			lblHUsers.Location = new Point(164, 28);
+			lblHUsers.Location = new Point(156, 28);
 			lblHUsers.Name = "lblHUsers";
 			lblHUsers.Padding = new Padding(0, 3, 0, 0);
-			lblHUsers.Size = new Size(95, 27);
+			lblHUsers.Size = new Size(111, 31);
 			lblHUsers.TabIndex = 20;
 			lblHUsers.Text = "Hospitals";
 			lblHUsers.TextAlign = ContentAlignment.MiddleCenter;
@@ -423,6 +461,7 @@
 			pbxHUsers.Size = new Size(120, 120);
 			pbxHUsers.TabIndex = 1;
 			pbxHUsers.TabStop = false;
+			pbxHUsers.Click += pbxHUsers_Click;
 			// 
 			// AdminDashboard
 			// 
@@ -489,5 +528,7 @@
 		private Panel pAnalytics;
 		private Panel pOxyplot;
 		private OxyPlot.WindowsForms.PlotView pvOxyplot;
+		private Label lblVAH;
+		private Label lblVAD;
 	}
 }

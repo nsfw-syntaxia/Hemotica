@@ -179,5 +179,30 @@ namespace Hemotica
 			AdminSettings adminSettings = new AdminSettings();
 			adminSettings.ShowDialog();
 		}
+
+		private void btnManagement_Click(object sender, EventArgs e)
+		{
+			showManagementDonors();
+		}
+
+		internal void showManagementDonors()
+		{
+			lblHeader.Text = "Management";
+			flpDashboard.Controls.Clear();
+			AdminRecords adminRecords = new AdminRecords();
+			flpDashboard.Controls.Add(adminRecords);
+			adminRecords.donors();
+			adjustLayout();
+		}
+
+		internal void showManagementHospitals()
+		{
+			lblHeader.Text = "Management";
+			flpDashboard.Controls.Clear();
+			AdminRecords adminRecords = new AdminRecords();
+			flpDashboard.Controls.Add(adminRecords);
+			adminRecords.hospitals();
+			adjustLayout();
+		}
 	}
 }
