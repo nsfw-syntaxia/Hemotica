@@ -3,6 +3,9 @@ using System.Data;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Data.OleDb;
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.WindowsForms;
 
 namespace Hemotica
 {
@@ -35,7 +38,7 @@ namespace Hemotica
 			totalHospitals();
 
 			analyticsButtons.Add(btnBGAnalytics);
-			analyticsButtons.Add(btnPAnalytics);
+			analyticsButtons.Add(btnDAnalytics);
 			analyticsButtons.Add(btnEAnalytics);
 			analyticsButtons.Add(btnTAnalytics);
 
@@ -395,16 +398,16 @@ namespace Hemotica
 			}
 
 			clickedButton.BackColor = Color.FromArgb(216, 85, 101);
-			clickedButton.ForeColor = Color.White;
+			clickedButton.ForeColor = Color.FromArgb(252, 228, 228);
 			selectedButton = clickedButton;
 
 			if (clickedButton == btnBGAnalytics)
 			{
-				analytics.displayBloodGroups(pvOxyplot);
+				analytics.adminBloodGroups(pvOxyplot);
 			}
-			else if (clickedButton == btnPAnalytics)
+			else if (clickedButton == btnDAnalytics)
 			{
-				
+				analytics.adminDonors(pvOxyplot);
 			}
 			else if (clickedButton == btnEAnalytics)
 			{
@@ -421,7 +424,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.displayBloodGroups(pvOxyplot);
+			analytics.adminBloodGroups(pvOxyplot);
 		}
 
 		private void btnPAnalytics_Click(object sender, EventArgs e)
@@ -429,7 +432,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.displayPatients(pvOxyplot);
+			analytics.adminDonors(pvOxyplot);
 		}
 
 		private void btnEAnalytics_Click(object sender, EventArgs e)
@@ -437,7 +440,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.displayExtractions(pvOxyplot);
+			//analytics.displayExtractions(pvOxyplot);
 		}
 
 		private void btnTAnalytics_Click(object sender, EventArgs e)
@@ -445,7 +448,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.displayTransfusions(pvOxyplot);
+			//analytics.displayTransfusions(pvOxyplot);
 		}
 	}
 }

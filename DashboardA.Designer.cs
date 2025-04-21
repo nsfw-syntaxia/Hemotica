@@ -37,7 +37,6 @@
 			pMenu = new Panel();
 			btnMenu = new Button();
 			pBlank = new Panel();
-			pDashboard = new Panel();
 			btnDashboard = new Button();
 			pSettings = new Panel();
 			btnSetting = new Button();
@@ -49,12 +48,16 @@
 			lblHeader = new Label();
 			lblUserID = new Label();
 			flpDashboard = new FlowLayoutPanel();
+			pDashboard = new Panel();
+			pManagement = new Panel();
+			btnManagement = new Button();
 			flpSideBar.SuspendLayout();
 			pMenu.SuspendLayout();
-			pDashboard.SuspendLayout();
 			pSettings.SuspendLayout();
 			pLogout.SuspendLayout();
 			pHeader.SuspendLayout();
+			pDashboard.SuspendLayout();
+			pManagement.SuspendLayout();
 			SuspendLayout();
 			// 
 			// btnClose
@@ -109,6 +112,7 @@
 			flpSideBar.Controls.Add(pMenu);
 			flpSideBar.Controls.Add(pBlank);
 			flpSideBar.Controls.Add(pDashboard);
+			flpSideBar.Controls.Add(pManagement);
 			flpSideBar.Controls.Add(pSettings);
 			flpSideBar.Controls.Add(pLogout);
 			flpSideBar.Dock = DockStyle.Left;
@@ -154,14 +158,6 @@
 			pBlank.Size = new Size(219, 88);
 			pBlank.TabIndex = 2;
 			// 
-			// pDashboard
-			// 
-			pDashboard.Controls.Add(btnDashboard);
-			pDashboard.Location = new Point(3, 163);
-			pDashboard.Name = "pDashboard";
-			pDashboard.Size = new Size(219, 60);
-			pDashboard.TabIndex = 1;
-			// 
 			// btnDashboard
 			// 
 			btnDashboard.FlatAppearance.BorderSize = 0;
@@ -185,7 +181,7 @@
 			// pSettings
 			// 
 			pSettings.Controls.Add(btnSetting);
-			pSettings.Location = new Point(3, 229);
+			pSettings.Location = new Point(3, 295);
 			pSettings.Name = "pSettings";
 			pSettings.Size = new Size(219, 60);
 			pSettings.TabIndex = 5;
@@ -213,7 +209,7 @@
 			// pLogout
 			// 
 			pLogout.Controls.Add(btnLogout);
-			pLogout.Location = new Point(3, 295);
+			pLogout.Location = new Point(3, 361);
 			pLogout.Name = "pLogout";
 			pLogout.Size = new Size(219, 60);
 			pLogout.TabIndex = 6;
@@ -301,6 +297,41 @@
 			flpDashboard.Size = new Size(1020, 641);
 			flpDashboard.TabIndex = 10;
 			// 
+			// pDashboard
+			// 
+			pDashboard.Controls.Add(btnDashboard);
+			pDashboard.Location = new Point(3, 163);
+			pDashboard.Name = "pDashboard";
+			pDashboard.Size = new Size(219, 60);
+			pDashboard.TabIndex = 1;
+			// 
+			// pManagement
+			// 
+			pManagement.Controls.Add(btnManagement);
+			pManagement.Location = new Point(3, 229);
+			pManagement.Name = "pManagement";
+			pManagement.Size = new Size(219, 60);
+			pManagement.TabIndex = 7;
+			// 
+			// btnManagement
+			// 
+			btnManagement.FlatAppearance.BorderSize = 0;
+			btnManagement.FlatAppearance.MouseDownBackColor = Color.FromArgb(138, 50, 64);
+			btnManagement.FlatAppearance.MouseOverBackColor = Color.FromArgb(176, 64, 80);
+			btnManagement.FlatStyle = FlatStyle.Flat;
+			btnManagement.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+			btnManagement.ForeColor = Color.FromArgb(253, 211, 211);
+			btnManagement.Image = (Image)resources.GetObject("btnManagement.Image");
+			btnManagement.ImageAlign = ContentAlignment.MiddleLeft;
+			btnManagement.Location = new Point(-16, -13);
+			btnManagement.Name = "btnManagement";
+			btnManagement.Padding = new Padding(20, 5, 5, 5);
+			btnManagement.Size = new Size(248, 86);
+			btnManagement.TabIndex = 13;
+			btnManagement.Text = "            MANAGEMENT";
+			btnManagement.TextAlign = ContentAlignment.MiddleLeft;
+			btnManagement.UseVisualStyleBackColor = true;
+			// 
 			// DashboardA
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -324,11 +355,12 @@
 			Resize += DashboardA_Resize;
 			flpSideBar.ResumeLayout(false);
 			pMenu.ResumeLayout(false);
-			pDashboard.ResumeLayout(false);
 			pSettings.ResumeLayout(false);
 			pLogout.ResumeLayout(false);
 			pHeader.ResumeLayout(false);
 			pHeader.PerformLayout();
+			pDashboard.ResumeLayout(false);
+			pManagement.ResumeLayout(false);
 			ResumeLayout(false);
 		}
 
@@ -338,7 +370,6 @@
         private Button btnMinimize;
         private FlowLayoutPanel flpSideBar;
         private Panel pMenu;
-        private Panel pDashboard;
         private Panel pSettings;
         private Button btnDashboard;
         private Button btnSetting;
@@ -352,5 +383,8 @@
         private FlowLayoutPanel flpDashboard;
         private Label lblUserID;
 		private Label lblUsername;
+		private Panel pDashboard;
+		private Panel pManagement;
+		private Button btnManagement;
 	}
 }

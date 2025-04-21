@@ -34,7 +34,7 @@
 			tlpAnalytics = new TableLayoutPanel();
 			btnTAnalytics = new Button();
 			btnEAnalytics = new Button();
-			btnPAnalytics = new Button();
+			btnDAnalytics = new Button();
 			btnBGAnalytics = new Button();
 			pOxyplot = new Panel();
 			pvOxyplot = new OxyPlot.WindowsForms.PlotView();
@@ -106,7 +106,7 @@
 			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
 			tlpAnalytics.Controls.Add(btnTAnalytics, 3, 0);
 			tlpAnalytics.Controls.Add(btnEAnalytics, 2, 0);
-			tlpAnalytics.Controls.Add(btnPAnalytics, 1, 0);
+			tlpAnalytics.Controls.Add(btnDAnalytics, 1, 0);
 			tlpAnalytics.Controls.Add(btnBGAnalytics, 0, 0);
 			tlpAnalytics.Controls.Add(pOxyplot, 0, 1);
 			tlpAnalytics.Location = new Point(4, 4);
@@ -147,20 +147,20 @@
 			btnEAnalytics.UseVisualStyleBackColor = true;
 			btnEAnalytics.Click += btnEAnalytics_Click;
 			// 
-			// btnPAnalytics
+			// btnDAnalytics
 			// 
-			btnPAnalytics.Dock = DockStyle.Fill;
-			btnPAnalytics.FlatAppearance.BorderSize = 0;
-			btnPAnalytics.FlatStyle = FlatStyle.Flat;
-			btnPAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
-			btnPAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
-			btnPAnalytics.Location = new Point(163, 3);
-			btnPAnalytics.Name = "btnPAnalytics";
-			btnPAnalytics.Size = new Size(154, 28);
-			btnPAnalytics.TabIndex = 1;
-			btnPAnalytics.Text = "PATIENTS";
-			btnPAnalytics.UseVisualStyleBackColor = true;
-			btnPAnalytics.Click += btnPAnalytics_Click;
+			btnDAnalytics.Dock = DockStyle.Fill;
+			btnDAnalytics.FlatAppearance.BorderSize = 0;
+			btnDAnalytics.FlatStyle = FlatStyle.Flat;
+			btnDAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			btnDAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
+			btnDAnalytics.Location = new Point(163, 3);
+			btnDAnalytics.Name = "btnDAnalytics";
+			btnDAnalytics.Size = new Size(154, 28);
+			btnDAnalytics.TabIndex = 1;
+			btnDAnalytics.Text = "DONORS";
+			btnDAnalytics.UseVisualStyleBackColor = true;
+			btnDAnalytics.Click += btnPAnalytics_Click;
 			// 
 			// btnBGAnalytics
 			// 
@@ -247,9 +247,9 @@
 			lblDonors.Location = new Point(0, 7);
 			lblDonors.Name = "lblDonors";
 			lblDonors.Padding = new Padding(5, 0, 0, 5);
-			lblDonors.Size = new Size(128, 38);
+			lblDonors.Size = new Size(109, 38);
 			lblDonors.TabIndex = 13;
-			lblDonors.Text = "Donors >";
+			lblDonors.Text = "Donors";
 			// 
 			// pHospitals
 			// 
@@ -296,9 +296,9 @@
 			lblHospitals.Location = new Point(0, 7);
 			lblHospitals.Name = "lblHospitals";
 			lblHospitals.Padding = new Padding(5, 0, 0, 5);
-			lblHospitals.Size = new Size(153, 38);
+			lblHospitals.Size = new Size(134, 38);
 			lblHospitals.TabIndex = 15;
-			lblHospitals.Text = "Hospitals >";
+			lblHospitals.Text = "Hospitals";
 			// 
 			// pUsers
 			// 
@@ -483,7 +483,7 @@
 		private Label lblHNumber;
 		private TableLayoutPanel tlpAnalytics;
 		private Button btnBGAnalytics;
-		private Button btnPAnalytics;
+		private Button btnDAnalytics;
 		private Button btnEAnalytics;
 		private Button btnTAnalytics;
 		private Panel pAnalytics;

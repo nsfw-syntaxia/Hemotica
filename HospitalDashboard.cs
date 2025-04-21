@@ -308,13 +308,13 @@ namespace Hemotica
 
 					Label lblInformation = new Label
 					{
-						Text = $"{bloodType} (Priority: {priority})",
+						Text = $"Blood Type: {bloodType}\nPriority: {priority}",
 						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
 						ForeColor = Color.FromArgb(216, 85, 101),
 						TextAlign = ContentAlignment.MiddleCenter,
 						AutoSize = false,
 						Width = panel.Width - 20,
-						Height = 30
+						Height = 50
 					};
 
 					int gap = 5;

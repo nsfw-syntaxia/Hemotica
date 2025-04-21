@@ -141,6 +141,20 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnManagement.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAHhSURBVGhD7ZixThtBFEWXRDREIn3oU1BH+QT4AiREk0h0
+        pIL0SZMgfoKCElNT0iArTVYBcS8gXCY/EKVIFN6IQc94wX5emV1CdmaludKRrHnWzH3eO7O7zrKkpKSk
+        pKQK8sfHzxz5TsgdB3T+B4O513Qtu/4/yR8dzQnQc6RvAgEu/Pn5C+vjQfLeP3Fk1y7SAF1d2/qpLUdu
+        lEzeFOvWTy35s7OXQv4umbgRBPjjyXnrq5L60QEO7aQB+OI7nafW371y5PuSyUKxYf1NVOjoWGpFKaLo
+        WKpFKbLoWCZHKbboWCZGKeLoWMqjFHl0LKNR0ug4gA7Ytw9YEaIeqZ7vGsjzmZGOWqBHf2INKu/9lAOW
+        hdwuuWRR0fdIrtxuZJ/n0/1cjW+UuAEO1LuePh/Hiu3hQybkj5JCKxDyeybAlS20BfWuERorNIGQMnhV
+        7Q4+16oXBGlAgF+XJyevilPwknytY1Xrw4RpgPxUmCsk5Oeq9WGCNOCAVWtQxyrXhwjSgAC7JQb3qtaH
+        CdKAIsCm/nmlCLBVt14QrIHHQu8Df+1gW1Dvmq1vttAivmbu9HSppBA9ehcWYOFmh5NvhfxpvxQrA69v
+        Ro4pn+fPBVjsX5GI0V/d93qzI+aTkpKSkh6qazIuD0kJHLrVAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnMenu.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -167,7 +181,7 @@
   <data name="btnSetting.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAA3dJREFUaEPtmUtrFEEUhYNv3fgCdaXxJwi68rFTf0lICAkkS8UYdBXBF7p07yOv
+        DQAACw0B7QfALAAAA3dJREFUaEPtmUtrFEEUhYNv3fgCdaXxJwi68rFTf0lICAkkS8UYdBXBF7p07yOv
         vxAIybgZyNjndgYSISvRRPGxM1MlJbftiT23qrurR5KewXxwQDp9T51pu7qrbvf07LJL52Cq1SMKuK+I
         3isirYkMi/8dHQPumUrlsKzrCDi8Bt42Q2dosSN/BF95R9g0jcv60uFbxBHUKQWsyvrSSd7zeeJzZX2p
         GKIDMmSeuEb6bCtmbm6fPNakEYZXZcA8NYDL0qeJWVk5KI+1hQmC4wp4roDPPKgCPipggo8nzjmtiQIZ

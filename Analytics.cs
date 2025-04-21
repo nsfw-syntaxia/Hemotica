@@ -13,6 +13,7 @@ namespace Hemotica
 	{
 		private Database db = new Database();
 		private Hospital hospital = new Hospital();
+		private Admin admin = new Admin();
 		private Patient patient = new Patient();
 
 		public void displayBloodGroups(PlotView plotView)
@@ -52,7 +53,8 @@ namespace Hemotica
 				TitleFontSize = 20,
 				TitleFontWeight = FontWeights.Bold,
 				DefaultFont = "Bahnschrift",
-				DefaultFontSize = 15
+				DefaultFontSize = 15,
+				TitlePadding = 20
 			};
 
 			var pieSeries = new PieSeries
@@ -136,7 +138,7 @@ namespace Hemotica
 				TitleFontSize = 20,
 				TitleFontWeight = FontWeights.Bold,
 				DefaultFont = "Bahnschrift",
-				DefaultFontSize = 15
+				DefaultFontSize = 12
 			};
 
 			var categoryAxis = new CategoryAxis
@@ -357,6 +359,196 @@ namespace Hemotica
 			});
 
 			plotView.Model = plotModel;
+		}
+
+		public void adminBloodGroups(PlotView plotView)
+		{
+			DataTable dt = admin.totalBloodBags(db);
+
+			if (dt == null || dt.Rows.Count == 0)
+				return;
+
+			var bloodTypeCounts = new Dictionary<string, int>();
+
+			foreach (DataRow row in dt.Rows)
+			{
+				string status = row["Status"].ToString();
+				if (!status.Equals("Available", StringComparison.OrdinalIgnoreCase) &&
+					!status.Equals("Used", StringComparison.OrdinalIgnoreCase) &&
+					!status.Equals("Expired", StringComparison.OrdinalIgnoreCase))
+					continue;
+
+				string bloodType = row["Blood Type"].ToString();
+
+				if (!bloodTypeCounts.ContainsKey(bloodType))
+					bloodTypeCounts[bloodType] = 0;
+
+				bloodTypeCounts[bloodType]++;
+			}
+
+			if (bloodTypeCounts.Count == 0)
+				return;
+
+			var model = new PlotModel
+			{
+				Title = "TOTAL EXTRACTED UNITS BY BLOOD GROUP",
+				IsLegendVisible = true,
+				TextColor = OxyColor.FromRgb(216, 85, 101),
+				PlotAreaBorderColor = OxyColors.Transparent,
+
+				TitleFont = "Bahnschrift",
+				TitleFontSize = 20,
+				TitleFontWeight = FontWeights.Bold,
+				DefaultFont = "Bahnschrift",
+				DefaultFontSize = 15,
+				TitlePadding = 20
+			};
+
+			var pieSeries = new PieSeries
+			{
+				StrokeThickness = 1.0,
+				Stroke = OxyColor.FromRgb(216, 85, 101),
+				InsideLabelPosition = 0.7,
+				AngleSpan = 360,
+				StartAngle = 0,
+				InsideLabelColor = OxyColor.FromRgb(216, 85, 101),
+				OutsideLabelFormat = "{1} ({0})",
+				InsideLabelFormat = "{0}",
+
+				Font = "Bahnschrift",
+				FontSize = 15,
+				FontWeight = FontWeights.Bold
+			};
+
+			var bloodTypeColors = new Dictionary<string, OxyColor>
+			{
+				{ "A+", OxyColor.FromRgb(236, 124, 132) },
+				{ "A-", OxyColor.FromRgb(244, 148, 156) },
+				{ "B+", OxyColor.FromRgb(244, 180, 180) },
+				{ "B-", OxyColor.FromRgb(252, 212, 212) },
+				{ "AB+", OxyColor.FromRgb(252, 196, 196) },
+				{ "AB-", OxyColor.FromRgb(252, 204, 204) },
+				{ "O+", OxyColor.FromRgb(252, 220, 214) },
+				{ "O-", OxyColor.FromRgb(252, 208, 224) }
+			};
+
+			foreach (var kvp in bloodTypeCounts)
+			{
+				OxyColor color = bloodTypeColors.ContainsKey(kvp.Key)
+					? bloodTypeColors[kvp.Key]
+					: OxyColors.Gray;
+
+				pieSeries.Slices.Add(new PieSlice(kvp.Key, kvp.Value) { Fill = color });
+			}
+
+			model.Series.Add(pieSeries);
+			plotView.Model = model;
+		}
+
+		public void adminDonors(PlotView plotView)
+		{
+			DataTable dt = admin.donorsBarangay(db);
+
+			if (dt == null || dt.Rows.Count == 0)
+				return;
+
+			List<string> barangays = new List<string>();
+			List<int> donorCounts = new List<int>();
+
+			foreach (DataRow row in dt.Rows)
+			{
+				string barangay = row["Barangay"].ToString();
+				string city = row["City"].ToString();
+				int count = Convert.ToInt32(row["TotalDonors"]);
+
+				string label = $"{barangay}, {city}";
+				barangays.Add(label);
+				donorCounts.Add(count);
+			}
+
+			OxyColor[] colors =
+			{
+				OxyColor.FromRgb(244, 148, 156),
+				OxyColor.FromRgb(244, 180, 180),
+				OxyColor.FromRgb(252, 196, 196),
+				OxyColor.FromRgb(252, 212, 212),
+				OxyColor.FromRgb(252, 208, 224)
+			};
+
+			var model = new PlotModel
+			{
+				Title = "TOTAL DONORS PER BARANGAY",
+				TextColor = OxyColor.FromRgb(216, 85, 101),
+				PlotAreaBorderColor = OxyColor.FromRgb(216, 85, 101),
+
+				TitleFont = "Bahnschrift",
+				TitleFontSize = 20,
+				TitleFontWeight = FontWeights.Bold,
+				DefaultFont = "Bahnschrift",
+				DefaultFontSize = 12
+			};
+
+			var categoryAxis = new CategoryAxis
+			{
+				Position = AxisPosition.Left,
+				Title = "BARANGAY",
+				TitleColor = OxyColor.FromRgb(216, 85, 101),
+				TextColor = OxyColor.FromRgb(216, 85, 101),
+				ItemsSource = barangays,
+				AxislineColor = OxyColor.FromRgb(216, 85, 101),
+				TicklineColor = OxyColor.FromRgb(216, 85, 101),
+				GapWidth = 0.5,
+				IsTickCentered = true
+			};
+
+			var valueAxis = new LinearAxis
+			{
+				Position = AxisPosition.Bottom,
+				Title = "NUMBER OF DONORS",
+				TitleColor = OxyColor.FromRgb(216, 85, 101),
+				TextColor = OxyColor.FromRgb(216, 85, 101),
+				AxislineColor = OxyColor.FromRgb(216, 85, 101),
+				TicklineColor = OxyColor.FromRgb(216, 85, 101),
+				AbsoluteMinimum = 0,
+				MinimumPadding = 0,
+				MajorStep = 1,
+				MinorStep = 1
+			};
+
+			var series = new BarSeries
+			{
+				LabelPlacement = LabelPlacement.Inside,
+				LabelFormatString = "{0}",
+				StrokeThickness = 1.0,
+				StrokeColor = OxyColor.FromRgb(216, 85, 101),
+				BarWidth = 1.0,
+				LabelMargin = 5
+			};
+
+			for (int i = 0; i < barangays.Count; i++)
+			{
+				var bar = new BarItem(donorCounts[i])
+				{
+					Value = donorCounts[i],
+					Color = colors[i % colors.Length]
+				};
+				series.Items.Add(bar);
+			}
+
+			model.Axes.Add(categoryAxis);
+			model.Axes.Add(valueAxis);
+			model.Series.Add(series);
+			plotView.Model = model;
+		}
+
+		internal void adminExtractions(PlotView plotView)
+		{
+
+		}
+
+		internal void adminTransfusions(PlotView plotView)
+		{
+
 		}
 	}
 }

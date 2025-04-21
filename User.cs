@@ -536,6 +536,20 @@ namespace Hemotica
 			DataTable dt = db.executeQuery(query, null);
 			return dt != null ? dt.Rows.Count : 0;
 		}
+
+		internal DataTable totalBloodBags(Database db)
+		{
+			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction";
+			return db.executeQuery(query);
+		}
+
+		internal DataTable donorsBarangay(Database db)
+		{
+			string query = @"SELECT Barangay, City, COUNT(*) AS TotalDonors FROM Donors WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' 
+							 AND [Password] IS NOT NULL AND [Password] <> '' GROUP BY Barangay, City";
+
+			return db.executeQuery(query);
+		}
 	}
 
 	public class Patient : Donor
