@@ -411,7 +411,7 @@ namespace Hemotica
 			}
 			else if (clickedButton == btnEAnalytics)
 			{
-				//
+				analytics.adminExtractions(pvOxyplot);
 			}
 			else if (clickedButton == btnTAnalytics)
 			{
@@ -440,7 +440,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			//analytics.displayExtractions(pvOxyplot);
+			analytics.adminExtractions(pvOxyplot);
 		}
 
 		private void btnTAnalytics_Click(object sender, EventArgs e)

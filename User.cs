@@ -550,6 +550,15 @@ namespace Hemotica
 
 			return db.executeQuery(query);
 		}
+
+		internal DataTable hospitalExtractions(Database db)
+		{
+			string query = @"SELECT Hospitals.[Hospital Name], Extraction.[Extraction Date] FROM Extraction 
+							 INNER JOIN Hospitals ON Hospitals.Username = Extraction.[Hospital Username] GROUP BY Hospitals.[Hospital Name], Extraction.[Extraction Date]";
+
+			return db.executeQuery(query);
+		}
+
 	}
 
 	public class Patient : Donor
