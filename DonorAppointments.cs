@@ -24,6 +24,8 @@ namespace Hemotica
 
 		private void DonorAppointments_Load(object sender, EventArgs e)
 		{
+			flpAppointments.WrapContents = false;
+
 			roundControls();
 			loadAppointments();
 		}
@@ -56,15 +58,18 @@ namespace Hemotica
 		private void DonorAppointments_Resize(object sender, EventArgs e)
 		{
 			roundControls();
+			resizePanels();
 		}
 
 		private void loadAppointments()
 		{
-			string query = @"SELECT [Appointment Date], [Hospital], [Status] FROM Appointments WHERE [Donor Username] = ? ORDER BY [Appointment Date] ASC";
+			string query = @"SELECT [Appointment Date], [Hospital], [Status] FROM Appointments WHERE [Donor Username] = ? ORDER BY [Appointment Date] DESC";
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable appointments = db.executeQuery(query, parameters);
 
-			if (appointments != null)
+			flpAppointments.Controls.Clear();
+
+			if (appointments != null && appointments.Rows.Count > 0)
 			{
 				foreach (DataRow row in appointments.Rows)
 				{
@@ -72,11 +77,13 @@ namespace Hemotica
 					string hospitalName = row["Hospital"].ToString();
 					string status = row["Status"].ToString();
 
+					int panelWidth = 1005;
+
 					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
 					{
 						BackColor = Color.FromArgb(244, 180, 180),
 						Padding = new Padding(15),
-						Size = new Size(1005, 165)
+						Size = new Size(panelWidth, 165)
 					};
 
 					Label lblDate = new Label
@@ -162,13 +169,45 @@ namespace Hemotica
 					}
 					else
 					{
-						panel.Size = new Size(1005, lblStatus.Bottom + 30);
+						panel.Size = new Size(panelWidth, lblStatus.Bottom + 30);
 					}
 
 					panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 
 					flpAppointments.Controls.Add(panel);
 				}
+
+				if (flpAppointments.VerticalScroll.Visible)
+				{
+					foreach (Control panel in flpAppointments.Controls)
+					{
+						panel.Width = flpAppointments.Width - 25;
+						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+					}
+				}
+			}
+			else
+			{
+				showpNoAppointments();
+			}
+		}
+
+		private void showpNoAppointments()
+		{
+			if (!flpAppointments.Controls.Contains(pbxNoAppointments))
+			{
+				flpAppointments.Controls.Add(pbxNoAppointments);
+			}
+
+			pbxNoAppointments.Visible = true;
+		}
+
+		private void resizePanels()
+		{
+			foreach (Control panel in flpAppointments.Controls)
+			{
+				panel.Width = flpAppointments.Width - (flpAppointments.VerticalScroll.Visible ? 24 : 7);
+				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
 			}
 		}
 
@@ -176,7 +215,7 @@ namespace Hemotica
 		{
 			DateTime dayDate = DateTime.Now;
 
-			Appointments appointments = new Appointments(dayDate);
+			Appointments appointments = new Appointments(dayDate, "");
 			appointments.ShowDialog();
 		}
 	}

@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Hemotica
 {
@@ -166,6 +167,29 @@ namespace Hemotica
 			}
 
 			return $"donor_walkin{nextNumber}";
+		}
+
+		internal bool duplicateDonor(Database db)
+		{
+			string hospitalUsername = UserLogs.Username;
+
+			string query = @"SELECT COUNT(*) FROM Donors WHERE [First Name] = ? AND [Last Name] = ? AND [Birthdate] = ? AND [Blood Type] = ? AND ([Hospital] = ? OR [Hospital] = 'All')";
+
+			OleDbParameter[] checkParameters =
+			{
+				new OleDbParameter("?", FirstName),
+				new OleDbParameter("?", LastName),
+				new OleDbParameter("?", Birthdate),
+				new OleDbParameter("?", BloodType),
+				new OleDbParameter("?", hospitalUsername)
+			};
+
+			object result = db.executeScalar(query, checkParameters);
+			if (result != null && Convert.ToInt32(result) > 0)
+			{
+				return true;
+			}
+			return false;
 		}
 
 		internal bool addDonor(Database db)
@@ -376,9 +400,9 @@ namespace Hemotica
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
-			string query = @"SELECT Appointments.[Appointment ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Birthdate, Donors.Age, 
-							 Donors.[Blood Type], Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
-							 INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital
+			string query = @"SELECT Appointments.[Appointment ID], Donors.[First Name] & ' ' & Donors.[Middle Name] & ' ' & Donors.[Last Name] AS [Donor Name], Donors.Gender, 
+							 Donors.Birthdate, Donors.Age, Donors.[Blood Type], Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
+							 INNER JOIN (Appointments INNER JOIN Donors ON Appointments.[Donor Username] = Donors.Username) ON Hospitals.Username = Appointments.[Hospital Username]
 							 WHERE Appointments.Hospital = ? ORDER BY Appointments.[Appointment Date] ASC";
 
 			OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
@@ -391,19 +415,35 @@ namespace Hemotica
 			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable hospitalData = db.executeQuery(queryHospital, parametersHospital);
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
-
-			string query = @"SELECT Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, Donors.Birthdate, Donors.Age, Donors.[Blood Type], 
-							 Extraction.[Extraction Date] FROM Donors INNER JOIN (Hospitals INNER JOIN Extraction ON Hospitals.Username = Extraction.[Hospital Username]) ON 
-							 Donors.Username = Extraction.[Donor Username] WHERE Extraction.Hospital = ? GROUP BY Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], 
-							 Donors.[Last Name], Donors.Gender, Donors.Birthdate, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] ORDER BY Extraction.[Extraction Date] ASC";
+			
+			string query = @"SELECT Extraction.[Extraction ID], Donors.[First Name] & ' ' & Donors.[Middle Name] & ' ' & Donors.[Last Name] AS [Donor Name], Donors.Gender, 
+							 Donors.Birthdate, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] FROM Donors
+							 INNER JOIN (Hospitals INNER JOIN Extraction ON Hospitals.Username = Extraction.[Hospital Username]) ON Donors.Username = Extraction.[Donor Username] 
+							 WHERE Extraction.Hospital = ? GROUP BY Extraction.[Extraction ID], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name], Donors.Gender, 
+							 Donors.Birthdate, Donors.Age, Donors.[Blood Type], Extraction.[Extraction Date] ORDER BY Extraction.[Extraction Date] ASC";
 
 			OleDbParameter[] parametersExtraction = { new OleDbParameter("?", hospitalName) };
 			return db.executeQuery(query, parametersExtraction);
 		}
 
+		internal DataTable loadTransfusion(Database db)
+		{
+			string query = @"SELECT Transfusion.[Transfusion ID], Patients.[First Name] & ' ' & Patients.[Middle Name] & ' ' & Patients.[Last Name] AS [Patient Name], Patients.Gender, 
+							 Patients.Birthdate, Patients.Age, Patients.[Contact Number], Patients.Barangay & ', ' & Patients.City & ', ' & Patients.Province AS [Address], 
+							 Transfusion.[Blood Type], Transfusion.Quantity, 
+							 Transfusion.[Transfusion Date], Physicians.[First Name] & ' ' & Physicians.[Middle Name] & ' ' & Physicians.[Last Name] AS [Physician Name], 
+							 Physicians.[License Number] FROM Physicians 
+							 INNER JOIN (Patients INNER JOIN Transfusion ON Patients.[Patient ID] = Transfusion.[Patient ID]) ON Physicians.[Physician ID] = Transfusion.[Physician ID]
+							 WHERE Transfusion.[Hospital Username] = ? ORDER BY Transfusion.[Transfusion Date] ASC";
+
+			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			return db.executeQuery(query, parameters);
+		}
+
 		internal DataTable loadBarcodes(Database db)
 		{
-			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction WHERE [Hospital Username] = ?";
+			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction WHERE [Hospital Username] = ? 
+							 ORDER BY [Extraction Date] ASC";
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			return db.executeQuery(query, parameters);
 		}
@@ -453,7 +493,49 @@ namespace Hemotica
 
 	public class Admin : User
 	{
-		//
+		internal bool updatePassword(Database db, string password)
+		{
+			string hashedPassword = db.hashPassword(password);
+
+			string query = "UPDATE Admin SET [Password] = ? WHERE [Username] = ?";
+
+			using (OleDbConnection conn = db.getConnection())
+			using (OleDbCommand cmd = new OleDbCommand(query, conn))
+			{
+				cmd.Parameters.AddWithValue("?", hashedPassword);
+				cmd.Parameters.AddWithValue("?", UserLogs.Username);
+
+				try
+				{
+					conn.Open();
+					int rowsAffected = cmd.ExecuteNonQuery();
+					return rowsAffected > 0;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return false;
+				}
+			}
+		}
+
+		internal int totalDonors(Database db)
+		{
+			string query = @"SELECT [Donor ID] AS UserID, [Email Address], [Username], [Password], 'Donor' AS UserType FROM Donors 
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
+
+			DataTable dt = db.executeQuery(query, null);
+			return dt != null ? dt.Rows.Count : 0;
+		}
+
+		internal int totalHospitals(Database db)
+		{
+			string query = @"SELECT [Hospital ID] AS UserID, [Email Address], [Username], [Password], 'Hospital' AS UserType FROM Hospitals 
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
+
+			DataTable dt = db.executeQuery(query, null);
+			return dt != null ? dt.Rows.Count : 0;
+		}
 	}
 
 	public class Patient : Donor
@@ -473,6 +555,17 @@ namespace Hemotica
 			set { priority = value; }
 		}
 
+		internal DataTable loadAllPatients(Database db)
+		{
+			string query = @"SELECT [Patient ID], Priority FROM Patients WHERE [Hospital Username] = ?";
+
+			OleDbParameter[] parametersPatients =
+			{
+				new OleDbParameter("?", UserLogs.Username)
+			};
+			return db.executeQuery(query, parametersPatients);
+		}
+
 		internal DataTable loadPatients(Database db)
 		{
 			updateAge(db);
@@ -483,10 +576,38 @@ namespace Hemotica
 			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
 
 			string query = @"SELECT [Patient ID], [First Name], [Middle Name], [Last Name], Gender, Birthdate, Age, [Contact Number], [Blood Type], Request, Priority, 
-							  Barangay, City, Province FROM Patients WHERE [Hospital] = ?";
+							  Barangay, City, Province FROM Patients WHERE [Hospital] = ? AND Priority <> ?";
 
-			OleDbParameter[] parametersPatients = { new OleDbParameter("?", hospitalName) };
+			OleDbParameter[] parametersPatients = 
+			{ 
+				new OleDbParameter("?", hospitalName),
+				new OleDbParameter("?", "Resolved")
+			};
 			return db.executeQuery(query, parametersPatients);
+		}
+
+		internal bool duplicatePatient(Database db)
+		{
+			string hospitalUsername = UserLogs.Username;
+
+			string query = @"SELECT COUNT(*) FROM Patients WHERE [First Name] = ? AND [Last Name] = ? AND [Birthdate] = ? AND [Blood Type] = ? AND [Hospital Username] = ? 
+							 AND [Priority] <> 'Resolved'";
+
+			OleDbParameter[] checkParameters =
+			{
+				new OleDbParameter("?", FirstName),
+				new OleDbParameter("?", LastName),
+				new OleDbParameter("?", Birthdate),
+				new OleDbParameter("?", BloodType),
+				new OleDbParameter("?", hospitalUsername)
+			};
+
+			object result = db.executeScalar(query, checkParameters);
+			if (result != null && Convert.ToInt32(result) > 0)
+			{
+				return true;
+			}
+			return false;
 		}
 
 		internal bool addPatient(Database db)
@@ -642,6 +763,29 @@ namespace Hemotica
 
 			OleDbParameter[] parametersPhysicians = { new OleDbParameter("?", hospitalName) };
 			return db.executeQuery(query, parametersPhysicians);
+		}
+
+		internal bool duplicatePhysician(Database db)
+		{
+			string hospitalUsername = UserLogs.Username;
+
+			string query = @"SELECT COUNT(*) FROM Physicians WHERE [First Name] = ? AND [Last Name] = ? AND [Birthdate] = ? AND [License Number] = ? AND [Hospital Username] = ?";
+
+			OleDbParameter[] checkParameters =
+			{
+				new OleDbParameter("?", FirstName),
+				new OleDbParameter("?", LastName),
+				new OleDbParameter("?", Birthdate),
+				new OleDbParameter("?", License),
+				new OleDbParameter("?", hospitalUsername)
+			};
+
+			object result = db.executeScalar(query, checkParameters);
+			if (result != null && Convert.ToInt32(result) > 0)
+			{
+				return true;
+			}
+			return false;
 		}
 
 		internal bool addPhysician(Database db)

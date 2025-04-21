@@ -23,6 +23,7 @@ namespace Hemotica
 		private void DonorDonate_Load(object sender, EventArgs e)
 		{
 			calendar();
+			lblDate.Focus();
 		}
 
 		private void btnCalendar_Click(object sender, EventArgs e)
@@ -49,18 +50,21 @@ namespace Hemotica
 		{
 			currentDate = currentDate.AddMonths(-1);
 			calendar();
+			lblDate.Focus();
 		}
 
 		private void btnToday_Click(object sender, EventArgs e)
 		{
 			currentDate = DateTime.Now;
 			calendar();
+			lblDate.Focus();
 		}
 
 		private void btnNext_Click(object sender, EventArgs e)
 		{
 			currentDate = currentDate.AddMonths(1);
 			calendar();
+			lblDate.Focus();
 		}
 
 		private void calendar()
@@ -95,13 +99,14 @@ namespace Hemotica
 		private void DonorDonate_Resize(object sender, EventArgs e)
 		{
 			calendar();
+			lblDate.Focus();
 		}
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			DateTime dayDate = DateTime.Now;
 
-			Appointments appointments = new Appointments(dayDate);
+			Appointments appointments = new Appointments(dayDate, "");
 			appointments.ShowDialog();
 		}
 	}

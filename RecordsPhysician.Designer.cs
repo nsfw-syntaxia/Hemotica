@@ -56,7 +56,7 @@
 			tbxFName.BackColor = Color.White;
 			tbxFName.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxFName.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxFName.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxFName.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxFName.Font = new Font("Bahnschrift", 15F);
 			tbxFName.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxFName.Hint = "";
@@ -82,7 +82,7 @@
 			tbxLName.BackColor = Color.White;
 			tbxLName.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxLName.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxLName.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxLName.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxLName.Font = new Font("Bahnschrift", 15F);
 			tbxLName.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxLName.Hint = "";
@@ -108,7 +108,7 @@
 			tbxMName.BackColor = Color.White;
 			tbxMName.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxMName.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxMName.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxMName.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxMName.Font = new Font("Bahnschrift", 15F);
 			tbxMName.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxMName.Hint = "";
@@ -134,7 +134,7 @@
 			tbxBirthdate.BackColor = Color.White;
 			tbxBirthdate.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxBirthdate.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxBirthdate.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxBirthdate.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxBirthdate.Font = new Font("Bahnschrift", 15F);
 			tbxBirthdate.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxBirthdate.Hint = "";
@@ -160,7 +160,7 @@
 			tbxSpecialization.BackColor = Color.White;
 			tbxSpecialization.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxSpecialization.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxSpecialization.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxSpecialization.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxSpecialization.Font = new Font("Bahnschrift", 15F);
 			tbxSpecialization.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxSpecialization.Hint = "";
@@ -186,7 +186,7 @@
 			tbxLicense.BackColor = Color.White;
 			tbxLicense.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxLicense.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxLicense.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxLicense.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxLicense.Font = new Font("Bahnschrift", 15F);
 			tbxLicense.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxLicense.Hint = "";
@@ -212,7 +212,7 @@
 			tbxCNumber.BackColor = Color.White;
 			tbxCNumber.BaseColor = Color.FromArgb(253, 211, 211);
 			tbxCNumber.BorderColorA = Color.FromArgb(216, 85, 101);
-			tbxCNumber.BorderColorB = Color.FromArgb(253, 211, 211);
+			tbxCNumber.BorderColorB = Color.FromArgb(216, 85, 101);
 			tbxCNumber.Font = new Font("Bahnschrift", 15F);
 			tbxCNumber.ForeColor = Color.FromArgb(216, 85, 101);
 			tbxCNumber.Hint = "";

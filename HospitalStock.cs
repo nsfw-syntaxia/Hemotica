@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Net;
 using System.Net.Mail;
-using Microsoft.VisualBasic.Logging;
 
 namespace Hemotica
 {
@@ -332,7 +331,7 @@ namespace Hemotica
 
 						string location = $"{barangay}, {city}, {province}";
 
-						string subject = $"NOTICE: {title}";
+						string subject = $"NEW: {title}";
 						string htmlBody = emailHTML(title, description, date, formatTime, location);
 						sendEmail(barangay, subject, htmlBody);
 

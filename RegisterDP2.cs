@@ -20,7 +20,7 @@ namespace Hemotica
 
 			if (donor.Gender == rbtnMale.Text) rbtnMale.Checked = true;
 			else if (donor.Gender == rbtnFemale.Text) rbtnFemale.Checked = true;
-			else if (donor.Gender == rbtnOther.Text) rbtnOther.Checked = true;
+			else if (donor.Gender == rbtnNonBinary.Text) rbtnNonBinary.Checked = true;
 			else if (donor.Gender == rbtnPNTS.Text) rbtnPNTS.Checked = true;
 		}
 
@@ -35,8 +35,8 @@ namespace Hemotica
 				donor.Gender = rbtnMale.Text;
 			else if (rbtnFemale.Checked)
 				donor.Gender = rbtnFemale.Text;
-			else if (rbtnOther.Checked)
-				donor.Gender = rbtnOther.Text;
+			else if (rbtnNonBinary.Checked)
+				donor.Gender = rbtnNonBinary.Text;
 			else if (rbtnPNTS.Checked)
 				donor.Gender = rbtnPNTS.Text;
 

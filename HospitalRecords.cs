@@ -33,6 +33,21 @@ namespace Hemotica
 
 		private void lDonors_Click(object sender, EventArgs e)
 		{
+			donors();
+		}
+
+		private void loadDonors()
+		{
+			DataTable dt = donor.loadDonors(db);
+
+			if (dt != null)
+			{
+				dgvDataMin.DataSource = dt;
+			}
+		}
+
+		public void donors()
+		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = false;
 
@@ -47,9 +62,14 @@ namespace Hemotica
 			loadDonors();
 		}
 
-		private void loadDonors()
+		private void lPatients_Click(object sender, EventArgs e)
 		{
-			DataTable dt = donor.loadDonors(db);
+			patients();
+		}
+
+		private void loadPatients()
+		{
+			DataTable dt = patient.loadPatients(db);
 
 			if (dt != null)
 			{
@@ -57,7 +77,7 @@ namespace Hemotica
 			}
 		}
 
-		private void lPatients_Click(object sender, EventArgs e)
+		public void patients()
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = false;
@@ -71,16 +91,6 @@ namespace Hemotica
 			flpInputs.Controls.Clear();
 			flpInputs.Controls.Add(new RecordsPatient(this));
 			loadPatients();
-		}
-
-		private void loadPatients()
-		{
-			DataTable dt = patient.loadPatients(db);
-
-			if (dt != null)
-			{
-				dgvDataMin.DataSource = dt;
-			}
 		}
 
 		private void dgvDataMin_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -175,6 +185,12 @@ namespace Hemotica
 
 				if (donor != null)
 				{
+					if (donor.duplicateDonor(db))
+					{
+						MessageBox.Show("Donor record already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+
 					if (donor.addDonor(db))
 					{
 						MessageBox.Show("Donor record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -195,6 +211,12 @@ namespace Hemotica
 
 				if (patient != null)
 				{
+					if (patient.duplicatePatient(db))
+					{
+						MessageBox.Show("Patient record already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+
 					if (patient.addPatient(db))
 					{
 						MessageBox.Show("Patient record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -215,6 +237,12 @@ namespace Hemotica
 
 				if (physician != null)
 				{
+					if (physician.duplicatePhysician(db))
+					{
+						MessageBox.Show("Physician record already exists.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						return;
+					}
+
 					if (physician.addPhysician(db))
 					{
 						MessageBox.Show("Physician record inserted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -386,16 +414,7 @@ namespace Hemotica
 
 		private void lAppointments_Click(object sender, EventArgs e)
 		{
-			btnConnection.Visible = false;
-			dgvDataMax.Visible = true;
-
-			dgvDataMin.Visible = false;
-			flpInputs.Visible = false;
-			btnInsert.Visible = false;
-			btnUpdate.Visible = false;
-			btnDelete.Visible = false;
-
-			loadAppointments();
+			appointments();
 		}
 
 		private void loadAppointments()
@@ -408,7 +427,36 @@ namespace Hemotica
 			}
 		}
 
+		public void appointments()
+		{
+			btnConnection.Visible = false;
+			dgvDataMax.Visible = true;
+
+			dgvDataMin.Visible = false;
+			flpInputs.Visible = false;
+			btnInsert.Visible = false;
+			btnUpdate.Visible = false;
+			btnDelete.Visible = false;
+
+			loadAppointments();
+		}
+
 		private void lExtraction_Click(object sender, EventArgs e)
+		{
+			extractions();
+		}
+
+		private void loadExtraction()
+		{
+			DataTable dt = hospital.loadExtraction(db);
+
+			if (dt != null)
+			{
+				dgvDataMax.DataSource = dt;
+			}
+		}
+
+		public void extractions()
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = true;
@@ -422,19 +470,32 @@ namespace Hemotica
 			loadExtraction();
 		}
 
-		private void loadExtraction()
+		private void lTransfusion_Click(object sender, EventArgs e)
 		{
-			DataTable dt = hospital.loadExtraction(db);
+			transfusions();
+		}
 
+		private void loadTransfusion()
+		{
+			DataTable dt = hospital.loadTransfusion(db);
 			if (dt != null)
 			{
 				dgvDataMax.DataSource = dt;
 			}
 		}
 
-		private void lTransfusion_Click(object sender, EventArgs e)
+		public void transfusions()
 		{
-			// after transfusion functionality
+			btnConnection.Visible = false;
+			dgvDataMax.Visible = true;
+
+			dgvDataMin.Visible = false;
+			flpInputs.Visible = false;
+			btnInsert.Visible = false;
+			btnUpdate.Visible = false;
+			btnDelete.Visible = false;
+
+			loadTransfusion();
 		}
 
 		public void exportPDF(DataGridView dgv, string recordType)
@@ -484,21 +545,28 @@ namespace Hemotica
 					}
 					else if (recordType == "Appointment")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.7));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 					else if (recordType == "Extraction")
 					{
-						Column tableColumn = table.AddColumn(Unit.FromCentimeter(3.8));
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(4.8));
+						tableColumn.Format.Alignment = ParagraphAlignment.Center;
+					}
+					else if (recordType == "Transfusion")
+					{
+						Column tableColumn = table.AddColumn(Unit.FromCentimeter(2.8));
 						tableColumn.Format.Alignment = ParagraphAlignment.Center;
 					}
 				}
+
+				MigraDoc.DocumentObjectModel.Color headerColor = MigraDoc.DocumentObjectModel.Color.FromArgb(255, 252, 212, 212);
 
 				Row headerRow = table.AddRow();
 				for (int i = 0; i < dgv.Columns.Count; i++)
 				{
 					headerRow.Cells[i].AddParagraph(dgv.Columns[i].HeaderText);
-					headerRow.Cells[i].Shading.Color = Colors.LightGray;
+					headerRow.Cells[i].Shading.Color = headerColor;
 					headerRow.Cells[i].Format.Alignment = ParagraphAlignment.Center;
 					headerRow.Cells[i].VerticalAlignment = VerticalAlignment.Center;
 				}
@@ -535,32 +603,44 @@ namespace Hemotica
 
 		private void pDonors_Click(object sender, EventArgs e)
 		{
+			loadDonors();
 			exportPDF(dgvDataMin, "Donor");
 		}
 
 		private void pPatients_Click(object sender, EventArgs e)
 		{
+			loadPatients();
 			exportPDF(dgvDataMin, "Patient");
 		}
 
 		private void pPhysicians_Click(object sender, EventArgs e)
 		{
+			loadPhysicians();
 			exportPDF(dgvDataMin, "Physician");
 		}
 
 		private void pAppointments_Click(object sender, EventArgs e)
 		{
+			loadAppointments();
 			exportPDF(dgvDataMax, "Appointment");
 		}
 
 		private void pExtraction_Click(object sender, EventArgs e)
 		{
+			loadExtraction();
 			exportPDF(dgvDataMax, "Extraction");
 		}
 
 		private void pTransfusion_Click(object sender, EventArgs e)
 		{
+			loadTransfusion();
+			exportPDF(dgvDataMax, "Transfusion");
+		}
 
+		private void HospitalRecords_Load(object sender, EventArgs e)
+		{
+			mstrpRecords.Focus();
+			//lDonors.PerformClick();
 		}
 	}
 }

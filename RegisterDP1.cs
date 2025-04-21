@@ -39,10 +39,10 @@ namespace Hemotica
 			if (!ExceptionHandling.validEmailAddress(donor.Email))
 				errors.Add("Invalid email address.");
 
-			if (db.userExists("EmailAddress", donor.Email))
+			if (db.emailExists(donor.Email))
 				errors.Add("Email address already exists.");
 
-			if (db.userExists("Username", donor.Username))
+			if (db.usernameExists(donor.Username))
 				errors.Add("Username already taken.");
 
 			if (donor.Password != confirmPassword)

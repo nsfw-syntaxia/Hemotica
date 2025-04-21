@@ -37,7 +37,7 @@ namespace Hemotica
 			{
 				daySlot?.Invoke(dayDate);
 
-				Appointments appointments = new Appointments(dayDate);
+				Appointments appointments = new Appointments(dayDate, "");
 				appointments.ShowDialog();
 			};
 		}

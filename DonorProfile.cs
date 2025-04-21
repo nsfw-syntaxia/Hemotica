@@ -109,7 +109,7 @@ namespace Hemotica
 			if (emailCount > 1 || (emailCount == 1 && !email.Equals(currentEmail, StringComparison.OrdinalIgnoreCase)))
 				errors.Add("Email address already exists.");
 
-			if (gender.ToLower() != "male" && gender.ToLower() != "female" && gender.ToLower() != "other" && gender.ToLower() != "prefer not to say")
+			if (gender.ToLower() != "male" && gender.ToLower() != "female" && gender.ToLower() != "non-binary" && gender.ToLower() != "prefer not to say")
 				errors.Add("Invalid gender.");
 
 			if (!ExceptionHandling.validContactNumber(contactNumber))

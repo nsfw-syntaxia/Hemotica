@@ -191,7 +191,7 @@
 			lblAge.Name = "lblAge";
 			lblAge.Size = new Size(301, 24);
 			lblAge.TabIndex = 86;
-			lblAge.Text = "Do you age between 18-65 years old?";
+			lblAge.Text = "Do you age between 16-65 years old?";
 			// 
 			// pWeight
 			// 

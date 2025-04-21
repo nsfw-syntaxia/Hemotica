@@ -9,12 +9,17 @@ namespace Hemotica
 	public partial class HospitalDashboard : UserControl
 	{
 		private Database db = new Database();
+		private Hospital hospital = new Hospital();
+		private Analytics analytics = new Analytics();
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
 		private static extern IntPtr CreateRoundRectRgn(
 			int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
 			int nWidthEllipse, int nHeightEllipse);
+
+		private List<Button> analyticsButtons = new List<Button>();
+		private Button selectedButton = null;
 
 		public HospitalDashboard()
 		{
@@ -26,23 +31,93 @@ namespace Hemotica
 			roundControls();
 			loadAppointments();
 			loadPatients();
+			totalExtractions();
+			totalTransfusions();
+
+			analyticsButtons.Add(btnBGAnalytics);
+			analyticsButtons.Add(btnPAnalytics);
+			analyticsButtons.Add(btnEAnalytics);
+			analyticsButtons.Add(btnTAnalytics);
+
+			foreach (var btn in analyticsButtons)
+			{
+				btn.BackColor = Color.FromArgb(252, 228, 228);
+				btn.ForeColor = Color.FromArgb(216, 85, 101);
+
+				btn.MouseEnter += btnAnalytics_MouseEnter;
+				btn.MouseLeave += btnAnalytics_MouseLeave;
+				btn.Click += btnAnalytics_Click;
+			}
+
+			btnBGAnalytics.PerformClick();
 		}
 
 		public void roundControls()
 		{
-			pBloods.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pBloods.Width, pBloods.Height, 20, 20));
-			flpBloods.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpBloods.Width, flpBloods.Height, 20, 20));
+			pDashboard.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pDashboard.Width, pDashboard.Height, 20, 20));
+			pAnalytics.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pAnalytics.Width, pAnalytics.Height, 20, 20));
 			pPatients.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pPatients.Width, pPatients.Height, 20, 20));
 			flpPatients.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpPatients.Width, flpPatients.Height, 20, 20));
 			pAppointments.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pAppointments.Width, pAppointments.Height, 20, 20));
 			flpAppointments.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpAppointments.Width, flpAppointments.Height, 20, 20));
 			pOperations.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pOperations.Width, pOperations.Height, 20, 20));
 			flpOperations.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, flpOperations.Width, flpOperations.Height, 20, 20));
+			pExtraction.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pExtraction.Width, pExtraction.Height, 20, 20));
+			pTransfusion.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pTransfusion.Width, pTransfusion.Height, 20, 20));
 		}
 
 		private void HospitalDashboard_Resize(object sender, EventArgs e)
 		{
 			roundControls();
+			resizePanels();
+		}
+
+		private void totalExtractions()
+		{
+			DataTable dt = hospital.loadExtraction(db);
+			int extractionCount = dt.Rows.Count;
+
+			lblENumber.Text = formatCount(extractionCount);
+			lblENumber.Location = new Point(
+				(pExtraction.Width - lblENumber.Width) / 2 + 66,
+				(pExtraction.Height - lblENumber.Height) / 2 + 28
+			);
+		}
+
+		private void totalTransfusions()
+		{
+			DataTable dt = hospital.loadTransfusion(db);
+			int transfusionCount = dt.Rows.Count;
+
+			lblTNumber.Text = formatCount(transfusionCount);
+			lblTNumber.Location = new Point(
+				(pTransfusion.Width - lblTNumber.Width) / 2 + 66,
+				(pTransfusion.Height - lblTNumber.Height) / 2 + 28
+			);
+		}
+
+		private string formatCount(int count)
+		{
+			if (count >= 1000)
+			{
+				double value = count / 1000.0;
+
+				string formatted;
+				if (value % 1 == 0)
+				{
+					formatted = $"{value:0}";
+				}
+				else
+				{
+					formatted = $"{value:0.##}";
+				}
+
+				return $"{formatted}K";
+			}
+			else
+			{
+				return $"{count}";
+			}
 		}
 
 		private void loadAppointments()
@@ -59,14 +134,16 @@ namespace Hemotica
 										 INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital 
 										 WHERE Appointments.[Status] = ? AND Appointments.[Hospital] = ? ORDER BY Appointments.[Appointment Date] ASC";
 
-			OleDbParameter[] appointmentParameters = 
+			OleDbParameter[] appointmentParameters =
 			{
 				new OleDbParameter("?", "Scheduled"),
 				new OleDbParameter("?", hospitalName)
 			};
 			DataTable appointments = db.executeQuery(queryAppointments, appointmentParameters);
 
-			if (appointments != null)
+			flpAppointments.Controls.Clear();
+
+			if (appointments != null && appointments.Rows.Count > 0)
 			{
 				foreach (DataRow row in appointments.Rows)
 				{
@@ -77,12 +154,14 @@ namespace Hemotica
 
 					string donorName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
 
+					int panelWidth = 297;
+
 					Panel panel = new Panel
 					{
-						Size = new Size(280, 125),
+						Size = new Size(panelWidth, 125),
 						BackColor = Color.FromArgb(244, 180, 180),
 						Margin = new Padding(5),
-						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 280, 125, 20, 20))
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelWidth, 125, 20, 20))
 					};
 
 					Label lblDate = new Label
@@ -122,6 +201,19 @@ namespace Hemotica
 
 					flpAppointments.Controls.Add(panel);
 				}
+
+				if (flpAppointments.VerticalScroll.Visible)
+				{
+					foreach (Control panel in flpAppointments.Controls)
+					{
+						panel.Width = flpAppointments.Width - 27;
+						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+					}
+				}
+			}
+			else
+			{
+				showNoAppointments();
 			}
 		}
 
@@ -133,22 +225,35 @@ namespace Hemotica
 			db.executeNonQuery(cancelAppointmentsQuery, appointmentParameter);
 		}
 
+		private void showNoAppointments()
+		{
+			if (!flpAppointments.Controls.Contains(pbxNoAppointments))
+			{
+				flpAppointments.Controls.Add(pbxNoAppointments);
+			}
+
+			pbxNoAppointments.Visible = true;
+		}
+
 		private void loadPatients()
 		{
 			string queryPatients = @"SELECT [First Name], [Middle Name], [Last Name], [Blood Type], Priority, [Hospital Username] FROM Patients 
 									 WHERE [Hospital Username] = ? AND Priority <> ?";
 
-			OleDbParameter[] patientParameters = 
-			{ 
+			OleDbParameter[] patientParameters =
+			{
 				new OleDbParameter("?", UserLogs.Username),
 				new OleDbParameter("?", "Resolved")
 			};
 			DataTable patients = db.executeQuery(queryPatients, patientParameters);
 
-			if (patients != null)
-			{
-				var filteredPatients = patients.AsEnumerable().Where(row => row["Priority"].ToString() != "Resolved").CopyToDataTable();
+			flpPatients.Controls.Clear();
 
+			if (patients != null && patients.Rows.Count > 0)
+			{
+				var filteredRows = patients.AsEnumerable().Where(row => row["Priority"].ToString() != "Resolved");
+
+				DataTable filteredPatients = filteredRows.CopyToDataTable();
 				filteredPatients.Columns.Add("SortOrder", typeof(int));
 
 				foreach (DataRow row in filteredPatients.Rows)
@@ -180,11 +285,13 @@ namespace Hemotica
 					string priority = row["Priority"].ToString();
 					string patientName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
 
+					int panelWidth = 290;
+
 					System.Windows.Forms.Panel panel = new System.Windows.Forms.Panel
 					{
-						Size = new Size(250, 165),
+						Size = new Size(panelWidth, 165),
 						BackColor = Color.FromArgb(244, 180, 180),
-						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 250, 165, 20, 20))
+						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelWidth, 165, 20, 20))
 					};
 
 					Label lblName = new Label
@@ -201,7 +308,7 @@ namespace Hemotica
 
 					Label lblInformation = new Label
 					{
-						Text = $"{bloodType} ({priority})",
+						Text = $"{bloodType} (Priority: {priority})",
 						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
 						ForeColor = Color.FromArgb(216, 85, 101),
 						TextAlign = ContentAlignment.MiddleCenter,
@@ -222,6 +329,182 @@ namespace Hemotica
 
 					flpPatients.Controls.Add(panel);
 				}
+
+				if (flpPatients.HorizontalScroll.Visible)
+				{
+					foreach (Control panel in flpPatients.Controls)
+					{
+						panel.Height = flpPatients.Height - 27;
+						panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+					}
+				}
+			}
+			else
+			{
+				showNoPatients();
+			}
+		}
+
+		private void showNoPatients()
+		{
+			if (!flpPatients.Controls.Contains(pbxNoPatients))
+			{
+				flpPatients.Controls.Add(pbxNoPatients);
+			}
+
+			pbxNoPatients.Visible = true;
+		}
+
+		private void resizePanels()
+		{
+			foreach (Control panel in flpPatients.Controls)
+			{
+				panel.Height = flpPatients.Height - (flpPatients.HorizontalScroll.Visible ? 24 : 7);
+				panel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel.Width, panel.Height, 20, 20));
+			}
+		}
+
+		private void btnAnalytics_MouseEnter(object sender, EventArgs e)
+		{
+			Button btn = sender as Button;
+			if (btn != selectedButton)
+			{
+				btn.BackColor = Color.FromArgb(216, 85, 101);
+				btn.ForeColor = Color.FromArgb(252, 228, 228);
+			}
+		}
+
+		private void btnAnalytics_MouseLeave(object sender, EventArgs e)
+		{
+			Button btn = sender as Button;
+			if (btn != selectedButton)
+			{
+				btn.BackColor = Color.FromArgb(252, 228, 228);
+				btn.ForeColor = Color.FromArgb(216, 85, 101);
+			}
+		}
+
+		private void btnAnalytics_Click(object sender, EventArgs e)
+		{
+			Button clickedButton = (Button)sender;
+
+			if (selectedButton != null)
+			{
+				selectedButton.BackColor = Color.FromArgb(252, 228, 228);
+				selectedButton.ForeColor = Color.FromArgb(216, 85, 101);
+			}
+
+			clickedButton.BackColor = Color.FromArgb(216, 85, 101);
+			clickedButton.ForeColor = Color.FromArgb(252, 228, 228);
+			selectedButton = clickedButton;
+
+			if (clickedButton == btnBGAnalytics)
+			{
+				analytics.displayBloodGroups(pvOxyplot);
+			}
+			else if (clickedButton == btnPAnalytics)
+			{
+				analytics.displayPatients(pvOxyplot);
+			}
+			else if (clickedButton == btnEAnalytics)
+			{
+				analytics.displayExtractions(pvOxyplot);
+			}
+			else if (clickedButton == btnTAnalytics)
+			{
+				analytics.displayTransfusions(pvOxyplot);
+			}
+		}
+
+		private void btnBGAnalytics_Click(object sender, EventArgs e)
+		{
+			pvOxyplot.Model = null;
+			pvOxyplot.InvalidatePlot(true);
+
+			analytics.displayBloodGroups(pvOxyplot);
+		}
+
+		private void btnPAnalytics_Click(object sender, EventArgs e)
+		{
+			pvOxyplot.Model = null;
+			pvOxyplot.InvalidatePlot(true);
+
+			analytics.displayPatients(pvOxyplot);
+		}
+
+		private void btnEAnalytics_Click(object sender, EventArgs e)
+		{
+			pvOxyplot.Model = null;
+			pvOxyplot.InvalidatePlot(true);
+
+			analytics.displayExtractions(pvOxyplot);
+		}
+
+		private void btnTAnalytics_Click(object sender, EventArgs e)
+		{
+			pvOxyplot.Model = null;
+			pvOxyplot.InvalidatePlot(true);
+
+			analytics.displayTransfusions(pvOxyplot);
+		}
+
+		private void lblVAP_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsPatients();
+			}
+		}
+
+		private void lblVAA_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsAppointments();
+			}
+		}
+
+		private void pExtraction_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsExtractions();
+			}
+		}
+
+		private void pTransfusion_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsTransfusions();
+			}
+		}
+
+		private void pbxExtraction_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsExtractions();
+			}
+		}
+
+		private void pbxTransfusion_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsTransfusions();
 			}
 		}
 	}
