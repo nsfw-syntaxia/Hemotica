@@ -43,8 +43,6 @@ namespace Hemotica
 			{
 				btn.BackColor = Color.FromArgb(252, 228, 228);
 				btn.ForeColor = Color.FromArgb(216, 85, 101);
-				btn.FlatStyle = FlatStyle.Flat;
-				btn.FlatAppearance.BorderSize = 0;
 
 				btn.MouseEnter += btnAnalytics_MouseEnter;
 				btn.MouseLeave += btnAnalytics_MouseLeave;
@@ -310,7 +308,7 @@ namespace Hemotica
 
 					Label lblInformation = new Label
 					{
-						Text = $"{bloodType} ({priority})",
+						Text = $"{bloodType} (Priority: {priority})",
 						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
 						ForeColor = Color.FromArgb(216, 85, 101),
 						TextAlign = ContentAlignment.MiddleCenter,
@@ -397,7 +395,7 @@ namespace Hemotica
 			}
 
 			clickedButton.BackColor = Color.FromArgb(216, 85, 101);
-			clickedButton.ForeColor = Color.White;
+			clickedButton.ForeColor = Color.FromArgb(252, 228, 228);
 			selectedButton = clickedButton;
 
 			if (clickedButton == btnBGAnalytics)
@@ -448,6 +446,66 @@ namespace Hemotica
 			pvOxyplot.InvalidatePlot(true);
 
 			analytics.displayTransfusions(pvOxyplot);
+		}
+
+		private void lblVAP_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsPatients();
+			}
+		}
+
+		private void lblVAA_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsAppointments();
+			}
+		}
+
+		private void pExtraction_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsExtractions();
+			}
+		}
+
+		private void pTransfusion_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsTransfusions();
+			}
+		}
+
+		private void pbxExtraction_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsExtractions();
+			}
+		}
+
+		private void pbxTransfusion_Click(object sender, EventArgs e)
+		{
+			DashboardH parentForm = this.FindForm() as DashboardH;
+
+			if (parentForm != null)
+			{
+				parentForm.showHospitalRecordsTransfusions();
+			}
 		}
 	}
 }

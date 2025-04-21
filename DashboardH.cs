@@ -170,16 +170,57 @@ namespace Hemotica
 
 		private void btnRecords_Click(object sender, EventArgs e)
 		{
-			showHospitalRecords();
+			showHospitalRecordsDonors();
 
 		}
 
-		internal void showHospitalRecords()
+		internal void showHospitalRecordsDonors()
 		{
 			lblHeader.Text = "Records";
 			flpDashboard.Controls.Clear();
 			HospitalRecords hospitalRecords = new HospitalRecords();
 			flpDashboard.Controls.Add(hospitalRecords);
+			hospitalRecords.donors();
+			adjustLayout();
+		}
+
+		internal void showHospitalRecordsPatients()
+		{
+			lblHeader.Text = "Records";
+			flpDashboard.Controls.Clear();
+			HospitalRecords hospitalRecords = new HospitalRecords();
+			flpDashboard.Controls.Add(hospitalRecords);
+			hospitalRecords.patients();
+			adjustLayout();
+		}
+
+		internal void showHospitalRecordsAppointments()
+		{
+			lblHeader.Text = "Records";
+			flpDashboard.Controls.Clear();
+			HospitalRecords hospitalRecords = new HospitalRecords();
+			flpDashboard.Controls.Add(hospitalRecords);
+			hospitalRecords.appointments();
+			adjustLayout();
+		}
+
+		internal void showHospitalRecordsExtractions()
+		{
+			lblHeader.Text = "Records";
+			flpDashboard.Controls.Clear();
+			HospitalRecords hospitalRecords = new HospitalRecords();
+			flpDashboard.Controls.Add(hospitalRecords);
+			hospitalRecords.extractions();
+			adjustLayout();
+		}
+
+		internal void showHospitalRecordsTransfusions()
+		{
+			lblHeader.Text = "Records";
+			flpDashboard.Controls.Clear();
+			HospitalRecords hospitalRecords = new HospitalRecords();
+			flpDashboard.Controls.Add(hospitalRecords);
+			hospitalRecords.transfusions();
 			adjustLayout();
 		}
 

@@ -39,10 +39,12 @@
 			pOxyplot = new Panel();
 			pvOxyplot = new OxyPlot.WindowsForms.PlotView();
 			pPatients = new Panel();
+			lblVAP = new Label();
 			flpPatients = new FlowLayoutPanel();
 			pbxNoPatients = new PictureBox();
 			lblPatients = new Label();
 			pAppointments = new Panel();
+			lblVAA = new Label();
 			flpAppointments = new FlowLayoutPanel();
 			pbxNoAppointments = new PictureBox();
 			lblAppointments = new Label();
@@ -213,6 +215,7 @@
 			// 
 			pPatients.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			pPatients.BackColor = Color.FromArgb(216, 85, 101);
+			pPatients.Controls.Add(lblVAP);
 			pPatients.Controls.Add(flpPatients);
 			pPatients.Controls.Add(lblPatients);
 			pPatients.Location = new Point(8, 386);
@@ -220,6 +223,21 @@
 			pPatients.Padding = new Padding(7);
 			pPatients.Size = new Size(670, 247);
 			pPatients.TabIndex = 2;
+			// 
+			// lblVAP
+			// 
+			lblVAP.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblVAP.AutoSize = true;
+			lblVAP.Cursor = Cursors.Hand;
+			lblVAP.Font = new Font("Bahnschrift", 12F, FontStyle.Bold | FontStyle.Underline);
+			lblVAP.ForeColor = Color.FromArgb(253, 211, 211);
+			lblVAP.Location = new Point(593, 18);
+			lblVAP.Name = "lblVAP";
+			lblVAP.Padding = new Padding(0, 0, 0, 5);
+			lblVAP.Size = new Size(67, 24);
+			lblVAP.TabIndex = 15;
+			lblVAP.Text = "View All";
+			lblVAP.Click += lblVAP_Click;
 			// 
 			// flpPatients
 			// 
@@ -253,14 +271,15 @@
 			lblPatients.Location = new Point(0, 7);
 			lblPatients.Name = "lblPatients";
 			lblPatients.Padding = new Padding(5, 0, 0, 5);
-			lblPatients.Size = new Size(137, 38);
+			lblPatients.Size = new Size(118, 38);
 			lblPatients.TabIndex = 13;
-			lblPatients.Text = "Patients >";
+			lblPatients.Text = "Patients";
 			// 
 			// pAppointments
 			// 
 			pAppointments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
 			pAppointments.BackColor = Color.FromArgb(216, 85, 101);
+			pAppointments.Controls.Add(lblVAA);
 			pAppointments.Controls.Add(flpAppointments);
 			pAppointments.Controls.Add(lblAppointments);
 			pAppointments.Location = new Point(684, 8);
@@ -268,6 +287,21 @@
 			pAppointments.Padding = new Padding(7);
 			pAppointments.Size = new Size(328, 310);
 			pAppointments.TabIndex = 3;
+			// 
+			// lblVAA
+			// 
+			lblVAA.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblVAA.AutoSize = true;
+			lblVAA.Cursor = Cursors.Hand;
+			lblVAA.Font = new Font("Bahnschrift", 12F, FontStyle.Bold | FontStyle.Underline);
+			lblVAA.ForeColor = Color.FromArgb(253, 211, 211);
+			lblVAA.Location = new Point(251, 18);
+			lblVAA.Name = "lblVAA";
+			lblVAA.Padding = new Padding(0, 0, 0, 5);
+			lblVAA.Size = new Size(67, 24);
+			lblVAA.TabIndex = 16;
+			lblVAA.Text = "View All";
+			lblVAA.Click += lblVAA_Click;
 			// 
 			// flpAppointments
 			// 
@@ -302,9 +336,9 @@
 			lblAppointments.Location = new Point(0, 7);
 			lblAppointments.Name = "lblAppointments";
 			lblAppointments.Padding = new Padding(5, 0, 0, 5);
-			lblAppointments.Size = new Size(207, 38);
+			lblAppointments.Size = new Size(188, 38);
 			lblAppointments.TabIndex = 15;
-			lblAppointments.Text = "Appointments >";
+			lblAppointments.Text = "Appointments";
 			// 
 			// pOperations
 			// 
@@ -339,11 +373,13 @@
 			pExtraction.Controls.Add(lblENumber);
 			pExtraction.Controls.Add(lblExtractions);
 			pExtraction.Controls.Add(pbxExtraction);
+			pExtraction.Cursor = Cursors.Hand;
 			pExtraction.Location = new Point(6, 6);
 			pExtraction.Name = "pExtraction";
 			pExtraction.Padding = new Padding(5);
 			pExtraction.Size = new Size(296, 136);
 			pExtraction.TabIndex = 0;
+			pExtraction.Click += pExtraction_Click;
 			// 
 			// lblENumber
 			// 
@@ -380,6 +416,7 @@
 			pbxExtraction.Size = new Size(120, 120);
 			pbxExtraction.TabIndex = 0;
 			pbxExtraction.TabStop = false;
+			pbxExtraction.Click += pbxExtraction_Click;
 			// 
 			// pTransfusion
 			// 
@@ -388,11 +425,13 @@
 			pTransfusion.Controls.Add(lblTNumber);
 			pTransfusion.Controls.Add(lblTransfusions);
 			pTransfusion.Controls.Add(pbxTransfusion);
+			pTransfusion.Cursor = Cursors.Hand;
 			pTransfusion.Location = new Point(6, 148);
 			pTransfusion.Name = "pTransfusion";
 			pTransfusion.Padding = new Padding(5);
 			pTransfusion.Size = new Size(296, 136);
 			pTransfusion.TabIndex = 1;
+			pTransfusion.Click += pTransfusion_Click;
 			// 
 			// lblTNumber
 			// 
@@ -429,6 +468,7 @@
 			pbxTransfusion.Size = new Size(120, 120);
 			pbxTransfusion.TabIndex = 1;
 			pbxTransfusion.TabStop = false;
+			pbxTransfusion.Click += pbxTransfusion_Click;
 			// 
 			// HospitalDashboard
 			// 
@@ -495,5 +535,7 @@
 		private Panel pAnalytics;
 		private Panel pOxyplot;
 		private OxyPlot.WindowsForms.PlotView pvOxyplot;
+		private Label lblVAP;
+		private Label lblVAA;
 	}
 }

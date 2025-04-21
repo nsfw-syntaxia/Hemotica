@@ -63,7 +63,7 @@ namespace Hemotica
 
 		private void loadAppointments()
 		{
-			string query = @"SELECT [Appointment Date], [Hospital], [Status] FROM Appointments WHERE [Donor Username] = ? ORDER BY [Appointment Date] ASC";
+			string query = @"SELECT [Appointment Date], [Hospital], [Status] FROM Appointments WHERE [Donor Username] = ? ORDER BY [Appointment Date] DESC";
 			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
 			DataTable appointments = db.executeQuery(query, parameters);
 

@@ -33,6 +33,21 @@ namespace Hemotica
 
 		private void lDonors_Click(object sender, EventArgs e)
 		{
+			donors();
+		}
+
+		private void loadDonors()
+		{
+			DataTable dt = donor.loadDonors(db);
+
+			if (dt != null)
+			{
+				dgvDataMin.DataSource = dt;
+			}
+		}
+
+		public void donors()
+		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = false;
 
@@ -47,9 +62,14 @@ namespace Hemotica
 			loadDonors();
 		}
 
-		private void loadDonors()
+		private void lPatients_Click(object sender, EventArgs e)
 		{
-			DataTable dt = donor.loadDonors(db);
+			patients();
+		}
+
+		private void loadPatients()
+		{
+			DataTable dt = patient.loadPatients(db);
 
 			if (dt != null)
 			{
@@ -57,7 +77,7 @@ namespace Hemotica
 			}
 		}
 
-		private void lPatients_Click(object sender, EventArgs e)
+		public void patients()
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = false;
@@ -71,16 +91,6 @@ namespace Hemotica
 			flpInputs.Controls.Clear();
 			flpInputs.Controls.Add(new RecordsPatient(this));
 			loadPatients();
-		}
-
-		private void loadPatients()
-		{
-			DataTable dt = patient.loadPatients(db);
-
-			if (dt != null)
-			{
-				dgvDataMin.DataSource = dt;
-			}
 		}
 
 		private void dgvDataMin_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -404,16 +414,7 @@ namespace Hemotica
 
 		private void lAppointments_Click(object sender, EventArgs e)
 		{
-			btnConnection.Visible = false;
-			dgvDataMax.Visible = true;
-
-			dgvDataMin.Visible = false;
-			flpInputs.Visible = false;
-			btnInsert.Visible = false;
-			btnUpdate.Visible = false;
-			btnDelete.Visible = false;
-
-			loadAppointments();
+			appointments();
 		}
 
 		private void loadAppointments()
@@ -426,7 +427,36 @@ namespace Hemotica
 			}
 		}
 
+		public void appointments()
+		{
+			btnConnection.Visible = false;
+			dgvDataMax.Visible = true;
+
+			dgvDataMin.Visible = false;
+			flpInputs.Visible = false;
+			btnInsert.Visible = false;
+			btnUpdate.Visible = false;
+			btnDelete.Visible = false;
+
+			loadAppointments();
+		}
+
 		private void lExtraction_Click(object sender, EventArgs e)
+		{
+			extractions();
+		}
+
+		private void loadExtraction()
+		{
+			DataTable dt = hospital.loadExtraction(db);
+
+			if (dt != null)
+			{
+				dgvDataMax.DataSource = dt;
+			}
+		}
+
+		public void extractions()
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = true;
@@ -440,17 +470,21 @@ namespace Hemotica
 			loadExtraction();
 		}
 
-		private void loadExtraction()
+		private void lTransfusion_Click(object sender, EventArgs e)
 		{
-			DataTable dt = hospital.loadExtraction(db);
+			transfusions();
+		}
 
+		private void loadTransfusion()
+		{
+			DataTable dt = hospital.loadTransfusion(db);
 			if (dt != null)
 			{
 				dgvDataMax.DataSource = dt;
 			}
 		}
 
-		private void lTransfusion_Click(object sender, EventArgs e)
+		public void transfusions()
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = true;
@@ -462,15 +496,6 @@ namespace Hemotica
 			btnDelete.Visible = false;
 
 			loadTransfusion();
-		}
-
-		private void loadTransfusion()
-		{
-			DataTable dt = hospital.loadTransfusion(db);
-			if (dt != null)
-			{
-				dgvDataMax.DataSource = dt;
-			}
 		}
 
 		public void exportPDF(DataGridView dgv, string recordType)
@@ -615,7 +640,7 @@ namespace Hemotica
 		private void HospitalRecords_Load(object sender, EventArgs e)
 		{
 			mstrpRecords.Focus();
-			lDonors.PerformClick();
+			//lDonors.PerformClick();
 		}
 	}
 }
