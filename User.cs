@@ -393,7 +393,7 @@ namespace Hemotica
 			}
 		}
 
-		internal DataTable loadAppointments(Database db)
+		internal DataTable loadAppointments(Database db, string status)
 		{
 			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
 			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
@@ -403,10 +403,22 @@ namespace Hemotica
 			string query = @"SELECT Appointments.[Appointment ID], Donors.[First Name] & ' ' & Donors.[Middle Name] & ' ' & Donors.[Last Name] AS [Donor Name], Donors.Gender, 
 							 Donors.Birthdate, Donors.Age, Donors.[Blood Type], Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
 							 INNER JOIN (Appointments INNER JOIN Donors ON Appointments.[Donor Username] = Donors.Username) ON Hospitals.Username = Appointments.[Hospital Username]
-							 WHERE Appointments.Hospital = ? ORDER BY Appointments.[Appointment Date] ASC";
+							 WHERE Appointments.Hospital = ?";
 
-			OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
-			return db.executeQuery(query, parametersAppointments);
+			//OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
+			//return db.executeQuery(query, parametersAppointments);
+
+			List<OleDbParameter> parameters = new List<OleDbParameter> { new OleDbParameter("?", hospitalName) };
+
+			if (status != "All")
+			{
+				query += " AND Appointments.Status = ?";
+				parameters.Add(new OleDbParameter("?", status));
+			}
+
+			query += " ORDER BY Appointments.[Appointment Date] ASC";
+
+			return db.executeQuery(query, parameters.ToArray());
 		}
 
 		internal DataTable loadExtraction(Database db)
