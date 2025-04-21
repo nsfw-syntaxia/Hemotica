@@ -28,9 +28,9 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminRecords));
 			dgvDataMax = new DataGridView();
 			btnDelete = new AntdUI.Button();
@@ -40,6 +40,8 @@
 			lDonors = new ToolStripMenuItem();
 			lHospitals = new ToolStripMenuItem();
 			lRequests = new ToolStripMenuItem();
+			btnReject = new AntdUI.Button();
+			btnApprove = new AntdUI.Button();
 			((System.ComponentModel.ISupportInitialize)dgvDataMax).BeginInit();
 			mstrpRecords.SuspendLayout();
 			SuspendLayout();
@@ -55,15 +57,15 @@
 			dgvDataMax.BorderStyle = BorderStyle.None;
 			dgvDataMax.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 			dgvDataMax.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle1.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
-			dataGridViewCellStyle1.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle1.Padding = new Padding(15, 5, 15, 5);
-			dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-			dgvDataMax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle7.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle7.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle7.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle7.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+			dgvDataMax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
 			dgvDataMax.ColumnHeadersHeight = 50;
 			dgvDataMax.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			dgvDataMax.EnableHeadersVisualStyles = false;
@@ -73,23 +75,23 @@
 			dgvDataMax.Name = "dgvDataMax";
 			dgvDataMax.ReadOnly = true;
 			dgvDataMax.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = SystemColors.Control;
-			dataGridViewCellStyle2.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-			dgvDataMax.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle8.BackColor = SystemColors.Control;
+			dataGridViewCellStyle8.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+			dgvDataMax.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
 			dgvDataMax.RowHeadersVisible = false;
 			dgvDataMax.RowHeadersWidth = 40;
-			dataGridViewCellStyle3.BackColor = Color.FromArgb(244, 180, 180);
-			dataGridViewCellStyle3.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle3.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle3.Padding = new Padding(20, 5, 20, 5);
-			dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(236, 124, 132);
-			dataGridViewCellStyle3.SelectionForeColor = Color.White;
-			dgvDataMax.RowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle9.BackColor = Color.FromArgb(244, 180, 180);
+			dataGridViewCellStyle9.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle9.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle9.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle9.SelectionForeColor = Color.White;
+			dgvDataMax.RowsDefaultCellStyle = dataGridViewCellStyle9;
 			dgvDataMax.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
 			dgvDataMax.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
 			dgvDataMax.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
@@ -172,11 +174,41 @@
 			lRequests.Text = "REQUESTS";
 			lRequests.Click += lRequests_Click;
 			// 
+			// btnReject
+			// 
+			btnReject.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnReject.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnReject.Font = new Font("Bahnschrift", 14F);
+			btnReject.ForeColor = Color.FromArgb(252, 228, 228);
+			btnReject.Location = new Point(154, 593);
+			btnReject.Name = "btnReject";
+			btnReject.Size = new Size(145, 45);
+			btnReject.TabIndex = 24;
+			btnReject.Text = "Reject";
+			btnReject.Visible = false;
+			btnReject.Click += btnReject_Click;
+			// 
+			// btnApprove
+			// 
+			btnApprove.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnApprove.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnApprove.Font = new Font("Bahnschrift", 14F);
+			btnApprove.ForeColor = Color.FromArgb(252, 228, 228);
+			btnApprove.Location = new Point(3, 593);
+			btnApprove.Name = "btnApprove";
+			btnApprove.Size = new Size(145, 45);
+			btnApprove.TabIndex = 23;
+			btnApprove.Text = "Approve";
+			btnApprove.Visible = false;
+			btnApprove.Click += btnApprove_Click;
+			// 
 			// AdminRecords
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(btnReject);
+			Controls.Add(btnApprove);
 			Controls.Add(mstrpRecords);
 			Controls.Add(dgvDataMax);
 			Controls.Add(btnDelete);
@@ -198,5 +230,7 @@
 		private ToolStripMenuItem lDonors;
 		private ToolStripMenuItem lHospitals;
 		private ToolStripMenuItem lRequests;
+		private AntdUI.Button btnReject;
+		private AntdUI.Button btnApprove;
 	}
 }

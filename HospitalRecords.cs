@@ -688,9 +688,9 @@ namespace Hemotica
 		{
 			if (dgvDataMid.CurrentRow != null)
 			{
-				int appointmentId = Convert.ToInt32(dgvDataMid.CurrentRow.Cells["Appointment ID"].Value);
+				int appointmentID = Convert.ToInt32(dgvDataMid.CurrentRow.Cells["Appointment ID"].Value);
 
-				bool updated = updateAppointmentStatus(db, appointmentId, "Scheduled");
+				bool updated = updateAppointmentStatus(db, appointmentID, "Scheduled");
 
 				if (updated)
 				{
@@ -712,9 +712,9 @@ namespace Hemotica
 		{
 			if (dgvDataMid.CurrentRow != null)
 			{
-				int appointmentId = Convert.ToInt32(dgvDataMid.CurrentRow.Cells["Appointment ID"].Value);
+				int appointmentID = Convert.ToInt32(dgvDataMid.CurrentRow.Cells["Appointment ID"].Value);
 
-				bool updated = updateAppointmentStatus(db, appointmentId, "Denied");
+				bool updated = updateAppointmentStatus(db, appointmentID, "Denied");
 
 				if (updated)
 				{

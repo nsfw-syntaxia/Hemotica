@@ -459,10 +459,17 @@ namespace Hemotica
 
 		internal DataTable loadStock(Database db)
 		{
-			string query = @"SELECT [Blood Type], COUNT(*) AS Unit FROM Extraction WHERE [Hospital Username] = ? AND Status = 'Available' AND [Expiration Date] >= Date()
-							 GROUP BY [Blood Type]";
+			string query = @"SELECT Combined.[Blood Type], SUM(Combined.Unit) AS Unit FROM (SELECT [Blood Type], COUNT(*) AS Unit FROM Extraction WHERE [Hospital Username] = ? 
+							 AND Status = 'Available' AND [Expiration Date] >= Date() GROUP BY [Blood Type] UNION ALL
+							 SELECT [Blood Requests].[Blood Type], [Blood Requests].Quantity AS Unit FROM [Blood Requests] WHERE [Blood Requests].Hospital = ? 
+							 AND [Blood Requests].Status = 'Approved') AS Combined GROUP BY Combined.[Blood Type]";
 
-			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", UserLogs.Username),
+				new OleDbParameter("?", UserLogs.Username)
+			};
+
 			return db.executeQuery(query, parameters);
 		}
 
@@ -684,6 +691,14 @@ namespace Hemotica
 			}
 		}
 
+		internal DataTable bloodRequests(Database db)
+		{
+			string query = @"SELECT [Blood Requests].[Blood Request ID], [Blood Requests].[Blood Type], [Blood Requests].Quantity, [Blood Requests].Hospital, 
+							 Hospitals.[Hospital Name], [Blood Requests].Status FROM Hospitals INNER JOIN [Blood Requests] ON Hospitals.Username = [Blood Requests].Hospital 
+							 WHERE [Blood Requests].Status = 'Pending Approval'";
+
+			return db.executeQuery(query);
+		}
 	}
 
 	public class Patient : Donor
