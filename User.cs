@@ -622,6 +622,59 @@ namespace Hemotica
 
 			return db.executeQuery(query);
 		}
+
+		internal bool deleteDonor(int donorID, Database db)
+		{
+			string query = "DELETE FROM Donors WHERE [Donor ID] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+
+					cmd.Parameters.AddWithValue("?", donorID);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		internal bool deleteHospital(int hospitalID, Database db)
+		{
+			string query = "DELETE FROM Hospitals WHERE [Hospital ID] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+
+					cmd.Parameters.AddWithValue("?", hospitalID);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
 	}
 
 	public class Patient : Donor
