@@ -551,27 +551,36 @@ namespace Hemotica
 							 [Operating Hours (Weekend) Start], [Operating Hours (Weekend) End], [Address], [Contact Number] FROM Hospitals
 							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
 
-			DataTable dt = db.executeQuery(query);
+			DataTable rawDt = db.executeQuery(query);
+			DataTable formattedDt = new DataTable();
 
-			if (dt != null)
+			formattedDt.Columns.Add("Hospital ID");
+			formattedDt.Columns.Add("Hospital Name");
+			formattedDt.Columns.Add("License Number");
+			formattedDt.Columns.Add("Classification");
+			formattedDt.Columns.Add("Operating Hours (Weekdays)");
+			formattedDt.Columns.Add("Operating Hours (Weekend)");
+			formattedDt.Columns.Add("Address");
+			formattedDt.Columns.Add("Contact Number");
+
+			foreach (DataRow row in rawDt.Rows)
 			{
-				dt.Columns.Add("WeekdayStart", typeof(string));
-				dt.Columns.Add("WeekdayEnd", typeof(string));
-				dt.Columns.Add("WeekendStart", typeof(string));
-				dt.Columns.Add("WeekendEnd", typeof(string));
+				string weekdayHours = $"{formatTime(row["Operating Hours (Weekdays) Start"])} - {formatTime(row["Operating Hours (Weekdays) End"])}";
+				string weekendHours = $"{formatTime(row["Operating Hours (Weekend) Start"])} - {formatTime(row["Operating Hours (Weekend) End"])}";
 
-				foreach (DataRow row in dt.Rows)
-				{
-					row["WeekdayStart"] = formatTime(row["Operating Hours (Weekdays) Start"]);
-					row["WeekdayEnd"] = formatTime(row["Operating Hours (Weekdays) End"]);
-					row["WeekendStart"] = formatTime(row["Operating Hours (Weekend) Start"]);
-					row["WeekendEnd"] = formatTime(row["Operating Hours (Weekend) End"]);
-				}
+				formattedDt.Rows.Add(
+					row["Hospital ID"],
+					row["Hospital Name"],
+					row["License Number"],
+					row["Classification"],
+					weekdayHours,
+					weekendHours,
+					row["Address"],
+					row["Contact Number"]
+				);
 			}
 
-			return dt;
-
-			//return db.executeQuery(query);
+			return formattedDt;
 		}
 
 		private string formatTime(object value)
