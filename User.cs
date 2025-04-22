@@ -699,6 +699,14 @@ namespace Hemotica
 
 			return db.executeQuery(query);
 		}
+
+		internal DataTable totalBloodRequests(Database db)
+		{
+			string query = @"SELECT [Blood Requests].[Blood Request ID], [Blood Requests].[Blood Type], [Blood Requests].Quantity, [Blood Requests].Hospital, 
+							 Hospitals.[Hospital Name], [Blood Requests].Status FROM Hospitals INNER JOIN [Blood Requests] ON Hospitals.Username = [Blood Requests].Hospital";
+
+			return db.executeQuery(query);
+		}
 	}
 
 	public class Patient : Donor

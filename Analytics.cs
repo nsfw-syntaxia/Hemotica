@@ -53,8 +53,7 @@ namespace Hemotica
 				TitleFontSize = 20,
 				TitleFontWeight = FontWeights.Bold,
 				DefaultFont = "Bahnschrift",
-				DefaultFontSize = 15,
-				TitlePadding = 20
+				DefaultFontSize = 15
 			};
 
 			var pieSeries = new PieSeries
@@ -401,7 +400,7 @@ namespace Hemotica
 				TitleFontWeight = FontWeights.Bold,
 				DefaultFont = "Bahnschrift",
 				DefaultFontSize = 15,
-				TitlePadding = 20
+				TitlePadding = 10
 			};
 
 			var pieSeries = new PieSeries
@@ -410,7 +409,7 @@ namespace Hemotica
 				Stroke = OxyColor.FromRgb(216, 85, 101),
 				InsideLabelPosition = 0.7,
 				AngleSpan = 360,
-				StartAngle = 0,
+				StartAngle = 90,
 				InsideLabelColor = OxyColor.FromRgb(216, 85, 101),
 				OutsideLabelFormat = "{1} ({0})",
 				InsideLabelFormat = "{0}",
@@ -541,6 +540,84 @@ namespace Hemotica
 			plotView.Model = model;
 		}
 
+		internal void adminBloodRequest(PlotView plotView)
+		{
+			DataTable dt = admin.totalBloodRequests(db);
+
+			if (dt == null || dt.Rows.Count == 0)
+				return;
+
+			var bloodTypeCounts = new Dictionary<string, int>();
+
+			foreach (DataRow row in dt.Rows)
+			{
+				string bloodType = row["Blood Type"].ToString();
+				int quantity = Convert.ToInt32(row["Quantity"]);
+
+				if (!bloodTypeCounts.ContainsKey(bloodType))
+					bloodTypeCounts[bloodType] = 0;
+
+				bloodTypeCounts[bloodType] += quantity;
+			}
+
+			if (bloodTypeCounts.Count == 0)
+				return;
+
+			var model = new PlotModel
+			{
+				Title = "TOTAL REQUESTED UNITS BY BLOOD GROUP",
+				IsLegendVisible = true,
+				TextColor = OxyColor.FromRgb(216, 85, 101),
+				PlotAreaBorderColor = OxyColors.Transparent,
+
+				TitleFont = "Bahnschrift",
+				TitleFontSize = 20,
+				TitleFontWeight = FontWeights.Bold,
+				DefaultFont = "Bahnschrift",
+				DefaultFontSize = 15
+			};
+
+			var pieSeries = new PieSeries
+			{
+				StrokeThickness = 1.0,
+				Stroke = OxyColor.FromRgb(216, 85, 101),
+				InsideLabelPosition = 0.7,
+				AngleSpan = 360,
+				StartAngle = 0,
+				InsideLabelColor = OxyColor.FromRgb(216, 85, 101),
+				OutsideLabelFormat = "{1} ({0})",
+				InsideLabelFormat = "{0}",
+
+				Font = "Bahnschrift",
+				FontSize = 15,
+				FontWeight = FontWeights.Bold
+			};
+
+			var bloodTypeColors = new Dictionary<string, OxyColor>
+			{
+				{ "A+", OxyColor.FromRgb(236, 124, 132) },
+				{ "A-", OxyColor.FromRgb(244, 148, 156) },
+				{ "B+", OxyColor.FromRgb(244, 180, 180) },
+				{ "B-", OxyColor.FromRgb(252, 212, 212) },
+				{ "AB+", OxyColor.FromRgb(252, 196, 196) },
+				{ "AB-", OxyColor.FromRgb(252, 204, 204) },
+				{ "O+", OxyColor.FromRgb(252, 220, 214) },
+				{ "O-", OxyColor.FromRgb(252, 208, 224) }
+			};
+
+			foreach (var kvp in bloodTypeCounts)
+			{
+				OxyColor color = bloodTypeColors.ContainsKey(kvp.Key)
+					? bloodTypeColors[kvp.Key]
+					: OxyColors.Gray;
+
+				pieSeries.Slices.Add(new PieSlice(kvp.Key, kvp.Value) { Fill = color });
+			}
+
+			model.Series.Add(pieSeries);
+			plotView.Model = model;
+		}
+
 		internal void adminExtractions(PlotView plotView)
 		{
 			DataTable dt = admin.hospitalExtractions(db);
@@ -636,109 +713,6 @@ namespace Hemotica
 			{
 				Position = OxyPlot.Axes.AxisPosition.Left,
 				Title = "Blood Bags Extracted",
-				AxislineColor = OxyColor.FromRgb(216, 85, 101),
-				TicklineColor = OxyColor.FromRgb(216, 85, 101),
-				Minimum = 0
-			});
-
-			plotView.Model = plotModel;
-		}
-
-		internal void adminTransfusions(PlotView plotView)
-		{
-			DataTable dt = admin.hospitalTransfusions(db);
-
-			if (dt == null || dt.Rows.Count == 0)
-				return;
-
-			var hospitalMonthlyCounts = new Dictionary<string, Dictionary<DateTime, int>>();
-
-			foreach (DataRow row in dt.Rows)
-			{
-				string hospital = row["Hospital Name"].ToString().Trim();
-				if (!DateTime.TryParse(row["Transfusion Date"].ToString(), out DateTime transfusionDate))
-					continue;
-
-				DateTime monthKey = new DateTime(transfusionDate.Year, transfusionDate.Month, 1);
-
-				if (!hospitalMonthlyCounts.ContainsKey(hospital))
-					hospitalMonthlyCounts[hospital] = new Dictionary<DateTime, int>();
-
-				if (!hospitalMonthlyCounts[hospital].ContainsKey(monthKey))
-					hospitalMonthlyCounts[hospital][monthKey] = 0;
-
-				hospitalMonthlyCounts[hospital][monthKey]++;
-			}
-
-			if (hospitalMonthlyCounts.Count == 0)
-				return;
-
-			var allMonths = new SortedSet<DateTime>();
-			foreach (var hospital in hospitalMonthlyCounts.Values)
-				foreach (var month in hospital.Keys)
-					allMonths.Add(month);
-
-			DateTime startMonth = allMonths.Min;
-			DateTime endMonth = allMonths.Max;
-
-			List<DateTime> monthRange = new List<DateTime>();
-			DateTime current = startMonth;
-			while (current <= endMonth)
-			{
-				monthRange.Add(current);
-				current = current.AddMonths(1);
-			}
-
-			List<string> monthLabels = monthRange.Select(m => m.ToString("MM-yyyy")).ToList();
-
-			var plotModel = new PlotModel
-			{
-				Title = "BLOOD TRANSFUSIONS OF HOSPITALS PER MONTH",
-				TextColor = OxyColor.FromRgb(216, 85, 101),
-				PlotAreaBorderColor = OxyColor.FromRgb(216, 85, 101),
-				TitleFont = "Bahnschrift",
-				TitleFontSize = 20,
-				TitleFontWeight = FontWeights.Bold
-			};
-
-			Random rand = new Random();
-			foreach (var kvp in hospitalMonthlyCounts)
-			{
-				string hospitalName = kvp.Key;
-				var monthCounts = kvp.Value;
-
-				LineSeries series = new LineSeries
-				{
-					Title = hospitalName,
-					MarkerType = MarkerType.Circle,
-					StrokeThickness = 2,
-					Color = OxyColor.FromRgb((byte)rand.Next(50, 200), (byte)rand.Next(50, 200), (byte)rand.Next(50, 200))
-				};
-
-				for (int i = 0; i < monthRange.Count; i++)
-				{
-					DateTime month = monthRange[i];
-					int count = monthCounts.ContainsKey(month) ? monthCounts[month] : 0;
-					series.Points.Add(new DataPoint(i, count));
-				}
-
-				plotModel.Series.Add(series);
-			}
-
-			plotModel.Axes.Add(new OxyPlot.Axes.CategoryAxis
-			{
-				Position = OxyPlot.Axes.AxisPosition.Bottom,
-				ItemsSource = monthLabels,
-				Title = "Date",
-				Angle = 45,
-				AxislineColor = OxyColor.FromRgb(216, 85, 101),
-				TicklineColor = OxyColor.FromRgb(216, 85, 101)
-			});
-
-			plotModel.Axes.Add(new OxyPlot.Axes.LinearAxis
-			{
-				Position = OxyPlot.Axes.AxisPosition.Left,
-				Title = "Blood Bags Transfused",
 				AxislineColor = OxyColor.FromRgb(216, 85, 101),
 				TicklineColor = OxyColor.FromRgb(216, 85, 101),
 				Minimum = 0

@@ -39,8 +39,8 @@ namespace Hemotica
 
 			analyticsButtons.Add(btnBGAnalytics);
 			analyticsButtons.Add(btnDAnalytics);
+			analyticsButtons.Add(btnRAnalytics);
 			analyticsButtons.Add(btnEAnalytics);
-			analyticsButtons.Add(btnTAnalytics);
 
 			foreach (var btn in analyticsButtons)
 			{
@@ -353,13 +353,13 @@ namespace Hemotica
 			{
 				analytics.adminDonors(pvOxyplot);
 			}
+			else if (clickedButton == btnRAnalytics)
+			{
+				analytics.adminBloodRequest(pvOxyplot);
+			}
 			else if (clickedButton == btnEAnalytics)
 			{
 				analytics.adminExtractions(pvOxyplot);
-			}
-			else if (clickedButton == btnTAnalytics)
-			{
-				analytics.adminTransfusions(pvOxyplot);
 			}
 		}
 
@@ -384,7 +384,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.adminExtractions(pvOxyplot);
+			analytics.adminBloodRequest(pvOxyplot);
 		}
 
 		private void btnTAnalytics_Click(object sender, EventArgs e)
@@ -392,7 +392,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.adminTransfusions(pvOxyplot);
+			analytics.adminExtractions(pvOxyplot);
 		}
 
 		private void pDUsers_Click(object sender, EventArgs e)

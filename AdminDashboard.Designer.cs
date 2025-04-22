@@ -32,10 +32,10 @@
 			pDashboard = new Panel();
 			pAnalytics = new Panel();
 			tlpAnalytics = new TableLayoutPanel();
-			btnTAnalytics = new Button();
 			btnEAnalytics = new Button();
 			btnDAnalytics = new Button();
 			btnBGAnalytics = new Button();
+			btnRAnalytics = new Button();
 			pOxyplot = new Panel();
 			pvOxyplot = new OxyPlot.WindowsForms.PlotView();
 			pDonors = new Panel();
@@ -106,10 +106,10 @@
 			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
 			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
 			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-			tlpAnalytics.Controls.Add(btnTAnalytics, 3, 0);
-			tlpAnalytics.Controls.Add(btnEAnalytics, 2, 0);
-			tlpAnalytics.Controls.Add(btnDAnalytics, 1, 0);
+			tlpAnalytics.Controls.Add(btnEAnalytics, 3, 0);
+			tlpAnalytics.Controls.Add(btnDAnalytics, 2, 0);
 			tlpAnalytics.Controls.Add(btnBGAnalytics, 0, 0);
+			tlpAnalytics.Controls.Add(btnRAnalytics, 1, 0);
 			tlpAnalytics.Controls.Add(pOxyplot, 0, 1);
 			tlpAnalytics.Location = new Point(4, 4);
 			tlpAnalytics.Name = "tlpAnalytics";
@@ -119,44 +119,33 @@
 			tlpAnalytics.Size = new Size(642, 344);
 			tlpAnalytics.TabIndex = 0;
 			// 
-			// btnTAnalytics
-			// 
-			btnTAnalytics.Dock = DockStyle.Fill;
-			btnTAnalytics.FlatAppearance.BorderSize = 0;
-			btnTAnalytics.FlatStyle = FlatStyle.Flat;
-			btnTAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
-			btnTAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
-			btnTAnalytics.Location = new Point(483, 3);
-			btnTAnalytics.Name = "btnTAnalytics";
-			btnTAnalytics.Size = new Size(156, 28);
-			btnTAnalytics.TabIndex = 3;
-			btnTAnalytics.Text = "TRANSFUSIONS";
-			btnTAnalytics.UseVisualStyleBackColor = true;
-			btnTAnalytics.Click += btnTAnalytics_Click;
-			// 
 			// btnEAnalytics
 			// 
 			btnEAnalytics.Dock = DockStyle.Fill;
 			btnEAnalytics.FlatAppearance.BorderSize = 0;
+			btnEAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnEAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
 			btnEAnalytics.FlatStyle = FlatStyle.Flat;
 			btnEAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
 			btnEAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
-			btnEAnalytics.Location = new Point(323, 3);
+			btnEAnalytics.Location = new Point(483, 3);
 			btnEAnalytics.Name = "btnEAnalytics";
-			btnEAnalytics.Size = new Size(154, 28);
-			btnEAnalytics.TabIndex = 2;
+			btnEAnalytics.Size = new Size(156, 28);
+			btnEAnalytics.TabIndex = 3;
 			btnEAnalytics.Text = "EXTRACTIONS";
 			btnEAnalytics.UseVisualStyleBackColor = true;
-			btnEAnalytics.Click += btnEAnalytics_Click;
+			btnEAnalytics.Click += btnTAnalytics_Click;
 			// 
 			// btnDAnalytics
 			// 
 			btnDAnalytics.Dock = DockStyle.Fill;
 			btnDAnalytics.FlatAppearance.BorderSize = 0;
+			btnDAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnDAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
 			btnDAnalytics.FlatStyle = FlatStyle.Flat;
 			btnDAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
 			btnDAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
-			btnDAnalytics.Location = new Point(163, 3);
+			btnDAnalytics.Location = new Point(323, 3);
 			btnDAnalytics.Name = "btnDAnalytics";
 			btnDAnalytics.Size = new Size(154, 28);
 			btnDAnalytics.TabIndex = 1;
@@ -180,6 +169,23 @@
 			btnBGAnalytics.Text = "BLOOD GROUPS";
 			btnBGAnalytics.UseVisualStyleBackColor = true;
 			btnBGAnalytics.Click += btnBGAnalytics_Click;
+			// 
+			// btnRAnalytics
+			// 
+			btnRAnalytics.Dock = DockStyle.Fill;
+			btnRAnalytics.FlatAppearance.BorderSize = 0;
+			btnRAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnRAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
+			btnRAnalytics.FlatStyle = FlatStyle.Flat;
+			btnRAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			btnRAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
+			btnRAnalytics.Location = new Point(163, 3);
+			btnRAnalytics.Name = "btnRAnalytics";
+			btnRAnalytics.Size = new Size(154, 28);
+			btnRAnalytics.TabIndex = 2;
+			btnRAnalytics.Text = "REQUESTS";
+			btnRAnalytics.UseVisualStyleBackColor = true;
+			btnRAnalytics.Click += btnEAnalytics_Click;
 			// 
 			// pOxyplot
 			// 
@@ -523,8 +529,8 @@
 		private TableLayoutPanel tlpAnalytics;
 		private Button btnBGAnalytics;
 		private Button btnDAnalytics;
+		private Button btnRAnalytics;
 		private Button btnEAnalytics;
-		private Button btnTAnalytics;
 		private Panel pAnalytics;
 		private Panel pOxyplot;
 		private OxyPlot.WindowsForms.PlotView pvOxyplot;
