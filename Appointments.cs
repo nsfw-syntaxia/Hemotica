@@ -63,9 +63,9 @@ namespace Hemotica
 
 			DateTime appointmentDate = dtpAppointments.Value;
 			string status = (rbtnYes1.Checked && rbtnYes2.Checked && rbtnYes3.Checked &&
-							 rbtnYes4.Checked && rbtnYes5.Checked && rbtnYes6.Checked) ? "Scheduled" : "Denied";
+							 rbtnYes4.Checked && rbtnYes5.Checked && rbtnYes6.Checked) ? "Pending Approval" : "Denied";
 
-			if (status == "Scheduled" && !eligibility(appointmentDate))
+			if (status == "Pending Approval" && !eligibility(appointmentDate))
 			{
 				status = "Denied";
 			}
@@ -92,7 +92,7 @@ namespace Hemotica
 				}
 				else
 				{
-					MessageBox.Show("Appointment scheduled successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					MessageBox.Show("Appointment is now awaiting approval!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 				this.Close();
 			}
@@ -133,7 +133,6 @@ namespace Hemotica
 
 			return true;
 		}
-
 
 		private void lblInformation_Click(object sender, EventArgs e)
 		{

@@ -209,9 +209,9 @@
 			lblHospitals.Location = new Point(0, 7);
 			lblHospitals.Name = "lblHospitals";
 			lblHospitals.Padding = new Padding(5, 0, 0, 5);
-			lblHospitals.Size = new Size(153, 38);
+			lblHospitals.Size = new Size(134, 38);
 			lblHospitals.TabIndex = 12;
-			lblHospitals.Text = "Hospitals >";
+			lblHospitals.Text = "Hospitals";
 			// 
 			// pLogs
 			// 
@@ -258,9 +258,9 @@
 			lblLogs.Location = new Point(0, 7);
 			lblLogs.Name = "lblLogs";
 			lblLogs.Padding = new Padding(5, 0, 0, 5);
-			lblLogs.Size = new Size(242, 38);
+			lblLogs.Size = new Size(223, 38);
 			lblLogs.TabIndex = 10;
-			lblLogs.Text = "Donation History >";
+			lblLogs.Text = "Donation History";
 			// 
 			// tSlideshow
 			// 

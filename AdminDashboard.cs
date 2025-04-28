@@ -3,6 +3,9 @@ using System.Data;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Data.OleDb;
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.WindowsForms;
 
 namespace Hemotica
 {
@@ -29,15 +32,15 @@ namespace Hemotica
 		private void HospitalDashboard_Load(object sender, EventArgs e)
 		{
 			roundControls();
-			//loadAppointments();
-			//loadPatients();
+			loadHospitals();
+			loadDonors();
 			totalDonors();
 			totalHospitals();
 
 			analyticsButtons.Add(btnBGAnalytics);
-			analyticsButtons.Add(btnPAnalytics);
+			analyticsButtons.Add(btnDAnalytics);
+			analyticsButtons.Add(btnRAnalytics);
 			analyticsButtons.Add(btnEAnalytics);
-			analyticsButtons.Add(btnTAnalytics);
 
 			foreach (var btn in analyticsButtons)
 			{
@@ -118,40 +121,19 @@ namespace Hemotica
 			}
 		}
 
-		/*
-		private void loadAppointments()
+		private void loadHospitals()
 		{
-			updateAppointments();
-
-			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
-			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
-			DataTable hospitalData = db.executeQuery(queryHospital, parameters);
-
-			string hospitalName = hospitalData.Rows[0]["Hospital Name"].ToString();
-
-			string queryAppointments = @"SELECT Appointments.[Appointment Date], Donors.[First Name], Donors.[Middle Name], Donors.[Last Name] FROM Hospitals 
-										 INNER JOIN (Donors INNER JOIN Appointments ON Donors.Username = Appointments.[Donor Username]) ON Hospitals.[Hospital Name] = Appointments.Hospital 
-										 WHERE Appointments.[Status] = ? AND Appointments.[Hospital] = ? ORDER BY Appointments.[Appointment Date] ASC";
-
-			OleDbParameter[] appointmentParameters =
-			{
-				new OleDbParameter("?", "Scheduled"),
-				new OleDbParameter("?", hospitalName)
-			};
-			DataTable appointments = db.executeQuery(queryAppointments, appointmentParameters);
+			string query = "SELECT [Hospital Name], [Contact Number] FROM Hospitals ORDER BY [Hospital Name]";
+			DataTable hospitals = db.executeQuery(query);
 
 			flpHospitals.Controls.Clear();
 
-			if (appointments != null && appointments.Rows.Count > 0)
+			if (hospitals != null && hospitals.Rows.Count > 0)
 			{
-				foreach (DataRow row in appointments.Rows)
+				foreach (DataRow row in hospitals.Rows)
 				{
-					string appointmentDate = Convert.ToDateTime(row["Appointment Date"]).ToString("MMMM dd, yyyy");
-					string firstName = row["First Name"].ToString();
-					string middleName = row["Middle Name"].ToString();
-					string lastName = row["Last Name"].ToString();
-
-					string donorName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
+					string hospitalName = row["Hospital Name"].ToString();
+					string contact = row["Contact Number"].ToString();
 
 					int panelWidth = 297;
 
@@ -163,40 +145,43 @@ namespace Hemotica
 						Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panelWidth, 125, 20, 20))
 					};
 
-					Label lblDate = new Label
+					Label lblName = new Label
 					{
-						Text = appointmentDate,
-						Font = new Font("Bahnschrift", 17F, FontStyle.Bold),
+						Text = hospitalName,
+						Font = new Font("Bahnschrift", 15F, FontStyle.Bold),
 						ForeColor = Color.FromArgb(216, 85, 101),
-						TextAlign = ContentAlignment.MiddleLeft,
 						AutoSize = false,
-						Width = 240,
-						Height = 30
+						TextAlign = ContentAlignment.MiddleLeft,
+						MaximumSize = new Size(250, 0),
+						Size = new Size(250, 0)
 					};
 
-					Label lblDonor = new Label
+					Size nameSize = TextRenderer.MeasureText(lblName.Text, lblName.Font, lblName.MaximumSize, TextFormatFlags.WordBreak);
+					lblName.Height = nameSize.Height;
+
+					Label lblContact = new Label
 					{
-						Text = donorName,
-						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
+						Text = contact,
+						Font = new Font("Bahnschrift", 13F, FontStyle.Regular),
 						ForeColor = Color.FromArgb(216, 85, 101),
-						TextAlign = ContentAlignment.MiddleLeft,
 						AutoSize = false,
-						Width = 240,
-						MaximumSize = new Size(240, 0)
+						TextAlign = ContentAlignment.MiddleLeft,
+						MaximumSize = new Size(250, 0),
+						Size = new Size(250, 0)
 					};
 
-					Size textSize = TextRenderer.MeasureText(lblDonor.Text, lblDonor.Font, lblDonor.MaximumSize, TextFormatFlags.WordBreak);
-					lblDonor.Height = textSize.Height;
+					Size contactSize = TextRenderer.MeasureText(lblContact.Text, lblContact.Font, lblContact.MaximumSize, TextFormatFlags.WordBreak);
+					lblContact.Height = contactSize.Height;
 
-					int gap = 10;
-					int totalHeight = lblDate.Height + gap + lblDonor.Height;
-					int startY = (panel.Height - totalHeight) / 2 - 3;
+					int gap = 5;
+					int totalHeight = lblName.Height + gap + lblContact.Height;
+					int startY = (panel.Height - totalHeight) / 2;
 
-					lblDate.Location = new Point(25, startY);
-					lblDonor.Location = new Point(25, lblDate.Bottom + gap);
+					lblName.Location = new Point(25, startY);
+					lblContact.Location = new Point(25, lblName.Bottom + gap);
 
-					panel.Controls.Add(lblDate);
-					panel.Controls.Add(lblDonor);
+					panel.Controls.Add(lblName);
+					panel.Controls.Add(lblContact);
 
 					flpHospitals.Controls.Add(panel);
 				}
@@ -212,19 +197,11 @@ namespace Hemotica
 			}
 			else
 			{
-				showNoAppointments();
+				showNoHospitals();
 			}
 		}
 
-		private void updateAppointments()
-		{
-			string cancelAppointmentsQuery = @"UPDATE Appointments SET Status = 'Cancelled' WHERE [Appointment Date] < ? AND Status = 'Scheduled'";
-			string format = DateTime.Now.Date.ToString("MM/dd/yyyy");
-			OleDbParameter[] appointmentParameter = { new OleDbParameter("?", format) };
-			db.executeNonQuery(cancelAppointmentsQuery, appointmentParameter);
-		}
-
-		private void showNoAppointments()
+		private void showNoHospitals()
 		{
 			if (!flpHospitals.Controls.Contains(pbxNoHospitals))
 			{
@@ -234,55 +211,26 @@ namespace Hemotica
 			pbxNoHospitals.Visible = true;
 		}
 
-		private void loadPatients()
+		private void loadDonors()
 		{
-			string queryPatients = @"SELECT [First Name], [Middle Name], [Last Name], [Blood Type], Priority, [Hospital Username] FROM Patients 
-									 WHERE [Hospital Username] = ? AND Priority <> ?";
-
-			OleDbParameter[] patientParameters =
-			{
-				new OleDbParameter("?", UserLogs.Username),
-				new OleDbParameter("?", "Resolved")
-			};
-			DataTable patients = db.executeQuery(queryPatients, patientParameters);
+			string query = @"SELECT [First Name], [Middle Name], [Last Name], [Contact Number], [Blood Type] FROM Donors 
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''
+							 ORDER BY [Last Name], [First Name]";
+			DataTable donors = db.executeQuery(query);
 
 			flpDonors.Controls.Clear();
 
-			if (patients != null && patients.Rows.Count > 0)
+			if (donors != null && donors.Rows.Count > 0)
 			{
-				var filteredRows = patients.AsEnumerable().Where(row => row["Priority"].ToString() != "Resolved");
-
-				DataTable filteredPatients = filteredRows.CopyToDataTable();
-				filteredPatients.Columns.Add("SortOrder", typeof(int));
-
-				foreach (DataRow row in filteredPatients.Rows)
-				{
-					string priority = row["Priority"].ToString();
-					int sortOrder = 4;
-
-					switch (priority)
-					{
-						case "Critical": sortOrder = 0; break;
-						case "High": sortOrder = 1; break;
-						case "Medium": sortOrder = 2; break;
-						case "Low": sortOrder = 3; break;
-					}
-
-					row["SortOrder"] = sortOrder;
-				}
-
-				DataView sortedView = filteredPatients.DefaultView;
-				sortedView.Sort = "SortOrder ASC";
-				DataTable sortedPatients = sortedView.ToTable();
-
-				foreach (DataRow row in sortedPatients.Rows)
+				foreach (DataRow row in donors.Rows)
 				{
 					string firstName = row["First Name"].ToString();
 					string middleName = row["Middle Name"].ToString();
 					string lastName = row["Last Name"].ToString();
+					string contactNumber = row["Contact Number"].ToString();
 					string bloodType = row["Blood Type"].ToString();
-					string priority = row["Priority"].ToString();
-					string patientName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
+
+					string donorName = string.IsNullOrWhiteSpace(middleName) ? $"{firstName} {lastName}" : $"{firstName} {middleName} {lastName}";
 
 					int panelWidth = 290;
 
@@ -295,7 +243,7 @@ namespace Hemotica
 
 					Label lblName = new Label
 					{
-						Text = patientName,
+						Text = donorName,
 						Font = new Font("Bahnschrift", 14F, FontStyle.Bold),
 						ForeColor = Color.FromArgb(216, 85, 101),
 						TextAlign = ContentAlignment.MiddleCenter,
@@ -307,13 +255,13 @@ namespace Hemotica
 
 					Label lblInformation = new Label
 					{
-						Text = $"{bloodType} ({priority})",
-						Font = new Font("Bahnschrift", 13F, FontStyle.Bold),
+						Text = $"Blood Type: {bloodType}\nContact Number: {contactNumber}",
+						Font = new Font("Bahnschrift", 13F, FontStyle.Regular),
 						ForeColor = Color.FromArgb(216, 85, 101),
 						TextAlign = ContentAlignment.MiddleCenter,
 						AutoSize = false,
 						Width = panel.Width - 20,
-						Height = 30
+						Height = 50
 					};
 
 					int gap = 5;
@@ -340,11 +288,11 @@ namespace Hemotica
 			}
 			else
 			{
-				showNoPatients();
+				showNoDonors();
 			}
 		}
 
-		private void showNoPatients()
+		private void showNoDonors()
 		{
 			if (!flpDonors.Controls.Contains(pbxNoDonors))
 			{
@@ -353,7 +301,6 @@ namespace Hemotica
 
 			pbxNoDonors.Visible = true;
 		}
-		*/
 
 		private void resizePanels()
 		{
@@ -395,24 +342,24 @@ namespace Hemotica
 			}
 
 			clickedButton.BackColor = Color.FromArgb(216, 85, 101);
-			clickedButton.ForeColor = Color.White;
+			clickedButton.ForeColor = Color.FromArgb(252, 228, 228);
 			selectedButton = clickedButton;
 
 			if (clickedButton == btnBGAnalytics)
 			{
-				analytics.displayBloodGroups(pvOxyplot);
+				analytics.adminBloodGroups(pvOxyplot);
 			}
-			else if (clickedButton == btnPAnalytics)
+			else if (clickedButton == btnDAnalytics)
 			{
-				
+				analytics.adminDonors(pvOxyplot);
+			}
+			else if (clickedButton == btnRAnalytics)
+			{
+				analytics.adminBloodRequest(pvOxyplot);
 			}
 			else if (clickedButton == btnEAnalytics)
 			{
-				//
-			}
-			else if (clickedButton == btnTAnalytics)
-			{
-				//
+				analytics.adminExtractions(pvOxyplot);
 			}
 		}
 
@@ -421,7 +368,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.displayBloodGroups(pvOxyplot);
+			analytics.adminBloodGroups(pvOxyplot);
 		}
 
 		private void btnPAnalytics_Click(object sender, EventArgs e)
@@ -429,7 +376,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.displayPatients(pvOxyplot);
+			analytics.adminDonors(pvOxyplot);
 		}
 
 		private void btnEAnalytics_Click(object sender, EventArgs e)
@@ -437,7 +384,7 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.displayExtractions(pvOxyplot);
+			analytics.adminBloodRequest(pvOxyplot);
 		}
 
 		private void btnTAnalytics_Click(object sender, EventArgs e)
@@ -445,7 +392,67 @@ namespace Hemotica
 			pvOxyplot.Model = null;
 			pvOxyplot.InvalidatePlot(true);
 
-			analytics.displayTransfusions(pvOxyplot);
+			analytics.adminExtractions(pvOxyplot);
+		}
+
+		private void pDUsers_Click(object sender, EventArgs e)
+		{
+			DashboardA parentForm = this.FindForm() as DashboardA;
+
+			if (parentForm != null)
+			{
+				parentForm.showManagementDonors();
+			}
+		}
+
+		private void pbxDUsers_Click(object sender, EventArgs e)
+		{
+			DashboardA parentForm = this.FindForm() as DashboardA;
+
+			if (parentForm != null)
+			{
+				parentForm.showManagementDonors();
+			}
+		}
+
+		private void pHUsers_Click(object sender, EventArgs e)
+		{
+			DashboardA parentForm = this.FindForm() as DashboardA;
+
+			if (parentForm != null)
+			{
+				parentForm.showManagementHospitals();
+			}
+		}
+
+		private void pbxHUsers_Click(object sender, EventArgs e)
+		{
+			DashboardA parentForm = this.FindForm() as DashboardA;
+
+			if (parentForm != null)
+			{
+				parentForm.showManagementHospitals();
+			}
+		}
+
+		private void lblVAD_Click(object sender, EventArgs e)
+		{
+			DashboardA parentForm = this.FindForm() as DashboardA;
+
+			if (parentForm != null)
+			{
+				parentForm.showManagementDonors();
+			}
+		}
+
+		private void lblVAH_Click(object sender, EventArgs e)
+		{
+			DashboardA parentForm = this.FindForm() as DashboardA;
+
+			if (parentForm != null)
+			{
+				parentForm.showManagementHospitals();
+			}
 		}
 	}
 }

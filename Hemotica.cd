@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Hemotica.User">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAACAQAAAgAQAAAAEAAAAAAAACAAAAAgAAAAA=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.Hospital">
-    <Position X="9" Y="2.5" Width="1.5" />
+    <Position X="9" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAAiABAAQgAQAEAAAAQIAAgECAAIAAgAAAAY=</HashCode>
+      <HashCode>AAAABAAEAAiCBQAQgAUAEAAAAQIAAgECAAoAAgAAAAY=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.Donor">
-    <Position X="3" Y="2.5" Width="1.5" />
+    <Position X="3" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAgAEAAAABAQACIQEAQ2EAAEEAAAAAAAAAACgAAAAo=</HashCode>
+      <HashCode>AAAgCEBAABBAQACIREAQ2EQAEEAAAAgEAAIACgAAAAo=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Hemotica.Admin" Collapsed="true">
-    <Position X="9" Y="1.5" Width="1.5" />
+  <Class Name="Hemotica.Admin">
+    <Position X="7" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAACQAQAQAAAEAAAAAEAAgAAAAAAAAAiEAA=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.UserLogs">
-    <Position X="0.5" Y="5.75" Width="1.5" />
+    <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAEAAAAAAYAAAAIAAAAACAAAAAAQAAAAACE=</HashCode>
       <FileName>User.cs</FileName>
@@ -38,134 +38,92 @@
   <Class Name="Hemotica.Database">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAABABAAAAAARAABCEAAAAAAAAAAAAACAAAAAAg=</HashCode>
+      <HashCode>MAAAAAAAABAEAAAARAABCEAAAAAAAAAAAAACAQAAAAg=</HashCode>
       <FileName>Database.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.ExceptionHandling">
-    <Position X="0.5" Y="4" Width="1.5" />
+    <Position X="11.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAQAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAABAQAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ExceptionHandling.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.Home" Collapsed="true">
-    <Position X="11.5" Y="0.5" Width="1.5" />
+    <Position X="13.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CABgAGRACKIQEAAAACCgABASAAAAQBIAgIEgBBCQgAA=</HashCode>
       <FileName>Home.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.Register" Collapsed="true">
-    <Position X="11.5" Y="3.5" Width="1.5" />
+    <Position X="13.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgQACBCCAAAAACAACAEAIGAECLQAAAAJsABAAAAQA=</HashCode>
       <FileName>Register.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.Login" Collapsed="true">
-    <Position X="11.5" Y="1.5" Width="1.5" />
+    <Position X="13.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAQCCAwQAICAAKAEAACAICASgAAIpGABABAAAA=</HashCode>
+      <HashCode>AAAAQAAQCCAwQAICAAKAEAACAICASgAAIJGABABAAAA=</HashCode>
       <FileName>Login.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.ForgetPassword" Collapsed="true">
-    <Position X="11.5" Y="2.5" Width="1.5" />
+    <Position X="13.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAQAAACCAAAQACAACAEAACAAAAQAAAAIHAAgAAAAA=</HashCode>
+      <HashCode>AACAQAAACCASAQAiAgCAEAACIAAAQAAAAIHAAgAAAAA=</HashCode>
       <FileName>ForgetPassword.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.Patient">
-    <Position X="5" Y="3.75" Width="1.5" />
+    <Position X="5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAQAAAAEAAAAAECAAAAAiABAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAAAAABAAAQAAAQEAAAAAECAAAAAiABAgAAAAAAAAAA=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Hemotica.Physician">
-    <Position X="7" Y="4.25" Width="1.5" />
+    <Position X="7" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAASAIAAQACEA=</HashCode>
+      <HashCode>AAAAAABAAAAAAAAAAAAEAwAAAAAAAAAAASAIAAQACEA=</HashCode>
       <FileName>User.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Hemotica.DonorAppointments" Collapsed="true">
-    <Position X="11.5" Y="6" Width="1.5" />
+  <Class Name="Hemotica.Analytics">
+    <Position X="11.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AwAAAAAAgCgRAAABBAKAABACAAAAgAAQAAAAAAAAAEI=</HashCode>
-      <FileName>DonorAppointments.cs</FileName>
+      <HashCode>AAAIAACIAAAQIAAAAAAAAAAgAAEAAAAAAAgAAIEEAIA=</HashCode>
+      <FileName>Analytics.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Hemotica.DonorDashboard" Collapsed="true">
-    <Position X="11.5" Y="5" Width="1.5" />
+  <Class Name="Hemotica.Appointments" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AKAARAABACAQAAABBACAAgADAEEAAQAAABAAAAIgAAA=</HashCode>
-      <FileName>DonorDashboard.cs</FileName>
+      <HashCode>AAAAZAgIBCzSDwGAABCAAFKCAIEABAEEAgQAAEAIIzA=</HashCode>
+      <FileName>Appointments.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Hemotica.DonorNotification" Collapsed="true">
-    <Position X="11.5" Y="7" Width="1.5" />
+  <Class Name="Hemotica.DashboardA" Collapsed="true">
+    <Position X="13.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QQAAAAAAACAAAAABBACAAAAGAAAAAAAgAAAAAAAAAAA=</HashCode>
-      <FileName>DonorNotification.cs</FileName>
+      <HashCode>gBABAEAACKASEYABFACAABASgEABwQIYAI1cAaAgAAI=</HashCode>
+      <FileName>DashboardA.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Hemotica.DonorProfile" Collapsed="true">
-    <Position X="11.5" Y="8" Width="1.5" />
+  <Class Name="Hemotica.DashboardD" Collapsed="true">
+    <Position X="13.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAhgAABECAQAAARJACAsABCCQkAIjYAAwIABAIBAAA=</HashCode>
-      <FileName>DonorProfile.cs</FileName>
+      <HashCode>hBgBAEAACKASEYAFFACAkBASAEAQwBIEAIloDCAgAAI=</HashCode>
+      <FileName>DashboardD.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Hemotica.HospitalDashboard" Collapsed="true">
-    <Position X="13.5" Y="0.5" Width="1.5" />
+  <Class Name="Hemotica.DashboardH" Collapsed="true">
+    <Position X="13.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ARACIAAAACgVAAABBACCABACiAAAAAQAAAAAABAAAAA=</HashCode>
-      <FileName>HospitalDashboard.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Hemotica.HospitalExtraction" Collapsed="true">
-    <Position X="13.5" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgAAIAICEAIIABBACAAAQCAAAYAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>HospitalExtraction.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Hemotica.HospitalNotification" Collapsed="true">
-    <Position X="13.5" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAAAACAAAEABBACAAAACCAAAAAAgAAAAAAAAAAA=</HashCode>
-      <FileName>HospitalNotification.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Hemotica.HospitalProfile" Collapsed="true">
-    <Position X="13.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gIABgAABBCAIAAAJJQGAMEBCAIAAAgQAAgAABAIgAAA=</HashCode>
-      <FileName>HospitalProfile.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Hemotica.HospitalRecords" Collapsed="true">
-    <Position X="13.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIR4BAAABLgRAAAQAEOgTUBCbAIEFEAAAAABEIQAwYU=</HashCode>
-      <FileName>HospitalRecords.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Hemotica.HospitalStock" Collapsed="true">
-    <Position X="13.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ggAAAAAAACAAAAAAAACAAAACAAAAAABAAAAAAAAAAAA=</HashCode>
-      <FileName>HospitalStock.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Hemotica.HospitalTransfusion" Collapsed="true">
-    <Position X="13.5" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIACAgAQBCAAAAAAAAiAAQACAABIQAJAAAIAAgAAAAA=</HashCode>
-      <FileName>HospitalTransfusion.cs</FileName>
+      <HashCode>gRghAkgwCKAykYgBFACAwJASAEAQwBMxAI9IBCSgAAM=</HashCode>
+      <FileName>DashboardH.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

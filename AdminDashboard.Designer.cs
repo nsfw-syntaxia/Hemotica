@@ -32,17 +32,19 @@
 			pDashboard = new Panel();
 			pAnalytics = new Panel();
 			tlpAnalytics = new TableLayoutPanel();
-			btnTAnalytics = new Button();
 			btnEAnalytics = new Button();
-			btnPAnalytics = new Button();
+			btnDAnalytics = new Button();
 			btnBGAnalytics = new Button();
+			btnRAnalytics = new Button();
 			pOxyplot = new Panel();
 			pvOxyplot = new OxyPlot.WindowsForms.PlotView();
 			pDonors = new Panel();
+			lblVAD = new Label();
 			flpDonors = new FlowLayoutPanel();
 			pbxNoDonors = new PictureBox();
 			lblDonors = new Label();
 			pHospitals = new Panel();
+			lblVAH = new Label();
 			flpHospitals = new FlowLayoutPanel();
 			pbxNoHospitals = new PictureBox();
 			lblHospitals = new Label();
@@ -104,10 +106,10 @@
 			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
 			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
 			tlpAnalytics.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-			tlpAnalytics.Controls.Add(btnTAnalytics, 3, 0);
-			tlpAnalytics.Controls.Add(btnEAnalytics, 2, 0);
-			tlpAnalytics.Controls.Add(btnPAnalytics, 1, 0);
+			tlpAnalytics.Controls.Add(btnEAnalytics, 3, 0);
+			tlpAnalytics.Controls.Add(btnDAnalytics, 2, 0);
 			tlpAnalytics.Controls.Add(btnBGAnalytics, 0, 0);
+			tlpAnalytics.Controls.Add(btnRAnalytics, 1, 0);
 			tlpAnalytics.Controls.Add(pOxyplot, 0, 1);
 			tlpAnalytics.Location = new Point(4, 4);
 			tlpAnalytics.Name = "tlpAnalytics";
@@ -117,50 +119,39 @@
 			tlpAnalytics.Size = new Size(642, 344);
 			tlpAnalytics.TabIndex = 0;
 			// 
-			// btnTAnalytics
-			// 
-			btnTAnalytics.Dock = DockStyle.Fill;
-			btnTAnalytics.FlatAppearance.BorderSize = 0;
-			btnTAnalytics.FlatStyle = FlatStyle.Flat;
-			btnTAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
-			btnTAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
-			btnTAnalytics.Location = new Point(483, 3);
-			btnTAnalytics.Name = "btnTAnalytics";
-			btnTAnalytics.Size = new Size(156, 28);
-			btnTAnalytics.TabIndex = 3;
-			btnTAnalytics.Text = "TRANSFUSIONS";
-			btnTAnalytics.UseVisualStyleBackColor = true;
-			btnTAnalytics.Click += btnTAnalytics_Click;
-			// 
 			// btnEAnalytics
 			// 
 			btnEAnalytics.Dock = DockStyle.Fill;
 			btnEAnalytics.FlatAppearance.BorderSize = 0;
+			btnEAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnEAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
 			btnEAnalytics.FlatStyle = FlatStyle.Flat;
 			btnEAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
 			btnEAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
-			btnEAnalytics.Location = new Point(323, 3);
+			btnEAnalytics.Location = new Point(483, 3);
 			btnEAnalytics.Name = "btnEAnalytics";
-			btnEAnalytics.Size = new Size(154, 28);
-			btnEAnalytics.TabIndex = 2;
+			btnEAnalytics.Size = new Size(156, 28);
+			btnEAnalytics.TabIndex = 3;
 			btnEAnalytics.Text = "EXTRACTIONS";
 			btnEAnalytics.UseVisualStyleBackColor = true;
-			btnEAnalytics.Click += btnEAnalytics_Click;
+			btnEAnalytics.Click += btnTAnalytics_Click;
 			// 
-			// btnPAnalytics
+			// btnDAnalytics
 			// 
-			btnPAnalytics.Dock = DockStyle.Fill;
-			btnPAnalytics.FlatAppearance.BorderSize = 0;
-			btnPAnalytics.FlatStyle = FlatStyle.Flat;
-			btnPAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
-			btnPAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
-			btnPAnalytics.Location = new Point(163, 3);
-			btnPAnalytics.Name = "btnPAnalytics";
-			btnPAnalytics.Size = new Size(154, 28);
-			btnPAnalytics.TabIndex = 1;
-			btnPAnalytics.Text = "PATIENTS";
-			btnPAnalytics.UseVisualStyleBackColor = true;
-			btnPAnalytics.Click += btnPAnalytics_Click;
+			btnDAnalytics.Dock = DockStyle.Fill;
+			btnDAnalytics.FlatAppearance.BorderSize = 0;
+			btnDAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnDAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
+			btnDAnalytics.FlatStyle = FlatStyle.Flat;
+			btnDAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			btnDAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
+			btnDAnalytics.Location = new Point(323, 3);
+			btnDAnalytics.Name = "btnDAnalytics";
+			btnDAnalytics.Size = new Size(154, 28);
+			btnDAnalytics.TabIndex = 1;
+			btnDAnalytics.Text = "DONORS";
+			btnDAnalytics.UseVisualStyleBackColor = true;
+			btnDAnalytics.Click += btnPAnalytics_Click;
 			// 
 			// btnBGAnalytics
 			// 
@@ -178,6 +169,23 @@
 			btnBGAnalytics.Text = "BLOOD GROUPS";
 			btnBGAnalytics.UseVisualStyleBackColor = true;
 			btnBGAnalytics.Click += btnBGAnalytics_Click;
+			// 
+			// btnRAnalytics
+			// 
+			btnRAnalytics.Dock = DockStyle.Fill;
+			btnRAnalytics.FlatAppearance.BorderSize = 0;
+			btnRAnalytics.FlatAppearance.MouseDownBackColor = Color.FromArgb(216, 85, 101);
+			btnRAnalytics.FlatAppearance.MouseOverBackColor = Color.FromArgb(216, 85, 101);
+			btnRAnalytics.FlatStyle = FlatStyle.Flat;
+			btnRAnalytics.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			btnRAnalytics.ForeColor = Color.FromArgb(216, 85, 101);
+			btnRAnalytics.Location = new Point(163, 3);
+			btnRAnalytics.Name = "btnRAnalytics";
+			btnRAnalytics.Size = new Size(154, 28);
+			btnRAnalytics.TabIndex = 2;
+			btnRAnalytics.Text = "REQUESTS";
+			btnRAnalytics.UseVisualStyleBackColor = true;
+			btnRAnalytics.Click += btnEAnalytics_Click;
 			// 
 			// pOxyplot
 			// 
@@ -207,6 +215,7 @@
 			// 
 			pDonors.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
 			pDonors.BackColor = Color.FromArgb(216, 85, 101);
+			pDonors.Controls.Add(lblVAD);
 			pDonors.Controls.Add(flpDonors);
 			pDonors.Controls.Add(lblDonors);
 			pDonors.Location = new Point(8, 386);
@@ -214,6 +223,21 @@
 			pDonors.Padding = new Padding(7);
 			pDonors.Size = new Size(670, 247);
 			pDonors.TabIndex = 2;
+			// 
+			// lblVAD
+			// 
+			lblVAD.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblVAD.AutoSize = true;
+			lblVAD.Cursor = Cursors.Hand;
+			lblVAD.Font = new Font("Bahnschrift", 12F, FontStyle.Bold | FontStyle.Underline);
+			lblVAD.ForeColor = Color.FromArgb(253, 211, 211);
+			lblVAD.Location = new Point(593, 18);
+			lblVAD.Name = "lblVAD";
+			lblVAD.Padding = new Padding(0, 0, 0, 5);
+			lblVAD.Size = new Size(67, 24);
+			lblVAD.TabIndex = 17;
+			lblVAD.Text = "View All";
+			lblVAD.Click += lblVAD_Click;
 			// 
 			// flpDonors
 			// 
@@ -247,14 +271,15 @@
 			lblDonors.Location = new Point(0, 7);
 			lblDonors.Name = "lblDonors";
 			lblDonors.Padding = new Padding(5, 0, 0, 5);
-			lblDonors.Size = new Size(128, 38);
+			lblDonors.Size = new Size(109, 38);
 			lblDonors.TabIndex = 13;
-			lblDonors.Text = "Donors >";
+			lblDonors.Text = "Donors";
 			// 
 			// pHospitals
 			// 
 			pHospitals.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
 			pHospitals.BackColor = Color.FromArgb(216, 85, 101);
+			pHospitals.Controls.Add(lblVAH);
 			pHospitals.Controls.Add(flpHospitals);
 			pHospitals.Controls.Add(lblHospitals);
 			pHospitals.Location = new Point(684, 8);
@@ -262,6 +287,21 @@
 			pHospitals.Padding = new Padding(7);
 			pHospitals.Size = new Size(328, 310);
 			pHospitals.TabIndex = 3;
+			// 
+			// lblVAH
+			// 
+			lblVAH.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			lblVAH.AutoSize = true;
+			lblVAH.Cursor = Cursors.Hand;
+			lblVAH.Font = new Font("Bahnschrift", 12F, FontStyle.Bold | FontStyle.Underline);
+			lblVAH.ForeColor = Color.FromArgb(253, 211, 211);
+			lblVAH.Location = new Point(251, 18);
+			lblVAH.Name = "lblVAH";
+			lblVAH.Padding = new Padding(0, 0, 0, 5);
+			lblVAH.Size = new Size(67, 24);
+			lblVAH.TabIndex = 17;
+			lblVAH.Text = "View All";
+			lblVAH.Click += lblVAH_Click;
 			// 
 			// flpHospitals
 			// 
@@ -296,9 +336,9 @@
 			lblHospitals.Location = new Point(0, 7);
 			lblHospitals.Name = "lblHospitals";
 			lblHospitals.Padding = new Padding(5, 0, 0, 5);
-			lblHospitals.Size = new Size(153, 38);
+			lblHospitals.Size = new Size(134, 38);
 			lblHospitals.TabIndex = 15;
-			lblHospitals.Text = "Hospitals >";
+			lblHospitals.Text = "Hospitals";
 			// 
 			// pUsers
 			// 
@@ -328,16 +368,17 @@
 			// 
 			// pDUsers
 			// 
-			pDUsers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
 			pDUsers.BackColor = Color.FromArgb(244, 180, 180);
 			pDUsers.Controls.Add(lblDNumber);
 			pDUsers.Controls.Add(lblDUsers);
 			pDUsers.Controls.Add(pbxDUsers);
+			pDUsers.Cursor = Cursors.Hand;
 			pDUsers.Location = new Point(6, 6);
 			pDUsers.Name = "pDUsers";
 			pDUsers.Padding = new Padding(5);
 			pDUsers.Size = new Size(296, 136);
 			pDUsers.TabIndex = 0;
+			pDUsers.Click += pDUsers_Click;
 			// 
 			// lblDNumber
 			// 
@@ -355,12 +396,12 @@
 			// 
 			lblDUsers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblDUsers.AutoSize = true;
-			lblDUsers.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+			lblDUsers.Font = new Font("Bahnschrift", 17F, FontStyle.Bold);
 			lblDUsers.ForeColor = Color.FromArgb(216, 85, 101);
-			lblDUsers.Location = new Point(174, 28);
+			lblDUsers.Location = new Point(167, 28);
 			lblDUsers.Name = "lblDUsers";
 			lblDUsers.Padding = new Padding(0, 3, 0, 0);
-			lblDUsers.Size = new Size(75, 27);
+			lblDUsers.Size = new Size(88, 31);
 			lblDUsers.TabIndex = 19;
 			lblDUsers.Text = "Donors";
 			lblDUsers.TextAlign = ContentAlignment.MiddleCenter;
@@ -374,6 +415,7 @@
 			pbxDUsers.Size = new Size(120, 120);
 			pbxDUsers.TabIndex = 0;
 			pbxDUsers.TabStop = false;
+			pbxDUsers.Click += pbxDUsers_Click;
 			// 
 			// pHUsers
 			// 
@@ -382,11 +424,13 @@
 			pHUsers.Controls.Add(lblHNumber);
 			pHUsers.Controls.Add(lblHUsers);
 			pHUsers.Controls.Add(pbxHUsers);
+			pHUsers.Cursor = Cursors.Hand;
 			pHUsers.Location = new Point(6, 148);
 			pHUsers.Name = "pHUsers";
 			pHUsers.Padding = new Padding(5);
 			pHUsers.Size = new Size(296, 136);
 			pHUsers.TabIndex = 1;
+			pHUsers.Click += pHUsers_Click;
 			// 
 			// lblHNumber
 			// 
@@ -404,12 +448,12 @@
 			// 
 			lblHUsers.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			lblHUsers.AutoSize = true;
-			lblHUsers.Font = new Font("Bahnschrift", 15F, FontStyle.Bold);
+			lblHUsers.Font = new Font("Bahnschrift", 17F, FontStyle.Bold);
 			lblHUsers.ForeColor = Color.FromArgb(216, 85, 101);
-			lblHUsers.Location = new Point(164, 28);
+			lblHUsers.Location = new Point(156, 28);
 			lblHUsers.Name = "lblHUsers";
 			lblHUsers.Padding = new Padding(0, 3, 0, 0);
-			lblHUsers.Size = new Size(95, 27);
+			lblHUsers.Size = new Size(111, 31);
 			lblHUsers.TabIndex = 20;
 			lblHUsers.Text = "Hospitals";
 			lblHUsers.TextAlign = ContentAlignment.MiddleCenter;
@@ -423,6 +467,7 @@
 			pbxHUsers.Size = new Size(120, 120);
 			pbxHUsers.TabIndex = 1;
 			pbxHUsers.TabStop = false;
+			pbxHUsers.Click += pbxHUsers_Click;
 			// 
 			// AdminDashboard
 			// 
@@ -483,11 +528,13 @@
 		private Label lblHNumber;
 		private TableLayoutPanel tlpAnalytics;
 		private Button btnBGAnalytics;
-		private Button btnPAnalytics;
+		private Button btnDAnalytics;
+		private Button btnRAnalytics;
 		private Button btnEAnalytics;
-		private Button btnTAnalytics;
 		private Panel pAnalytics;
 		private Panel pOxyplot;
 		private OxyPlot.WindowsForms.PlotView pvOxyplot;
+		private Label lblVAH;
+		private Label lblVAD;
 	}
 }

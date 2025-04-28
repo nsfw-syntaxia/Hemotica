@@ -28,11 +28,18 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			components = new System.ComponentModel.Container();
 			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
 			DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
 			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalStock));
 			dgvStock = new DataGridView();
+			cmsBloodRequest = new ContextMenuStrip(components);
+			sendRequest = new ToolStripMenuItem();
+			fiveUnits = new ToolStripMenuItem();
+			tenUnits = new ToolStripMenuItem();
+			fifteenUnits = new ToolStripMenuItem();
+			twentyUnits = new ToolStripMenuItem();
 			pWarning = new Panel();
 			lblNote = new Label();
 			lblWarning = new Label();
@@ -59,6 +66,7 @@
 			btnPost = new AntdUI.Button();
 			lblPhoto = new Label();
 			((System.ComponentModel.ISupportInitialize)dgvStock).BeginInit();
+			cmsBloodRequest.SuspendLayout();
 			pWarning.SuspendLayout();
 			pPost.SuspendLayout();
 			tlpPost.SuspendLayout();
@@ -92,6 +100,7 @@
 			dgvStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			dgvStock.ColumnHeadersHeight = 50;
 			dgvStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			dgvStock.ContextMenuStrip = cmsBloodRequest;
 			dgvStock.EnableHeadersVisualStyles = false;
 			dgvStock.GridColor = Color.FromArgb(253, 211, 211);
 			dgvStock.Location = new Point(13, 18);
@@ -129,6 +138,50 @@
 			dgvStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 			dgvStock.Size = new Size(494, 385);
 			dgvStock.TabIndex = 18;
+			dgvStock.MouseDown += dgvStock_MouseDown;
+			// 
+			// cmsBloodRequest
+			// 
+			cmsBloodRequest.Font = new Font("Bahnschrift", 12F);
+			cmsBloodRequest.Items.AddRange(new ToolStripItem[] { sendRequest });
+			cmsBloodRequest.Name = "cmsBloodRequest";
+			cmsBloodRequest.Size = new Size(225, 50);
+			// 
+			// sendRequest
+			// 
+			sendRequest.DropDownItems.AddRange(new ToolStripItem[] { fiveUnits, tenUnits, fifteenUnits, twentyUnits });
+			sendRequest.Font = new Font("Bahnschrift", 12F);
+			sendRequest.Name = "sendRequest";
+			sendRequest.Size = new Size(224, 24);
+			sendRequest.Text = "Send Blood Request";
+			// 
+			// fiveUnits
+			// 
+			fiveUnits.Name = "fiveUnits";
+			fiveUnits.Size = new Size(180, 24);
+			fiveUnits.Text = "5 Units";
+			fiveUnits.Click += unitRequest_Click;
+			// 
+			// tenUnits
+			// 
+			tenUnits.Name = "tenUnits";
+			tenUnits.Size = new Size(180, 24);
+			tenUnits.Text = "10 Units";
+			tenUnits.Click += unitRequest_Click;
+			// 
+			// fifteenUnits
+			// 
+			fifteenUnits.Name = "fifteenUnits";
+			fifteenUnits.Size = new Size(180, 24);
+			fifteenUnits.Text = "15 Units";
+			fifteenUnits.Click += unitRequest_Click;
+			// 
+			// twentyUnits
+			// 
+			twentyUnits.Name = "twentyUnits";
+			twentyUnits.Size = new Size(180, 24);
+			twentyUnits.Text = "20 Units";
+			twentyUnits.Click += unitRequest_Click;
 			// 
 			// pWarning
 			// 
@@ -590,6 +643,7 @@
 			Load += HospitalStock_Load;
 			Resize += HospitalStock_Resize;
 			((System.ComponentModel.ISupportInitialize)dgvStock).EndInit();
+			cmsBloodRequest.ResumeLayout(false);
 			pWarning.ResumeLayout(false);
 			pWarning.PerformLayout();
 			pPost.ResumeLayout(false);
@@ -631,5 +685,11 @@
 		private PictureBox pbxPhoto;
 		private AntdUI.Button btnAttach;
 		private AntdUI.Button btnRemove;
+		private ContextMenuStrip cmsBloodRequest;
+		private ToolStripMenuItem sendRequest;
+		private ToolStripMenuItem fiveUnits;
+		private ToolStripMenuItem tenUnits;
+		private ToolStripMenuItem fifteenUnits;
+		private ToolStripMenuItem twentyUnits;
 	}
 }

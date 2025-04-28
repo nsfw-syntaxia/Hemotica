@@ -1,0 +1,236 @@
+﻿namespace Hemotica
+{
+	partial class AdminRecords
+	{
+		/// <summary> 
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
+
+		/// <summary> 
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		#region Component Designer generated code
+
+		/// <summary> 
+		/// Required method for Designer support - do not modify 
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+			DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminRecords));
+			dgvDataMax = new DataGridView();
+			btnDelete = new AntdUI.Button();
+			mstrpRecords = new ReaLTaiizor.Controls.ParrotToolStrip();
+			tstrpFile = new ToolStripDropDownButton();
+			load = new ToolStripMenuItem();
+			lDonors = new ToolStripMenuItem();
+			lHospitals = new ToolStripMenuItem();
+			lRequests = new ToolStripMenuItem();
+			btnReject = new AntdUI.Button();
+			btnApprove = new AntdUI.Button();
+			((System.ComponentModel.ISupportInitialize)dgvDataMax).BeginInit();
+			mstrpRecords.SuspendLayout();
+			SuspendLayout();
+			// 
+			// dgvDataMax
+			// 
+			dgvDataMax.AllowUserToAddRows = false;
+			dgvDataMax.AllowUserToResizeColumns = false;
+			dgvDataMax.AllowUserToResizeRows = false;
+			dgvDataMax.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			dgvDataMax.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			dgvDataMax.BackgroundColor = Color.FromArgb(253, 211, 211);
+			dgvDataMax.BorderStyle = BorderStyle.None;
+			dgvDataMax.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+			dgvDataMax.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle7.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle7.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle7.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle7.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+			dgvDataMax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+			dgvDataMax.ColumnHeadersHeight = 50;
+			dgvDataMax.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			dgvDataMax.EnableHeadersVisualStyles = false;
+			dgvDataMax.GridColor = Color.FromArgb(253, 211, 211);
+			dgvDataMax.Location = new Point(3, 42);
+			dgvDataMax.MultiSelect = false;
+			dgvDataMax.Name = "dgvDataMax";
+			dgvDataMax.ReadOnly = true;
+			dgvDataMax.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle8.BackColor = SystemColors.Control;
+			dataGridViewCellStyle8.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+			dgvDataMax.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+			dgvDataMax.RowHeadersVisible = false;
+			dgvDataMax.RowHeadersWidth = 40;
+			dataGridViewCellStyle9.BackColor = Color.FromArgb(244, 180, 180);
+			dataGridViewCellStyle9.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle9.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle9.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle9.SelectionForeColor = Color.White;
+			dgvDataMax.RowsDefaultCellStyle = dataGridViewCellStyle9;
+			dgvDataMax.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
+			dgvDataMax.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
+			dgvDataMax.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
+			dgvDataMax.RowTemplate.DefaultCellStyle.Padding = new Padding(20, 5, 20, 5);
+			dgvDataMax.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dgvDataMax.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+			dgvDataMax.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+			dgvDataMax.RowTemplate.DividerHeight = 3;
+			dgvDataMax.RowTemplate.Height = 40;
+			dgvDataMax.RowTemplate.Resizable = DataGridViewTriState.False;
+			dgvDataMax.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			dgvDataMax.Size = new Size(1014, 545);
+			dgvDataMax.TabIndex = 2;
+			// 
+			// btnDelete
+			// 
+			btnDelete.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnDelete.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnDelete.Font = new Font("Bahnschrift", 14F);
+			btnDelete.ForeColor = Color.FromArgb(252, 228, 228);
+			btnDelete.Location = new Point(3, 593);
+			btnDelete.Name = "btnDelete";
+			btnDelete.Size = new Size(145, 45);
+			btnDelete.TabIndex = 16;
+			btnDelete.Text = "Delete";
+			btnDelete.Visible = false;
+			btnDelete.Click += btnDelete_Click;
+			// 
+			// mstrpRecords
+			// 
+			mstrpRecords.BackColor = Color.FromArgb(236, 124, 132);
+			mstrpRecords.BorderColor = Color.FromArgb(236, 124, 132);
+			mstrpRecords.ForeColor = Color.Black;
+			mstrpRecords.GripStyle = ToolStripGripStyle.Hidden;
+			mstrpRecords.Items.AddRange(new ToolStripItem[] { tstrpFile });
+			mstrpRecords.Location = new Point(0, 0);
+			mstrpRecords.Name = "mstrpRecords";
+			mstrpRecords.Padding = new Padding(10, 5, 1, 5);
+			mstrpRecords.Size = new Size(1020, 39);
+			mstrpRecords.TabIndex = 17;
+			// 
+			// tstrpFile
+			// 
+			tstrpFile.DropDownItems.AddRange(new ToolStripItem[] { load });
+			tstrpFile.Font = new Font("Bahnschrift", 13F, FontStyle.Bold);
+			tstrpFile.ForeColor = Color.FromArgb(54, 40, 40);
+			tstrpFile.Image = (Image)resources.GetObject("tstrpFile.Image");
+			tstrpFile.ImageTransparentColor = Color.Magenta;
+			tstrpFile.Name = "tstrpFile";
+			tstrpFile.Size = new Size(75, 26);
+			tstrpFile.Text = "FILE";
+			// 
+			// load
+			// 
+			load.DropDownItems.AddRange(new ToolStripItem[] { lDonors, lHospitals, lRequests });
+			load.Font = new Font("Bahnschrift", 12F);
+			load.ForeColor = Color.FromArgb(54, 40, 40);
+			load.Name = "load";
+			load.Size = new Size(119, 24);
+			load.Text = "LOAD";
+			// 
+			// lDonors
+			// 
+			lDonors.Name = "lDonors";
+			lDonors.Size = new Size(161, 24);
+			lDonors.Text = "DONORS";
+			lDonors.Click += lDonors_Click;
+			// 
+			// lHospitals
+			// 
+			lHospitals.Name = "lHospitals";
+			lHospitals.Size = new Size(161, 24);
+			lHospitals.Text = "HOSPITALS";
+			lHospitals.Click += lHospitals_Click;
+			// 
+			// lRequests
+			// 
+			lRequests.Name = "lRequests";
+			lRequests.Size = new Size(161, 24);
+			lRequests.Text = "REQUESTS";
+			lRequests.Click += lRequests_Click;
+			// 
+			// btnReject
+			// 
+			btnReject.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnReject.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnReject.Font = new Font("Bahnschrift", 14F);
+			btnReject.ForeColor = Color.FromArgb(252, 228, 228);
+			btnReject.Location = new Point(154, 593);
+			btnReject.Name = "btnReject";
+			btnReject.Size = new Size(145, 45);
+			btnReject.TabIndex = 24;
+			btnReject.Text = "Reject";
+			btnReject.Visible = false;
+			btnReject.Click += btnReject_Click;
+			// 
+			// btnApprove
+			// 
+			btnApprove.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnApprove.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnApprove.Font = new Font("Bahnschrift", 14F);
+			btnApprove.ForeColor = Color.FromArgb(252, 228, 228);
+			btnApprove.Location = new Point(3, 593);
+			btnApprove.Name = "btnApprove";
+			btnApprove.Size = new Size(145, 45);
+			btnApprove.TabIndex = 23;
+			btnApprove.Text = "Approve";
+			btnApprove.Visible = false;
+			btnApprove.Click += btnApprove_Click;
+			// 
+			// AdminRecords
+			// 
+			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleMode = AutoScaleMode.Font;
+			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(btnReject);
+			Controls.Add(btnApprove);
+			Controls.Add(mstrpRecords);
+			Controls.Add(dgvDataMax);
+			Controls.Add(btnDelete);
+			Name = "AdminRecords";
+			Size = new Size(1020, 641);
+			((System.ComponentModel.ISupportInitialize)dgvDataMax).EndInit();
+			mstrpRecords.ResumeLayout(false);
+			mstrpRecords.PerformLayout();
+			ResumeLayout(false);
+			PerformLayout();
+		}
+
+		#endregion
+		private DataGridView dgvDataMax;
+		private AntdUI.Button btnDelete;
+		private ReaLTaiizor.Controls.ParrotToolStrip mstrpRecords;
+		private ToolStripDropDownButton tstrpFile;
+		private ToolStripMenuItem load;
+		private ToolStripMenuItem lDonors;
+		private ToolStripMenuItem lHospitals;
+		private ToolStripMenuItem lRequests;
+		private AntdUI.Button btnReject;
+		private AntdUI.Button btnApprove;
+	}
+}

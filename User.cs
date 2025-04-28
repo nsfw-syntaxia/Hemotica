@@ -393,7 +393,7 @@ namespace Hemotica
 			}
 		}
 
-		internal DataTable loadAppointments(Database db)
+		internal DataTable loadAppointments(Database db, string status)
 		{
 			string queryHospital = "SELECT [Hospital Name] FROM Hospitals WHERE [Username] = ?";
 			OleDbParameter[] parametersHospital = { new OleDbParameter("?", UserLogs.Username) };
@@ -403,10 +403,19 @@ namespace Hemotica
 			string query = @"SELECT Appointments.[Appointment ID], Donors.[First Name] & ' ' & Donors.[Middle Name] & ' ' & Donors.[Last Name] AS [Donor Name], Donors.Gender, 
 							 Donors.Birthdate, Donors.Age, Donors.[Blood Type], Donors.[Contact Number], Appointments.[Appointment Date], Appointments.Status FROM Hospitals 
 							 INNER JOIN (Appointments INNER JOIN Donors ON Appointments.[Donor Username] = Donors.Username) ON Hospitals.Username = Appointments.[Hospital Username]
-							 WHERE Appointments.Hospital = ? ORDER BY Appointments.[Appointment Date] ASC";
+							 WHERE Appointments.Hospital = ?";
 
-			OleDbParameter[] parametersAppointments = { new OleDbParameter("?", hospitalName) };
-			return db.executeQuery(query, parametersAppointments);
+			List<OleDbParameter> parameters = new List<OleDbParameter> { new OleDbParameter("?", hospitalName) };
+
+			if (status != "All")
+			{
+				query += " AND Appointments.Status = ?";
+				parameters.Add(new OleDbParameter("?", status));
+			}
+
+			query += " ORDER BY Appointments.[Appointment Date] ASC";
+
+			return db.executeQuery(query, parameters.ToArray());
 		}
 
 		internal DataTable loadExtraction(Database db)
@@ -450,10 +459,17 @@ namespace Hemotica
 
 		internal DataTable loadStock(Database db)
 		{
-			string query = @"SELECT [Blood Type], COUNT(*) AS Unit FROM Extraction WHERE [Hospital Username] = ? AND Status = 'Available' AND [Expiration Date] >= Date()
-							 GROUP BY [Blood Type]";
+			string query = @"SELECT Combined.[Blood Type], SUM(Combined.Unit) AS Unit FROM (SELECT [Blood Type], COUNT(*) AS Unit FROM Extraction WHERE [Hospital Username] = ? 
+							 AND Status = 'Available' AND [Expiration Date] >= Date() GROUP BY [Blood Type] UNION ALL
+							 SELECT [Blood Requests].[Blood Type], [Blood Requests].Quantity AS Unit FROM [Blood Requests] WHERE [Blood Requests].Hospital = ? 
+							 AND [Blood Requests].Status = 'Approved') AS Combined GROUP BY Combined.[Blood Type]";
 
-			OleDbParameter[] parameters = { new OleDbParameter("?", UserLogs.Username) };
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", UserLogs.Username),
+				new OleDbParameter("?", UserLogs.Username)
+			};
+
 			return db.executeQuery(query, parameters);
 		}
 
@@ -528,6 +544,14 @@ namespace Hemotica
 			return dt != null ? dt.Rows.Count : 0;
 		}
 
+		internal DataTable loadDonors(Database db)
+		{
+			string query = @"SELECT [Donor ID], [First Name], [Middle Name], [Last Name], Gender, Birthdate, Age, [Contact Number], [Blood Type], Barangay, City, Province 
+							 FROM Donors WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
+
+			return db.executeQuery(query);
+		}
+
 		internal int totalHospitals(Database db)
 		{
 			string query = @"SELECT [Hospital ID] AS UserID, [Email Address], [Username], [Password], 'Hospital' AS UserType FROM Hospitals 
@@ -535,6 +559,153 @@ namespace Hemotica
 
 			DataTable dt = db.executeQuery(query, null);
 			return dt != null ? dt.Rows.Count : 0;
+		}
+
+		internal DataTable loadHospitals(Database db)
+		{
+			string query = @"SELECT [Hospital ID], [Hospital Name], [License Number], [Classification], [Operating Hours (Weekdays) Start], [Operating Hours (Weekdays) End], 
+							 [Operating Hours (Weekend) Start], [Operating Hours (Weekend) End], [Address], [Contact Number] FROM Hospitals
+							 WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' AND [Password] IS NOT NULL AND [Password] <> ''";
+
+			DataTable rawDt = db.executeQuery(query);
+			DataTable formattedDt = new DataTable();
+
+			formattedDt.Columns.Add("Hospital ID");
+			formattedDt.Columns.Add("Hospital Name");
+			formattedDt.Columns.Add("License Number");
+			formattedDt.Columns.Add("Classification");
+			formattedDt.Columns.Add("Operating Hours (Weekdays)");
+			formattedDt.Columns.Add("Operating Hours (Weekend)");
+			formattedDt.Columns.Add("Address");
+			formattedDt.Columns.Add("Contact Number");
+
+			foreach (DataRow row in rawDt.Rows)
+			{
+				string weekdayHours = $"{formatTime(row["Operating Hours (Weekdays) Start"])} - {formatTime(row["Operating Hours (Weekdays) End"])}";
+				string weekendHours = $"{formatTime(row["Operating Hours (Weekend) Start"])} - {formatTime(row["Operating Hours (Weekend) End"])}";
+
+				formattedDt.Rows.Add(
+					row["Hospital ID"],
+					row["Hospital Name"],
+					row["License Number"],
+					row["Classification"],
+					weekdayHours,
+					weekendHours,
+					row["Address"],
+					row["Contact Number"]
+				);
+			}
+
+			return formattedDt;
+		}
+
+		private string formatTime(object value)
+		{
+			if (value != DBNull.Value)
+			{
+				DateTime dt = Convert.ToDateTime(value);
+				return dt.ToString("hh:mm tt");
+			}
+			return string.Empty;
+		}
+
+		internal DataTable totalBloodBags(Database db)
+		{
+			string query = @"SELECT [Extraction ID], [Blood Type], [Extraction Date], [Expiration Date], Status, Barcode FROM Extraction";
+			return db.executeQuery(query);
+		}
+
+		internal DataTable donorsBarangay(Database db)
+		{
+			string query = @"SELECT Barangay, City, COUNT(*) AS TotalDonors FROM Donors WHERE [Email Address] IS NOT NULL AND [Email Address] <> '' 
+							 AND [Password] IS NOT NULL AND [Password] <> '' GROUP BY Barangay, City";
+
+			return db.executeQuery(query);
+		}
+
+		internal DataTable hospitalExtractions(Database db)
+		{
+			string query = @"SELECT Hospitals.[Hospital Name], Extraction.[Extraction Date] FROM Extraction 
+							 INNER JOIN Hospitals ON Hospitals.Username = Extraction.[Hospital Username]";
+
+			return db.executeQuery(query);
+		}
+
+		internal DataTable hospitalTransfusions(Database db)
+		{
+			string query = @"SELECT Hospitals.[Hospital Name], Transfusion.[Transfusion Date]FROM Transfusion
+							 INNER JOIN Hospitals ON Hospitals.Username = Transfusion.[Hospital Username]";
+
+			return db.executeQuery(query);
+		}
+
+		internal bool deleteDonor(int donorID, Database db)
+		{
+			string query = "DELETE FROM Donors WHERE [Donor ID] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+
+					cmd.Parameters.AddWithValue("?", donorID);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		internal bool deleteHospital(int hospitalID, Database db)
+		{
+			string query = "DELETE FROM Hospitals WHERE [Hospital ID] = ?";
+
+			try
+			{
+				using (OleDbConnection conn = db.getConnection())
+				{
+					OleDbCommand cmd = new OleDbCommand(query, conn);
+
+					cmd.Parameters.AddWithValue("?", hospitalID);
+
+					conn.Open();
+					cmd.ExecuteNonQuery();
+					conn.Close();
+
+					return true;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"ERROR: {ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+		}
+
+		internal DataTable bloodRequests(Database db)
+		{
+			string query = @"SELECT [Blood Requests].[Blood Request ID], [Blood Requests].[Blood Type], [Blood Requests].Quantity, [Blood Requests].Hospital, 
+							 Hospitals.[Hospital Name], [Blood Requests].Status FROM Hospitals INNER JOIN [Blood Requests] ON Hospitals.Username = [Blood Requests].Hospital 
+							 WHERE [Blood Requests].Status = 'Pending Approval'";
+
+			return db.executeQuery(query);
+		}
+
+		internal DataTable totalBloodRequests(Database db)
+		{
+			string query = @"SELECT [Blood Requests].[Blood Request ID], [Blood Requests].[Blood Type], [Blood Requests].Quantity, [Blood Requests].Hospital, 
+							 Hospitals.[Hospital Name], [Blood Requests].Status FROM Hospitals INNER JOIN [Blood Requests] ON Hospitals.Username = [Blood Requests].Hospital";
+
+			return db.executeQuery(query);
 		}
 	}
 

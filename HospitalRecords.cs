@@ -11,19 +11,15 @@ namespace Hemotica
 {
 	public partial class HospitalRecords : UserControl
 	{
-		private Donor donor;
-		private Hospital hospital;
-		private Patient patient;
-		private Physician physician;
+		private Donor donor = new Donor();
+		private Hospital hospital = new Hospital();
+		private Patient patient = new Patient();
+		private Physician physician = new Physician();
 		private Database db = new Database();
 
 		public HospitalRecords()
 		{
 			InitializeComponent();
-			this.donor = new Donor();
-			this.hospital = new Hospital();
-			this.patient = new Patient();
-			this.physician = new Physician();
 		}
 
 		private void btnConnection_Click(object sender, EventArgs e)
@@ -50,6 +46,10 @@ namespace Hemotica
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = false;
+			dgvDataMid.Visible = false;
+			btnApprove.Visible = false;
+			btnReject.Visible = false;
+			cmbxStatus.Visible = false;
 
 			dgvDataMin.Visible = true;
 			flpInputs.Visible = true;
@@ -81,6 +81,10 @@ namespace Hemotica
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = false;
+			dgvDataMid.Visible = false;
+			btnApprove.Visible = false;
+			btnReject.Visible = false;
+			cmbxStatus.Visible = false;
 
 			dgvDataMin.Visible = true;
 			flpInputs.Visible = true;
@@ -155,6 +159,10 @@ namespace Hemotica
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = false;
+			dgvDataMid.Visible = false;
+			btnApprove.Visible = false;
+			btnReject.Visible = false;
+			cmbxStatus.Visible = false;
 
 			dgvDataMin.Visible = true;
 			flpInputs.Visible = true;
@@ -419,24 +427,32 @@ namespace Hemotica
 
 		private void loadAppointments()
 		{
-			DataTable dt = hospital.loadAppointments(db);
+			string status = cmbxStatus.SelectedIndex == 0 ? "All" : cmbxStatus.SelectedItem.ToString();
+
+			DataTable dt = hospital.loadAppointments(db, status);
 
 			if (dt != null)
 			{
-				dgvDataMax.DataSource = dt;
+				dgvDataMid.DataSource = dt;
 			}
 		}
 
 		public void appointments()
 		{
 			btnConnection.Visible = false;
-			dgvDataMax.Visible = true;
+			dgvDataMax.Visible = false;
+			dgvDataMid.Visible = true;
+			cmbxStatus.Visible = true;
 
 			dgvDataMin.Visible = false;
 			flpInputs.Visible = false;
 			btnInsert.Visible = false;
 			btnUpdate.Visible = false;
 			btnDelete.Visible = false;
+
+			string status = cmbxStatus.SelectedIndex == 0 ? "All" : cmbxStatus.SelectedItem.ToString();
+			btnApprove.Visible = status == "Pending Approval";
+			btnReject.Visible = status == "Pending Approval";
 
 			loadAppointments();
 		}
@@ -460,6 +476,10 @@ namespace Hemotica
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = true;
+			dgvDataMid.Visible = false;
+			btnApprove.Visible = false;
+			btnReject.Visible = false;
+			cmbxStatus.Visible = false;
 
 			dgvDataMin.Visible = false;
 			flpInputs.Visible = false;
@@ -488,6 +508,10 @@ namespace Hemotica
 		{
 			btnConnection.Visible = false;
 			dgvDataMax.Visible = true;
+			dgvDataMid.Visible = false;
+			btnApprove.Visible = false;
+			btnReject.Visible = false;
+			cmbxStatus.Visible = false;
 
 			dgvDataMin.Visible = false;
 			flpInputs.Visible = false;
@@ -622,7 +646,7 @@ namespace Hemotica
 		private void pAppointments_Click(object sender, EventArgs e)
 		{
 			loadAppointments();
-			exportPDF(dgvDataMax, "Appointment");
+			exportPDF(dgvDataMid, "Appointment");
 		}
 
 		private void pExtraction_Click(object sender, EventArgs e)
@@ -640,7 +664,72 @@ namespace Hemotica
 		private void HospitalRecords_Load(object sender, EventArgs e)
 		{
 			mstrpRecords.Focus();
-			//lDonors.PerformClick();
+		}
+
+		private void cmbxStatus_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			appointments();
+		}
+
+		internal bool updateAppointmentStatus(Database db, int appointmentID, string newStatus)
+		{
+			string query = "UPDATE Appointments SET Status = ? WHERE [Appointment ID] = ?";
+			OleDbParameter[] parameters = 
+			{
+				new OleDbParameter("?", newStatus),
+				new OleDbParameter("?", appointmentID)
+			};
+
+			return db.executeNonQuery(query, parameters);
+		}
+
+
+		private void btnApprove_Click(object sender, EventArgs e)
+		{
+			if (dgvDataMid.CurrentRow != null)
+			{
+				int appointmentID = Convert.ToInt32(dgvDataMid.CurrentRow.Cells["Appointment ID"].Value);
+
+				bool updated = updateAppointmentStatus(db, appointmentID, "Scheduled");
+
+				if (updated)
+				{
+					MessageBox.Show("Appointment approved and scheduled successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					loadAppointments();
+				}
+				else
+				{
+					MessageBox.Show("Appointment approval failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select an appointment awaiting approval.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+		}
+
+		private void btnReject_Click(object sender, EventArgs e)
+		{
+			if (dgvDataMid.CurrentRow != null)
+			{
+				int appointmentID = Convert.ToInt32(dgvDataMid.CurrentRow.Cells["Appointment ID"].Value);
+
+				bool updated = updateAppointmentStatus(db, appointmentID, "Denied");
+
+				if (updated)
+				{
+					MessageBox.Show("Appointment has been denied.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					loadAppointments();
+				}
+				else
+				{
+					MessageBox.Show("Appointment rejection failed.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select an appointment awaiting approval.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
 		}
 	}
 }

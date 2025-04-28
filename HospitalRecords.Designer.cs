@@ -29,12 +29,15 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalRecords));
-			DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-			DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+			DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
 			mstrpRecords = new ReaLTaiizor.Controls.ParrotToolStrip();
 			tstrpFile = new ToolStripDropDownButton();
 			load = new ToolStripMenuItem();
@@ -62,9 +65,14 @@
 			btnDelete = new AntdUI.Button();
 			dgvDataMin = new DataGridView();
 			flpInputs = new FlowLayoutPanel();
+			dgvDataMid = new DataGridView();
+			btnApprove = new AntdUI.Button();
+			btnReject = new AntdUI.Button();
+			cmbxStatus = new ReaLTaiizor.Controls.DungeonComboBox();
 			mstrpRecords.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)dgvDataMax).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dgvDataMin).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dgvDataMid).BeginInit();
 			SuspendLayout();
 			// 
 			// mstrpRecords
@@ -245,15 +253,15 @@
 			dgvDataMax.BorderStyle = BorderStyle.None;
 			dgvDataMax.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 			dgvDataMax.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle1.BackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle1.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
-			dataGridViewCellStyle1.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle1.Padding = new Padding(15, 5, 15, 5);
-			dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-			dgvDataMax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle10.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle10.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle10.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle10.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+			dgvDataMax.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
 			dgvDataMax.ColumnHeadersHeight = 50;
 			dgvDataMax.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			dgvDataMax.EnableHeadersVisualStyles = false;
@@ -263,23 +271,23 @@
 			dgvDataMax.Name = "dgvDataMax";
 			dgvDataMax.ReadOnly = true;
 			dgvDataMax.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle2.BackColor = SystemColors.Control;
-			dataGridViewCellStyle2.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-			dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-			dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-			dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-			dgvDataMax.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle11.BackColor = SystemColors.Control;
+			dataGridViewCellStyle11.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+			dgvDataMax.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
 			dgvDataMax.RowHeadersVisible = false;
 			dgvDataMax.RowHeadersWidth = 40;
-			dataGridViewCellStyle3.BackColor = Color.FromArgb(244, 180, 180);
-			dataGridViewCellStyle3.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle3.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle3.Padding = new Padding(20, 5, 20, 5);
-			dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(236, 124, 132);
-			dataGridViewCellStyle3.SelectionForeColor = Color.White;
-			dgvDataMax.RowsDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle12.BackColor = Color.FromArgb(244, 180, 180);
+			dataGridViewCellStyle12.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle12.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle12.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle12.SelectionForeColor = Color.White;
+			dgvDataMax.RowsDefaultCellStyle = dataGridViewCellStyle12;
 			dgvDataMax.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
 			dgvDataMax.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
 			dgvDataMax.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
@@ -362,15 +370,15 @@
 			dgvDataMin.BorderStyle = BorderStyle.None;
 			dgvDataMin.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
 			dgvDataMin.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle4.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
-			dataGridViewCellStyle4.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle4.Padding = new Padding(15, 5, 15, 5);
-			dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-			dgvDataMin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle13.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle13.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle13.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle13.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle13.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+			dgvDataMin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
 			dgvDataMin.ColumnHeadersHeight = 50;
 			dgvDataMin.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			dgvDataMin.EnableHeadersVisualStyles = false;
@@ -380,23 +388,23 @@
 			dgvDataMin.Name = "dgvDataMin";
 			dgvDataMin.ReadOnly = true;
 			dgvDataMin.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-			dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle5.BackColor = SystemColors.Control;
-			dataGridViewCellStyle5.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-			dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-			dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-			dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-			dgvDataMin.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle14.BackColor = SystemColors.Control;
+			dataGridViewCellStyle14.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle14.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
+			dgvDataMin.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
 			dgvDataMin.RowHeadersVisible = false;
 			dgvDataMin.RowHeadersWidth = 40;
-			dataGridViewCellStyle6.BackColor = Color.FromArgb(253, 211, 211);
-			dataGridViewCellStyle6.Font = new Font("Bahnschrift", 13F);
-			dataGridViewCellStyle6.ForeColor = Color.FromArgb(216, 85, 101);
-			dataGridViewCellStyle6.Padding = new Padding(20, 5, 20, 5);
-			dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(236, 124, 132);
-			dataGridViewCellStyle6.SelectionForeColor = Color.White;
-			dgvDataMin.RowsDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle15.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle15.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle15.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle15.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle15.SelectionForeColor = Color.White;
+			dgvDataMin.RowsDefaultCellStyle = dataGridViewCellStyle15;
 			dgvDataMin.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
 			dgvDataMin.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
 			dgvDataMin.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
@@ -422,11 +430,134 @@
 			flpInputs.TabIndex = 19;
 			flpInputs.Visible = false;
 			// 
+			// dgvDataMid
+			// 
+			dgvDataMid.AllowUserToAddRows = false;
+			dgvDataMid.AllowUserToResizeColumns = false;
+			dgvDataMid.AllowUserToResizeRows = false;
+			dgvDataMid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+			dgvDataMid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+			dgvDataMid.BackgroundColor = Color.FromArgb(253, 211, 211);
+			dgvDataMid.BorderStyle = BorderStyle.None;
+			dgvDataMid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+			dgvDataMid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle16.BackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle16.Font = new Font("Bahnschrift SemiBold", 13F, FontStyle.Bold);
+			dataGridViewCellStyle16.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle16.Padding = new Padding(15, 5, 15, 5);
+			dataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(253, 211, 211);
+			dataGridViewCellStyle16.SelectionForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
+			dgvDataMid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+			dgvDataMid.ColumnHeadersHeight = 50;
+			dgvDataMid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			dgvDataMid.EnableHeadersVisualStyles = false;
+			dgvDataMid.GridColor = Color.FromArgb(253, 211, 211);
+			dgvDataMid.Location = new Point(3, 42);
+			dgvDataMid.MultiSelect = false;
+			dgvDataMid.Name = "dgvDataMid";
+			dgvDataMid.ReadOnly = true;
+			dgvDataMid.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+			dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle17.BackColor = SystemColors.Control;
+			dataGridViewCellStyle17.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle17.ForeColor = SystemColors.WindowText;
+			dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+			dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+			dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
+			dgvDataMid.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+			dgvDataMid.RowHeadersVisible = false;
+			dgvDataMid.RowHeadersWidth = 40;
+			dataGridViewCellStyle18.BackColor = Color.FromArgb(244, 180, 180);
+			dataGridViewCellStyle18.Font = new Font("Bahnschrift", 13F);
+			dataGridViewCellStyle18.ForeColor = Color.FromArgb(216, 85, 101);
+			dataGridViewCellStyle18.Padding = new Padding(20, 5, 20, 5);
+			dataGridViewCellStyle18.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dataGridViewCellStyle18.SelectionForeColor = Color.White;
+			dgvDataMid.RowsDefaultCellStyle = dataGridViewCellStyle18;
+			dgvDataMid.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(252, 196, 196);
+			dgvDataMid.RowTemplate.DefaultCellStyle.Font = new Font("Bahnschrift", 13F);
+			dgvDataMid.RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(216, 85, 101);
+			dgvDataMid.RowTemplate.DefaultCellStyle.Padding = new Padding(20, 5, 20, 5);
+			dgvDataMid.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 124, 132);
+			dgvDataMid.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
+			dgvDataMid.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+			dgvDataMid.RowTemplate.DividerHeight = 3;
+			dgvDataMid.RowTemplate.Height = 40;
+			dgvDataMid.RowTemplate.Resizable = DataGridViewTriState.False;
+			dgvDataMid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			dgvDataMid.Size = new Size(1014, 545);
+			dgvDataMid.TabIndex = 20;
+			dgvDataMid.Visible = false;
+			// 
+			// btnApprove
+			// 
+			btnApprove.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnApprove.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnApprove.Font = new Font("Bahnschrift", 14F);
+			btnApprove.ForeColor = Color.FromArgb(252, 228, 228);
+			btnApprove.Location = new Point(3, 593);
+			btnApprove.Name = "btnApprove";
+			btnApprove.Size = new Size(145, 45);
+			btnApprove.TabIndex = 21;
+			btnApprove.Text = "Approve";
+			btnApprove.Visible = false;
+			btnApprove.Click += btnApprove_Click;
+			// 
+			// btnReject
+			// 
+			btnReject.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+			btnReject.DefaultBack = Color.FromArgb(236, 124, 132);
+			btnReject.Font = new Font("Bahnschrift", 14F);
+			btnReject.ForeColor = Color.FromArgb(252, 228, 228);
+			btnReject.Location = new Point(154, 593);
+			btnReject.Name = "btnReject";
+			btnReject.Size = new Size(145, 45);
+			btnReject.TabIndex = 22;
+			btnReject.Text = "Reject";
+			btnReject.Visible = false;
+			btnReject.Click += btnReject_Click;
+			// 
+			// cmbxStatus
+			// 
+			cmbxStatus.BackColor = Color.White;
+			cmbxStatus.ColorA = Color.FromArgb(236, 124, 132);
+			cmbxStatus.ColorB = Color.FromArgb(236, 124, 132);
+			cmbxStatus.ColorC = Color.FromArgb(242, 241, 240);
+			cmbxStatus.ColorD = Color.FromArgb(253, 252, 252);
+			cmbxStatus.ColorE = Color.FromArgb(239, 237, 236);
+			cmbxStatus.ColorF = Color.FromArgb(216, 85, 101);
+			cmbxStatus.ColorG = Color.FromArgb(216, 85, 101);
+			cmbxStatus.ColorH = Color.FromArgb(244, 180, 180);
+			cmbxStatus.ColorI = Color.FromArgb(250, 249, 249);
+			cmbxStatus.DrawMode = DrawMode.OwnerDrawFixed;
+			cmbxStatus.DropDownHeight = 100;
+			cmbxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+			cmbxStatus.Font = new Font("Arial Narrow", 15F, FontStyle.Bold);
+			cmbxStatus.ForeColor = Color.FromArgb(216, 85, 101);
+			cmbxStatus.FormattingEnabled = true;
+			cmbxStatus.HoverSelectionColor = Color.Empty;
+			cmbxStatus.IntegralHeight = false;
+			cmbxStatus.ItemHeight = 31;
+			cmbxStatus.Items.AddRange(new object[] { "Select appointment status", "Pending Approval", "Scheduled", "Denied", "Cancelled", "Completed" });
+			cmbxStatus.Location = new Point(727, 597);
+			cmbxStatus.Name = "cmbxStatus";
+			cmbxStatus.Size = new Size(286, 37);
+			cmbxStatus.StartIndex = 0;
+			cmbxStatus.TabIndex = 86;
+			cmbxStatus.Visible = false;
+			cmbxStatus.SelectedIndexChanged += cmbxStatus_SelectedIndexChanged;
+			// 
 			// HospitalRecords
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.FromArgb(253, 211, 211);
+			Controls.Add(cmbxStatus);
+			Controls.Add(btnReject);
+			Controls.Add(btnApprove);
+			Controls.Add(dgvDataMid);
 			Controls.Add(flpInputs);
 			Controls.Add(dgvDataMin);
 			Controls.Add(btnDelete);
@@ -442,6 +573,7 @@
 			mstrpRecords.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)dgvDataMax).EndInit();
 			((System.ComponentModel.ISupportInitialize)dgvDataMin).EndInit();
+			((System.ComponentModel.ISupportInitialize)dgvDataMid).EndInit();
 			ResumeLayout(false);
 			PerformLayout();
 		}
@@ -475,5 +607,9 @@
 		private FlowLayoutPanel flpInputs;
 		private ToolStripMenuItem pPhysicians;
 		private ToolStripMenuItem pAppointments;
+		private DataGridView dgvDataMid;
+		private AntdUI.Button btnApprove;
+		private AntdUI.Button btnReject;
+		private ReaLTaiizor.Controls.DungeonComboBox cmbxStatus;
 	}
 }
